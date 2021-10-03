@@ -19,7 +19,8 @@ Public Module ggplot2
 
         Return New ggplot With {
             .data = data,
-            .layers = New Queue(Of ggplotLayer)(New ggplotLayer() {base}),
+            .layers = New Queue(Of ggplotLayer),
+            .base = base,
             .args = args
         }
     End Function
