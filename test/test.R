@@ -5,6 +5,8 @@ const chic <- read.csv(`${@dir}/chicago-nmmaps.csv`);
 
 print(head(chic, 10));
 
-const g <- ggplot(chic, aes(x = "date", y = "temp"));
+bitmap(file = `${@dir}/demo.png`, size = [2400, 1600]) {
+    ggplot(chic, aes(x = "date", y = "temp"));
+}
 
 pause();

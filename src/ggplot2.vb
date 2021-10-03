@@ -15,11 +15,11 @@ Public Module ggplot2
                            Optional args As list = Nothing,
                            Optional environment As Environment = Nothing)
 
+        Dim base As ggplotLayer = New ggplotBase With {.reader = mapping}
+
         Return New ggplot With {
             .data = data,
-            .layers = New List(Of ggplotLayer) From {
-                New ggplotBase With {.reader = mapping}
-            },
+            .layers = New Queue(Of ggplotLayer)(New ggplotLayer() {base}),
             .args = args
         }
     End Function
