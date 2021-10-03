@@ -23,3 +23,16 @@ Public Class ggplotTheme : Inherits ggplotOption
         Throw New NotImplementedException()
     End Function
 End Class
+
+Public Class ggplotTitle : Inherits ggplotOption
+
+    Public Property title As String
+
+    Sub New(title As String)
+        Me.title = title
+    End Sub
+
+    Public Overrides Function Config(ggplot As ggplot) As ggplot
+        Throw New NotImplementedException()
+    End Function
+End Class

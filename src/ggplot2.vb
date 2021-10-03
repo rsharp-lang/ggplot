@@ -85,4 +85,10 @@ Public Module ggplot2
     Public Function theme() As ggplotOption
         Return New ggplotTheme
     End Function
+
+    <ExportAPI("ggtitle")>
+    Public Function ggtitle(title As String) As ggplotOption
+        Return New ggplotTitle(title)
+    End Function
+
 End Module
