@@ -51,7 +51,9 @@ Public Class ggplot : Inherits Plot
             gridFill:=theme.gridFill,
             axisStroke:=theme.axisStroke,
             gridX:=theme.gridStrokeX,
-            gridY:=theme.gridStrokeY
+            gridY:=theme.gridStrokeY,
+            labelFont:=theme.axisLabelCSS,
+            tickFontStyle:=theme.axisTickCSS
         )
     End Sub
 

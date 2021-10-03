@@ -1,5 +1,7 @@
 ﻿Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
+Imports Microsoft.VisualBasic.Imaging
+Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Scripting.MetaData
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
@@ -17,7 +19,11 @@ Public Module ggplot2
                            Optional environment As Environment = Nothing)
 
         Dim base As ggplotLayer = New ggplotBase With {.reader = mapping}
-        Dim theme As New Theme
+        Dim theme As New Theme With {
+            .axisLabelCSS = "font-style: strong; font-size: 16; font-family: " & FontFace.MicrosoftYaHei & ";",
+            .axisTickCSS = "font-style: normal; font-size: 12; font-family: " & FontFace.MicrosoftYaHei & ";",
+            .padding = g.DefaultUltraLargePadding
+        }
 
         Return New ggplot(theme) With {
             .data = data,
