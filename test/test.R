@@ -5,6 +5,6 @@ const chic <- read.csv(`${@dir}/chicago-nmmaps.csv`);
 
 print(head(chic, 10));
 
-const g <- ggplot(chic, aes(x = date, y = temp));
+const g <- ggplot(chic, aes(x = "date", y = "temp"));
 
 pause();

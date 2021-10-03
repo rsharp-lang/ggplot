@@ -5,7 +5,7 @@ Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports SMRUCC.Rsharp.Runtime.Interop
 
 <Package("ggplot2")>
-Public Class ggplot2
+Public Module ggplot2
 
     <ExportAPI("ggplot")>
     Public Function ggplot(<RRawVectorArgument>
@@ -19,7 +19,7 @@ Public Class ggplot2
 
     <ExportAPI("aes")>
     Public Function aes(x As Object, y As Object, Optional env As Environment = Nothing) As Object
-
+        Return New ggplotReader With {.x = x, .y = y}
     End Function
 
-End Class
+End Module
