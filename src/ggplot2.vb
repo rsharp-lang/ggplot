@@ -15,6 +15,13 @@ Public Module ggplot2
                            Optional args As list = Nothing,
                            Optional environment As Environment = Nothing)
 
+        Dim ggdata As ggplotData = ggplotReader.getMapData(data, environment)
+
+        If Not ggdata.error Is Nothing Then
+            Return ggdata.error
+        End If
+
+
     End Function
 
     <ExportAPI("aes")>
