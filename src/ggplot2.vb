@@ -17,4 +17,9 @@ Public Class ggplot2
 
     End Function
 
+    <ExportAPI("aes")>
+    Public Function aes(x As Object, y As Object, Optional env As Environment = Nothing) As Object
+
+    End Function
+
 End Class
