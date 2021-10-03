@@ -18,8 +18,9 @@ Public Module ggplot2
         Return New ggplot With {
             .data = data,
             .layers = New List(Of ggplotLayer) From {
-                New ggplotLayer With {.reader = mapping}
-            }
+                New ggplotBase With {.reader = mapping}
+            },
+            .args = args
         }
     End Function
 
