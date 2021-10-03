@@ -1,7 +1,9 @@
 ﻿Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
+Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
+Imports Microsoft.VisualBasic.Imaging.Drawing2D.Shapes
 Imports Microsoft.VisualBasic.Scripting.MetaData
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
@@ -42,8 +44,22 @@ Public Module ggplot2
     End Function
 
     <ExportAPI("geom_point")>
-    Public Function geom_point() As ggplotLayer
-        Return New ggplotScatter
+    Public Function geom_point(<RRawVectorArgument>
+                               Optional color As Object = "steelblue",
+                               Optional shape As LegendStyles = LegendStyles.Circle,
+                               Optional size As Single = 2,
+                               Optional env As Environment = Nothing) As ggplotLayer
+
+        Return New ggplotScatter With {
+            .color = RColorPalette.getColor(color).TranslateColor,
+            .shape = shape,
+            .size = size
+        }
+    End Function
+
+    <ExportAPI("geom_line")>
+    Public Function geom_line() As ggplotLayer
+        Return New ggplotLine
     End Function
 
     <ROperator("+")>
