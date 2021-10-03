@@ -68,4 +68,17 @@ Public Module ggplot2
         Return ggplot
     End Function
 
+    <ROperator("+")>
+    Public Function configPlot(ggplot As ggplot, opts As ggplotOption) As ggplot
+        Return opts.Config(ggplot)
+    End Function
+
+    <ExportAPI("labs")>
+    Public Function labs(x As String, y As String) As ggplotOption
+        Return New ggplotAxisLabel With {
+            .x = x,
+            .y = y
+        }
+    End Function
+
 End Module
