@@ -62,6 +62,6 @@ Public Class ggplotScatter : Inherits ggplotLayer
             Throw New NotImplementedException
         End If
 
-        Call Scatter2D.DrawScatter(g, serial.pts, scale, True, serial.shape, serial.pointSize, serial.BrushHandler)
+        Call Scatter2D.DrawScatter(g, serial.pts, scale, True, serial.shape, serial.pointSize, serial.BrushHandler).ToArray
     End Sub
 End Class
