@@ -8,6 +8,7 @@ Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.BitmapImage
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Math.LinearAlgebra
+Imports Microsoft.VisualBasic.Scripting.Runtime
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports REnv = SMRUCC.Rsharp.Runtime
@@ -55,7 +56,25 @@ Public Class ggplot : Inherits Plot
     End Sub
 
     Public Function Save(stream As Stream, format As ImageFormat) As Boolean Implements SaveGdiBitmap.Save
-        Dim image = Plot()
+        Dim size As New Size(1920, 1600)
+
+        If {"w", "h"}.All(AddressOf args.hasName) Then
+            size = New Size(
+                width:=args.getValue(Of Integer)("w", environment, 1920),
+                height:=args.getValue(Of Integer)("h", environment, 1600)
+            )
+        ElseIf {"width", "height"}.All(AddressOf args.hasName) Then
+            size = New Size(
+                width:=args.getValue(Of Integer)("width", environment, 1920),
+                height:=args.getValue(Of Integer)("height", environment, 1600)
+            )
+        ElseIf args.hasName("size") Then
+            size = InteropArgumentHelper _
+                .getSize(args.getByName("size"), environment, "1920,1600") _
+                .SizeParser
+        End If
+
+        Dim image = Plot($"{size.Width},{size.Height}")
         Return image.Save(stream)
     End Function
 End Class

@@ -24,7 +24,9 @@ Public Module ggplot2
             .layers = New Queue(Of ggplotLayer),
             .base = base,
             .args = args,
-            .environment = environment
+            .environment = environment,
+            .xlabel = base.reader.x,
+            .ylabel = base.reader.y
         }
     End Function
 

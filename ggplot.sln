@@ -25,9 +25,13 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ggplot", "src\ggplot.vbproj
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "R-cmd", "..\..\R-sharp\studio\R-terminal\R-cmd.vbproj", "{3A35AC34-F313-4F72-89E9-EACCA217BC8D}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "R_graphic.interop", "..\..\R-sharp\Library\R_graphic.interop\R_graphic.interop.shproj", "{53AF2B13-CCD5-4F73-94D5-612191E785A9}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		..\..\R-sharp\studio\Rstudio.common\Rstudio.common.projitems*{3a35ac34-f313-4f72-89e9-eacca217bc8d}*SharedItemsImports = 4
+		..\..\R-sharp\Library\R_graphic.interop\R_graphic.interop.projitems*{53473af8-1f89-4fe1-bcb8-10fa0c9bce74}*SharedItemsImports = 4
+		..\..\R-sharp\Library\R_graphic.interop\R_graphic.interop.projitems*{53af2b13-ccd5-4f73-94d5-612191e785a9}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		BioDeep_database|Any CPU = BioDeep_database|Any CPU
@@ -1983,6 +1987,7 @@ Global
 		{17F8E821-0A01-4975-9CAA-AC95251226D5} = {C8D4248F-C5ED-4DF3-BD53-2AF06D3993C9}
 		{C8D4248F-C5ED-4DF3-BD53-2AF06D3993C9} = {8836B799-6DA1-48A5-B916-594A635FD60B}
 		{0C2EB77C-39F2-460D-A3F8-CE905F867637} = {8836B799-6DA1-48A5-B916-594A635FD60B}
+		{53AF2B13-CCD5-4F73-94D5-612191E785A9} = {8836B799-6DA1-48A5-B916-594A635FD60B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {42D3C2F3-BEB4-475C-9EED-31E215B9A563}
