@@ -22,7 +22,7 @@ Public Class ggplot : Inherits Plot
 
     Public Property data As Object
     Public Property layers As New Queue(Of ggplotLayer)
-    Public Property base As ggplotLayer
+    Public Property base As ggplotBase
     Public Property args As list
     Public Property environment As Environment
 
@@ -55,6 +55,10 @@ Public Class ggplot : Inherits Plot
             labelFont:=theme.axisLabelCSS,
             tickFontStyle:=theme.axisTickCSS
         )
+
+        Do While layers.Count > 0
+            Call layers.Dequeue.Plot(g, canvas, baseData, x, y, scale, ggplot:=Me, theme:=theme)
+        Loop
     End Sub
 
     Public Function Save(stream As Stream, format As ImageFormat) As Boolean Implements SaveGdiBitmap.Save

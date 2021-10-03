@@ -18,7 +18,7 @@ Public Module ggplot2
                            Optional args As list = Nothing,
                            Optional environment As Environment = Nothing)
 
-        Dim base As ggplotLayer = New ggplotBase With {.reader = mapping}
+        Dim base As New ggplotBase With {.reader = mapping}
         Dim theme As New Theme With {
             .axisLabelCSS = "font-style: strong; font-size: 16; font-family: " & FontFace.MicrosoftYaHei & ";",
             .axisTickCSS = "font-style: normal; font-size: 12; font-family: " & FontFace.MicrosoftYaHei & ";",
