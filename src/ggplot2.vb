@@ -81,4 +81,8 @@ Public Module ggplot2
         }
     End Function
 
+    <ExportAPI("theme")>
+    Public Function theme() As ggplotOption
+        Return New ggplotTheme
+    End Function
 End Module

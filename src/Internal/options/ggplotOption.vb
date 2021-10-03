@@ -16,3 +16,10 @@ Public Class ggplotAxisLabel : Inherits ggplotOption
         Return ggplot
     End Function
 End Class
+
+Public Class ggplotTheme : Inherits ggplotOption
+
+    Public Overrides Function Config(ggplot As ggplot) As ggplot
+        Throw New NotImplementedException()
+    End Function
+End Class
