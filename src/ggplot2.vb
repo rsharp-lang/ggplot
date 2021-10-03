@@ -39,8 +39,15 @@ Public Module ggplot2
     End Function
 
     <ExportAPI("aes")>
-    Public Function aes(x As Object, y As Object, Optional env As Environment = Nothing) As Object
-        Return New ggplotReader With {.x = x, .y = y}
+    Public Function aes(x As Object, y As Object,
+                        Optional color As Object = Nothing,
+                        Optional env As Environment = Nothing) As Object
+
+        Return New ggplotReader With {
+            .x = x,
+            .y = y,
+            .color = color
+        }
     End Function
 
     <ExportAPI("geom_point")>
@@ -74,10 +81,14 @@ Public Module ggplot2
     End Function
 
     <ExportAPI("labs")>
-    Public Function labs(x As String, y As String) As ggplotOption
+    Public Function labs(Optional x As String = Nothing,
+                         Optional y As String = Nothing,
+                         Optional title As String = Nothing) As ggplotOption
+
         Return New ggplotAxisLabel With {
             .x = x,
-            .y = y
+            .y = y,
+            .title = title
         }
     End Function
 

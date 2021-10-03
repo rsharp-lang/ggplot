@@ -9,7 +9,8 @@ bitmap(file = `${@dir}/demo.png`, size = [2400, 1600]) {
 
     ggplot(chic, aes(x = "time", y = "temp")) + 
         geom_point(color = "steelblue", shape = "Triangle", size = 10) +
-        labs(x = "Time", y = "Temperature (°F)")
+        labs(x = "Time", y = "Temperature (°F)") + 
+        ggtitle("Temperatures in Chicago")
     ;
 }
 

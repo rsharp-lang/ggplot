@@ -6,6 +6,7 @@ Public Class ggplotReader
 
     Public Property x As String
     Public Property y As String
+    Public Property color As Object
 
     Public Function getMapData(data As Object, env As Environment) As ggplotData
         If TypeOf data Is dataframe Then
