@@ -10,3 +10,8 @@ End Class
 Public Class ggplotBase : Inherits ggplotLayer
 
 End Class
+
+Public Class ggplotScatter : Inherits ggplotLayer
+
+
+End Class

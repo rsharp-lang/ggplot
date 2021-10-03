@@ -41,4 +41,15 @@ Public Module ggplot2
         Return New ggplotReader With {.x = x, .y = y}
     End Function
 
+    <ExportAPI("geom_point")>
+    Public Function geom_point() As ggplotLayer
+        Return New ggplotScatter
+    End Function
+
+    <ROperator("+")>
+    Public Function addLayer(ggplot As ggplot, layer As ggplotLayer) As ggplot
+        ggplot.layers.Enqueue(layer)
+        Return ggplot
+    End Function
+
 End Module
