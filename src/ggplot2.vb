@@ -1,4 +1,5 @@
 ﻿Imports Microsoft.VisualBasic.CommandLine.Reflection
+Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Scripting.MetaData
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
@@ -16,12 +17,14 @@ Public Module ggplot2
                            Optional environment As Environment = Nothing)
 
         Dim base As ggplotLayer = New ggplotBase With {.reader = mapping}
+        Dim theme As New Theme
 
-        Return New ggplot With {
+        Return New ggplot(theme) With {
             .data = data,
             .layers = New Queue(Of ggplotLayer),
             .base = base,
-            .args = args
+            .args = args,
+            .environment = environment
         }
     End Function
 
