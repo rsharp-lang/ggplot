@@ -103,6 +103,8 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Internal\ggplot.vb" />
+    <Compile Include="Internal\ggplotLayer.vb" />
     <Compile Include="Internal\ggplotReader.vb" />
     <Compile Include="zzz.vb" />
     <Compile Include="ggplot2.vb" />

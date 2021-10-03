@@ -7,7 +7,7 @@ Public Class ggplotReader
     Public Property x As String
     Public Property y As String
 
-    Public Shared Function getMapData(data As Object, env As Environment) As ggplotData
+    Public Function getMapData(data As Object, env As Environment) As ggplotData
         If TypeOf data Is dataframe Then
             Return New ggplotData With {
                 .x = DirectCast(data, dataframe).getColumnVector(x),
