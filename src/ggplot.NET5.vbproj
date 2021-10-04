@@ -1,0 +1,121 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>ggplot</RootNamespace>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>ggplot</AssemblyName>
+    <Platforms>AnyCPU;ARM32;x64</Platforms>
+    <Configurations>Debug;Release;Rsharp_app_release;PlantMAT</Configurations>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>A R language ggplot2 package liked grammar of graphics library for R# language programming: Create Elegant Data Visualisations Using the Grammar of Graphics</Description>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Copyright>Copyright xieguigang&lt;xie.guigang@gcmodeller.org&gt; 2021, all rights reserved.</Copyright>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>Flute.Http.xml</DocumentationFile>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineConstants>netcore5=1</DefineConstants>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <DocumentationFile>Flute.Http.xml</DocumentationFile>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineConstants>netcore5=1</DefineConstants>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM32'">
+    <DocumentationFile>Flute.Http.xml</DocumentationFile>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineConstants>netcore5=1</DefineConstants>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>Flute.Http.xml</DocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Rsharp_app_release|AnyCPU'">
+    <DocumentationFile>Flute.Http.xml</DocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PlantMAT|AnyCPU'">
+    <DocumentationFile>Flute.Http.xml</DocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <DocumentationFile>Flute.Http.xml</DocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Rsharp_app_release|x64'">
+    <DocumentationFile>Flute.Http.xml</DocumentationFile>
+    <OutputPath>../assembly/</OutputPath>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
+    <Optimize>false</Optimize>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <DefineConstants>netcore5=1</DefineConstants>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PlantMAT|x64'">
+    <DocumentationFile>Flute.Http.xml</DocumentationFile>
+    <OutputPath>D:\GCModeller\src\R-sharp\App\</OutputPath>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
+    <Optimize>false</Optimize>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <DefineConstants>netcore5=1</DefineConstants>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM32'">
+    <DocumentationFile>Flute.Http.xml</DocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Rsharp_app_release|ARM32'">
+    <DocumentationFile>Flute.Http.xml</DocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PlantMAT|ARM32'">
+    <DocumentationFile>Flute.Http.xml</DocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\R-sharp\R#\Rsharp-netcore5.vbproj" />
+    <ProjectReference Include="..\..\sciBASIC#\Data\DataFrame\dataframework-netcore5.vbproj" />
+    <ProjectReference Include="..\..\sciBASIC#\Data_science\Mathematica\Math\Math\Math.NET5.vbproj" />
+    <ProjectReference Include="..\..\sciBASIC#\Data_science\Visualization\Plots\plots-netcore5.vbproj" />
+    <ProjectReference Include="..\..\sciBASIC#\gr\Microsoft.VisualBasic.Imaging\imaging.NET5.vbproj" />
+    <ProjectReference Include="..\..\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj" />
+    <ProjectReference Include="..\..\sciBASIC#\mime\text%html\html_netcore5.vbproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
