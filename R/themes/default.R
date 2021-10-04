@@ -3,5 +3,5 @@
 #' 
 #' 
 const theme_default as function() {
-
+    ggplot2::theme();
 }
