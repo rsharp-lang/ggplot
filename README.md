@@ -25,16 +25,16 @@ print(head(chic, 10));
 # [9, ]   "chic"    #1997-01-09 00:00:00#  148         26        24       "12.118380932"    13.3558919  3662       "Winter"  1997
 # [10, ]  "chic"    #1997-01-10 00:00:00#  121         16        5.375    "24.761534146"    10.4482639  3663       "Winter"  1997
 
-# open graphics device and then do plot
-bitmap(file = `${@dir}/demo.png`, size = [2400, 1600]) {
-    ggplot(chic, aes(x = "time", y = "temp")) + 
-        geom_point(color = "steelblue", shape = "Triangle", size = 10) +
-        labs(x = "Time", y = "Temperature (°F)") + 
-        ggtitle("Temperatures in Chicago") + 
-		scale_x_continuous(labels = "F0") + 
-		scale_y_continuous(labels = "F0")
+bitmap(file = `${@dir}/ggplot-demo.png`, size = [2400, 1600]) {
+    # open graphics device and then do plot
+    ggplot(chic, aes(x = "time", y = "temp"), padding = "padding:150px 100px 200px 250px;")
+       + geom_point(color = "steelblue", shape = "Triangle", size = 21)
+       + labs(x = "Time", y = "Temperature (°F)")
+       + ggtitle("Temperatures in Chicago")
+       + scale_x_continuous(labels = "F0")
+       + scale_y_continuous(labels = "F0")
     ;
 }
 ```
 
-![](./test/demo.png)
+![](./test/ggplot-demo.png)
