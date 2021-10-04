@@ -9,11 +9,54 @@ Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports SMRUCC.Rsharp.Runtime.Interop
 
 ''' <summary>
-''' 
+''' Create Elegant Data Visualisations Using the Grammar of Graphics
 ''' </summary>
 <Package("ggplot2")>
 Public Module ggplot2
 
+    ''' <summary>
+    ''' ### Create a new ggplot
+    ''' 
+    ''' ggplot() initializes a ggplot object. It can be used to declare 
+    ''' the input data frame for a graphic and to specify the set of 
+    ''' plot aesthetics intended to be common throughout all subsequent 
+    ''' layers unless specifically overridden.
+    ''' </summary>
+    ''' <param name="data">
+    ''' Default dataset to use for plot. If not already a data.frame, 
+    ''' will be converted to one by fortify(). If not specified, must be 
+    ''' supplied in each layer added to the plot.
+    ''' </param>
+    ''' <param name="mapping">
+    ''' Default list of aesthetic mappings to use for plot. If not specified, 
+    ''' must be supplied in each layer added to the plot.
+    ''' </param>
+    ''' <param name="args">
+    ''' Other arguments passed on to methods. Not currently used.
+    ''' </param>
+    ''' <param name="environment"></param>
+    ''' <returns></returns>
+    ''' <remarks>
+    ''' ggplot() is used to construct the initial plot object, and is 
+    ''' almost always followed by + to add component to the plot. There 
+    ''' are three common ways to invoke ggplot():
+    ''' 
+    ''' + ggplot(df, aes(x, y, other aesthetics))
+    ''' + ggplot(df)
+    ''' + ggplot()
+    ''' 
+    ''' The first method Is recommended If all layers use the same data 
+    ''' And the same Set Of aesthetics, although this method can also be 
+    ''' used To add a layer Using data from another data frame. See the 
+    ''' first example below. The second method specifies the Default 
+    ''' data frame To use For the plot, but no aesthetics are defined up 
+    ''' front. This Is useful When one data frame Is used predominantly 
+    ''' As layers are added, but the aesthetics may vary from one layer 
+    ''' To another. The third method initializes a skeleton ggplot Object
+    ''' which Is fleshed out As layers are added. This method Is useful 
+    ''' When multiple data frames are used To produce different layers, 
+    ''' As Is often the Case In complex graphics.
+    ''' </remarks>
     <ExportAPI("ggplot")>
     Public Function ggplot(<RRawVectorArgument>
                            Optional data As Object = Nothing,
@@ -49,6 +92,36 @@ Public Module ggplot2
         }
     End Function
 
+    ''' <summary>
+    ''' ### Construct aesthetic mappings
+    ''' 
+    ''' Aesthetic mappings describe how variables in the data are mapped 
+    ''' to visual properties (aesthetics) of geoms. Aesthetic mappings 
+    ''' can be set in ggplot() and in individual layers.
+    ''' </summary>
+    ''' <param name="x">
+    ''' List of name-value pairs in the form aesthetic = variable describing 
+    ''' which variables in the layer data should be mapped to which aesthetics 
+    ''' used by the paired geom/stat. The expression variable is evaluated 
+    ''' within the layer data, so there is no need to refer to the original 
+    ''' dataset (i.e., use ggplot(df, aes(variable)) instead of 
+    ''' ``ggplot(df, aes(df$variable)))``. The names for x and y aesthetics 
+    ''' are typically omitted because they are so common; all other aesthetics
+    ''' must be named.
+    ''' </param>
+    ''' <param name="y"></param>
+    ''' <param name="color"></param>
+    ''' <param name="env"></param>
+    ''' <returns>
+    ''' A list with class uneval. Components of the list are either quosures 
+    ''' or constants.
+    ''' </returns>
+    ''' <remarks>
+    ''' This function also standardises aesthetic names by converting color to 
+    ''' colour (also in substrings, e.g., point_color to point_colour) and 
+    ''' translating old style R names to ggplot names (e.g., pch to shape and 
+    ''' cex to size).
+    ''' </remarks>
     <ExportAPI("aes")>
     Public Function aes(x As Object, y As Object,
                         Optional color As Object = Nothing,
@@ -61,17 +134,40 @@ Public Module ggplot2
         }
     End Function
 
+    ''' <summary>
+    ''' ### Scatter Points
+    ''' 
+    ''' The point geom is used to create scatterplots. The scatterplot is most 
+    ''' useful for displaying the relationship between two continuous variables. 
+    ''' It can be used to compare one continuous and one categorical variable, 
+    ''' or two categorical variables, but a variation like geom_jitter(), 
+    ''' geom_count(), or geom_bin2d() is usually more appropriate. A bubblechart 
+    ''' is a scatterplot with a third variable mapped to the size of points.
+    ''' </summary>
+    ''' <param name="color"></param>
+    ''' <param name="shape"></param>
+    ''' <param name="size"></param>
+    ''' <param name="show_legend">	
+    ''' logical. Should this layer be included in the legends? NA, the default, 
+    ''' includes if any aesthetics are mapped. FALSE never includes, And TRUE 
+    ''' always includes. It can also be a named logical vector to finely select 
+    ''' the aesthetics to display.
+    ''' </param>
+    ''' <param name="env"></param>
+    ''' <returns></returns>
     <ExportAPI("geom_point")>
     Public Function geom_point(<RRawVectorArgument>
                                Optional color As Object = "steelblue",
                                Optional shape As LegendStyles = LegendStyles.Circle,
                                Optional size As Single = 2,
+                               Optional show_legend As Boolean = True,
                                Optional env As Environment = Nothing) As ggplotLayer
 
         Return New ggplotScatter With {
             .color = RColorPalette.getColor(color).TranslateColor,
             .shape = shape,
-            .size = size
+            .size = size,
+            .showLegend = show_legend
         }
     End Function
 
@@ -80,9 +176,27 @@ Public Module ggplot2
         Return New ggplotHistogram
     End Function
 
+    ''' <summary>
+    ''' ### Connect observations
+    ''' 
+    ''' geom_path() connects the observations in the order in which they appear in 
+    ''' the data. geom_line() connects them in order of the variable on the x axis. 
+    ''' geom_step() creates a stairstep plot, highlighting exactly when changes 
+    ''' occur. The group aesthetic determines which cases are connected together.
+    ''' </summary>
+    ''' <returns></returns>
+    ''' <remarks>
+    ''' An alternative parameterisation is geom_segment(), where each line corresponds 
+    ''' to a single case which provides the start and end coordinates.
+    ''' </remarks>
     <ExportAPI("geom_line")>
     Public Function geom_line() As ggplotLayer
         Return New ggplotLine
+    End Function
+
+    <ExportAPI("geom_path")>
+    Public Function geom_path() As ggplotLayer
+
     End Function
 
     <ExportAPI("geom_boxplot")>

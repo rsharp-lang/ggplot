@@ -1,15 +1,12 @@
-﻿Imports System.Drawing
-Imports Microsoft.VisualBasic.Data.ChartPlots
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
+﻿Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
-Imports Microsoft.VisualBasic.Data.ChartPlots.Plots
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 
 Public MustInherit Class ggplotLayer
 
     Public Property reader As ggplotReader
+    Public Property showLegend As Boolean = True
 
     Public MustOverride Sub Plot(
         g As IGraphics,
