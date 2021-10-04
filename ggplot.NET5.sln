@@ -23,7 +23,13 @@ Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "dataframework-netcore5", ".
 EndProject
 Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Rsharp-netcore5", "..\..\R-sharp\R#\Rsharp-netcore5.vbproj", "{4F001EB4-E700-4E14-8E41-C53BD76AF33D}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "R_graphic.interop", "..\..\R-sharp\Library\R_graphic.interop\R_graphic.interop.shproj", "{53AF2B13-CCD5-4F73-94D5-612191E785A9}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\..\R-sharp\Library\R_graphic.interop\R_graphic.interop.projitems*{3876ea63-926f-49d7-9baa-fdc23d5a9191}*SharedItemsImports = 5
+		..\..\R-sharp\Library\R_graphic.interop\R_graphic.interop.projitems*{53af2b13-ccd5-4f73-94d5-612191e785a9}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|ARM32 = Debug|ARM32
@@ -397,6 +403,7 @@ Global
 		{1BC0C966-1DE0-4532-ABE4-C5C4A9C3C216} = {9F1D1BBC-EF37-4733-9D84-0F15C699B504}
 		{6532C376-9592-4034-A14F-93D5EA287D04} = {ADC0BF32-B9DC-419A-8321-B7B3A6DD1F06}
 		{4F001EB4-E700-4E14-8E41-C53BD76AF33D} = {ADC0BF32-B9DC-419A-8321-B7B3A6DD1F06}
+		{53AF2B13-CCD5-4F73-94D5-612191E785A9} = {ADC0BF32-B9DC-419A-8321-B7B3A6DD1F06}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5BBD0EC6-3AF0-4985-BEAA-16C62D091DD8}
