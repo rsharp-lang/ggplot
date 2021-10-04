@@ -7,8 +7,8 @@ print(head(chic, 10));
 
 bitmap(file = `${@dir}/demo.png`, size = [2400, 1600]) {
 
-    ggplot(chic, aes(x = "time", y = "temp")) + 
-        geom_point(color = "steelblue", shape = "Triangle", size = 10) +
+    ggplot(chic, aes(x = "time", y = "temp"), padding = "padding:200px 100px 250px 250px;") + 
+        geom_point(color = "steelblue", shape = "Triangle", size = 15) +
         labs(x = "Time", y = "Temperature (°F)") + 
         ggtitle("Temperatures in Chicago") + 
 		scale_x_continuous(labels = "F0") + 

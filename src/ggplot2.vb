@@ -26,8 +26,16 @@ Public Module ggplot2
         Dim theme As New Theme With {
             .axisLabelCSS = "font-style: strong; font-size: 16; font-family: " & FontFace.MicrosoftYaHei & ";",
             .axisTickCSS = "font-style: normal; font-size: 12; font-family: " & FontFace.MicrosoftYaHei & ";",
-            .padding = g.DefaultUltraLargePadding
+            .padding = InteropArgumentHelper.getPadding(args.getByName("padding"), g.DefaultUltraLargePadding)
         }
+        Dim args2 = environment.GetAcceptorArguments
+
+        ' union arguments
+        For Each arg In args2
+            If Not args.hasName(arg.Key) Then
+                Call args.add(arg.Key, arg.Value)
+            End If
+        Next
 
         Return New ggplot(theme) With {
             .data = data,
