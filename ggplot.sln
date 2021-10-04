@@ -27,8 +27,11 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "R-cmd", "..\..\R-sharp\stud
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "R_graphic.interop", "..\..\R-sharp\Library\R_graphic.interop\R_graphic.interop.shproj", "{53AF2B13-CCD5-4F73-94D5-612191E785A9}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Rstudio.common", "..\..\R-sharp\studio\Rstudio.common\Rstudio.common.shproj", "{14010B90-BC3B-42D9-A52C-30CA537D3C11}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\..\R-sharp\studio\Rstudio.common\Rstudio.common.projitems*{14010b90-bc3b-42d9-a52c-30ca537d3c11}*SharedItemsImports = 13
 		..\..\R-sharp\studio\Rstudio.common\Rstudio.common.projitems*{3a35ac34-f313-4f72-89e9-eacca217bc8d}*SharedItemsImports = 4
 		..\..\R-sharp\Library\R_graphic.interop\R_graphic.interop.projitems*{53473af8-1f89-4fe1-bcb8-10fa0c9bce74}*SharedItemsImports = 4
 		..\..\R-sharp\Library\R_graphic.interop\R_graphic.interop.projitems*{53af2b13-ccd5-4f73-94d5-612191e785a9}*SharedItemsImports = 13
@@ -1988,6 +1991,7 @@ Global
 		{C8D4248F-C5ED-4DF3-BD53-2AF06D3993C9} = {8836B799-6DA1-48A5-B916-594A635FD60B}
 		{0C2EB77C-39F2-460D-A3F8-CE905F867637} = {8836B799-6DA1-48A5-B916-594A635FD60B}
 		{53AF2B13-CCD5-4F73-94D5-612191E785A9} = {8836B799-6DA1-48A5-B916-594A635FD60B}
+		{14010B90-BC3B-42D9-A52C-30CA537D3C11} = {8836B799-6DA1-48A5-B916-594A635FD60B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {42D3C2F3-BEB4-475C-9EED-31E215B9A563}
