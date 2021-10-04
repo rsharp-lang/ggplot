@@ -59,7 +59,9 @@ Public Class ggplot : Inherits Plot
             gridX:=theme.gridStrokeX,
             gridY:=theme.gridStrokeY,
             labelFont:=theme.axisLabelCSS,
-            tickFontStyle:=theme.axisTickCSS
+            tickFontStyle:=theme.axisTickCSS,
+            XtickFormat:=theme.XaxisTickFormat,
+            YtickFormat:=theme.YaxisTickFormat
         )
 
         Do While layers.Count > 0

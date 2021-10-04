@@ -11,7 +11,8 @@ bitmap(file = `${@dir}/demo.png`, size = [2400, 1600]) {
         geom_point(color = "steelblue", shape = "Triangle", size = 10) +
         labs(x = "Time", y = "Temperature (°F)") + 
         ggtitle("Temperatures in Chicago") + 
-		scale_x_continuous(labels = "F0")
+		scale_x_continuous(labels = "F0") + 
+		scale_y_continuous(labels = "F0")
     ;
 }
 
