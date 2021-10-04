@@ -104,6 +104,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Internal\layers\ggplotHistogram.vb" />
     <Compile Include="Internal\options\ggplotOption.vb" />
     <Compile Include="Internal\ggplot.vb" />
     <Compile Include="Internal\layers\ggplotLayer.vb" />

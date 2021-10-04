@@ -64,6 +64,11 @@ Public Module ggplot2
         }
     End Function
 
+    <ExportAPI("geom_histogram")>
+    Public Function geom_histogram() As ggplotLayer
+        Return New ggplotHistogram
+    End Function
+
     <ExportAPI("geom_line")>
     Public Function geom_line() As ggplotLayer
         Return New ggplotLine
