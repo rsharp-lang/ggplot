@@ -29,6 +29,21 @@ Public Class ggplotTicks : Inherits ggplotOption
         <Description("C3")> money
     End Enum
 
+    Public Shared Function ParseFormat(style As String) As String
+        If style.StringEmpty Then
+            Return Nothing
+        End If
+
+        Static defaultFormats As Dictionary(Of String, TickStyleNames) = Enums(Of TickStyleNames) _
+            .ToDictionary(Function(tick) tick.ToString)
+
+        If defaultFormats.ContainsKey(style.ToLower) Then
+            Return defaultFormats(style.ToLower).Description
+        Else
+            Return style.ToUpper
+        End If
+    End Function
+
     Public Overrides Function Config(ggplot As ggplot) As ggplot
         If Strings.LCase(axis) = "x" Then
             ggplot.ggplotTheme.XaxisTickFormat = format

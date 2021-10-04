@@ -34,6 +34,7 @@ Public Class ggplotTitle : Inherits ggplotOption
     End Sub
 
     Public Overrides Function Config(ggplot As ggplot) As ggplot
-        Throw New NotImplementedException()
+        ggplot.main = title
+        Return ggplot
     End Function
 End Class

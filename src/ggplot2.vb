@@ -112,4 +112,13 @@ Public Module ggplot2
         Return New ggplotTitle(title)
     End Function
 
+    <ExportAPI("scale_x_continuous")>
+    Public Function scale_x_continuous(Optional labels As String = Nothing) As ggplotOption
+        Return New ggplotTicks With {.axis = "x", .format = ggplotTicks.ParseFormat(labels)}
+    End Function
+
+    <ExportAPI("scale_y_continuous")>
+    Public Function scale_y_continuous(Optional labels As String = Nothing) As ggplotOption
+        Return New ggplotTicks With {.axis = "y", .format = ggplotTicks.ParseFormat(labels)}
+    End Function
 End Module
