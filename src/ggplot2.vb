@@ -74,6 +74,11 @@ Public Module ggplot2
         Return New ggplotLine
     End Function
 
+    <ExportAPI("geom_boxplot")>
+    Public Function geom_boxplot() As ggplotLayer
+        Return New ggplotBoxplot
+    End Function
+
     <ROperator("+")>
     Public Function addLayer(ggplot As ggplot, layer As ggplotLayer) As ggplot
         ggplot.layers.Enqueue(layer)

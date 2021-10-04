@@ -16,6 +16,12 @@ Imports REnv = SMRUCC.Rsharp.Runtime
 Public Class ggplot : Inherits Plot
     Implements SaveGdiBitmap
 
+    Public ReadOnly Property ggplotTheme As Theme
+        Get
+            Return theme
+        End Get
+    End Property
+
     Public Sub New(theme As Theme)
         MyBase.New(theme)
     End Sub
