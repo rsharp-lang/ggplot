@@ -241,21 +241,59 @@ Public Module ggplot2
     ''' <summary>
     ''' Position scales for continuous data (x &amp; y)
     ''' </summary>
-    ''' <param name="labels"></param>
+    ''' <param name="labels">
+    ''' One of:
+    ''' 
+    ''' + ``NULL`` for no labels
+    ''' + waiver() for the default labels computed by the transformation object
+    ''' + A character vector giving labels (must be same length As breaks)
+    ''' + A Function that() takes the breaks As input And returns labels As output. Also accepts rlang lambda Function notation.
+    ''' </param>
     ''' <returns></returns>
     <ExportAPI("scale_x_continuous")>
-    Public Function scale_x_continuous(Optional labels As String = Nothing) As ggplotOption
-        Return New ggplotTicks With {.axis = "x", .format = ggplotTicks.ParseFormat(labels)}
+    Public Function scale_x_continuous(Optional labels As String = Nothing,
+                                       Optional limits As Double() = Nothing,
+                                       Optional env As Environment = Nothing) As ggplotOption
+
+        If Not limits.IsNullOrEmpty AndAlso limits.Length = 1 Then
+
+        End If
+
+        Return New ggplotTicks With {
+            .axis = "x",
+            .format = ggplotTicks.ParseFormat(labels),
+            .min = limits.FirstOrDefault,
+            .max = limits.LastOrDefault
+        }
     End Function
 
     ''' <summary>
     ''' Position scales for continuous data (x &amp; y)
     ''' </summary>
-    ''' <param name="labels"></param>
+    ''' <param name="labels">
+    ''' One of:
+    ''' 
+    ''' + ``NULL`` for no labels
+    ''' + waiver() for the default labels computed by the transformation object
+    ''' + A character vector giving labels (must be same length As breaks)
+    ''' + A Function that() takes the breaks As input And returns labels As output. Also accepts rlang lambda Function notation.
+    ''' </param>
     ''' <returns></returns>
     <ExportAPI("scale_y_continuous")>
-    Public Function scale_y_continuous(Optional labels As String = Nothing) As ggplotOption
-        Return New ggplotTicks With {.axis = "y", .format = ggplotTicks.ParseFormat(labels)}
+    Public Function scale_y_continuous(Optional labels As String = Nothing,
+                                       Optional limits As Double() = Nothing,
+                                       Optional env As Environment = Nothing) As ggplotOption
+
+        If Not limits.IsNullOrEmpty AndAlso limits.Length = 1 Then
+
+        End If
+
+        Return New ggplotTicks With {
+            .axis = "y",
+            .format = ggplotTicks.ParseFormat(labels),
+            .min = limits.FirstOrDefault,
+            .max = limits.LastOrDefault
+        }
     End Function
 
     Const NULL As Object = Nothing

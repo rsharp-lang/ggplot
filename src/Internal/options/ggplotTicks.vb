@@ -1,5 +1,14 @@
 ﻿Imports System.ComponentModel
 
+''' <summary>
+''' Position scales for continuous data (x &amp; y)
+''' 
+''' scale_x_continuous() and scale_y_continuous() are the default 
+''' scales for continuous x and y aesthetics. There are three 
+''' variants that set the trans argument for commonly used 
+''' transformations: ``scale_*_log10()``, ``scale_*_sqrt()`` and 
+''' ``scale_*_reverse()``.
+''' </summary>
 Public Class ggplotTicks : Inherits ggplotOption
 
     Public Property format As String = "F2"
@@ -9,6 +18,9 @@ Public Class ggplotTicks : Inherits ggplotOption
     ''' </summary>
     ''' <returns></returns>
     Public Property axis As String = "X"
+
+    Public Property min As Double
+    Public Property max As Double
 
     Public Enum TickStyleNames
         ''' <summary>
