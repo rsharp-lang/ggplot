@@ -23,6 +23,11 @@ Public Class ggplotScatter : Inherits ggplotLayer
                               theme As Theme)
 
         Dim serial As SerialData
+        Dim colors As String() = Nothing
+
+        If Not ggplot.base.reader.color Is Nothing Then
+            colors = ggplot.base.getColors(ggplot)
+        End If
 
         If reader Is Nothing Then
             serial = New SerialData() With {
@@ -32,7 +37,9 @@ Public Class ggplotScatter : Inherits ggplotLayer
                 .title = $"{baseData.x} ~ {baseData.y}",
                 .pts = x _
                     .Select(Function(xi, i)
-                                Return New PointData(xi, y(i))
+                                Return New PointData(xi, y(i)) With {
+                                    .color = If(colors Is Nothing, Nothing, colors(i))
+                                }
                             End Function) _
                     .ToArray
             }
