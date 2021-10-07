@@ -255,6 +255,9 @@ Public Module ggplot2
                                        Optional limits As Double() = Nothing,
                                        Optional env As Environment = Nothing) As ggplotOption
 
+        If limits Is Nothing Then
+            limits = {}
+        End If
         If Not limits.IsNullOrEmpty AndAlso limits.Length = 1 Then
 
         End If
@@ -284,6 +287,9 @@ Public Module ggplot2
                                        Optional limits As Double() = Nothing,
                                        Optional env As Environment = Nothing) As ggplotOption
 
+        If limits Is Nothing Then
+            limits = {}
+        End If
         If Not limits.IsNullOrEmpty AndAlso limits.Length = 1 Then
 
         End If
