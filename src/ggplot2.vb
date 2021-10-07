@@ -3,6 +3,7 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
+Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports Microsoft.VisualBasic.Scripting.MetaData
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
@@ -237,13 +238,67 @@ Public Module ggplot2
         Return New ggplotTitle(title)
     End Function
 
+    ''' <summary>
+    ''' Position scales for continuous data (x &amp; y)
+    ''' </summary>
+    ''' <param name="labels"></param>
+    ''' <returns></returns>
     <ExportAPI("scale_x_continuous")>
     Public Function scale_x_continuous(Optional labels As String = Nothing) As ggplotOption
         Return New ggplotTicks With {.axis = "x", .format = ggplotTicks.ParseFormat(labels)}
     End Function
 
+    ''' <summary>
+    ''' Position scales for continuous data (x &amp; y)
+    ''' </summary>
+    ''' <param name="labels"></param>
+    ''' <returns></returns>
     <ExportAPI("scale_y_continuous")>
     Public Function scale_y_continuous(Optional labels As String = Nothing) As ggplotOption
         Return New ggplotTicks With {.axis = "y", .format = ggplotTicks.ParseFormat(labels)}
+    End Function
+
+    Const NULL As Object = Nothing
+
+    ''' <summary>
+    ''' 
+    ''' </summary>
+    ''' <param name="family$"></param>
+    ''' <param name="face$"></param>
+    ''' <param name="colour$"></param>
+    ''' <param name="size!"></param>
+    ''' <param name="hjust!"></param>
+    ''' <param name="vjust!"></param>
+    ''' <param name="angle!"></param>
+    ''' <param name="lineheight!"></param>
+    ''' <param name="color$"></param>
+    ''' <param name="margin!"></param>
+    ''' <param name="debug"></param>
+    ''' <param name="inherit_blank"></param>
+    ''' <returns></returns>
+    <ExportAPI("element_text")>
+    Public Function element_text(Optional family$ = NULL,
+                                 Optional face$ = NULL,
+                                 Optional colour$ = NULL,
+                                 Optional size!? = NULL,
+                                 Optional hjust!? = NULL,
+                                 Optional vjust!? = NULL,
+                                 Optional angle!? = NULL,
+                                 Optional lineheight!? = NULL,
+                                 Optional color$ = NULL,
+                                 Optional margin!? = NULL,
+                                 Optional debug As Boolean = False,
+                                 Optional inherit_blank As Boolean = False) As textElement
+
+        Dim css As New CSSFont With {
+            .family = family,
+            .color = color,
+            .size = size,
+            .weight = lineheight
+        }
+
+        Return New textElement With {
+            .style = css
+        }
     End Function
 End Module
