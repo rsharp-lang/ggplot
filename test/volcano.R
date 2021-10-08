@@ -2,10 +2,14 @@ require(ggplot);
 
 const volcano = read.csv(`${@dir}/log2FC.csv`);
 
-volcano[, "p.value"] = -log10(volcano[, "p.value"]);
-
 print("peeks of the raw data:");
 print(head(volcano));
+
+volcano[, "factor"]  = ifelse(volcano[, "log2FC"] > 1, "Up", "Down");
+volcano[, "factor"]  = ifelse(volcano[, "p.value"] < 0.05, volcano[, "factor"], "Not Sig");
+volcano[, "p.value"] = -log10(volcano[, "p.value"]);
+
+
 
 bitmap(file = `${@dir}/volcano.png`, size = [3000, 3600]) {
 	ggplot(volcano, aes(x = "log2FC", y = "p.value"), padding = "padding:350px 100px 250px 350px;")
