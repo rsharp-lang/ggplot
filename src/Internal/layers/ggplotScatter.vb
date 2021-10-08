@@ -13,14 +13,16 @@ Public Class ggplotScatter : Inherits ggplotLayer
     Public Property shape As LegendStyles
     Public Property size As Single
 
-    Public Overrides Sub Plot(g As IGraphics,
-                              canvas As GraphicsRegion,
-                              baseData As ggplotData,
-                              x() As Double,
-                              y() As Double,
-                              scale As DataScaler,
-                              ggplot As ggplot,
-                              theme As Theme)
+    Public Overrides Function Plot(
+        g As IGraphics,
+        canvas As GraphicsRegion,
+        baseData As ggplotData,
+        x As Double(),
+        y As Double(),
+        scale As DataScaler,
+        ggplot As ggplot,
+        theme As Theme
+    ) As legendGroupElement
 
         Dim serial As SerialData
         Dim colors As String() = Nothing
@@ -52,7 +54,7 @@ Public Class ggplotScatter : Inherits ggplotLayer
             getPointBrush:=serial.BrushHandler
         ) _
         .ToArray
-    End Sub
+    End Function
 
     Private Function createSerialData(legend As String, x As Double(), y As Double(), colors As String()) As SerialData
         Return New SerialData() With {
