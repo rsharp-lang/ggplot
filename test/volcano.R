@@ -16,7 +16,12 @@ print(`Down:    ${sum("Down" == volcano[, "factor"])}`);
 
 bitmap(file = `${@dir}/volcano.png`, size = [3000, 3600]) {
 	ggplot(volcano, aes(x = "log2FC", y = "p.value"), padding = "padding:350px 100px 250px 350px;")
-	   + geom_point(color = "black", shape = "Circle", size = 21)
+	    + geom_point(aes(color = "factor"), color = "black", shape = "Circle", size = 21)
+       + scale_colour_manual(values = list(
+          Up        = "red",
+          "Not Sig" = "gray",
+          Down      = "skyblue"
+       ))
        + labs(x = "log2(FoldChange)", y = "-log10(P-value)")
        + ggtitle("Volcano Plot")
        + scale_x_continuous(labels = "F2")
