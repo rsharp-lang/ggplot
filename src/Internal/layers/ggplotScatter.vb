@@ -25,14 +25,18 @@ Public Class ggplotScatter : Inherits ggplotLayer
         Dim serial As SerialData
         Dim colors As String() = Nothing
 
-        If Not ggplot.base.reader.color Is Nothing Then
+        If useCustomColorMaps Then
+
+        ElseIf Not ggplot.base.reader.color Is Nothing Then
             colors = ggplot.base.getColors(ggplot)
         End If
 
         If Not useCustomData Then
-            serial = createSerialData(baseData, x, y, colors)
+            serial = createSerialData($"{baseData.x} ~ {baseData.y}", x, y, colors)
         Else
-            Throw New NotImplementedException
+            With reader.getMapData(ggplot.data, ggplot.environment)
+                serial = createSerialData(reader.ToString, .x, .y, colors)
+            End With
         End If
 
         Call Scatter2D.DrawScatter(
@@ -47,12 +51,12 @@ Public Class ggplotScatter : Inherits ggplotLayer
         .ToArray
     End Sub
 
-    Private Function createSerialData(baseData As ggplotData, x As Double(), y As Double(), colors As String()) As SerialData
+    Private Function createSerialData(legend As String, x As Double(), y As Double(), colors As String()) As SerialData
         Return New SerialData() With {
             .color = color,
             .pointSize = size,
             .shape = shape,
-            .title = $"{baseData.x} ~ {baseData.y}",
+            .title = legend,
             .pts = x _
                 .Select(Function(xi, i)
                             Return New PointData(xi, y(i)) With {

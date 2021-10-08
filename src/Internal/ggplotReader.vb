@@ -10,6 +10,11 @@ Public Class ggplotReader
     Public Property x As String
     Public Property y As String
     Public Property color As Object
+    Public Property title As String
+
+    Public Overrides Function ToString() As String
+        Return $"{x} ~ {y}"
+    End Function
 
     Public Function getMapData(data As Object, env As Environment) As ggplotData
         If TypeOf data Is dataframe Then
