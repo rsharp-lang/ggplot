@@ -242,6 +242,39 @@ Public Module ggplot2
         Return New ggplotTitle(title)
     End Function
 
+    ''' <summary>
+    ''' ### Create your own discrete scale
+    ''' 
+    ''' These functions allow you to specify your own set of 
+    ''' mappings from levels in the data to aesthetic values.
+    ''' </summary>
+    ''' <param name="values"></param>
+    ''' <param name="env"></param>
+    ''' <returns></returns>
+    ''' <remarks>
+    ''' ### Color Blindness
+    ''' 
+    ''' Many color palettes derived from RGB combinations (Like 
+    ''' the "rainbow" color palette) are Not suitable To support 
+    ''' all viewers, especially those With color vision 
+    ''' deficiencies. 
+    ''' 
+    ''' Using viridis type, which Is perceptually uniform In both 
+    ''' colour And black-And-white display Is an easy Option To 
+    ''' ensure good perceptive properties Of your visulizations. 
+    ''' The colorspace package offers functionalities.
+    ''' 
+    ''' to generate color palettes with good perceptive properties,
+    ''' 
+    ''' to analyse a given color palette, Like emulating color 
+    ''' blindness,
+    ''' 
+    ''' And to modify a given color palette for better perceptivity.
+    ''' 
+    ''' For more information on color vision deficiencies And 
+    ''' suitable color choices see the paper on the colorspace 
+    ''' package And references therein.
+    ''' </remarks>
     <ExportAPI("scale_colour_manual")>
     Public Function scale_colour_manual(<RRawVectorArgument> values As Object, Optional env As Environment = Nothing) As ggplotOption
         Return New ggplotColorProfile With {.profile = ggplotColorMap.CreateColorMap(values, env)}
