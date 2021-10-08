@@ -157,7 +157,8 @@ Public Module ggplot2
     ''' <param name="env"></param>
     ''' <returns></returns>
     <ExportAPI("geom_point")>
-    Public Function geom_point(<RRawVectorArgument>
+    Public Function geom_point(Optional mapping As ggplotReader = NULL,
+                               <RRawVectorArgument>
                                Optional color As Object = "steelblue",
                                Optional shape As LegendStyles = LegendStyles.Circle,
                                Optional size As Single = 2,
@@ -168,7 +169,8 @@ Public Module ggplot2
             .color = RColorPalette.getColor(color).TranslateColor,
             .shape = shape,
             .size = size,
-            .showLegend = show_legend
+            .showLegend = show_legend,
+            .reader = mapping
         }
     End Function
 

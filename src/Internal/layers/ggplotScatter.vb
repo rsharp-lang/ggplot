@@ -29,24 +29,37 @@ Public Class ggplotScatter : Inherits ggplotLayer
             colors = ggplot.base.getColors(ggplot)
         End If
 
-        If reader Is Nothing Then
-            serial = New SerialData() With {
-                .color = color,
-                .pointSize = size,
-                .shape = shape,
-                .title = $"{baseData.x} ~ {baseData.y}",
-                .pts = x _
-                    .Select(Function(xi, i)
-                                Return New PointData(xi, y(i)) With {
-                                    .color = If(colors Is Nothing, Nothing, colors(i))
-                                }
-                            End Function) _
-                    .ToArray
-            }
+        If Not useCustomData Then
+            serial = createSerialData(baseData, x, y, colors)
         Else
             Throw New NotImplementedException
         End If
 
-        Call Scatter2D.DrawScatter(g, serial.pts, scale, True, serial.shape, serial.pointSize, serial.BrushHandler).ToArray
+        Call Scatter2D.DrawScatter(
+            g:=g,
+            scatter:=serial.pts,
+            scaler:=scale,
+            fillPie:=True,
+            shape:=serial.shape,
+            pointSize:=serial.pointSize,
+            getPointBrush:=serial.BrushHandler
+        ) _
+        .ToArray
     End Sub
+
+    Private Function createSerialData(baseData As ggplotData, x As Double(), y As Double(), colors As String()) As SerialData
+        Return New SerialData() With {
+            .color = color,
+            .pointSize = size,
+            .shape = shape,
+            .title = $"{baseData.x} ~ {baseData.y}",
+            .pts = x _
+                .Select(Function(xi, i)
+                            Return New PointData(xi, y(i)) With {
+                                .color = If(colors Is Nothing, Nothing, colors(i))
+                            }
+                        End Function) _
+                .ToArray
+        }
+    End Function
 End Class
