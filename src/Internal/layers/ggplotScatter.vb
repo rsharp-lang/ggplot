@@ -1,15 +1,15 @@
-﻿Imports System.Drawing
-Imports Microsoft.VisualBasic.Data.ChartPlots
+﻿Imports Microsoft.VisualBasic.Data.ChartPlots
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Data.ChartPlots.Plots
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
+Imports SMRUCC.Rsharp.Runtime.Internal.Object
+Imports REnv = SMRUCC.Rsharp.Runtime
 
 Public Class ggplotScatter : Inherits ggplotLayer
 
-    Public Property color As Color
     Public Property shape As LegendStyles
     Public Property size As Single
 
@@ -26,7 +26,10 @@ Public Class ggplotScatter : Inherits ggplotLayer
         Dim colors As String() = Nothing
 
         If useCustomColorMaps Then
+            Dim factors As String() = REnv.asVector(Of String)(DirectCast(ggplot.data, dataframe).getColumnVector(reader.color))
+            Dim maps = DirectCast(colorMap, ggplotColorFactorMap).ColorHandler(ggplot)
 
+            colors = factors.Select(Function(factor) maps(factor)).ToArray
         ElseIf Not ggplot.base.reader.color Is Nothing Then
             colors = ggplot.base.getColors(ggplot)
         End If
@@ -53,7 +56,7 @@ Public Class ggplotScatter : Inherits ggplotLayer
 
     Private Function createSerialData(legend As String, x As Double(), y As Double(), colors As String()) As SerialData
         Return New SerialData() With {
-            .color = color,
+            .color = If(colors Is Nothing, DirectCast(colorMap, ggplotColorLiteral).ToColor, Nothing),
             .pointSize = size,
             .shape = shape,
             .title = legend,

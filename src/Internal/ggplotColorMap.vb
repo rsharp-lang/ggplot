@@ -1,14 +1,18 @@
-﻿Imports Microsoft.VisualBasic.Imaging
+﻿Imports System.Drawing
+Imports Microsoft.VisualBasic.Imaging
+Imports Microsoft.VisualBasic.Serialization.JSON
+Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports REnv = SMRUCC.Rsharp.Runtime
+Imports any = Microsoft.VisualBasic.Scripting
 
 Public MustInherit Class ggplotColorMap
 
     Public Property colorMap As Object
 
-    Public MustOverride Function ColorHandler(ggplot As ggplot) As Func(Of Integer, String)
+    Public MustOverride Function ColorHandler(ggplot As ggplot) As Func(Of Object, String)
 
-    Public Shared Function CreateColorMap(map As Object) As ggplotColorMap
+    Public Shared Function CreateColorMap(map As Object, env As Environment) As ggplotColorMap
         If TypeOf map Is String Then
             Return stringMap(DirectCast(map, String))
         ElseIf map.GetType.IsArray Then
@@ -20,7 +24,9 @@ Public MustInherit Class ggplotColorMap
                 Return directMap(strArray)
             End If
         ElseIf TypeOf map Is list Then
-
+            Return New ggplotColorFactorMap With {
+                .colorMap = DirectCast(map, list).AsGeneric(Of String)(env)
+            }
         Else
             Throw New NotImplementedException(map.GetType.FullName)
         End If
@@ -37,7 +43,7 @@ Public MustInherit Class ggplotColorMap
         Call map.TranslateColor(throwEx:=False, success:=isColor)
 
         If isColor Then
-            Return New ggplotUnifyColor With {.colorMap = map}
+            Return New ggplotColorLiteral With {.colorMap = map}
         ElseIf isDesigner Then
             Return New ggplotColorPalette With {.colorMap = map}
         Else
@@ -46,16 +52,20 @@ Public MustInherit Class ggplotColorMap
     End Function
 End Class
 
-Public Class ggplotUnifyColor : Inherits ggplotColorMap
+Public Class ggplotColorLiteral : Inherits ggplotColorMap
 
-    Public Overrides Function ColorHandler(ggplot As ggplot) As Func(Of Integer, String)
+    Public Function ToColor() As Color
+        Return DirectCast(colorMap, String).TranslateColor
+    End Function
+
+    Public Overrides Function ColorHandler(ggplot As ggplot) As Func(Of Object, String)
         Throw New NotImplementedException()
     End Function
 End Class
 
 Public Class ggplotColorPalette : Inherits ggplotColorMap
 
-    Public Overrides Function ColorHandler(ggplot As ggplot) As Func(Of Integer, String)
+    Public Overrides Function ColorHandler(ggplot As ggplot) As Func(Of Object, String)
         Throw New NotImplementedException()
     End Function
 End Class
@@ -65,7 +75,12 @@ End Class
 ''' </summary>
 Public Class ggplotColorFactorMap : Inherits ggplotColorMap
 
-    Public Overrides Function ColorHandler(ggplot As ggplot) As Func(Of Integer, String)
-        Throw New NotImplementedException()
+    Public Overrides Function ToString() As String
+        Return DirectCast(colorMap, Dictionary(Of String, String)).GetJson
+    End Function
+
+    Public Overrides Function ColorHandler(ggplot As ggplot) As Func(Of Object, String)
+        Dim colorMap As Dictionary(Of String, String) = Me.colorMap
+        Return Function(keyObj) colorMap.TryGetValue(any.ToString(keyObj), [default]:="black")
     End Function
 End Class

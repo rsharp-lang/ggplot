@@ -7,6 +7,7 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.BitmapImage
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
+Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.Math.LinearAlgebra
 Imports Microsoft.VisualBasic.Scripting.Runtime
 Imports SMRUCC.Rsharp.Runtime
@@ -64,13 +65,25 @@ Public Class ggplot : Inherits Plot
             YtickFormat:=theme.YaxisTickFormat
         )
 
+        Dim legends As New List(Of legendGroupElement)
+
         Do While layers.Count > 0
-            Call layers.Dequeue.Plot(g, canvas, baseData, x, y, scale, ggplot:=Me, theme:=theme)
+            Call layers _
+                .Dequeue _
+                .Plot(g, canvas, baseData, x, y, scale, ggplot:=Me, theme:=theme) _
+                .DoCall(AddressOf legends.Add)
         Loop
 
         If Not main.StringEmpty Then
             Call DrawMainTitle(g, rect)
         End If
+        If theme.drawLegend Then
+            Call DrawLegends(legends, g, canvas)
+        End If
+    End Sub
+
+    Private Overloads Sub DrawLegends(legends As IEnumerable(Of legendGroupElement), g As IGraphics, canvas As GraphicsRegion)
+
     End Sub
 
     Public Function Save(stream As Stream, format As ImageFormat) As Boolean Implements SaveGdiBitmap.Save

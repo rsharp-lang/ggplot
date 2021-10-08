@@ -6,6 +6,7 @@ Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Public MustInherit Class ggplotLayer
 
     Public Property reader As ggplotReader
+    Public Property colorMap As ggplotColorMap
     Public Property showLegend As Boolean = True
 
     Protected ReadOnly Property useCustomData As Boolean
@@ -20,7 +21,7 @@ Public MustInherit Class ggplotLayer
         End Get
     End Property
 
-    Public MustOverride Sub Plot(
+    Public MustOverride Function Plot(
         g As IGraphics,
         canvas As GraphicsRegion,
         baseData As ggplotData,
@@ -29,6 +30,6 @@ Public MustInherit Class ggplotLayer
         scale As DataScaler,
         ggplot As ggplot,
         theme As Theme
-    )
+    ) As legendGroupElement
 
 End Class

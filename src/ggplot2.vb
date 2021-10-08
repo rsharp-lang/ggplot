@@ -124,7 +124,8 @@ Public Module ggplot2
     ''' cex to size).
     ''' </remarks>
     <ExportAPI("aes")>
-    Public Function aes(x As Object, y As Object,
+    Public Function aes(Optional x As Object = Nothing,
+                        Optional y As Object = Nothing,
                         Optional color As Object = Nothing,
                         Optional env As Environment = Nothing) As Object
 
@@ -166,7 +167,7 @@ Public Module ggplot2
                                Optional env As Environment = Nothing) As ggplotLayer
 
         Return New ggplotScatter With {
-            .color = RColorPalette.getColor(color).TranslateColor,
+            .colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color), env),
             .shape = shape,
             .size = size,
             .showLegend = show_legend,
@@ -238,6 +239,11 @@ Public Module ggplot2
     <ExportAPI("ggtitle")>
     Public Function ggtitle(title As String) As ggplotOption
         Return New ggplotTitle(title)
+    End Function
+
+    <ExportAPI("scale_colour_manual")>
+    Public Function scale_colour_manual(<RRawVectorArgument> values As Object, Optional env As Environment = Nothing) As ggplotOption
+        Return New ggplotColorProfile With {.profile = ggplotColorMap.CreateColorMap(values, env)}
     End Function
 
     ''' <summary>
