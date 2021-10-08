@@ -10,9 +10,9 @@ volcano[, "p.value"] = -log10(volcano[, "p.value"]);
 print("peeks of the raw data:");
 print(head(volcano));
 print("count of the factors:");
-print(`Up:      ${sum("Up" == volcano[, "factor"])}`);
+print(`Up:      ${sum("Up"      == volcano[, "factor"])}`);
 print(`Not Sig: ${sum("Not Sig" == volcano[, "factor"])}`);
-print(`Down:    ${sum("Down" == volcano[, "factor"])}`);
+print(`Down:    ${sum("Down"    == volcano[, "factor"])}`);
 
 bitmap(file = `${@dir}/volcano.png`, size = [3000, 3000]) {
 	ggplot(volcano, aes(x = "log2FC", y = "p.value"), padding = "padding:250px 500px 250px 300px;")
