@@ -78,12 +78,21 @@ Public Class ggplot : Inherits Plot
             Call DrawMainTitle(g, rect)
         End If
         If theme.drawLegend Then
-            Call DrawLegends(legends, g, canvas)
+            Call DrawLegends(From group As legendGroupElement In legends Where Not group Is Nothing, g, canvas)
         End If
     End Sub
 
     Private Overloads Sub DrawLegends(legends As IEnumerable(Of legendGroupElement), g As IGraphics, canvas As GraphicsRegion)
+        Dim all = legends.ToArray
+        Dim width As Double = canvas.Padding.Right / (all.Length + 1)
+        Dim box = canvas.PlotRegion
+        Dim x As Double = box.Right + width / 3
+        Dim y As Double = box.Top + box.Height / 3
 
+        For i As Integer = 0 To all.Length - 1
+            all(i).Draw(g, canvas, x, y)
+            x += width
+        Next
     End Sub
 
     Public Function Save(stream As Stream, format As ImageFormat) As Boolean Implements SaveGdiBitmap.Save

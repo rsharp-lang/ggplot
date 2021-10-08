@@ -5,6 +5,7 @@ Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports REnv = SMRUCC.Rsharp.Runtime
 Imports any = Microsoft.VisualBasic.Scripting
+Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 
 Public MustInherit Class ggplotColorMap
 
@@ -74,6 +75,17 @@ End Class
 ''' used the field value as color factor
 ''' </summary>
 Public Class ggplotColorFactorMap : Inherits ggplotColorMap
+
+    Public Iterator Function GetLegends(shape As LegendStyles, cssfont As String) As IEnumerable(Of LegendObject)
+        For Each [class] In DirectCast(colorMap, Dictionary(Of String, String))
+            Yield New LegendObject With {
+                .color = [class].Value,
+                .style = shape,
+                .title = [class].Key,
+                .fontstyle = cssfont
+            }
+        Next
+    End Function
 
     Public Overrides Function ToString() As String
         Return DirectCast(colorMap, Dictionary(Of String, String)).GetJson

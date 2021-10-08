@@ -26,12 +26,18 @@ Public Class ggplotScatter : Inherits ggplotLayer
 
         Dim serial As SerialData
         Dim colors As String() = Nothing
+        Dim legends As legendGroupElement = Nothing
 
         If useCustomColorMaps Then
             Dim factors As String() = REnv.asVector(Of String)(DirectCast(ggplot.data, dataframe).getColumnVector(reader.color))
             Dim maps = DirectCast(colorMap, ggplotColorFactorMap).ColorHandler(ggplot)
 
             colors = factors.Select(Function(factor) maps(factor)).ToArray
+            legends = New legendGroupElement With {
+                .legends = DirectCast(colorMap, ggplotColorFactorMap) _
+                    .GetLegends(shape, ggplot.ggplotTheme.legendLabelCSS) _
+                    .ToArray
+            }
         ElseIf Not ggplot.base.reader.color Is Nothing Then
             colors = ggplot.base.getColors(ggplot)
         End If
@@ -54,6 +60,8 @@ Public Class ggplotScatter : Inherits ggplotLayer
             getPointBrush:=serial.BrushHandler
         ) _
         .ToArray
+
+        Return legends
     End Function
 
     Private Function createSerialData(legend As String, x As Double(), y As Double(), colors As String()) As SerialData
