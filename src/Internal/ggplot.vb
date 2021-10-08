@@ -67,6 +67,10 @@ Public Class ggplot : Inherits Plot
         Do While layers.Count > 0
             Call layers.Dequeue.Plot(g, canvas, baseData, x, y, scale, ggplot:=Me, theme:=theme)
         Loop
+
+        If Not main.StringEmpty Then
+            Call DrawMainTitle(g, rect)
+        End If
     End Sub
 
     Public Function Save(stream As Stream, format As ImageFormat) As Boolean Implements SaveGdiBitmap.Save
