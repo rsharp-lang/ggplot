@@ -22,7 +22,7 @@ bitmap(file = `${@dir}/volcano.png`, size = [3000, 3000]) {
           "Not Sig" = "gray",
           Down      = "steelblue"
        ))
-       + geom_text(aes(label = "ID"), which = ~ factor != "Not Sig")
+       + geom_text(aes(label = "ID"), which = ~(factor != "Not Sig") && (p.value >= 15) )
        + labs(x = "log2(FoldChange)", y = "-log10(P-value)")
        + ggtitle("Volcano Plot (A vs B)")
        + scale_x_continuous(labels = "F2")

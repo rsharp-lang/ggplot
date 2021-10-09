@@ -88,7 +88,7 @@ Public Class ggplotTextLabel : Inherits ggplotLayer
             .Labels(labelList) _
             .WithOffset(New PointF(box.Left, box.Top)) _
             .Anchors(anchors) _
-            .Start(nsweeps:=1)
+            .Start(nsweeps:=10)
 
         Return labelList
     End Function
