@@ -1,9 +1,10 @@
 require(ggplot);
 
-const volcano = read.csv(`${@dir}/log2FC.csv`);
+const volcano    = read.csv(`${@dir}/log2FC.csv`);
+const foldchange = 1.5;
 
-volcano[, "factor"]  = ifelse(volcano[, "log2FC"] >  log2(1.5), "Up", "Not Sig");
-volcano[, "factor"]  = ifelse(volcano[, "log2FC"] < -log2(1.5), "Down", volcano[, "factor"]);
+volcano[, "factor"]  = ifelse(volcano[, "log2FC"] >  log2(foldchange), "Up", "Not Sig");
+volcano[, "factor"]  = ifelse(volcano[, "log2FC"] < -log2(foldchange), "Down", volcano[, "factor"]);
 volcano[, "factor"]  = ifelse(volcano[, "p.value"] < 0.05, volcano[, "factor"], "Not Sig");
 volcano[, "p.value"] = -log10(volcano[, "p.value"]);
 
@@ -23,6 +24,9 @@ bitmap(file = `${@dir}/volcano.png`, size = [3000, 3000]) {
           Down      = "steelblue"
        ))
        + geom_text(aes(label = "ID"), which = ~(factor != "Not Sig") && (p.value >= 15) )
+       + geom_hline(yintercept = -log10(0.05))
+       + geom_vline(xintercept =  log2(foldchange))
+       + geom_vline(xintercept = -log2(foldchange))
        + labs(x = "log2(FoldChange)", y = "-log10(P-value)")
        + ggtitle("Volcano Plot (A vs B)")
        + scale_x_continuous(labels = "F2")
