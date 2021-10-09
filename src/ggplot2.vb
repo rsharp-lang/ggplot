@@ -1,8 +1,10 @@
-﻿Imports Microsoft.VisualBasic.CommandLine.Reflection
+﻿Imports System.Drawing
+Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
+Imports Microsoft.VisualBasic.Imaging.Drawing2D.Shapes
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports Microsoft.VisualBasic.Scripting.MetaData
 Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine
@@ -309,6 +311,20 @@ Public Module ggplot2
     <ExportAPI("geom_line")>
     Public Function geom_line() As ggplotLayer
         Return New ggplotLine
+    End Function
+
+    <ExportAPI("geom_hline")>
+    Public Function geom_hline(yintercept As Double) As ggplotLayer
+        Return New ggplotABLine With {
+            .abline = New Line(New PointF(Single.MinValue, yintercept), New PointF(Single.MaxValue, yintercept))
+        }
+    End Function
+
+    <ExportAPI("geom_vline")>
+    Public Function geom_vline(xintercept As Double) As ggplotLayer
+        Return New ggplotABLine With {
+            .abline = New Line(New PointF(xintercept, Single.MinValue), New PointF(xintercept, Single.MaxValue))
+        }
     End Function
 
     <ExportAPI("geom_path")>
