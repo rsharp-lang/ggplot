@@ -8,7 +8,6 @@ Imports Microsoft.VisualBasic.Linq
 Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
-Imports SMRUCC.Rsharp.Runtime.Internal.Object.Converts
 Imports REnv = SMRUCC.Rsharp.Runtime
 
 Public MustInherit Class ggplotLayer
@@ -59,7 +58,7 @@ Public MustInherit Class ggplotLayer
                 Call measure(var.value).SetValue(row(var), measure)
             Next
 
-            i.Add(which.Evaluate(measure))
+            i.Add(REnv.single(which.Evaluate(measure)))
         Next
 
         Return New BooleanVector(REnv.asLogical(i.ToArray))
