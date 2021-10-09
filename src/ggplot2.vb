@@ -1,4 +1,5 @@
 ﻿Imports System.Drawing
+Imports System.Drawing.Drawing2D
 Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
@@ -314,16 +315,36 @@ Public Module ggplot2
     End Function
 
     <ExportAPI("geom_hline")>
-    Public Function geom_hline(yintercept As Double) As ggplotLayer
+    Public Function geom_hline(yintercept As Double,
+                               Optional color As Object = "black",
+                               Optional line_width! = 2,
+                               Optional linetype As DashStyle = DashStyle.Solid) As ggplotLayer
+
+        Dim a As New PointF(Single.MinValue, yintercept)
+        Dim b As New PointF(Single.MaxValue, yintercept)
+        Dim style As New Pen(RColorPalette.getColor(color).TranslateColor, line_width) With {
+            .DashStyle = linetype
+        }
+
         Return New ggplotABLine With {
-            .abline = New Line(New PointF(Single.MinValue, yintercept), New PointF(Single.MaxValue, yintercept))
+            .abline = New Line(a, b, style)
         }
     End Function
 
     <ExportAPI("geom_vline")>
-    Public Function geom_vline(xintercept As Double) As ggplotLayer
+    Public Function geom_vline(xintercept As Double,
+                               Optional color As Object = "black",
+                               Optional line_width! = 2,
+                               Optional linetype As DashStyle = DashStyle.Solid) As ggplotLayer
+
+        Dim a As New PointF(xintercept, Single.MinValue)
+        Dim b As New PointF(xintercept, Single.MaxValue)
+        Dim style As New Pen(RColorPalette.getColor(color).TranslateColor, line_width) With {
+            .DashStyle = linetype
+        }
+
         Return New ggplotABLine With {
-            .abline = New Line(New PointF(xintercept, Single.MinValue), New PointF(xintercept, Single.MaxValue))
+            .abline = New Line(a, b, style)
         }
     End Function
 
