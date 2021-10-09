@@ -24,9 +24,9 @@ bitmap(file = `${@dir}/volcano.png`, size = [3000, 3000]) {
           Down      = "steelblue"
        ))
        + geom_text(aes(label = "ID"), which = ~(factor != "Not Sig") && (p.value >= 15) )
-       + geom_hline(yintercept = -log10(0.05),      color = "black", line.width = 5, linetype = "dash")
-       + geom_vline(xintercept =  log2(foldchange), color = "black", line.width = 5, linetype = "dash")
-       + geom_vline(xintercept = -log2(foldchange), color = "black", line.width = 5, linetype = "dash")
+       + geom_hline(yintercept = -log10(0.05),      color = "red", line.width = 5, linetype = "dash")
+       + geom_vline(xintercept =  log2(foldchange), color = "red", line.width = 5, linetype = "dash")
+       + geom_vline(xintercept = -log2(foldchange), color = "red", line.width = 5, linetype = "dash")
        + labs(x = "log2(FoldChange)", y = "-log10(P-value)")
        + ggtitle("Volcano Plot (A vs B)")
        + scale_x_continuous(labels = "F2")
