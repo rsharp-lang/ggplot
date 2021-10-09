@@ -21,7 +21,8 @@ print(`Not Sig: ${sum("Not Sig" == volcano[, "factor"])}`);
 print(`Down:    ${sum("Down"    == volcano[, "factor"])}`);
 
 bitmap(file = `${@dir}/volcano.png`, size = [3000, 3000]) {
-	ggplot(volcano, aes(x = "log2FC", y = "p.value"), padding = "padding:250px 500px 250px 300px;")
+   
+   ggplot(volcano, aes(x = "log2FC", y = "p.value"), padding = "padding:250px 500px 250px 300px;")
        + geom_point(aes(color = "factor"), color = "black", shape = "circle", size = 25)
        + scale_colour_manual(values = list(
           Up        = "red",
