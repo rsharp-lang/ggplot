@@ -85,7 +85,7 @@ Public Module ggplot2
 
         Return New ggplot(theme) With {
             .data = data,
-            .layers = New Queue(Of ggplotLayer),
+            .layers = New List(Of ggplotLayer),
             .base = base,
             .args = args,
             .environment = environment,
@@ -318,7 +318,7 @@ Public Module ggplot2
 
     <ROperator("+")>
     Public Function addLayer(ggplot As ggplot, layer As ggplotLayer) As ggplot
-        ggplot.layers.Enqueue(layer)
+        ggplot.layers.Add(layer)
         Return ggplot
     End Function
 

@@ -28,7 +28,7 @@ Public Class ggplot : Inherits Plot
     End Sub
 
     Public Property data As Object
-    Public Property layers As New Queue(Of ggplotLayer)
+    Public Property layers As New List(Of ggplotLayer)
     Public Property base As ggplotBase
     Public Property args As list
     Public Property environment As Environment
@@ -48,6 +48,7 @@ Public Class ggplot : Inherits Plot
             .X = scaleX,
             .Y = scaleY
         }
+        Dim layers As New Queue(Of ggplotLayer)(Me.layers)
 
         Call Axis.DrawAxis(
             g, canvas,

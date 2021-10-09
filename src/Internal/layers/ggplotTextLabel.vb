@@ -5,6 +5,12 @@ Imports Microsoft.VisualBasic.Imaging.Drawing2D
 
 Public Class ggplotTextLabel : Inherits ggplotLayer
 
+    ''' <summary>
+    ''' calling from the ``geom_label`` function?
+    ''' </summary>
+    ''' <returns></returns>
+    Public Property isLabeler As Boolean
+
     Public Overrides Function Plot(g As IGraphics,
                                    canvas As GraphicsRegion,
                                    baseData As ggplotData,
@@ -14,6 +20,14 @@ Public Class ggplotTextLabel : Inherits ggplotLayer
                                    ggplot As ggplot,
                                    theme As Theme) As legendGroupElement
 
-        Throw New NotImplementedException()
+        Dim legend As legendGroupElement = Nothing
+
+
+
+        If showLegend Then
+            Return legend
+        Else
+            Return Nothing
+        End If
     End Function
 End Class
