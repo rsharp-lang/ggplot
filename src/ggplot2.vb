@@ -176,6 +176,113 @@ Public Module ggplot2
         }
     End Function
 
+    ''' <summary>
+    ''' ### Text
+    ''' 
+    ''' Text geoms are useful for labeling plots. They can be used by themselves 
+    ''' as scatterplots or in combination with other geoms, for example, for 
+    ''' labeling points or for annotating the height of bars. geom_text() adds 
+    ''' only text to the plot. geom_label() draws a rectangle behind the text, 
+    ''' making it easier to read.
+    ''' </summary>
+    ''' <param name="mapping">
+    ''' Set of aesthetic mappings created by aes() or aes_(). If specified and 
+    ''' inherit.aes = TRUE (the default), it is combined with the default mapping 
+    ''' at the top level of the plot. You must supply mapping if there is no plot 
+    ''' mapping.
+    ''' </param>
+    ''' <param name="data">
+    ''' The data to be displayed in this layer. There are three options:
+    ''' 
+    ''' If NULL, the Default, the data Is inherited from the plot data As 
+    ''' specified In the Call To ggplot().
+    ''' 
+    ''' A data.frame, Or other Object, will override the plot data. All objects 
+    ''' will be fortified To produce a data frame. See fortify() For which 
+    ''' variables will be created.
+    ''' 
+    ''' A Function will be called With a Single argument, the plot data. The Return 
+    ''' value must be a data.frame, And will be used As the layer data. A Function 
+    ''' can be created from a formula (e.g. ~ head(.x, 10)).
+    ''' </param>
+    ''' <param name="stat">
+    ''' The statistical transformation to use on the data for this layer, as a 
+    ''' string.
+    ''' </param>
+    ''' <param name="position">
+    ''' Position adjustment, either as a string, or the result of a call to a 
+    ''' position adjustment function. Cannot be jointy specified with nudge_x or 
+    ''' nudge_y.
+    ''' </param>
+    ''' <param name="parse">
+    ''' If TRUE, the labels will be parsed into expressions and displayed as 
+    ''' described in ?plotmath.
+    ''' </param>
+    ''' <param name="nudge_x">
+    ''' Horizontal and vertical adjustment to nudge labels by. Useful for 
+    ''' offsetting text from points, particularly on discrete scales. Cannot be 
+    ''' jointly specified with position.
+    ''' </param>
+    ''' <param name="nudge_y">
+    ''' Horizontal and vertical adjustment to nudge labels by. Useful for 
+    ''' offsetting text from points, particularly on discrete scales. Cannot be 
+    ''' jointly specified with position.
+    ''' </param>
+    ''' <param name="check_overlap">
+    ''' If TRUE, text that overlaps previous text in the same layer will not be 
+    ''' plotted. check_overlap happens at draw time and in the order of the data. 
+    ''' Therefore data should be arranged by the label column before calling 
+    ''' geom_text(). Note that this argument is not supported by geom_label().
+    ''' </param>
+    ''' <param name="na_rm">
+    ''' If False, the Default, missing values are removed With a warning. 
+    ''' If True, missing values are silently removed.
+    ''' </param>
+    ''' <param name="show_legend">
+    ''' logical. Should this layer be included in the legends? NA, the default, 
+    ''' includes if any aesthetics are mapped. FALSE never includes, and TRUE 
+    ''' always includes. It can also be a named logical vector to finely select
+    ''' the aesthetics to display.
+    ''' </param>
+    ''' <param name="inherit_aes">
+    ''' If False, Overrides the Default aesthetics, rather than combining With 
+    ''' them. This Is most useful For helper functions that define both data And 
+    ''' aesthetics And shouldn't inherit behaviour from the default plot 
+    ''' specification, e.g. borders().
+    ''' </param>
+    ''' <param name="color"></param>
+    ''' <param name="args">
+    ''' Other arguments passed On To layer(). These are often aesthetics, used To 
+    ''' Set an aesthetic To a fixed value, Like colour = "red" Or size = 3. They
+    ''' may also be parameters To the paired geom/stat.
+    ''' </param>
+    ''' <param name="env"></param>
+    ''' <returns></returns>
+    <ExportAPI("geom_text")>
+    Public Function geom_text(Optional mapping As ggplotReader = NULL,
+                              Optional data As Object = NULL,
+                              Optional stat$ = "identity",
+                              Optional position$ = "identity",
+                              Optional parse As Boolean = False,
+                              Optional nudge_x! = 0,
+                              Optional nudge_y! = 0,
+                              Optional check_overlap As Boolean = False,
+                              Optional na_rm As Boolean = False,
+                              Optional show_legend As Boolean = False,
+                              Optional inherit_aes As Boolean = True,
+                              <RRawVectorArgument>
+                              Optional color As Object = "steelblue",
+                              <RListObjectArgument>
+                              Optional args As list = Nothing,
+                              Optional env As Environment = Nothing) As ggplotLayer
+
+        Return New ggplotTextLabel With {
+            .reader = mapping,
+            .showLegend = show_legend,
+            .colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color), env)
+        }
+    End Function
+
     <ExportAPI("geom_histogram")>
     Public Function geom_histogram() As ggplotLayer
         Return New ggplotHistogram

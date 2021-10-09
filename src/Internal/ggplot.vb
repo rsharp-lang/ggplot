@@ -86,7 +86,7 @@ Public Class ggplot : Inherits Plot
         Dim all = legends.ToArray
         Dim width As Double = canvas.Padding.Right / (all.Length + 1)
         Dim box = canvas.PlotRegion
-        Dim x As Double = box.Right + width / 3
+        Dim x As Double = box.Right + width / 4
         Dim y As Double = box.Top + box.Height / 3
 
         For i As Integer = 0 To all.Length - 1
