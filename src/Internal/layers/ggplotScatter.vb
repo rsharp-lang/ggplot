@@ -29,7 +29,7 @@ Public Class ggplotScatter : Inherits ggplotLayer
         Dim legends As legendGroupElement = Nothing
 
         If useCustomColorMaps Then
-            Dim factors As String() = REnv.asVector(Of String)(DirectCast(ggplot.data, dataframe).getColumnVector(reader.color))
+            Dim factors As String() = ggplot.getText(reader.color)
             Dim maps = DirectCast(colorMap, ggplotColorFactorMap).ColorHandler(ggplot)
 
             colors = factors.Select(Function(factor) maps(factor)).ToArray

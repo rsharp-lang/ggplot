@@ -33,6 +33,14 @@ Public Class ggplot : Inherits Plot
     Public Property args As list
     Public Property environment As Environment
 
+    Public Function getText(source As String) As String()
+        Return REnv.asVector(Of String)(DirectCast(data, dataframe).getColumnVector(source))
+    End Function
+
+    Public Function getValue(source As String) As Double()
+        Return REnv.asVector(Of Double)(DirectCast(data, dataframe).getColumnVector(source))
+    End Function
+
     Protected Overrides Sub PlotInternal(ByRef g As IGraphics, canvas As GraphicsRegion)
         Dim baseData = base.reader.getMapData(data, environment)
         Dim x As Double() = REnv.asVector(Of Double)(baseData.x)
