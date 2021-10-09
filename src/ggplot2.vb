@@ -5,6 +5,7 @@ Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports Microsoft.VisualBasic.Scripting.MetaData
+Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports SMRUCC.Rsharp.Runtime.Interop
@@ -274,6 +275,7 @@ Public Module ggplot2
                               Optional inherit_aes As Boolean = True,
                               <RRawVectorArgument>
                               Optional color As Object = "steelblue",
+                              Optional which As Expression = Nothing,
                               <RListObjectArgument>
                               Optional args As list = Nothing,
                               Optional env As Environment = Nothing) As ggplotLayer
@@ -281,7 +283,8 @@ Public Module ggplot2
         Return New ggplotTextLabel With {
             .reader = mapping,
             .showLegend = show_legend,
-            .colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color), env)
+            .colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color), env),
+            .which = which
         }
     End Function
 

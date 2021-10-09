@@ -2,12 +2,15 @@
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
+Imports Microsoft.VisualBasic.Language.Vectorization
+Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine
 
 Public MustInherit Class ggplotLayer
 
     Public Property reader As ggplotReader
     Public Property colorMap As ggplotColorMap
     Public Property showLegend As Boolean = True
+    Public Property which As Expression
 
     Protected ReadOnly Property useCustomData As Boolean
         Get
@@ -33,5 +36,9 @@ Public MustInherit Class ggplotLayer
         ggplot As ggplot,
         theme As Theme
     ) As legendGroupElement
+
+    Public Function getFilter(ggplot As ggplot) As BooleanVector
+
+    End Function
 
 End Class

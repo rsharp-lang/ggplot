@@ -4,6 +4,7 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.d3js.Layout
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
+Imports Microsoft.VisualBasic.Language.Vectorization
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports REnv = SMRUCC.Rsharp.Runtime
@@ -40,7 +41,7 @@ Public Class ggplotTextLabel : Inherits ggplotLayer
         x = x.Select(Function(xi) scale.TranslateX(xi)).ToArray
         y = y.Select(Function(yi) scale.TranslateY(yi)).ToArray
 
-        For Each label As Label In layoutLabels(labels, x, y, g, labelStyle, canvas.PlotRegion, anchors)
+        For Each label As Label In layoutLabels(labels, x, y, g, labelStyle, canvas.PlotRegion, anchors, ggplot)
             Call g.DrawString(label.text, labelStyle, Brushes.Black, label.location)
         Next
 
@@ -56,7 +57,8 @@ Public Class ggplotTextLabel : Inherits ggplotLayer
                                   g As IGraphics,
                                   style As Font,
                                   box As Rectangle,
-                                  ByRef anchors As Anchor()) As Label()
+                                  ByRef anchors As Anchor(),
+                                  ggplot As ggplot) As Label()
 
         Dim labelList As Label() = labels _
             .Select(Function(label, i)
@@ -71,6 +73,12 @@ Public Class ggplotTextLabel : Inherits ggplotLayer
         anchors = x _
             .Select(Function(xi, i) New Anchor(xi, y(i), 5)) _
             .ToArray
+
+        If Not which Is Nothing Then
+            Dim i As BooleanVector = getFilter(ggplot)
+
+
+        End If
 
         Call d3js _
             .labeler _
