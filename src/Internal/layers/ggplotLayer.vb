@@ -11,7 +11,9 @@ Public MustInherit Class ggplotLayer
 
     Protected ReadOnly Property useCustomData As Boolean
         Get
-            Return (Not reader Is Nothing) AndAlso Not reader.y.StringEmpty
+            If reader Is Nothing Then Return False
+
+            Return Not (reader.y.StringEmpty AndAlso reader.label.StringEmpty)
         End Get
     End Property
 

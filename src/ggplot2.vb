@@ -127,13 +127,15 @@ Public Module ggplot2
     <ExportAPI("aes")>
     Public Function aes(Optional x As Object = Nothing,
                         Optional y As Object = Nothing,
+                        Optional label As Object = Nothing,
                         Optional color As Object = Nothing,
                         Optional env As Environment = Nothing) As Object
 
         Return New ggplotReader With {
             .x = x,
             .y = y,
-            .color = color
+            .color = color,
+            .label = label
         }
     End Function
 
