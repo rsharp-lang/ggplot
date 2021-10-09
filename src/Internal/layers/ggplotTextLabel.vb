@@ -77,7 +77,8 @@ Public Class ggplotTextLabel : Inherits ggplotLayer
         If Not which Is Nothing Then
             Dim i As BooleanVector = getFilter(ggplot)
 
-
+            labelList = (New Vector(Of Label)(labelList))(i)
+            anchors = (New Vector(Of Anchor)(anchors))(i)
         End If
 
         Call d3js _
