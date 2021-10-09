@@ -44,7 +44,7 @@ Public MustInherit Class ggplotLayer
     ) As legendGroupElement
 
     Public Function getFilter(ggplot As ggplot) As BooleanVector
-        Dim i As New List(Of Boolean)
+        Dim i As New List(Of Object)
         Dim measure As New Environment(ggplot.environment, ggplot.environment.stackFrame, isInherits:=False)
         Dim x = DirectCast(ggplot.data, dataframe).colnames _
             .SeqIterator _
@@ -59,10 +59,10 @@ Public MustInherit Class ggplotLayer
                 Call measure(var.value).SetValue(row(var), measure)
             Next
 
-            i.Add(REnv.single(RCType.CTypeDynamic(which.Evaluate(measure), GetType(Boolean), measure)))
+            i.Add(which.Evaluate(measure))
         Next
 
-        Return New BooleanVector(i)
+        Return New BooleanVector(REnv.asLogical(i.ToArray))
     End Function
 
 End Class
