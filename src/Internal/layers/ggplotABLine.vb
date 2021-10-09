@@ -21,6 +21,9 @@ Public Class ggplotABLine : Inherits ggplotLayer
         Dim a As PointF = constraint(abline.A, scale)
         Dim b As PointF = constraint(abline.B, scale)
 
+        a = scale.Translate(a)
+        b = scale.Translate(b)
+
         Call g.DrawLine(abline.Stroke, a, b)
 
         Return Nothing
