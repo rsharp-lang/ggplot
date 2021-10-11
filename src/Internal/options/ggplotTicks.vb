@@ -22,6 +22,8 @@ Public Class ggplotTicks : Inherits ggplotOption
     Public Property min As Double
     Public Property max As Double
 
+    Public Property reverse As Boolean = False
+
     Public Enum TickStyleNames
         ''' <summary>
         ''' 普通的数字
@@ -58,9 +60,17 @@ Public Class ggplotTicks : Inherits ggplotOption
 
     Public Overrides Function Config(ggplot As ggplot) As ggplot
         If Strings.LCase(axis) = "x" Then
-            ggplot.ggplotTheme.XaxisTickFormat = format
+            If Not format.StringEmpty Then
+                ggplot.ggplotTheme.XaxisTickFormat = format
+            End If
+
+            ggplot.args.slots("scale_x_reverse") = True
         Else
-            ggplot.ggplotTheme.YaxisTickFormat = format
+            If Not format.StringEmpty Then
+                ggplot.ggplotTheme.YaxisTickFormat = format
+            End If
+
+            ggplot.args.slots("scale_y_reverse") = True
         End If
 
         Return ggplot

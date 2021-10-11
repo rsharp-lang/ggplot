@@ -50,7 +50,8 @@ Public Class ggplot : Inherits Plot
         Dim rect As Rectangle = canvas.PlotRegion
         Dim scaleX = d3js.scale.linear.domain(xTicks).range(integers:={rect.Left, rect.Right})
         Dim scaleY = d3js.scale.linear.domain(yTicks).range(integers:={rect.Bottom, rect.Top})
-        Dim scale As New DataScaler() With {
+        Dim reverse As Boolean = args.getValue("scale_y_reverse", env:=environment, [default]:=False)
+        Dim scale As New DataScaler(reverse) With {
             .AxisTicks = (xTicks.AsVector, yTicks.AsVector),
             .region = rect,
             .X = scaleX,

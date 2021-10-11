@@ -493,6 +493,15 @@ Public Module ggplot2
         }
     End Function
 
+    <ExportAPI("scale_y_reverse")>
+    Public Function scale_y_reverse() As ggplotOption
+        Return New ggplotTicks With {
+            .axis = "y",
+            .reverse = True,
+            .format = Nothing
+        }
+    End Function
+
     Const NULL As Object = Nothing
 
     ''' <summary>
