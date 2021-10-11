@@ -382,8 +382,10 @@ Public Module ggplot2
     End Function
 
     <ExportAPI("theme")>
-    Public Function theme() As ggplotOption
-        Return New ggplotTheme
+    Public Function theme(Optional axis_text As textElement = Nothing) As ggplotOption
+        Return New ggplotTheme With {
+            .axis_text = axis_text
+        }
     End Function
 
     <ExportAPI("ggtitle")>
@@ -462,7 +464,7 @@ Public Module ggplot2
     End Function
 
     ''' <summary>
-    ''' Position scales for continuous data (x &amp; y)
+    ''' ### Position scales for continuous data (x &amp; y)
     ''' </summary>
     ''' <param name="labels">
     ''' One of:
@@ -493,6 +495,11 @@ Public Module ggplot2
         }
     End Function
 
+    ''' <summary>
+    ''' ### Position scales for continuous data (x &amp; y)
+    ''' 
+    ''' </summary>
+    ''' <returns></returns>
     <ExportAPI("scale_y_reverse")>
     Public Function scale_y_reverse() As ggplotOption
         Return New ggplotTicks With {
@@ -505,25 +512,37 @@ Public Module ggplot2
     Const NULL As Object = Nothing
 
     ''' <summary>
+    ''' ### Theme elements
     ''' 
+    ''' text.
     ''' </summary>
-    ''' <param name="family$"></param>
-    ''' <param name="face$"></param>
-    ''' <param name="colour$"></param>
-    ''' <param name="size!"></param>
-    ''' <param name="hjust!"></param>
-    ''' <param name="vjust!"></param>
-    ''' <param name="angle!"></param>
-    ''' <param name="lineheight!"></param>
-    ''' <param name="color$"></param>
-    ''' <param name="margin!"></param>
-    ''' <param name="debug"></param>
-    ''' <param name="inherit_blank"></param>
+    ''' <param name="family">Font family</param>
+    ''' <param name="face">Font face ("plain", "italic", "bold", "bold.italic")</param>
+    ''' <param name="size">Line/border size in mm; text size in pts.</param>
+    ''' <param name="hjust">Horizontal justification (in [0, 1])</param>
+    ''' <param name="vjust">Vertical justification (in [0, 1])</param>
+    ''' <param name="angle">Angle (in [0, 360])</param>
+    ''' <param name="lineheight">Line height</param>
+    ''' <param name="color">Line/border colour. Color is an alias for colour.</param>
+    ''' <param name="margin">
+    ''' Margins around the text. See margin() for more details. When creating a theme, 
+    ''' the margins should be placed on the side of the text facing towards the center 
+    ''' of the plot.
+    ''' </param>
+    ''' <param name="debug">
+    ''' If TRUE, aids visual debugging by drawing a solid rectangle behind the complete 
+    ''' text area, and a point where each label is anchored.
+    ''' </param>
+    ''' <param name="inherit_blank">
+    ''' Should this element inherit the existence of an element_blank among its parents? 
+    ''' If TRUE the existence of a blank element among its parents will cause this 
+    ''' element to be blank as well. If FALSE any blank parent element will be ignored 
+    ''' when calculating final element state.
+    ''' </param>
     ''' <returns></returns>
     <ExportAPI("element_text")>
     Public Function element_text(Optional family$ = NULL,
                                  Optional face$ = NULL,
-                                 Optional colour$ = NULL,
                                  Optional size!? = NULL,
                                  Optional hjust!? = NULL,
                                  Optional vjust!? = NULL,
