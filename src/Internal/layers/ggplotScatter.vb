@@ -33,11 +33,14 @@ Public Class ggplotScatter : Inherits ggplotLayer
             Dim maps As Func(Of Object, String) = colorMap.ColorHandler(ggplot, factors)
 
             colors = factors.Select(Function(factor) maps(factor)).ToArray
-            legends = New legendGroupElement With {
-                .legends = DirectCast(colorMap, ggplotColorFactorMap) _
-                    .GetLegends(shape, ggplot.ggplotTheme.legendLabelCSS) _
-                    .ToArray
-            }
+
+            If TypeOf colorMap Is ggplotColorFactorMap Then
+                legends = New legendGroupElement With {
+                    .legends = DirectCast(colorMap, ggplotColorFactorMap) _
+                        .GetLegends(shape, ggplot.ggplotTheme.legendLabelCSS) _
+                        .ToArray
+                }
+            End If
         ElseIf Not ggplot.base.reader.color Is Nothing Then
             colors = ggplot.base.getColors(ggplot)
         End If

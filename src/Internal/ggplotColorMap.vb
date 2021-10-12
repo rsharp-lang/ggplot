@@ -97,8 +97,8 @@ Public Class ggplotColorPalette : Inherits ggplotColorMap
                 .Select(Function(c) c.ToHtmlColor) _
                 .ToArray
 
-            Return Function(any)
-                       Dim factor As String = any.ToString(any)
+            Return Function(obj)
+                       Dim factor As String = any.ToString(obj)
                        Dim i As Integer = factorList.IndexOf(factor)
 
                        Return colors(i)
