@@ -1,21 +1,23 @@
 ﻿Imports System.Drawing
+Imports Microsoft.VisualBasic.ComponentModel.Collection
+Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
+Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
+Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
+Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
+Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.Serialization.JSON
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
-Imports REnv = SMRUCC.Rsharp.Runtime
 Imports any = Microsoft.VisualBasic.Scripting
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
-Imports Microsoft.VisualBasic.ComponentModel.Collection
-Imports Microsoft.VisualBasic.Linq
-Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
-Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
+Imports REnv = SMRUCC.Rsharp.Runtime
 
 Public MustInherit Class ggplotColorMap
 
     Public Property colorMap As Object
 
     Public MustOverride Function ColorHandler(ggplot As ggplot, factors As Array) As Func(Of Object, String)
+    Public MustOverride Function TryGetFactorLegends(factors As Array, shape As LegendStyles, theme As Theme) As LegendObject()
 
     Public Shared Function CreateColorMap(map As Object, env As Environment) As ggplotColorMap
         If TypeOf map Is String Then
@@ -65,6 +67,10 @@ Public Class ggplotColorLiteral : Inherits ggplotColorMap
     Public Overrides Function ColorHandler(ggplot As ggplot, factors As Array) As Func(Of Object, String)
         Throw New NotImplementedException()
     End Function
+
+    Public Overrides Function TryGetFactorLegends(factors As Array, shape As LegendStyles, theme As Theme) As LegendObject()
+        Throw New NotImplementedException()
+    End Function
 End Class
 
 Public Class ggplotColorPalette : Inherits ggplotColorMap
@@ -91,6 +97,7 @@ Public Class ggplotColorPalette : Inherits ggplotColorMap
                 .AsObjectEnumerator _
                 .Select(AddressOf any.ToString) _
                 .Distinct _
+                .OrderBy(Function(str) str) _
                 .Indexing
             Dim colors As String() = Designer _
                 .GetColors(any.ToString(colorMap), n:=factorList.Count) _
@@ -105,6 +112,34 @@ Public Class ggplotColorPalette : Inherits ggplotColorMap
                    End Function
         End If
     End Function
+
+    Public Overrides Function TryGetFactorLegends(factors As Array, shape As LegendStyles, theme As Theme) As LegendObject()
+        If factors.GetType.GetRTypeCode.IsNumeric Then
+            Return Nothing
+        End If
+
+        Dim factorList As String() = factors _
+            .AsObjectEnumerator _
+            .Select(AddressOf any.ToString) _
+            .Distinct _
+            .OrderBy(Function(str) str) _
+            .ToArray
+        Dim colors As String() = Designer _
+            .GetColors(any.ToString(colorMap), n:=factorList.Length) _
+            .Select(Function(c) c.ToHtmlColor) _
+            .ToArray
+
+        Return factorList _
+            .Select(Function(factor, i)
+                        Return New LegendObject With {
+                            .color = colors(i),
+                            .style = shape,
+                            .title = factor,
+                            .fontstyle = theme.legendLabelCSS
+                        }
+                    End Function) _
+            .ToArray
+    End Function
 End Class
 
 ''' <summary>
@@ -112,7 +147,7 @@ End Class
 ''' </summary>
 Public Class ggplotColorFactorMap : Inherits ggplotColorMap
 
-    Public Iterator Function GetLegends(shape As LegendStyles, cssfont As String) As IEnumerable(Of LegendObject)
+    Private Iterator Function GetLegends(shape As LegendStyles, cssfont As String) As IEnumerable(Of LegendObject)
         For Each [class] In DirectCast(colorMap, Dictionary(Of String, String))
             Yield New LegendObject With {
                 .color = [class].Value,
@@ -130,5 +165,9 @@ Public Class ggplotColorFactorMap : Inherits ggplotColorMap
     Public Overrides Function ColorHandler(ggplot As ggplot, factors As Array) As Func(Of Object, String)
         Dim colorMap As Dictionary(Of String, String) = Me.colorMap
         Return Function(keyObj) colorMap.TryGetValue(any.ToString(keyObj), [default]:="black")
+    End Function
+
+    Public Overrides Function TryGetFactorLegends(factors As Array, shape As LegendStyles, theme As Theme) As LegendObject()
+        Return GetLegends(shape, theme.legendLabelCSS).ToArray
     End Function
 End Class

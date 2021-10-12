@@ -5,8 +5,6 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Data.ChartPlots.Plots
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
-Imports SMRUCC.Rsharp.Runtime.Internal.Object
-Imports REnv = SMRUCC.Rsharp.Runtime
 
 Public Class ggplotScatter : Inherits ggplotLayer
 
@@ -31,15 +29,15 @@ Public Class ggplotScatter : Inherits ggplotLayer
         If useCustomColorMaps Then
             Dim factors As String() = ggplot.getText(reader.color)
             Dim maps As Func(Of Object, String) = colorMap.ColorHandler(ggplot, factors)
+            Dim legendItems As LegendObject() = colorMap.TryGetFactorLegends(factors, shape, ggplot.ggplotTheme)
 
             colors = factors.Select(Function(factor) maps(factor)).ToArray
+            legends = New legendGroupElement With {
+                .legends = legendItems
+            }
 
-            If TypeOf colorMap Is ggplotColorFactorMap Then
-                legends = New legendGroupElement With {
-                    .legends = DirectCast(colorMap, ggplotColorFactorMap) _
-                        .GetLegends(shape, ggplot.ggplotTheme.legendLabelCSS) _
-                        .ToArray
-                }
+            If legendItems.IsNullOrEmpty Then
+                legends = Nothing
             End If
         ElseIf Not ggplot.base.reader.color Is Nothing Then
             colors = ggplot.base.getColors(ggplot)
