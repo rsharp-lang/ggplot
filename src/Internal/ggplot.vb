@@ -41,6 +41,15 @@ Public Class ggplot : Inherits Plot
         Return REnv.asVector(Of Double)(DirectCast(data, dataframe).getColumnVector(source))
     End Function
 
+    Private Sub reverse(ByRef vec As Double())
+        Dim max As Double = vec.Max
+        Dim min As Double = vec.Min
+
+        For i As Integer = 0 To vec.Length - 1
+            vec(i) = max - vec(i) + min
+        Next
+    End Sub
+
     Protected Overrides Sub PlotInternal(ByRef g As IGraphics, canvas As GraphicsRegion)
         Dim baseData = base.reader.getMapData(data, environment)
         Dim x As Double() = REnv.asVector(Of Double)(baseData.x)
@@ -50,14 +59,18 @@ Public Class ggplot : Inherits Plot
         Dim rect As Rectangle = canvas.PlotRegion
         Dim scaleX = d3js.scale.linear.domain(xTicks).range(integers:={rect.Left, rect.Right})
         Dim scaleY = d3js.scale.linear.domain(yTicks).range(integers:={rect.Bottom, rect.Top})
-        Dim reverse As Boolean = args.getValue("scale_y_reverse", env:=environment, [default]:=False)
-        Dim scale As New DataScaler(reverse) With {
+        Dim reverse_y As Boolean = args.getValue("scale_y_reverse", env:=environment, [default]:=False)
+        Dim scale As New DataScaler() With {
             .AxisTicks = (xTicks.AsVector, yTicks.AsVector),
             .region = rect,
             .X = scaleX,
             .Y = scaleY
         }
         Dim layers As New Queue(Of ggplotLayer)(Me.layers)
+
+        If reverse_y Then
+            Call reverse(y)
+        End If
 
         Call Axis.DrawAxis(
             g, canvas,
