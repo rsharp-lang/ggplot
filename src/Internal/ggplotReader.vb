@@ -13,6 +13,7 @@ Public Class ggplotReader
     Public Property color As Object
     Public Property title As String
     Public Property label As String
+    Public Property args As list
 
     Public Overrides Function ToString() As String
         Return $"{x} ~ {y}"

@@ -133,13 +133,16 @@ Public Module ggplot2
                         Optional y As Object = Nothing,
                         Optional label As Object = Nothing,
                         Optional color As Object = Nothing,
-                        Optional env As Environment = Nothing) As Object
+                        <RListObjectArgument>
+                        Optional args As list = Nothing,
+                        Optional env As Environment = Nothing) As ggplotReader
 
         Return New ggplotReader With {
             .x = x,
             .y = y,
             .color = color,
-            .label = label
+            .label = label,
+            .args = args
         }
     End Function
 

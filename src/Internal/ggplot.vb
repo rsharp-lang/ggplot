@@ -27,6 +27,10 @@ Public Class ggplot : Inherits Plot
         MyBase.New(theme)
     End Sub
 
+    ''' <summary>
+    ''' dataframe, list, and others
+    ''' </summary>
+    ''' <returns></returns>
     Public Property data As Object
     Public Property layers As New List(Of ggplotLayer)
     Public Property base As ggplotBase
