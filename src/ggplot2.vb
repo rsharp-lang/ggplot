@@ -65,6 +65,7 @@ Public Module ggplot2
     <ExportAPI("ggplot")>
     Public Function ggplot(<RRawVectorArgument>
                            Optional data As Object = Nothing,
+                           <RDefaultExpression()>
                            Optional mapping As Object = "~aes()",
                            <RListObjectArgument>
                            Optional args As list = Nothing,
@@ -137,13 +138,17 @@ Public Module ggplot2
                         Optional args As list = Nothing,
                         Optional env As Environment = Nothing) As ggplotReader
 
-        Return New ggplotReader With {
-            .x = x,
-            .y = y,
-            .color = color,
-            .label = label,
-            .args = args
-        }
+        If args.hasName("driver") Then
+            Return args.getValue(Of ggplotReader)("driver", env)
+        Else
+            Return New ggplotReader With {
+                .x = x,
+                .y = y,
+                .color = color,
+                .label = label,
+                .args = args
+            }
+        End If
     End Function
 
     ''' <summary>

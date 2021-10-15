@@ -19,7 +19,7 @@ Public Class ggplotReader
         Return $"{x} ~ {y}"
     End Function
 
-    Public Function getMapData(data As Object, env As Environment) As ggplotData
+    Public Overridable Function getMapData(data As Object, env As Environment) As ggplotData
         Return New ggplotData With {
             .x = unifySource(data, x, env),
             .y = unifySource(data, y, env)
@@ -32,7 +32,7 @@ Public Class ggplotReader
         ElseIf TypeOf data Is list Then
             Throw New NotImplementedException
         Else
-            Throw New NotImplementedException
+            Throw New NotImplementedException(data.GetType.FullName)
         End If
     End Function
 

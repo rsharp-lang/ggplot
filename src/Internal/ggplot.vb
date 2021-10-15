@@ -55,7 +55,7 @@ Public Class ggplot : Inherits Plot
     End Sub
 
     Protected Overrides Sub PlotInternal(ByRef g As IGraphics, canvas As GraphicsRegion)
-        Dim baseData = base.reader.getMapData(data, environment)
+        Dim baseData As ggplotData = base.reader.getMapData(data, environment)
         Dim x As Double() = REnv.asVector(Of Double)(baseData.x)
         Dim y As Double() = REnv.asVector(Of Double)(baseData.y)
         Dim xTicks = x.Range.CreateAxisTicks
