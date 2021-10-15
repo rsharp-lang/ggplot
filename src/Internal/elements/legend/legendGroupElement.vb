@@ -10,7 +10,7 @@ Public Class legendGroupElement : Inherits ggplotElement
 
     Public Overrides Property layout As Layout Implements IggplotLegendElement.layout
     Public Property legends As LegendObject()
-    Public Property shapeSize As Size
+    Public Property shapeSize As New Size(120, 45)
 
     Public Sub Draw(g As IGraphics, canvas As GraphicsRegion, x As Double, y As Double) Implements IggplotLegendElement.Draw
         Call g.DrawLegends(New PointF(x, y), legends, $"{shapeSize.Width},{shapeSize.Height}")
@@ -24,5 +24,21 @@ Public Class legendGroupElement : Inherits ggplotElement
         maxSize = New SizeF(maxSize.Width, maxSize.Height * (legends.Length + 1))
 
         Return maxSize
+    End Function
+End Class
+
+Public Class ggplotLegendElement : Inherits ggplotElement
+    Implements IggplotLegendElement
+
+    Public Property legend As LegendObject
+    Public Property shapeSize As New Size(120, 45)
+    Public Overrides Property layout As Layout Implements IggplotLegendElement.layout
+
+    Public Sub Draw(g As IGraphics, canvas As GraphicsRegion, x As Double, y As Double) Implements IggplotLegendElement.Draw
+        Throw New NotImplementedException()
+    End Sub
+
+    Public Function MeasureSize(g As IGraphics) As SizeF Implements IggplotLegendElement.MeasureSize
+        Throw New NotImplementedException()
     End Function
 End Class

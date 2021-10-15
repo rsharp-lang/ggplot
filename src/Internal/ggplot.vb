@@ -57,6 +57,8 @@ Public Class ggplot : Inherits Plot
         Next
     End Sub
 
+    Public Shared UnionGgplotLayers As Func(Of IEnumerable(Of ggplotLayer), IEnumerable(Of ggplotLayer))
+
     Protected Overrides Sub PlotInternal(ByRef g As IGraphics, canvas As GraphicsRegion)
         Dim baseData As ggplotData = base.reader.getMapData(data, environment)
         Dim x As Double() = REnv.asVector(Of Double)(baseData.x)
@@ -73,7 +75,9 @@ Public Class ggplot : Inherits Plot
             .X = scaleX,
             .Y = scaleY
         }
-        Dim layers As New Queue(Of ggplotLayer)(Me.layers)
+        Dim layers As New Queue(Of ggplotLayer)(
+            collection:=If(UnionGgplotLayers Is Nothing, Me.layers, UnionGgplotLayers(Me.layers))
+        )
 
         If reverse_y Then
             Call reverse(y)
@@ -116,7 +120,19 @@ Public Class ggplot : Inherits Plot
         Dim all As IggplotLegendElement() = legends.ToArray
 
         If all.Length > 1 Then
-            Call DrawMultiple(all, g, canvas)
+            If all.All(Function(l) TypeOf l Is ggplotLegendElement) Then
+                Dim union As New legendGroupElement With {
+                    .legends = all _
+                        .Select(Function(l)
+                                    Return DirectCast(l, ggplotLegendElement).legend
+                                End Function) _
+                        .ToArray
+                }
+
+                Call DrawSingle(union, g, canvas)
+            Else
+                Call DrawMultiple(all, g, canvas)
+            End If
         ElseIf all.Length = 1 Then
             Call DrawSingle(all(Scan0), g, canvas)
         End If
