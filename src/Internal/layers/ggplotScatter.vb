@@ -20,7 +20,7 @@ Public Class ggplotScatter : Inherits ggplotLayer
         scale As DataScaler,
         ggplot As ggplot,
         theme As Theme
-    ) As legendGroupElement
+    ) As IggplotLegendElement
 
         Dim serial As SerialData
         Dim colors As String() = Nothing

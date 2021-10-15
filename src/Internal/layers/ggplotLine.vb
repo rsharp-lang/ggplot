@@ -14,7 +14,7 @@ Public Class ggplotLine : Inherits ggplotLayer
         scale As DataScaler,
         ggplot As ggplot,
         theme As Theme
-    ) As legendGroupElement
+    ) As IggplotLegendElement
 
         Throw New NotImplementedException
     End Function

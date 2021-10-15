@@ -16,7 +16,7 @@ Public Class ggplotABLine : Inherits ggplotLayer
                                    y() As Double,
                                    scale As DataScaler,
                                    ggplot As ggplot,
-                                   theme As Theme) As legendGroupElement
+                                   theme As Theme) As IggplotLegendElement
 
         Dim a As PointF = constraint(abline.A, scale)
         Dim b As PointF = constraint(abline.B, scale)

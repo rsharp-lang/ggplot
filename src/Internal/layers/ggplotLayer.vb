@@ -40,7 +40,7 @@ Public MustInherit Class ggplotLayer
         scale As DataScaler,
         ggplot As ggplot,
         theme As Theme
-    ) As legendGroupElement
+    ) As IggplotLegendElement
 
     Public Function getFilter(ggplot As ggplot) As BooleanVector
         Dim i As New List(Of Object)

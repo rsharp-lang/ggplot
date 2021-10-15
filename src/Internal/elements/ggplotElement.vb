@@ -9,6 +9,6 @@
 ''' </summary>
 Public Class ggplotElement
 
-    Public Property layout As Layout
+    Public Overridable Property layout As Layout
 
 End Class

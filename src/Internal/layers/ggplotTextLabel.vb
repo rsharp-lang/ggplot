@@ -24,7 +24,7 @@ Public Class ggplotTextLabel : Inherits ggplotLayer
                                    y() As Double,
                                    scale As DataScaler,
                                    ggplot As ggplot,
-                                   theme As Theme) As legendGroupElement
+                                   theme As Theme) As IggplotLegendElement
 
         Dim legend As legendGroupElement = Nothing
         Dim labels As String()
