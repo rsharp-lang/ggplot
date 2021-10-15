@@ -14,6 +14,9 @@ Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports REnv = SMRUCC.Rsharp.Runtime
 
+''' <summary>
+''' graphics drawing engine of the ggplot library
+''' </summary>
 Public Class ggplot : Inherits Plot
     Implements SaveGdiBitmap
 
@@ -111,6 +114,15 @@ Public Class ggplot : Inherits Plot
 
     Private Overloads Sub DrawLegends(legends As IEnumerable(Of IggplotLegendElement), g As IGraphics, canvas As GraphicsRegion)
         Dim all As IggplotLegendElement() = legends.ToArray
+
+        If all.Length > 1 Then
+            Call DrawMultiple(all, g, canvas)
+        ElseIf all.Length = 1 Then
+            Call DrawSingle(all(Scan0), g, canvas)
+        End If
+    End Sub
+
+    Private Sub DrawMultiple(all As IggplotLegendElement(), g As IGraphics, canvas As GraphicsRegion)
         Dim width As Double = canvas.Padding.Right / (all.Length + 1)
         Dim box = canvas.PlotRegion
         Dim x As Double = box.Right + width / 4
@@ -120,6 +132,17 @@ Public Class ggplot : Inherits Plot
             all(i).Draw(g, canvas, x, y)
             x += width
         Next
+    End Sub
+
+    Private Sub DrawSingle(legend As IggplotLegendElement, g As IGraphics, canvas As GraphicsRegion)
+        Dim size As SizeF = legend.MeasureSize(g)
+        Dim rect = canvas.PlotRegion
+
+        ' default is padding right / middle in height
+        Dim x As Single = (canvas.Padding.Right - size.Width) / 2 + rect.Right
+        Dim y As Single = (canvas.PlotRegion.Height - size.Height) / 2 + rect.Top
+
+        Call legend.Draw(g, canvas, x, y)
     End Sub
 
     Public Function Save(stream As Stream, format As ImageFormat) As Boolean Implements SaveGdiBitmap.Save
