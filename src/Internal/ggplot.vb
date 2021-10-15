@@ -92,7 +92,7 @@ Public Class ggplot : Inherits Plot
             YtickFormat:=theme.YaxisTickFormat
         )
 
-        Dim legends As New List(Of legendGroupElement)
+        Dim legends As New List(Of IggplotLegendElement)
 
         Do While layers.Count > 0
             Call layers _
@@ -105,12 +105,12 @@ Public Class ggplot : Inherits Plot
             Call DrawMainTitle(g, rect)
         End If
         If theme.drawLegend Then
-            Call DrawLegends(From group As legendGroupElement In legends Where Not group Is Nothing, g, canvas)
+            Call DrawLegends(From group As IggplotLegendElement In legends Where Not group Is Nothing, g, canvas)
         End If
     End Sub
 
-    Private Overloads Sub DrawLegends(legends As IEnumerable(Of legendGroupElement), g As IGraphics, canvas As GraphicsRegion)
-        Dim all = legends.ToArray
+    Private Overloads Sub DrawLegends(legends As IEnumerable(Of IggplotLegendElement), g As IGraphics, canvas As GraphicsRegion)
+        Dim all As IggplotLegendElement() = legends.ToArray
         Dim width As Double = canvas.Padding.Right / (all.Length + 1)
         Dim box = canvas.PlotRegion
         Dim x As Double = box.Right + width / 4
