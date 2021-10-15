@@ -140,7 +140,7 @@ Public Class ggplot : Inherits Plot
 
         ' default is padding right / middle in height
         Dim x As Single = (canvas.Padding.Right - size.Width) / 2 + rect.Right
-        Dim y As Single = (canvas.PlotRegion.Height - size.Height) / 2 + rect.Top
+        Dim y As Single = (rect.Height - size.Height) / 2 + rect.Top
 
         Call legend.Draw(g, canvas, x, y)
     End Sub
