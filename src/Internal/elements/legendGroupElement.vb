@@ -49,6 +49,9 @@ Public Class legendColorMapElement : Inherits ggplotElement
     End Sub
 
     Public Function MeasureSize(g As IGraphics) As SizeF Implements IggplotLegendElement.MeasureSize
-        Return New SizeF(width, height)
+        Dim titleSize = g.MeasureString(colorMapLegend.title, colorMapLegend.titleFont)
+        Dim maxWidth As Single = {titleSize.Width, width}.Max
+
+        Return New SizeF(maxWidth, height)
     End Function
 End Class
