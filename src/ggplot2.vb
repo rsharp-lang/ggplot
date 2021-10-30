@@ -344,6 +344,21 @@ Public Module ggplot2
         }
     End Function
 
+    ''' <summary>
+    ''' ## Reference lines: horizontal, vertical, and diagonal
+    ''' 
+    ''' These geoms add reference lines (sometimes called rules) to a plot, 
+    ''' either horizontal, vertical, or diagonal (specified by slope and
+    ''' intercept). These are useful for annotating plots.
+    ''' </summary>
+    ''' <param name="xintercept">
+    ''' Parameters that control the position of the line. If these are set, 
+    ''' data, mapping and show.legend are overridden.
+    ''' </param>
+    ''' <param name="color"></param>
+    ''' <param name="line_width!"></param>
+    ''' <param name="linetype"></param>
+    ''' <returns></returns>
     <ExportAPI("geom_vline")>
     Public Function geom_vline(xintercept As Double,
                                Optional color As Object = "black",
@@ -361,11 +376,97 @@ Public Module ggplot2
         }
     End Function
 
+    ''' <summary>
+    ''' ## Connect observations
+    ''' 
+    ''' geom_path() connects the observations in the order in which they 
+    ''' appear in the data. geom_line() connects them in order of the 
+    ''' variable on the x axis. geom_step() creates a stairstep plot, highlighting 
+    ''' exactly when changes occur. The group aesthetic determines which 
+    ''' cases are connected together.
+    ''' </summary>
+    ''' <returns></returns>
     <ExportAPI("geom_path")>
     Public Function geom_path() As ggplotLayer
 
     End Function
 
+    ''' <summary>
+    ''' ## A box and whiskers plot (in the style of Tukey)
+    ''' 
+    ''' The boxplot compactly displays the distribution of a continuous variable. 
+    ''' It visualises five summary statistics (the median, two hinges and two 
+    ''' whiskers), and all "outlying" points individually.
+    ''' </summary>
+    ''' <returns></returns>
+    ''' <remarks>
+    ''' ## Orientation
+    ''' This geom treats Each axis differently And, thus, can thus have two 
+    ''' orientations. Often the orientation Is easy To deduce from a combination 
+    ''' Of the given mappings And the types Of positional scales In use. Thus, 
+    ''' ggplot2 will by Default Try To guess which orientation the layer should 
+    ''' have. Under rare circumstances, the orientation Is ambiguous And guessing 
+    ''' may fail. In that Case the orientation can be specified directly Using the 
+    ''' orientation parameter, which can be either "x" Or "y". The value gives 
+    ''' the axis that the geom should run along, "x" being the Default orientation 
+    ''' you would expect For the geom.
+    '''
+    ''' ## Summary statistics
+    ''' The lower And upper hinges correspond To the first And third quartiles 
+    ''' (the 25th And 75th percentiles). This differs slightly from the method 
+    ''' used by the boxplot() Function, And may be apparent With small samples. 
+    ''' See boxplot.stats() For For more information On how hinge positions are 
+    ''' calculated For boxplot().
+    '''
+    ''' The upper whisker extends from the hinge To the largest value no further 
+    ''' than 1.5 * IQR from the hinge (where IQR Is the inter-quartile range, Or 
+    ''' distance between the first And third quartiles). The lower whisker extends 
+    ''' from the hinge To the smallest value at most 1.5 * IQR Of the hinge. Data 
+    ''' beyond the End Of the whiskers are called "outlying" points And are plotted 
+    ''' individually.
+    '''
+    ''' In a notched box plot, the notches extend 1.58 * IQR / sqrt(n). This gives a 
+    ''' roughly 95% confidence interval for comparing medians. See McGill et al. 
+    ''' (1978) for more details.
+    '''
+    ''' ## Aesthetics
+    ''' geom_boxplot() understands the following aesthetics (required aesthetics are 
+    ''' in bold):
+    '''
+    ''' + x Or y
+    ''' + lower Or xlower
+    ''' + upper Or xupper
+    ''' + middle Or xmiddle
+    ''' + ymin Or xmin
+    ''' + ymax Or xmax
+    ''' + alpha
+    ''' + colour
+    ''' + fill
+    ''' + group
+    ''' + linetype
+    ''' + shape
+    ''' + size
+    ''' + weight
+    '''
+    ''' Learn more about setting these aesthetics In vignette("ggplot2-specs").
+    '''
+    ''' ## Computed variables
+    ''' stat_boxplot() provides the following variables, some of which depend on the orientation:
+    '''
+    ''' + width: width of boxplot
+    ''' + ymin Or xmin: lower whisker = smallest observation greater than Or equal To lower hinge - 1.5 * IQR
+    ''' + lower Or xlower: lower hinge, 25% quantile
+    ''' + notchlower: lower edge Of notch = median - 1.58 * IQR / sqrt(n)
+    ''' + middle Or xmiddle: median, 50% quantile
+    ''' + notchupper: upper edge Of notch = median + 1.58 * IQR / sqrt(n)
+    ''' + upper Or xupper: upper hinge, 75% quantile
+    ''' + ymax Or xmax: upper whisker = largest observation less than Or equal To upper hinge + 1.5 * IQR
+    '''
+    ''' ## References
+    ''' 
+    ''' > McGill, R., Tukey, J. W. And Larsen, W. A. (1978) Variations of box plots. 
+    '''   The American Statistician 32, 12-16.
+    ''' </remarks>
     <ExportAPI("geom_boxplot")>
     Public Function geom_boxplot() As ggplotLayer
         Return New ggplotBoxplot
@@ -382,10 +483,63 @@ Public Module ggplot2
         Return opts.Config(ggplot)
     End Function
 
+    ''' <summary>
+    ''' ## Modify axis, legend, and plot labels
+    ''' 
+    ''' Good labels are critical for making your plots accessible to 
+    ''' a wider audience. Always ensure the axis and legend labels 
+    ''' display the full variable name. Use the plot title and subtitle 
+    ''' to explain the main findings. It's common to use the caption 
+    ''' to provide information about the data source. tag can be used 
+    ''' for adding identification tags to differentiate between multiple 
+    ''' plots.
+    ''' </summary>
+    ''' <param name="x"></param>
+    ''' <param name="y"></param>
+    ''' <param name="title">The text for the title.</param>
+    ''' <param name="subtitle">
+    ''' The text For the subtitle For the plot which will be displayed 
+    ''' below the title.
+    ''' </param>
+    ''' <param name="caption">
+    ''' The text for the caption which will be displayed in the 
+    ''' bottom-right of the plot by default.
+    ''' </param>
+    ''' <param name="tag">
+    ''' The text for the tag label which will be displayed at the top-left 
+    ''' of the plot by default.
+    ''' </param>
+    ''' <param name="alt">
+    ''' Text used for the generation of alt-text for the plot. See 
+    ''' get_alt_text for examples.
+    ''' </param>
+    ''' <param name="alt_insight"></param>
+    ''' <param name="args">
+    ''' A list of new name-value pairs. The name should be an aesthetic.
+    ''' </param>
+    ''' <returns></returns>
+    ''' <remarks>
+    ''' You can also set axis and legend labels in the individual scales 
+    ''' (using the first argument, the name). If you're changing other 
+    ''' scale options, this is recommended.
+    ''' 
+    ''' If a plot already has a title, subtitle, caption, etc., And you want 
+    ''' To remove it, you can Do so by setting the respective argument To 
+    ''' NULL. For example, If plot p has a subtitle, Then p + labs(subtitle = NULL) 
+    ''' will remove the subtitle from the plot.
+    ''' </remarks>
     <ExportAPI("labs")>
     Public Function labs(Optional x As String = Nothing,
                          Optional y As String = Nothing,
-                         Optional title As String = Nothing) As ggplotOption
+                         Optional title As String = Nothing,
+                         Optional subtitle As String = Nothing,
+                         Optional caption As String = Nothing,
+                         Optional tag As Object = Nothing,
+                         Optional alt As Object = Nothing,
+                         Optional alt_insight As Object = Nothing,
+                         <RListObjectArgument>
+                         Optional args As list = Nothing,
+                         Optional env As Environment = Nothing) As ggplotOption
 
         Return New ggplotAxisLabel With {
             .x = x,
@@ -394,6 +548,94 @@ Public Module ggplot2
         }
     End Function
 
+    ''' <summary>
+    ''' ## Modify axis, legend, and plot labels
+    ''' 
+    ''' Good labels are critical for making your plots accessible to a 
+    ''' wider audience. Always ensure the axis and legend labels display 
+    ''' the full variable name. Use the plot title and subtitle to 
+    ''' explain the main findings. It's common to use the caption to 
+    ''' provide information about the data source. tag can be used for 
+    ''' adding identification tags to differentiate between multiple 
+    ''' plots.
+    ''' </summary>
+    ''' <param name="label">
+    ''' The title of the respective axis (for xlab() or ylab()) or 
+    ''' of the plot (for ggtitle()).
+    ''' </param>
+    ''' <returns></returns>
+    ''' <remarks>
+    ''' You can also set axis and legend labels in the individual scales 
+    ''' (using the first argument, the name). If you're changing other 
+    ''' scale options, this is recommended.
+    ''' 
+    ''' If a plot already has a title, subtitle, caption, etc., And you want 
+    ''' To remove it, you can Do so by setting the respective argument To 
+    ''' NULL. For example, If plot p has a subtitle, Then p + labs(subtitle = NULL) 
+    ''' will remove the subtitle from the plot.
+    ''' </remarks>
+    <ExportAPI("xlab")>
+    Public Function xlab(label As String) As ggplotOption
+
+    End Function
+
+    ''' <summary>
+    ''' ## Modify axis, legend, and plot labels
+    ''' 
+    ''' Good labels are critical for making your plots accessible to a 
+    ''' wider audience. Always ensure the axis and legend labels display 
+    ''' the full variable name. Use the plot title and subtitle to 
+    ''' explain the main findings. It's common to use the caption to 
+    ''' provide information about the data source. tag can be used for 
+    ''' adding identification tags to differentiate between multiple 
+    ''' plots.
+    ''' </summary>
+    ''' <param name="label">
+    ''' The title of the respective axis (for xlab() or ylab()) or 
+    ''' of the plot (for ggtitle()).
+    ''' </param>
+    ''' <returns></returns>
+    ''' <remarks>
+    ''' You can also set axis and legend labels in the individual scales 
+    ''' (using the first argument, the name). If you're changing other 
+    ''' scale options, this is recommended.
+    ''' 
+    ''' If a plot already has a title, subtitle, caption, etc., And you want 
+    ''' To remove it, you can Do so by setting the respective argument To 
+    ''' NULL. For example, If plot p has a subtitle, Then p + labs(subtitle = NULL) 
+    ''' will remove the subtitle from the plot.
+    ''' </remarks>
+    <ExportAPI("ylab")>
+    Public Function ylab(label As String) As ggplotOption
+
+    End Function
+
+    ''' <summary>
+    ''' ## Modify components of a theme
+    ''' 
+    ''' Themes are a powerful way to customize the non-data components of 
+    ''' your plots: i.e. titles, labels, fonts, background, gridlines, and 
+    ''' legends. Themes can be used to give plots a consistent customized 
+    ''' look. Modify a single plot's theme using theme(); see theme_update() 
+    ''' if you want modify the active theme, to affect all subsequent plots. 
+    ''' Use the themes available in complete themes if you would like to use 
+    ''' a complete theme such as theme_bw(), theme_minimal(), and more. 
+    ''' 
+    ''' Theme elements are documented together according to inheritance, read
+    ''' more about theme inheritance below.
+    ''' </summary>
+    ''' <param name="axis_text"></param>
+    ''' <returns></returns>
+    ''' <remarks>
+    ''' Theme elements inherit properties from other theme elements hierarchically. 
+    ''' For example, axis.title.x.bottom inherits from axis.title.x which inherits 
+    ''' from axis.title, which in turn inherits from text. All text elements inherit
+    ''' directly or indirectly from text; all lines inherit from line, and all 
+    ''' rectangular objects inherit from rect. This means that you can modify the 
+    ''' appearance of multiple elements by setting a single high-level component.
+    ''' 
+    ''' Learn more about setting these aesthetics In vignette("ggplot2-specs").
+    ''' </remarks>
     <ExportAPI("theme")>
     Public Function theme(Optional axis_text As textElement = Nothing) As ggplotOption
         Return New ggplotTheme With {
