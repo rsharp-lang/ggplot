@@ -472,8 +472,14 @@ Public Module ggplot2
         Return New ggplotBoxplot
     End Function
 
+    ''' <summary>
+    ''' add a ggplot plot layer
+    ''' </summary>
+    ''' <param name="ggplot"></param>
+    ''' <param name="layer"></param>
+    ''' <returns></returns>
     <ROperator("+")>
-    Public Function addLayer(ggplot As ggplot, layer As ggplotLayer) As ggplot
+    Public Function add_layer(ggplot As ggplot, layer As ggplotLayer) As ggplot
         ggplot.layers.Add(layer)
         Return ggplot
     End Function

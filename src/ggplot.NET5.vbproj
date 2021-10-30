@@ -118,10 +118,6 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Internal\layers\layer3\" />
-  </ItemGroup>
-
   <Import Project="..\..\..\R-sharp\Library\R_graphic.interop\R_graphic.interop.projitems" Label="Shared" />
 
 </Project>
