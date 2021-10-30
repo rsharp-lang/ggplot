@@ -5,11 +5,14 @@ Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 
-Public Interface IggplotLegendElement
+Namespace elements.legend
 
-    Property layout As Layout
+    Public Interface IggplotLegendElement
 
-    Sub Draw(g As IGraphics, canvas As GraphicsRegion, x As Double, y As Double)
-    Function MeasureSize(g As IGraphics) As SizeF
+        Property layout As Layout
 
-End Interface
+        Sub Draw(g As IGraphics, canvas As GraphicsRegion, x As Double, y As Double)
+        Function MeasureSize(g As IGraphics) As SizeF
+
+    End Interface
+End Namespace

@@ -7,23 +7,19 @@ Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 
 Namespace elements.legend
 
-    Public Class legendColorMapElement : Inherits ggplotElement
+    Public Class ggplotLegendElement : Inherits ggplotElement
         Implements IggplotLegendElement
 
+        Public Property legend As LegendObject
+        Public Property shapeSize As New Size(120, 45)
         Public Overrides Property layout As Layout Implements IggplotLegendElement.layout
-        Public Property colorMapLegend As ColorMapLegend
-        Public Property width As Single
-        Public Property height As Single
 
         Public Sub Draw(g As IGraphics, canvas As GraphicsRegion, x As Double, y As Double) Implements IggplotLegendElement.Draw
-            Call colorMapLegend.Draw(g, New Rectangle(x, y, width, height))
+            Throw New NotImplementedException()
         End Sub
 
         Public Function MeasureSize(g As IGraphics) As SizeF Implements IggplotLegendElement.MeasureSize
-            Dim titleSize = g.MeasureString(colorMapLegend.title, colorMapLegend.titleFont)
-            Dim maxWidth As Single = {titleSize.Width, width}.Max
-
-            Return New SizeF(maxWidth, height)
+            Throw New NotImplementedException()
         End Function
     End Class
 End Namespace

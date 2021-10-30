@@ -3,19 +3,22 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 
-Public Class ggplotLine : Inherits ggplotLayer
+Namespace layers
 
-    Public Overrides Function Plot(
-        g As IGraphics,
-        canvas As GraphicsRegion,
-        baseData As ggplotData,
-        x As Double(),
-        y As Double(),
-        scale As DataScaler,
-        ggplot As ggplot,
-        theme As Theme
-    ) As IggplotLegendElement
+    Public Class ggplotLine : Inherits ggplotLayer
 
-        Throw New NotImplementedException
-    End Function
-End Class
+        Public Overrides Function Plot(
+            g As IGraphics,
+            canvas As GraphicsRegion,
+            baseData As ggplotData,
+            x As Double(),
+            y As Double(),
+            scale As DataScaler,
+            ggplot As ggplot,
+            theme As Theme
+        ) As IggplotLegendElement
+
+            Throw New NotImplementedException
+        End Function
+    End Class
+End Namespace

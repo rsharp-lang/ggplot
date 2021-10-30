@@ -1,14 +1,17 @@
 ﻿Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 
-''' <summary>
-''' ### Theme elements
-''' 
-''' In conjunction with the theme system, the ``element_`` 
-''' functions specify the display of how non-data 
-''' components of the plot are drawn.
-''' </summary>
-Public Class ggplotElement
+Namespace elements
 
-    Public Overridable Property layout As Layout
+    ''' <summary>
+    ''' ### Theme elements
+    ''' 
+    ''' In conjunction with the theme system, the ``element_`` 
+    ''' functions specify the display of how non-data 
+    ''' components of the plot are drawn.
+    ''' </summary>
+    Public Class ggplotElement
 
-End Class
+        Public Overridable Property layout As Layout
+
+    End Class
+End Namespace

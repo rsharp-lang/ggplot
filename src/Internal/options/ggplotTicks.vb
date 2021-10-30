@@ -1,78 +1,84 @@
 ﻿Imports System.ComponentModel
 
-''' <summary>
-''' Position scales for continuous data (x &amp; y)
-''' 
-''' scale_x_continuous() and scale_y_continuous() are the default 
-''' scales for continuous x and y aesthetics. There are three 
-''' variants that set the trans argument for commonly used 
-''' transformations: ``scale_*_log10()``, ``scale_*_sqrt()`` and 
-''' ``scale_*_reverse()``.
-''' </summary>
-Public Class ggplotTicks : Inherits ggplotOption
-
-    Public Property format As String = "F2"
+Namespace options
 
     ''' <summary>
-    ''' target axis config: x or y
+    ''' Position scales for continuous data (x &amp; y)
+    ''' 
+    ''' scale_x_continuous() and scale_y_continuous() are the default 
+    ''' scales for continuous x and y aesthetics. There are three 
+    ''' variants that set the trans argument for commonly used 
+    ''' transformations: ``scale_*_log10()``, ``scale_*_sqrt()`` and 
+    ''' ``scale_*_reverse()``.
     ''' </summary>
-    ''' <returns></returns>
-    Public Property axis As String = "X"
+    Public Class ggplotTicks : Inherits ggplotOption
 
-    Public Property min As Double
-    Public Property max As Double
+        Public Property format As String = "F2"
 
-    Public Property reverse As Boolean = False
-
-    Public Enum TickStyleNames
         ''' <summary>
-        ''' 普通的数字
+        ''' target axis config: x or y
         ''' </summary>
-        <Description("F2")> numeric
-        ''' <summary>
-        ''' 带百分比符号的百分数样式
-        ''' </summary>
-        <Description("P2")> percent
-        ''' <summary>
-        ''' 科学计数法样式
-        ''' </summary>
-        <Description("G3")> scientific
-        ''' <summary>
-        ''' 带金钱符号样式的
-        ''' </summary>
-        <Description("C3")> money
-    End Enum
+        ''' <returns></returns>
+        Public Property axis As String = "X"
 
-    Public Shared Function ParseFormat(style As String) As String
-        If style.StringEmpty Then
-            Return Nothing
-        End If
+        Public Property min As Double
+        Public Property max As Double
 
-        Static defaultFormats As Dictionary(Of String, TickStyleNames) = Enums(Of TickStyleNames) _
-            .ToDictionary(Function(tick) tick.ToString)
+        Public Property reverse As Boolean = False
 
-        If defaultFormats.ContainsKey(style.ToLower) Then
-            Return defaultFormats(style.ToLower).Description
-        Else
-            Return style.ToUpper
-        End If
-    End Function
+        Public Enum TickStyleNames
+            ''' <summary>
+            ''' 普通的数字
+            ''' </summary>
+            <Description("F2")> numeric
+            ''' <summary>
+            ''' 带百分比符号的百分数样式
+            ''' </summary>
+            <Description("P2")> percent
+            ''' <summary>
+            ''' 科学计数法样式
+            ''' </summary>
+            <Description("G3")> scientific
+            ''' <summary>
+            ''' 带金钱符号样式的
+            ''' </summary>
+            <Description("C3")> money
+        End Enum
 
-    Public Overrides Function Config(ggplot As ggplot) As ggplot
-        If Strings.LCase(axis) = "x" Then
-            If Not format.StringEmpty Then
-                ggplot.ggplotTheme.XaxisTickFormat = format
+        Public Shared Function ParseFormat(style As String) As String
+            If style.StringEmpty Then
+                Return Nothing
             End If
 
-            ggplot.args.slots("scale_x_reverse") = True
-        Else
-            If Not format.StringEmpty Then
-                ggplot.ggplotTheme.YaxisTickFormat = format
+            Static defaultFormats As Dictionary(Of String, TickStyleNames) =
+                Enums(Of TickStyleNames) _
+                    .ToDictionary(Function(tick)
+                                      Return tick.ToString
+                                  End Function)
+
+            If defaultFormats.ContainsKey(style.ToLower) Then
+                Return defaultFormats(style.ToLower).Description
+            Else
+                Return style.ToUpper
+            End If
+        End Function
+
+        Public Overrides Function Config(ggplot As ggplot) As ggplot
+            If Strings.LCase(axis) = "x" Then
+                If Not format.StringEmpty Then
+                    ggplot.ggplotTheme.XaxisTickFormat = format
+                End If
+
+                ggplot.args.slots("scale_x_reverse") = True
+            Else
+                If Not format.StringEmpty Then
+                    ggplot.ggplotTheme.YaxisTickFormat = format
+                End If
+
+                ggplot.args.slots("scale_y_reverse") = True
             End If
 
-            ggplot.args.slots("scale_y_reverse") = True
-        End If
-
-        Return ggplot
-    End Function
-End Class
+            Return ggplot
+        End Function
+    End Class
+End Namespace

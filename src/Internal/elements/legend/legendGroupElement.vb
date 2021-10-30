@@ -5,40 +5,28 @@ Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 
-Public Class legendGroupElement : Inherits ggplotElement
-    Implements IggplotLegendElement
+Namespace elements.legend
 
-    Public Overrides Property layout As Layout Implements IggplotLegendElement.layout
-    Public Property legends As LegendObject()
-    Public Property shapeSize As New Size(120, 45)
+    Public Class legendGroupElement : Inherits ggplotElement
+        Implements IggplotLegendElement
 
-    Public Sub Draw(g As IGraphics, canvas As GraphicsRegion, x As Double, y As Double) Implements IggplotLegendElement.Draw
-        Call g.DrawLegends(New PointF(x, y), legends, $"{shapeSize.Width},{shapeSize.Height}")
-    End Sub
+        Public Overrides Property layout As Layout Implements IggplotLegendElement.layout
+        Public Property legends As LegendObject()
+        Public Property shapeSize As New Size(120, 45)
 
-    Public Function MeasureSize(g As IGraphics) As SizeF Implements IggplotLegendElement.MeasureSize
-        Dim maxSizeLabel As String = legends.Select(Function(l) l.title).MaxLengthString
-        Dim maxSize As SizeF = g.MeasureString(maxSizeLabel, legends(Scan0).GetFont(g.Dpi))
+        Public Sub Draw(g As IGraphics, canvas As GraphicsRegion, x As Double, y As Double) Implements IggplotLegendElement.Draw
+            Call g.DrawLegends(New PointF(x, y), legends, $"{shapeSize.Width},{shapeSize.Height}")
+        End Sub
 
-        maxSize = New SizeF(shapeSize.Width + maxSize.Width, maxSize.Height)
-        maxSize = New SizeF(maxSize.Width, maxSize.Height * (legends.Length + 1))
+        Public Function MeasureSize(g As IGraphics) As SizeF Implements IggplotLegendElement.MeasureSize
+            Dim maxSizeLabel As String = legends.Select(Function(l) l.title).MaxLengthString
+            Dim maxSize As SizeF = g.MeasureString(maxSizeLabel, legends(Scan0).GetFont(g.Dpi))
 
-        Return maxSize
-    End Function
-End Class
+            maxSize = New SizeF(shapeSize.Width + maxSize.Width, maxSize.Height)
+            maxSize = New SizeF(maxSize.Width, maxSize.Height * (legends.Length + 1))
 
-Public Class ggplotLegendElement : Inherits ggplotElement
-    Implements IggplotLegendElement
+            Return maxSize
+        End Function
+    End Class
 
-    Public Property legend As LegendObject
-    Public Property shapeSize As New Size(120, 45)
-    Public Overrides Property layout As Layout Implements IggplotLegendElement.layout
-
-    Public Sub Draw(g As IGraphics, canvas As GraphicsRegion, x As Double, y As Double) Implements IggplotLegendElement.Draw
-        Throw New NotImplementedException()
-    End Sub
-
-    Public Function MeasureSize(g As IGraphics) As SizeF Implements IggplotLegendElement.MeasureSize
-        Throw New NotImplementedException()
-    End Function
-End Class
+End Namespace

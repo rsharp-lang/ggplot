@@ -1,7 +1,10 @@
 ﻿Imports Microsoft.VisualBasic.MIME.Html.CSS
 
-Public Class lineElement : Inherits ggplotElement
+Namespace elements
 
-    Public Property style As Stroke
+    Public Class lineElement : Inherits ggplotElement
 
-End Class
+        Public Property style As Stroke
+
+    End Class
+End Namespace
