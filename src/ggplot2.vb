@@ -1,5 +1,8 @@
 ﻿Imports System.Drawing
 Imports System.Drawing.Drawing2D
+Imports ggplot.elements
+Imports ggplot.layers
+Imports ggplot.options
 Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend

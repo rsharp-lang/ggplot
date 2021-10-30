@@ -1,4 +1,5 @@
-﻿Imports Microsoft.VisualBasic.Data.ChartPlots
+﻿Imports ggplot.elements.legend
+Imports Microsoft.VisualBasic.Data.ChartPlots
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
