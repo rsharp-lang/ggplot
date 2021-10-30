@@ -10,13 +10,24 @@ Public Class ggplotReader
 
     Public Property x As String
     Public Property y As String
+    Public Property z As String
     Public Property color As Object
     Public Property title As String
     Public Property label As String
     Public Property args As list
 
+    Public ReadOnly Property isPlain2D As Boolean
+        Get
+            Return z.StringEmpty
+        End Get
+    End Property
+
     Public Overrides Function ToString() As String
-        Return $"{x} ~ {y}"
+        If isPlain2D Then
+            Return $"{x} ~ {y}"
+        Else
+            Return $"[{x}, {y}, {z}]"
+        End If
     End Function
 
     Public Overridable Function getMapData(data As Object, env As Environment) As ggplotData

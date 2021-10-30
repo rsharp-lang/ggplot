@@ -132,6 +132,7 @@ Public Module ggplot2
     <ExportAPI("aes")>
     Public Function aes(Optional x As Object = Nothing,
                         Optional y As Object = Nothing,
+                        Optional z As Object = Nothing,
                         Optional label As Object = Nothing,
                         Optional color As Object = Nothing,
                         <RListObjectArgument>
@@ -144,6 +145,7 @@ Public Module ggplot2
             Return New ggplotReader With {
                 .x = x,
                 .y = y,
+                .z = z,
                 .color = color,
                 .label = label,
                 .args = args
