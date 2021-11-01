@@ -64,6 +64,11 @@ Namespace layers
         Public Property colorMap As ggplotColorMap
         Public Property showLegend As Boolean = True
         Public Property which As Expression
+        ''' <summary>
+        ''' z-index, the smaller value of this index, the first that we draw this image layer
+        ''' </summary>
+        ''' <returns></returns>
+        Public Property zindex As Integer
 
         Protected ReadOnly Property useCustomData As Boolean
             Get

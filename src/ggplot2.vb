@@ -1,45 +1,45 @@
 ﻿#Region "Microsoft.VisualBasic::f013147e9f47b39ef191ae3ef7c3b77d, src\ggplot2.vb"
 
-    ' Author:
-    ' 
-    '       asuka (amethyst.asuka@gcmodeller.org)
-    '       xie (genetics@smrucc.org)
-    '       xieguigang (xie.guigang@live.com)
-    ' 
-    ' Copyright (c) 2018 GPL3 Licensed
-    ' 
-    ' 
-    ' GNU GENERAL PUBLIC LICENSE (GPL3)
-    ' 
-    ' 
-    ' This program is free software: you can redistribute it and/or modify
-    ' it under the terms of the GNU General Public License as published by
-    ' the Free Software Foundation, either version 3 of the License, or
-    ' (at your option) any later version.
-    ' 
-    ' This program is distributed in the hope that it will be useful,
-    ' but WITHOUT ANY WARRANTY; without even the implied warranty of
-    ' MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    ' GNU General Public License for more details.
-    ' 
-    ' You should have received a copy of the GNU General Public License
-    ' along with this program. If not, see <http://www.gnu.org/licenses/>.
+' Author:
+' 
+'       asuka (amethyst.asuka@gcmodeller.org)
+'       xie (genetics@smrucc.org)
+'       xieguigang (xie.guigang@live.com)
+' 
+' Copyright (c) 2018 GPL3 Licensed
+' 
+' 
+' GNU GENERAL PUBLIC LICENSE (GPL3)
+' 
+' 
+' This program is free software: you can redistribute it and/or modify
+' it under the terms of the GNU General Public License as published by
+' the Free Software Foundation, either version 3 of the License, or
+' (at your option) any later version.
+' 
+' This program is distributed in the hope that it will be useful,
+' but WITHOUT ANY WARRANTY; without even the implied warranty of
+' MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+' GNU General Public License for more details.
+' 
+' You should have received a copy of the GNU General Public License
+' along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
+' Summaries:
 
-    ' Module ggplot2
-    ' 
-    '     Function: add_layer, aes, configPlot, element_text, geom_boxplot
-    '               geom_histogram, geom_hline, geom_line, geom_path, geom_point
-    '               geom_text, geom_vline, ggplot, ggtitle, labs
-    '               scale_colour_manual, scale_x_continuous, scale_y_continuous, scale_y_reverse, theme
-    '               xlab, ylab
-    ' 
-    ' /********************************************************************************/
+' Module ggplot2
+' 
+'     Function: add_layer, aes, configPlot, element_text, geom_boxplot
+'               geom_histogram, geom_hline, geom_line, geom_path, geom_point
+'               geom_text, geom_vline, ggplot, ggtitle, labs
+'               scale_colour_manual, scale_x_continuous, scale_y_continuous, scale_y_reverse, theme
+'               xlab, ylab
+' 
+' /********************************************************************************/
 
 #End Region
 
@@ -526,6 +526,8 @@ Public Module ggplot2
     <ROperator("+")>
     Public Function add_layer(ggplot As ggplot, layer As ggplotLayer) As ggplot
         ggplot.layers.Add(layer)
+        layer.zindex = ggplot.layers.Count
+
         Return ggplot
     End Function
 
