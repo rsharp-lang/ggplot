@@ -45,6 +45,7 @@
 
 Imports System.Drawing
 Imports System.Drawing.Drawing2D
+Imports ggplot.colors
 Imports ggplot.elements
 Imports ggplot.layers
 Imports ggplot.options
