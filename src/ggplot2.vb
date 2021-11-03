@@ -118,7 +118,7 @@ Public Module ggplot2
                            Optional mapping As Object = "~aes()",
                            <RListObjectArgument>
                            Optional args As list = Nothing,
-                           Optional environment As Environment = Nothing)
+                           Optional environment As Environment = Nothing) As ggplot
 
         Dim base As New ggplotBase With {.reader = mapping}
         Dim theme As New Theme With {
@@ -144,7 +144,8 @@ Public Module ggplot2
             .args = args,
             .environment = environment,
             .xlabel = base.reader.x,
-            .ylabel = base.reader.y
+            .ylabel = base.reader.y,
+            .zlabel = base.reader.z
         }
     End Function
 

@@ -111,6 +111,23 @@ Public Class ggplot : Inherits Plot
 
     Protected Overrides Sub PlotInternal(ByRef g As IGraphics, canvas As GraphicsRegion)
         Dim baseData As ggplotData = base.reader.getMapData(data, environment)
+
+        If base.reader.isPlain2D Then
+            Call plot2D(baseData, g, canvas)
+        Else
+            Call plot3D(baseData, g, canvas)
+        End If
+    End Sub
+
+    Private Sub plot3D(baseData As ggplotData, ByRef g As IGraphics, canvas As GraphicsRegion)
+        Dim x As Double() = REnv.asVector(Of Double)(baseData.x)
+        Dim y As Double() = REnv.asVector(Of Double)(baseData.y)
+        Dim z As Double() = REnv.asVector(Of Double)(baseData.z)
+
+
+    End Sub
+
+    Private Sub plot2D(baseData As ggplotData, ByRef g As IGraphics, canvas As GraphicsRegion)
         Dim x As Double() = REnv.asVector(Of Double)(baseData.x)
         Dim y As Double() = REnv.asVector(Of Double)(baseData.y)
         Dim xTicks = x.Range.CreateAxisTicks

@@ -81,7 +81,8 @@ Public Class ggplotReader
     Public Overridable Function getMapData(data As Object, env As Environment) As ggplotData
         Return New ggplotData With {
             .x = unifySource(data, x, env),
-            .y = unifySource(data, y, env)
+            .y = unifySource(data, y, env),
+            .z = If(isPlain2D, Nothing, unifySource(data, z, env))
         }
     End Function
 
@@ -127,6 +128,8 @@ Public Class ggplotData
 
     Public Property x As Array
     Public Property y As Array
+    Public Property z As Array
+
     Public Property [error] As Message
 
     Public Shared Widening Operator CType(ex As Message) As ggplotData
