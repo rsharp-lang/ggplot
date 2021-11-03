@@ -56,6 +56,7 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Plot3D.Device
+Imports Microsoft.VisualBasic.Emit.Delegates
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.BitmapImage
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
@@ -73,7 +74,6 @@ Imports REnv = SMRUCC.Rsharp.Runtime
 ''' </summary>
 Public Class ggplot : Inherits Plot
     Implements SaveGdiBitmap
-    Implements Ilayer3d
 
     Public ReadOnly Property ggplotTheme As Theme
         Get
@@ -140,26 +140,34 @@ Public Class ggplot : Inherits Plot
         Dim camera As New Camera
         Dim labelColor As New SolidBrush(theme.tagColor.TranslateColor)
 
-        Call populateModels(g, baseData, x, y, z, Me, theme).RenderAs3DChart(
-            canvas:=g,
-            camera:=camera,
-            region:=canvas,
-            labelFont:=CSSFont.TryParse(theme.tagCSS).GDIObject(g.Dpi),
-            labelerItr:=0,
-            showLabel:=theme.drawLabels,
-            labelColor:=labelColor
-        )
+        Call populateModels(g, baseData, x, y, z) _
+            .IteratesALL _
+            .RenderAs3DChart(
+                canvas:=g,
+                camera:=camera,
+                region:=canvas,
+                labelFont:=CSSFont.TryParse(theme.tagCSS).GDIObject(g.Dpi),
+                labelerItr:=0,
+                showLabel:=theme.drawLabels,
+                labelColor:=labelColor
+            )
     End Sub
 
     Private Iterator Function populateModels(g As IGraphics,
                                              baseData As ggplotData,
                                              x() As Double,
                                              y() As Double,
-                                             z() As Double,
-                                             ggplot As ggplot,
-                                             theme As Theme) As IEnumerable(Of Element3D) Implements Ilayer3d.populateModels
+                                             z() As Double) As IEnumerable(Of Element3D())
 
-        Throw New NotImplementedException()
+        For Each layer As ggplotLayer In layers.ToArray
+            If layer.GetType.ImplementInterface(Of Ilayer3d) Then
+                Call layers.Remove(layer)
+
+                Yield DirectCast(layer, Ilayer3d) _
+                    .populateModels(g, baseData, x, y, z, Me, theme) _
+                    .ToArray
+            End If
+        Next
     End Function
 
     Private Sub plot2D(baseData As ggplotData, ByRef g As IGraphics, canvas As GraphicsRegion)

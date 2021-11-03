@@ -59,6 +59,23 @@ Namespace layers
         Public Property shape As LegendStyles
         Public Property size As Single
 
+        Protected Function getColorSet(ggplot As ggplot, ByRef legends As legendGroupElement) As String()
+            Dim factors As String() = ggplot.getText(reader.color)
+            Dim maps As Func(Of Object, String) = colorMap.ColorHandler(ggplot, factors)
+            Dim legendItems As LegendObject() = colorMap.TryGetFactorLegends(factors, shape, ggplot.ggplotTheme)
+            Dim colors = factors.Select(Function(factor) maps(factor)).ToArray
+
+            legends = New legendGroupElement With {
+                .legends = legendItems
+            }
+
+            If legendItems.IsNullOrEmpty Then
+                legends = Nothing
+            End If
+
+            Return colors
+        End Function
+
         Public Overrides Function Plot(
             g As IGraphics,
             canvas As GraphicsRegion,
@@ -75,18 +92,7 @@ Namespace layers
             Dim legends As legendGroupElement = Nothing
 
             If useCustomColorMaps Then
-                Dim factors As String() = ggplot.getText(reader.color)
-                Dim maps As Func(Of Object, String) = colorMap.ColorHandler(ggplot, factors)
-                Dim legendItems As LegendObject() = colorMap.TryGetFactorLegends(factors, shape, ggplot.ggplotTheme)
-
-                colors = factors.Select(Function(factor) maps(factor)).ToArray
-                legends = New legendGroupElement With {
-                    .legends = legendItems
-                }
-
-                If legendItems.IsNullOrEmpty Then
-                    legends = Nothing
-                End If
+                colors = getColorSet(ggplot, legends)
             ElseIf Not ggplot.base.reader.color Is Nothing Then
                 colors = ggplot.base.getColors(ggplot)
             End If
