@@ -48,6 +48,7 @@ Imports System.Drawing.Drawing2D
 Imports ggplot.colors
 Imports ggplot.elements
 Imports ggplot.layers
+Imports ggplot.layers.layer3d
 Imports ggplot.options
 Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
@@ -233,13 +234,27 @@ Public Module ggplot2
                                Optional show_legend As Boolean = True,
                                Optional env As Environment = Nothing) As ggplotLayer
 
-        Return New ggplotScatter With {
-            .colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color), env),
-            .shape = shape,
-            .size = size,
-            .showLegend = show_legend,
-            .reader = mapping
-        }
+        Dim colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color), env)
+
+        If mapping IsNot Nothing AndAlso Not mapping.isPlain2D Then
+            ' 3D
+            Return New ggplotScatter3d With {
+                .colorMap = colorMap,
+                .reader = mapping,
+                .shape = shape,
+                .size = size,
+                .showLegend = show_legend
+            }
+        Else
+            ' 2D
+            Return New ggplotScatter With {
+                .colorMap = colorMap,
+                .shape = shape,
+                .size = size,
+                .showLegend = show_legend,
+                .reader = mapping
+            }
+        End If
     End Function
 
     ''' <summary>
@@ -527,6 +542,12 @@ Public Module ggplot2
     ''' <returns></returns>
     <ROperator("+")>
     Public Function add_layer(ggplot As ggplot, layer As ggplotLayer) As ggplot
+        If Not ggplot.base.reader.isPlain2D Then
+            If TypeOf layer Is ggplotScatter Then
+                layer = New ggplotScatter3d(layer)
+            End If
+        End If
+
         ggplot.layers.Add(layer)
         layer.zindex = ggplot.layers.Count
 

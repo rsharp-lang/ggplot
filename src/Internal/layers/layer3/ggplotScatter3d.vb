@@ -50,6 +50,19 @@ Namespace layers.layer3d
 
     Public Class ggplotScatter3d : Inherits ggplotScatter
 
+        Sub New(copy2D As ggplotScatter)
+            Me.colorMap = copy2D.colorMap
+            Me.reader = copy2D.reader
+            Me.shape = copy2D.shape
+            Me.showLegend = copy2D.showLegend
+            Me.size = copy2D.size
+            Me.which = copy2D.which
+            Me.zindex = copy2D.zindex
+        End Sub
+
+        Sub New()
+        End Sub
+
         Public Overrides Function Plot(g As IGraphics,
                                        canvas As GraphicsRegion,
                                        baseData As ggplotData,

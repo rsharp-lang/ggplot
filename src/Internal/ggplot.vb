@@ -76,6 +76,12 @@ Public Class ggplot : Inherits Plot
         End Get
     End Property
 
+    Public ReadOnly Property is3D As Boolean
+        Get
+            Return Not base.reader.isPlain2D
+        End Get
+    End Property
+
     Public Sub New(theme As Theme)
         MyBase.New(theme)
     End Sub
