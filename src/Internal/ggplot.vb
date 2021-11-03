@@ -135,9 +135,6 @@ Public Class ggplot : Inherits Plot
         Dim x As Double() = REnv.asVector(Of Double)(baseData.x)
         Dim y As Double() = REnv.asVector(Of Double)(baseData.y)
         Dim z As Double() = REnv.asVector(Of Double)(baseData.z)
-        Dim xTicks = x.Range.CreateAxisTicks
-        Dim yTicks = y.Range.CreateAxisTicks
-        Dim zTicks = z.Range.CreateAxisTicks
         Dim labelColor As New SolidBrush(theme.tagColor.TranslateColor)
         Dim camera As New Camera With {
             .screen = canvas.PlotRegion.Size,
@@ -169,14 +166,17 @@ Public Class ggplot : Inherits Plot
 
         Dim ppi As Integer = g.Dpi
         Dim axisLabelFont As Font = CSSFont.TryParse(theme.axisLabelCSS).GDIObject(ppi)
+        Dim xTicks = x.Range.CreateAxisTicks
+        Dim yTicks = y.Range.CreateAxisTicks
+        Dim zTicks = z.Range.CreateAxisTicks
 
         ' 然后生成底部的网格
-        For Each line As Line In GridBottom.Grid(x, y, (x(1) - x(0), y(1) - y(0)), z.Min)
-            Yield {line}
-        Next
+        Yield Grids.Grid1(xTicks, yTicks, (xTicks(1) - xTicks(0), yTicks(1) - yTicks(0)), zTicks.Min).ToArray
+        Yield Grids.Grid2(xTicks, zTicks, (xTicks(1) - xTicks(0), zTicks(1) - zTicks(0)), yTicks.Min).ToArray
+        Yield Grids.Grid3(yTicks, zTicks, (yTicks(1) - yTicks(0), zTicks(1) - zTicks(0)), xTicks.Max).ToArray
 
         Yield AxisDraw.Axis(
-            xrange:=x, yrange:=y, zrange:=z,
+            xrange:=xTicks, yrange:=yTicks, zrange:=zTicks,
             labelFont:=axisLabelFont,
             labels:=(xlabel, ylabel, zlabel),
             strokeCSS:=theme.axisStroke,
