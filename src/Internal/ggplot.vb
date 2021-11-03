@@ -56,6 +56,7 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Plot3D.Device
+Imports Microsoft.VisualBasic.Data.ChartPlots.Plot3D.Model
 Imports Microsoft.VisualBasic.Emit.Delegates
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.BitmapImage
@@ -158,6 +159,22 @@ Public Class ggplot : Inherits Plot
                                              x() As Double,
                                              y() As Double,
                                              z() As Double) As IEnumerable(Of Element3D())
+
+        Dim ppi As Integer = g.Dpi
+        Dim axisLabelFont As Font = CSSFont.TryParse(theme.axisLabelCSS).GDIObject(ppi)
+
+        ' 然后生成底部的网格
+        For Each line As Line In GridBottom.Grid(x, y, (x(1) - x(0), y(1) - y(0)), z.Min)
+            Yield {line}
+        Next
+
+        Yield AxisDraw.Axis(
+            xrange:=x, yrange:=y, zrange:=z,
+            labelFont:=axisLabelFont,
+            labels:=(xlabel, ylabel, zlabel),
+            strokeCSS:=theme.axisStroke,
+            arrowFactor:="2,2"
+        )
 
         For Each layer As ggplotLayer In layers.ToArray
             If layer.GetType.ImplementInterface(Of Ilayer3d) Then
