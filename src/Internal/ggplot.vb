@@ -138,8 +138,15 @@ Public Class ggplot : Inherits Plot
         Dim xTicks = x.Range.CreateAxisTicks
         Dim yTicks = y.Range.CreateAxisTicks
         Dim zTicks = z.Range.CreateAxisTicks
-        Dim camera As New Camera
         Dim labelColor As New SolidBrush(theme.tagColor.TranslateColor)
+        Dim camera As New Camera With {
+            .screen = canvas.PlotRegion.Size,
+            .fov = 10000,
+            .viewDistance = -75,
+            .angleX = 30,
+            .angleY = 30,
+            .angleZ = 125
+        }
 
         Call populateModels(g, baseData, x, y, z) _
             .IteratesALL _
