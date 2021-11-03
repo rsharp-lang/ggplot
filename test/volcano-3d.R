@@ -22,4 +22,10 @@ print(`Down:    ${sum("Down"    == volcano[, "factor"])}`);
 bitmap(file = `${@dir}/volcano-3d.png`, size = [3000, 3000]) {
     # create ggplot layers and tweaks via ggplot style options
 	ggplot(volcano, aes(x = "log2FC", y = "p.value", z = "impact"), padding = "padding:250px 500px 250px 300px;")
+	+ geom_point(aes(color = "factor"), color = "black", shape = "circle", size = 25)
+	 + scale_colour_manual(values = list(
+          Up        = "red",
+          "Not Sig" = "gray",
+          Down      = "steelblue"
+       ))
 }

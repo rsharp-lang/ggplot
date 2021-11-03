@@ -1,48 +1,48 @@
 ﻿#Region "Microsoft.VisualBasic::28216d8e7a111ac3d90f79b715b200e5, src\Internal\ggplot.vb"
 
-    ' Author:
-    ' 
-    '       asuka (amethyst.asuka@gcmodeller.org)
-    '       xie (genetics@smrucc.org)
-    '       xieguigang (xie.guigang@live.com)
-    ' 
-    ' Copyright (c) 2018 GPL3 Licensed
-    ' 
-    ' 
-    ' GNU GENERAL PUBLIC LICENSE (GPL3)
-    ' 
-    ' 
-    ' This program is free software: you can redistribute it and/or modify
-    ' it under the terms of the GNU General Public License as published by
-    ' the Free Software Foundation, either version 3 of the License, or
-    ' (at your option) any later version.
-    ' 
-    ' This program is distributed in the hope that it will be useful,
-    ' but WITHOUT ANY WARRANTY; without even the implied warranty of
-    ' MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    ' GNU General Public License for more details.
-    ' 
-    ' You should have received a copy of the GNU General Public License
-    ' along with this program. If not, see <http://www.gnu.org/licenses/>.
+' Author:
+' 
+'       asuka (amethyst.asuka@gcmodeller.org)
+'       xie (genetics@smrucc.org)
+'       xieguigang (xie.guigang@live.com)
+' 
+' Copyright (c) 2018 GPL3 Licensed
+' 
+' 
+' GNU GENERAL PUBLIC LICENSE (GPL3)
+' 
+' 
+' This program is free software: you can redistribute it and/or modify
+' it under the terms of the GNU General Public License as published by
+' the Free Software Foundation, either version 3 of the License, or
+' (at your option) any later version.
+' 
+' This program is distributed in the hope that it will be useful,
+' but WITHOUT ANY WARRANTY; without even the implied warranty of
+' MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+' GNU General Public License for more details.
+' 
+' You should have received a copy of the GNU General Public License
+' along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
+' Summaries:
 
-    ' Class ggplot
-    ' 
-    '     Properties: args, base, data, environment, ggplotTheme
-    '                 layers
-    ' 
-    '     Constructor: (+1 Overloads) Sub New
-    ' 
-    '     Function: getText, getValue, Save
-    ' 
-    '     Sub: DrawLegends, DrawMultiple, DrawSingle, PlotInternal, reverse
-    ' 
-    ' /********************************************************************************/
+' Class ggplot
+' 
+'     Properties: args, base, data, environment, ggplotTheme
+'                 layers
+' 
+'     Constructor: (+1 Overloads) Sub New
+' 
+'     Function: getText, getValue, Save
+' 
+'     Sub: DrawLegends, DrawMultiple, DrawSingle, PlotInternal, reverse
+' 
+' /********************************************************************************/
 
 #End Region
 
@@ -51,14 +51,18 @@ Imports System.Drawing.Imaging
 Imports System.IO
 Imports ggplot.elements.legend
 Imports ggplot.layers
+Imports ggplot.layers.layer3d
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
+Imports Microsoft.VisualBasic.Data.ChartPlots.Plot3D.Device
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.BitmapImage
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
+Imports Microsoft.VisualBasic.Imaging.Drawing3D
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.Math.LinearAlgebra
+Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports Microsoft.VisualBasic.Scripting.Runtime
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
@@ -69,6 +73,7 @@ Imports REnv = SMRUCC.Rsharp.Runtime
 ''' </summary>
 Public Class ggplot : Inherits Plot
     Implements SaveGdiBitmap
+    Implements Ilayer3d
 
     Public ReadOnly Property ggplotTheme As Theme
         Get
@@ -129,9 +134,33 @@ Public Class ggplot : Inherits Plot
         Dim x As Double() = REnv.asVector(Of Double)(baseData.x)
         Dim y As Double() = REnv.asVector(Of Double)(baseData.y)
         Dim z As Double() = REnv.asVector(Of Double)(baseData.z)
+        Dim xTicks = x.Range.CreateAxisTicks
+        Dim yTicks = y.Range.CreateAxisTicks
+        Dim zTicks = z.Range.CreateAxisTicks
+        Dim camera As New Camera
+        Dim labelColor As New SolidBrush(theme.tagColor.TranslateColor)
 
-
+        Call populateModels(g, baseData, x, y, z, Me, theme).RenderAs3DChart(
+            canvas:=g,
+            camera:=camera,
+            region:=canvas,
+            labelFont:=CSSFont.TryParse(theme.tagCSS).GDIObject(g.Dpi),
+            labelerItr:=0,
+            showLabel:=theme.drawLabels,
+            labelColor:=labelColor
+        )
     End Sub
+
+    Private Iterator Function populateModels(g As IGraphics,
+                                             baseData As ggplotData,
+                                             x() As Double,
+                                             y() As Double,
+                                             z() As Double,
+                                             ggplot As ggplot,
+                                             theme As Theme) As IEnumerable(Of Element3D) Implements Ilayer3d.populateModels
+
+        Throw New NotImplementedException()
+    End Function
 
     Private Sub plot2D(baseData As ggplotData, ByRef g As IGraphics, canvas As GraphicsRegion)
         Dim x As Double() = REnv.asVector(Of Double)(baseData.x)

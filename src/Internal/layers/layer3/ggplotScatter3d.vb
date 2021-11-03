@@ -43,12 +43,14 @@
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
+Imports Microsoft.VisualBasic.Data.ChartPlots.Plot3D.Device
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 
 Namespace layers.layer3d
 
     Public Class ggplotScatter3d : Inherits ggplotScatter
+        Implements Ilayer3d
 
         Sub New(copy2D As ggplotScatter)
             Me.colorMap = copy2D.colorMap
@@ -73,6 +75,17 @@ Namespace layers.layer3d
                                        theme As Theme) As IggplotLegendElement
 
             Return MyBase.Plot(g, canvas, baseData, x, y, scale, ggplot, theme)
+        End Function
+
+        Public Function populateModels(g As IGraphics,
+                                       baseData As ggplotData,
+                                       x() As Double,
+                                       y() As Double,
+                                       z() As Double,
+                                       ggplot As ggplot,
+                                       theme As Theme) As IEnumerable(Of Element3D) Implements Ilayer3d.populateModels
+
+            Throw New NotImplementedException()
         End Function
     End Class
 End Namespace
