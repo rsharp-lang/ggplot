@@ -139,10 +139,10 @@ Public Class ggplot : Inherits Plot
         If cameraVal Is Nothing Then
             Return New Camera With {
                 .screen = plotSize,
-                .fov = 10000,
+                .fov = 100000,
                 .viewDistance = -75,
-                .angleX = 30,
-                .angleY = 30,
+                .angleX = 31.5,
+                .angleY = 65,
                 .angleZ = 125
             }
         Else
