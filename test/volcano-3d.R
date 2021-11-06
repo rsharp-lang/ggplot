@@ -11,6 +11,7 @@ volcano[, "factor"]  = ifelse(volcano[, "p.value"] < 0.05, volcano[, "factor"], 
 # transform of the pvalue scale
 volcano[, "p.value"] = -log10(volcano[, "p.value"]);
 volcano[, "impact"]  = volcano[, "p.value"] * abs(volcano[, "log2FC"]);
+volcano[, "impact"]  = log(volcano[, "impact"]);
 
 print("peeks of the raw data:");
 print(head(volcano));

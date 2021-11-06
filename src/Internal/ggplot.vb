@@ -131,19 +131,32 @@ Public Class ggplot : Inherits Plot
         End If
     End Sub
 
+    Private Function Camera(plotSize As Size) As Camera
+        Dim cameraVal As Object = args.getByName("camera")
+
+        If cameraVal Is Nothing Then
+            Return New Camera With {
+                .screen = plotSize,
+                .fov = 10000,
+                .viewDistance = -75,
+                .angleX = 30,
+                .angleY = 30,
+                .angleZ = 125
+            }
+        Else
+            With DirectCast(cameraVal, Camera)
+                .screen = plotSize
+                Return cameraVal
+            End With
+        End If
+    End Function
+
     Private Sub plot3D(baseData As ggplotData, ByRef g As IGraphics, canvas As GraphicsRegion)
         Dim x As Double() = REnv.asVector(Of Double)(baseData.x)
         Dim y As Double() = REnv.asVector(Of Double)(baseData.y)
         Dim z As Double() = REnv.asVector(Of Double)(baseData.z)
         Dim labelColor As New SolidBrush(theme.tagColor.TranslateColor)
-        Dim camera As New Camera With {
-            .screen = canvas.PlotRegion.Size,
-            .fov = 10000,
-            .viewDistance = -75,
-            .angleX = 30,
-            .angleY = 30,
-            .angleZ = 125
-        }
+        Dim camera As Camera = Me.Camera(canvas.PlotRegion.Size)
 
         Call populateModels(g, baseData, x, y, z) _
             .IteratesALL _
