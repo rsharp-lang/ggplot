@@ -169,6 +169,7 @@ Public Class ggplot : Inherits Plot
                 showLabel:=theme.drawLabels,
                 labelColor:=labelColor
             )
+        Call Draw2DElements(g, canvas, Nothing)
     End Sub
 
     Private Iterator Function populateModels(g As IGraphics,
@@ -254,11 +255,15 @@ Public Class ggplot : Inherits Plot
                 .DoCall(AddressOf legends.Add)
         Loop
 
+        Call Draw2DElements(g, canvas, legends)
+    End Sub
+
+    Private Sub Draw2DElements(g As IGraphics, canvas As GraphicsRegion, legends As List(Of IggplotLegendElement))
         If Not main.StringEmpty Then
-            Call DrawMainTitle(g, rect)
+            Call DrawMainTitle(g, canvas.PlotRegion)
         End If
         If theme.drawLegend Then
-            Call DrawLegends(From group As IggplotLegendElement In legends Where Not group Is Nothing, g, canvas)
+            Call DrawLegends(From group As IggplotLegendElement In legends.SafeQuery Where Not group Is Nothing, g, canvas)
         End If
     End Sub
 
