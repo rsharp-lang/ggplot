@@ -124,6 +124,8 @@ Public Class ggplot : Inherits Plot
     Protected Overrides Sub PlotInternal(ByRef g As IGraphics, canvas As GraphicsRegion)
         Dim baseData As ggplotData = base.reader.getMapData(data, environment)
 
+        Call g.Clear(theme.background.TranslateColor)
+
         If base.reader.isPlain2D Then
             Call plot2D(baseData, g, canvas)
         Else
@@ -165,10 +167,7 @@ Public Class ggplot : Inherits Plot
                 canvas:=g,
                 camera:=camera,
                 region:=canvas,
-                labelFont:=CSSFont.TryParse(theme.tagCSS).GDIObject(g.Dpi),
-                labelerItr:=0,
-                showLabel:=theme.drawLabels,
-                labelColor:=labelColor
+                theme:=theme
             )
 
         Call Draw2DElements(g, canvas, legends)
@@ -299,7 +298,7 @@ Public Class ggplot : Inherits Plot
         Dim y As Double = box.Top + box.Height / 3
 
         For i As Integer = 0 To all.Length - 1
-            all(i).Draw(g, canvas, x, y)
+            all(i).Draw(g, canvas, x, y, theme)
             x += width
         Next
     End Sub
@@ -312,7 +311,7 @@ Public Class ggplot : Inherits Plot
         Dim x As Single = (canvas.Padding.Right - size.Width) / 2 + rect.Right
         Dim y As Single = (rect.Height - size.Height) / 2 + rect.Top
 
-        Call legend.Draw(g, canvas, x, y)
+        Call legend.Draw(g, canvas, x, y, theme)
     End Sub
 
     Public Function Save(stream As Stream, format As ImageFormat) As Boolean Implements SaveGdiBitmap.Save

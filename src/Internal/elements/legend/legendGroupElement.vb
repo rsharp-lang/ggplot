@@ -60,8 +60,8 @@ Namespace elements.legend
         Public Property legends As LegendObject()
         Public Property shapeSize As New Size(120, 45)
 
-        Public Sub Draw(g As IGraphics, canvas As GraphicsRegion, x As Double, y As Double) Implements IggplotLegendElement.Draw
-            Call g.DrawLegends(New PointF(x, y), legends, $"{shapeSize.Width},{shapeSize.Height}")
+        Public Sub Draw(g As IGraphics, canvas As GraphicsRegion, x As Double, y As Double, theme As Theme) Implements IggplotLegendElement.Draw
+            Call g.DrawLegends(New PointF(x, y), legends, $"{shapeSize.Width},{shapeSize.Height}", fillBg:=theme.legendBoxBackground)
         End Sub
 
         Public Function MeasureSize(g As IGraphics) As SizeF Implements IggplotLegendElement.MeasureSize

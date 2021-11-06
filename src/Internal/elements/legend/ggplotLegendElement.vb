@@ -60,7 +60,7 @@ Namespace elements.legend
         Public Property shapeSize As New Size(120, 45)
         Public Overrides Property layout As Layout Implements IggplotLegendElement.layout
 
-        Public Sub Draw(g As IGraphics, canvas As GraphicsRegion, x As Double, y As Double) Implements IggplotLegendElement.Draw
+        Public Sub Draw(g As IGraphics, canvas As GraphicsRegion, x As Double, y As Double, theme As Theme) Implements IggplotLegendElement.Draw
             Throw New NotImplementedException()
         End Sub
 

@@ -57,7 +57,7 @@ Namespace elements.legend
 
         Property layout As Layout
 
-        Sub Draw(g As IGraphics, canvas As GraphicsRegion, x As Double, y As Double)
+        Sub Draw(g As IGraphics, canvas As GraphicsRegion, x As Double, y As Double, theme As Theme)
         Function MeasureSize(g As IGraphics) As SizeF
 
     End Interface
