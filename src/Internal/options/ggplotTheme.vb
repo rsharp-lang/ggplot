@@ -50,8 +50,10 @@ Namespace options
     Public Class ggplotTheme : Inherits ggplotOption
 
         Public Property axis_text As textElement
+        Public Property axis_line As String
         Public Property text As textElement
         Public Property legend_background As String
+        Public Property legend_text As textElement
         Public Property plot_background As String
         Public Property panel_background As String
         Public Property panel_grid As String
@@ -69,6 +71,13 @@ Namespace options
             If Not plot_background.StringEmpty Then theme.background = plot_background
             If Not panel_background.StringEmpty Then theme.gridFill = panel_background
 
+            If Not legend_text Is Nothing Then
+                theme.legendLabelCSS = legend_text.GetCSS
+            End If
+
+            If Not axis_line.StringEmpty Then
+                theme.axisStroke = axis_line
+            End If
             If Not panel_grid.StringEmpty Then
                 theme.gridStrokeX = panel_grid
                 theme.gridStrokeY = panel_grid

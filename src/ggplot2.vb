@@ -706,6 +706,13 @@ Public Module ggplot2
     ''' <param name="plot_background">background of the entire plot (element_rect(); inherits from rect)</param>
     ''' <param name="legend_background">background of legend (element_rect(); inherits from rect)</param>
     ''' <param name="panel_background">background of plotting area, drawn underneath plot (element_rect(); inherits from rect)</param>
+    ''' <param name="legend_text">legend item labels (element_text(); inherits from text)</param>
+    ''' <param name="axis_line">lines along axes (element_line()). Specify lines 
+    ''' along all axes (axis.line), lines for each plane (using axis.line.x or 
+    ''' axis.line.y), or individually for each axis (using axis.line.x.bottom, 
+    ''' axis.line.x.top, axis.line.y.left, axis.line.y.right). ``axis.line.*.*`` 
+    ''' inherits from axis.line.* which inherits from axis.line, which in turn 
+    ''' inherits from line</param>
     ''' <returns></returns>
     ''' <remarks>
     ''' Theme elements inherit properties from other theme elements hierarchically. 
@@ -720,7 +727,9 @@ Public Module ggplot2
     <ExportAPI("theme")>
     Public Function theme(Optional text As textElement = Nothing,
                           Optional axis_text As textElement = Nothing,
+                          Optional axis_line As String = Stroke.AxisStroke,
                           Optional legend_background As String = "white",
+                          Optional legend_text As textElement = Nothing,
                           Optional plot_background As String = "white",
                           Optional panel_background As String = "white",
                           Optional panel_grid As String = Stroke.AxisGridStroke) As ggplotOption
@@ -731,7 +740,9 @@ Public Module ggplot2
             .legend_background = legend_background,
             .plot_background = plot_background,
             .panel_background = panel_background,
-            .panel_grid = panel_grid
+            .panel_grid = panel_grid,
+            .axis_line = axis_line,
+            .legend_text = legend_text
         }
     End Function
 

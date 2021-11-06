@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html language="en-US">
+  <head>
+    <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/styles/vs.min.css" />
+    <style id="extend-builder-css-inline-css" type="text/css">
+                            body {
+    font: 62.5%/1.3846 arial,helvetica,clean,sans-serif;
+    background-color: #ccc;
+}
+
+h1, h2 {
+    color: #985735;
+    background-color: #fafafa;
+    border-top: .2em solid #f7f7f7;
+    border-bottom: .2em solid #f7f7f7;
+    padding-top: .3em;
+    padding-bottom: .3em;
+    padding-left: 13px;
+}
+
+.notebook {
+    min-width: 800px;
+    max-width: 1024px;
+    width: 100%;
+    clear: both;
+    /* margin: 0 auto; */
+    margin-left: 8%;
+    overflow: hidden;
+    font-size: 1.3em;
+    padding: 25px;
+    width: 98.9999%;
+    box-shadow: 0.4em 0.4em 0.5em rgb(0 0 0 / 30%);
+    margin-right: 1%;
+    float: left;
+    background-color: #fff;
+    overflow: hidden;
+    border: 1px solid rgb(155, 155, 155);
+}
+
+
+.output {
+    color: indianred;
+    font-family: consolas;
+    font-size: 10;
+    background-color: rgb(245, 245, 245);
+    padding: 5px;
+    max-width: 67.5%;
+    overflow-y: auto;
+}
+
+.output-image {
+    width: 90%;
+}
+
+.code-input {
+    color: rgb(2, 41, 43);
+    max-width: 65%;
+    position: relative;
+    background-color: #e1f3f8;
+    border-left: 8px solid #02bfe7;
+    padding: 5px 5px 5px 10px;
+    font-family: consolas;
+    font-size: 10;
+}
+
+blockquote {
+    background-color: rgb(241, 241, 241);
+    color: rgb(2, 41, 43);
+    max-width: 65%;
+    position: relative;
+    margin-left: 0%;
+    border-left: 8px solid #985735;
+    padding: 5px 5px 5px 10px;
+    font-family: consolas;
+    font-size: 10;
+}
+
+.code {
+    background-color: lightgoldenrodyellow;
+}
+
+table, thead {
+    border-collapse:collapse; 
+    border:solid #000000; 
+    border-width:2px 0 2px 0px; 
+    min-width: 350px;
+}
+
+td {
+    padding: 1% 1% 1% 2.5%;
+}
+                        </style>
+    <script type="text/javascript" src="https://unpkg.com/@highlightjs/cdn-assets@11.3.1/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="notebook">
+                            <h1>3D charting in ggplot</h1>
+
+<p>Just load ggplot package via package handler function:</p>
+
+<p></p>
+
+<pre><code class="r">library(ggplot);
+require(ggplot);
+</code></pre>
+
+<br />
+<hr />
+<pre>
+  <code class="code-input language-r hljs">
+# config for R# script engine
+# disable strict mode will enable programming in R#
+# script use a symbol without declared at first explicitly 
+options(strict = FALSE);
+#end region</code>
+</pre>
+
+<div class="output">
+  <code>
+    <pre>﻿$strict
+[1] "False"
+
+</pre>
+  </code>
+</div>
+<hr />
+<p>' Almost all of the data source for ggplot chartting</p>
+
+<br />
+<p>' is using the data.frame.</p>
+
+<br />
+<p>' we get the charting data source from a demo data file</p>
+
+<br />
+<p>' in ggplot package.</p>
+
+<br />
+<p>'</p>
+
+<br />
+<hr />
+<pre>
+  <code class="code-input language-r hljs">data = read.csv(data, row.names = 1);
+data[, "class"] = `class_${data[, "class"]}`;
+
+# take a peeks on what data that we've loaded
+# at here
+print(head(data));
+#end region</code>
+</pre>
+
+<div class="output">
+  <code>
+    <pre>﻿        X         Y         Z         class
+&lt;mode>  &lt;double>  &lt;double>  &lt;double>  &lt;string>
+5        3.9      -0.968    -2.06     "class_5"
+0        5.42      2.18      0.8      "class_0"
+4       -2.84     -1.44     -2.32     "class_4"
+1       -2.83     -4.38      4.38     "class_1"
+9       -1.86      0.624    -2.36     "class_9"
+2        2.72     -4.71      0.907    "class_2"
+
+</pre>
+  </code>
+</div>
+<hr />
+<p>' rendering a 3d chart in ggplot package is just simply</p>
+
+<br />
+<p>' enough as create a 2d chart plot. we just needs add</p>
+
+<br />
+<p>' a data mapping of the z axis at here!</p>
+
+<br />
+<p>'</p>
+
+<br />
+<hr />
+<pre>
+  <code class="code-input language-r hljs">ggplot(data, aes(x = "X", y = "Y", z = "Z"), padding = "padding:250px 500px 100px 100px;")
+   
+   # use scatter points for visual our data
+   + geom_point(aes(color = "class"), color = "paper", shape = "triangle", size = 20)   
+   + ggtitle("Scatter UMAP 3D")
+   # use the default white theme from ggplot
+   + theme_default()
+
+   # use a 3d camera to rotate the charting plot 
+   # and adjust view distance
+   + view_camera(angle = [31.5,65,125], fov = 100000)
+   ;
+   
+#end region</code>
+</pre>
+
+<div class="output">
+  <code>
+    <pre>﻿[1] instance of 'ggplot' from namespace: ggplot
+
+ 12 properties
+  $ggplotTheme [r] as Theme: {"XaxisTickFormat":"F2","YaxisTickFormat":"F2","axisLabelCSS":"font-style: strong; font-size: 12; font-family: Microsoft YaHei;","axisStroke":"stroke: black; stroke-width: 5px; stroke-dash: solid;","axisTickCSS":"font-style: normal; font-size: 10; font-family: Microsoft YaHei;","axisTickPadding":5,"axisTickStroke":"stroke: black; stroke-width: 2px; stroke-dash: solid;","background":"white","colorSet":"Set1:c9","drawAxis":true,"drawGrid":true,"drawLabels":false,"drawLegend":true,"gridFill":"white","gridStrokeX":"stroke: lightgray; stroke-width: 2px; stroke-dash: dash;","gridStrokeY":"stroke: lightgray; stroke-width: 2px; stroke-dash: dash;","htmlLabel":false,"legendBoxBackground":"white","legendBoxStroke":"stroke: black; stroke-width: 5px; stroke-dash: solid;","legendLabelCSS":"font-style: normal; font-size: 13; font-family: Microsoft YaHei;","legendLayout":null,"legendSplitSize":0,"legendTickAxisStroke":"stroke: black; stroke-width: 5px; stroke-dash: solid;","legendTickCSS":"font-style: normal; font-size: 12; font-family: Microsoft YaHei;","legendTickFormat":"F2","legendTitleCSS":"font-style: strong; font-size: 16; font-family: Microsoft YaHei;","lineStroke":"stroke: black; stroke-width: 5px; stroke-dash: solid;","mainCSS":"font-style: strong; font-size: 24; font-family: Bookman Old Style;","mainTextColor":"black","padding":"padding:250px 500px 100px 100px;","pointSize":5,"subtitleCSS":"font-style: normal; font-size: 20; font-family: Bookman Old Style;","tagCSS":"font-style: normal; font-size: 12; font-family: Bookman Old Style;","tagColor":"black","tagLinkStroke":"stroke: gray; stroke-width: 5px; stroke-dash: dash;","xAxisLayout":0,"xAxisRotate":0,"yAxisLayout":0}
+  $is3D [r] as Boolean: True
+  $data [r/w] as Object: [5000x4] ['X', 'Y', 'Z', 'class']
+  $layers [r/w] as List`1: &lt;unavailable>
+  $base [r/w] as ggplotBase: &lt;unavailable>
+  $args [r/w] as list: ["padding","camera"]
+  $environment [r/w] as Environment: Global(Environment)\SMRUCC/R#.call_function."ggplot"\ggplot2.R#_interop::.ggplot
+  $xlabel [r/w] as String: X
+  $ylabel [r/w] as String: Y
+  $zlabel [r/w] as String: Z
+  $legendTitle [r/w] as String: Legend
+  $main [r/w] as String: Scatter UMAP 3D
+
+ 10 methods
+  &getText -> String[]
+  &getValue -> Double[]
+  &Save -> Boolean
+  &Plot -> GraphicsData
+  &Plot -> Void
+  &Plot -> Void
+
+</pre>
+  </code>
+</div>
+<hr />
+
+                        </div>
+    <script type="text/javascript">hljs.highlightAll();</script>
+  </body>
+</html>
