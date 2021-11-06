@@ -178,22 +178,21 @@ Public Class ggplot : Inherits Plot
                                              z() As Double) As IEnumerable(Of Element3D())
 
         Dim ppi As Integer = g.Dpi
-        Dim axisLabelFont As Font = CSSFont.TryParse(theme.axisLabelCSS).GDIObject(ppi)
         Dim xTicks = x.Range.CreateAxisTicks
         Dim yTicks = y.Range.CreateAxisTicks
         Dim zTicks = z.Range.CreateAxisTicks
 
         ' 然后生成底部的网格
-        Yield Grids.Grid1(xTicks, yTicks, (xTicks(1) - xTicks(0), yTicks(1) - yTicks(0)), zTicks.Min).ToArray
-        Yield Grids.Grid2(xTicks, zTicks, (xTicks(1) - xTicks(0), zTicks(1) - zTicks(0)), yTicks.Min).ToArray
-        Yield Grids.Grid3(yTicks, zTicks, (yTicks(1) - yTicks(0), zTicks(1) - zTicks(0)), xTicks.Max).ToArray
+        Yield Grids.Grid1(xTicks, yTicks, (xTicks(1) - xTicks(0), yTicks(1) - yTicks(0)), zTicks.Min, showTicks:=Not theme.axisTickCSS.StringEmpty, strokeCSS:=theme.gridStrokeX, tickCSS:=theme.axisTickCSS).ToArray
+        Yield Grids.Grid2(xTicks, zTicks, (xTicks(1) - xTicks(0), zTicks(1) - zTicks(0)), yTicks.Min, showTicks:=Not theme.axisTickCSS.StringEmpty, strokeCSS:=theme.gridStrokeX, tickCSS:=theme.axisTickCSS).ToArray
+        Yield Grids.Grid3(yTicks, zTicks, (yTicks(1) - yTicks(0), zTicks(1) - zTicks(0)), xTicks.Max, showTicks:=Not theme.axisTickCSS.StringEmpty, strokeCSS:=theme.gridStrokeX, tickCSS:=theme.axisTickCSS).ToArray
 
         Yield AxisDraw.Axis(
             xrange:=xTicks, yrange:=yTicks, zrange:=zTicks,
-            labelFont:=axisLabelFont,
+            labelFontCss:=theme.axisLabelCSS,
             labels:=(xlabel, ylabel, zlabel),
             strokeCSS:=theme.axisStroke,
-            arrowFactor:="2,2"
+            arrowFactor:="1,2"
         )
 
         For Each layer As ggplotLayer In layers.ToArray
