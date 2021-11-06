@@ -59,21 +59,33 @@ Namespace layers
         Public Property shape As LegendStyles
         Public Property size As Single
 
-        Protected Function getColorSet(ggplot As ggplot, ByRef legends As legendGroupElement) As String()
-            Dim factors As String() = ggplot.getText(reader.color)
-            Dim maps As Func(Of Object, String) = colorMap.ColorHandler(ggplot, factors)
-            Dim legendItems As LegendObject() = colorMap.TryGetFactorLegends(factors, shape, ggplot.ggplotTheme)
-            Dim colors = factors.Select(Function(factor) maps(factor)).ToArray
+        Protected Function getColorSet(ggplot As ggplot, nsize As Integer, ByRef legends As legendGroupElement) As String()
+            legends = Nothing
 
-            legends = New legendGroupElement With {
-                .legends = legendItems
-            }
+            If reader Is Nothing OrElse TypeOf colorMap Is ggplotColorLiteral Then
+                Dim colorString As String = DirectCast(colorMap, ggplotColorLiteral).ToString
+                Dim colors As String() = Enumerable _
+                    .Range(0, nsize) _
+                    .Select(Function(any) colorString) _
+                    .ToArray
 
-            If legendItems.IsNullOrEmpty Then
-                legends = Nothing
+                Return colors
+            Else
+                Dim factors As String() = ggplot.getText(reader?.color)
+                Dim maps As Func(Of Object, String) = colorMap.ColorHandler(ggplot, factors)
+                Dim legendItems As LegendObject() = colorMap.TryGetFactorLegends(factors, shape, ggplot.ggplotTheme)
+                Dim colors = factors.Select(Function(factor) maps(factor)).ToArray
+
+                legends = New legendGroupElement With {
+                    .legends = legendItems
+                }
+
+                If legendItems.IsNullOrEmpty Then
+                    legends = Nothing
+                End If
+
+                Return colors
             End If
-
-            Return colors
         End Function
 
         Public Overrides Function Plot(
@@ -90,9 +102,10 @@ Namespace layers
             Dim serial As SerialData
             Dim colors As String() = Nothing
             Dim legends As legendGroupElement = Nothing
+            Dim nsize As Integer = x.Length
 
             If useCustomColorMaps Then
-                colors = getColorSet(ggplot, legends)
+                colors = getColorSet(ggplot, nsize, legends)
             ElseIf Not ggplot.base.reader.color Is Nothing Then
                 colors = ggplot.base.getColors(ggplot)
             End If

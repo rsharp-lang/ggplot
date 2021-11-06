@@ -2,25 +2,28 @@ imports ["dataset", "umap"] from "MLkit";
 
 options(strict = FALSE);
 
-raw = read.csv(`${@dir}/HR2MSI mouse urinary bladder S096_top3.csv`, check_modes = TRUE, check_names = TRUE, row_names = 1);
+const filename as string = "E:\GCModeller\src\R-sharp\Library\demo\machineLearning\umap\MNIST-LabelledVectorArray-60000x100.msgpack";
+const MNIST_LabelledVectorArray = filename
+|> read.mnist.labelledvector(takes = 50000)
+;
+const tags as string = rownames(MNIST_LabelledVectorArray);
 
-print(rownames(raw));
-print(colnames(raw));
+rownames(MNIST_LabelledVectorArray) = `X${1:nrow(MNIST_LabelledVectorArray)}`;
 
-const manifold = raw
-:> umap(
-	dimension            = 3, 
-	numberOfNeighbors    = 15,
-    localConnectivity    = 1,
-    KnnIter              = 64,
-    bandwidth            = 1
+const manifold = umap(MNIST_LabelledVectorArray,
+	dimension         = 3, 
+	numberOfNeighbors = 60,
+	localConnectivity = 1,
+	KnnIter           = 64,
+	bandwidth         = 1,
+	debug             = TRUE,
+	KDsearch          = FALSE
 )
 ;
 
 manifold$umap
-|> as.data.frame(
-	labels = manifold$labels, 
-	dimension = ["X", "Y", "Z"]
-)
-|> write.csv(file = `${@dir}/UMAP3D.csv`)
-;
+|> as.data.frame
+|> write.csv( 
+	file      = `${@dir}/UMAP3D.csv`, 
+	row.names = tags
+);

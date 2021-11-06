@@ -81,7 +81,7 @@ Namespace layers
 
         Protected ReadOnly Property useCustomColorMaps As Boolean
             Get
-                Return (Not reader Is Nothing) AndAlso Not reader.color Is Nothing
+                Return colorMap IsNot Nothing OrElse ((Not reader Is Nothing) AndAlso Not reader.color Is Nothing)
             End Get
         End Property
 

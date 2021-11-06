@@ -79,7 +79,7 @@ Namespace layers.layer3d
             Dim legends As legendGroupElement = Nothing
 
             If useCustomColorMaps Then
-                colors = getColorSet(ggplot, legends)
+                colors = getColorSet(ggplot, x.Length, legends)
             ElseIf Not ggplot.base.reader.color Is Nothing Then
                 colors = ggplot.base.getColors(ggplot)
             End If
@@ -98,8 +98,9 @@ Namespace layers.layer3d
                 .Width = Me.size,
                 .Height = Me.size
             }
+            Dim nsize As Integer = x.Length
 
-            For i As Integer = 0 To colors.Length - 1
+            For i As Integer = 0 To nsize - 1
                 Yield New ShapePoint With {
                     .Fill = colors(i).GetBrush,
                     .Location = New Point3D(x(i), y(i), z(i)),
