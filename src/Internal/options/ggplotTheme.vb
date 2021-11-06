@@ -53,14 +53,20 @@ Namespace options
         Public Property text As textElement
         Public Property legend_background As String
         Public Property plot_background As String
+        Public Property panel_background As String
 
         Public Overrides Function Config(ggplot As ggplot) As ggplot
             Dim theme As Theme = ggplot.ggplotTheme
 
-            If Not text Is Nothing Then theme.mainCSS = text?.GetCSS
+            If Not text Is Nothing Then
+                theme.mainCSS = text.GetCSS
+                theme.mainTextColor = text.color
+            End If
+
             If Not axis_text Is Nothing Then theme.axisLabelCSS = axis_text?.GetCSS
             If Not legend_background.StringEmpty Then theme.legendBoxBackground = legend_background
-            If Not plot_background.StringEmpty Then theme.gridFill = plot_background
+            If Not plot_background.StringEmpty Then theme.background = plot_background
+            If Not panel_background.StringEmpty Then theme.gridFill = panel_background
 
             Return ggplot
         End Function

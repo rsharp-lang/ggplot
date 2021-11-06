@@ -701,15 +701,10 @@ Public Module ggplot2
     ''' more about theme inheritance below.
     ''' </summary>
     ''' <param name="axis_text"></param>
-    ''' <param name="text">
-    ''' all text elements (element_text())
-    ''' </param>
-    ''' <param name="plot_background">
-    ''' background of the entire plot (element_rect(); inherits from rect)
-    ''' </param>
-    ''' <param name="legend_background">
-    ''' background of legend (element_rect(); inherits from rect)
-    ''' </param>
+    ''' <param name="text">all text elements (element_text())</param>
+    ''' <param name="plot_background">background of the entire plot (element_rect(); inherits from rect)</param>
+    ''' <param name="legend_background">background of legend (element_rect(); inherits from rect)</param>
+    ''' <param name="panel_background">background of plotting area, drawn underneath plot (element_rect(); inherits from rect)</param>
     ''' <returns></returns>
     ''' <remarks>
     ''' Theme elements inherit properties from other theme elements hierarchically. 
@@ -725,13 +720,15 @@ Public Module ggplot2
     Public Function theme(Optional text As textElement = Nothing,
                           Optional axis_text As textElement = Nothing,
                           Optional legend_background As String = "white",
-                          Optional plot_background As String = "white") As ggplotOption
+                          Optional plot_background As String = "white",
+                          Optional panel_background As String = "white") As ggplotOption
 
         Return New ggplotTheme With {
             .axis_text = axis_text,
             .text = text,
             .legend_background = legend_background,
-            .plot_background = plot_background
+            .plot_background = plot_background,
+            .panel_background = panel_background
         }
     End Function
 
@@ -908,7 +905,8 @@ Public Module ggplot2
         }
 
         Return New textElement With {
-            .style = css
+            .style = css,
+            .color = color
         }
     End Function
 End Module
