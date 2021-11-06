@@ -19,10 +19,12 @@ options(strict = FALSE);
 ;
 
 #' Almost all of the data source for ggplot chartting
-#' is using the data.frame.
-#' we get the charting data source from a demo data file
-#' in ggplot package.
+#' is using the ``data.frame`` object.
+#' 
+#' Here we get the charting data source from a demo 
+#' data file from ggplot package internal dataset.
 #'
+;
 
 #region "read dataset"
 data = system.file("data/UMAP3D.csv", package = "ggplot");
@@ -39,6 +41,7 @@ print(head(data));
 #' enough as create a 2d chart plot. we just needs add
 #' a data mapping of the z axis at here!
 #' 
+;
 
 #region "ggplot 3d"
 # create ggplot layers and tweaks via ggplot style options
@@ -54,6 +57,24 @@ ggplot(data, aes(x = "X", y = "Y", z = "Z"), padding = "padding:250px 500px 100p
    # and adjust view distance
    + view_camera(angle = [31.5,65,125], fov = 100000)
    ;
+#end region
+;
+
+#' there are sevral plot style that defined in
+#' ggplot package, example as you can change the
+#' plot style into black just with ``theme_black``
+#' function:
+#' 
+;
+
+#region "black theme"
+ggplot(data, aes(x = "X", y = "Y", z = "Z"), padding = "padding:250px 500px 100px 100px;")
    
+   + geom_point(aes(color = "class"), color = "paper", shape = "triangle", size = 20)   
+   + ggtitle("Scatter UMAP 3D")
+   # use the black theme from ggplot package
+   + theme_black()
+   + view_camera(angle = [31.5,65,125], fov = 100000)
+   ;
 #end region
 ;
