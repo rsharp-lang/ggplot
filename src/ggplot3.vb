@@ -3,6 +3,7 @@ Imports ggplot.options
 Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.Imaging.Drawing3D
 Imports Microsoft.VisualBasic.Scripting.MetaData
+Imports SMRUCC.Rsharp.Runtime.Interop
 
 ''' <summary>
 ''' ggplot for 3D
@@ -16,8 +17,9 @@ Module ggplot3
     ''' <returns></returns>
     <ExportAPI("view_camera")>
     Public Function view_camera(Optional view_distance As Integer = -75,
-                                Optional fov As Integer = 10000,
-                                Optional angle As Double() = Nothing) As ggplotCamera
+                                Optional fov As Integer = 100000,
+                                <RRawVectorArgument(GetType(Double))>
+                                Optional angle As Object = "31.5,65,125") As ggplotCamera
 
         If angle.IsNullOrEmpty Then
             angle = {0, 0, 0}
