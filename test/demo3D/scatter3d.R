@@ -12,7 +12,7 @@ bitmap(file = `${@dir}/UMAP3d.png`, size = [2400, 2000]) {
 	+ geom_point(aes(color = "class"), color = "paper", shape = "triangle", size = 20)
 	+ view_camera(angle = [31.5,65,125], fov = 100000)
 	+ ggtitle("Scatter UMAP 3D")
-	+ theme_default()
+	+ theme_black()
 	;
 
 }
