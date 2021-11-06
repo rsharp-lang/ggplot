@@ -4,6 +4,7 @@ Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.Imaging.Drawing3D
 Imports Microsoft.VisualBasic.Scripting.MetaData
 Imports SMRUCC.Rsharp.Runtime.Interop
+Imports REnv = SMRUCC.Rsharp.Runtime
 
 ''' <summary>
 ''' ggplot for 3D
@@ -21,16 +22,18 @@ Module ggplot3
                                 <RRawVectorArgument(GetType(Double))>
                                 Optional angle As Object = "31.5,65,125") As ggplotCamera
 
-        If angle.IsNullOrEmpty Then
-            angle = {0, 0, 0}
-        ElseIf angle.Length = 1 Then
-            angle = {angle(0), angle(0), angle(0)}
+        Dim angles As Double() = REnv.asVector(Of Double)(angle)
+
+        If angles.IsNullOrEmpty Then
+            angles = {0, 0, 0}
+        ElseIf angles.Length = 1 Then
+            angles = {angles(0), angles(0), angles(0)}
         End If
 
         Dim camera As New Camera With {
-            .angleX = angle(0),
-            .angleY = angle(1),
-            .angleZ = angle(2),
+            .angleX = angles(0),
+            .angleY = angles(1),
+            .angleZ = angles(2),
             .fov = fov,
             .viewDistance = view_distance
         }
