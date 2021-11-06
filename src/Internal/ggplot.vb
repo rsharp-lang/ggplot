@@ -184,18 +184,20 @@ Public Class ggplot : Inherits Plot
         Dim xTicks = x.Range.CreateAxisTicks
         Dim yTicks = y.Range.CreateAxisTicks
         Dim zTicks = z.Range.CreateAxisTicks
+        Dim tickCss As String = CSSFont.TryParse(theme.axisTickCSS).SetFontColor(theme.mainTextColor).ToString
 
         ' 然后生成底部的网格
-        Yield Grids.Grid1(xTicks, yTicks, (xTicks(1) - xTicks(0), yTicks(1) - yTicks(0)), zTicks.Min, showTicks:=Not theme.axisTickCSS.StringEmpty, strokeCSS:=theme.gridStrokeX, tickCSS:=theme.axisTickCSS).ToArray
-        Yield Grids.Grid2(xTicks, zTicks, (xTicks(1) - xTicks(0), zTicks(1) - zTicks(0)), yTicks.Min, showTicks:=Not theme.axisTickCSS.StringEmpty, strokeCSS:=theme.gridStrokeX, tickCSS:=theme.axisTickCSS).ToArray
-        Yield Grids.Grid3(yTicks, zTicks, (yTicks(1) - yTicks(0), zTicks(1) - zTicks(0)), xTicks.Max, showTicks:=Not theme.axisTickCSS.StringEmpty, strokeCSS:=theme.gridStrokeX, tickCSS:=theme.axisTickCSS).ToArray
+        Yield Grids.Grid1(xTicks, yTicks, (xTicks(1) - xTicks(0), yTicks(1) - yTicks(0)), zTicks.Min, showTicks:=Not theme.axisTickCSS.StringEmpty, strokeCSS:=theme.gridStrokeX, tickCSS:=tickCss).ToArray
+        Yield Grids.Grid2(xTicks, zTicks, (xTicks(1) - xTicks(0), zTicks(1) - zTicks(0)), yTicks.Min, showTicks:=Not theme.axisTickCSS.StringEmpty, strokeCSS:=theme.gridStrokeX, tickCSS:=tickCss).ToArray
+        Yield Grids.Grid3(yTicks, zTicks, (yTicks(1) - yTicks(0), zTicks(1) - zTicks(0)), xTicks.Max, showTicks:=Not theme.axisTickCSS.StringEmpty, strokeCSS:=theme.gridStrokeX, tickCSS:=tickCss).ToArray
 
         Yield AxisDraw.Axis(
             xrange:=xTicks, yrange:=yTicks, zrange:=zTicks,
             labelFontCss:=theme.axisLabelCSS,
             labels:=(xlabel, ylabel, zlabel),
             strokeCSS:=theme.axisStroke,
-            arrowFactor:="1,2"
+            arrowFactor:="1,2",
+            labelColorVal:=theme.mainTextColor
         )
 
         For Each layer As ggplotLayer In layers.ToArray

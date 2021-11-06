@@ -56,6 +56,7 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Shapes
+Imports Microsoft.VisualBasic.Language.Default
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports Microsoft.VisualBasic.Scripting.MetaData
 Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine
@@ -721,14 +722,16 @@ Public Module ggplot2
                           Optional axis_text As textElement = Nothing,
                           Optional legend_background As String = "white",
                           Optional plot_background As String = "white",
-                          Optional panel_background As String = "white") As ggplotOption
+                          Optional panel_background As String = "white",
+                          Optional panel_grid As String = Stroke.AxisGridStroke) As ggplotOption
 
         Return New ggplotTheme With {
             .axis_text = axis_text,
             .text = text,
             .legend_background = legend_background,
             .plot_background = plot_background,
-            .panel_background = panel_background
+            .panel_background = panel_background,
+            .panel_grid = panel_grid
         }
     End Function
 
@@ -855,6 +858,8 @@ Public Module ggplot2
 
     Const NULL As Object = Nothing
 
+    ReadOnly defaultTextColor As [Default](Of String) = "black"
+
     ''' <summary>
     ''' ### Theme elements
     ''' 
@@ -887,26 +892,26 @@ Public Module ggplot2
     <ExportAPI("element_text")>
     Public Function element_text(Optional family$ = NULL,
                                  Optional face$ = NULL,
-                                 Optional size!? = NULL,
-                                 Optional hjust!? = NULL,
-                                 Optional vjust!? = NULL,
-                                 Optional angle!? = NULL,
-                                 Optional lineheight!? = NULL,
+                                 Optional size! = NULL,
+                                 Optional hjust! = NULL,
+                                 Optional vjust! = NULL,
+                                 Optional angle! = NULL,
+                                 Optional lineheight! = NULL,
                                  Optional color$ = NULL,
-                                 Optional margin!? = NULL,
+                                 Optional margin! = NULL,
                                  Optional debug As Boolean = False,
                                  Optional inherit_blank As Boolean = False) As textElement
 
         Dim css As New CSSFont With {
-            .family = family,
-            .color = color,
-            .size = size,
+            .family = If(family, FontFace.MicrosoftYaHei),
+            .color = color Or defaultTextColor,
+            .size = If(size = 0, 24, size),
             .weight = lineheight
         }
 
         Return New textElement With {
             .style = css,
-            .color = color
+            .color = color Or defaultTextColor
         }
     End Function
 End Module

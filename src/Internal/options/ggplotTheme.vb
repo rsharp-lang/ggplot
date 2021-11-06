@@ -54,6 +54,7 @@ Namespace options
         Public Property legend_background As String
         Public Property plot_background As String
         Public Property panel_background As String
+        Public Property panel_grid As String
 
         Public Overrides Function Config(ggplot As ggplot) As ggplot
             Dim theme As Theme = ggplot.ggplotTheme
@@ -67,6 +68,11 @@ Namespace options
             If Not legend_background.StringEmpty Then theme.legendBoxBackground = legend_background
             If Not plot_background.StringEmpty Then theme.background = plot_background
             If Not panel_background.StringEmpty Then theme.gridFill = panel_background
+
+            If Not panel_grid.StringEmpty Then
+                theme.gridStrokeX = panel_grid
+                theme.gridStrokeY = panel_grid
+            End If
 
             Return ggplot
         End Function
