@@ -47,5 +47,9 @@ Namespace elements
     Public Class textElement : Inherits ggplotElement
 
         Public Property style As CSSFont
+
+        Public Function GetCSS() As String
+            Return style.ToString
+        End Function
     End Class
 End Namespace

@@ -73,7 +73,8 @@ Namespace layers.layer3d
                                        y() As Double,
                                        z() As Double,
                                        ggplot As ggplot,
-                                       theme As Theme) As IEnumerable(Of Element3D) Implements Ilayer3d.populateModels
+                                       theme As Theme,
+                                       legendList As List(Of IggplotLegendElement)) As IEnumerable(Of Element3D) Implements Ilayer3d.populateModels
 
             Dim colors As String() = Nothing
             Dim legends As legendGroupElement = Nothing
@@ -83,6 +84,8 @@ Namespace layers.layer3d
             ElseIf Not ggplot.base.reader.color Is Nothing Then
                 colors = ggplot.base.getColors(ggplot)
             End If
+
+            Call legendList.Add(legends)
 
             If Not useCustomData Then
                 Return createSerialData($"{baseData.x} ~ {baseData.y} ~ {baseData.z}", x, y, z, colors)

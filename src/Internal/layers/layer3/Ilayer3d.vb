@@ -1,4 +1,5 @@
-﻿Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
+﻿Imports ggplot.elements.legend
+Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Plot3D.Device
 Imports Microsoft.VisualBasic.Imaging
 
@@ -12,7 +13,8 @@ Namespace layers.layer3d
                                 y() As Double,
                                 z() As Double,
                                 ggplot As ggplot,
-                                theme As Theme) As IEnumerable(Of Element3D)
+                                theme As Theme,
+                                legendList As List(Of IggplotLegendElement)) As IEnumerable(Of Element3D)
 
     End Interface
 End Namespace

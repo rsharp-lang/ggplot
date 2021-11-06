@@ -3,5 +3,7 @@
 #' 
 #' 
 const theme_default as function() {
-    ggplot2::theme();
+    ggplot2::theme(
+        plot.background = "white"
+    );
 }

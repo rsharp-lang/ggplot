@@ -157,8 +157,9 @@ Public Class ggplot : Inherits Plot
         Dim z As Double() = REnv.asVector(Of Double)(baseData.z)
         Dim labelColor As New SolidBrush(theme.tagColor.TranslateColor)
         Dim camera As Camera = Me.Camera(canvas.PlotRegion.Size)
+        Dim legends As New List(Of IggplotLegendElement)
 
-        Call populateModels(g, baseData, x, y, z) _
+        Call populateModels(g, baseData, x, y, z, legends) _
             .IteratesALL _
             .RenderAs3DChart(
                 canvas:=g,
@@ -169,14 +170,16 @@ Public Class ggplot : Inherits Plot
                 showLabel:=theme.drawLabels,
                 labelColor:=labelColor
             )
-        Call Draw2DElements(g, canvas, Nothing)
+
+        Call Draw2DElements(g, canvas, legends)
     End Sub
 
     Private Iterator Function populateModels(g As IGraphics,
                                              baseData As ggplotData,
                                              x() As Double,
                                              y() As Double,
-                                             z() As Double) As IEnumerable(Of Element3D())
+                                             z() As Double,
+                                             legends As List(Of IggplotLegendElement)) As IEnumerable(Of Element3D())
 
         Dim ppi As Integer = g.Dpi
         Dim xTicks = x.Range.CreateAxisTicks
@@ -201,7 +204,7 @@ Public Class ggplot : Inherits Plot
                 Call layers.Remove(layer)
 
                 Yield DirectCast(layer, Ilayer3d) _
-                    .populateModels(g, baseData, x, y, z, Me, theme) _
+                    .populateModels(g, baseData, x, y, z, Me, theme, legends) _
                     .ToArray
             End If
         Next
