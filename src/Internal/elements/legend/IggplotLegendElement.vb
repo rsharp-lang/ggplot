@@ -46,10 +46,8 @@
 
 Imports System.Drawing
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
-Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 
 Namespace elements.legend
 
@@ -57,7 +55,7 @@ Namespace elements.legend
 
         Property layout As Layout
 
-        Sub Draw(g As IGraphics, canvas As GraphicsRegion, x As Double, y As Double)
+        Sub Draw(g As IGraphics, canvas As GraphicsRegion, x As Double, y As Double, theme As Theme)
         Function MeasureSize(g As IGraphics) As SizeF
 
     End Interface

@@ -56,6 +56,7 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Shapes
+Imports Microsoft.VisualBasic.Language.Default
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports Microsoft.VisualBasic.Scripting.MetaData
 Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine
@@ -701,6 +702,17 @@ Public Module ggplot2
     ''' more about theme inheritance below.
     ''' </summary>
     ''' <param name="axis_text"></param>
+    ''' <param name="text">all text elements (element_text())</param>
+    ''' <param name="plot_background">background of the entire plot (element_rect(); inherits from rect)</param>
+    ''' <param name="legend_background">background of legend (element_rect(); inherits from rect)</param>
+    ''' <param name="panel_background">background of plotting area, drawn underneath plot (element_rect(); inherits from rect)</param>
+    ''' <param name="legend_text">legend item labels (element_text(); inherits from text)</param>
+    ''' <param name="axis_line">lines along axes (element_line()). Specify lines 
+    ''' along all axes (axis.line), lines for each plane (using axis.line.x or 
+    ''' axis.line.y), or individually for each axis (using axis.line.x.bottom, 
+    ''' axis.line.x.top, axis.line.y.left, axis.line.y.right). ``axis.line.*.*`` 
+    ''' inherits from axis.line.* which inherits from axis.line, which in turn 
+    ''' inherits from line</param>
     ''' <returns></returns>
     ''' <remarks>
     ''' Theme elements inherit properties from other theme elements hierarchically. 
@@ -713,9 +725,24 @@ Public Module ggplot2
     ''' Learn more about setting these aesthetics In vignette("ggplot2-specs").
     ''' </remarks>
     <ExportAPI("theme")>
-    Public Function theme(Optional axis_text As textElement = Nothing) As ggplotOption
+    Public Function theme(Optional text As textElement = Nothing,
+                          Optional axis_text As textElement = Nothing,
+                          Optional axis_line As String = Stroke.AxisStroke,
+                          Optional legend_background As String = "white",
+                          Optional legend_text As textElement = Nothing,
+                          Optional plot_background As String = "white",
+                          Optional panel_background As String = "white",
+                          Optional panel_grid As String = Stroke.AxisGridStroke) As ggplotOption
+
         Return New ggplotTheme With {
-            .axis_text = axis_text
+            .axis_text = axis_text,
+            .text = text,
+            .legend_background = legend_background,
+            .plot_background = plot_background,
+            .panel_background = panel_background,
+            .panel_grid = panel_grid,
+            .axis_line = axis_line,
+            .legend_text = legend_text
         }
     End Function
 
@@ -842,6 +869,8 @@ Public Module ggplot2
 
     Const NULL As Object = Nothing
 
+    ReadOnly defaultTextColor As [Default](Of String) = "black"
+
     ''' <summary>
     ''' ### Theme elements
     ''' 
@@ -874,25 +903,26 @@ Public Module ggplot2
     <ExportAPI("element_text")>
     Public Function element_text(Optional family$ = NULL,
                                  Optional face$ = NULL,
-                                 Optional size!? = NULL,
-                                 Optional hjust!? = NULL,
-                                 Optional vjust!? = NULL,
-                                 Optional angle!? = NULL,
-                                 Optional lineheight!? = NULL,
+                                 Optional size! = NULL,
+                                 Optional hjust! = NULL,
+                                 Optional vjust! = NULL,
+                                 Optional angle! = NULL,
+                                 Optional lineheight! = NULL,
                                  Optional color$ = NULL,
-                                 Optional margin!? = NULL,
+                                 Optional margin! = NULL,
                                  Optional debug As Boolean = False,
                                  Optional inherit_blank As Boolean = False) As textElement
 
         Dim css As New CSSFont With {
-            .family = family,
-            .color = color,
-            .size = size,
+            .family = If(family, FontFace.MicrosoftYaHei),
+            .color = color Or defaultTextColor,
+            .size = If(size = 0, 24, size),
             .weight = lineheight
         }
 
         Return New textElement With {
-            .style = css
+            .style = css,
+            .color = color Or defaultTextColor
         }
     End Function
 End Module

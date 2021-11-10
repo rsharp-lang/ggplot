@@ -124,6 +124,8 @@ Public Class ggplot : Inherits Plot
     Protected Overrides Sub PlotInternal(ByRef g As IGraphics, canvas As GraphicsRegion)
         Dim baseData As ggplotData = base.reader.getMapData(data, environment)
 
+        Call g.Clear(theme.background.TranslateColor)
+
         If base.reader.isPlain2D Then
             Call plot2D(baseData, g, canvas)
         Else
@@ -131,56 +133,71 @@ Public Class ggplot : Inherits Plot
         End If
     End Sub
 
+    Private Function Camera(plotSize As Size) As Camera
+        Dim cameraVal As Object = args.getByName("camera")
+
+        If cameraVal Is Nothing Then
+            Return New Camera With {
+                .screen = plotSize,
+                .fov = 100000,
+                .viewDistance = -75,
+                .angleX = 31.5,
+                .angleY = 65,
+                .angleZ = 125
+            }
+        Else
+            With DirectCast(cameraVal, Camera)
+                .screen = plotSize
+                Return cameraVal
+            End With
+        End If
+    End Function
+
     Private Sub plot3D(baseData As ggplotData, ByRef g As IGraphics, canvas As GraphicsRegion)
         Dim x As Double() = REnv.asVector(Of Double)(baseData.x)
         Dim y As Double() = REnv.asVector(Of Double)(baseData.y)
         Dim z As Double() = REnv.asVector(Of Double)(baseData.z)
         Dim labelColor As New SolidBrush(theme.tagColor.TranslateColor)
-        Dim camera As New Camera With {
-            .screen = canvas.PlotRegion.Size,
-            .fov = 10000,
-            .viewDistance = -75,
-            .angleX = 30,
-            .angleY = 30,
-            .angleZ = 125
-        }
+        Dim camera As Camera = Me.Camera(canvas.PlotRegion.Size)
+        Dim legends As New List(Of IggplotLegendElement)
 
-        Call populateModels(g, baseData, x, y, z) _
+        Call populateModels(g, baseData, x, y, z, legends) _
             .IteratesALL _
             .RenderAs3DChart(
                 canvas:=g,
                 camera:=camera,
                 region:=canvas,
-                labelFont:=CSSFont.TryParse(theme.tagCSS).GDIObject(g.Dpi),
-                labelerItr:=0,
-                showLabel:=theme.drawLabels,
-                labelColor:=labelColor
+                theme:=theme
             )
+
+        Call Draw2DElements(g, canvas, legends)
     End Sub
 
     Private Iterator Function populateModels(g As IGraphics,
                                              baseData As ggplotData,
                                              x() As Double,
                                              y() As Double,
-                                             z() As Double) As IEnumerable(Of Element3D())
+                                             z() As Double,
+                                             legends As List(Of IggplotLegendElement)) As IEnumerable(Of Element3D())
 
         Dim ppi As Integer = g.Dpi
-        Dim axisLabelFont As Font = CSSFont.TryParse(theme.axisLabelCSS).GDIObject(ppi)
         Dim xTicks = x.Range.CreateAxisTicks
         Dim yTicks = y.Range.CreateAxisTicks
         Dim zTicks = z.Range.CreateAxisTicks
+        Dim tickCss As String = CSSFont.TryParse(theme.axisTickCSS).SetFontColor(theme.mainTextColor).ToString
 
         ' 然后生成底部的网格
-        Yield Grids.Grid1(xTicks, yTicks, (xTicks(1) - xTicks(0), yTicks(1) - yTicks(0)), zTicks.Min).ToArray
-        Yield Grids.Grid2(xTicks, zTicks, (xTicks(1) - xTicks(0), zTicks(1) - zTicks(0)), yTicks.Min).ToArray
-        Yield Grids.Grid3(yTicks, zTicks, (yTicks(1) - yTicks(0), zTicks(1) - zTicks(0)), xTicks.Max).ToArray
+        Yield Grids.Grid1(xTicks, yTicks, (xTicks(1) - xTicks(0), yTicks(1) - yTicks(0)), zTicks.Min, showTicks:=Not theme.axisTickCSS.StringEmpty, strokeCSS:=theme.gridStrokeX, tickCSS:=tickCss).ToArray
+        Yield Grids.Grid2(xTicks, zTicks, (xTicks(1) - xTicks(0), zTicks(1) - zTicks(0)), yTicks.Min, showTicks:=Not theme.axisTickCSS.StringEmpty, strokeCSS:=theme.gridStrokeX, tickCSS:=tickCss).ToArray
+        Yield Grids.Grid3(yTicks, zTicks, (yTicks(1) - yTicks(0), zTicks(1) - zTicks(0)), xTicks.Max, showTicks:=Not theme.axisTickCSS.StringEmpty, strokeCSS:=theme.gridStrokeX, tickCSS:=tickCss).ToArray
 
         Yield AxisDraw.Axis(
             xrange:=xTicks, yrange:=yTicks, zrange:=zTicks,
-            labelFont:=axisLabelFont,
+            labelFontCss:=theme.axisLabelCSS,
             labels:=(xlabel, ylabel, zlabel),
             strokeCSS:=theme.axisStroke,
-            arrowFactor:="2,2"
+            arrowFactor:="1,2",
+            labelColorVal:=theme.mainTextColor
         )
 
         For Each layer As ggplotLayer In layers.ToArray
@@ -188,7 +205,7 @@ Public Class ggplot : Inherits Plot
                 Call layers.Remove(layer)
 
                 Yield DirectCast(layer, Ilayer3d) _
-                    .populateModels(g, baseData, x, y, z, Me, theme) _
+                    .populateModels(g, baseData, x, y, z, Me, theme, legends) _
                     .ToArray
             End If
         Next
@@ -242,11 +259,15 @@ Public Class ggplot : Inherits Plot
                 .DoCall(AddressOf legends.Add)
         Loop
 
+        Call Draw2DElements(g, canvas, legends)
+    End Sub
+
+    Private Sub Draw2DElements(g As IGraphics, canvas As GraphicsRegion, legends As List(Of IggplotLegendElement))
         If Not main.StringEmpty Then
-            Call DrawMainTitle(g, rect)
+            Call DrawMainTitle(g, canvas.PlotRegion)
         End If
         If theme.drawLegend Then
-            Call DrawLegends(From group As IggplotLegendElement In legends Where Not group Is Nothing, g, canvas)
+            Call DrawLegends(From group As IggplotLegendElement In legends.SafeQuery Where Not group Is Nothing, g, canvas)
         End If
     End Sub
 
@@ -279,7 +300,7 @@ Public Class ggplot : Inherits Plot
         Dim y As Double = box.Top + box.Height / 3
 
         For i As Integer = 0 To all.Length - 1
-            all(i).Draw(g, canvas, x, y)
+            all(i).Draw(g, canvas, x, y, theme)
             x += width
         Next
     End Sub
@@ -292,7 +313,7 @@ Public Class ggplot : Inherits Plot
         Dim x As Single = (canvas.Padding.Right - size.Width) / 2 + rect.Right
         Dim y As Single = (rect.Height - size.Height) / 2 + rect.Top
 
-        Call legend.Draw(g, canvas, x, y)
+        Call legend.Draw(g, canvas, x, y, theme)
     End Sub
 
     Public Function Save(stream As Stream, format As ImageFormat) As Boolean Implements SaveGdiBitmap.Save

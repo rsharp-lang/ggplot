@@ -61,7 +61,7 @@ Namespace elements.legend
         Public Property width As Single
         Public Property height As Single
 
-        Public Sub Draw(g As IGraphics, canvas As GraphicsRegion, x As Double, y As Double) Implements IggplotLegendElement.Draw
+        Public Sub Draw(g As IGraphics, canvas As GraphicsRegion, x As Double, y As Double, theme As Theme) Implements IggplotLegendElement.Draw
             Call colorMapLegend.Draw(g, New Rectangle(x, y, width, height))
         End Sub
 
