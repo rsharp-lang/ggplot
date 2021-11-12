@@ -44,6 +44,7 @@
 
 Imports ggplot.elements
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
+Imports Microsoft.VisualBasic.MIME.Html.CSS
 
 Namespace options
 
@@ -64,9 +65,13 @@ Namespace options
             If Not text Is Nothing Then
                 theme.mainCSS = text.GetCSS
                 theme.mainTextColor = text.color
+                theme.axisTickCSS = CSSFont.TryParse(theme.axisTickCSS).SetFontColor(text.color).ToString
             End If
 
-            If Not axis_text Is Nothing Then theme.axisLabelCSS = axis_text?.GetCSS
+            If Not axis_text Is Nothing Then
+                theme.axisLabelCSS = axis_text.GetCSS
+            End If
+
             If Not legend_background.StringEmpty Then theme.legendBoxBackground = legend_background
             If Not plot_background.StringEmpty Then theme.background = plot_background
             If Not panel_background.StringEmpty Then theme.gridFill = panel_background

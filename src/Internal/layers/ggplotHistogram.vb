@@ -118,6 +118,10 @@ Namespace layers
 
             hist.binData = bins
             ggplot.base.data.Add("y", y)
+
+            If ggplot.ylabel.StringEmpty Then
+                ggplot.ylabel = "Count"
+            End If
         End Sub
     End Class
 End Namespace
