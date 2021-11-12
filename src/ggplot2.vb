@@ -367,9 +367,22 @@ Public Module ggplot2
         }
     End Function
 
+    ''' <summary>
+    ''' ## Histograms and frequency polygons
+    ''' 
+    ''' Visualise the distribution of a single continuous variable by dividing 
+    ''' the x axis into bins and counting the number of observations in each bin. 
+    ''' Histograms (geom_histogram()) display the counts with bars; 
+    ''' </summary>
+    ''' <param name="bins">
+    ''' Number of bins. Overridden by binwidth. Defaults to 30.
+    ''' </param>
+    ''' <returns></returns>
     <ExportAPI("geom_histogram")>
-    Public Function geom_histogram() As ggplotLayer
-        Return New ggplotHistogram
+    Public Function geom_histogram(bins As Integer) As ggplotLayer
+        Return New ggplotHistogram With {
+            .bins = bins
+        }
     End Function
 
     ''' <summary>
@@ -547,6 +560,10 @@ Public Module ggplot2
             If TypeOf layer Is ggplotScatter Then
                 layer = New ggplotScatter3d(layer)
             End If
+        End If
+
+        If TypeOf layer Is ggplotHistogram Then
+            Call ggplotHistogram.configHistogram(ggplot, layer)
         End If
 
         ggplot.layers.Add(layer)

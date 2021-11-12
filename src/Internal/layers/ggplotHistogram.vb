@@ -50,6 +50,8 @@ Namespace layers
 
     Public Class ggplotHistogram : Inherits ggplotLayer
 
+        Public Property bins As Integer
+
         Public Overrides Function Plot(
             g As IGraphics,
             canvas As GraphicsRegion,
@@ -61,7 +63,11 @@ Namespace layers
             theme As Theme
         ) As IggplotLegendElement
 
-            Throw New NotImplementedException
+
         End Function
+
+        Friend Shared Sub configHistogram(ggplot As ggplot, hist As ggplotHistogram)
+
+        End Sub
     End Class
 End Namespace
