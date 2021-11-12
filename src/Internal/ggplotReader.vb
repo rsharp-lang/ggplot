@@ -71,7 +71,11 @@ Public Class ggplotReader
 
     Public Overrides Function ToString() As String
         If isPlain2D Then
-            Return $"{x} ~ {y}"
+            If y.StringEmpty Then
+                Return x
+            Else
+                Return $"{x} ~ {y}"
+            End If
         Else
             Return $"[{x}, {y}, {z}]"
         End If

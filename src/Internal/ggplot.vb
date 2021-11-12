@@ -122,7 +122,7 @@ Public Class ggplot : Inherits Plot
     Public Shared UnionGgplotLayers As Func(Of IEnumerable(Of ggplotLayer), IEnumerable(Of ggplotLayer))
 
     Protected Overrides Sub PlotInternal(ByRef g As IGraphics, canvas As GraphicsRegion)
-        Dim baseData As ggplotData = base.reader.getMapData(data, environment)
+        Dim baseData As ggplotData = base.getGgplotData(Me)
 
         Call g.Clear(theme.background.TranslateColor)
 
