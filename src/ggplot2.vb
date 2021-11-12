@@ -379,9 +379,13 @@ Public Module ggplot2
     ''' </param>
     ''' <returns></returns>
     <ExportAPI("geom_histogram")>
-    Public Function geom_histogram(bins As Integer) As ggplotLayer
+    Public Function geom_histogram(bins As Integer,
+                                   Optional color As Object = Nothing,
+                                   Optional env As Environment = Nothing) As ggplotLayer
+
         Return New ggplotHistogram With {
-            .bins = bins
+            .bins = bins,
+            .colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color), env)
         }
     End Function
 
