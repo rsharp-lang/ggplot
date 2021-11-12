@@ -40,8 +40,10 @@
 
 #End Region
 
+Imports System.Drawing
 Imports ggplot.colors
 Imports ggplot.elements.legend
+Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.Data.ChartPlots.BarPlot.Histogram
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
@@ -77,8 +79,16 @@ Namespace layers
                 .title = ggplot.base.reader.ToString
             }
             Dim histData As HistProfile = binData.NewModel(legend)
+            Dim colorData As New NamedValue(Of Color) With {
+                .Name = legend.title,
+                .Value = color.TranslateColor
+            }
 
+            Call HistogramPlot.DrawSample(g, canvas.PlotRegion, histData, colorData, scale)
 
+            Return New ggplotLegendElement With {
+                .legend = legend
+            }
         End Function
 
         Private Function getColorName(ggplot As ggplot) As String
