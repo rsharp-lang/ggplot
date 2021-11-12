@@ -84,6 +84,8 @@ Namespace layers
         Private Function getColorName(ggplot As ggplot) As String
             If useCustomColorMaps Then
                 Return DirectCast(colorMap, ggplotColorLiteral).ToString
+            ElseIf ggplot.base.reader.color Is Nothing Then
+                Return "black"
             Else
                 Return ggplot.base.reader.color.ToString
             End If
