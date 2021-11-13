@@ -748,10 +748,12 @@ Public Module ggplot2
     <ExportAPI("theme")>
     Public Function theme(Optional text As textElement = Nothing,
                           Optional axis_text As textElement = Nothing,
+                          Optional axis_title As textElement = Nothing,
                           Optional axis_line As String = Stroke.AxisStroke,
                           Optional legend_background As String = "white",
                           Optional legend_text As textElement = Nothing,
                           Optional plot_background As String = "white",
+                          Optional plot_title As textElement = Nothing,
                           Optional panel_background As String = "white",
                           Optional panel_grid As String = Stroke.AxisGridStroke) As ggplotOption
 
@@ -763,7 +765,9 @@ Public Module ggplot2
             .panel_background = panel_background,
             .panel_grid = panel_grid,
             .axis_line = axis_line,
-            .legend_text = legend_text
+            .legend_text = legend_text,
+            .plot_title = plot_title,
+            .axis_title = axis_title
         }
     End Function
 
@@ -943,7 +947,8 @@ Public Module ggplot2
 
         Return New textElement With {
             .style = css,
-            .color = color Or defaultTextColor
+            .color = color Or defaultTextColor,
+            .angle = angle
         }
     End Function
 End Module

@@ -51,11 +51,13 @@ Namespace options
     Public Class ggplotTheme : Inherits ggplotOption
 
         Public Property axis_text As textElement
+        Public Property axis_title As textElement
         Public Property axis_line As String
         Public Property text As textElement
         Public Property legend_background As String
         Public Property legend_text As textElement
         Public Property plot_background As String
+        Public Property plot_title As textElement
         Public Property panel_background As String
         Public Property panel_grid As String
 
@@ -68,8 +70,15 @@ Namespace options
                 theme.axisTickCSS = CSSFont.TryParse(theme.axisTickCSS).SetFontColor(text.color).ToString
             End If
 
+            If Not plot_title Is Nothing Then
+                theme.mainCSS = plot_title.ConfigCSS(CSSFont.TryParse(theme.mainCSS)).ToString
+            End If
+
+            If Not axis_title Is Nothing Then
+                theme.axisLabelCSS = axis_title.GetCSS
+            End If
             If Not axis_text Is Nothing Then
-                theme.axisLabelCSS = axis_text.GetCSS
+                theme.axisTickCSS = axis_text.GetCSS
             End If
 
             If Not legend_background.StringEmpty Then theme.legendBoxBackground = legend_background
