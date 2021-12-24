@@ -73,16 +73,16 @@ Namespace layers
             Dim nsize As Integer = x.Length
 
             If useCustomColorMaps Then
-                colors = getColorSet(ggplot, nsize, LegendStyles.Circle, legends)
+                colors = getColorSet(ggplot, nsize, LegendStyles.SolidLine, legends)
             ElseIf Not ggplot.base.reader.color Is Nothing Then
                 colors = ggplot.base.getColors(ggplot)
             End If
 
             If Not useCustomData Then
-                serial = ggplotScatter.createSerialData($"{baseData.x} ~ {baseData.y}", x, y, colors, line_width, LegendStyles.Circle, colorMap)
+                serial = ggplotScatter.createSerialData(ggplot.base.reader.ToString, x, y, colors, line_width, LegendStyles.SolidLine, colorMap)
             Else
                 With reader.getMapData(ggplot.data, ggplot.environment)
-                    serial = ggplotScatter.createSerialData(reader.ToString, .x, .y, colors, line_width, LegendStyles.Circle, colorMap)
+                    serial = ggplotScatter.createSerialData(reader.ToString, .x, .y, colors, line_width, LegendStyles.SolidLine, colorMap)
                 End With
             End If
 

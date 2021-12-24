@@ -51,6 +51,7 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
+Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports Microsoft.VisualBasic.Language.Vectorization
 Imports Microsoft.VisualBasic.Linq
 Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine
@@ -89,10 +90,11 @@ Namespace layers
         Protected Function getColorSet(ggplot As ggplot,
                                        nsize As Integer,
                                        shape As LegendStyles,
+                                       data As Double(),
                                        ByRef legends As IggplotLegendElement) As String()
             legends = Nothing
 
-            If reader Is Nothing OrElse TypeOf colorMap Is ggplotColorLiteral Then
+            If reader Is Nothing AndAlso TypeOf colorMap Is ggplotColorLiteral Then
                 Dim colorString As String = DirectCast(colorMap, ggplotColorLiteral).ToString
                 Dim colors As String() = Enumerable _
                     .Range(0, nsize) _
@@ -104,11 +106,21 @@ Namespace layers
                         .color = colorString,
                         .fontstyle = ggplot.ggplotTheme.legendLabelCSS,
                         .style = shape,
-                        .title = ggplot.base.ToString
+                        .title = ggplot.base.reader.ToString
                     }
                 }
 
                 Return colors
+            ElseIf reader Is Nothing AndAlso TypeOf colorMap Is ggplotColorPalette Then
+                Dim maplevels As Integer = 30
+                Dim palette As ggplotColorPalette = DirectCast(colorMap, ggplotColorPalette)
+                Dim maps As Func(Of Object, String) = palette.ColorHandler(ggplot, data)
+
+                legends = New legendColorMapElement With {
+                    .colorMapLegend = New ColorMapLegend(palette.colorMap, maplevels)
+                }
+
+                Return data.Select(Function(d) maps(d)).ToArray
             Else
                 Dim factors As String() = ggplot.getText(reader?.color)
                 Dim maps As Func(Of Object, String) = colorMap.ColorHandler(ggplot, factors)
