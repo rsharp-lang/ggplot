@@ -54,7 +54,7 @@ Namespace layers
 
     Public Class ggplotLine : Inherits ggplotLayer
 
-        Public Property size As Single = 3
+        Public Property line_width As Single = 5
 
         Public Overrides Function Plot(
             g As IGraphics,
@@ -79,10 +79,10 @@ Namespace layers
             End If
 
             If Not useCustomData Then
-                serial = ggplotScatter.createSerialData($"{baseData.x} ~ {baseData.y}", x, y, colors, size, LegendStyles.Circle, colorMap)
+                serial = ggplotScatter.createSerialData($"{baseData.x} ~ {baseData.y}", x, y, colors, line_width, LegendStyles.Circle, colorMap)
             Else
                 With reader.getMapData(ggplot.data, ggplot.environment)
-                    serial = ggplotScatter.createSerialData(reader.ToString, .x, .y, colors, size, LegendStyles.Circle, colorMap)
+                    serial = ggplotScatter.createSerialData(reader.ToString, .x, .y, colors, line_width, LegendStyles.Circle, colorMap)
                 End With
             End If
 

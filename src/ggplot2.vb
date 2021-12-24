@@ -403,8 +403,41 @@ Public Module ggplot2
     ''' to a single case which provides the start and end coordinates.
     ''' </remarks>
     <ExportAPI("geom_line")>
-    Public Function geom_line() As ggplotLayer
-        Return New ggplotLine
+    Public Function geom_line(Optional mapping As ggplotReader = NULL,
+                              <RRawVectorArgument>
+                              Optional color As Object = "steelblue",
+                              Optional width As Single = 5,
+                              Optional show_legend As Boolean = True,
+                              Optional env As Environment = Nothing) As ggplotLayer
+
+        Dim colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color), env)
+
+        'If mapping IsNot Nothing AndAlso Not mapping.isPlain2D Then
+        '    ' 3D
+        '    Return New ggplotScatter3d With {
+        '        .colorMap = colorMap,
+        '        .reader = mapping,
+        '        .shape = shape,
+        '        .size = size,
+        '        .showLegend = show_legend
+        '    }
+        'Else
+        '    ' 2D
+        '    Return New ggplotScatter With {
+        '        .colorMap = colorMap,
+        '        .shape = shape,
+        '        .size = size,
+        '        .showLegend = show_legend,
+        '        .reader = mapping
+        '    }
+        'End If
+
+        Return New ggplotLine With {
+            .showLegend = show_legend,
+            .colorMap = colorMap,
+            .line_width = width,
+            .reader = mapping
+        }
     End Function
 
     <ExportAPI("geom_hline")>

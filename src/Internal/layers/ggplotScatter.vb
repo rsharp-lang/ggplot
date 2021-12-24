@@ -129,6 +129,7 @@ Namespace layers
             Return New SerialData() With {
                 .color = color,
                 .pointSize = size,
+                .width = size,
                 .shape = shape,
                 .title = legend,
                 .pts = x _
