@@ -82,10 +82,10 @@ Namespace layers
             End If
 
             If Not useCustomData Then
-                serial = createSerialData($"{baseData.x} ~ {baseData.y}", x, y, colors)
+                serial = createSerialData($"{baseData.x} ~ {baseData.y}", x, y, colors, size, shape, colorMap)
             Else
                 With reader.getMapData(ggplot.data, ggplot.environment)
-                    serial = createSerialData(reader.ToString, .x, .y, colors)
+                    serial = createSerialData(reader.ToString, .x, .y, colors, size, shape, colorMap)
                 End With
             End If
 
@@ -103,7 +103,13 @@ Namespace layers
             Return legends
         End Function
 
-        Public Shared Function createSerialData(legend As String, x As Double(), y As Double(), colors As String()) As SerialData
+        Protected Friend Shared Function createSerialData(legend As String,
+                                                          x As Double(),
+                                                          y As Double(),
+                                                          colors As String(),
+                                                          size!,
+                                                          shape As LegendStyles,
+                                                          colorMap As ggplotColorMap) As SerialData
             Return New SerialData() With {
                 .color = If(colors Is Nothing, DirectCast(colorMap, ggplotColorLiteral).ToColor, Nothing),
                 .pointSize = size,

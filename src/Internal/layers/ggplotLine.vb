@@ -45,12 +45,16 @@ Imports Microsoft.VisualBasic.Data.ChartPlots
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
+Imports Microsoft.VisualBasic.Data.ChartPlots.Plots
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
+Imports Microsoft.VisualBasic.Math.Interpolation
 
 Namespace layers
 
     Public Class ggplotLine : Inherits ggplotLayer
+
+        Public Property size As Single = 3
 
         Public Overrides Function Plot(
             g As IGraphics,
@@ -75,23 +79,14 @@ Namespace layers
             End If
 
             If Not useCustomData Then
-                serial = ggplotScatter.createSerialData($"{baseData.x} ~ {baseData.y}", x, y, colors)
+                serial = ggplotScatter.createSerialData($"{baseData.x} ~ {baseData.y}", x, y, colors, size, LegendStyles.Circle, colorMap)
             Else
                 With reader.getMapData(ggplot.data, ggplot.environment)
-                    serial = ggplotScatter.createSerialData(reader.ToString, .x, .y, colors)
+                    serial = ggplotScatter.createSerialData(reader.ToString, .x, .y, colors, size, LegendStyles.Circle, colorMap)
                 End With
             End If
 
-            Call line2d.DrawScatter(
-                g:=g,
-                scatter:=serial.pts,
-                scaler:=scale,
-                fillPie:=True,
-                shape:=serial.shape,
-                pointSize:=serial.pointSize,
-                getPointBrush:=serial.BrushHandler
-            ) _
-            .ToArray
+            Call LinePlot2D.DrawLine(g, canvas, scale, serial, Splines.B_Spline)
 
             Return legends
         End Function
