@@ -122,6 +122,10 @@ Namespace layers
                 color = Nothing
             End If
 
+            If color.IsEmpty Then
+                color = Color.Black
+            End If
+
             Return New SerialData() With {
                 .color = color,
                 .pointSize = size,
