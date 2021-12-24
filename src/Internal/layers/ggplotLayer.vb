@@ -118,6 +118,7 @@ Namespace layers
                 Dim palette As ggplotColorPalette = DirectCast(colorMap, ggplotColorPalette)
                 Dim maps As Func(Of Object, String) = palette.ColorHandler(ggplot, data)
                 Dim theme As Theme = ggplot.ggplotTheme
+                Dim padding As New GraphicsRegion(g.Size, theme.padding)
 
                 legends = New legendColorMapElement With {
                     .colorMapLegend = New ColorMapLegend(palette.colorMap, maplevels) With {
@@ -127,7 +128,9 @@ Namespace layers
                         .format = theme.legendTickFormat,
                         .ticks = data.CreateAxisTicks,
                         .titleFont = CSSFont.TryParse(theme.legendTitleCSS).GDIObject(g.Dpi)
-                    }
+                    },
+                    .width = padding.Padding.Right * 3 / 4,
+                    .height = padding.PlotRegion.Height
                 }
 
                 Return data.Select(Function(d) maps(d)).ToArray
