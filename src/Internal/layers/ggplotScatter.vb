@@ -59,35 +59,6 @@ Namespace layers
         Public Property shape As LegendStyles
         Public Property size As Single
 
-        Protected Function getColorSet(ggplot As ggplot, nsize As Integer, ByRef legends As legendGroupElement) As String()
-            legends = Nothing
-
-            If reader Is Nothing OrElse TypeOf colorMap Is ggplotColorLiteral Then
-                Dim colorString As String = DirectCast(colorMap, ggplotColorLiteral).ToString
-                Dim colors As String() = Enumerable _
-                    .Range(0, nsize) _
-                    .Select(Function(any) colorString) _
-                    .ToArray
-
-                Return colors
-            Else
-                Dim factors As String() = ggplot.getText(reader?.color)
-                Dim maps As Func(Of Object, String) = colorMap.ColorHandler(ggplot, factors)
-                Dim legendItems As LegendObject() = colorMap.TryGetFactorLegends(factors, shape, ggplot.ggplotTheme)
-                Dim colors = factors.Select(Function(factor) maps(factor)).ToArray
-
-                legends = New legendGroupElement With {
-                    .legends = legendItems
-                }
-
-                If legendItems.IsNullOrEmpty Then
-                    legends = Nothing
-                End If
-
-                Return colors
-            End If
-        End Function
-
         Public Overrides Function Plot(
             g As IGraphics,
             canvas As GraphicsRegion,

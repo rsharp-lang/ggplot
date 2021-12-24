@@ -61,7 +61,7 @@ Namespace layers
             theme As Theme
         ) As IggplotLegendElement
 
-            Throw New NotImplementedException
+
         End Function
     End Class
 End Namespace
