@@ -42,6 +42,7 @@
 
 #End Region
 
+Imports System.Drawing
 Imports ggplot.colors
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.Data.ChartPlots
@@ -110,8 +111,19 @@ Namespace layers
                                                           size!,
                                                           shape As LegendStyles,
                                                           colorMap As ggplotColorMap) As SerialData
+
+            Dim color As Color
+
+            If colors Is Nothing Then
+                If Not colorMap Is Nothing Then
+                    color = DirectCast(colorMap, ggplotColorLiteral).ToColor
+                End If
+            Else
+                color = Nothing
+            End If
+
             Return New SerialData() With {
-                .color = If(colors Is Nothing, DirectCast(colorMap, ggplotColorLiteral).ToColor, Nothing),
+                .color = color,
                 .pointSize = size,
                 .shape = shape,
                 .title = legend,
