@@ -76,7 +76,7 @@ Namespace layers
             Dim nsize As Integer = x.Length
 
             If useCustomColorMaps Then
-                colors = getColorSet(ggplot, nsize, legends)
+                colors = getColorSet(ggplot, nsize, shape, legends)
             ElseIf Not ggplot.base.reader.color Is Nothing Then
                 colors = ggplot.base.getColors(ggplot)
             End If
@@ -103,7 +103,7 @@ Namespace layers
             Return legends
         End Function
 
-        Private Function createSerialData(legend As String, x As Double(), y As Double(), colors As String()) As SerialData
+        Public Shared Function createSerialData(legend As String, x As Double(), y As Double(), colors As String()) As SerialData
             Return New SerialData() With {
                 .color = If(colors Is Nothing, DirectCast(colorMap, ggplotColorLiteral).ToColor, Nothing),
                 .pointSize = size,

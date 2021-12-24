@@ -48,6 +48,7 @@ Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
+Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Language.Vectorization
@@ -85,7 +86,10 @@ Namespace layers
             End Get
         End Property
 
-        Protected Function getColorSet(ggplot As ggplot, nsize As Integer, ByRef legends As legendGroupElement) As String()
+        Protected Function getColorSet(ggplot As ggplot,
+                                       nsize As Integer,
+                                       shape As LegendStyles,
+                                       ByRef legends As legendGroupElement) As String()
             legends = Nothing
 
             If reader Is Nothing OrElse TypeOf colorMap Is ggplotColorLiteral Then

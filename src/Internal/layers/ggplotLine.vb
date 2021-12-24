@@ -1,48 +1,50 @@
 ﻿#Region "Microsoft.VisualBasic::9a29a02bf6a88a90abbc3f5742e26a62, src\Internal\layers\ggplotLine.vb"
 
-    ' Author:
-    ' 
-    '       asuka (amethyst.asuka@gcmodeller.org)
-    '       xie (genetics@smrucc.org)
-    '       xieguigang (xie.guigang@live.com)
-    ' 
-    ' Copyright (c) 2018 GPL3 Licensed
-    ' 
-    ' 
-    ' GNU GENERAL PUBLIC LICENSE (GPL3)
-    ' 
-    ' 
-    ' This program is free software: you can redistribute it and/or modify
-    ' it under the terms of the GNU General Public License as published by
-    ' the Free Software Foundation, either version 3 of the License, or
-    ' (at your option) any later version.
-    ' 
-    ' This program is distributed in the hope that it will be useful,
-    ' but WITHOUT ANY WARRANTY; without even the implied warranty of
-    ' MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    ' GNU General Public License for more details.
-    ' 
-    ' You should have received a copy of the GNU General Public License
-    ' along with this program. If not, see <http://www.gnu.org/licenses/>.
+' Author:
+' 
+'       asuka (amethyst.asuka@gcmodeller.org)
+'       xie (genetics@smrucc.org)
+'       xieguigang (xie.guigang@live.com)
+' 
+' Copyright (c) 2018 GPL3 Licensed
+' 
+' 
+' GNU GENERAL PUBLIC LICENSE (GPL3)
+' 
+' 
+' This program is free software: you can redistribute it and/or modify
+' it under the terms of the GNU General Public License as published by
+' the Free Software Foundation, either version 3 of the License, or
+' (at your option) any later version.
+' 
+' This program is distributed in the hope that it will be useful,
+' but WITHOUT ANY WARRANTY; without even the implied warranty of
+' MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+' GNU General Public License for more details.
+' 
+' You should have received a copy of the GNU General Public License
+' along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
+' Summaries:
 
-    '     Class ggplotLine
-    ' 
-    '         Function: Plot
-    ' 
-    ' 
-    ' /********************************************************************************/
+'     Class ggplotLine
+' 
+'         Function: Plot
+' 
+' 
+' /********************************************************************************/
 
 #End Region
 
 Imports ggplot.elements.legend
+Imports Microsoft.VisualBasic.Data.ChartPlots
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
+Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 
@@ -61,7 +63,37 @@ Namespace layers
             theme As Theme
         ) As IggplotLegendElement
 
+            Dim serial As SerialData
+            Dim colors As String() = Nothing
+            Dim legends As legendGroupElement = Nothing
+            Dim nsize As Integer = x.Length
 
+            If useCustomColorMaps Then
+                colors = getColorSet(ggplot, nsize, LegendStyles.Circle, legends)
+            ElseIf Not ggplot.base.reader.color Is Nothing Then
+                colors = ggplot.base.getColors(ggplot)
+            End If
+
+            If Not useCustomData Then
+                serial = ggplotScatter.createSerialData($"{baseData.x} ~ {baseData.y}", x, y, colors)
+            Else
+                With reader.getMapData(ggplot.data, ggplot.environment)
+                    serial = ggplotScatter.createSerialData(reader.ToString, .x, .y, colors)
+                End With
+            End If
+
+            Call line2d.DrawScatter(
+                g:=g,
+                scatter:=serial.pts,
+                scaler:=scale,
+                fillPie:=True,
+                shape:=serial.shape,
+                pointSize:=serial.pointSize,
+                getPointBrush:=serial.BrushHandler
+            ) _
+            .ToArray
+
+            Return legends
         End Function
     End Class
 End Namespace
