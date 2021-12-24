@@ -54,6 +54,7 @@ Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports Microsoft.VisualBasic.Language.Vectorization
 Imports Microsoft.VisualBasic.Linq
+Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
@@ -88,6 +89,7 @@ Namespace layers
         End Property
 
         Protected Function getColorSet(ggplot As ggplot,
+                                       g As IGraphics,
                                        nsize As Integer,
                                        shape As LegendStyles,
                                        data As Double(),
@@ -115,9 +117,17 @@ Namespace layers
                 Dim maplevels As Integer = 30
                 Dim palette As ggplotColorPalette = DirectCast(colorMap, ggplotColorPalette)
                 Dim maps As Func(Of Object, String) = palette.ColorHandler(ggplot, data)
+                Dim theme As Theme = ggplot.ggplotTheme
 
                 legends = New legendColorMapElement With {
-                    .colorMapLegend = New ColorMapLegend(palette.colorMap, maplevels)
+                    .colorMapLegend = New ColorMapLegend(palette.colorMap, maplevels) With {
+                        .title = ggplot.base.reader.ToString,
+                        .tickAxisStroke = Stroke.TryParse(theme.legendTickAxisStroke).GDIObject,
+                        .tickFont = CSSFont.TryParse(theme.legendTickCSS).GDIObject(g.Dpi),
+                        .format = theme.legendTickFormat,
+                        .ticks = data.CreateAxisTicks,
+                        .titleFont = CSSFont.TryParse(theme.legendTitleCSS).GDIObject(g.Dpi)
+                    }
                 }
 
                 Return data.Select(Function(d) maps(d)).ToArray

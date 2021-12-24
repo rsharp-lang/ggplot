@@ -72,16 +72,22 @@ Namespace layers
             Dim legends As IggplotLegendElement = Nothing
             Dim nsize As Integer = x.Length
 
-            If useCustomColorMaps Then
-                colors = getColorSet(ggplot, nsize, LegendStyles.SolidLine, legends)
-            ElseIf Not ggplot.base.reader.color Is Nothing Then
-                colors = ggplot.base.getColors(ggplot)
-            End If
-
             If Not useCustomData Then
+                If useCustomColorMaps Then
+                    colors = getColorSet(ggplot, g, nsize, LegendStyles.SolidLine, y, legends)
+                ElseIf Not ggplot.base.reader.color Is Nothing Then
+                    colors = ggplot.base.getColors(ggplot)
+                End If
+
                 serial = ggplotScatter.createSerialData(ggplot.base.reader.ToString, x, y, colors, line_width, LegendStyles.SolidLine, colorMap)
             Else
                 With reader.getMapData(ggplot.data, ggplot.environment)
+                    If useCustomColorMaps Then
+                        colors = getColorSet(ggplot, g, nsize, LegendStyles.SolidLine, y, legends)
+                    ElseIf Not ggplot.base.reader.color Is Nothing Then
+                        colors = ggplot.base.getColors(ggplot)
+                    End If
+
                     serial = ggplotScatter.createSerialData(reader.ToString, .x, .y, colors, line_width, LegendStyles.SolidLine, colorMap)
                 End With
             End If

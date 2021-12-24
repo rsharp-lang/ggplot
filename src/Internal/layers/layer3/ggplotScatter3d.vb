@@ -80,7 +80,7 @@ Namespace layers.layer3d
             Dim legends As legendGroupElement = Nothing
 
             If useCustomColorMaps Then
-                colors = getColorSet(ggplot, x.Length, shape, legends)
+                colors = getColorSet(ggplot, g, x.Length, shape, Nothing, legends)
             ElseIf Not ggplot.base.reader.color Is Nothing Then
                 colors = ggplot.base.getColors(ggplot)
             End If
@@ -96,7 +96,11 @@ Namespace layers.layer3d
             End If
         End Function
 
-        Private Iterator Function createSerialData(title As String, x As Double(), y As Double(), z As Double(), colors As String()) As IEnumerable(Of Element3D)
+        Private Overloads Iterator Function createSerialData(title As String,
+                                                             x As Double(),
+                                                             y As Double(),
+                                                             z As Double(),
+                                                             colors As String()) As IEnumerable(Of Element3D)
             Dim size As New Size With {
                 .Width = Me.size,
                 .Height = Me.size

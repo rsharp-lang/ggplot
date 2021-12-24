@@ -76,16 +76,22 @@ Namespace layers
             Dim legends As IggplotLegendElement = Nothing
             Dim nsize As Integer = x.Length
 
-            If useCustomColorMaps Then
-                colors = getColorSet(ggplot, nsize, shape, legends)
-            ElseIf Not ggplot.base.reader.color Is Nothing Then
-                colors = ggplot.base.getColors(ggplot)
-            End If
-
             If Not useCustomData Then
+                If useCustomColorMaps Then
+                    colors = getColorSet(ggplot, g, nsize, shape, y, legends)
+                ElseIf Not ggplot.base.reader.color Is Nothing Then
+                    colors = ggplot.base.getColors(ggplot)
+                End If
+
                 serial = createSerialData($"{baseData.x} ~ {baseData.y}", x, y, colors, size, shape, colorMap)
             Else
                 With reader.getMapData(ggplot.data, ggplot.environment)
+                    If useCustomColorMaps Then
+                        colors = getColorSet(ggplot, g, nsize, shape, .y, legends)
+                    ElseIf Not ggplot.base.reader.color Is Nothing Then
+                        colors = ggplot.base.getColors(ggplot)
+                    End If
+
                     serial = createSerialData(reader.ToString, .x, .y, colors, size, shape, colorMap)
                 End With
             End If
