@@ -69,7 +69,7 @@ Namespace layers
 
             Dim serial As SerialData
             Dim colors As String() = Nothing
-            Dim legends As legendGroupElement = Nothing
+            Dim legends As IggplotLegendElement = Nothing
             Dim nsize As Integer = x.Length
 
             If useCustomColorMaps Then
@@ -86,7 +86,7 @@ Namespace layers
                 End With
             End If
 
-            Call LinePlot2D.DrawLine(g, canvas, scale, serial, Splines.B_Spline)
+            Call LinePlot2D.DrawLine(g, canvas, scale, serial, Splines.None)
 
             Return legends
         End Function

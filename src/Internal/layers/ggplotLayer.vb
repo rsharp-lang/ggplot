@@ -89,7 +89,7 @@ Namespace layers
         Protected Function getColorSet(ggplot As ggplot,
                                        nsize As Integer,
                                        shape As LegendStyles,
-                                       ByRef legends As legendGroupElement) As String()
+                                       ByRef legends As IggplotLegendElement) As String()
             legends = Nothing
 
             If reader Is Nothing OrElse TypeOf colorMap Is ggplotColorLiteral Then
@@ -98,6 +98,15 @@ Namespace layers
                     .Range(0, nsize) _
                     .Select(Function(any) colorString) _
                     .ToArray
+
+                legends = New ggplotLegendElement With {
+                    .legend = New LegendObject With {
+                        .color = colorString,
+                        .fontstyle = ggplot.ggplotTheme.legendLabelCSS,
+                        .style = shape,
+                        .title = ggplot.base.ToString
+                    }
+                }
 
                 Return colors
             Else
