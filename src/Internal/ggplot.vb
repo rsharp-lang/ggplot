@@ -52,6 +52,7 @@ Imports System.IO
 Imports ggplot.elements.legend
 Imports ggplot.layers
 Imports ggplot.layers.layer3d
+Imports Microsoft.VisualBasic.ComponentModel.DataStructures
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
@@ -61,6 +62,7 @@ Imports Microsoft.VisualBasic.Emit.Delegates
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.BitmapImage
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
+Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports Microsoft.VisualBasic.Imaging.Drawing3D
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.Math.LinearAlgebra
@@ -76,6 +78,8 @@ Imports REnv = SMRUCC.Rsharp.Runtime
 Public Class ggplot : Inherits Plot
     Implements SaveGdiBitmap
 
+    Protected ReadOnly colors As LoopArray(Of String)
+
     Public ReadOnly Property ggplotTheme As Theme
         Get
             Return theme
@@ -90,6 +94,11 @@ Public Class ggplot : Inherits Plot
 
     Public Sub New(theme As Theme)
         MyBase.New(theme)
+
+        Me.colors = Designer _
+            .GetColors(theme.colorSet) _
+            .Select(Function(c) c.ToHtmlColor) _
+            .ToArray
     End Sub
 
     ''' <summary>

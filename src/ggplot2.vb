@@ -118,6 +118,8 @@ Public Module ggplot2
                            Optional data As Object = Nothing,
                            <RDefaultExpression()>
                            Optional mapping As Object = "~aes()",
+                           <RRawVectorArgument>
+                           Optional colorSet As Object = "paper",
                            <RListObjectArgument>
                            Optional args As list = Nothing,
                            Optional environment As Environment = Nothing) As ggplot
@@ -128,7 +130,8 @@ Public Module ggplot2
             .axisTickCSS = "font-style: normal; font-size: 10; font-family: " & FontFace.MicrosoftYaHei & ";",
             .padding = InteropArgumentHelper.getPadding(args.getByName("padding"), g.DefaultUltraLargePadding),
             .drawLegend = True,
-            .legendLabelCSS = "font-style: normal; font-size: 13; font-family: " & FontFace.MicrosoftYaHei & ";"
+            .legendLabelCSS = "font-style: normal; font-size: 13; font-family: " & FontFace.MicrosoftYaHei & ";",
+            .colorSet = RColorPalette.getColorSet(colorSet, [default]:="paper")
         }
         Dim args2 = environment.GetAcceptorArguments
 
