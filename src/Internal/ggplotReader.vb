@@ -93,7 +93,9 @@ Public Class ggplotReader
     End Function
 
     Private Shared Function unifySource(data As Object, source As String, env As Environment) As Array
-        If TypeOf data Is dataframe Then
+        If source Is Nothing Then
+            Return Nothing
+        ElseIf TypeOf data Is dataframe Then
             Dim table As dataframe = DirectCast(data, dataframe)
             Dim is_eval As Boolean = source.StartsWith("~") AndAlso Not table.hasName(source)
             Dim expression As Expression
