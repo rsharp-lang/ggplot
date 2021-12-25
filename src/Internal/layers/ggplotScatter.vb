@@ -74,9 +74,10 @@ Namespace layers
             Dim serial As SerialData
             Dim colors As String() = Nothing
             Dim legends As IggplotLegendElement = Nothing
-            Dim nsize As Integer = x.Length
 
             If Not useCustomData Then
+                Dim nsize As Integer = x.Length
+
                 If useCustomColorMaps Then
                     colors = getColorSet(ggplot, g, nsize, shape, y, legends)
                 ElseIf Not ggplot.base.reader.color Is Nothing Then
@@ -87,7 +88,7 @@ Namespace layers
             Else
                 With Me.data
                     If useCustomColorMaps Then
-                        colors = getColorSet(ggplot, g, nsize, shape, .y, legends)
+                        colors = getColorSet(ggplot, g, .nsize, shape, .y, legends)
                     ElseIf Not ggplot.base.reader.color Is Nothing Then
                         colors = ggplot.base.getColors(ggplot)
                     End If

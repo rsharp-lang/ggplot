@@ -78,7 +78,7 @@ Imports REnv = SMRUCC.Rsharp.Runtime
 Public Class ggplot : Inherits Plot
     Implements SaveGdiBitmap
 
-    Protected ReadOnly colors As LoopArray(Of String)
+    Protected Friend ReadOnly colors As LoopArray(Of String)
 
     Public ReadOnly Property ggplotTheme As Theme
         Get
