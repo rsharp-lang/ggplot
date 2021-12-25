@@ -232,13 +232,13 @@ Public Module ggplot2
     <ExportAPI("geom_point")>
     Public Function geom_point(Optional mapping As ggplotReader = NULL,
                                <RRawVectorArgument>
-                               Optional color As Object = "steelblue",
+                               Optional color As Object = Nothing,
                                Optional shape As LegendStyles = LegendStyles.Circle,
                                Optional size As Single = 2,
                                Optional show_legend As Boolean = True,
                                Optional env As Environment = Nothing) As ggplotLayer
 
-        Dim colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color), env)
+        Dim colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color, Nothing), env)
 
         If mapping IsNot Nothing AndAlso Not mapping.isPlain2D Then
             ' 3D
@@ -408,12 +408,12 @@ Public Module ggplot2
     <ExportAPI("geom_line")>
     Public Function geom_line(Optional mapping As ggplotReader = NULL,
                               <RRawVectorArgument>
-                              Optional color As Object = "steelblue",
+                              Optional color As Object = Nothing,
                               Optional width As Single = 5,
                               Optional show_legend As Boolean = True,
                               Optional env As Environment = Nothing) As ggplotLayer
 
-        Dim colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color), env)
+        Dim colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color, Nothing), env)
 
         'If mapping IsNot Nothing AndAlso Not mapping.isPlain2D Then
         '    ' 3D

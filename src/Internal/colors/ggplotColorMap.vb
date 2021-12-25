@@ -70,7 +70,9 @@ Namespace colors
         Public MustOverride Function TryGetFactorLegends(factors As Array, shape As LegendStyles, theme As Theme) As LegendObject()
 
         Public Shared Function CreateColorMap(map As Object, env As Environment) As ggplotColorMap
-            If TypeOf map Is String Then
+            If map Is Nothing Then
+                Return Nothing
+            ElseIf TypeOf map Is String Then
                 Return stringMap(DirectCast(map, String))
             ElseIf map.GetType.IsArray Then
                 Dim strArray As String() = REnv.asVector(Of String)(map)
