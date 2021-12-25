@@ -254,7 +254,7 @@ Public Class ggplot : Inherits Plot
                        Select data
         )
 
-        If reverse_y Then
+        If reverse_y AndAlso y.Length > 0 Then
             Call reverse(y)
         End If
 
