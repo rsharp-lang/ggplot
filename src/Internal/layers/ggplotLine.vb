@@ -89,6 +89,14 @@ Namespace layers
                         colors = ggplot.base.getColors(ggplot)
                     Else
                         colors = (++ggplot.colors).Replicate(.nsize).ToArray
+                        legends = New ggplotLegendElement With {
+                            .legend = New LegendObject With {
+                                .color = colors(Scan0),
+                                .fontstyle = theme.legendLabelCSS,
+                                .style = LegendStyles.SolidLine,
+                                .title = reader.ToString
+                            }
+                        }
                     End If
 
                     serial = ggplotScatter.createSerialData(reader.ToString, .x, .y, colors, line_width, LegendStyles.SolidLine, colorMap)
