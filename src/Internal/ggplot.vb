@@ -220,23 +220,38 @@ Public Class ggplot : Inherits Plot
         Next
     End Function
 
-    Private Sub plot2D(baseData As ggplotData, ByRef g As IGraphics, canvas As GraphicsRegion)
-        Dim x As Double() = REnv.asVector(Of Double)(baseData.x)
-        Dim y As Double() = REnv.asVector(Of Double)(baseData.y)
+    Private Function get2DScale(rect As Rectangle, layerData As IEnumerable(Of ggplotData)) As DataScaler
+        Dim allDataset As ggplotData() = layerData.ToArray
+        Dim x As Double() = allDataset.Select(Function(d) DirectCast(REnv.asVector(Of Double)(d.x), Double())).IteratesALL.ToArray
+        Dim y As Double() = allDataset.Select(Function(d) DirectCast(REnv.asVector(Of Double)(d.y), Double())).IteratesALL.ToArray
         Dim xTicks = x.Range.CreateAxisTicks
         Dim yTicks = y.Range.CreateAxisTicks
-        Dim rect As Rectangle = canvas.PlotRegion
         Dim scaleX = d3js.scale.linear.domain(xTicks).range(integers:={rect.Left, rect.Right})
         Dim scaleY = d3js.scale.linear.domain(yTicks).range(integers:={rect.Bottom, rect.Top})
-        Dim reverse_y As Boolean = args.getValue("scale_y_reverse", env:=environment, [default]:=False)
         Dim scale As New DataScaler() With {
             .AxisTicks = (xTicks.AsVector, yTicks.AsVector),
             .region = rect,
             .X = scaleX,
             .Y = scaleY
         }
+
+        Return scale
+    End Function
+
+    Private Sub plot2D(baseData As ggplotData, ByRef g As IGraphics, canvas As GraphicsRegion)
+        Dim x As Double() = REnv.asVector(Of Double)(baseData.x)
+        Dim y As Double() = REnv.asVector(Of Double)(baseData.y)
+        Dim reverse_y As Boolean = args.getValue("scale_y_reverse", env:=environment, [default]:=False)
         Dim layers As New Queue(Of ggplotLayer)(
             collection:=If(UnionGgplotLayers Is Nothing, Me.layers, UnionGgplotLayers(Me.layers))
+        )
+        Dim scale As DataScaler = get2DScale(
+            rect:=canvas.PlotRegion,
+            layerData:=From layer As ggplotLayer
+                       In layers
+                       Let data As ggplotData = layer.initDataSet(ggplot:=Me)
+                       Where Not data Is Nothing
+                       Select data
         )
 
         If reverse_y Then
