@@ -91,6 +91,16 @@ Namespace layers
                         colors = getColorSet(ggplot, g, .nsize, shape, .y, legends)
                     ElseIf Not ggplot.base.reader.color Is Nothing Then
                         colors = ggplot.base.getColors(ggplot)
+                    Else
+                        colors = (++ggplot.colors).Replicate(.nsize).ToArray
+                        legends = New ggplotLegendElement With {
+                            .legend = New LegendObject With {
+                                .color = colors(Scan0),
+                                .fontstyle = theme.legendLabelCSS,
+                                .style = LegendStyles.SolidLine,
+                                .title = reader.ToString
+                            }
+                        }
                     End If
 
                     serial = createSerialData(reader.ToString, .x, .y, colors, size, shape, colorMap)
