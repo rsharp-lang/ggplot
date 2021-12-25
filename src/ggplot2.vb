@@ -190,6 +190,7 @@ Public Module ggplot2
                         Optional z As Object = Nothing,
                         Optional label As Object = Nothing,
                         Optional color As Object = Nothing,
+                        Optional title As String = Nothing,
                         <RListObjectArgument>
                         Optional args As list = Nothing,
                         Optional env As Environment = Nothing) As ggplotReader
@@ -203,7 +204,8 @@ Public Module ggplot2
                 .z = z,
                 .color = color,
                 .label = label,
-                .args = args
+                .args = args,
+                .title = title
             }
         End If
     End Function

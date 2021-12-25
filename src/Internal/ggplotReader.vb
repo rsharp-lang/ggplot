@@ -62,6 +62,11 @@ Public Class ggplotReader
     Public Property y As String
     Public Property z As String
     Public Property color As Object
+
+    ''' <summary>
+    ''' the legend title label text
+    ''' </summary>
+    ''' <returns></returns>
     Public Property title As String
     Public Property label As String
     Public Property args As list
@@ -71,6 +76,14 @@ Public Class ggplotReader
             Return z.StringEmpty
         End Get
     End Property
+
+    Public Function getLegendLabel() As String
+        If title.StringEmpty Then
+            Return Me.ToString
+        Else
+            Return title
+        End If
+    End Function
 
     Public Overrides Function ToString() As String
         If isPlain2D Then

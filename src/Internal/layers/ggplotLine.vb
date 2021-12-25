@@ -94,7 +94,7 @@ Namespace layers
                                 .color = colors(Scan0),
                                 .fontstyle = theme.legendLabelCSS,
                                 .style = LegendStyles.SolidLine,
-                                .title = reader.ToString
+                                .title = reader.getLegendLabel
                             }
                         }
                     End If

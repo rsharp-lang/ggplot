@@ -118,7 +118,7 @@ Namespace layers
                         .color = colorString,
                         .fontstyle = ggplot.ggplotTheme.legendLabelCSS,
                         .style = shape,
-                        .title = ggplot.base.reader.ToString
+                        .title = ggplot.base.reader.getLegendLabel
                     }
                 }
 
@@ -132,7 +132,7 @@ Namespace layers
 
                 legends = New legendColorMapElement With {
                     .colorMapLegend = New ColorMapLegend(palette.colorMap, maplevels) With {
-                        .title = ggplot.base.reader.ToString,
+                        .title = ggplot.base.reader.getLegendLabel,
                         .tickAxisStroke = Stroke.TryParse(theme.legendTickAxisStroke).GDIObject,
                         .tickFont = CSSFont.TryParse(theme.legendTickCSS).GDIObject(g.Dpi),
                         .format = theme.legendTickFormat,
