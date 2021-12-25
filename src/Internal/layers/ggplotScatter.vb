@@ -85,7 +85,7 @@ Namespace layers
 
                 serial = createSerialData($"{baseData.x} ~ {baseData.y}", x, y, colors, size, shape, colorMap)
             Else
-                With reader.getMapData(ggplot.data, ggplot.environment)
+                With Me.data
                     If useCustomColorMaps Then
                         colors = getColorSet(ggplot, g, nsize, shape, .y, legends)
                     ElseIf Not ggplot.base.reader.color Is Nothing Then

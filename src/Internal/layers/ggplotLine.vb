@@ -81,7 +81,7 @@ Namespace layers
 
                 serial = ggplotScatter.createSerialData(ggplot.base.reader.ToString, x, y, colors, line_width, LegendStyles.SolidLine, colorMap)
             Else
-                With reader.getMapData(ggplot.data, ggplot.environment)
+                With Me.data
                     If useCustomColorMaps Then
                         colors = getColorSet(ggplot, g, nsize, LegendStyles.SolidLine, y, legends)
                     ElseIf Not ggplot.base.reader.color Is Nothing Then

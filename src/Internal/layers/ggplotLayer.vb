@@ -88,6 +88,16 @@ Namespace layers
             End Get
         End Property
 
+        Protected data As ggplotData = Nothing
+
+        Protected Friend Overridable Function initDataSet(ggplot As ggplot) As ggplotData
+            If useCustomData Then
+                data = reader.getMapData(ggplot.data, ggplot.environment)
+            End If
+
+            Return data
+        End Function
+
         Protected Function getColorSet(ggplot As ggplot,
                                        g As IGraphics,
                                        nsize As Integer,
