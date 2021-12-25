@@ -1,55 +1,58 @@
 ﻿#Region "Microsoft.VisualBasic::ae90560a2d1488442ea59ace210e6b5f, src\Internal\ggplotReader.vb"
 
-    ' Author:
-    ' 
-    '       asuka (amethyst.asuka@gcmodeller.org)
-    '       xie (genetics@smrucc.org)
-    '       xieguigang (xie.guigang@live.com)
-    ' 
-    ' Copyright (c) 2018 GPL3 Licensed
-    ' 
-    ' 
-    ' GNU GENERAL PUBLIC LICENSE (GPL3)
-    ' 
-    ' 
-    ' This program is free software: you can redistribute it and/or modify
-    ' it under the terms of the GNU General Public License as published by
-    ' the Free Software Foundation, either version 3 of the License, or
-    ' (at your option) any later version.
-    ' 
-    ' This program is distributed in the hope that it will be useful,
-    ' but WITHOUT ANY WARRANTY; without even the implied warranty of
-    ' MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    ' GNU General Public License for more details.
-    ' 
-    ' You should have received a copy of the GNU General Public License
-    ' along with this program. If not, see <http://www.gnu.org/licenses/>.
+' Author:
+' 
+'       asuka (amethyst.asuka@gcmodeller.org)
+'       xie (genetics@smrucc.org)
+'       xieguigang (xie.guigang@live.com)
+' 
+' Copyright (c) 2018 GPL3 Licensed
+' 
+' 
+' GNU GENERAL PUBLIC LICENSE (GPL3)
+' 
+' 
+' This program is free software: you can redistribute it and/or modify
+' it under the terms of the GNU General Public License as published by
+' the Free Software Foundation, either version 3 of the License, or
+' (at your option) any later version.
+' 
+' This program is distributed in the hope that it will be useful,
+' but WITHOUT ANY WARRANTY; without even the implied warranty of
+' MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+' GNU General Public License for more details.
+' 
+' You should have received a copy of the GNU General Public License
+' along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
+' Summaries:
 
-    ' Class ggplotReader
-    ' 
-    '     Properties: args, color, isPlain2D, label, title
-    '                 x, y, z
-    ' 
-    '     Function: getMapColor, getMapData, ToString, unifySource
-    ' 
-    ' Class ggplotData
-    ' 
-    '     Properties: [error], x, y
-    ' 
-    ' /********************************************************************************/
+' Class ggplotReader
+' 
+'     Properties: args, color, isPlain2D, label, title
+'                 x, y, z
+' 
+'     Function: getMapColor, getMapData, ToString, unifySource
+' 
+' Class ggplotData
+' 
+'     Properties: [error], x, y
+' 
+' /********************************************************************************/
 
 #End Region
 
+Imports Microsoft.VisualBasic.ApplicationServices.Debugging.Diagnostics
 Imports Microsoft.VisualBasic.ComponentModel.Collection
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
+Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine
 Imports SMRUCC.Rsharp.Runtime
+Imports SMRUCC.Rsharp.Runtime.Components
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports REnv = SMRUCC.Rsharp.Runtime
 
@@ -91,7 +94,32 @@ Public Class ggplotReader
 
     Private Shared Function unifySource(data As Object, source As String, env As Environment) As Array
         If TypeOf data Is dataframe Then
-            Return DirectCast(data, dataframe).getColumnVector(source)
+            Dim table As dataframe = DirectCast(data, dataframe)
+            Dim is_eval As Boolean = source.StartsWith("~") AndAlso Not table.hasName(source)
+            Dim expression As Expression
+
+            If is_eval Then
+                expression = Expression.ParseLines(Rscript.AutoHandleScript(source.Trim("~"c))).First
+                env = New Environment(env, New StackFrame With {
+                    .File = "n/a",
+                    .Line = "n/a",
+                    .Method = New Method With {
+                        .Method = NameOf(unifySource),
+                        .[Module] = "n/a",
+                        .[Namespace] = "ggplot"
+                    }
+                }, isInherits:=False)
+
+                For Each v As String In table.colnames
+                    Call env.AssignSymbol(v, table(v))
+                Next
+
+                Dim vec As Array = REnv.asVector(Of Double)(expression.Evaluate(env))
+
+                Return vec
+            Else
+                Return table.getColumnVector(source)
+            End If
         ElseIf TypeOf data Is list Then
             Throw New NotImplementedException
         Else
