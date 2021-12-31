@@ -112,6 +112,8 @@
     <Compile Include="Internal\filters\ggfx_gauss.vb" />
     <Compile Include="Internal\ggplotBase.vb" />
     <Compile Include="Internal\ggplotData.vb" />
+    <Compile Include="Internal\graph\layout\force_directed.vb" />
+    <Compile Include="Internal\graph\layout\ggforce.vb" />
     <Compile Include="Internal\layers\ggplotABLine.vb" />
     <Compile Include="Internal\layers\ggplotLayerType.vb" />
     <Compile Include="Internal\layers\ggplotLine.vb" />
@@ -167,6 +169,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Designer.cd" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
