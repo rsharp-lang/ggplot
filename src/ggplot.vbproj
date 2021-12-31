@@ -108,15 +108,39 @@
     <Compile Include="Internal\elements\textElement.vb" />
     <Compile Include="Internal\elements\ggplotElement.vb" />
     <Compile Include="Internal\ggplotBase.vb" />
+    <Compile Include="Internal\ggplotData.vb" />
+    <Compile Include="Internal\layers\ggplotABLine.vb" />
+    <Compile Include="Internal\layers\ggplotLayerType.vb" />
     <Compile Include="Internal\layers\ggplotLine.vb" />
     <Compile Include="Internal\layers\ggplotScatter.vb" />
     <Compile Include="Internal\layers\ggplotBoxplot.vb" />
     <Compile Include="Internal\layers\ggplotHistogram.vb" />
+    <Compile Include="Internal\layers\ggplotTextLabel.vb" />
+    <Compile Include="Internal\options\ggplotAxisLabel.vb" />
+    <Compile Include="Internal\options\ggplotCamera.vb" />
+    <Compile Include="Internal\options\ggplotColorProfile.vb" />
+    <Compile Include="Internal\options\ggplotTheme.vb" />
     <Compile Include="Internal\options\ggplotTicks.vb" />
     <Compile Include="Internal\options\ggplotOption.vb" />
+	
+	<Compile Include="Internal\colors\ggplotColorLiteral.vb" />
+	<Compile Include="Internal\colors\ggplotColorMap.vb" />
+	<Compile Include="Internal\colors\ggplotColorPalette.vb" />
+	<Compile Include="Internal\colors\ggplotColorFactorMap.vb" />
+
+
+	
+	  <Compile Include="Internal\layers\layer3\ggplotScatter3d.vb" />
+	    <Compile Include="Internal\layers\layer3\Ilayer3d.vb" />
+	
     <Compile Include="Internal\ggplot.vb" />
     <Compile Include="Internal\layers\ggplotLayer.vb" />
     <Compile Include="Internal\ggplotReader.vb" />
+    <Compile Include="Internal\options\ggplotTitle.vb" />
+    <Compile Include="Internal\elements\legend\IggplotLegendElement.vb" />
+    <Compile Include="Internal\elements\legend\legendColorMapElement.vb" />
+    <Compile Include="Internal\elements\legend\legendGroupElement.vb" />
+    <Compile Include="Internal\elements\legend\ggplotLegendElement.vb" />
     <Compile Include="zzz.vb" />
     <Compile Include="ggplot2.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
