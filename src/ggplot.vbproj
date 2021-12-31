@@ -104,6 +104,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ggplot3.vb" />
     <Compile Include="Internal\elements\lineElement.vb" />
     <Compile Include="Internal\elements\textElement.vb" />
     <Compile Include="Internal\elements\ggplotElement.vb" />
@@ -122,17 +123,12 @@
     <Compile Include="Internal\options\ggplotTheme.vb" />
     <Compile Include="Internal\options\ggplotTicks.vb" />
     <Compile Include="Internal\options\ggplotOption.vb" />
-	
-	<Compile Include="Internal\colors\ggplotColorLiteral.vb" />
-	<Compile Include="Internal\colors\ggplotColorMap.vb" />
-	<Compile Include="Internal\colors\ggplotColorPalette.vb" />
-	<Compile Include="Internal\colors\ggplotColorFactorMap.vb" />
-
-
-	
-	  <Compile Include="Internal\layers\layer3\ggplotScatter3d.vb" />
-	    <Compile Include="Internal\layers\layer3\Ilayer3d.vb" />
-	
+    <Compile Include="Internal\colors\ggplotColorLiteral.vb" />
+    <Compile Include="Internal\colors\ggplotColorMap.vb" />
+    <Compile Include="Internal\colors\ggplotColorPalette.vb" />
+    <Compile Include="Internal\colors\ggplotColorFactorMap.vb" />
+    <Compile Include="Internal\layers\layer3\ggplotScatter3d.vb" />
+    <Compile Include="Internal\layers\layer3\Ilayer3d.vb" />
     <Compile Include="Internal\ggplot.vb" />
     <Compile Include="Internal\layers\ggplotLayer.vb" />
     <Compile Include="Internal\ggplotReader.vb" />
@@ -141,6 +137,7 @@
     <Compile Include="Internal\elements\legend\legendColorMapElement.vb" />
     <Compile Include="Internal\elements\legend\legendGroupElement.vb" />
     <Compile Include="Internal\elements\legend\ggplotLegendElement.vb" />
+    <Compile Include="ggraph.vb" />
     <Compile Include="zzz.vb" />
     <Compile Include="ggplot2.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -187,6 +184,10 @@
       <Project>{7283c179-f852-4ead-8d8f-b82ef2cbd7db}</Project>
       <Name>47_dotnet_ms-vb_data.framework</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\sciBASIC#\Data_science\Graph\GraphTheory.vbproj">
+      <Project>{203bc68f-a0cd-443a-ab62-4af4110f752f}</Project>
+      <Name>GraphTheory</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\sciBASIC#\Data_science\Mathematica\Math\Math\math-core.vbproj">
       <Project>{e3367b88-5d0c-495a-8273-331656d4b5aa}</Project>
       <Name>math-core</Name>
@@ -198,6 +199,18 @@
     <ProjectReference Include="..\..\sciBASIC#\gr\Microsoft.VisualBasic.Imaging\Microsoft.VisualBasic.Imaging.vbproj">
       <Project>{85e71b4b-9276-4ec8-aadc-c849205f1ea8}</Project>
       <Name>Microsoft.VisualBasic.Imaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\sciBASIC#\gr\network-visualization\Datavisualization.Network\Network.GraphTheory.vbproj">
+      <Project>{076315ee-b598-40dc-9280-c71cdf9b6a48}</Project>
+      <Name>Network.GraphTheory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\sciBASIC#\gr\network-visualization\Visualizer\Visualizer.vbproj">
+      <Project>{45b726ac-d3b8-476d-89ea-1ff7243a4fa5}</Project>
+      <Name>Visualizer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\sciBASIC#\gr\physics\physics.vbproj">
+      <Project>{3291389c-ea87-4b33-a9a5-65a2d60ba3e2}</Project>
+      <Name>physics</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\sciBASIC#\Microsoft.VisualBasic.Core\src\47-dotnet_Microsoft.VisualBasic.vbproj">
       <Project>{fecce1fd-e1d4-49e3-a668-60bb5e7aed99}</Project>
