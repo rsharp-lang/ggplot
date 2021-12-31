@@ -108,6 +108,8 @@
     <Compile Include="Internal\elements\lineElement.vb" />
     <Compile Include="Internal\elements\textElement.vb" />
     <Compile Include="Internal\elements\ggplotElement.vb" />
+    <Compile Include="Internal\filters\ggfx.vb" />
+    <Compile Include="Internal\filters\ggfx_gauss.vb" />
     <Compile Include="Internal\ggplotBase.vb" />
     <Compile Include="Internal\ggplotData.vb" />
     <Compile Include="Internal\layers\ggplotABLine.vb" />
@@ -221,6 +223,7 @@
       <Name>MIME-htmls</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="..\..\..\R-sharp\Library\R_graphic.interop\R_graphic.interop.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
