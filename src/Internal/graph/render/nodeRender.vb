@@ -9,15 +9,7 @@ Namespace ggraph.render
 
     Public Class nodeRender : Inherits ggplotLayer
 
-        Public Overrides Function Plot(g As IGraphics,
-                                       canvas As GraphicsRegion,
-                                       baseData As ggplotAdapter,
-                                       x() As Double,
-                                       y() As Double,
-                                       scale As DataScaler,
-                                       ggplot As ggplot,
-                                       theme As Theme) As IggplotLegendElement
-
+        Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Throw New NotImplementedException()
         End Function
     End Class

@@ -62,18 +62,15 @@ Namespace layers
         ''' <returns></returns>
         Public Property isLabeler As Boolean
 
-        Public Overrides Function Plot(g As IGraphics,
-                                       canvas As GraphicsRegion,
-                                       baseData As ggplotAdapter,
-                                       x() As Double,
-                                       y() As Double,
-                                       scale As DataScaler,
-                                       ggplot As ggplot,
-                                       theme As Theme) As IggplotLegendElement
-
+        Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim legend As legendGroupElement = Nothing
             Dim labels As String()
-            Dim labelStyle As Font = CSSFont.TryParse(theme.tagCSS).GDIObject(g.Dpi)
+            Dim ggplot As ggplot = stream.ggplot
+            Dim g As IGraphics = stream.g
+            Dim labelStyle As Font = CSSFont.TryParse(stream.theme.tagCSS).GDIObject(g.Dpi)
+            Dim x = stream.x
+            Dim y = stream.y
+            Dim scale As DataScaler = stream.scale
 
             If useCustomData Then
                 labels = ggplot.getText(reader.label)
@@ -86,7 +83,7 @@ Namespace layers
             x = x.Select(Function(xi) scale.TranslateX(xi)).ToArray
             y = y.Select(Function(yi) scale.TranslateY(yi)).ToArray
 
-            For Each label As Label In layoutLabels(labels, x, y, g, labelStyle, canvas.PlotRegion, anchors, ggplot)
+            For Each label As Label In layoutLabels(labels, x, y, g, labelStyle, stream.canvas.PlotRegion, anchors, ggplot)
                 Call g.DrawString(label.text, labelStyle, Brushes.Black, label.location)
             Next
 

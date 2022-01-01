@@ -60,35 +60,28 @@ Namespace layers
         Public Property shape As LegendStyles
         Public Property size As Single
 
-        Public Overrides Function Plot(
-            g As IGraphics,
-            canvas As GraphicsRegion,
-            baseData As ggplotAdapter,
-            x As Double(),
-            y As Double(),
-            scale As DataScaler,
-            ggplot As ggplot,
-            theme As Theme
-        ) As IggplotLegendElement
-
+        Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim serial As SerialData
             Dim colors As String() = Nothing
             Dim legends As IggplotLegendElement = Nothing
+            Dim ggplot As ggplot = stream.ggplot
 
             If Not useCustomData Then
+                Dim x = stream.x
+                Dim y = stream.y
                 Dim nsize As Integer = x.Length
 
                 If useCustomColorMaps Then
-                    colors = getColorSet(ggplot, g, nsize, shape, y, legends)
+                    colors = getColorSet(ggplot, stream.g, nsize, shape, y, legends)
                 ElseIf Not ggplot.base.reader.color Is Nothing Then
                     colors = ggplot.base.getColors(ggplot)
                 End If
 
-                serial = createSerialData($"{baseData.x} ~ {baseData.y}", x, y, colors, size, shape, colorMap)
+                serial = createSerialData(stream.defaultTitle, x, y, colors, size, shape, colorMap)
             Else
                 With Me.data
                     If useCustomColorMaps Then
-                        colors = getColorSet(ggplot, g, .nsize, shape, .y, legends)
+                        colors = getColorSet(ggplot, stream.g, .nsize, shape, .y, legends)
                     ElseIf Not ggplot.base.reader.color Is Nothing Then
                         colors = ggplot.base.getColors(ggplot)
                     Else
@@ -96,7 +89,7 @@ Namespace layers
                         legends = New ggplotLegendElement With {
                             .legend = New LegendObject With {
                                 .color = colors(Scan0),
-                                .fontstyle = theme.legendLabelCSS,
+                                .fontstyle = stream.theme.legendLabelCSS,
                                 .style = LegendStyles.SolidLine,
                                 .title = reader.getLegendLabel
                             }
@@ -108,9 +101,9 @@ Namespace layers
             End If
 
             Call Scatter2D.DrawScatter(
-                g:=g,
+                g:=stream.g,
                 scatter:=serial.pts,
-                scaler:=scale,
+                scaler:=stream.scale,
                 fillPie:=True,
                 shape:=serial.shape,
                 pointSize:=serial.pointSize,

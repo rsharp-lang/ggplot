@@ -65,22 +65,15 @@ Namespace layers
             Return data
         End Function
 
-        Public Overrides Function Plot(g As IGraphics,
-                                       canvas As GraphicsRegion,
-                                       baseData As ggplotAdapter,
-                                       x() As Double,
-                                       y() As Double,
-                                       scale As DataScaler,
-                                       ggplot As ggplot,
-                                       theme As Theme) As IggplotLegendElement
-
+        Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
+            Dim scale As DataScaler = stream.scale
             Dim a As PointF = constraint(abline.A, scale)
             Dim b As PointF = constraint(abline.B, scale)
 
             a = scale.Translate(a)
             b = scale.Translate(b)
 
-            Call g.DrawLine(abline.Stroke, a, b)
+            Call stream.g.DrawLine(abline.Stroke, a, b)
 
             Return Nothing
         End Function

@@ -56,22 +56,16 @@ Namespace layers
 
         Public Property line_width As Single = 5
 
-        Public Overrides Function Plot(
-            g As IGraphics,
-            canvas As GraphicsRegion,
-            baseData As ggplotAdapter,
-            x As Double(),
-            y As Double(),
-            scale As DataScaler,
-            ggplot As ggplot,
-            theme As Theme
-        ) As IggplotLegendElement
-
+        Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim serial As SerialData
             Dim colors As String() = Nothing
             Dim legends As IggplotLegendElement = Nothing
+            Dim ggplot As ggplot = stream.ggplot
+            Dim g As IGraphics = stream.g
 
             If Not useCustomData Then
+                Dim x = stream.x
+                Dim y = stream.y
                 Dim nsize As Integer = x.Length
 
                 If useCustomColorMaps Then
@@ -92,7 +86,7 @@ Namespace layers
                         legends = New ggplotLegendElement With {
                             .legend = New LegendObject With {
                                 .color = colors(Scan0),
-                                .fontstyle = theme.legendLabelCSS,
+                                .fontstyle = stream.theme.legendLabelCSS,
                                 .style = LegendStyles.SolidLine,
                                 .title = reader.getLegendLabel
                             }
@@ -103,7 +97,7 @@ Namespace layers
                 End With
             End If
 
-            Call LinePlot2D.DrawLine(g, canvas, scale, serial, Splines.None)
+            Call LinePlot2D.DrawLine(stream.g, stream.canvas, stream.scale, serial, Splines.None)
 
             Return legends
         End Function

@@ -162,16 +162,7 @@ Namespace layers
             End If
         End Function
 
-        Public MustOverride Function Plot(
-            g As IGraphics,
-            canvas As GraphicsRegion,
-            baseData As ggplotAdapter,
-            x As Double(),
-            y As Double(),
-            scale As DataScaler,
-            ggplot As ggplot,
-            theme As Theme
-        ) As IggplotLegendElement
+        Public MustOverride Function Plot(stream As ggplotPipeline) As IggplotLegendElement
 
         Public Function getFilter(ggplot As ggplot) As BooleanVector
             Dim i As New List(Of Object)

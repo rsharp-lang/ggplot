@@ -285,11 +285,19 @@ Public Class ggplot : Inherits Plot
         )
 
         Dim legends As New List(Of IggplotLegendElement)
+        Dim stream As New ggplotPipeline With {
+            .ggplot = Me,
+            .canvas = canvas,
+            .g = g,
+            .scale = scale,
+            .x = x,
+            .y = y
+        }
 
         Do While layers.Count > 0
             Call layers _
                 .Dequeue _
-                .Plot(g, canvas, baseData, x, y, scale, ggplot:=Me, theme:=theme) _
+                .Plot(stream) _
                 .DoCall(AddressOf legends.Add)
         Loop
 

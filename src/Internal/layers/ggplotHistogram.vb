@@ -60,23 +60,13 @@ Namespace layers
 
         Dim binData As DataBinBox(Of Double)()
 
-        Public Overrides Function Plot(
-            g As IGraphics,
-            canvas As GraphicsRegion,
-            baseData As ggplotAdapter,
-            x As Double(),
-            y As Double(),
-            scale As DataScaler,
-            ggplot As ggplot,
-            theme As Theme
-        ) As IggplotLegendElement
-
-            Dim color As String = getColorName(ggplot)
+        Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
+            Dim color As String = getColorName(stream.ggplot)
             Dim legend As New LegendObject With {
                 .color = color,
-                .fontstyle = theme.legendLabelCSS,
+                .fontstyle = stream.theme.legendLabelCSS,
                 .style = LegendStyles.Rectangle,
-                .title = ggplot.base.reader.ToString
+                .title = stream.defaultTitle
             }
             Dim histData As HistProfile = binData.NewModel(legend)
             Dim colorData As New NamedValue(Of Color) With {
@@ -84,7 +74,7 @@ Namespace layers
                 .Value = color.TranslateColor
             }
 
-            Call HistogramPlot.DrawSample(g, canvas.PlotRegion, histData, colorData, scale)
+            Call HistogramPlot.DrawSample(stream.g, stream.canvas.PlotRegion, histData, colorData, stream.scale)
 
             Return New ggplotLegendElement With {
                 .legend = legend
