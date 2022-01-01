@@ -12,7 +12,7 @@ Namespace ggraph.layout
         Public Sub createLayout(g As NetworkGraph)
             Dim algorithm As Planner = createAlgorithm(g.doRandomLayout)
 
-            For i As Integer = 0 To 200
+            For i As Integer = 0 To 10000
                 Call algorithm.Collide()
             Next
         End Sub

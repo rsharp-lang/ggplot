@@ -7,7 +7,7 @@ Namespace ggraph.layout
     Public Class force_directed : Inherits ggforce
 
         Protected Overrides Function createAlgorithm(g As NetworkGraph) As Planner
-            Return New ForceDirected.Planner(g)
+            Return New ForceDirected.Planner(g, ejectFactor:=8)
         End Function
     End Class
 End Namespace
