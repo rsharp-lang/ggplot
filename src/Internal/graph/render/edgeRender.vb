@@ -17,10 +17,7 @@ Namespace ggraph.render
             Dim graph As NetworkGraph = stream.ggplot.data
             Dim linkWidth As Func(Of Edge, Single) = Function() 5
             Dim edgeDashType As New Dictionary(Of String, DashStyle)
-            Dim labels = NetworkVisualizer.drawEdges(
-                g:=stream.g,
-                net:=graph,
-                linkWidth:=linkWidth,
+            Dim engine As New EdgeRendering(linkWidth:=linkWidth,
                 edgeDashTypes:=edgeDashType,
                 scalePos:=stream.layout,
                 throwEx:=False,
@@ -28,7 +25,8 @@ Namespace ggraph.render
                 defaultEdgeColor:=Color.LightGray,
                 drawEdgeBends:=False,
                 drawEdgeDirection:=False
-            ).ToArray
+            )
+            Dim labels = engine.drawEdges(stream.g, graph).ToArray
 
             Return Nothing
         End Function
