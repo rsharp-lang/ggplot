@@ -8,6 +8,7 @@ Namespace ggraph.layout
         Public MustOverride Sub createLayout(g As NetworkGraph)
 
         Public Overrides Function Config(ggplot As ggplot) As ggplot
+            ggplot.args.slots(NameOf(ggforce)) = Me
             Return ggplot
         End Function
 

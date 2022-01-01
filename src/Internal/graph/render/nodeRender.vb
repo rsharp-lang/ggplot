@@ -11,7 +11,7 @@ Namespace ggraph.render
 
         Public Overrides Function Plot(g As IGraphics,
                                        canvas As GraphicsRegion,
-                                       baseData As ggplotData,
+                                       baseData As ggplotAdapter,
                                        x() As Double,
                                        y() As Double,
                                        scale As DataScaler,

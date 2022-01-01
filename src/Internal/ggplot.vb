@@ -50,6 +50,7 @@ Imports System.Drawing
 Imports System.Drawing.Imaging
 Imports System.IO
 Imports ggplot.elements.legend
+Imports ggplot.ggraph.layout
 Imports ggplot.layers
 Imports ggplot.layers.layer3d
 Imports Microsoft.VisualBasic.ComponentModel.DataStructures
@@ -137,12 +138,18 @@ Public Class ggplot : Inherits Plot
         Call g.Clear(theme.background.TranslateColor)
 
         If TypeOf data Is NetworkGraph Then
-
+            Call plotGraph(g, canvas)
         ElseIf base.reader.isPlain2D Then
             Call plot2D(baseData, g, canvas)
         Else
             Call plot3D(baseData, g, canvas)
         End If
+    End Sub
+
+    Private Sub plotGraph(ByRef g As IGraphics, canvas As GraphicsRegion)
+        Dim force As ggforce = args.getValue(Of ggforce)(NameOf(ggforce), environment, New force_directed)
+        Dim graph As NetworkGraph = DirectCast(data, NetworkGraph)
+
     End Sub
 
     Private Function Camera(plotSize As Size) As Camera

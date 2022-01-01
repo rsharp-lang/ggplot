@@ -165,7 +165,7 @@ Namespace layers
         Public MustOverride Function Plot(
             g As IGraphics,
             canvas As GraphicsRegion,
-            baseData As ggplotData,
+            baseData As ggplotAdapter,
             x As Double(),
             y As Double(),
             scale As DataScaler,
