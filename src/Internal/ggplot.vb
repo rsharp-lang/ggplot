@@ -153,6 +153,10 @@ Public Class ggplot : Inherits Plot
         Dim layers As New Queue(Of ggplotLayer)(
             collection:=If(UnionGgplotLayers Is Nothing, Me.layers, UnionGgplotLayers(Me.layers))
         )
+
+        Call force.createLayout(graph)
+
+        ' 先進行佈局計算，再
         ' 获取得到当前的这个网络对象相对于图像的中心点的位移值
         Dim scalePos As Dictionary(Of String, PointF) = CanvasScaler.CalculateNodePositions(graph, g.Size, canvas.Padding)
         Dim legends As New List(Of IggplotLegendElement)
@@ -165,8 +169,6 @@ Public Class ggplot : Inherits Plot
             .y = Nothing,
             .layout = scalePos
         }
-
-        Call force.createLayout(graph)
 
         Do While layers.Count > 0
             Call layers _
