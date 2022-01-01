@@ -59,6 +59,7 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Plot3D.Device
 Imports Microsoft.VisualBasic.Data.ChartPlots.Plot3D.Model
+Imports Microsoft.VisualBasic.Data.visualize.Network
 Imports Microsoft.VisualBasic.Data.visualize.Network.Graph
 Imports Microsoft.VisualBasic.Emit.Delegates
 Imports Microsoft.VisualBasic.Imaging
@@ -149,7 +150,32 @@ Public Class ggplot : Inherits Plot
     Private Sub plotGraph(ByRef g As IGraphics, canvas As GraphicsRegion)
         Dim force As ggforce = args.getValue(Of ggforce)(NameOf(ggforce), environment, New force_directed)
         Dim graph As NetworkGraph = DirectCast(data, NetworkGraph)
+        Dim layers As New Queue(Of ggplotLayer)(
+            collection:=If(UnionGgplotLayers Is Nothing, Me.layers, UnionGgplotLayers(Me.layers))
+        )
+        ' 获取得到当前的这个网络对象相对于图像的中心点的位移值
+        Dim scalePos As Dictionary(Of String, PointF) = CanvasScaler.CalculateNodePositions(graph, g.Size, canvas.Padding)
+        Dim legends As New List(Of IggplotLegendElement)
+        Dim stream As New ggplotPipeline With {
+            .ggplot = Me,
+            .canvas = canvas,
+            .g = g,
+            .scale = Nothing,
+            .x = Nothing,
+            .y = Nothing,
+            .layout = scalePos
+        }
 
+        Call force.createLayout(graph)
+
+        Do While layers.Count > 0
+            Call layers _
+                .Dequeue _
+                .Plot(stream) _
+                .DoCall(AddressOf legends.Add)
+        Loop
+
+        Call Draw2DElements(g, canvas, legends)
     End Sub
 
     Private Function Camera(plotSize As Size) As Camera

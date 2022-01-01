@@ -1,4 +1,5 @@
-﻿Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
+﻿Imports System.Drawing
+Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
@@ -11,6 +12,7 @@ Public Class ggplotPipeline
     Friend y As Double()
     Friend scale As DataScaler
     Friend ggplot As ggplot
+    Friend layout As Dictionary(Of String, PointF)
 
     Public ReadOnly Property theme As Theme
         Get

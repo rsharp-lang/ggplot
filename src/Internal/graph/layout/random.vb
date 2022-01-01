@@ -1,11 +1,12 @@
 ﻿Imports Microsoft.VisualBasic.Data.visualize.Network.Graph
+Imports Microsoft.VisualBasic.Data.visualize.Network.Layouts.ForceDirected
 
 Namespace ggraph.layout
 
     Public Class random : Inherits ggforce
 
-        Public Overrides Sub createLayout(g As NetworkGraph)
+        Protected Overrides Function createAlgorithm(g As NetworkGraph) As Planner
             Throw New NotImplementedException()
-        End Sub
+        End Function
     End Class
 End Namespace
