@@ -2,7 +2,7 @@
 Imports Microsoft.VisualBasic.Scripting.MetaData
 
 <Package("ggraph")>
-Module ggraph
+Module ggraphPkg
 
     Public Function geom_edge_link()
 
