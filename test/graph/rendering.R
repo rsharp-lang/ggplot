@@ -7,7 +7,29 @@ json = json_decode(readText(`${@dir}/TCACycle.json`));
 # str(json);
 
 nodes = as.data.frame(json$nodeDataArray);
+nodes = nodes[(nodes[, "category"] != "valve"), ];
+
 links = as.data.frame(json$linkDataArray);
+groupNames = nodes[as.logical(nodes[, "isGroup"]), ];
+groupNames = as.list(groupNames, byrow = TRUE);
+groupNames = lapply(groupNames, r -> r$text, names = r -> r$key);
+
+str(groupNames);
 
 print(nodes);
-print(links);
+# print(links);
+
+g = graph(from = links[, "from"], to = links[, "to"]);
+v = V(g);
+
+print(xref(v));
+
+xref = xref(v);
+
+i = sapply(nodes[, "key"], id -> which(id == xref));
+print(i);
+v$label = (nodes[, "label"])[i];
+v$group = sapply((nodes[, "group"])[i], key ->  ifelse((!is.null(key)) && (key in groupNames), groupNames[[key]], "undefined"));
+
+print(v$label);
+print(v$group);
