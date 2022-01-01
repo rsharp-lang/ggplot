@@ -2,7 +2,7 @@
 
 Namespace ggraph.layout
 
-    Public Class force_directed : Inherits ggforce
+    Public Class random : Inherits ggforce
 
         Public Overrides Sub createLayout(g As NetworkGraph)
             Throw New NotImplementedException()

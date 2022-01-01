@@ -1,4 +1,5 @@
 imports ["ggplot2", "ggplot3"] from "ggplot";
+imports "ggraph" from "ggplot";
 
 const .onLoad as function() {
     print(" --=== Create Elegant Data Visualisations Using the Grammar of Graphics ===--");

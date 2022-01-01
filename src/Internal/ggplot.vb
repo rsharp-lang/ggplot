@@ -58,6 +58,7 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Plot3D.Device
 Imports Microsoft.VisualBasic.Data.ChartPlots.Plot3D.Model
+Imports Microsoft.VisualBasic.Data.visualize.Network.Graph
 Imports Microsoft.VisualBasic.Emit.Delegates
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.BitmapImage
@@ -135,7 +136,9 @@ Public Class ggplot : Inherits Plot
 
         Call g.Clear(theme.background.TranslateColor)
 
-        If base.reader.isPlain2D Then
+        If TypeOf data Is NetworkGraph Then
+
+        ElseIf base.reader.isPlain2D Then
             Call plot2D(baseData, g, canvas)
         Else
             Call plot3D(baseData, g, canvas)
