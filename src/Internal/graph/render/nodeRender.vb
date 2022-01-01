@@ -36,7 +36,9 @@ Namespace ggraph.render
                 nodeWidget:=Nothing
             )
 
-            Call renderNode.drawVertexNodes(stream.g, graph.vertex.ToArray).ToArray
+            Dim labels = renderNode.drawVertexNodes(stream.g, graph.vertex.ToArray).ToArray
+
+            DirectCast(stream, graphPipeline).labels.AddRange(labels)
 
             Return Nothing
         End Function

@@ -18,6 +18,11 @@ Module ggraphPkg
         Return New nodeRender
     End Function
 
+    <ExportAPI("geom_node_text")>
+    Public Function geom_node_text() As textRender
+        Return New textRender
+    End Function
+
     <ExportAPI("layout_random")>
     Public Function layout_random() As ggforce
         Return New layout.random

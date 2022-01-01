@@ -29,6 +29,8 @@ Namespace ggraph.render
             )
             Dim labels = engine.drawEdges(stream.g, graph).ToArray
 
+            DirectCast(stream, graphPipeline).labels.AddRange(labels)
+
             Return Nothing
         End Function
     End Class

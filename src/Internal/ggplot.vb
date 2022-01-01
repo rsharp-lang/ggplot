@@ -50,6 +50,7 @@ Imports System.Drawing
 Imports System.Drawing.Imaging
 Imports System.IO
 Imports ggplot.elements.legend
+Imports ggplot.ggraph
 Imports ggplot.ggraph.layout
 Imports ggplot.layers
 Imports ggplot.layers.layer3d
@@ -160,7 +161,7 @@ Public Class ggplot : Inherits Plot
         ' 获取得到当前的这个网络对象相对于图像的中心点的位移值
         Dim scalePos As Dictionary(Of String, PointF) = CanvasScaler.CalculateNodePositions(graph, g.Size, canvas.Padding)
         Dim legends As New List(Of IggplotLegendElement)
-        Dim stream As New ggplotPipeline With {
+        Dim stream As New graphPipeline With {
             .ggplot = Me,
             .canvas = canvas,
             .g = g,
