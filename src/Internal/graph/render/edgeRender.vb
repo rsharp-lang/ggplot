@@ -17,7 +17,8 @@ Namespace ggraph.render
             Dim graph As NetworkGraph = stream.ggplot.data
             Dim linkWidth As Func(Of Edge, Single) = Function() 5
             Dim edgeDashType As New Dictionary(Of String, DashStyle)
-            Dim engine As New EdgeRendering(linkWidth:=linkWidth,
+            Dim engine As New EdgeRendering(
+                linkWidth:=linkWidth,
                 edgeDashTypes:=edgeDashType,
                 scalePos:=stream.layout,
                 throwEx:=False,
