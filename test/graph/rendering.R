@@ -44,6 +44,13 @@ bitmap(file = `${@dir}/graph.png`, size = [3200, 2700]) {
         fill = ggraph::map("group", "paper"))
     ) 
     + geom_node_text(aes(size = ggraph::map("degree", [6, 12]))) 
-    + layout_forcedirected()
+    + layout_forcedirected(
+        ejectFactor = 6,
+        condenseFactor = 3,
+        maxtx = 4,
+        maxty = 3,
+        dist_threshold = [30,250],
+        size = [1000,1000],
+    )
     ;
 }
