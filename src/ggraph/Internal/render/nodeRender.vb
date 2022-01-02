@@ -26,8 +26,7 @@ Namespace ggraph.render
             Dim graph As NetworkGraph = stream.ggplot.data
             Dim radius As Func(Of Node, Single) = Function() 30
             Dim stroke As Pen = Pens.White
-            Dim baseFont As Font = CSSFont.TryParse(CSSFont.Win7Normal).GDIObject(stream.g.Dpi)
-            Dim nodelabel As Func(Of Node, String) = Function(n) n.data.label
+            Dim baseFont As Font = CSSFont.TryParse(stream.theme.tagCSS).GDIObject(stream.g.Dpi)
             Dim renderNode As New NodeRendering(
                 radiusValue:=radius,
                 fontSizeValue:=AddressOf getFontSize,
@@ -36,7 +35,7 @@ Namespace ggraph.render
                 baseFont:=baseFont,
                 scalePos:=stream.layout,
                 throwEx:=False,
-                getDisplayLabel:=nodelabel,
+                getDisplayLabel:=Function(n) n.data.label,
                 drawNodeShape:=Nothing,
                 getLabelPosition:=Nothing,
                 labelWordWrapWidth:=-1,
