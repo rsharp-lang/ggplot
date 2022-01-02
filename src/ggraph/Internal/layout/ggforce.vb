@@ -7,12 +7,14 @@ Namespace ggraph.layout
 
     Public MustInherit Class ggforce : Inherits ggplotOption
 
+        Public Property iterations As Integer = 10000 * 2
+
         Protected MustOverride Function createAlgorithm(g As NetworkGraph) As Planner
 
         Public Sub createLayout(g As NetworkGraph)
             Dim algorithm As Planner = createAlgorithm(g.doRandomLayout)
 
-            For i As Integer = 0 To 10000
+            For i As Integer = 0 To iterations
                 Call algorithm.Collide()
             Next
         End Sub

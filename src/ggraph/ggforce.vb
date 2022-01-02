@@ -21,14 +21,17 @@ Module ggforcePkg
                                          Optional maxty As Integer = 3,
                                          <RRawVectorArgument> Optional dist_threshold As Object = "30,250",
                                          <RRawVectorArgument> Optional size As Object = "1000,1000",
+                                         Optional iterations As Integer = 20000,
                                          Optional env As Environment = Nothing) As force_directed
+
         Return New force_directed With {
             .condenseFactor = condenseFactor,
             .dist_threshold = InteropArgumentHelper.getSize(dist_threshold, env, "35,250"),
             .ejectFactor = ejectFactor,
             .maxtx = maxtx,
             .maxty = maxty,
-            .size = InteropArgumentHelper.getSize(size, env, "1000,1000")
+            .size = InteropArgumentHelper.getSize(size, env, "1000,1000"),
+            .iterations = iterations
         }
     End Function
 End Module

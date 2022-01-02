@@ -36,7 +36,7 @@ v$group = sapply((nodes[, "group"])[i], key -> ifelse(key in groupNames, groupNa
 print(v$label);
 print(v$group);
 
-bitmap(file = `${@dir}/graph.png`, size = [3200, 2700]) {
+bitmap(file = `${@dir}/graph.png`, size = [3600, 3000]) {
     ggplot(g) 
     + geom_edge_link() 
     + geom_node_point(aes(
