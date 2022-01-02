@@ -1,4 +1,5 @@
-﻿Imports Microsoft.VisualBasic.Data.visualize.Network
+﻿Imports ggplot
+Imports Microsoft.VisualBasic.Data.visualize.Network
 
 Namespace ggraph
 

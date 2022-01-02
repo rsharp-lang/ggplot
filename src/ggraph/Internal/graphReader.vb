@@ -1,4 +1,5 @@
-﻿Imports SMRUCC.Rsharp.Runtime
+﻿Imports ggplot
+Imports SMRUCC.Rsharp.Runtime
 
 Namespace ggraph
 
