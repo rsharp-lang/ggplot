@@ -53,6 +53,7 @@ Module ggraphPkg
         Dim mapStr As String
         Dim args As InvokeParameter() = DirectCast(vals, InvokeParameter())
         Dim isVector As Boolean = args.Length = 1 AndAlso TypeOf args(Scan0).value Is VectorLiteral
+        Dim isString As Boolean = args.Length = 1 AndAlso TypeOf args(Scan0).value Is Literal
 
         If isVector Then
             Dim vec As vector = args(Scan0).Evaluate(env)
@@ -62,6 +63,8 @@ Module ggraphPkg
                 .ToArray
 
             mapStr = $"map({key}, [{tokens.JoinBy(", ")}])"
+        ElseIf isString Then
+            mapStr = $"map({key}, {any.ToString(args(Scan0).Evaluate(env))})"
         Else
             Dim listData As NamedValue(Of Object)() = RListObjectArgumentAttribute _
                 .getObjectList(vals, env) _

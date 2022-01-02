@@ -37,7 +37,7 @@ print(v$group);
 bitmap(file = `${@dir}/graph.png`, size = [3200, 2700]) {
     ggplot(g) 
     + geom_edge_link() 
-    + geom_node_point(aes(fill = ggraph::map("group", ["paper","black"]))) 
+    + geom_node_point(aes(fill = ggraph::map("group", "paper"))) 
     + geom_node_text() 
     + layout_forcedirected()
     ;
