@@ -5,6 +5,7 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.visualize.Network
 Imports Microsoft.VisualBasic.Data.visualize.Network.Graph
+Imports Microsoft.VisualBasic.Data.visualize.Network.Styling
 Imports Microsoft.VisualBasic.Data.visualize.Network.Styling.CSS
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
@@ -42,7 +43,11 @@ Namespace ggraph.render
                 nodeWidget:=Nothing
             )
 
-            Dim labels = renderNode.drawVertexNodes(stream.g, graph.vertex.ToArray).ToArray
+            If Not fill.fill Is Nothing Then
+                graph = graph.SetNodeFill(fill.fill)
+            End If
+
+            Dim labels = renderNode.RenderingVertexNodes(stream.g, graph.vertex.ToArray).ToArray
 
             DirectCast(stream, graphPipeline).labels.AddRange(labels)
 
