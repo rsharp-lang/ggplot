@@ -51,7 +51,8 @@ bitmap(file = `${@dir}/graph.png`, size = [4400, 3000]) {
         maxty = 2,
         dist_threshold = [200,200],
         size = [900, 900],
-        iterations = 50000
+        iterations = 50000,
+        # algorithm = "group_weighted"
     )
     ;
 }

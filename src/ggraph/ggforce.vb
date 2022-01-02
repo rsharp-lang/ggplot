@@ -5,6 +5,7 @@ Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.Scripting.MetaData
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Interop
+Imports REnv = SMRUCC.Rsharp.Runtime
 
 <Package("ggforce")>
 Module ggforcePkg
@@ -22,7 +23,11 @@ Module ggforcePkg
                                          <RRawVectorArgument> Optional dist_threshold As Object = "30,250",
                                          <RRawVectorArgument> Optional size As Object = "1000,1000",
                                          Optional iterations As Integer = 20000,
+                                         <RRawVectorArgument(GetType(String))>
+                                         Optional algorithm As Object = "force_directed|degree_weighted|group_weighted|edge_weighted",
                                          Optional env As Environment = Nothing) As force_directed
+
+        algorithm = DirectCast(REnv.asVector(Of String)(algorithm), String())(Scan0)
 
         Return New force_directed With {
             .condenseFactor = condenseFactor,
@@ -31,7 +36,8 @@ Module ggforcePkg
             .maxtx = maxtx,
             .maxty = maxty,
             .size = InteropArgumentHelper.getSize(size, env, "1000,1000"),
-            .iterations = iterations
+            .iterations = iterations,
+            .algorithm = algorithm
         }
     End Function
 End Module
