@@ -103,8 +103,11 @@
 
   <ItemGroup>
     <Compile Remove="ggraph\**" />
+    <Compile Remove="Internal\graph\**" />
     <EmbeddedResource Remove="ggraph\**" />
+    <EmbeddedResource Remove="Internal\graph\**" />
     <None Remove="ggraph\**" />
+    <None Remove="Internal\graph\**" />
   </ItemGroup>
 
   <ItemGroup>

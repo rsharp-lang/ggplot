@@ -659,8 +659,8 @@ Global
 		{A74998AF-839B-46B9-A8A9-95FB69355BA1}.Rsharp_app_release|Any CPU.Build.0 = Release|Any CPU
 		{A74998AF-839B-46B9-A8A9-95FB69355BA1}.Rsharp_app_release|ARM32.ActiveCfg = Release|Any CPU
 		{A74998AF-839B-46B9-A8A9-95FB69355BA1}.Rsharp_app_release|ARM32.Build.0 = Release|Any CPU
-		{A74998AF-839B-46B9-A8A9-95FB69355BA1}.Rsharp_app_release|x64.ActiveCfg = Release|Any CPU
-		{A74998AF-839B-46B9-A8A9-95FB69355BA1}.Rsharp_app_release|x64.Build.0 = Release|Any CPU
+		{A74998AF-839B-46B9-A8A9-95FB69355BA1}.Rsharp_app_release|x64.ActiveCfg = Rsharp_app_release|x64
+		{A74998AF-839B-46B9-A8A9-95FB69355BA1}.Rsharp_app_release|x64.Build.0 = Rsharp_app_release|x64
 		{FCAD265B-DB4A-416D-BC4F-521063D1909E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FCAD265B-DB4A-416D-BC4F-521063D1909E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCAD265B-DB4A-416D-BC4F-521063D1909E}.Debug|ARM32.ActiveCfg = Debug|ARM32
