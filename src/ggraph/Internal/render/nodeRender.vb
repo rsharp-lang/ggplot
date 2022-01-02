@@ -13,11 +13,12 @@ Namespace ggraph.render
 
     Public Class nodeRender : Inherits ggplotLayer
 
+        Public Property defaultColor As Color = Color.SteelBlue
+
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim graph As NetworkGraph = stream.ggplot.data
-            Dim radius As Func(Of Node, Single) = Function() 20
-            Dim fontsize As Func(Of Node, Single) = Function() 10
-            Dim defaultColor As Color = Color.Blue
+            Dim radius As Func(Of Node, Single) = Function() 30
+            Dim fontsize As Func(Of Node, Single) = Function() 8
             Dim stroke As Pen = Pens.White
             Dim baseFont As Font = CSSFont.TryParse(CSSFont.Win7Normal).GDIObject(stream.g.Dpi)
             Dim nodelabel As Func(Of Node, String) = Function(n) n.data.label

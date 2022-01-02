@@ -1,6 +1,9 @@
-﻿Imports ggplot.ggraph.render
+﻿Imports System.Drawing
+Imports ggplot.ggraph.render
 Imports Microsoft.VisualBasic.CommandLine.Reflection
+Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Scripting.MetaData
+Imports SMRUCC.Rsharp.Runtime
 
 <Package("ggraph")>
 Module ggraphPkg
@@ -11,8 +14,13 @@ Module ggraphPkg
     End Function
 
     <ExportAPI("geom_node_point")>
-    Public Function geom_node_point() As nodeRender
-        Return New nodeRender
+    Public Function geom_node_point(Optional defaultColor As Object = NameOf(Color.SteelBlue),
+                                    Optional env As Environment = Nothing) As nodeRender
+        Return New nodeRender With {
+            .defaultColor = RColorPalette _
+                .getColor(defaultColor, NameOf(Color.SteelBlue)) _
+                .TranslateColor
+        }
     End Function
 
     <ExportAPI("geom_node_text")>
