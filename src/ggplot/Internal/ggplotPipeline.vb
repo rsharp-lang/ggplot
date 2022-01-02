@@ -6,6 +6,7 @@ Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 
 <Assembly: InternalsVisibleTo("MSImaging")>
+<Assembly: InternalsVisibleTo("ggraph")>
 
 Public Class ggplotPipeline
 

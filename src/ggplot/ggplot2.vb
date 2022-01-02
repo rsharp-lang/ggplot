@@ -134,6 +134,7 @@ Public Module ggplot2
             .colorSet = RColorPalette.getColorSet(colorSet, [default]:="paper")
         }
         Dim args2 = environment.GetAcceptorArguments
+        Dim ggplotDriver As ggplot = ggplot.CreateRender(data, theme)
 
         ' union arguments
         For Each arg In args2
@@ -142,16 +143,18 @@ Public Module ggplot2
             End If
         Next
 
-        Return New ggplot(theme) With {
-            .data = data,
-            .layers = New List(Of ggplotLayer),
-            .base = base,
-            .args = args,
-            .environment = environment,
-            .xlabel = base.reader.x,
-            .ylabel = base.reader.y,
+        With ggplotDriver
+            .data = data
+            .layers = New List(Of ggplotLayer)
+            .base = base
+            .args = args
+            .environment = environment
+            .xlabel = base.reader.x
+            .ylabel = base.reader.y
             .zlabel = base.reader.z
-        }
+        End With
+
+        Return ggplotDriver
     End Function
 
     ''' <summary>
