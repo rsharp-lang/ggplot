@@ -1,8 +1,11 @@
 ﻿Imports System.Drawing
+Imports System.Runtime.CompilerServices
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
+
+<Assembly: InternalsVisibleTo("MSImaging")>
 
 Public Class ggplotPipeline
 
@@ -15,15 +18,22 @@ Public Class ggplotPipeline
     Friend layout As Dictionary(Of String, PointF)
 
     Public ReadOnly Property theme As Theme
+        <MethodImpl(MethodImplOptions.AggressiveInlining)>
         Get
             Return ggplot.ggplotTheme
         End Get
     End Property
 
     Public ReadOnly Property defaultTitle As String
+        <MethodImpl(MethodImplOptions.AggressiveInlining)>
         Get
             Return ggplot.base.reader.ToString
         End Get
     End Property
+
+    <MethodImpl(MethodImplOptions.AggressiveInlining)>
+    Public Function GetRawData(Of T)() As T
+        Return DirectCast(ggplot.data, T)
+    End Function
 
 End Class
