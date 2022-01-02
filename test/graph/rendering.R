@@ -36,7 +36,7 @@ v$group = sapply((nodes[, "group"])[i], key -> ifelse(key in groupNames, groupNa
 print(v$label);
 print(v$group);
 
-bitmap(file = `${@dir}/graph.png`, size = [3600, 3000]) {
+bitmap(file = `${@dir}/graph.png`, size = [4400, 3000]) {
     ggplot(g) 
     + geom_edge_link() 
     + geom_node_point(aes(
@@ -45,12 +45,13 @@ bitmap(file = `${@dir}/graph.png`, size = [3600, 3000]) {
     ) 
     + geom_node_text(aes(size = ggraph::map("degree", [6, 12]))) 
     + layout_forcedirected(
-        ejectFactor = 6,
+        ejectFactor = 7,
         condenseFactor = 3,
-        maxtx = 4,
-        maxty = 3,
-        dist_threshold = [30,250],
-        size = [1000,1000],
+        maxtx = 2,
+        maxty = 2,
+        dist_threshold = [200,200],
+        size = [900, 900],
+        iterations = 50000
     )
     ;
 }
