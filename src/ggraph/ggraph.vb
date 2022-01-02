@@ -87,8 +87,25 @@ Module ggraphPkg
     End Function
 
     <ExportAPI("geom_node_text")>
-    Public Function geom_node_text(<RDefaultExpression()> Optional mapping As Object = "~aes()") As textRender
-        Return New textRender
+    Public Function geom_node_text(<RDefaultExpression()>
+                                   Optional mapping As Object = "~aes()",
+                                   Optional iteration As Integer = -1,
+                                   Optional env As Environment = Nothing) As textRender
+
+        Dim size As IGetSize = Nothing
+
+        If Not mapping Is Nothing Then
+            Dim arguments As list = DirectCast(mapping, ggplotReader).args
+
+            size = any _
+               .ToString(arguments.getValue("size", env, New Object)) _
+               .DoCall(AddressOf SizeExpression.Evaluate)
+        End If
+
+        Return New textRender With {
+            .fontsize = size,
+            .iteration = iteration
+        }
     End Function
 
     ''' <summary>

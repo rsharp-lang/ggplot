@@ -31,7 +31,7 @@ xref = xref(v);
 i = sapply(nodes[, "key"], id -> which(id == xref));
 print(i);
 v$label = (nodes[, "label"])[i];
-v$group = sapply((nodes[, "group"])[i], key ->  ifelse((!is.null(key)) && (key in groupNames), groupNames[[key]], "undefined"));
+v$group = sapply((nodes[, "group"])[i], key -> ifelse(key in groupNames, groupNames[[key]], "undefined"));
 
 print(v$label);
 print(v$group);
@@ -39,8 +39,11 @@ print(v$group);
 bitmap(file = `${@dir}/graph.png`, size = [3200, 2700]) {
     ggplot(g) 
     + geom_edge_link() 
-    + geom_node_point(aes(size = ggraph::map("degree", [10, 85]), fill = ggraph::map("group", "paper"))) 
-    + geom_node_text() 
+    + geom_node_point(aes(
+        size = ggraph::map("degree", [10, 120]), 
+        fill = ggraph::map("group", "paper"))
+    ) 
+    + geom_node_text(aes(size = ggraph::map("degree", [6, 12]))) 
     + layout_forcedirected()
     ;
 }
