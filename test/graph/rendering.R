@@ -19,7 +19,9 @@ str(groupNames);
 print(nodes);
 # print(links);
 
-g = graph(from = links[, "from"], to = links[, "to"]);
+g = graph(from = links[, "from"], to = links[, "to"])
+|> compute.network()
+;
 v = V(g);
 
 print(xref(v));
@@ -37,7 +39,7 @@ print(v$group);
 bitmap(file = `${@dir}/graph.png`, size = [3200, 2700]) {
     ggplot(g) 
     + geom_edge_link() 
-    + geom_node_point(aes(fill = ggraph::map("group", "paper"))) 
+    + geom_node_point(aes(size = ggraph::map("degree", [10, 85]), fill = ggraph::map("group", "paper"))) 
     + geom_node_text() 
     + layout_forcedirected()
     ;

@@ -5,6 +5,7 @@ Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.Data.visualize.Network.Styling
 Imports Microsoft.VisualBasic.Data.visualize.Network.Styling.CSS
 Imports Microsoft.VisualBasic.Data.visualize.Network.Styling.FillBrushes
+Imports Microsoft.VisualBasic.Data.visualize.Network.Styling.Numeric
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.Scripting.MetaData
@@ -40,18 +41,25 @@ Module ggraphPkg
                                     Optional env As Environment = Nothing) As nodeRender
 
         Dim fill As IGetBrush = Nothing
+        Dim size As IGetSize = Nothing
 
         If Not mapping Is Nothing Then
+            Dim arguments As list = DirectCast(mapping, ggplotReader).args
+
             fill = any _
-                .ToString(DirectCast(mapping, ggplotReader).args.getValue("fill", env, New Object)) _
+                .ToString(arguments.getValue("fill", env, New Object)) _
                 .DoCall(AddressOf BrushExpression.Evaluate)
+            size = any _
+                .ToString(arguments.getValue("size", env, New Object)) _
+                .DoCall(AddressOf SizeExpression.Evaluate)
         End If
 
         Return New nodeRender With {
             .defaultColor = RColorPalette _
                 .getColor(defaultColor, NameOf(Color.SteelBlue)) _
                 .TranslateColor,
-            .fill = New StyleCreator With {.fill = fill}
+            .fill = fill,
+            .radius = size
         }
     End Function
 
