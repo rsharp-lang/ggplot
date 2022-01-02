@@ -1,15 +1,15 @@
 imports ["ggplot2", "ggplot3"] from "ggplot";
-imports "ggraph" from "ggplot";
+imports ["ggraph", "ggforce"] from "ggraph";
 
 const .onLoad as function() {
-    print(" --=== Create Elegant Data Visualisations Using the Grammar of Graphics ===--");
-    print(" *                                                                          *");
-    print(" * ggplot is an open-source data visualization                              *");
-    print(" * package for the statistical programming                                  *");
-    print(" * language R#.                                                             *");
-    print(" *                                                                          *");
-    print(" ----=====   R# author: xieguigang <xie.guigang@gcmodeller.org>    ======----");
+    cat(" --=== Create Elegant Data Visualisations Using the Grammar of Graphics ===--\n");
+    cat(" *                                                                          *\n");
+    cat(" * ggplot is an open-source data visualization                              *\n");
+    cat(" * package for the statistical programming                                  *\n");
+    cat(" * language R#.                                                             *\n");
+    cat(" *                                                                          *\n");
+    cat(" ----=====   R# author: xieguigang <xie.guigang@gcmodeller.org>    ======----\n");
     cat("\n");
-    print("github: https://github.com/rsharp-lang/ggplot");
+    cat("github: https://github.com/rsharp-lang/ggplot\n");
     cat("\n");
 }
