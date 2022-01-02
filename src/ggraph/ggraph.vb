@@ -2,6 +2,9 @@
 Imports ggplot.ggraph.render
 Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
+Imports Microsoft.VisualBasic.Data.visualize.Network.Styling
+Imports Microsoft.VisualBasic.Data.visualize.Network.Styling.CSS
+Imports Microsoft.VisualBasic.Data.visualize.Network.Styling.FillBrushes
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.Scripting.MetaData
@@ -12,27 +15,48 @@ Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports SMRUCC.Rsharp.Runtime.Interop
 Imports any = Microsoft.VisualBasic.Scripting
 
+''' <summary>
+''' A grammar of graphics for relational data
+''' 
+''' ggraph is an extension of ggplot2 aimed at supporting relational 
+''' data structures such as networks, graphs, and trees. While it 
+''' builds upon the foundation of ggplot2 and its API it comes with 
+''' its own self-contained set of geoms, facets, etc., as well as 
+''' adding the concept of layouts to the grammar.
+''' </summary>
 <Package("ggraph")>
 Module ggraphPkg
 
     <ExportAPI("geom_edge_link")>
-    Public Function geom_edge_link() As edgeRender
+    Public Function geom_edge_link(Optional mapping As Object = Nothing) As edgeRender
         Return New edgeRender
     End Function
 
     <ExportAPI("geom_node_point")>
-    Public Function geom_node_point(<RRawVectorArgument>
+    Public Function geom_node_point(<RDefaultExpression()>
+                                    Optional mapping As Object = "~aes()",
+                                    <RRawVectorArgument>
                                     Optional defaultColor As Object = NameOf(Color.SteelBlue),
                                     Optional env As Environment = Nothing) As nodeRender
+
+        Dim fill As IGetBrush = Nothing
+
+        If Not mapping Is Nothing Then
+            fill = any _
+                .ToString(DirectCast(mapping, ggplotReader).args.getValue("fill", env, New Object)) _
+                .DoCall(AddressOf BrushExpression.Evaluate)
+        End If
+
         Return New nodeRender With {
             .defaultColor = RColorPalette _
                 .getColor(defaultColor, NameOf(Color.SteelBlue)) _
-                .TranslateColor
+                .TranslateColor,
+            .fill = New StyleCreator With {.fill = fill}
         }
     End Function
 
     <ExportAPI("geom_node_text")>
-    Public Function geom_node_text() As textRender
+    Public Function geom_node_text(Optional mapping As Object = Nothing) As textRender
         Return New textRender
     End Function
 

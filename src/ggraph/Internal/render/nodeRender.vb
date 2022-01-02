@@ -5,6 +5,7 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.visualize.Network
 Imports Microsoft.VisualBasic.Data.visualize.Network.Graph
+Imports Microsoft.VisualBasic.Data.visualize.Network.Styling.CSS
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.MIME.Html.CSS
@@ -14,6 +15,7 @@ Namespace ggraph.render
     Public Class nodeRender : Inherits ggplotLayer
 
         Public Property defaultColor As Color = Color.SteelBlue
+        Public Property fill As StyleCreator
 
         Private Function getFontSize(node As Node) As Single
             Return 8
