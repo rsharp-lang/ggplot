@@ -1,33 +1,14 @@
 ﻿
 Imports System.Drawing
-Imports System.Drawing.Imaging
-Imports System.IO
 Imports ggplot.elements.legend
-Imports ggplot.ggraph
 Imports ggplot.ggraph.layout
 Imports ggplot.layers
-Imports ggplot.layers.layer3d
-Imports Microsoft.VisualBasic.ComponentModel.DataStructures
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
-Imports Microsoft.VisualBasic.Data.ChartPlots.Plot3D.Device
-Imports Microsoft.VisualBasic.Data.ChartPlots.Plot3D.Model
 Imports Microsoft.VisualBasic.Data.visualize.Network
 Imports Microsoft.VisualBasic.Data.visualize.Network.Graph
-Imports Microsoft.VisualBasic.Emit.Delegates
 Imports Microsoft.VisualBasic.Imaging
-Imports Microsoft.VisualBasic.Imaging.BitmapImage
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
-Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
-Imports Microsoft.VisualBasic.Imaging.Drawing3D
 Imports Microsoft.VisualBasic.Linq
-Imports Microsoft.VisualBasic.Math.LinearAlgebra
-Imports Microsoft.VisualBasic.MIME.Html.CSS
-Imports Microsoft.VisualBasic.Scripting.Runtime
-Imports SMRUCC.Rsharp.Runtime
-Imports SMRUCC.Rsharp.Runtime.Internal.Object
-Imports REnv = SMRUCC.Rsharp.Runtime
 
 Namespace ggraph
 
@@ -35,6 +16,11 @@ Namespace ggraph
 
         Public Sub New(theme As Theme)
             MyBase.New(theme)
+        End Sub
+
+        Protected Overrides Sub PlotInternal(ByRef g As IGraphics, canvas As GraphicsRegion)
+            Call g.Clear(theme.background.TranslateColor)
+            Call plotGraph(g, canvas)
         End Sub
 
         Private Sub plotGraph(ByRef g As IGraphics, canvas As GraphicsRegion)
