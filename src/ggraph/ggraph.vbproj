@@ -38,6 +38,7 @@
     <DebugType>full</DebugType>
     <DefineDebug>false</DefineDebug>
     <DefineTrace>true</DefineTrace>
+    <OutputPath>../../assembly/</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
