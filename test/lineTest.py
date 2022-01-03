@@ -14,4 +14,4 @@ def plotfile(filepath):
    bitmap(plt, file = filepath)
    
    
-plotfile(`${@dir}/line_sin.png`)
+plotfile(`${@dir}/line_sin_py.png`)

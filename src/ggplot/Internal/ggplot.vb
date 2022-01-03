@@ -238,10 +238,17 @@ Public Class ggplot : Inherits Plot
         Next
     End Function
 
-    Private Function get2DScale(rect As Rectangle, layerData As IEnumerable(Of ggplotData)) As DataScaler
+    Private Function get2DScale(rect As Rectangle,
+                                [default] As (x As Double(), y As Double()),
+                                layerData As IEnumerable(Of ggplotData)) As DataScaler
+
         Dim allDataset As ggplotData() = layerData.ToArray
         Dim x As Double() = allDataset.Select(Function(d) DirectCast(REnv.asVector(Of Double)(d.x), Double())).IteratesALL.ToArray
         Dim y As Double() = allDataset.Select(Function(d) DirectCast(REnv.asVector(Of Double)(d.y), Double())).IteratesALL.ToArray
+
+        x = x.JoinIterates([default].x).ToArray
+        y = y.JoinIterates([default].y).ToArray
+
         Dim xTicks = x.Range.CreateAxisTicks
         Dim yTicks = y.Range.CreateAxisTicks
         Dim scaleX = d3js.scale.linear.domain(xTicks).range(integers:={rect.Left, rect.Right})
@@ -265,6 +272,7 @@ Public Class ggplot : Inherits Plot
         )
         Dim scale As DataScaler = get2DScale(
             rect:=canvas.PlotRegion,
+            [default]:=(x, y),
             layerData:=From layer As ggplotLayer
                        In layers
                        Let data As ggplotData = layer.initDataSet(ggplot:=Me)
