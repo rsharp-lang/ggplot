@@ -122,6 +122,8 @@ Public Class ggplot : Inherits Plot
     Public Shared Function CreateRender(driver As Object, theme As Theme) As ggplot
         If driver Is Nothing Then
             Return New ggplot(theme)
+        ElseIf TypeOf driver Is dataframe OrElse TypeOf driver Is list Then
+            Return New ggplot(theme)
         Else
             Return templates(driver.GetType)(theme)
         End If
