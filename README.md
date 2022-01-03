@@ -63,6 +63,59 @@ bitmap(file = `${@dir}/volcano.png`, size = [3000, 3000]) {
 
 ![](./test/volcano.png)
 
+## Use ggplot as python module
+
+```py
+import ggplot
+
+x     = seq(-5, 5, by = 0.2)
+y     = sin(x)
+input = data.frame(x = x, y = y)
+
+def plotfile(filepath):
+   print("previews of the plot table:")
+   print(input, max.print = 13)
+   
+   plt = ggplot(input, aes(x = "x", y = "y"), padding = "padding: 200px 500px 200px 200px;", width = 2400, height = 1600) 
+   plt = plt + geom_line(width = 8, show.legend = TRUE, color = "Jet")
+
+   bitmap(plt, file = filepath)
+      
+plotfile(`${@dir}/line_sin_py.png`)
+
+# --=== Create Elegant Data Visualisations Using the Grammar of Graphics ===--
+#  *                                                                          *
+#  * ggplot is an open-source data visualization                              *
+#  * package for the statistical programming                                  *
+#  * language R#.                                                             *
+#  *                                                                          *
+#  ----=====   R# author: xieguigang <xie.guigang@gcmodeller.org>    ======----
+
+# github: https://github.com/rsharp-lang/ggplot
+
+# [1] "previews of the plot table:"
+#               x          y
+# ---------------------------
+# <mode> <double>   <double>
+# [1, ]        -5   0.958924
+# [2, ]      -4.8   0.996165
+# [3, ]      -4.6   0.993691
+# [4, ]      -4.4   0.951602
+# [5, ]      -4.2   0.871576
+# [6, ]        -4   0.756802
+# [7, ]      -3.8   0.611858
+# [8, ]      -3.6    0.44252
+# [9, ]      -3.4   0.255541
+# [10, ]     -3.2  0.0583741
+# [11, ]       -3   -0.14112
+# [12, ]     -2.8  -0.334988
+# [13, ]     -2.6  -0.515501
+
+#  [ reached 'max' / getOption("max.print") -- omitted 37 rows ]
+```
+
+![](test/line_sin_py.png)
+
 ## Plot 3d scatter
 
 rendering a 3d chart in ggplot package is just simply enough as create a 2d chart plot. we just needs add a data mapping of the z axis at here!
