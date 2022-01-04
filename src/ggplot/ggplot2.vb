@@ -56,6 +56,7 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Shapes
+Imports Microsoft.VisualBasic.Imaging.Driver
 Imports Microsoft.VisualBasic.Language.Default
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports Microsoft.VisualBasic.Scripting.MetaData
@@ -124,6 +125,7 @@ Public Module ggplot2
                            Optional args As list = Nothing,
                            Optional environment As Environment = Nothing) As ggplot
 
+        Dim driver As Drivers = environment.getDriver
         Dim base As New ggplotBase With {.reader = mapping}
         Dim theme As New Theme With {
             .axisLabelCSS = "font-style: strong; font-size: 12; font-family: " & FontFace.MicrosoftYaHei & ";",
@@ -144,6 +146,7 @@ Public Module ggplot2
         Next
 
         With ggplotDriver
+            .driver = driver
             .data = data
             .layers = New List(Of ggplotLayer)
             .base = base

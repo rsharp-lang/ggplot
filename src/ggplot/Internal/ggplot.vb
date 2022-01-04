@@ -65,12 +65,13 @@ Imports Microsoft.VisualBasic.Imaging.BitmapImage
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports Microsoft.VisualBasic.Imaging.Drawing3D
+Imports Microsoft.VisualBasic.Imaging.Driver
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.Math.LinearAlgebra
 Imports Microsoft.VisualBasic.MIME.Html.CSS
-Imports Microsoft.VisualBasic.Scripting.Runtime
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
+Imports graphics = SMRUCC.Rsharp.Runtime.Internal.Invokes.graphics
 Imports REnv = SMRUCC.Rsharp.Runtime
 
 ''' <summary>
@@ -111,6 +112,11 @@ Public Class ggplot : Inherits Plot
     Public Property base As ggplotBase
     Public Property args As list
     Public Property environment As Environment
+    ''' <summary>
+    ''' the driver flag for the graphics device
+    ''' </summary>
+    ''' <returns></returns>
+    Public Property driver As Drivers = Drivers.GDI
 
     Shared ReadOnly templates As New Dictionary(Of Type, Func(Of Theme, ggplot))
 
@@ -375,25 +381,9 @@ Public Class ggplot : Inherits Plot
     End Sub
 
     Public Function Save(stream As Stream, format As ImageFormat) As Boolean Implements SaveGdiBitmap.Save
-        Dim size As New Size(1920, 1600)
+        Dim size As SizeF = graphicsPipeline.getSize(args.slots, environment, New SizeF(1920, 1600))
+        Dim image As GraphicsData = Plot($"{size.Width},{size.Height}", driver:=driver)
 
-        If {"w", "h"}.All(AddressOf args.hasName) Then
-            size = New Size(
-                width:=args.getValue(Of Integer)("w", environment, 1920),
-                height:=args.getValue(Of Integer)("h", environment, 1600)
-            )
-        ElseIf {"width", "height"}.All(AddressOf args.hasName) Then
-            size = New Size(
-                width:=args.getValue(Of Integer)("width", environment, 1920),
-                height:=args.getValue(Of Integer)("height", environment, 1600)
-            )
-        ElseIf args.hasName("size") Then
-            size = InteropArgumentHelper _
-                .getSize(args.getByName("size"), environment, "1920,1600") _
-                .SizeParser
-        End If
-
-        Dim image = Plot($"{size.Width},{size.Height}")
         Return image.Save(stream)
     End Function
 End Class
