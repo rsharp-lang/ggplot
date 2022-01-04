@@ -30,7 +30,7 @@ Namespace ggraph
                 collection:=If(UnionGgplotLayers Is Nothing, Me.layers, UnionGgplotLayers(Me.layers))
             )
 
-            Call force.createLayout(graph)
+            Call force.createLayout(graph, environment)
 
             ' 先進行佈局計算，再
             ' 获取得到当前的这个网络对象相对于图像的中心点的位移值
