@@ -71,7 +71,6 @@ Imports Microsoft.VisualBasic.Math.LinearAlgebra
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
-Imports graphics = SMRUCC.Rsharp.Runtime.Internal.Invokes.graphics
 Imports REnv = SMRUCC.Rsharp.Runtime
 
 ''' <summary>
