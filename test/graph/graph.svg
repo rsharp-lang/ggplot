@@ -11,339 +11,339 @@
            assembly:  Microsoft.VisualBasic.Imaging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
            version:   1.0.0.0
            built:     1/1/2000 12:00:00 AM
-           md5:       94da030452b93b553d4dbf029f150d11
-           timestamp: 1/4/2022 10:18:15 PM
+           md5:       57a7c5ae9cff09d12fcbeca9e162461e
+           timestamp: 1/4/2022 10:55:30 PM
         
       
   -->
   <g z-index="0">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="359.8637" x2="1651.4988" y1="381.44098" x1="1494.0188" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="900" x2="1247.6633" y1="879.62354" x1="1091.217" />
   </g>
   <g z-index="1">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="381.44098" x2="1494.0188" y1="359.8637" x1="1651.4988" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="879.62354" x2="1091.217" y1="900" x1="1247.6633" />
   </g>
   <g z-index="2">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="526.0095" x2="1123.7832" y1="462.66293" x1="1367.2115" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="664.9277" x2="1055.2139" y1="787.7019" x1="1079.6812" />
   </g>
   <g z-index="3">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="585.3806" x2="713.4302" y1="526.0095" x1="1123.7832" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="634.00055" x2="861.28564" y1="664.9277" x1="1055.2139" />
   </g>
   <g z-index="4">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="678.82935" x2="608.2488" y1="585.3806" x1="713.4302" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="759.57825" x2="820.8215" y1="634.00055" x1="861.28564" />
   </g>
   <g z-index="5">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="585.3806" x2="713.4302" y1="678.82935" x1="608.2488" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="634.00055" x2="861.28564" y1="759.57825" x1="820.8215" />
   </g>
   <g z-index="6">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="505.32346" x2="492.96973" y1="587.49786" x1="452.156" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="605.48303" x2="997.8039" y1="683.9227" x1="755.99255" />
   </g>
   <g z-index="7">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="636.9158" x2="299.99994" y1="587.49786" x1="452.156" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="774.50464" x2="614.72253" y1="683.9227" x1="755.99255" />
   </g>
   <g z-index="8">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="585.3806" x2="713.4302" y1="505.32346" x1="492.96973" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="634.00055" x2="861.28564" y1="605.48303" x1="997.8039" />
   </g>
   <g z-index="9">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="587.49786" x2="452.156" y1="585.3806" x1="713.4302" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="683.9227" x2="755.99255" y1="634.00055" x1="861.28564" />
   </g>
   <g z-index="10">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="578.75806" x2="943.35785" y1="585.3806" x1="713.4302" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="460.53204" x2="798.3744" y1="634.00055" x1="861.28564" />
   </g>
   <g z-index="11">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="677.7403" x2="1139.202" y1="578.75806" x1="943.35785" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="507.24887" x2="547.7307" y1="460.53204" x1="798.3744" />
   </g>
   <g z-index="12">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="359.8637" x2="1651.4988" y1="428.90207" x1="1752.8245" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="900" x2="1247.6633" y1="856.8449" x1="1406.0278" />
   </g>
   <g z-index="13">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="757.03815" x2="1248.3766" y1="677.7403" x1="1139.202" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="555.1428" x2="380.4782" y1="507.24887" x1="547.7307" />
   </g>
   <g z-index="14">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="833.80975" x2="1292.1261" y1="757.03815" x1="1248.3766" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="631.6702" x2="306.5813" y1="555.1428" x1="380.4782" />
   </g>
   <g z-index="15">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="900.00006" x2="1268.2112" y1="833.80975" x1="1292.1261" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="708.2246" x2="300" y1="631.6702" x1="306.5813" />
   </g>
   <g z-index="16">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="720.53625" x2="878.43024" y1="578.75806" x1="943.35785" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="385.15576" x2="622.6168" y1="460.53204" x1="798.3744" />
   </g>
   <g z-index="17">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="813.61475" x2="808.6111" y1="720.53625" x1="878.43024" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="320.2284" x2="513.7228" y1="385.15576" x1="622.6168" />
   </g>
   <g z-index="18">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="876.9005" x2="739.7711" y1="813.61475" x1="808.6111" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="250" x2="518.9192" y1="320.2284" x1="513.7228" />
   </g>
   <g z-index="19">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="457.75146" x2="893.1343" y1="578.75806" x1="943.35785" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="390.1847" x2="967.31195" y1="460.53204" x1="798.3744" />
   </g>
   <g z-index="20">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="328.8781" x2="815.20703" y1="457.75146" x1="893.1343" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="388.53415" x2="1271.0155" y1="390.1847" x1="967.31195" />
   </g>
   <g z-index="21">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="308.24103" x2="570.74976" y1="328.8781" x1="815.20703" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="480.4203" x2="1418.9106" y1="388.53415" x1="1271.0155" />
   </g>
   <g z-index="22">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="368.8619" x2="513.2323" y1="308.24103" x1="570.74976" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="527.0537" x2="1304.5496" y1="480.4203" x1="1418.9106" />
   </g>
   <g z-index="23">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="515.9134" x2="1770" y1="428.90207" x1="1752.8245" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="791.12476" x2="1529.5782" y1="856.8449" x1="1406.0278" />
   </g>
   <g z-index="24">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="270.83493" x2="729.71136" y1="368.8619" x1="513.2323" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="402.92126" x2="1427.3522" y1="527.0537" x1="1304.5496" />
   </g>
   <g z-index="25">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="250.00003" x2="942.07996" y1="270.83493" x1="729.71136" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="322.52036" x2="1382.3638" y1="402.92126" x1="1427.3522" />
   </g>
   <g z-index="26">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="380.48517" x2="1049.6582" y1="250.00003" x1="942.07996" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="379.97144" x2="1104.5708" y1="322.52036" x1="1382.3638" />
   </g>
   <g z-index="27">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="453.09973" x2="1086.8933" y1="380.48517" x1="1049.6582" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="490.109" x2="1044.1831" y1="379.97144" x1="1104.5708" />
   </g>
   <g z-index="28">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="457.75146" x2="893.1343" y1="453.09973" x1="1086.8933" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="390.1847" x2="967.31195" y1="490.109" x1="1044.1831" />
   </g>
   <g z-index="29">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="380.48517" x2="1049.6582" y1="578.75806" x1="943.35785" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="379.97144" x2="1104.5708" y1="460.53204" x1="798.3744" />
   </g>
   <g z-index="30">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="380.48517" x2="1049.6582" y1="300.98727" x1="1064.0758" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="379.97144" x2="1104.5708" y1="299.82053" x1="1196.4377" />
   </g>
   <g z-index="31">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="300.98727" x2="1064.0758" y1="328.8781" x1="815.20703" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="299.82053" x2="1196.4377" y1="388.53415" x1="1271.0155" />
   </g>
   <g z-index="32">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="270.83493" x2="729.71136" y1="328.8781" x1="815.20703" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="402.92126" x2="1427.3522" y1="388.53415" x1="1271.0155" />
   </g>
   <g z-index="33">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="270.83493" x2="729.71136" y1="250.00003" x1="942.07996" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="402.92126" x2="1427.3522" y1="322.52036" x1="1382.3638" />
   </g>
   <g z-index="34">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="428.90207" x2="1752.8245" y1="515.9134" x1="1770" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="856.8449" x2="1406.0278" y1="791.12476" x1="1529.5782" />
   </g>
   <g z-index="35">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="457.75146" x2="893.1343" y1="328.8781" x1="815.20703" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="390.1847" x2="967.31195" y1="388.53415" x1="1271.0155" />
   </g>
   <g z-index="36">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="250.00003" x2="942.07996" y1="380.48517" x1="1049.6582" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="322.52036" x2="1382.3638" y1="379.97144" x1="1104.5708" />
   </g>
   <g z-index="37">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="461.76096" x2="729.973" y1="457.75146" x1="893.1343" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="275.429" x2="911.80444" y1="390.1847" x1="967.31195" />
   </g>
   <g z-index="38">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="505.32346" x2="492.96973" y1="368.8619" x1="513.2323" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="605.48303" x2="997.8039" y1="527.0537" x1="1304.5496" />
   </g>
   <g z-index="39">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="526.0095" x2="1123.7832" y1="453.09973" x1="1086.8933" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="664.9277" x2="1055.2139" y1="490.109" x1="1044.1831" />
   </g>
   <g z-index="40">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="453.09973" x2="1086.8933" y1="526.0095" x1="1123.7832" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="490.109" x2="1044.1831" y1="664.9277" x1="1055.2139" />
   </g>
   <g z-index="41">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="599.2104" x2="1741.4556" y1="515.9134" x1="1770" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="717.95984" x2="1628.593" y1="791.12476" x1="1529.5782" />
   </g>
   <g z-index="42">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="515.9134" x2="1770" y1="599.2104" x1="1741.4556" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="791.12476" x2="1529.5782" y1="717.95984" x1="1628.593" />
   </g>
   <g z-index="43">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="676.51263" x2="1698.2139" y1="599.2104" x1="1741.4556" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="641.7695" x2="1710.5017" y1="717.95984" x1="1628.593" />
   </g>
   <g z-index="44">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="744.7075" x2="1661.4116" y1="676.51263" x1="1698.2139" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="570.82135" x2="1770" y1="641.7695" x1="1710.5017" />
   </g>
   <g z-index="45">
-    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="462.66293" x2="1367.2115" y1="381.44098" x1="1494.0188" />
+    <line style="stroke: #D3D3D3; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="787.7019" x2="1079.6812" y1="879.62354" x1="1091.217" />
   </g>
   <g z-index="46">
-    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#D02823" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="599.2104" cx="1741.4556" r="25.4" />
+    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#D02823" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="717.95984" cx="1628.593" r="25.4" />
   </g>
   <g z-index="47">
-    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#0491D0" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="757.03815" cx="1248.3766" r="17.2" />
+    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#0491D0" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="555.1428" cx="380.4782" r="17.2" />
   </g>
   <g z-index="48">
-    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#88BB64" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="677.7403" cx="1139.202" r="17.2" />
+    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#88BB64" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="507.24887" cx="547.7307" r="17.2" />
   </g>
   <g z-index="49">
-    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#15DBFF" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="462.66293" cx="1367.2115" r="17.2" />
+    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#15DBFF" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="787.7019" cx="1079.6812" r="17.2" />
   </g>
   <g z-index="50">
-    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#15DBFF" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="578.75806" cx="943.35785" r="41.8" />
+    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#15DBFF" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="460.53204" cx="798.3744" r="41.8" />
   </g>
   <g z-index="51">
-    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#15DBFF" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="720.53625" cx="878.43024" r="17.2" />
+    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#15DBFF" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="385.15576" cx="622.6168" r="17.2" />
   </g>
   <g z-index="52">
-    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#15DBFF" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="813.61475" cx="808.6111" r="17.2" />
+    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#15DBFF" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="320.2284" cx="513.7228" r="17.2" />
   </g>
   <g z-index="53">
-    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#D02823" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="876.9005" cx="739.7711" r="9" />
+    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#D02823" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="250" cx="518.9192" r="9" />
   </g>
   <g z-index="54">
-    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#583B73" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="457.75146" cx="893.1343" r="41.8" />
+    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#583B73" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="390.1847" cx="967.31195" r="41.8" />
   </g>
   <g z-index="55">
-    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#88BB64" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="328.8781" cx="815.20703" r="41.8" />
+    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#88BB64" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="388.53415" cx="1271.0155" r="41.8" />
   </g>
   <g z-index="56">
-    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#15DBFF" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="308.24103" cx="570.74976" r="17.2" />
+    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#15DBFF" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="480.4203" cx="1418.9106" r="17.2" />
   </g>
   <g z-index="57">
-    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#15DBFF" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="368.8619" cx="513.2323" r="25.4" />
+    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#15DBFF" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="527.0537" cx="1304.5496" r="25.4" />
   </g>
   <g z-index="58">
-    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#15DBFF" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="676.51263" cx="1698.2139" r="17.2" />
+    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#15DBFF" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="641.7695" cx="1710.5017" r="17.2" />
   </g>
   <g z-index="59">
-    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#15DBFF" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="270.83493" cx="729.71136" r="33.6" />
+    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#15DBFF" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="402.92126" cx="1427.3522" r="33.6" />
   </g>
   <g z-index="60">
-    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#15DBFF" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="250.00003" cx="942.07996" r="33.6" />
+    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#15DBFF" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="322.52036" cx="1382.3638" r="33.6" />
   </g>
   <g z-index="61">
-    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#0491D0" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="526.0095" cx="1123.7832" r="33.6" />
+    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#0491D0" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="664.9277" cx="1055.2139" r="33.6" />
   </g>
   <g z-index="62">
-    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#D02823" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="380.48517" cx="1049.6582" r="41.8" />
+    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#D02823" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="379.97144" cx="1104.5708" r="41.8" />
   </g>
   <g z-index="63">
-    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#D02823" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="453.09973" cx="1086.8933" r="33.6" />
+    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#D02823" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="490.109" cx="1044.1831" r="33.6" />
   </g>
   <g z-index="64">
-    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#D02823" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="300.98727" cx="1064.0758" r="17.2" />
+    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#D02823" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="299.82053" cx="1196.4377" r="17.2" />
   </g>
   <g z-index="65">
-    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#D02823" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="461.76096" cx="729.973" r="9" />
+    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#D02823" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="275.429" cx="911.80444" r="9" />
   </g>
   <g z-index="66">
-    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#D02823" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="744.7075" cx="1661.4116" r="9" />
+    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#D02823" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="570.82135" cx="1770" r="9" />
   </g>
   <g z-index="67">
-    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#D02823" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="585.3806" cx="713.4302" r="50" />
+    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#D02823" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="634.00055" cx="861.28564" r="50" />
   </g>
   <g z-index="68">
-    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#0491D0" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="515.9134" cx="1770" r="33.6" />
+    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#0491D0" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="791.12476" cx="1529.5782" r="33.6" />
   </g>
   <g z-index="69">
-    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#0491D0" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="678.82935" cx="608.2488" r="17.2" />
+    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#0491D0" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="759.57825" cx="820.8215" r="17.2" />
   </g>
   <g z-index="70">
-    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#0491D0" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="428.90207" cx="1752.8245" r="25.4" />
+    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#0491D0" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="856.8449" cx="1406.0278" r="25.4" />
   </g>
   <g z-index="71">
-    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#0491D0" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="505.32346" cx="492.96973" r="25.4" />
+    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#0491D0" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="605.48303" cx="997.8039" r="25.4" />
   </g>
   <g z-index="72">
-    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#0491D0" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="359.8637" cx="1651.4988" r="25.4" />
+    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#0491D0" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="900" cx="1247.6633" r="25.4" />
   </g>
   <g z-index="73">
-    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#583B73" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="587.49786" cx="452.156" r="25.4" />
+    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#583B73" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="683.9227" cx="755.99255" r="25.4" />
   </g>
   <g z-index="74">
-    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#583B73" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="381.44098" cx="1494.0188" r="25.4" />
+    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#583B73" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="879.62354" cx="1091.217" r="25.4" />
   </g>
   <g z-index="75">
-    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#583B73" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="636.9158" cx="299.99994" r="9" />
+    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#583B73" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="774.50464" cx="614.72253" r="9" />
   </g>
   <g z-index="76">
-    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#583B73" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="900.00006" cx="1268.2112" r="9" />
+    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#583B73" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="708.2246" cx="300" r="9" />
   </g>
   <g z-index="77">
-    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#88BB64" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="833.80975" cx="1292.1261" r="17.2" />
+    <circle style="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" fill="#88BB64" stroke="stroke: #FFFFFF; stroke-width: 1px; stroke-dash: solid;" z-index="0" cy="631.6702" cx="306.5813" r="17.2" />
   </g>
   <g z-index="78">
-    <text style="font-style: normal;font-size: 18.75px;font-family: Bookman Old Style;color: black;fill: #010000" z-index="0" y="611.2937" x="1737.0059">Glucose</text>
+    <text style="font-style: normal;font-size: 18.75px;font-family: Bookman Old Style;color: black;fill: #010000" z-index="0" y="730.04315" x="1624.1433">Glucose</text>
   </g>
   <g z-index="79">
-    <text style="font-style: normal;font-size: 15.625px;font-family: Bookman Old Style;color: black;fill: #000001" z-index="0" y="765.99646" x="1223.8853">Propionyl-CoA</text>
+    <text style="font-style: normal;font-size: 15.625px;font-family: Bookman Old Style;color: black;fill: #000001" z-index="0" y="564.10114" x="355.9869">Propionyl-CoA</text>
   </g>
   <g z-index="80">
-    <text style="font-style: normal;font-size: 15.625px;font-family: Bookman Old Style;color: black;fill: #000000" z-index="0" y="686.6986" x="1090.0935">Malonate semialdehyde</text>
+    <text style="font-style: normal;font-size: 15.625px;font-family: Bookman Old Style;color: black;fill: #000000" z-index="0" y="516.2072" x="498.62222">Malonate semialdehyde</text>
   </g>
   <g z-index="81">
-    <text style="font-style: normal;font-size: 15.625px;font-family: Bookman Old Style;color: black;fill: #000101" z-index="0" y="471.62128" x="1362.7177">Citrate</text>
+    <text style="font-style: normal;font-size: 15.625px;font-family: Bookman Old Style;color: black;fill: #000101" z-index="0" y="796.6602" x="1075.1873">Citrate</text>
   </g>
   <g z-index="82">
-    <text style="font-style: normal;font-size: 25px;font-family: Bookman Old Style;color: black;fill: #000101" z-index="0" y="597.0914" x="925.05145">a-Ketoglutarate</text>
+    <text style="font-style: normal;font-size: 25px;font-family: Bookman Old Style;color: black;fill: #000101" z-index="0" y="478.8654" x="780.068">a-Ketoglutarate</text>
   </g>
   <g z-index="83">
-    <text style="font-style: normal;font-size: 15.625px;font-family: Bookman Old Style;color: black;fill: #000101" z-index="0" y="729.49457" x="865.7957">Succinate</text>
+    <text style="font-style: normal;font-size: 15.625px;font-family: Bookman Old Style;color: black;fill: #000101" z-index="0" y="394.1141" x="609.9823">Succinate</text>
   </g>
   <g z-index="84">
-    <text style="font-style: normal;font-size: 15.625px;font-family: Bookman Old Style;color: black;fill: #000101" z-index="0" y="822.57306" x="804.44006">Malate</text>
+    <text style="font-style: normal;font-size: 15.625px;font-family: Bookman Old Style;color: black;fill: #000101" z-index="0" y="329.18674" x="509.5518">Malate</text>
   </g>
   <g z-index="85">
-    <text style="font-style: normal;font-size: 12.5px;font-family: Bookman Old Style;color: black;fill: #010000" z-index="0" y="882.7338" x="716.3241">Fructose 6-P</text>
+    <text style="font-style: normal;font-size: 12.5px;font-family: Bookman Old Style;color: black;fill: #010000" z-index="0" y="255.83333" x="495.47217">Fructose 6-P</text>
   </g>
   <g z-index="86">
-    <text style="font-style: normal;font-size: 25px;font-family: Bookman Old Style;color: black;fill: #000000" z-index="0" y="476.0848" x="866.58826">Butyryl phosphate</text>
+    <text style="font-style: normal;font-size: 25px;font-family: Bookman Old Style;color: black;fill: #000000" z-index="0" y="408.51804" x="940.7659">Butyryl phosphate</text>
   </g>
   <g z-index="87">
-    <text style="font-style: normal;font-size: 25px;font-family: Bookman Old Style;color: black;fill: #000000" z-index="0" y="347.21146" x="781.74176">3-Hydroxypropionate</text>
+    <text style="font-style: normal;font-size: 25px;font-family: Bookman Old Style;color: black;fill: #000000" z-index="0" y="406.8675" x="1237.5503">3-Hydroxypropionate</text>
   </g>
   <g z-index="88">
-    <text style="font-style: normal;font-size: 15.625px;font-family: Bookman Old Style;color: black;fill: #000101" z-index="0" y="317.19937" x="559.6621">Isocitrate</text>
+    <text style="font-style: normal;font-size: 15.625px;font-family: Bookman Old Style;color: black;fill: #000101" z-index="0" y="489.37863" x="1407.823">Isocitrate</text>
   </g>
   <g z-index="89">
-    <text style="font-style: normal;font-size: 18.75px;font-family: Bookman Old Style;color: black;fill: #000101" z-index="0" y="380.94525" x="494.1681">Succinyl-CoA</text>
+    <text style="font-style: normal;font-size: 18.75px;font-family: Bookman Old Style;color: black;fill: #000101" z-index="0" y="539.137" x="1285.4854">Succinyl-CoA</text>
   </g>
   <g z-index="90">
-    <text style="font-style: normal;font-size: 15.625px;font-family: Bookman Old Style;color: black;fill: #000101" z-index="0" y="685.47095" x="1685.91">Fumarate</text>
+    <text style="font-style: normal;font-size: 15.625px;font-family: Bookman Old Style;color: black;fill: #000101" z-index="0" y="650.7278" x="1698.1979">Fumarate</text>
   </g>
   <g z-index="91">
-    <text style="font-style: normal;font-size: 21.875px;font-family: Bookman Old Style;color: black;fill: #000101" z-index="0" y="286.04327" x="715.3138">Oxaloacetate</text>
+    <text style="font-style: normal;font-size: 21.875px;font-family: Bookman Old Style;color: black;fill: #000101" z-index="0" y="418.1296" x="1412.9546">Oxaloacetate</text>
   </g>
   <g z-index="92">
-    <text style="font-style: normal;font-size: 21.875px;font-family: Bookman Old Style;color: black;fill: #000101" z-index="0" y="265.20837" x="934.27875">Glyoxylate</text>
+    <text style="font-style: normal;font-size: 21.875px;font-family: Bookman Old Style;color: black;fill: #000101" z-index="0" y="337.7287" x="1374.5625">Glyoxylate</text>
   </g>
   <g z-index="93">
-    <text style="font-style: normal;font-size: 21.875px;font-family: Bookman Old Style;color: black;fill: #000001" z-index="0" y="541.21783" x="1119.0497">Itaconate</text>
+    <text style="font-style: normal;font-size: 21.875px;font-family: Bookman Old Style;color: black;fill: #000001" z-index="0" y="680.136" x="1050.4803">Itaconate</text>
   </g>
   <g z-index="94">
-    <text style="font-style: normal;font-size: 25px;font-family: Bookman Old Style;color: black;fill: #010000" z-index="0" y="398.8185" x="1034.646">6-P Gluconate</text>
+    <text style="font-style: normal;font-size: 25px;font-family: Bookman Old Style;color: black;fill: #010000" z-index="0" y="398.30478" x="1089.5587">6-P Gluconate</text>
   </g>
   <g z-index="95">
-    <text style="font-style: normal;font-size: 21.875px;font-family: Bookman Old Style;color: black;fill: #010000" z-index="0" y="468.30807" x="1075.4567">Pentose 5-P</text>
+    <text style="font-style: normal;font-size: 21.875px;font-family: Bookman Old Style;color: black;fill: #010000" z-index="0" y="505.31735" x="1032.7465">Pentose 5-P</text>
   </g>
   <g z-index="96">
-    <text style="font-style: normal;font-size: 15.625px;font-family: Bookman Old Style;color: black;fill: #010000" z-index="0" y="309.94562" x="1034.5272">Fructose 1,6-BP</text>
+    <text style="font-style: normal;font-size: 15.625px;font-family: Bookman Old Style;color: black;fill: #010000" z-index="0" y="308.77887" x="1166.8892">Fructose 1,6-BP</text>
   </g>
   <g z-index="97">
-    <text style="font-style: normal;font-size: 12.5px;font-family: Bookman Old Style;color: black;fill: #010000" z-index="0" y="467.5943" x="686.9713">Dihydroxyacetone-P</text>
+    <text style="font-style: normal;font-size: 12.5px;font-family: Bookman Old Style;color: black;fill: #010000" z-index="0" y="281.26233" x="868.80273">Dihydroxyacetone-P</text>
   </g>
   <g z-index="98">
-    <text style="font-style: normal;font-size: 12.5px;font-family: Bookman Old Style;color: black;fill: #010000" z-index="0" y="750.54083" x="1620.2771">Glyceraldehyde 3-P</text>
+    <text style="font-style: normal;font-size: 12.5px;font-family: Bookman Old Style;color: black;fill: #010000" z-index="0" y="576.65466" x="1728.8655">Glyceraldehyde 3-P</text>
   </g>
   <g z-index="99">
-    <text style="font-style: normal;font-size: 28.125px;font-family: Bookman Old Style;color: black;fill: #010000" z-index="0" y="606.8389" x="694.51697">1,3-BP Glycerate</text>
+    <text style="font-style: normal;font-size: 28.125px;font-family: Bookman Old Style;color: black;fill: #010000" z-index="0" y="655.45886" x="842.37244">1,3-BP Glycerate</text>
   </g>
   <g z-index="100">
-    <text style="font-style: normal;font-size: 21.875px;font-family: Bookman Old Style;color: black;fill: #000001" z-index="0" y="531.1217" x="1732.303">Phosphoenolpyruvate</text>
+    <text style="font-style: normal;font-size: 21.875px;font-family: Bookman Old Style;color: black;fill: #000001" z-index="0" y="806.33307" x="1491.8812">Phosphoenolpyruvate</text>
   </g>
   <g z-index="101">
-    <text style="font-style: normal;font-size: 15.625px;font-family: Bookman Old Style;color: black;fill: #000001" z-index="0" y="687.78766" x="598.583">Pyruvate</text>
+    <text style="font-style: normal;font-size: 15.625px;font-family: Bookman Old Style;color: black;fill: #000001" z-index="0" y="768.53656" x="811.1557">Pyruvate</text>
   </g>
   <g z-index="102">
-    <text style="font-style: normal;font-size: 18.75px;font-family: Bookman Old Style;color: black;fill: #000001" z-index="0" y="440.9854" x="1750.2394">Lactate</text>
+    <text style="font-style: normal;font-size: 18.75px;font-family: Bookman Old Style;color: black;fill: #000001" z-index="0" y="868.9282" x="1403.4427">Lactate</text>
   </g>
   <g z-index="103">
-    <text style="font-style: normal;font-size: 18.75px;font-family: Bookman Old Style;color: black;fill: #000001" z-index="0" y="517.4068" x="457.31958">Methylmalonyl-CoA</text>
+    <text style="font-style: normal;font-size: 18.75px;font-family: Bookman Old Style;color: black;fill: #000001" z-index="0" y="617.56635" x="962.15375">Methylmalonyl-CoA</text>
   </g>
   <g z-index="104">
-    <text style="font-style: normal;font-size: 18.75px;font-family: Bookman Old Style;color: black;fill: #000001" z-index="0" y="371.94705" x="1630.4606">Propionic acid</text>
+    <text style="font-style: normal;font-size: 18.75px;font-family: Bookman Old Style;color: black;fill: #000001" z-index="0" y="912.0833" x="1226.6251">Propionic acid</text>
   </g>
   <g z-index="105">
-    <text style="font-style: normal;font-size: 18.75px;font-family: Bookman Old Style;color: black;fill: #000000" z-index="0" y="599.5812" x="445.7298">Butyrate</text>
+    <text style="font-style: normal;font-size: 18.75px;font-family: Bookman Old Style;color: black;fill: #000000" z-index="0" y="696.00604" x="749.56635">Butyrate</text>
   </g>
   <g z-index="106">
-    <text style="font-style: normal;font-size: 18.75px;font-family: Bookman Old Style;color: black;fill: #000000" z-index="0" y="393.52432" x="1478.038">Butyryl-CoA</text>
+    <text style="font-style: normal;font-size: 18.75px;font-family: Bookman Old Style;color: black;fill: #000000" z-index="0" y="891.70685" x="1075.2362">Butyryl-CoA</text>
   </g>
   <g z-index="107">
-    <text style="font-style: normal;font-size: 12.5px;font-family: Bookman Old Style;color: black;fill: #000000" z-index="0" y="642.7491" x="267.43832">Acetoacetyl-CoA</text>
+    <text style="font-style: normal;font-size: 12.5px;font-family: Bookman Old Style;color: black;fill: #000000" z-index="0" y="780.33795" x="582.1609">Acetoacetyl-CoA</text>
   </g>
   <g z-index="108">
-    <text style="font-style: normal;font-size: 12.5px;font-family: Bookman Old Style;color: black;fill: #000000" z-index="0" y="905.8334" x="1249.712">Acetyl-CoA</text>
+    <text style="font-style: normal;font-size: 12.5px;font-family: Bookman Old Style;color: black;fill: #000000" z-index="0" y="714.0579" x="281.5009">Acetyl-CoA</text>
   </g>
   <g z-index="109">
-    <text style="font-style: normal;font-size: 15.625px;font-family: Bookman Old Style;color: black;fill: #000000" z-index="0" y="842.76807" x="1271.6973">Malonyl-CoA</text>
+    <text style="font-style: normal;font-size: 15.625px;font-family: Bookman Old Style;color: black;fill: #000000" z-index="0" y="640.62854" x="286.1525">Malonyl-CoA</text>
   </g>
 </svg>
