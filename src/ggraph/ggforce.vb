@@ -15,6 +15,20 @@ Module ggforcePkg
         Return New layout.random
     End Function
 
+    <ExportAPI("layout_springforce")>
+    Public Function spring_force(Optional stiffness# = 80,
+                                 Optional repulsion# = 4000,
+                                 Optional damping# = 0.83,
+                                 Optional iterations% = 1000) As spring_force
+
+        Return New spring_force With {
+            .damping = damping,
+            .iterations = iterations,
+            .repulsion = repulsion,
+            .stiffness = stiffness
+        }
+    End Function
+
     <ExportAPI("layout_forcedirected")>
     Public Function layout_forcedirected(Optional ejectFactor As Integer = 6,
                                          Optional condenseFactor As Integer = 3,

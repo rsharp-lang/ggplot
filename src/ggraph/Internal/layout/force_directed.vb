@@ -19,7 +19,7 @@ Namespace ggraph.layout
         ''' <returns></returns>
         Public Property algorithm As String = "naive"
 
-        Protected Overrides Function createAlgorithm(g As NetworkGraph) As Planner
+        Protected Overrides Function createAlgorithm(g As NetworkGraph) As IPlanner
             If algorithm = "naive" OrElse algorithm = "force_directed" Then
                 Return New ForceDirected.Planner(
                     g:=g,
