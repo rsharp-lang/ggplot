@@ -36,14 +36,14 @@ v$group = sapply((nodes[, "group"])[i], key -> ifelse(key in groupNames, groupNa
 print(v$label);
 print(v$group);
 
-svg(file = `${@dir}/graph.svg`, size = [1600, 900], dpi = 300) {
+svg(file = `${@dir}/graph.svg`, size = [1920, 1200], dpi = 300) {
     ggplot(g) 
     + geom_edge_link() 
     + geom_node_point(aes(
-        size = ggraph::map("degree", [10, 120]), 
+        size = ggraph::map("degree", [9, 50]), 
         fill = ggraph::map("group", "paper"))
     ) 
-    + geom_node_text(aes(size = ggraph::map("degree", [6, 12]))) 
+    + geom_node_text(aes(size = ggraph::map("degree", [4, 9]))) 
     + layout_springforce(iterations = 10000)
     ;
 }
