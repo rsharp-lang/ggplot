@@ -15,7 +15,7 @@ Namespace ggraph.render
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim graph As NetworkGraph = stream.ggplot.data
-            Dim linkWidth As Func(Of Edge, Single) = Function() 5
+            Dim linkWidth As Func(Of Edge, Single) = Function() 3
             Dim edgeDashType As New Dictionary(Of String, DashStyle)
             Dim engine As New EdgeRendering(
                 linkWidth:=linkWidth,
