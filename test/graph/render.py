@@ -20,7 +20,7 @@ def create_graph(json):
     groupNames = lapply(groupNames, r -> r$text, names = r -> r$key)
 
     str(groupNames)
-    print(nodes)
+    print(nodes, max.print = 8)
 
     g = graph(from = links[, "from"], to = links[, "to"])
     g = compute.network(g)
