@@ -56,6 +56,7 @@ Namespace options
         Public Property text As textElement
         Public Property legend_background As String
         Public Property legend_text As textElement
+        Public Property legend_split As Integer
         Public Property plot_background As String
         Public Property plot_title As textElement
         Public Property panel_background As String
@@ -95,6 +96,10 @@ Namespace options
             If Not panel_grid.StringEmpty Then
                 theme.gridStrokeX = panel_grid
                 theme.gridStrokeY = panel_grid
+            End If
+
+            If legend_split > 0 Then
+                theme.legendSplitSize = legend_split
             End If
 
             Return ggplot

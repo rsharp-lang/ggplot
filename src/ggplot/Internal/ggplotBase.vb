@@ -41,6 +41,8 @@
 
 #End Region
 
+Imports ggplot.elements.legend
+Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports SMRUCC.Rsharp.Runtime
 
 ''' <summary>
@@ -52,8 +54,11 @@ Public Class ggplotBase
 
     Public Property data As New Dictionary(Of String, Object)
 
-    Public Function getColors(ggplot As ggplot) As String()
-        Return reader.getMapColor(ggplot.data, ggplot.environment)
+    Public Function getColors(ggplot As ggplot, ByRef legends As IggplotLegendElement, shape As LegendStyles) As String()
+        With reader.getMapColor(ggplot.data, shape, ggplot.ggplotTheme, ggplot.environment)
+            legends = .legends
+            Return .htmlColors
+        End With
     End Function
 
     Public Function getGgplotData(ggplot As ggplot) As ggplotData

@@ -46,14 +46,19 @@
 
 #End Region
 
+Imports ggplot.colors
+Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ApplicationServices.Debugging.Diagnostics
 Imports Microsoft.VisualBasic.ComponentModel.Collection
+Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
+Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Components
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
+Imports any = Microsoft.VisualBasic.Scripting
 Imports REnv = SMRUCC.Rsharp.Runtime
 
 Public Class ggplotReader
@@ -142,12 +147,16 @@ Public Class ggplotReader
         End If
     End Function
 
-    Public Function getMapColor(data As Object, env As Environment) As String()
+    Public Function getMapColor(data As Object,
+                                shape As LegendStyles,
+                                theme As Theme,
+                                env As Environment) As (htmlColors As String(), legends As IggplotLegendElement)
+
         Dim v As String() = REnv.asVector(Of String)(unifySource(data, color, env))
         Dim uniqV As Index(Of String) = v.Distinct.Indexing
 
         If uniqV.Objects.All(Function(vi) Val(vi) > 0 AndAlso vi.IsInteger) Then
-            Return v
+            Return (v, Nothing)
         ElseIf uniqV.Objects _
             .All(Function(vi)
                      Dim isColor As Boolean = False
@@ -155,16 +164,35 @@ Public Class ggplotReader
                      Return isColor
                  End Function) Then
 
-            Return v
+            Return (v, Nothing)
         Else
             Dim colors = Designer _
                 .GetColors("Set1:c8", uniqV.Count) _
                 .Select(Function(c) c.ToHtmlColor) _
                 .ToArray
-
-            Return v _
+            Dim html As String() = v _
                 .Select(Function(vi) colors(uniqV.IndexOf(vi))) _
                 .ToArray
+            Dim factors As String() = uniqV.Objects
+            Dim legendItems As LegendObject() = factors _
+                .Select(Function(factor)
+                            Return New LegendObject With {
+                                .color = colors(uniqV.IndexOf(factor)),
+                                .style = shape,
+                                .title = factor,
+                                .fontstyle = theme.legendLabelCSS
+                            }
+                        End Function) _
+                .ToArray
+            Dim legends As New legendGroupElement With {
+                .legends = legendItems
+            }
+
+            If legendItems.IsNullOrEmpty Then
+                legends = Nothing
+            End If
+
+            Return (html, legends)
         End If
     End Function
 
