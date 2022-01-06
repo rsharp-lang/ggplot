@@ -46,12 +46,10 @@ Imports System.Drawing
 Imports ggplot.colors
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.Data.ChartPlots
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Data.ChartPlots.Plots
 Imports Microsoft.VisualBasic.Imaging
-Imports Microsoft.VisualBasic.Imaging.Drawing2D
+Imports Microsoft.VisualBasic.Imaging.Driver
 
 Namespace layers
 
@@ -65,6 +63,7 @@ Namespace layers
             Dim colors As String() = Nothing
             Dim legends As IggplotLegendElement = Nothing
             Dim ggplot As ggplot = stream.ggplot
+            Dim size As Single = If(ggplot.driver = Drivers.SVG, FontFace.PointSizeScale(size, stream.g.Dpi), size)
 
             If Not useCustomData Then
                 Dim x = stream.x
