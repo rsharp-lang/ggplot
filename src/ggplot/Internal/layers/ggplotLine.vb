@@ -71,7 +71,7 @@ Namespace layers
                 If useCustomColorMaps Then
                     colors = getColorSet(ggplot, g, nsize, LegendStyles.SolidLine, y, legends)
                 ElseIf Not ggplot.base.reader.color Is Nothing Then
-                    colors = ggplot.base.getColors(ggplot)
+                    colors = ggplot.base.getColors(ggplot, legends, LegendStyles.SolidLine)
                 End If
 
                 serial = ggplotScatter.createSerialData(ggplot.base.reader.ToString, x, y, colors, line_width, LegendStyles.SolidLine, colorMap)
@@ -80,7 +80,7 @@ Namespace layers
                     If useCustomColorMaps Then
                         colors = getColorSet(ggplot, g, .nsize, LegendStyles.SolidLine, .y, legends)
                     ElseIf Not ggplot.base.reader.color Is Nothing Then
-                        colors = ggplot.base.getColors(ggplot)
+                        colors = ggplot.base.getColors(ggplot, legends, LegendStyles.SolidLine)
                     Else
                         colors = (++ggplot.colors).Replicate(.nsize).ToArray
                         legends = New ggplotLegendElement With {

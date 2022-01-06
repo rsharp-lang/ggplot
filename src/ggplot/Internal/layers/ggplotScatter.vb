@@ -46,12 +46,11 @@ Imports System.Drawing
 Imports ggplot.colors
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.Data.ChartPlots
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Data.ChartPlots.Plots
 Imports Microsoft.VisualBasic.Imaging
-Imports Microsoft.VisualBasic.Imaging.Drawing2D
+Imports Microsoft.VisualBasic.Imaging.Driver
+Imports Microsoft.VisualBasic.MIME.Html
 
 Namespace layers
 
@@ -59,12 +58,14 @@ Namespace layers
 
         Public Property shape As LegendStyles
         Public Property size As Single
+        Public Property stroke As String
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim serial As SerialData
             Dim colors As String() = Nothing
             Dim legends As IggplotLegendElement = Nothing
             Dim ggplot As ggplot = stream.ggplot
+            Dim size As Single = If(ggplot.driver = Drivers.SVG, Me.size * stream.g.Dpi / 96, Me.size)
 
             If Not useCustomData Then
                 Dim x = stream.x
@@ -74,7 +75,7 @@ Namespace layers
                 If useCustomColorMaps Then
                     colors = getColorSet(ggplot, stream.g, nsize, shape, y, legends)
                 ElseIf Not ggplot.base.reader.color Is Nothing Then
-                    colors = ggplot.base.getColors(ggplot)
+                    colors = ggplot.base.getColors(ggplot, legends, shape)
                 End If
 
                 serial = createSerialData(stream.defaultTitle, x, y, colors, size, shape, colorMap)
@@ -83,7 +84,7 @@ Namespace layers
                     If useCustomColorMaps Then
                         colors = getColorSet(ggplot, stream.g, .nsize, shape, .y, legends)
                     ElseIf Not ggplot.base.reader.color Is Nothing Then
-                        colors = ggplot.base.getColors(ggplot)
+                        colors = ggplot.base.getColors(ggplot, legends, shape)
                     Else
                         colors = (++ggplot.colors).Replicate(.nsize).ToArray
                         legends = New ggplotLegendElement With {
@@ -100,6 +101,8 @@ Namespace layers
                 End With
             End If
 
+            Dim brush = serial.BrushHandler
+
             Call Scatter2D.DrawScatter(
                 g:=stream.g,
                 scatter:=serial.pts,
@@ -107,7 +110,8 @@ Namespace layers
                 fillPie:=True,
                 shape:=serial.shape,
                 pointSize:=serial.pointSize,
-                getPointBrush:=serial.BrushHandler
+                getPointBrush:=brush,
+                CSS.Stroke.TryParse(stroke, Nothing)
             ) _
             .ToArray
 

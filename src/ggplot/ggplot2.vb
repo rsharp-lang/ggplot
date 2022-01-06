@@ -242,11 +242,13 @@ Public Module ggplot2
                                <RRawVectorArgument>
                                Optional color As Object = Nothing,
                                Optional shape As LegendStyles = LegendStyles.Circle,
+                               Optional stroke As Object = Nothing,
                                Optional size As Single = 2,
                                Optional show_legend As Boolean = True,
                                Optional env As Environment = Nothing) As ggplotLayer
 
         Dim colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color, Nothing), env)
+        Dim strokeCss As String = InteropArgumentHelper.getStrokePenCSS(stroke, [default]:=Nothing)
 
         If mapping IsNot Nothing AndAlso Not mapping.isPlain2D Then
             ' 3D
@@ -255,7 +257,8 @@ Public Module ggplot2
                 .reader = mapping,
                 .shape = shape,
                 .size = size,
-                .showLegend = show_legend
+                .showLegend = show_legend,
+                .stroke = stroke
             }
         Else
             ' 2D
@@ -264,7 +267,8 @@ Public Module ggplot2
                 .shape = shape,
                 .size = size,
                 .showLegend = show_legend,
-                .reader = mapping
+                .reader = mapping,
+                .stroke = stroke
             }
         End If
     End Function
@@ -718,7 +722,11 @@ Public Module ggplot2
     ''' </remarks>
     <ExportAPI("xlab")>
     Public Function xlab(label As String) As ggplotOption
-
+        Return New ggplotAxisLabel With {
+            .x = label,
+            .y = Nothing,
+            .title = Nothing
+        }
     End Function
 
     ''' <summary>
@@ -749,7 +757,11 @@ Public Module ggplot2
     ''' </remarks>
     <ExportAPI("ylab")>
     Public Function ylab(label As String) As ggplotOption
-
+        Return New ggplotAxisLabel With {
+            .x = Nothing,
+            .y = label,
+            .title = Nothing
+        }
     End Function
 
     ''' <summary>
@@ -796,6 +808,7 @@ Public Module ggplot2
                           Optional axis_line As String = Stroke.AxisStroke,
                           Optional legend_background As String = "white",
                           Optional legend_text As textElement = Nothing,
+                          Optional legend_split As Integer = 6,
                           Optional plot_background As String = "white",
                           Optional plot_title As textElement = Nothing,
                           Optional panel_background As String = "white",
@@ -811,7 +824,8 @@ Public Module ggplot2
             .axis_line = axis_line,
             .legend_text = legend_text,
             .plot_title = plot_title,
-            .axis_title = axis_title
+            .axis_title = axis_title,
+            .legend_split = legend_split
         }
     End Function
 

@@ -82,7 +82,7 @@ Namespace layers.layer3d
             If useCustomColorMaps Then
                 colors = getColorSet(ggplot, g, x.Length, shape, Nothing, legends)
             ElseIf Not ggplot.base.reader.color Is Nothing Then
-                colors = ggplot.base.getColors(ggplot)
+                colors = ggplot.base.getColors(ggplot, legends, shape)
             End If
 
             Call legendList.Add(legends)
