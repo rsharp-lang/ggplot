@@ -1,5 +1,8 @@
 ﻿Imports ggplot.ggraph
 Imports Microsoft.VisualBasic.Data.visualize.Network.Graph
+Imports SMRUCC.Rsharp.Runtime.Interop
+
+<Assembly: RPackageModule>
 
 Public Class zzz
 
