@@ -70,6 +70,10 @@ Namespace colors
         Public MustOverride Function TryGetFactorLegends(factors As Array, shape As LegendStyles, theme As Theme) As LegendObject()
 
         Public Shared Function CreateColorMap(map As Object, env As Environment) As ggplotColorMap
+            If TypeOf map Is vector Then
+                map = DirectCast(map, vector).data
+            End If
+
             If map Is Nothing Then
                 Return Nothing
             ElseIf TypeOf map Is String Then
