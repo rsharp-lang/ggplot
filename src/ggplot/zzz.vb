@@ -39,14 +39,24 @@
 
 #End Region
 
+Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports SMRUCC.Rsharp.Runtime.Interop
+Imports SMRUCC.Rsharp.Runtime
 
 <Assembly: RPackageModule>
 
 Public Class zzz
 
     Public Shared Sub onLoad()
-
+        Call Internal.generic.add("plot", GetType(ggplot), AddressOf plotGGplot)
     End Sub
+
+    Private Shared Function plotGGplot(ggplot As ggplot, args As list, env As Environment) As Object
+        For Each arg In args.slots
+            Call ggplot.args.setByName(arg.Key, arg.Value, env)
+        Next
+
+        Return ggplot
+    End Function
 End Class
 
