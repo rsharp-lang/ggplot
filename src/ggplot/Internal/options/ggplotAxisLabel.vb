@@ -51,8 +51,8 @@ Namespace options
         Public Property title As String
 
         Public Overrides Function Config(ggplot As ggplot) As ggplot
-            ggplot.xlabel = x
-            ggplot.ylabel = y
+            ggplot.xlabel = If(x, ggplot.xlabel)
+            ggplot.ylabel = If(y, ggplot.ylabel)
 
             Return ggplot
         End Function
