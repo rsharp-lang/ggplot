@@ -68,7 +68,7 @@ Public Class ggplotBase
             If data.ContainsKey("y") Then
                 dataXy.y = data!y
             Else
-                dataXy.error = Internal.debug.stop("no axis y data mapping!", ggplot.environment)
+                dataXy.error = Internal.debug.stop("no axis y data mapping!", ggplot.environment, suppress:=True)
             End If
         End If
 

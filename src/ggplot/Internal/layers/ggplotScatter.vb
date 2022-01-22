@@ -51,6 +51,11 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Plots
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Driver
 Imports Microsoft.VisualBasic.MIME.Html
+Imports Microsoft.VisualBasic.Scripting.Runtime
+Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
+Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
+Imports Microsoft.VisualBasic.Language
+Imports Microsoft.VisualBasic.Linq
 
 Namespace layers
 
@@ -119,8 +124,8 @@ Namespace layers
         End Function
 
         Protected Friend Shared Function createSerialData(legend As String,
-                                                          x As Double(),
-                                                          y As Double(),
+                                                          x As Array,
+                                                          y As Array,
                                                           colors As String(),
                                                           size!,
                                                           shape As LegendStyles,
@@ -147,8 +152,9 @@ Namespace layers
                 .shape = shape,
                 .title = legend,
                 .pts = x _
+                    .AsObjectEnumerator _
                     .Select(Function(xi, i)
-                                Return New PointData(xi, y(i)) With {
+                                Return New PointData(CSng(xi), CSng(y(i))) With {
                                     .color = If(colors Is Nothing, Nothing, colors(i))
                                 }
                             End Function) _
