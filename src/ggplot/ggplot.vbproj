@@ -105,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ggplot3.vb" />
+    <Compile Include="Internal\driver.vb" />
     <Compile Include="Internal\elements\lineElement.vb" />
     <Compile Include="Internal\elements\textElement.vb" />
     <Compile Include="Internal\elements\ggplotElement.vb" />
@@ -112,6 +113,7 @@
     <Compile Include="Internal\filters\ggfx_gauss.vb" />
     <Compile Include="Internal\ggplotBase.vb" />
     <Compile Include="Internal\ggplotData.vb" />
+    <Compile Include="Internal\ggplotPipeline.vb" />
     <Compile Include="Internal\layers\ggplotABLine.vb" />
     <Compile Include="Internal\layers\ggplotLayerType.vb" />
     <Compile Include="Internal\layers\ggplotLine.vb" />
