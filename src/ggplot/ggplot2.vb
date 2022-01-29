@@ -197,6 +197,7 @@ Public Module ggplot2
                         Optional label As Object = Nothing,
                         Optional color As Object = Nothing,
                         Optional title As String = Nothing,
+                        Optional shape As Object = Nothing,
                         <RListObjectArgument>
                         Optional args As list = Nothing,
                         Optional env As Environment = Nothing) As ggplotReader
@@ -211,7 +212,8 @@ Public Module ggplot2
                 .color = color,
                 .label = label,
                 .args = args,
-                .title = title
+                .title = title,
+                .shape = shape
             }
         End If
     End Function
@@ -241,7 +243,7 @@ Public Module ggplot2
     Public Function geom_point(Optional mapping As ggplotReader = NULL,
                                <RRawVectorArgument>
                                Optional color As Object = Nothing,
-                               Optional shape As LegendStyles = LegendStyles.Circle,
+                               Optional shape As LegendStyles? = Nothing,
                                Optional stroke As Object = Nothing,
                                Optional size As Single = 2,
                                Optional show_legend As Boolean = True,

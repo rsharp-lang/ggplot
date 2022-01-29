@@ -46,7 +46,6 @@
 
 #End Region
 
-Imports ggplot.colors
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ApplicationServices.Debugging.Diagnostics
 Imports Microsoft.VisualBasic.ComponentModel.Collection
@@ -58,15 +57,18 @@ Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Components
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
-Imports any = Microsoft.VisualBasic.Scripting
 Imports REnv = SMRUCC.Rsharp.Runtime
 
+''' <summary>
+''' ggplot data mapper
+''' </summary>
 Public Class ggplotReader
 
     Public Property x As String
     Public Property y As String
     Public Property z As String
     Public Property color As Object
+    Public Property shape As Object
 
     ''' <summary>
     ''' the legend title label text
