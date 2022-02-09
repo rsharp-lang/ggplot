@@ -256,8 +256,8 @@ Public Class ggplot : Inherits Plot
 
         Dim xTicks = x.Range.CreateAxisTicks
         Dim yTicks = y.Range.CreateAxisTicks
-        Dim scaleX = d3js.scale.linear.domain(xTicks).range(integers:={rect.Left, rect.Right})
-        Dim scaleY = d3js.scale.linear.domain(yTicks).range(integers:={rect.Bottom, rect.Top})
+        Dim scaleX = d3js.scale.linear.domain(values:=xTicks).range(integers:={rect.Left, rect.Right})
+        Dim scaleY = d3js.scale.linear.domain(values:=yTicks).range(integers:={rect.Bottom, rect.Top})
         Dim scale As New DataScaler() With {
             .AxisTicks = (xTicks.AsVector, yTicks.AsVector),
             .region = rect,
