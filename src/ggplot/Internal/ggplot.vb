@@ -117,6 +117,11 @@ Public Class ggplot : Inherits Plot
     ''' <returns></returns>
     Public Property driver As Drivers = Drivers.GDI
 
+    ''' <summary>
+    ''' the <see cref="data"/> template
+    ''' </summary>
+    Protected template As Type
+
     Shared ReadOnly templates As New Dictionary(Of Type, Func(Of Theme, ggplot))
 
     <MethodImpl(MethodImplOptions.AggressiveInlining)>
@@ -126,11 +131,14 @@ Public Class ggplot : Inherits Plot
 
     Public Shared Function CreateRender(driver As Object, theme As Theme) As ggplot
         If driver Is Nothing Then
-            Return New ggplot(theme)
+            Return New ggplot(theme) With {.template = Nothing}
         ElseIf TypeOf driver Is dataframe OrElse TypeOf driver Is list Then
-            Return New ggplot(theme)
+            Return New ggplot(theme) With {.template = driver.GetType}
         Else
-            Return templates(driver.GetType)(theme)
+            Dim template As Type = driver.GetType
+            Dim active As ggplot = templates(template)(theme)
+            active.template = template
+            Return active
         End If
     End Function
 
