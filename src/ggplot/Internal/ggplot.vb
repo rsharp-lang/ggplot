@@ -134,6 +134,12 @@ Public Class ggplot : Inherits Plot
         End If
     End Function
 
+    Public Overridable Function CreateReader(mapping As ggplotReader) As ggplotBase
+        Return New ggplotBase With {
+            .reader = mapping
+        }
+    End Function
+
     Public Function getText(source As String) As String()
         Return REnv.asVector(Of String)(DirectCast(data, dataframe).getColumnVector(source))
     End Function

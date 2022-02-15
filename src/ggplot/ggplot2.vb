@@ -136,7 +136,7 @@ Public Module ggplot2
         }
         Dim args2 = environment.GetAcceptorArguments
         Dim ggplotDriver As ggplot = ggplot.CreateRender(data, theme)
-        Dim base As New ggplotBase With {.reader = mapping}
+        Dim base As ggplotBase = ggplotDriver.CreateReader(mapping)
 
         ' union arguments
         For Each arg In args2
