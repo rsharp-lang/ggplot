@@ -126,7 +126,6 @@ Public Module ggplot2
                            Optional environment As Environment = Nothing) As ggplot
 
         Dim driver As Drivers = environment.getDriver
-        Dim base As New ggplotBase With {.reader = mapping}
         Dim theme As New Theme With {
             .axisLabelCSS = "font-style: strong; font-size: 12; font-family: " & FontFace.MicrosoftYaHei & ";",
             .axisTickCSS = "font-style: normal; font-size: 10; font-family: " & FontFace.MicrosoftYaHei & ";",
@@ -137,6 +136,7 @@ Public Module ggplot2
         }
         Dim args2 = environment.GetAcceptorArguments
         Dim ggplotDriver As ggplot = ggplot.CreateRender(data, theme)
+        Dim base As New ggplotBase With {.reader = mapping}
 
         ' union arguments
         For Each arg In args2
