@@ -131,13 +131,16 @@ Public Class ggplot : Inherits Plot
 
     Public Shared Function CreateRender(driver As Object, theme As Theme) As ggplot
         If driver Is Nothing Then
-            Return New ggplot(theme) With {.template = Nothing}
+            Return New ggplot(theme) With {.template = Nothing, .data = driver}
         ElseIf TypeOf driver Is dataframe OrElse TypeOf driver Is list Then
-            Return New ggplot(theme) With {.template = driver.GetType}
+            Return New ggplot(theme) With {.template = driver.GetType, .data = driver}
         Else
             Dim template As Type = driver.GetType
             Dim active As ggplot = templates(template)(theme)
+
             active.template = template
+            active.data = driver
+
             Return active
         End If
     End Function
