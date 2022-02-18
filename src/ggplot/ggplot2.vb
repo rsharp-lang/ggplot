@@ -202,20 +202,16 @@ Public Module ggplot2
                         Optional args As list = Nothing,
                         Optional env As Environment = Nothing) As ggplotReader
 
-        If args.hasName("driver") Then
-            Return args.getValue(Of ggplotReader)("driver", env)
-        Else
-            Return New ggplotReader With {
-                .x = x,
-                .y = y,
-                .z = z,
-                .color = color,
-                .label = label,
-                .args = args,
-                .title = title,
-                .shape = shape
-            }
-        End If
+        Return New ggplotReader With {
+            .x = x,
+            .y = y,
+            .z = z,
+            .color = color,
+            .label = label,
+            .args = args,
+            .title = title,
+            .shape = shape
+        }
     End Function
 
     ''' <summary>
