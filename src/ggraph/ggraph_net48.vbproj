@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{A836D92C-0CCF-4687-BD5F-EF6CCC316DF9}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>ggraph</RootNamespace>
+    <RootNamespace>ggplot</RootNamespace>
     <AssemblyName>ggraph</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
