@@ -45,12 +45,10 @@ Imports ggplot.colors
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.Data.ChartPlots.BarPlot.Histogram
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
-Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Math.Distributions.BinBox
+Imports REnv = SMRUCC.Rsharp.Runtime
 
 Namespace layers
 
@@ -100,7 +98,7 @@ Namespace layers
                 data = ggplot.base.reader.getMapData(ggplot.data, ggplot.environment)
             End If
 
-            Dim dataX As Double() = data.x
+            Dim dataX As Double() = REnv.asVector(Of Double)(data.x)
             Dim bins = CutBins _
                 .FixedWidthBins(dataX, k:=hist.bins, Function(xi) xi) _
                 .ToArray
