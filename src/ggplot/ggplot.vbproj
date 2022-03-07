@@ -105,7 +105,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ggplot3.vb" />
-    <Compile Include="Internal\driver.vb" />
     <Compile Include="Internal\elements\lineElement.vb" />
     <Compile Include="Internal\elements\textElement.vb" />
     <Compile Include="Internal\elements\ggplotElement.vb" />
