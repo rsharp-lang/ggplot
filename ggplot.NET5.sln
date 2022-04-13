@@ -21,8 +21,6 @@ Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "dataframework-netcore5", ".
 EndProject
 Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Rsharp-netcore5", "..\..\R-sharp\R#\Rsharp-netcore5.vbproj", "{4F001EB4-E700-4E14-8E41-C53BD76AF33D}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "R_graphic.interop", "..\..\R-sharp\Library\R_graphic.interop\R_graphic.interop.shproj", "{53AF2B13-CCD5-4F73-94D5-612191E785A9}"
-EndProject
 Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "R-cmd.NET5", "..\..\R-sharp\studio\R-terminal\R-cmd.NET5.vbproj", "{C8649C05-AEA9-44A4-907D-2A9C6EF69536}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "renv", "renv", "{6B74B0FE-13EE-4DD5-AA9C-7258223BA131}"
@@ -43,11 +41,14 @@ Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "ggraph", "src\ggraph\ggraph
 EndProject
 Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "ggplot.NET5", "src\ggplot\ggplot.NET5.vbproj", "{FCAD265B-DB4A-416D-BC4F-521063D1909E}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "R_graphic.interop", "..\..\R-sharp\Library\shares\R_graphic.interop\R_graphic.interop.shproj", "{53AF2B13-CCD5-4F73-94D5-612191E785A9}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		..\..\R-sharp\Library\R_graphic.interop\R_graphic.interop.projitems*{53af2b13-ccd5-4f73-94d5-612191e785a9}*SharedItemsImports = 13
+		..\..\R-sharp\Library\shares\R_graphic.interop\R_graphic.interop.projitems*{53af2b13-ccd5-4f73-94d5-612191e785a9}*SharedItemsImports = 13
+		..\..\R-sharp\Library\shares\R_graphic.interop\R_graphic.interop.projitems*{a74998af-839b-46b9-a8a9-95fb69355ba1}*SharedItemsImports = 5
 		..\..\R-sharp\studio\Rstudio.common\Rstudio.common.projitems*{c8649c05-aea9-44a4-907d-2a9c6ef69536}*SharedItemsImports = 5
-		..\..\R-sharp\Library\R_graphic.interop\R_graphic.interop.projitems*{fcad265b-db4a-416d-bc4f-521063d1909e}*SharedItemsImports = 5
+		..\..\R-sharp\Library\shares\R_graphic.interop\R_graphic.interop.projitems*{fcad265b-db4a-416d-bc4f-521063d1909e}*SharedItemsImports = 5
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -716,7 +717,6 @@ Global
 		{1BC0C966-1DE0-4532-ABE4-C5C4A9C3C216} = {9F1D1BBC-EF37-4733-9D84-0F15C699B504}
 		{6532C376-9592-4034-A14F-93D5EA287D04} = {ADC0BF32-B9DC-419A-8321-B7B3A6DD1F06}
 		{4F001EB4-E700-4E14-8E41-C53BD76AF33D} = {6B74B0FE-13EE-4DD5-AA9C-7258223BA131}
-		{53AF2B13-CCD5-4F73-94D5-612191E785A9} = {6B74B0FE-13EE-4DD5-AA9C-7258223BA131}
 		{C8649C05-AEA9-44A4-907D-2A9C6EF69536} = {6B74B0FE-13EE-4DD5-AA9C-7258223BA131}
 		{8F9BC443-EE5A-484B-99C7-DFE64E7F7BEB} = {ADC0BF32-B9DC-419A-8321-B7B3A6DD1F06}
 		{11C61D4C-7DDD-4673-A960-9AC0DBBFE092} = {8F9BC443-EE5A-484B-99C7-DFE64E7F7BEB}
@@ -724,6 +724,7 @@ Global
 		{F4B52F3E-ED7A-4EE8-B19C-606A974A26F7} = {8F9BC443-EE5A-484B-99C7-DFE64E7F7BEB}
 		{9328CF69-5888-42F7-B590-3CB832BFDD30} = {8F9BC443-EE5A-484B-99C7-DFE64E7F7BEB}
 		{30C536C5-1964-449D-9645-A635BDED8959} = {8F9BC443-EE5A-484B-99C7-DFE64E7F7BEB}
+		{53AF2B13-CCD5-4F73-94D5-612191E785A9} = {6B74B0FE-13EE-4DD5-AA9C-7258223BA131}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5BBD0EC6-3AF0-4985-BEAA-16C62D091DD8}
