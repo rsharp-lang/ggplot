@@ -1,4 +1,4 @@
-﻿# ggraph
+# ggraph
 
 # A grammar of graphics for relational data
  
