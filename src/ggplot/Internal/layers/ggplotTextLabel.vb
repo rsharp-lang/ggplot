@@ -120,7 +120,7 @@ Namespace layers
                 Dim i As BooleanVector = getFilter(ggplot)
                 Dim ntest As Integer = i.Sum
 
-                If ntest > 0 AndAlso labelList.Length <> ntest Then
+                If ntest > 0 AndAlso labelList.Length <> i.Length Then
                     Throw New InvalidProgramException(
                         $"the label list size(n={labelList.Length}) is not matched with the filter vector size(m={i.Sum})!" &
                         If(labelList.Length > 0, "", " the label list is empty, please check of the label mapping in ggplot function!"))

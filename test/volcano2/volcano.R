@@ -14,6 +14,7 @@ volcano[, "factor"]  = ifelse(volcano[, "p.value"] < 0.05, volcano[, "factor"], 
 
 # transform of the pvalue scale
 volcano[, "p.value"] = -log10(volcano[, "p.value"]);
+volcano[, "ID"] = rownames(volcano);
 
 print("peeks of the raw data:");
 print(head(volcano));
@@ -37,7 +38,7 @@ print(`Down:    ${sum("Down"    == volcano[, "factor"])}`);
 # [1]     "Not Sig: 2643"
 # [1]     "Down:    93"
 
-bitmap(file = "./volcano.png", size = [3000, 3000]) {
+bitmap(file = "./volcano.png", size = [3000, 2400]) {
 
    # create ggplot layers and tweaks via ggplot style options
 	ggplot(volcano, aes(x = "log2(FC)", y = "p.value"), padding = "padding:250px 500px 250px 300px;")
@@ -47,7 +48,7 @@ bitmap(file = "./volcano.png", size = [3000, 3000]) {
           "Not Sig" = "gray",
           Down      = "steelblue"
        ))
-       + geom_text(aes(label = "ID"), which = ~(factor != "Not Sig") && (p.value >= 15) )
+       + geom_text(aes(label = "ID"), which = ~(factor != "Not Sig") && (p.value >= 19.5) )
        + geom_hline(yintercept = -log10(0.05),      color = "red", line.width = 5, linetype = "dash")
        + geom_vline(xintercept =  log2(foldchange), color = "red", line.width = 5, linetype = "dash")
        + geom_vline(xintercept = -log2(foldchange), color = "red", line.width = 5, linetype = "dash")
