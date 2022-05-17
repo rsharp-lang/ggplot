@@ -1,44 +1,44 @@
 ﻿#Region "Microsoft.VisualBasic::efaca294bbd2eda39567ab58cfbfcba4, src\Internal\layers\ggplotTextLabel.vb"
 
-    ' Author:
-    ' 
-    '       asuka (amethyst.asuka@gcmodeller.org)
-    '       xie (genetics@smrucc.org)
-    '       xieguigang (xie.guigang@live.com)
-    ' 
-    ' Copyright (c) 2018 GPL3 Licensed
-    ' 
-    ' 
-    ' GNU GENERAL PUBLIC LICENSE (GPL3)
-    ' 
-    ' 
-    ' This program is free software: you can redistribute it and/or modify
-    ' it under the terms of the GNU General Public License as published by
-    ' the Free Software Foundation, either version 3 of the License, or
-    ' (at your option) any later version.
-    ' 
-    ' This program is distributed in the hope that it will be useful,
-    ' but WITHOUT ANY WARRANTY; without even the implied warranty of
-    ' MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    ' GNU General Public License for more details.
-    ' 
-    ' You should have received a copy of the GNU General Public License
-    ' along with this program. If not, see <http://www.gnu.org/licenses/>.
+' Author:
+' 
+'       asuka (amethyst.asuka@gcmodeller.org)
+'       xie (genetics@smrucc.org)
+'       xieguigang (xie.guigang@live.com)
+' 
+' Copyright (c) 2018 GPL3 Licensed
+' 
+' 
+' GNU GENERAL PUBLIC LICENSE (GPL3)
+' 
+' 
+' This program is free software: you can redistribute it and/or modify
+' it under the terms of the GNU General Public License as published by
+' the Free Software Foundation, either version 3 of the License, or
+' (at your option) any later version.
+' 
+' This program is distributed in the hope that it will be useful,
+' but WITHOUT ANY WARRANTY; without even the implied warranty of
+' MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+' GNU General Public License for more details.
+' 
+' You should have received a copy of the GNU General Public License
+' along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
+' Summaries:
 
-    '     Class ggplotTextLabel
-    ' 
-    '         Properties: isLabeler
-    ' 
-    '         Function: layoutLabels, Plot
-    ' 
-    ' 
-    ' /********************************************************************************/
+'     Class ggplotTextLabel
+' 
+'         Properties: isLabeler
+' 
+'         Function: layoutLabels, Plot
+' 
+' 
+' /********************************************************************************/
 
 #End Region
 
@@ -61,6 +61,8 @@ Namespace layers
         ''' </summary>
         ''' <returns></returns>
         Public Property isLabeler As Boolean
+        Public Property check_overlap As Boolean = False
+        Public Property fontSize As Single? = Nothing
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim legend As legendGroupElement = Nothing
@@ -76,6 +78,14 @@ Namespace layers
                 labels = ggplot.getText(reader.label)
             Else
                 labels = ggplot.getText(ggplot.base.reader.label)
+            End If
+
+            If Not fontSize Is Nothing Then
+                labelStyle = New Font(
+                    familyName:=labelStyle.Name,
+                    emSize:=CSng(fontSize),
+                    style:=labelStyle.Style
+                )
             End If
 
             Dim anchors As Anchor() = Nothing
@@ -104,10 +114,14 @@ Namespace layers
 
             Dim labelList As Label() = labels _
                 .Select(Function(label, i)
-                            Return New Label(g.MeasureString(label, style)) With {
+                            Dim size As SizeF = g.MeasureString(label, style)
+                            Dim xi As Double = x(i) - size.Width / 2
+                            Dim yi As Double = y(i) + 5
+
+                            Return New Label(size) With {
                                 .text = label,
-                                .X = x(i),
-                                .Y = y(i)
+                                .X = xi,
+                                .Y = yi
                             }
                         End Function) _
                 .ToArray
@@ -130,14 +144,16 @@ Namespace layers
                 anchors = (New Vector(Of Anchor)(anchors))(i)
             End If
 
-            Call d3js _
-                .labeler _
-                .Width(box.Width) _
-                .Height(box.Height) _
-                .Labels(labelList) _
-                .WithOffset(New PointF(box.Left, box.Top)) _
-                .Anchors(anchors) _
-                .Start(nsweeps:=10, showProgress:=False)
+            If check_overlap Then
+                Call d3js _
+                    .labeler _
+                    .Width(box.Width) _
+                    .Height(box.Height) _
+                    .Labels(labelList) _
+                    .WithOffset(New PointF(box.Left, box.Top)) _
+                    .Anchors(anchors) _
+                    .Start(nsweeps:=1000, showProgress:=False)
+            End If
 
             Return labelList
         End Function

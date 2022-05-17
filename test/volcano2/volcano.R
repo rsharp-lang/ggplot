@@ -5,7 +5,7 @@ setwd(@dir);
 # 	mean_region_3	sd_region_3	mean_region_4	sd_region_4	Fold Change	log2(FC)	p.value	FDR	VIP	pcorr
 
 const volcano    = read.csv("./pvalue.csv", row.names = 1, check.names = FALSE);
-const foldchange = 1.5;
+const foldchange = 2;
 
 # create color factor for scatter points
 volcano[, "factor"]  = ifelse(volcano[, "log2(FC)"] >  log2(foldchange), "Up", "Not Sig");
@@ -14,7 +14,16 @@ volcano[, "factor"]  = ifelse(volcano[, "p.value"] < 0.05, volcano[, "factor"], 
 
 # transform of the pvalue scale
 volcano[, "p.value"] = -log10(volcano[, "p.value"]);
-volcano[, "ID"] = rownames(volcano);
+
+labels = rownames(volcano);
+labels[(volcano[, "factor"] == "Not Sig")] = "";
+
+IF = volcano[, "p.value"] * abs(volcano[, "log2(FC)"]);
+top10 = order(IF, descrising = TRUE);
+top10 = top10[10];
+labels[IF < top10] = "";
+
+volcano[, "ID"] = labels;
 
 print("peeks of the raw data:");
 print(head(volcano));
@@ -38,17 +47,17 @@ print(`Down:    ${sum("Down"    == volcano[, "factor"])}`);
 # [1]     "Not Sig: 2643"
 # [1]     "Down:    93"
 
-bitmap(file = "./volcano.png", size = [2700, 1800]) {
+bitmap(file = "./volcano.png", size = [2700, 2100]) {
 
    # create ggplot layers and tweaks via ggplot style options
 	ggplot(volcano, aes(x = "log2(FC)", y = "p.value"), padding = "padding:250px 500px 250px 300px;")
-	   + geom_point(aes(color = "factor"), color = "black", shape = "circle", size = 30,alpha = 0.3)
+	   + geom_point(aes(color = "factor"), color = "black", shape = "circle", size = 50,alpha = 0.7)
        + scale_colour_manual(values = list(
-          Up        = "red",
-          "Not Sig" = "gray",
-          Down      = "steelblue"
-       ), alpha = 0.3)
-       + geom_text(aes(label = "ID"), which = ~(factor != "Not Sig") && (p.value >= 19.5) )
+          Up        = "#D22628",
+          "Not Sig" = "black",
+          Down      = "#0091D5"
+       ), alpha = 0.7)
+       + geom_text(aes(label = "ID"), check_overlap = FALSE, size = 8)
        + geom_hline(yintercept = -log10(0.05),      color = "red", line.width = 5, linetype = "dash")
        + geom_vline(xintercept =  log2(foldchange), color = "red", line.width = 5, linetype = "dash")
        + geom_vline(xintercept = -log2(foldchange), color = "red", line.width = 5, linetype = "dash")
@@ -56,5 +65,6 @@ bitmap(file = "./volcano.png", size = [2700, 1800]) {
        + ggtitle("Volcano Plot (A vs B)")
        + scale_x_continuous(labels = "F2")
        + scale_y_continuous(labels = "F2")
+	   + theme(plot.title = element_text(family = "Cambria Math", size = 20)) 
 	;
 }

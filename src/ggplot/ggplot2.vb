@@ -370,6 +370,7 @@ Public Module ggplot2
                               Optional color As Object = "steelblue",
                               Optional which As Expression = Nothing,
                               Optional alpha As Double = 1,
+                              Optional size As Single? = Nothing,
                               <RListObjectArgument>
                               Optional args As list = Nothing,
                               Optional env As Environment = Nothing) As ggplotLayer
@@ -378,7 +379,9 @@ Public Module ggplot2
             .reader = mapping,
             .showLegend = show_legend,
             .colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color), alpha, env),
-            .which = which
+            .which = which,
+            .check_overlap = check_overlap,
+            .fontSize = size
         }
     End Function
 
