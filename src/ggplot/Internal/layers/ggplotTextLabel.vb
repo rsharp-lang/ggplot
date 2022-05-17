@@ -114,6 +114,10 @@ Namespace layers
 
             Dim labelList As Label() = labels _
                 .Select(Function(label, i)
+                            If label.StringEmpty Then
+                                Return Nothing
+                            End If
+
                             Dim size As SizeF = g.MeasureString(label, style)
                             Dim xi As Double = x(i) - size.Width / 2
                             Dim yi As Double = y(i) + 5
@@ -143,6 +147,10 @@ Namespace layers
                 labelList = (New Vector(Of Label)(labelList))(i)
                 anchors = (New Vector(Of Anchor)(anchors))(i)
             End If
+
+            labelList = (From lb As Label
+                         In labelList
+                         Where Not lb Is Nothing).ToArray
 
             If check_overlap Then
                 Call d3js _

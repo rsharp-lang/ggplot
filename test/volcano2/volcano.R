@@ -19,9 +19,15 @@ labels = rownames(volcano);
 labels[(volcano[, "factor"] == "Not Sig")] = "";
 
 IF = volcano[, "p.value"] * abs(volcano[, "log2(FC)"]);
-top10 = order(IF, descrising = TRUE);
-top10 = top10[10];
-labels[IF < top10] = "";
+IF = IF[order(IF, decreasing = TRUE)];
+top10 = IF[1:10];
+
+print(top10);
+
+IF = volcano[, "p.value"] * abs(volcano[, "log2(FC)"]);
+IF = IF > min(top10);
+
+labels[!IF] = "";
 
 volcano[, "ID"] = labels;
 
@@ -57,7 +63,7 @@ bitmap(file = "./volcano.png", size = [2700, 2100]) {
           "Not Sig" = "black",
           Down      = "#0091D5"
        ), alpha = 0.7)
-       + geom_text(aes(label = "ID"), check_overlap = FALSE, size = 8)
+       + geom_text(aes(label = "ID"), check_overlap = TRUE, size = 8)
        + geom_hline(yintercept = -log10(0.05),      color = "red", line.width = 5, linetype = "dash")
        + geom_vline(xintercept =  log2(foldchange), color = "red", line.width = 5, linetype = "dash")
        + geom_vline(xintercept = -log2(foldchange), color = "red", line.width = 5, linetype = "dash")
