@@ -453,14 +453,22 @@ Public Module ggplot2
         }
     End Function
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
+    ''' <param name="yintercept"></param>
+    ''' <param name="color"></param>
+    ''' <param name="line_width!"></param>
+    ''' <param name="linetype"></param>
+    ''' <returns></returns>
     <ExportAPI("geom_hline")>
     Public Function geom_hline(yintercept As Double,
                                Optional color As Object = "black",
                                Optional line_width! = 2,
                                Optional linetype As DashStyle = DashStyle.Solid) As ggplotLayer
 
-        Dim a As New PointF(Single.MinValue, yintercept)
-        Dim b As New PointF(Single.MaxValue, yintercept)
+        Dim a As New PointF(Single.NaN, yintercept)
+        Dim b As New PointF(Single.NaN, yintercept)
         Dim style As New Pen(RColorPalette.getColor(color).TranslateColor, line_width) With {
             .DashStyle = linetype
         }
@@ -491,8 +499,8 @@ Public Module ggplot2
                                Optional line_width! = 2,
                                Optional linetype As DashStyle = DashStyle.Solid) As ggplotLayer
 
-        Dim a As New PointF(xintercept, Single.MinValue)
-        Dim b As New PointF(xintercept, Single.MaxValue)
+        Dim a As New PointF(xintercept, Single.NaN)
+        Dim b As New PointF(xintercept, Single.NaN)
         Dim style As New Pen(RColorPalette.getColor(color).TranslateColor, line_width) With {
             .DashStyle = linetype
         }
