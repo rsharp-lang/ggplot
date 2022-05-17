@@ -246,7 +246,7 @@ Public Module ggplot2
                                Optional alpha As Double = 1,
                                Optional env As Environment = Nothing) As ggplotLayer
 
-        Dim colorMap As ggplotColorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color, Nothing), env)
+        Dim colorMap As ggplotColorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color, Nothing), alpha, env)
         Dim strokeCss As String = InteropArgumentHelper.getStrokePenCSS(stroke, [default]:=Nothing)
 
         If mapping IsNot Nothing AndAlso Not mapping.isPlain2D Then
@@ -369,6 +369,7 @@ Public Module ggplot2
                               <RRawVectorArgument>
                               Optional color As Object = "steelblue",
                               Optional which As Expression = Nothing,
+                              Optional alpha As Double = 1,
                               <RListObjectArgument>
                               Optional args As list = Nothing,
                               Optional env As Environment = Nothing) As ggplotLayer
@@ -376,7 +377,7 @@ Public Module ggplot2
         Return New ggplotTextLabel With {
             .reader = mapping,
             .showLegend = show_legend,
-            .colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color), env),
+            .colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color), alpha, env),
             .which = which
         }
     End Function
@@ -395,11 +396,12 @@ Public Module ggplot2
     <ExportAPI("geom_histogram")>
     Public Function geom_histogram(bins As Integer,
                                    Optional color As Object = Nothing,
+                                   Optional alpha As Double = 1,
                                    Optional env As Environment = Nothing) As ggplotLayer
 
         Return New ggplotHistogram With {
             .bins = bins,
-            .colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color), env)
+            .colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color), alpha, env)
         }
     End Function
 
@@ -422,9 +424,10 @@ Public Module ggplot2
                               Optional color As Object = Nothing,
                               Optional width As Single = 5,
                               Optional show_legend As Boolean = True,
+                              Optional alpha As Double = 1,
                               Optional env As Environment = Nothing) As ggplotLayer
 
-        Dim colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color, Nothing), env)
+        Dim colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color, Nothing), alpha, env)
 
         'If mapping IsNot Nothing AndAlso Not mapping.isPlain2D Then
         '    ' 3D
@@ -875,8 +878,14 @@ Public Module ggplot2
     ''' package And references therein.
     ''' </remarks>
     <ExportAPI("scale_colour_manual")>
-    Public Function scale_colour_manual(<RRawVectorArgument> values As Object, Optional env As Environment = Nothing) As ggplotOption
-        Return New ggplotColorProfile With {.profile = ggplotColorMap.CreateColorMap(values, env)}
+    Public Function scale_colour_manual(<RRawVectorArgument>
+                                        values As Object,
+                                        Optional alpha As Double = 1,
+                                        Optional env As Environment = Nothing) As ggplotOption
+
+        Return New ggplotColorProfile With {
+            .profile = ggplotColorMap.CreateColorMap(values, alpha, env)
+        }
     End Function
 
     ''' <summary>
