@@ -21,7 +21,11 @@ Namespace colors
             If factors.GetType.GetRTypeCode.IsNumeric Then
                 ' level mapping
                 Dim colors As String() = Designer _
-                    .GetColors(any.ToString(colorMap), n:=100) _
+                    .GetColors(
+                        term:=any.ToString(colorMap),
+                        n:=100,
+                        alpha:=alpha * 255
+                    ) _
                     .Select(Function(c) c.ToHtmlColor) _
                     .ToArray
                 Dim valueRange As New DoubleRange(data:=DirectCast(REnv.asVector(Of Double)(factors), Double()))
@@ -42,7 +46,11 @@ Namespace colors
                     .OrderBy(Function(str) str) _
                     .Indexing
                 Dim colors As String() = Designer _
-                    .GetColors(any.ToString(colorMap), n:=factorList.Count) _
+                    .GetColors(
+                        term:=any.ToString(colorMap),
+                        n:=factorList.Count,
+                        alpha:=alpha * 255
+                    ) _
                     .Select(Function(c) c.ToHtmlColor) _
                     .ToArray
 

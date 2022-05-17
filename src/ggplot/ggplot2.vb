@@ -243,9 +243,10 @@ Public Module ggplot2
                                Optional stroke As Object = Nothing,
                                Optional size As Single = 2,
                                Optional show_legend As Boolean = True,
+                               Optional alpha As Double = 1,
                                Optional env As Environment = Nothing) As ggplotLayer
 
-        Dim colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color, Nothing), env)
+        Dim colorMap As ggplotColorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color, Nothing), env)
         Dim strokeCss As String = InteropArgumentHelper.getStrokePenCSS(stroke, [default]:=Nothing)
 
         If mapping IsNot Nothing AndAlso Not mapping.isPlain2D Then

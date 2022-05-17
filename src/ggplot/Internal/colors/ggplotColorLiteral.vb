@@ -13,11 +13,14 @@ Namespace colors
         End Function
 
         Public Function ToColor() As Color
-            Return DirectCast(colorMap, String).TranslateColor
+            Return DirectCast(colorMap, String) _
+                .TranslateColor _
+                .Alpha(alpha * 255)
         End Function
 
         Public Overrides Function ColorHandler(ggplot As ggplot, factors As Array) As Func(Of Object, String)
-            Return Function(any) DirectCast(colorMap, String)
+            Dim literal As String = ToColor.ToHtmlColor
+            Return Function(any) literal
         End Function
 
         Public Overrides Function TryGetFactorLegends(factors As Array, shape As LegendStyles, theme As Theme) As LegendObject()
