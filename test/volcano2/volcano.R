@@ -42,12 +42,12 @@ bitmap(file = "./volcano.png", size = [2700, 1800]) {
 
    # create ggplot layers and tweaks via ggplot style options
 	ggplot(volcano, aes(x = "log2(FC)", y = "p.value"), padding = "padding:250px 500px 250px 300px;")
-	   + geom_point(aes(color = "factor"), color = "black", shape = "circle", size = 25,alpha = 0.3)
+	   + geom_point(aes(color = "factor"), color = "black", shape = "circle", size = 30,alpha = 0.3)
        + scale_colour_manual(values = list(
           Up        = "red",
           "Not Sig" = "gray",
           Down      = "steelblue"
-       ))
+       ), alpha = 0.3)
        + geom_text(aes(label = "ID"), which = ~(factor != "Not Sig") && (p.value >= 19.5) )
        + geom_hline(yintercept = -log10(0.05),      color = "red", line.width = 5, linetype = "dash")
        + geom_vline(xintercept =  log2(foldchange), color = "red", line.width = 5, linetype = "dash")

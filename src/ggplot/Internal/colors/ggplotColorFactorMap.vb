@@ -37,7 +37,7 @@ Namespace colors
                         .Value _
                         .TranslateColor _
                         .Alpha(alpha * 255) _
-                        .ToHtmlColor
+                        .ARGBExpression
                 Next
             End If
 

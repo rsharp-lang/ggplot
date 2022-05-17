@@ -26,7 +26,7 @@ Namespace colors
                         n:=100,
                         alpha:=alpha * 255
                     ) _
-                    .Select(Function(c) c.ToHtmlColor) _
+                    .Select(Function(c) c.ARGBExpression) _
                     .ToArray
                 Dim valueRange As New DoubleRange(data:=DirectCast(REnv.asVector(Of Double)(factors), Double()))
                 Dim indexRange As New DoubleRange({0, 100})
@@ -51,7 +51,7 @@ Namespace colors
                         n:=factorList.Count,
                         alpha:=alpha * 255
                     ) _
-                    .Select(Function(c) c.ToHtmlColor) _
+                    .Select(Function(c) c.ARGBExpression) _
                     .ToArray
 
                 Return Function(obj)

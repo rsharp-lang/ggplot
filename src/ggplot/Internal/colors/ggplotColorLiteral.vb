@@ -19,7 +19,7 @@ Namespace colors
         End Function
 
         Public Overrides Function ColorHandler(ggplot As ggplot, factors As Array) As Func(Of Object, String)
-            Dim literal As String = ToColor.ToHtmlColor
+            Dim literal As String = ToColor.ARGBExpression
             Return Function(any) literal
         End Function
 
