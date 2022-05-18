@@ -18,5 +18,4 @@ bitmap(file = `${@dir}/scatter_raw.png`) {
 	+ geom_point()
 	+ geom_text(aes(label = "text"))
 	;
-
 }
