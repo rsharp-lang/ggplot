@@ -94,7 +94,7 @@ Namespace layers
             x = x.Select(Function(xi) scale.TranslateX(xi)).ToArray
             y = y.Select(Function(yi) scale.TranslateY(yi)).ToArray
 
-            For Each label As Label In layoutLabels(labels, x, y, g, labelStyle, stream.canvas.PlotRegion, anchors, ggplot)
+            For Each label As Label In layoutLabels(labels, x, y, g, labelStyle, stream.canvas, anchors, ggplot)
                 Call g.DrawString(label.text, labelStyle, Brushes.Black, label.location)
             Next
 
@@ -109,7 +109,7 @@ Namespace layers
                                       x As Double(), y As Double(),
                                       g As IGraphics,
                                       style As Font,
-                                      box As Rectangle,
+                                      box As GraphicsRegion,
                                       ByRef anchors As Anchor(),
                                       ggplot As ggplot) As Label()
 
@@ -163,7 +163,8 @@ Namespace layers
                 '    .Anchors(anchors) _
                 '    .Start(nsweeps:=1000, showProgress:=False)
                 Dim ax As New GraphicsTextHandle With {
-                    .texts = labelList
+                    .texts = labelList,
+                    .canvas = box
                 }
 
                 Call ax.adjust_text()
