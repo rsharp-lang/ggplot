@@ -13,9 +13,16 @@ texts = ["Coca_cola", "IBM", "Microsoft", "Google", "General_Electric",
 x = runif(length(texts), -10, 10);
 y = runif(length(texts), -10, 10);
 
-bitmap(file = `${@dir}/scatter_raw.png`) {
-	ggplot(data.frame(x, y, text = texts), aes(x = "x", y = "y")) 
-	+ geom_point()
-	+ geom_text(aes(label = "text"))
+bitmap(file = `${@dir}/scatter_raw.png`, size = [3000, 2100]) {
+	ggplot(data.frame(x, y, text = texts), aes(x = "x", y = "y"), padding = "padding: 200px 400px 250px 300px;") 
+	+ geom_point(size = 30, color = "red")
+	+ geom_text(aes(label = "text"), check_overlap = FALSE)
+	;
+}
+
+bitmap(file = `${@dir}/scatter_nudge.png`, size = [3000, 2100]) {
+	ggplot(data.frame(x, y, text = texts), aes(x = "x", y = "y"), padding = "padding: 200px 400px 250px 300px;") 
+	+ geom_point(size = 30, color = "red")
+	+ geom_text(aes(label = "text"), check_overlap = TRUE )
 	;
 }

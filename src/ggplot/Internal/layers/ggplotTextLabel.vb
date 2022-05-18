@@ -49,6 +49,7 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.d3js.Layout
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
+Imports Microsoft.VisualBasic.Imaging.Drawing2D.Text.Nudge
 Imports Microsoft.VisualBasic.Language.Vectorization
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 
@@ -153,14 +154,19 @@ Namespace layers
                          Where Not lb Is Nothing).ToArray
 
             If check_overlap Then
-                Call d3js _
-                    .labeler _
-                    .Width(box.Width) _
-                    .Height(box.Height) _
-                    .Labels(labelList) _
-                    .WithOffset(New PointF(box.Left, box.Top)) _
-                    .Anchors(anchors) _
-                    .Start(nsweeps:=1000, showProgress:=False)
+                'Call d3js _
+                '    .labeler _
+                '    .Width(box.Width) _
+                '    .Height(box.Height) _
+                '    .Labels(labelList) _
+                '    .WithOffset(New PointF(box.Left, box.Top)) _
+                '    .Anchors(anchors) _
+                '    .Start(nsweeps:=1000, showProgress:=False)
+                Dim ax As New GraphicsTextHandle With {
+                    .texts = labelList
+                }
+
+                Call ax.adjust_text()
             End If
 
             Return labelList

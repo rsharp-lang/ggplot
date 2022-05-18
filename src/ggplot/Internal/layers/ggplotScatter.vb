@@ -123,7 +123,7 @@ Namespace layers
                                                           y As Array,
                                                           colors As String(),
                                                           size!,
-                                                          shape As LegendStyles,
+                                                          shape As LegendStyles?,
                                                           colorMap As ggplotColorMap) As SerialData
 
             Dim color As Color
@@ -144,7 +144,7 @@ Namespace layers
                 .color = color,
                 .pointSize = size,
                 .width = size,
-                .shape = shape,
+                .shape = If(shape Is Nothing, LegendStyles.Circle, shape.Value),
                 .title = legend,
                 .pts = x _
                     .AsObjectEnumerator _
