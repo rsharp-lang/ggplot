@@ -243,9 +243,10 @@ Public Module ggplot2
                                Optional stroke As Object = Nothing,
                                Optional size As Single = 2,
                                Optional show_legend As Boolean = True,
+                               Optional alpha As Double = 1,
                                Optional env As Environment = Nothing) As ggplotLayer
 
-        Dim colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color, Nothing), env)
+        Dim colorMap As ggplotColorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color, Nothing), alpha, env)
         Dim strokeCss As String = InteropArgumentHelper.getStrokePenCSS(stroke, [default]:=Nothing)
 
         If mapping IsNot Nothing AndAlso Not mapping.isPlain2D Then
@@ -368,6 +369,8 @@ Public Module ggplot2
                               <RRawVectorArgument>
                               Optional color As Object = "steelblue",
                               Optional which As Expression = Nothing,
+                              Optional alpha As Double = 1,
+                              Optional size As Single? = Nothing,
                               <RListObjectArgument>
                               Optional args As list = Nothing,
                               Optional env As Environment = Nothing) As ggplotLayer
@@ -375,8 +378,10 @@ Public Module ggplot2
         Return New ggplotTextLabel With {
             .reader = mapping,
             .showLegend = show_legend,
-            .colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color), env),
-            .which = which
+            .colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color), alpha, env),
+            .which = which,
+            .check_overlap = check_overlap,
+            .fontSize = size
         }
     End Function
 
@@ -394,11 +399,12 @@ Public Module ggplot2
     <ExportAPI("geom_histogram")>
     Public Function geom_histogram(bins As Integer,
                                    Optional color As Object = Nothing,
+                                   Optional alpha As Double = 1,
                                    Optional env As Environment = Nothing) As ggplotLayer
 
         Return New ggplotHistogram With {
             .bins = bins,
-            .colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color), env)
+            .colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color), alpha, env)
         }
     End Function
 
@@ -421,9 +427,10 @@ Public Module ggplot2
                               Optional color As Object = Nothing,
                               Optional width As Single = 5,
                               Optional show_legend As Boolean = True,
+                              Optional alpha As Double = 1,
                               Optional env As Environment = Nothing) As ggplotLayer
 
-        Dim colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color, Nothing), env)
+        Dim colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color, Nothing), alpha, env)
 
         'If mapping IsNot Nothing AndAlso Not mapping.isPlain2D Then
         '    ' 3D
@@ -453,14 +460,22 @@ Public Module ggplot2
         }
     End Function
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
+    ''' <param name="yintercept"></param>
+    ''' <param name="color"></param>
+    ''' <param name="line_width!"></param>
+    ''' <param name="linetype"></param>
+    ''' <returns></returns>
     <ExportAPI("geom_hline")>
     Public Function geom_hline(yintercept As Double,
                                Optional color As Object = "black",
                                Optional line_width! = 2,
                                Optional linetype As DashStyle = DashStyle.Solid) As ggplotLayer
 
-        Dim a As New PointF(Single.MinValue, yintercept)
-        Dim b As New PointF(Single.MaxValue, yintercept)
+        Dim a As New PointF(Single.NaN, yintercept)
+        Dim b As New PointF(Single.NaN, yintercept)
         Dim style As New Pen(RColorPalette.getColor(color).TranslateColor, line_width) With {
             .DashStyle = linetype
         }
@@ -491,8 +506,8 @@ Public Module ggplot2
                                Optional line_width! = 2,
                                Optional linetype As DashStyle = DashStyle.Solid) As ggplotLayer
 
-        Dim a As New PointF(xintercept, Single.MinValue)
-        Dim b As New PointF(xintercept, Single.MaxValue)
+        Dim a As New PointF(xintercept, Single.NaN)
+        Dim b As New PointF(xintercept, Single.NaN)
         Dim style As New Pen(RColorPalette.getColor(color).TranslateColor, line_width) With {
             .DashStyle = linetype
         }
@@ -866,8 +881,14 @@ Public Module ggplot2
     ''' package And references therein.
     ''' </remarks>
     <ExportAPI("scale_colour_manual")>
-    Public Function scale_colour_manual(<RRawVectorArgument> values As Object, Optional env As Environment = Nothing) As ggplotOption
-        Return New ggplotColorProfile With {.profile = ggplotColorMap.CreateColorMap(values, env)}
+    Public Function scale_colour_manual(<RRawVectorArgument>
+                                        values As Object,
+                                        Optional alpha As Double = 1,
+                                        Optional env As Environment = Nothing) As ggplotOption
+
+        Return New ggplotColorProfile With {
+            .profile = ggplotColorMap.CreateColorMap(values, alpha, env)
+        }
     End Function
 
     ''' <summary>

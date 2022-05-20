@@ -119,13 +119,13 @@ Namespace options
                     ggplot.ggplotTheme.XaxisTickFormat = format
                 End If
 
-                ggplot.args.slots("scale_x_reverse") = True
+                ggplot.args.slots("scale_x_reverse") = reverse
             Else
                 If Not format.StringEmpty Then
                     ggplot.ggplotTheme.YaxisTickFormat = format
                 End If
 
-                ggplot.args.slots("scale_y_reverse") = True
+                ggplot.args.slots("scale_y_reverse") = reverse
             End If
 
             Return ggplot

@@ -268,8 +268,11 @@ Public Class ggplot : Inherits Plot
         Dim x As Double() = allDataset.Select(Function(d) DirectCast(REnv.asVector(Of Double)(d.x), Double())).IteratesALL.ToArray
         Dim y As Double() = allDataset.Select(Function(d) DirectCast(REnv.asVector(Of Double)(d.y), Double())).IteratesALL.ToArray
 
-        x = x.JoinIterates([default].x).ToArray
-        y = y.JoinIterates([default].y).ToArray
+        ' there are missing value from the 
+        ' geom_vline and geom_hline
+        ' function
+        x = x.JoinIterates([default].x).Where(Function(d) Not d.IsNaNImaginary).ToArray
+        y = y.JoinIterates([default].y).Where(Function(d) Not d.IsNaNImaginary).ToArray
 
         Dim xTicks = x.Range.CreateAxisTicks
         Dim yTicks = y.Range.CreateAxisTicks
