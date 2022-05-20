@@ -70,6 +70,15 @@ Namespace colors
         Public MustOverride Function ColorHandler(ggplot As ggplot, factors As Array) As Func(Of Object, String)
         Public MustOverride Function TryGetFactorLegends(factors As Array, shape As LegendStyles, theme As Theme) As LegendObject()
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="map"></param>
+        ''' <param name="alpha">
+        ''' color alpha channel value between [0,1]
+        ''' </param>
+        ''' <param name="env"></param>
+        ''' <returns></returns>
         Public Shared Function CreateColorMap(map As Object, alpha As Double, env As Environment) As ggplotColorMap
             If TypeOf map Is vector Then
                 map = DirectCast(map, vector).data
