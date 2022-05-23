@@ -267,12 +267,14 @@ Public Class ggplot : Inherits Plot
         Dim allDataset As ggplotData() = layerData.ToArray
         Dim x As Double() = allDataset.Select(Function(d) DirectCast(REnv.asVector(Of Double)(d.x), Double())).IteratesALL.ToArray
         Dim y As Double() = allDataset.Select(Function(d) DirectCast(REnv.asVector(Of Double)(d.y), Double())).IteratesALL.ToArray
+        Dim limitsX As Double() = REnv.asVector(Of Double)(args.getByName("range_x"))
+        Dim limitsY As Double() = REnv.asVector(Of Double)(args.getByName("range_y"))
 
         ' there are missing value from the 
         ' geom_vline and geom_hline
         ' function
-        x = x.JoinIterates([default].x).Where(Function(d) Not d.IsNaNImaginary).ToArray
-        y = y.JoinIterates([default].y).Where(Function(d) Not d.IsNaNImaginary).ToArray
+        x = x.JoinIterates([default].x).JoinIterates(limitsX).Where(Function(d) Not d.IsNaNImaginary).ToArray
+        y = y.JoinIterates([default].y).JoinIterates(limitsY).Where(Function(d) Not d.IsNaNImaginary).ToArray
 
         Dim xTicks = x.Range.CreateAxisTicks
         Dim yTicks = y.Range.CreateAxisTicks
