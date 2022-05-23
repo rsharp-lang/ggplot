@@ -474,8 +474,8 @@ Public Module ggplot2
                                Optional line_width! = 2,
                                Optional linetype As DashStyle = DashStyle.Solid) As ggplotLayer
 
-        Dim a As New PointF(Single.NaN, yintercept)
-        Dim b As New PointF(Single.NaN, yintercept)
+        Dim a As New PointF(Single.NegativeInfinity, yintercept)
+        Dim b As New PointF(Single.PositiveInfinity, yintercept)
         Dim style As New Pen(RColorPalette.getColor(color).TranslateColor, line_width) With {
             .DashStyle = linetype
         }
@@ -506,8 +506,8 @@ Public Module ggplot2
                                Optional line_width! = 2,
                                Optional linetype As DashStyle = DashStyle.Solid) As ggplotLayer
 
-        Dim a As New PointF(xintercept, Single.NaN)
-        Dim b As New PointF(xintercept, Single.NaN)
+        Dim a As New PointF(xintercept, Single.NegativeInfinity)
+        Dim b As New PointF(xintercept, Single.PositiveInfinity)
         Dim style As New Pen(RColorPalette.getColor(color).TranslateColor, line_width) With {
             .DashStyle = linetype
         }
