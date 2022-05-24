@@ -4,7 +4,6 @@ Imports ggplot.layers
 Imports Microsoft.VisualBasic.Data.visualize.Network
 Imports Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic
 Imports Microsoft.VisualBasic.Data.visualize.Network.Graph
-Imports Microsoft.VisualBasic.Data.visualize.Network.Styling
 Imports Microsoft.VisualBasic.Data.visualize.Network.Styling.FillBrushes
 Imports Microsoft.VisualBasic.Data.visualize.Network.Styling.Numeric
 Imports Microsoft.VisualBasic.MIME.Html.CSS
@@ -54,10 +53,6 @@ Namespace ggraph.render
                 labelWordWrapWidth:=-1,
                 nodeWidget:=Nothing
             )
-
-            If Not fill Is Nothing Then
-                graph = graph.SetNodeFill(fill)
-            End If
 
             Dim vertex As Node() = graph.vertex _
                 .OrderBy(Function(a)

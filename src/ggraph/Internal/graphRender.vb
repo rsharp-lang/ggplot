@@ -2,10 +2,12 @@
 Imports System.Drawing
 Imports ggplot.elements.legend
 Imports ggplot.ggraph.layout
+Imports ggplot.ggraph.render
 Imports ggplot.layers
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.visualize.Network
 Imports Microsoft.VisualBasic.Data.visualize.Network.Graph
+Imports Microsoft.VisualBasic.Data.visualize.Network.Styling
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Linq
@@ -29,8 +31,15 @@ Namespace ggraph
             Dim layers As New Queue(Of ggplotLayer)(
                 collection:=If(UnionGgplotLayers Is Nothing, Me.layers, UnionGgplotLayers(Me.layers))
             )
+            Dim nodeLayer As nodeRender = layers _
+                .Where(Function(l) TypeOf l Is nodeRender) _
+                .FirstOrDefault
 
             Call force.createLayout(graph, environment)
+
+            If nodeLayer IsNot Nothing AndAlso Not nodeLayer.fill Is Nothing Then
+                graph = graph.SetNodeFill(nodeLayer.fill)
+            End If
 
             ' 先進行佈局計算，再
             ' 获取得到当前的这个网络对象相对于图像的中心点的位移值

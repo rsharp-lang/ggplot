@@ -31,6 +31,17 @@ Namespace layers
             )
         End Function
 
+        Protected Overridable Function createColorMaps(class_tags As String(), stream As ggplotPipeline, ngroups As Integer) As Dictionary(Of String, Color)
+            Dim colors = Designer.GetColors(any.ToString(reader.color), ngroups)
+            Dim maps As New Dictionary(Of String, Color)
+
+            For i As Integer = 0 To class_tags.Length - 1
+                Call maps.Add(class_tags(i), colors(i))
+            Next
+
+            Return maps
+        End Function
+
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim class_tags As String() = getClassTags(stream)
             Dim y As Double() = stream.layout _
@@ -55,12 +66,11 @@ Namespace layers
                         End Function) _
                 .ToArray
             Dim legendGroup As New List(Of LegendObject)
-            Dim colors = Designer.GetColors(any.ToString(reader.color), polygons.Length)
-            Dim idx As i32 = 0
+            Dim colors = createColorMaps(class_tags, stream, ngroups:=polygons.Length)
             Dim legend As LegendObject
 
             For Each polygon As NamedCollection(Of PointF) In polygons
-                legend = renderPolygon(stream, colors(++idx), polygon)
+                legend = renderPolygon(stream, colors(polygon.name), polygon)
 
                 If Not legend Is Nothing Then
                     Call legendGroup.Add(legend)
