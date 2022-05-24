@@ -20,11 +20,17 @@ Namespace ggraph.render
 
         Private Function classFromGraphData(stream As ggplotPipeline, sourceMap As String) As String()
             Dim g As NetworkGraph = stream.ggplot.data
+            Dim layouts = stream.layout
 
             Select Case sourceMap.ToLower
                 Case "group"
-                    Return g.vertex _
-                        .Select(Function(v) v.data(NamesOf.REFLECTION_ID_MAPPING_NODETYPE)) _
+                    Return layouts _
+                        .Select(Function(v)
+                                    Dim vex As Node = g.GetElementByID(v.Key)
+                                    Dim tag As String = vex.data(NamesOf.REFLECTION_ID_MAPPING_NODETYPE)
+
+                                    Return tag
+                                End Function) _
                         .ToArray
                 Case Else
                     Throw New NotImplementedException(sourceMap)

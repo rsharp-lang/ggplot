@@ -3,9 +3,11 @@ Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
+Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Math2D
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Math2D.ConvexHull
 Imports Microsoft.VisualBasic.Language
+Imports any = Microsoft.VisualBasic.Scripting
 
 Namespace layers
 
@@ -23,16 +25,16 @@ Namespace layers
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim class_tags As String() = getClassTags(stream)
-            Dim y As Double() = stream.y
-            Dim points As PointF() = stream.x _
-                .Select(Function(xi, i) New PointF(xi, y(i))) _
+            Dim y As Double() = stream.layout.Select(Function(v) CDbl(v.Value.Y)).ToArray
+            Dim points As PointF() = stream.layout _
+                .Select(Function(xi, i) New PointF(xi.Value.X, y(i))) _
                 .ToArray
             Dim polygons As NamedCollection(Of PointF)() = class_tags _
                 .Select(Function(tag, i)
                             Return (tag, points(i))
                         End Function) _
                 .GroupBy(Function(a) a.tag) _
-                .Where(Function(group) group.Count > 2) _
+                .Where(Function(group) group.Count > 3) _
                 .Select(Function(tag)
                             Return New NamedCollection(Of PointF) With {
                                 .name = tag.Key,
@@ -43,21 +45,21 @@ Namespace layers
                         End Function) _
                 .ToArray
             Dim legendGroup As New List(Of LegendObject)
-            Dim colors = reader.getMapColor(reader.color, LegendStyles.RoundRectangle, stream.theme, stream.ggplot.environment)
+            Dim colors = Designer.GetColors(any.ToString(reader.color), polygons.Length)
             Dim idx As i32 = 0
 
             For Each polygon As NamedCollection(Of PointF) In polygons
-                Call legendGroup.Add(renderPolygon(stream, colors.htmlColors(++idx), polygon))
+                Call legendGroup.Add(renderPolygon(stream, colors(++idx), polygon))
             Next
 
             Return New legendGroupElement With {.legends = legendGroup.ToArray}
         End Function
 
-        Private Function renderPolygon(stream As ggplotPipeline, color As String, polygon As NamedCollection(Of PointF)) As LegendObject
+        Private Function renderPolygon(stream As ggplotPipeline, fillcolor As Color, polygon As NamedCollection(Of PointF)) As LegendObject
             Dim hull As PointF() = polygon.JarvisMatch
-            Dim fillColor As Color = color.TranslateColor
+            Dim color As String = fillcolor.ToHtmlColor
 
-            Call HullPolygonDraw.DrawHullPolygon(stream.g, hull, fillColor, alpha:=alpha * 255)
+            Call HullPolygonDraw.DrawHullPolygon(stream.g, hull, fillcolor, alpha:=alpha * 255)
 
             Return New LegendObject With {
                 .title = polygon.name,
