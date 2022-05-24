@@ -59,7 +59,7 @@ Module ggraphPkg
     <RApiReturn(GetType(edgeRender))>
     Public Function geom_edge_link(<RDefaultExpression()>
                                    Optional mapping As Object = "~aes()",
-                                   Optional color As Object = "gray",
+                                   Optional color As Object = "lightgray",
                                    <RRawVectorArgument>
                                    Optional width As Object = "2,5",
                                    Optional env As Environment = Nothing) As Object

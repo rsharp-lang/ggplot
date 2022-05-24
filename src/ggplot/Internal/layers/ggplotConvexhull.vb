@@ -44,7 +44,7 @@ Namespace layers
                             Return (tag, points(i))
                         End Function) _
                 .GroupBy(Function(a) a.tag) _
-                .Where(Function(group) group.Count > 3) _
+                .OrderBy(Function(t) t.Key) _
                 .Select(Function(tag)
                             Return New NamedCollection(Of PointF) With {
                                 .name = tag.Key,
@@ -57,15 +57,30 @@ Namespace layers
             Dim legendGroup As New List(Of LegendObject)
             Dim colors = Designer.GetColors(any.ToString(reader.color), polygons.Length)
             Dim idx As i32 = 0
+            Dim legend As LegendObject
 
             For Each polygon As NamedCollection(Of PointF) In polygons
-                Call legendGroup.Add(renderPolygon(stream, colors(++idx), polygon))
+                legend = renderPolygon(stream, colors(++idx), polygon)
+
+                If Not legend Is Nothing Then
+                    Call legendGroup.Add(legend)
+                End If
             Next
 
             Return New legendGroupElement With {.legends = legendGroup.ToArray}
         End Function
 
         Private Function renderPolygon(stream As ggplotPipeline, fillcolor As Color, polygon As NamedCollection(Of PointF)) As LegendObject
+            ' 20220524 where filter will cause a mis-ordered
+            ' color maps skip of rendering polygn at here instead
+            ' of do where filter for the tag groups
+            '
+            ' .Where(Function(group) group.Count > 3) _
+            '
+            If polygon.Length <= 3 Then
+                Return Nothing
+            End If
+
             Dim hull As PointF() = polygon.JarvisMatch.Enlarge(scale)
             Dim color As String = fillcolor.ToHtmlColor
 
@@ -80,7 +95,7 @@ Namespace layers
 
             Return New LegendObject With {
                 .title = polygon.name,
-                .style = LegendStyles.RoundRectangle,
+                .style = LegendStyles.Circle,
                 .fontstyle = stream.theme.legendLabelCSS,
                 .color = color
             }

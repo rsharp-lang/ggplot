@@ -1,16 +1,12 @@
 ﻿Imports System.Drawing
 Imports ggplot.elements.legend
 Imports ggplot.layers
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.visualize.Network
+Imports Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic
 Imports Microsoft.VisualBasic.Data.visualize.Network.Graph
 Imports Microsoft.VisualBasic.Data.visualize.Network.Styling
-Imports Microsoft.VisualBasic.Data.visualize.Network.Styling.CSS
 Imports Microsoft.VisualBasic.Data.visualize.Network.Styling.FillBrushes
 Imports Microsoft.VisualBasic.Data.visualize.Network.Styling.Numeric
-Imports Microsoft.VisualBasic.Imaging
-Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 
 Namespace ggraph.render
@@ -63,7 +59,14 @@ Namespace ggraph.render
                 graph = graph.SetNodeFill(fill)
             End If
 
-            Dim labels = renderNode.RenderingVertexNodes(stream.g, graph.vertex.ToArray).ToArray
+            Dim vertex As Node() = graph.vertex _
+                .OrderBy(Function(a)
+                             Return If(a.data(NamesOf.REFLECTION_ID_MAPPING_NODETYPE), "")
+                         End Function) _
+                .ToArray
+            Dim labels = renderNode _
+                .RenderingVertexNodes(stream.g, vertex) _
+                .ToArray
 
             DirectCast(stream, graphPipeline).labels.AddRange(labels)
 
