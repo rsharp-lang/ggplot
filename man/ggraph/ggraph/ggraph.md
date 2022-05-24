@@ -33,4 +33,5 @@
 + [geom_edge_link](ggraph/geom_edge_link.1) 
 + [geom_node_point](ggraph/geom_node_point.1) 
 + [geom_node_text](ggraph/geom_node_text.1) 
++ [geom_node_convexHull](ggraph/geom_node_convexHull.1) 
 + [map](ggraph/map.1) create style mapping for do graph rendering

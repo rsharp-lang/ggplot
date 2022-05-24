@@ -13,12 +13,16 @@ Namespace layers
 
         Public Property alpha As Double = 1
 
-        Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
-            Dim class_tags As String() = reader.getMapData(Of String)(
+        Protected Overridable Function getClassTags(stream As ggplotPipeline) As String()
+            Return reader.getMapData(Of String)(
                 data:=stream.ggplot.data,
                 map:=reader.class,
                 env:=stream.ggplot.environment
             )
+        End Function
+
+        Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
+            Dim class_tags As String() = getClassTags(stream)
             Dim y As Double() = stream.y
             Dim points As PointF() = stream.x _
                 .Select(Function(xi, i) New PointF(xi, y(i))) _

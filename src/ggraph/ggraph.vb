@@ -1,5 +1,6 @@
 ﻿Imports System.Drawing
 Imports ggplot.ggraph.render
+Imports ggplot.layers
 Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.Data.visualize.Network.Styling
@@ -50,6 +51,8 @@ Imports any = Microsoft.VisualBasic.Scripting
 ''' </remarks>
 <Package("ggraph")>
 Module ggraphPkg
+
+    Const NULL As Object = Nothing
 
     <ExportAPI("geom_edge_link")>
     Public Function geom_edge_link(<RDefaultExpression()> Optional mapping As Object = "~aes()") As edgeRender
@@ -105,6 +108,16 @@ Module ggraphPkg
         Return New textRender With {
             .fontsize = size,
             .iteration = iteration
+        }
+    End Function
+
+    <ExportAPI("geom_node_convexHull")>
+    Public Function geom_node_convexHull(Optional mapping As ggplotReader = NULL,
+                                         Optional alpha As Double = 1) As ggplotLayer
+
+        Return New convexHullRender With {
+            .reader = mapping,
+            .alpha = alpha
         }
     End Function
 
