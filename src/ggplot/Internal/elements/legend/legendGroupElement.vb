@@ -59,6 +59,16 @@ Namespace elements.legend
         Public Property legends As LegendObject()
         Public Property shapeSize As New Size(90, 30)
 
+        Public ReadOnly Property size As Integer Implements IggplotLegendElement.size
+            Get
+                If legends.IsNullOrEmpty Then
+                    Return 0
+                Else
+                    Return legends.Length
+                End If
+            End Get
+        End Property
+
         Public Sub Draw(g As IGraphics, canvas As GraphicsRegion, x As Double, y As Double, theme As Theme) Implements IggplotLegendElement.Draw
             Dim brush As Brush = theme.mainTextColor.GetBrush
             Dim layout As New PointF(x, y)

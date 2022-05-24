@@ -391,14 +391,16 @@ Public Class ggplot : Inherits Plot
     End Sub
 
     Private Sub DrawSingle(legend As IggplotLegendElement, g As IGraphics, canvas As GraphicsRegion)
-        Dim size As SizeF = legend.MeasureSize(g)
-        Dim rect As Rectangle = canvas.PlotRegion
+        If legend.size > 0 Then
+            Dim size As SizeF = legend.MeasureSize(g)
+            Dim rect As Rectangle = canvas.PlotRegion
 
-        ' default is padding right / middle in height
-        Dim x As Single = (canvas.Padding.Right - size.Width) / 2 + rect.Right
-        Dim y As Single = (rect.Height - size.Height) / 2 + rect.Top
+            ' default is padding right / middle in height
+            Dim x As Single = (canvas.Padding.Right - size.Width) / 2 + rect.Right
+            Dim y As Single = (rect.Height - size.Height) / 2 + rect.Top
 
-        Call legend.Draw(g, canvas, x, y, theme)
+            Call legend.Draw(g, canvas, x, y, theme)
+        End If
     End Sub
 
     Public Function Save(stream As Stream, format As ImageFormat) As Boolean Implements SaveGdiBitmap.Save

@@ -59,6 +59,16 @@ Namespace elements.legend
         Public Property shapeSize As New Size(120, 45)
         Public Overrides Property layout As Layout Implements IggplotLegendElement.layout
 
+        Public ReadOnly Property size As Integer Implements IggplotLegendElement.size
+            Get
+                If legend Is Nothing Then
+                    Return 0
+                Else
+                    Return 1
+                End If
+            End Get
+        End Property
+
         Public Sub Draw(g As IGraphics,
                         canvas As GraphicsRegion,
                         x As Double,
