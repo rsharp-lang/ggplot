@@ -3,6 +3,7 @@ Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
+Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Math2D
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Math2D.ConvexHull
@@ -14,6 +15,13 @@ Namespace layers
     Public Class ggplotConvexhull : Inherits ggplotLayer
 
         Public Property alpha As Double = 1
+        Public Property spline As Double = 0
+        Public Property stroke_width As Single = 3
+        ''' <summary>
+        ''' the polygon size scale factor
+        ''' </summary>
+        ''' <returns></returns>
+        Public Property scale As Double = 1.25
 
         Protected Overridable Function getClassTags(stream As ggplotPipeline) As String()
             Return reader.getMapData(Of String)(
@@ -25,7 +33,9 @@ Namespace layers
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim class_tags As String() = getClassTags(stream)
-            Dim y As Double() = stream.layout.Select(Function(v) CDbl(v.Value.Y)).ToArray
+            Dim y As Double() = stream.layout _
+                .Select(Function(v) CDbl(v.Value.Y)) _
+                .ToArray
             Dim points As PointF() = stream.layout _
                 .Select(Function(xi, i) New PointF(xi.Value.X, y(i))) _
                 .ToArray
@@ -56,10 +66,17 @@ Namespace layers
         End Function
 
         Private Function renderPolygon(stream As ggplotPipeline, fillcolor As Color, polygon As NamedCollection(Of PointF)) As LegendObject
-            Dim hull As PointF() = polygon.JarvisMatch
+            Dim hull As PointF() = polygon.JarvisMatch.Enlarge(scale)
             Dim color As String = fillcolor.ToHtmlColor
 
-            Call HullPolygonDraw.DrawHullPolygon(stream.g, hull, fillcolor, alpha:=alpha * 255)
+            Call HullPolygonDraw.DrawHullPolygon(
+                g:=stream.g,
+                polygon:=hull,
+                color:=fillcolor,
+                alpha:=alpha * 255,
+                convexHullCurveDegree:=spline,
+                strokeWidth:=stroke_width
+            )
 
             Return New LegendObject With {
                 .title = polygon.name,

@@ -113,11 +113,17 @@ Module ggraphPkg
 
     <ExportAPI("geom_node_convexHull")>
     Public Function geom_node_convexHull(Optional mapping As ggplotReader = NULL,
-                                         Optional alpha As Double = 1) As ggplotLayer
+                                         Optional alpha As Double = 1,
+                                         Optional scale As Double = 1.125,
+                                         Optional stroke_width As Double = 3,
+                                         Optional spline As Single = 0) As ggplotLayer
 
         Return New convexHullRender With {
             .reader = mapping,
-            .alpha = alpha
+            .alpha = alpha,
+            .scale = scale,
+            .stroke_width = stroke_width,
+            .spline = spline
         }
     End Function
 
