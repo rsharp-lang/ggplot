@@ -46,6 +46,7 @@
 
 #End Region
 
+Imports System.Runtime.CompilerServices
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ApplicationServices.Debugging.Diagnostics
 Imports Microsoft.VisualBasic.ComponentModel.Collection
@@ -57,6 +58,7 @@ Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Components
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
+Imports any = Microsoft.VisualBasic.Scripting
 Imports REnv = SMRUCC.Rsharp.Runtime
 
 ''' <summary>
@@ -69,7 +71,7 @@ Public Class ggplotReader
     Public Property z As String
     Public Property color As Object
     Public Property shape As Object
-
+    Public Property [class] As Object
     ''' <summary>
     ''' the legend title label text
     ''' </summary>
@@ -104,6 +106,17 @@ Public Class ggplotReader
         End If
     End Function
 
+    <MethodImpl(MethodImplOptions.AggressiveInlining)>
+    Public Overridable Function getMapData(Of T)(data As Object, map As Object, env As Environment) As T()
+        Dim sourceMaps As Array = REnv.asVector(Of Object)(map)
+
+        If sourceMaps.Length = 1 Then
+            Return REnv.asVector(Of T)(unifySource(data, any.ToString(sourceMaps.GetValue(Scan0)), env))
+        Else
+            Return REnv.asVector(Of T)(sourceMaps)
+        End If
+    End Function
+
     Public Overridable Function getMapData(data As Object, env As Environment) As ggplotData
         Return New ggplotData With {
             .x = unifySource(data, x, env),
@@ -116,36 +129,41 @@ Public Class ggplotReader
         If source Is Nothing Then
             Return Nothing
         ElseIf TypeOf data Is dataframe Then
-            Dim table As dataframe = DirectCast(data, dataframe)
-            Dim is_eval As Boolean = source.StartsWith("~") AndAlso Not table.hasName(source)
-            Dim expression As Expression
-
-            If is_eval Then
-                expression = Expression.ParseLines(Rscript.AutoHandleScript(source.Trim("~"c))).First
-                env = New Environment(env, New StackFrame With {
-                    .File = "n/a",
-                    .Line = "n/a",
-                    .Method = New Method With {
-                        .Method = NameOf(unifySource),
-                        .[Module] = "n/a",
-                        .[Namespace] = "ggplot"
-                    }
-                }, isInherits:=False)
-
-                For Each v As String In table.colnames
-                    Call env.AssignSymbol(v, table(v))
-                Next
-
-                Dim vec As Array = REnv.asVector(Of Double)(expression.Evaluate(env))
-
-                Return vec
-            Else
-                Return table.getColumnVector(source)
-            End If
+            Return dataframeSource(DirectCast(data, dataframe), source, env)
         ElseIf TypeOf data Is list Then
             Throw New NotImplementedException
         Else
             Throw New NotImplementedException(data.GetType.FullName)
+        End If
+    End Function
+
+    Private Shared Function dataframeSource(table As dataframe, source As String, env As Environment) As Array
+        Dim is_eval As Boolean = source.StartsWith("~") AndAlso Not table.hasName(source)
+        Dim expression As Expression
+
+        If is_eval Then
+            expression = Expression _
+                .ParseLines(Rscript.AutoHandleScript(source.Trim("~"c))) _
+                .First
+            env = New Environment(env, New StackFrame With {
+                .File = "n/a",
+                .Line = "n/a",
+                .Method = New Method With {
+                    .Method = NameOf(unifySource),
+                    .[Module] = "n/a",
+                    .[Namespace] = "ggplot"
+                }
+            }, isInherits:=False)
+
+            For Each v As String In table.colnames
+                Call env.AssignSymbol(v, table(v))
+            Next
+
+            Dim vec As Array = REnv.asVector(Of Object)(expression.Evaluate(env))
+
+            Return vec
+        Else
+            Return table.getColumnVector(source)
         End If
     End Function
 

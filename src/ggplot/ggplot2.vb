@@ -179,6 +179,9 @@ Public Module ggplot2
     ''' </param>
     ''' <param name="y"></param>
     ''' <param name="color"></param>
+    ''' <param name="class">
+    ''' mapping data of the element class group.
+    ''' </param>
     ''' <param name="env"></param>
     ''' <returns>
     ''' A list with class uneval. Components of the list are either quosures 
@@ -198,6 +201,7 @@ Public Module ggplot2
                         Optional color As Object = Nothing,
                         Optional title As String = Nothing,
                         Optional shape As Object = Nothing,
+                        Optional [class] As Object = Nothing,
                         <RListObjectArgument>
                         Optional args As list = Nothing,
                         Optional env As Environment = Nothing) As ggplotReader
@@ -210,7 +214,8 @@ Public Module ggplot2
             .label = label,
             .args = args,
             .title = title,
-            .shape = shape
+            .shape = shape,
+            .[class] = [class]
         }
     End Function
 
@@ -430,27 +435,8 @@ Public Module ggplot2
                               Optional alpha As Double = 1,
                               Optional env As Environment = Nothing) As ggplotLayer
 
-        Dim colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color, Nothing), alpha, env)
-
-        'If mapping IsNot Nothing AndAlso Not mapping.isPlain2D Then
-        '    ' 3D
-        '    Return New ggplotScatter3d With {
-        '        .colorMap = colorMap,
-        '        .reader = mapping,
-        '        .shape = shape,
-        '        .size = size,
-        '        .showLegend = show_legend
-        '    }
-        'Else
-        '    ' 2D
-        '    Return New ggplotScatter With {
-        '        .colorMap = colorMap,
-        '        .shape = shape,
-        '        .size = size,
-        '        .showLegend = show_legend,
-        '        .reader = mapping
-        '    }
-        'End If
+        Dim rawColor As String = RColorPalette.getColor(color, Nothing)
+        Dim colorMap As ggplotColorMap = ggplotColorMap.CreateColorMap(rawColor, alpha, env)
 
         Return New ggplotLine With {
             .showLegend = show_legend,
@@ -530,6 +516,16 @@ Public Module ggplot2
     <ExportAPI("geom_path")>
     Public Function geom_path() As ggplotLayer
 
+    End Function
+
+    <ExportAPI("geom_convexHull")>
+    Public Function geom_convexHull(Optional mapping As ggplotReader = NULL,
+                                    Optional alpha As Double = 1) As ggplotLayer
+
+        Return New ggplotConvexhull With {
+            .reader = mapping,
+            .alpha = alpha
+        }
     End Function
 
     ''' <summary>
