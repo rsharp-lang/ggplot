@@ -94,6 +94,10 @@ Namespace layers
             Dim hull As PointF() = polygon.JarvisMatch.Enlarge(scale)
             Dim color As String = fillcolor.ToHtmlColor
 
+            If hull.Length <= 2 Then
+                Return Nothing
+            End If
+
             Call HullPolygonDraw.DrawHullPolygon(
                 g:=stream.g,
                 polygon:=hull,
