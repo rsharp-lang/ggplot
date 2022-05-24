@@ -5,10 +5,13 @@ Imports ggplot.layers
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Data.visualize.Network
 Imports Microsoft.VisualBasic.Data.visualize.Network.Graph
+Imports Microsoft.VisualBasic.Imaging
 
 Namespace ggraph.render
 
     Public Class edgeRender : Inherits ggplotLayer
+
+        Public Property color As String
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim graph As NetworkGraph = stream.ggplot.data
@@ -16,13 +19,14 @@ Namespace ggraph.render
             Dim wscale As DoubleRange = {1, 3}
             Dim linkWidth As Func(Of Edge, Single) = Function(e) scale.ScaleMapping(e.weight, wscale)
             Dim edgeDashType As New Dictionary(Of String, DashStyle)
+            Dim edgeColor As Color = Me.color.TranslateColor
             Dim engine As New EdgeRendering(
                 linkWidth:=linkWidth,
                 edgeDashTypes:=edgeDashType,
                 scalePos:=stream.layout,
                 throwEx:=False,
                 edgeShadowDistance:=0,
-                defaultEdgeColor:=Color.LightGray,
+                defaultEdgeColor:=edgeColor,
                 drawEdgeBends:=False,
                 drawEdgeDirection:=False
             )

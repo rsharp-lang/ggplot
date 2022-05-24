@@ -55,8 +55,18 @@ Module ggraphPkg
     Const NULL As Object = Nothing
 
     <ExportAPI("geom_edge_link")>
-    Public Function geom_edge_link(<RDefaultExpression()> Optional mapping As Object = "~aes()") As edgeRender
-        Return New edgeRender
+    <RApiReturn(GetType(edgeRender))>
+    Public Function geom_edge_link(<RDefaultExpression()>
+                                   Optional mapping As Object = "~aes()",
+                                   Optional color As Object = "gray",
+                                   Optional env As Environment = Nothing) As Object
+
+        Dim colorStr As String = RColorPalette.getColor(color)
+        Dim render As New edgeRender With {
+            .color = colorStr
+        }
+
+        Return render
     End Function
 
     <ExportAPI("geom_node_point")>
