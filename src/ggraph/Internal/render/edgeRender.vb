@@ -2,12 +2,9 @@
 Imports System.Drawing.Drawing2D
 Imports ggplot.elements.legend
 Imports ggplot.layers
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
+Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Data.visualize.Network
 Imports Microsoft.VisualBasic.Data.visualize.Network.Graph
-Imports Microsoft.VisualBasic.Imaging
-Imports Microsoft.VisualBasic.Imaging.Drawing2D
 
 Namespace ggraph.render
 
@@ -15,7 +12,9 @@ Namespace ggraph.render
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim graph As NetworkGraph = stream.ggplot.data
-            Dim linkWidth As Func(Of Edge, Single) = Function() 3
+            Dim scale As DoubleRange = graph.graphEdges.Select(Function(e) e.weight).Range
+            Dim wscale As DoubleRange = {1, 3}
+            Dim linkWidth As Func(Of Edge, Single) = Function(e) scale.ScaleMapping(e.weight, wscale)
             Dim edgeDashType As New Dictionary(Of String, DashStyle)
             Dim engine As New EdgeRendering(
                 linkWidth:=linkWidth,
