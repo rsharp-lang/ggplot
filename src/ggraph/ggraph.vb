@@ -3,6 +3,7 @@ Imports ggplot.ggraph.render
 Imports ggplot.layers
 Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
+Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Data.visualize.Network.Styling
 Imports Microsoft.VisualBasic.Data.visualize.Network.Styling.FillBrushes
 Imports Microsoft.VisualBasic.Data.visualize.Network.Styling.Numeric
@@ -59,11 +60,20 @@ Module ggraphPkg
     Public Function geom_edge_link(<RDefaultExpression()>
                                    Optional mapping As Object = "~aes()",
                                    Optional color As Object = "gray",
+                                   <RRawVectorArgument>
+                                   Optional width As Object = "2,5",
                                    Optional env As Environment = Nothing) As Object
 
         Dim colorStr As String = RColorPalette.getColor(color)
+        Dim linkWidth = SMRUCC.Rsharp.GetDoubleRange(width, env, [default]:="2,5")
+
+        If linkWidth Like GetType(Message) Then
+            Return linkWidth.TryCast(Of Message)
+        End If
+
         Dim render As New edgeRender With {
-            .color = colorStr
+            .color = colorStr,
+            .width = linkWidth.TryCast(Of DoubleRange)
         }
 
         Return render

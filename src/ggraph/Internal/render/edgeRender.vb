@@ -12,11 +12,12 @@ Namespace ggraph.render
     Public Class edgeRender : Inherits ggplotLayer
 
         Public Property color As String
+        Public Property width As DoubleRange = {2, 5}
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim graph As NetworkGraph = stream.ggplot.data
             Dim scale As DoubleRange = graph.graphEdges.Select(Function(e) e.weight).Range
-            Dim wscale As DoubleRange = {1, 3}
+            Dim wscale As DoubleRange = width
             Dim linkWidth As Func(Of Edge, Single) = Function(e) scale.ScaleMapping(e.weight, wscale)
             Dim edgeDashType As New Dictionary(Of String, DashStyle)
             Dim edgeColor As Color = Me.color.TranslateColor
