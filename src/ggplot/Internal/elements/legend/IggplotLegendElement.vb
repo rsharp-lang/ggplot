@@ -55,6 +55,14 @@ Namespace elements.legend
 
         Property layout As Layout
 
+        ''' <summary>
+        ''' the number of the legend object that 
+        ''' contains in current legend group 
+        ''' element object.
+        ''' </summary>
+        ''' <returns></returns>
+        ReadOnly Property size As Integer
+
         Sub Draw(g As IGraphics, canvas As GraphicsRegion, x As Double, y As Double, theme As Theme)
         Function MeasureSize(g As IGraphics) As SizeF
 

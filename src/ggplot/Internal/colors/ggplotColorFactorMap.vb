@@ -1,5 +1,6 @@
 ﻿Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
+Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.Serialization.JSON
 Imports any = Microsoft.VisualBasic.Scripting
@@ -28,7 +29,19 @@ Namespace colors
 
         Public Overrides Function ColorHandler(ggplot As ggplot, factors As Array) As Func(Of Object, String)
             Dim colorMap As Dictionary(Of String, String) = Me.colorMap
-            Return Function(keyObj) colorMap.TryGetValue(any.ToString(keyObj), [default]:="black")
+            Dim alphaColors As New Dictionary(Of String, String)
+
+            If alpha <> 1.0 Then
+                For Each factor In colorMap
+                    alphaColors(factor.Key) = factor _
+                        .Value _
+                        .TranslateColor _
+                        .Alpha(alpha * 255) _
+                        .ARGBExpression
+                Next
+            End If
+
+            Return Function(keyObj) alphaColors.TryGetValue(any.ToString(keyObj), [default]:="black")
         End Function
 
         Public Overrides Function TryGetFactorLegends(factors As Array, shape As LegendStyles, theme As Theme) As LegendObject()

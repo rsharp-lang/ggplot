@@ -12,7 +12,7 @@ Namespace ggraph.layout
 
         Protected MustOverride Function createAlgorithm(g As NetworkGraph) As IPlanner
 
-        Public Sub createLayout(g As NetworkGraph, env As Environment)
+        Public Sub createLayout(ByRef g As NetworkGraph, env As Environment)
             Dim algorithm As IPlanner = createAlgorithm(g.doRandomLayout)
             Dim println = env.WriteLineHandler
 

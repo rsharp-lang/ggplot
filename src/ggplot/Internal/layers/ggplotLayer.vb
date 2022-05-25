@@ -101,7 +101,7 @@ Namespace layers
         Protected Function getColorSet(ggplot As ggplot,
                                        g As IGraphics,
                                        nsize As Integer,
-                                       shape As LegendStyles,
+                                       shape As LegendStyles?,
                                        data As Double(),
                                        ByRef legends As IggplotLegendElement) As String()
             legends = Nothing
@@ -117,7 +117,7 @@ Namespace layers
                     .legend = New LegendObject With {
                         .color = colorString,
                         .fontstyle = ggplot.ggplotTheme.legendLabelCSS,
-                        .style = shape,
+                        .style = If(shape Is Nothing, LegendStyles.Circle, shape.Value),
                         .title = ggplot.base.reader.getLegendLabel
                     }
                 }
@@ -147,7 +147,7 @@ Namespace layers
             Else
                 Dim factors As String() = ggplot.getText(reader?.color)
                 Dim maps As Func(Of Object, String) = colorMap.ColorHandler(ggplot, factors)
-                Dim legendItems As LegendObject() = colorMap.TryGetFactorLegends(factors, shape, ggplot.ggplotTheme)
+                Dim legendItems As LegendObject() = colorMap.TryGetFactorLegends(factors, If(shape Is Nothing, LegendStyles.Circle, shape), ggplot.ggplotTheme)
                 Dim colors = factors.Select(Function(factor) maps(factor)).ToArray
 
                 legends = New legendGroupElement With {

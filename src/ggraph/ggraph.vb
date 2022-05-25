@@ -1,7 +1,9 @@
 ﻿Imports System.Drawing
 Imports ggplot.ggraph.render
+Imports ggplot.layers
 Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
+Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Data.visualize.Network.Styling
 Imports Microsoft.VisualBasic.Data.visualize.Network.Styling.FillBrushes
 Imports Microsoft.VisualBasic.Data.visualize.Network.Styling.Numeric
@@ -51,9 +53,30 @@ Imports any = Microsoft.VisualBasic.Scripting
 <Package("ggraph")>
 Module ggraphPkg
 
+    Const NULL As Object = Nothing
+
     <ExportAPI("geom_edge_link")>
-    Public Function geom_edge_link(<RDefaultExpression()> Optional mapping As Object = "~aes()") As edgeRender
-        Return New edgeRender
+    <RApiReturn(GetType(edgeRender))>
+    Public Function geom_edge_link(<RDefaultExpression()>
+                                   Optional mapping As Object = "~aes()",
+                                   Optional color As Object = "lightgray",
+                                   <RRawVectorArgument>
+                                   Optional width As Object = "2,5",
+                                   Optional env As Environment = Nothing) As Object
+
+        Dim colorStr As String = RColorPalette.getColor(color)
+        Dim linkWidth = SMRUCC.Rsharp.GetDoubleRange(width, env, [default]:="2,5")
+
+        If linkWidth Like GetType(Message) Then
+            Return linkWidth.TryCast(Of Message)
+        End If
+
+        Dim render As New edgeRender With {
+            .color = colorStr,
+            .width = linkWidth.TryCast(Of DoubleRange)
+        }
+
+        Return render
     End Function
 
     <ExportAPI("geom_node_point")>
@@ -105,6 +128,22 @@ Module ggraphPkg
         Return New textRender With {
             .fontsize = size,
             .iteration = iteration
+        }
+    End Function
+
+    <ExportAPI("geom_node_convexHull")>
+    Public Function geom_node_convexHull(Optional mapping As ggplotReader = NULL,
+                                         Optional alpha As Double = 1,
+                                         Optional scale As Double = 1.125,
+                                         Optional stroke_width As Double = 3,
+                                         Optional spline As Single = 0) As ggplotLayer
+
+        Return New convexHullRender With {
+            .reader = mapping,
+            .alpha = alpha,
+            .scale = scale,
+            .stroke_width = stroke_width,
+            .spline = spline
         }
     End Function
 

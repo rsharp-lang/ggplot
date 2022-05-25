@@ -65,11 +65,21 @@ Namespace colors
     Public MustInherit Class ggplotColorMap
 
         Public Property colorMap As Object
+        Public Property alpha As Double
 
         Public MustOverride Function ColorHandler(ggplot As ggplot, factors As Array) As Func(Of Object, String)
         Public MustOverride Function TryGetFactorLegends(factors As Array, shape As LegendStyles, theme As Theme) As LegendObject()
 
-        Public Shared Function CreateColorMap(map As Object, env As Environment) As ggplotColorMap
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="map"></param>
+        ''' <param name="alpha">
+        ''' color alpha channel value between [0,1]
+        ''' </param>
+        ''' <param name="env"></param>
+        ''' <returns></returns>
+        Public Shared Function CreateColorMap(map As Object, alpha As Double, env As Environment) As ggplotColorMap
             If TypeOf map Is vector Then
                 map = DirectCast(map, vector).data
             End If
@@ -77,39 +87,40 @@ Namespace colors
             If map Is Nothing Then
                 Return Nothing
             ElseIf TypeOf map Is String Then
-                Return stringMap(DirectCast(map, String))
+                Return stringMap(DirectCast(map, String), alpha)
             ElseIf map.GetType.IsArray Then
                 Dim strArray As String() = REnv.asVector(Of String)(map)
 
                 If strArray.Length = 1 Then
-                    Return stringMap(strArray(Scan0))
+                    Return stringMap(strArray(Scan0), alpha)
                 Else
-                    Return directMap(strArray)
+                    Return directMap(strArray, alpha)
                 End If
             ElseIf TypeOf map Is list Then
                 Return New ggplotColorFactorMap With {
-                    .colorMap = DirectCast(map, list).AsGeneric(Of String)(env)
+                    .colorMap = DirectCast(map, list).AsGeneric(Of String)(env),
+                    .alpha = alpha
                 }
             Else
                 Throw New NotImplementedException(map.GetType.FullName)
             End If
         End Function
 
-        Private Shared Function directMap(maps As String()) As ggplotColorMap
+        Private Shared Function directMap(maps As String(), alpha As Double) As ggplotColorMap
             Throw New NotImplementedException
         End Function
 
-        Private Shared Function stringMap(map As String) As ggplotColorMap
+        Private Shared Function stringMap(map As String, alpha As Double) As ggplotColorMap
             Dim isColor As Boolean = False
 
             Call map.TranslateColor(throwEx:=False, success:=isColor)
 
             If isColor Then
-                Return New ggplotColorLiteral With {.colorMap = map}
+                Return New ggplotColorLiteral With {.colorMap = map, .alpha = alpha}
             ElseIf TypeOf map Is String Then
-                Return New ggplotColorPalette With {.colorMap = map}
+                Return New ggplotColorPalette With {.colorMap = map, .alpha = alpha}
             Else
-                Return New ggplotColorFactorMap With {.colorMap = map}
+                Return New ggplotColorFactorMap With {.colorMap = map, .alpha = alpha}
             End If
         End Function
     End Class

@@ -45,9 +45,6 @@
 Imports System.Drawing
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
-Imports Microsoft.VisualBasic.Imaging
-Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Shapes
 
 Namespace layers
@@ -79,13 +76,25 @@ Namespace layers
         End Function
 
         Private Shared Function constraint(pf As PointF, scale As DataScaler) As PointF
-            Dim x As Single = If(pf.X < scale.xmin, scale.xmin, pf.X)
-            Dim y As Single = If(pf.Y < scale.ymin, scale.ymin, pf.Y)
+            Dim x, y As Single
 
-            Return New PointF With {
-                .X = If(x > scale.xmax, scale.xmax, x),
-                .Y = If(y > scale.ymax, scale.ymax, y)
-            }
+            If pf.X < Single.MinValue Then
+                x = scale.xmin
+            ElseIf pf.X > Single.MaxValue Then
+                x = scale.xmax
+            Else
+                x = pf.X
+            End If
+
+            If pf.Y < Single.MinValue Then
+                y = scale.ymin
+            ElseIf pf.Y > Single.MaxValue Then
+                y = scale.ymax
+            Else
+                y = pf.Y
+            End If
+
+            Return New PointF(x, y)
         End Function
     End Class
 End Namespace
