@@ -609,6 +609,14 @@ Public Module ggplot2
         Return New ggplotBoxplot
     End Function
 
+    <ExportAPI("geom_jitter")>
+    Public Function geom_jitter(Optional mapping As ggplotReader = NULL,
+                                Optional data As Object = NULL,
+                                Optional stat As Object = "identity") As ggplotLayer
+
+        Return New ggplotJitter
+    End Function
+
     ''' <summary>
     ''' add a ggplot plot layer
     ''' </summary>
