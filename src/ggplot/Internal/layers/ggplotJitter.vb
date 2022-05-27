@@ -23,6 +23,7 @@ Namespace layers
             Dim y As Double() = stream.y
             Dim x As Double()
             Dim g As IGraphics = stream.g
+            Dim binWidth As Double = DirectCast(stream.scale.X, d3js.scale.OrdinalScale).binWidth
 
             For i As Integer = 0 To tags.Length - 1
                 If Not data.ContainsKey(tags(i)) Then
@@ -35,7 +36,7 @@ Namespace layers
             For Each tag As String In data.Keys
                 y = data(tag).Select(AddressOf stream.scale.TranslateY).ToArray
                 x = stream.scale.TranslateX(tag).Replicate(y.Length).ToArray
-                x = Scatter.Jitter(x, width_jit)
+                x = Scatter.Jitter(x, width_jit * binWidth)
 
                 For i As Integer = 0 To x.Length - 1
                     Call g.DrawCircle(New PointF(x(i), y(i)), 5, Brushes.Red)
