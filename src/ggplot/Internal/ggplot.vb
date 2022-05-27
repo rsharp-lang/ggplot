@@ -68,8 +68,8 @@ Imports Microsoft.VisualBasic.Imaging.Drawing3D
 Imports Microsoft.VisualBasic.Imaging.Driver
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.Math
-' Imports Microsoft.VisualBasic.Math
 Imports Microsoft.VisualBasic.Math.LinearAlgebra
+Imports Microsoft.VisualBasic.Math.Quantile
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
@@ -283,9 +283,9 @@ Public Class ggplot : Inherits Plot
 
         If layers.Any(Function(layer) TypeOf layer Is ggplotViolin) Then
             For Each group In ggplotGroup.getDataGroups([default].x, [default].y)
-                ' 95% CI
-                Dim upperBound = group.Average + 1.96 * group.SD
-                Dim lowerBound = group.Average - 1.96 * group.SD
+                Dim quartile As DataQuartile = group.Quartile
+                Dim lowerBound = quartile.Q1 - 1.5 * quartile.IQR
+                Dim upperBound = quartile.Q3 + 1.5 * quartile.IQR
 
                 y = y.JoinIterates({upperBound, lowerBound}).ToArray
             Next
