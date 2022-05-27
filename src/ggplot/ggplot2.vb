@@ -610,16 +610,24 @@ Public Module ggplot2
     End Function
 
     <ExportAPI("geom_violin")>
-    Public Function geom_violin(Optional width As Double = 0.8) As ggplotLayer
+    Public Function geom_violin(Optional width As Double = 0.9) As ggplotLayer
         Return New ggplotViolin With {.groupWidth = width}
     End Function
 
     <ExportAPI("geom_jitter")>
     Public Function geom_jitter(Optional mapping As ggplotReader = NULL,
                                 Optional data As Object = NULL,
-                                Optional stat As Object = "identity") As ggplotLayer
+                                Optional stat As Object = "identity",
+                                Optional width As Double = 0.5,
+                                Optional radius As Double = 10,
+                                Optional alpha As Double = 0.85) As ggplotLayer
 
-        Return New ggplotJitter With {.reader = mapping}
+        Return New ggplotJitter With {
+            .reader = mapping,
+            .groupWidth = width,
+            .alpha = alpha,
+            .radius = radius
+        }
     End Function
 
     ''' <summary>

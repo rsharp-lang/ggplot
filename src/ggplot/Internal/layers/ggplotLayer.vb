@@ -73,6 +73,7 @@ Namespace layers
         ''' </summary>
         ''' <returns></returns>
         Public Property zindex As Integer
+        Public Property alpha As Double = 1
 
         Protected ReadOnly Property useCustomData As Boolean
             Get
