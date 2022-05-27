@@ -51,7 +51,7 @@ print(groups);
 
 print(name);
 
-bitmap(file = "./jitter.png", size = [4000,3000]) {
+bitmap(file = "./jitter.png", size = [2400,1600]) {
 
 	ggplot(groups, aes(x = "tags", y = "data", color = "colors"))
 	+ geom_violin()

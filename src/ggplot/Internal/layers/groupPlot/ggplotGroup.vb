@@ -8,10 +8,8 @@ Namespace layers
 
         Public Property groupWidth As Double = 0.5
 
-        Protected Iterator Function getDataGroups(stream As ggplotPipeline) As IEnumerable(Of NamedCollection(Of Double))
+        Public Shared Iterator Function getDataGroups(tags As String(), y As Double()) As IEnumerable(Of NamedCollection(Of Double))
             Dim data As New Dictionary(Of String, List(Of Double))
-            Dim tags As String() = stream.x
-            Dim y As Double() = stream.y
 
             For i As Integer = 0 To tags.Length - 1
                 If Not data.ContainsKey(tags(i)) Then
@@ -27,6 +25,13 @@ Namespace layers
                     .value = group.Value.ToArray
                 }
             Next
+        End Function
+
+        Protected Function getDataGroups(stream As ggplotPipeline) As IEnumerable(Of NamedCollection(Of Double))
+            Dim tags As String() = stream.x
+            Dim y As Double() = stream.y
+
+            Return getDataGroups(tags, y)
         End Function
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement

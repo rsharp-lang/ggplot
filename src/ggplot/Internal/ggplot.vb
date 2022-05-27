@@ -67,6 +67,8 @@ Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports Microsoft.VisualBasic.Imaging.Drawing3D
 Imports Microsoft.VisualBasic.Imaging.Driver
 Imports Microsoft.VisualBasic.Linq
+Imports Microsoft.VisualBasic.Math
+' Imports Microsoft.VisualBasic.Math
 Imports Microsoft.VisualBasic.Math.LinearAlgebra
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports SMRUCC.Rsharp.Runtime
@@ -278,6 +280,16 @@ Public Class ggplot : Inherits Plot
             .JoinIterates(limitsY) _
             .Where(Function(d) Not d.IsNaNImaginary) _
             .ToArray
+
+        If layers.Any(Function(layer) TypeOf layer Is ggplotViolin) Then
+            For Each group In ggplotGroup.getDataGroups([default].x, [default].y)
+                ' 95% CI
+                Dim upperBound = group.Average + 1.96 * group.SD
+                Dim lowerBound = group.Average - 1.96 * group.SD
+
+                y = y.JoinIterates({upperBound, lowerBound}).ToArray
+            Next
+        End If
 
         Dim yTicks = y.Range.CreateAxisTicks
         Dim scaleX = d3js.scale.ordinal.domain(values:=[default].x).range(integers:={rect.Left, rect.Right})
