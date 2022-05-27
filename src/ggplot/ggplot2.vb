@@ -609,6 +609,11 @@ Public Module ggplot2
         Return New ggplotBoxplot
     End Function
 
+    <ExportAPI("geom_violin")>
+    Public Function geom_violin() As ggplotLayer
+        Return New ggplotViolin
+    End Function
+
     <ExportAPI("geom_jitter")>
     Public Function geom_jitter(Optional mapping As ggplotReader = NULL,
                                 Optional data As Object = NULL,
