@@ -370,7 +370,8 @@ Public Class ggplot : Inherits Plot
             labelFont:=theme.axisLabelCSS,
             tickFontStyle:=theme.axisTickCSS,
             XtickFormat:=theme.XaxisTickFormat,
-            YtickFormat:=theme.YaxisTickFormat
+            YtickFormat:=theme.YaxisTickFormat,
+            xlabelRotate:=theme.xAxisRotate
         )
 
         Dim legends As New List(Of IggplotLegendElement)

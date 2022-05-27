@@ -823,6 +823,7 @@ Public Module ggplot2
                           Optional axis_text As textElement = Nothing,
                           Optional axis_title As textElement = Nothing,
                           Optional axis_line As String = Stroke.AxisStroke,
+                          Optional axis_text_x As textElement = Nothing,
                           Optional legend_background As String = "white",
                           Optional legend_text As textElement = Nothing,
                           Optional legend_split As Integer = 6,
@@ -842,7 +843,8 @@ Public Module ggplot2
             .legend_text = legend_text,
             .plot_title = plot_title,
             .axis_title = axis_title,
-            .legend_split = legend_split
+            .legend_split = legend_split,
+            .axis_text_x = axis_text_x
         }
     End Function
 

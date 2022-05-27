@@ -54,7 +54,9 @@ print(name);
 bitmap(file = "./jitter.png") {
 
 	ggplot(groups, aes(x = "tags", y = "data", color = "colors"))
-	+ geom_jitter();
+	+ geom_jitter()
+	+ theme(axis.text.x = element_text(angle = 90))
+	;
 
 }
 
