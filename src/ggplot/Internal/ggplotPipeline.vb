@@ -12,7 +12,7 @@ Public Class ggplotPipeline
 
     Friend g As IGraphics
     Friend canvas As GraphicsRegion
-    Friend x As Double()
+    Friend x As Array
     Friend y As Double()
     Friend scale As DataScaler
     Friend ggplot As ggplot
@@ -31,6 +31,18 @@ Public Class ggplotPipeline
             Return ggplot.base.reader.ToString
         End Get
     End Property
+
+    Public Function TranslateX() As Double()
+        If scale.X.type = d3js.scale.scalers.linear Then
+            Return (From xi As Object
+                    In x.AsQueryable
+                    Select scale.TranslateX(CDbl(xi))).ToArray
+        Else
+            Return (From xi As String
+                    In DirectCast(x, String())
+                    Select scale.TranslateX(xi)).ToArray
+        End If
+    End Function
 
     <MethodImpl(MethodImplOptions.AggressiveInlining)>
     Public Function GetRawData(Of T)() As T

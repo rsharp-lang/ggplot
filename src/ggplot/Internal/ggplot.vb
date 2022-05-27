@@ -261,6 +261,38 @@ Public Class ggplot : Inherits Plot
     End Function
 
     Private Function get2DScale(rect As Rectangle,
+                                [default] As (x As String(), y As Double()),
+                                layerData As IEnumerable(Of ggplotData)) As DataScaler
+
+        Dim allDataset As ggplotData() = layerData.ToArray
+        Dim y As Double() = allDataset _
+            .Select(Function(d)
+                        Return DirectCast(REnv.asVector(Of Double)(d.y), Double())
+                    End Function) _
+            .IteratesALL _
+            .ToArray
+        Dim limitsY As Double() = REnv.asVector(Of Double)(args.getByName("range_y"))
+
+        y = y _
+            .JoinIterates([default].y) _
+            .JoinIterates(limitsY) _
+            .Where(Function(d) Not d.IsNaNImaginary) _
+            .ToArray
+
+        Dim yTicks = y.Range.CreateAxisTicks
+        Dim scaleX = d3js.scale.ordinal.domain(values:=[default].x).range(integers:={rect.Left, rect.Right})
+        Dim scaleY = d3js.scale.linear.domain(values:=yTicks).range(integers:={rect.Bottom, rect.Top})
+        Dim scale As New DataScaler() With {
+            .AxisTicks = (Nothing, yTicks.AsVector),
+            .region = rect,
+            .X = scaleX,
+            .Y = scaleY
+        }
+
+        Return scale
+    End Function
+
+    Private Function get2DScale(rect As Rectangle,
                                 [default] As (x As Double(), y As Double()),
                                 layerData As IEnumerable(Of ggplotData)) As DataScaler
 
@@ -291,21 +323,35 @@ Public Class ggplot : Inherits Plot
     End Function
 
     Private Sub plot2D(baseData As ggplotData, ByRef g As IGraphics, canvas As GraphicsRegion)
-        Dim x As Double() = REnv.asVector(Of Double)(baseData.x)
+        Dim x As Array = baseData.x
         Dim y As Double() = REnv.asVector(Of Double)(baseData.y)
         Dim reverse_y As Boolean = args.getValue("scale_y_reverse", env:=environment, [default]:=False)
         Dim layers As New Queue(Of ggplotLayer)(
             collection:=If(UnionGgplotLayers Is Nothing, Me.layers, UnionGgplotLayers(Me.layers))
         )
-        Dim scale As DataScaler = get2DScale(
-            rect:=canvas.PlotRegion,
-            [default]:=(x, y),
-            layerData:=From layer As ggplotLayer
-                       In layers
-                       Let data As ggplotData = layer.initDataSet(ggplot:=Me)
-                       Where Not data Is Nothing
-                       Select data
-        )
+        Dim scale As DataScaler
+
+        If baseData.xscale = d3js.scale.scalers.linear Then
+            scale = get2DScale(
+                rect:=canvas.PlotRegion,
+                [default]:=(DirectCast(REnv.asVector(Of Double)(x), Double()), y),
+                layerData:=From layer As ggplotLayer
+                           In layers
+                           Let data As ggplotData = layer.initDataSet(ggplot:=Me)
+                           Where Not data Is Nothing
+                           Select data
+            )
+        Else
+            scale = get2DScale(
+                rect:=canvas.PlotRegion,
+                [default]:=(DirectCast(REnv.asVector(Of String)(x), String()), y),
+                layerData:=From layer As ggplotLayer
+                           In layers
+                           Let data As ggplotData = layer.initDataSet(ggplot:=Me)
+                           Where Not data Is Nothing
+                           Select data
+            )
+        End If
 
         If reverse_y AndAlso y.Length > 0 Then
             Call reverse(y)
