@@ -116,6 +116,20 @@ plotfile(`${@dir}/line_sin_py.png`)
 
 ![](test/line_sin_py.png)
 
+```r
+ggplot(groups, aes(x = "tags", y = "data", color = "colors"), padding = "padding: 250px 100px 250px 300px;")
++ geom_violin(width = 1)
++ geom_jitter(width = 0.3)
++ ggtitle(name)
++ ylab("Intensity")
++ xlab("")
++ scale_y_continuous(labels = "G2")
++ theme(axis.text.x = element_text(angle = 45))
+;
+```
+
+![](test/stats/jitter.png)
+
 ## Plot 3d scatter
 
 rendering a 3d chart in ggplot package is just simply enough as create a 2d chart plot. we just needs add a data mapping of the z axis at here!
