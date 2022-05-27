@@ -48,7 +48,7 @@ Imports Microsoft.VisualBasic.Imaging.Drawing2D
 
 Namespace layers
 
-    Public Class ggplotBoxplot : Inherits ggplotLayer
+    Public Class ggplotBoxplot : Inherits ggplotGroup
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Throw New NotImplementedException
