@@ -7,7 +7,24 @@ Namespace layers
     Public MustInherit Class ggplotGroup : Inherits ggplotLayer
 
         Protected Iterator Function getDataGroups(stream As ggplotPipeline) As IEnumerable(Of NamedCollection(Of Double))
-            Throw New NotImplementedException
+            Dim data As New Dictionary(Of String, List(Of Double))
+            Dim tags As String() = stream.x
+            Dim y As Double() = stream.y
+
+            For i As Integer = 0 To tags.Length - 1
+                If Not data.ContainsKey(tags(i)) Then
+                    Call data.Add(tags(i), New List(Of Double))
+                End If
+
+                Call data(tags(i)).Add(y(i))
+            Next
+
+            For Each group In data
+                Yield New NamedCollection(Of Double) With {
+                    .name = group.Key,
+                    .value = group.Value.ToArray
+                }
+            Next
         End Function
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement

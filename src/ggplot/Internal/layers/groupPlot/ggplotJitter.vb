@@ -1,5 +1,6 @@
 ﻿Imports System.Drawing
 Imports ggplot.elements.legend
+Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.Data.ChartPlots
 Imports Microsoft.VisualBasic.Imaging
 
@@ -10,24 +11,17 @@ Namespace layers
         Public Property width_jit As Double = 0.5
 
         Protected Overrides Function PlotOrdinal(stream As ggplotPipeline) As IggplotLegendElement
-            Dim data As New Dictionary(Of String, List(Of Double))
-            Dim tags As String() = stream.x
-            Dim y As Double() = stream.y
             Dim x As Double()
+            Dim y As Double()
             Dim g As IGraphics = stream.g
             Dim binWidth As Double = DirectCast(stream.scale.X, d3js.scale.OrdinalScale).binWidth
 
-            For i As Integer = 0 To tags.Length - 1
-                If Not data.ContainsKey(tags(i)) Then
-                    Call data.Add(tags(i), New List(Of Double))
-                End If
-
-                Call data(tags(i)).Add(y(i))
-            Next
-
-            For Each tag As String In data.Keys
-                y = data(tag).Select(AddressOf stream.scale.TranslateY).ToArray
-                x = stream.scale.TranslateX(tag).Replicate(y.Length).ToArray
+            For Each group As NamedCollection(Of Double) In getDataGroups(stream)
+                y = group.Select(AddressOf stream.scale.TranslateY).ToArray
+                x = stream.scale _
+                    .TranslateX(group.name) _
+                    .Replicate(y.Length) _
+                    .ToArray
                 x = Scatter.Jitter(x, width_jit * binWidth)
 
                 For i As Integer = 0 To x.Length - 1
