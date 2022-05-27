@@ -614,7 +614,7 @@ Public Module ggplot2
                                 Optional data As Object = NULL,
                                 Optional stat As Object = "identity") As ggplotLayer
 
-        Return New ggplotJitter
+        Return New ggplotJitter With {.reader = mapping}
     End Function
 
     ''' <summary>

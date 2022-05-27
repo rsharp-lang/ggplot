@@ -8,9 +8,11 @@ sampleinfo = as.list(sampleinfo, byrow = TRUE)
 |> groupBy(i -> i$sample_info)
 |> lapply(function(list) {
 	id = sapply(list, i -> i$ID);
+	id = id[1:32];
+	tag = list$key;
 	color = sapply(list, i -> i$color) |> unique();
 	
-	list(id, color = `#${color}`);
+	list(id, color = `#${color}`, tag = tag);
 }, names = i -> i$key)
 ;
 
@@ -27,18 +29,32 @@ target[[1]] = NULL;
 str(target);
 
 groups = lapply(sampleinfo, function(i) {
-	list(data = unlist(target[i$id]), color = i$color);
+	list(data = unlist(target[i$id]), color = i$color, tag = i$tag);
 });
-group_names = names(groups);
-group_datas = lapply(groups, function(v) v$data) |> as.data.frame();
 
-print(group_datas, max.print = 13);
+tags = [];
+data = [];
+colors = [];
+
+for(i in groups) {
+	x = i$data;
+	tags = append(tags, rep(i$tag, times = length(x)));
+	data = append(data, x);
+	colors = append(colors, rep(i$color, times = length(x)));
+}
+
+groups = data.frame(
+	tags, data, colors
+);
+
+print(groups);
 
 print(name);
 
 bitmap(file = "./jitter.png") {
 
-	ggplot(groups, aes())
+	ggplot(groups, aes(x = "tags", y = "data", color = "colors"))
+	+ geom_jitter();
 
 }
 

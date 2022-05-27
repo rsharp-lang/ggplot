@@ -140,6 +140,7 @@ Public Class ggplotReader
     Private Shared Function dataframeSource(table As dataframe, source As String, env As Environment) As Array
         Dim is_eval As Boolean = source.StartsWith("~") AndAlso Not table.hasName(source)
         Dim expression As Expression
+        Dim vec As Array
 
         If is_eval Then
             expression = Expression _
@@ -159,12 +160,12 @@ Public Class ggplotReader
                 Call env.AssignSymbol(v, table(v))
             Next
 
-            Dim vec As Array = REnv.asVector(Of Object)(expression.Evaluate(env))
-
-            Return vec
+            vec = REnv.asVector(Of Object)(expression.Evaluate(env))
         Else
-            Return table.getColumnVector(source)
+            vec = table.getColumnVector(source)
         End If
+
+        Return REnv.TryCastGenericArray(vec, env)
     End Function
 
     Public Function getMapColor(data As Object,

@@ -1,4 +1,5 @@
-﻿Imports SMRUCC.Rsharp.Runtime.Components
+﻿Imports Microsoft.VisualBasic.Imaging.d3js.scale
+Imports SMRUCC.Rsharp.Runtime.Components
 
 Public Class ggplotData : Inherits ggplotAdapter
 
@@ -12,6 +13,18 @@ Public Class ggplotData : Inherits ggplotAdapter
                 Return 0
             Else
                 Return x.Length
+            End If
+        End Get
+    End Property
+
+    Public ReadOnly Property xscale As scalers
+        Get
+            Dim type As Type = x.GetType.GetElementType
+
+            If type Is GetType(String) Then
+                Return scalers.ordinal
+            Else
+                Return scalers.linear
             End If
         End Get
     End Property
