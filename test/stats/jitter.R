@@ -27,12 +27,18 @@ target[[1]] = NULL;
 str(target);
 
 groups = lapply(sampleinfo, function(i) {
-	list(data = target[i$id], color = i$color);
+	list(data = unlist(target[i$id]), color = i$color);
 });
+group_names = names(groups);
+group_datas = lapply(groups, function(v) v$data) |> as.data.frame();
 
-str(groups);
+print(group_datas, max.print = 13);
 
 print(name);
 
+bitmap(file = "./jitter.png") {
 
+	ggplot(groups, aes())
+
+}
 
