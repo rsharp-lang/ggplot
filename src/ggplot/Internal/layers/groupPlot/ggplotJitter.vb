@@ -23,7 +23,7 @@ Namespace layers
                 x = Scatter.Jitter(x, width_jit:=groupWidth * binWidth)
 
                 For i As Integer = 0 To x.Length - 1
-                    Call g.DrawCircle(New PointF(x(i), y(i)), 5, Brushes.Red)
+                    Call g.DrawCircle(New PointF(x(i), y(i)), 5, Brushes.Black)
                 Next
             Next
 

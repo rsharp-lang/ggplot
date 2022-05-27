@@ -51,9 +51,10 @@ print(groups);
 
 print(name);
 
-bitmap(file = "./jitter.png") {
+bitmap(file = "./jitter.png", size = [4000,3000]) {
 
 	ggplot(groups, aes(x = "tags", y = "data", color = "colors"))
+	+ geom_violin()
 	+ geom_jitter()
 	+ theme(axis.text.x = element_text(angle = 45))
 	;

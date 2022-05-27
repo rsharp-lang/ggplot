@@ -610,8 +610,8 @@ Public Module ggplot2
     End Function
 
     <ExportAPI("geom_violin")>
-    Public Function geom_violin() As ggplotLayer
-        Return New ggplotViolin
+    Public Function geom_violin(Optional width As Double = 0.8) As ggplotLayer
+        Return New ggplotViolin With {.groupWidth = width}
     End Function
 
     <ExportAPI("geom_jitter")>

@@ -13,7 +13,7 @@ Namespace layers
     Public Class ggplotViolin : Inherits ggplotGroup
 
         Public Property splineDegree As Single = 2
-        Public Property showStats As Boolean = True
+        Public Property showStats As Boolean = False
 
         Protected Overrides Function PlotOrdinal(stream As ggplotPipeline) As IggplotLegendElement
             Dim g As IGraphics = stream.g

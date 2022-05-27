@@ -6,7 +6,7 @@ Namespace layers
 
     Public MustInherit Class ggplotGroup : Inherits ggplotLayer
 
-        Public Property groupWidth As Double = 1
+        Public Property groupWidth As Double = 0.5
 
         Protected Iterator Function getDataGroups(stream As ggplotPipeline) As IEnumerable(Of NamedCollection(Of Double))
             Dim data As New Dictionary(Of String, List(Of Double))
