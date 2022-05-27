@@ -5,19 +5,11 @@ Imports Microsoft.VisualBasic.Imaging
 
 Namespace layers
 
-    Public Class ggplotJitter : Inherits ggplotLayer
+    Public Class ggplotJitter : Inherits ggplotGroup
 
         Public Property width_jit As Double = 0.5
 
-        Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
-            If stream.scale.xscale = d3js.scale.scalers.linear Then
-                Throw New NotImplementedException
-            Else
-                Return PlotOrdinal(stream)
-            End If
-        End Function
-
-        Private Function PlotOrdinal(stream As ggplotPipeline) As IggplotLegendElement
+        Protected Overrides Function PlotOrdinal(stream As ggplotPipeline) As IggplotLegendElement
             Dim data As New Dictionary(Of String, List(Of Double))
             Dim tags As String() = stream.x
             Dim y As Double() = stream.y
