@@ -52,6 +52,7 @@ Namespace options
 
         Public Property axis_text As textElement
         Public Property axis_title As textElement
+        Public Property axis_text_x As textElement
         Public Property axis_line As String
         Public Property text As textElement
         Public Property legend_background As String
@@ -100,6 +101,10 @@ Namespace options
 
             If legend_split > 0 Then
                 theme.legendSplitSize = legend_split
+            End If
+
+            If Not axis_text_x Is Nothing Then
+                theme.xAxisRotate = axis_text_x.angle
             End If
 
             Return ggplot

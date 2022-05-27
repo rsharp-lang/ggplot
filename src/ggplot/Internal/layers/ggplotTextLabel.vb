@@ -45,7 +45,6 @@
 Imports System.Drawing
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.d3js.Layout
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
@@ -91,7 +90,7 @@ Namespace layers
 
             Dim anchors As Anchor() = Nothing
 
-            x = x.Select(Function(xi) scale.TranslateX(xi)).ToArray
+            x = stream.TranslateX
             y = y.Select(Function(yi) scale.TranslateY(yi)).ToArray
 
             For Each label As Label In layoutLabels(labels, x, y, g, labelStyle, stream.canvas, anchors, ggplot)
