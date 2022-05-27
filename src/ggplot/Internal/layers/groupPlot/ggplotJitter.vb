@@ -8,8 +8,6 @@ Namespace layers
 
     Public Class ggplotJitter : Inherits ggplotGroup
 
-        Public Property width_jit As Double = 0.5
-
         Protected Overrides Function PlotOrdinal(stream As ggplotPipeline) As IggplotLegendElement
             Dim x As Double()
             Dim y As Double()
@@ -22,7 +20,7 @@ Namespace layers
                     .TranslateX(group.name) _
                     .Replicate(y.Length) _
                     .ToArray
-                x = Scatter.Jitter(x, width_jit * binWidth)
+                x = Scatter.Jitter(x, width_jit:=groupWidth * binWidth)
 
                 For i As Integer = 0 To x.Length - 1
                     Call g.DrawCircle(New PointF(x(i), y(i)), 5, Brushes.Red)
