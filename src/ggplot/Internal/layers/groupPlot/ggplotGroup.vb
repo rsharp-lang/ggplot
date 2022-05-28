@@ -38,11 +38,11 @@ Namespace layers
             If stream.scale.xscale = d3js.scale.scalers.linear Then
                 Throw New NotImplementedException
             Else
-                Return PlotOrdinal(stream)
+                Return PlotOrdinal(stream, stream.scale.X)
             End If
         End Function
 
-        Protected MustOverride Function PlotOrdinal(stream As ggplotPipeline) As IggplotLegendElement
+        Protected MustOverride Function PlotOrdinal(stream As ggplotPipeline, x As d3js.scale.OrdinalScale) As IggplotLegendElement
 
     End Class
 End Namespace

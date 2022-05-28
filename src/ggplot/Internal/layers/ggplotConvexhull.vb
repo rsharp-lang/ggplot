@@ -14,7 +14,6 @@ Namespace layers
 
     Public Class ggplotConvexhull : Inherits ggplotLayer
 
-        Public Property alpha As Double = 1
         Public Property spline As Double = 0
         Public Property stroke_width As Single = 3
         ''' <summary>

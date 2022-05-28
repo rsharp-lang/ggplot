@@ -55,7 +55,7 @@ Namespace layers
 
     Public Class ggplotBoxplot : Inherits ggplotGroup
 
-        Protected Overrides Function PlotOrdinal(stream As ggplotPipeline) As IggplotLegendElement
+        Protected Overrides Function PlotOrdinal(stream As ggplotPipeline, xscale As d3js.scale.OrdinalScale) As IggplotLegendElement
             Dim g As IGraphics = stream.g
             Dim binWidth As Double = DirectCast(stream.scale.X, d3js.scale.OrdinalScale).binWidth
             Dim yscale As YScaler = stream.scale
@@ -66,7 +66,7 @@ Namespace layers
             Dim y As DataScaler = stream.scale
 
             For Each group As NamedCollection(Of Double) In getDataGroups(stream)
-                Dim x As Double = stream.scale.TranslateX(group.name)
+                Dim x As Double = xscale(group.name)
                 Dim data As New NamedValue(Of Vector) With {
                     .Name = group.name,
                     .Value = group.AsVector

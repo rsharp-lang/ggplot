@@ -10,7 +10,7 @@ Namespace layers
 
         Public Property radius As Double = 10
 
-        Protected Overrides Function PlotOrdinal(stream As ggplotPipeline) As IggplotLegendElement
+        Protected Overrides Function PlotOrdinal(stream As ggplotPipeline, xscale As d3js.scale.OrdinalScale) As IggplotLegendElement
             Dim x As Double()
             Dim y As Double()
             Dim g As IGraphics = stream.g
@@ -19,8 +19,7 @@ Namespace layers
 
             For Each group As NamedCollection(Of Double) In getDataGroups(stream)
                 y = group.Select(AddressOf stream.scale.TranslateY).ToArray
-                x = stream.scale _
-                    .TranslateX(group.name) _
+                x = xscale(group.name) _
                     .Replicate(y.Length) _
                     .ToArray
                 x = Scatter.Jitter(x, width_jit:=groupWidth * binWidth)

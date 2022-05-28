@@ -15,7 +15,7 @@ Namespace layers
         Public Property splineDegree As Single = 2
         Public Property showStats As Boolean = False
 
-        Protected Overrides Function PlotOrdinal(stream As ggplotPipeline) As IggplotLegendElement
+        Protected Overrides Function PlotOrdinal(stream As ggplotPipeline, xscale As d3js.scale.OrdinalScale) As IggplotLegendElement
             Dim g As IGraphics = stream.g
             Dim binWidth As Double = DirectCast(stream.scale.X, d3js.scale.OrdinalScale).binWidth
             Dim yscale As YScaler = stream.scale
@@ -25,7 +25,7 @@ Namespace layers
             Dim colors As LoopArray(Of Color) = Designer.GetColors(stream.theme.colorSet)
 
             For Each group As NamedCollection(Of Double) In getDataGroups(stream)
-                Dim x As Double = stream.scale.TranslateX(group.name)
+                Dim x As Double = xscale(group.name)
 
                 Call Violin.PlotViolin(
                     group:=group,
