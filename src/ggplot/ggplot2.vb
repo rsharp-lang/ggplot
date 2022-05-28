@@ -605,8 +605,8 @@ Public Module ggplot2
     '''   The American Statistician 32, 12-16.
     ''' </remarks>
     <ExportAPI("geom_boxplot")>
-    Public Function geom_boxplot() As ggplotLayer
-        Return New ggplotBoxplot
+    Public Function geom_boxplot(Optional width As Double = 1) As ggplotLayer
+        Return New ggplotBoxplot With {.groupWidth = width}
     End Function
 
     <ExportAPI("geom_violin")>

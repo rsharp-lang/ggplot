@@ -281,7 +281,7 @@ Public Class ggplot : Inherits Plot
             .Where(Function(d) Not d.IsNaNImaginary) _
             .ToArray
 
-        If layers.Any(Function(layer) TypeOf layer Is ggplotViolin) Then
+        If layers.Any(Function(layer) TypeOf layer Is ggplotViolin OrElse TypeOf layer Is ggplotBoxplot) Then
             For Each group In ggplotGroup.getDataGroups([default].x, [default].y)
                 Dim quartile As DataQuartile = group.Quartile
                 Dim lowerBound = quartile.Q1 - 1.5 * quartile.IQR
