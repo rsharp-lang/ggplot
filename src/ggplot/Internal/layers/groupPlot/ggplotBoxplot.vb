@@ -63,7 +63,7 @@ Namespace layers
             Dim lineStroke As Pen = Stroke.TryParse(stream.theme.lineStroke).GDIObject
             Dim labelFont As Font = CSSFont.TryParse(stream.theme.tagCSS).GDIObject(g.Dpi)
             Dim colors As LoopArray(Of Color) = Designer.GetColors(stream.theme.colorSet)
-            Dim y = stream.scale.Y
+            Dim y As DataScaler = stream.scale
 
             For Each group As NamedCollection(Of Double) In getDataGroups(stream)
                 Dim x As Double = stream.scale.TranslateX(group.name)
