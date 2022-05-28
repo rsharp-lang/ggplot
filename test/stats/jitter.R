@@ -78,3 +78,17 @@ bitmap(file = "./box.png", size = [3300,2100]) {
 	;
 
 }
+
+bitmap(file = "./bar.png", size = [3300,2100]) {
+
+	ggplot(groups, aes(x = "tags", y = "data", color = "colors"), padding = "padding: 250px 100px 250px 300px;")
+	+ geom_barplot(width = 0.8)
+	+ geom_jitter(width = 0.3)
+	+ ggtitle(name)
+	+ ylab("Intensity")
+	+ xlab("")
+	+ scale_y_continuous(labels = "G2")
+	+ theme(axis.text.x = element_text(angle = 45))
+	;
+
+}

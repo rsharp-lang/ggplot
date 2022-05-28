@@ -609,6 +609,11 @@ Public Module ggplot2
         Return New ggplotBoxplot With {.groupWidth = width}
     End Function
 
+    <ExportAPI("geom_barplot")>
+    Public Function geom_barplot(Optional width As Double = 1) As ggplotLayer
+        Return New ggplotBarplot With {.groupWidth = width}
+    End Function
+
     <ExportAPI("geom_violin")>
     Public Function geom_violin(Optional width As Double = 0.9) As ggplotLayer
         Return New ggplotViolin With {.groupWidth = width}
