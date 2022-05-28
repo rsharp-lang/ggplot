@@ -74,7 +74,7 @@ Namespace layers
 
                 Call Box.PlotBox(
                     group:=data,
-                    x0:=x,
+                    x0:=x - boxWidth / 2,
                     brush:=New SolidBrush(++colors),
                     boxWidth:=boxWidth,
                     fillBox:=True,
