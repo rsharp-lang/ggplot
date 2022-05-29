@@ -33,6 +33,7 @@ Namespace layers
             Dim font As Font = CSSFont.TryParse(stream.theme.tagCSS).GDIObject(stream.g.Dpi)
             Dim lbsize As SizeF
             Dim pos As PointF
+            Dim h As Double
 
             For Each compare As compare_means In stats
                 Dim group1 As Double() = data.TryGetValue(compare.group1)
@@ -41,13 +42,17 @@ Namespace layers
                 Dim x2 As Double = x(compare.group2)
                 Dim len As Double = stdNum.Abs(x1 - x2)
                 Dim left As Double = stdNum.Min(x1, x2)
-                Dim y As Double = stream.scale.TranslateY(stdNum.Max(group1.Max, group2.Max) * 1.125)
+                Dim y As Double = stream.scale.TranslateY(stdNum.Max(group1.Max, group2.Max) * 1.025)
                 Dim siglab As String = compare.psignif
 
                 lbsize = stream.g.MeasureString(siglab, font)
                 pos = New PointF(left + (len - lbsize.Width) / 2, y - lbsize.Height * 1.125)
+                h = lbsize.Height / 3
 
                 Call stream.g.DrawLine(line, New PointF(x1, y), New PointF(x2, y))
+                Call stream.g.DrawLine(line, New PointF(x1, y), New PointF(x1, y + h))
+                Call stream.g.DrawLine(line, New PointF(x2, y), New PointF(x2, y + h))
+
                 Call stream.g.DrawString(siglab, font, Brushes.Black, pos)
             Next
         End Sub
