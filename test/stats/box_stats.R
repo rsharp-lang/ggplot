@@ -13,7 +13,7 @@ bitmap(file = "./myeloma_box.png", size = [3600,2100]) {
 	ggplot(myeloma, aes(x = "molecular_group", y = "DEPDC1"))
 	+ geom_boxplot(width = 0.8)
 	+ geom_jitter(width = 0.3)
-	+ geom_hline(yintercept = mean(myeloma$DEPDC1), linetype=2, line.width = 5, color = "red")# Add horizontal line at base mean 
+	+ geom_hline(yintercept = mean(myeloma$DEPDC1), linetype="dash", line.width = 6, color = "red")# Add horizontal line at base mean 
 	+ ggtitle("DEPDC1 ~ molecular_group")
 	+ ylab("DEPDC1")
 	+ xlab("")
