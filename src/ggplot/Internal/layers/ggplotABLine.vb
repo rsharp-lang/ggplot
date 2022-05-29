@@ -45,6 +45,7 @@
 Imports System.Drawing
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
+Imports Microsoft.VisualBasic.Imaging.d3js.scale
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Shapes
 
 Namespace layers
@@ -67,8 +68,19 @@ Namespace layers
             Dim a As PointF = constraint(abline.A, scale)
             Dim b As PointF = constraint(abline.B, scale)
 
-            a = scale.Translate(a)
-            b = scale.Translate(b)
+            If scale.xscale <> scalers.ordinal Then
+                a = scale.Translate(a)
+                b = scale.Translate(b)
+            Else
+                If a.X < Single.MinValue Then
+                    a = New PointF With {.X = scale.X.rangeMin, .Y = scale.TranslateY(a.Y)}
+                ElseIf a.X > Single.MaxValue Then
+                    a = New PointF With {.X = scale.X.rangeMax, .Y = scale.TranslateY(a.Y)}
+                Else
+                    ' 直接是绘图数据了？
+                    ' 不做任何转换
+                End If
+            End If
 
             Call stream.g.DrawLine(abline.Stroke, a, b)
 
@@ -78,12 +90,14 @@ Namespace layers
         Private Shared Function constraint(pf As PointF, scale As DataScaler) As PointF
             Dim x, y As Single
 
-            If pf.X < Single.MinValue Then
-                x = scale.xmin
-            ElseIf pf.X > Single.MaxValue Then
-                x = scale.xmax
-            Else
-                x = pf.X
+            If scale.xscale <> scalers.ordinal Then
+                If pf.X < Single.MinValue Then
+                    x = scale.xmin
+                ElseIf pf.X > Single.MaxValue Then
+                    x = scale.xmax
+                Else
+                    x = pf.X
+                End If
             End If
 
             If pf.Y < Single.MinValue Then

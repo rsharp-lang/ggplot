@@ -742,12 +742,12 @@ Public Module ggplot2
 
     <ExportAPI("stat_pvalue_manual")>
     Public Function stat_pvalue_manual() As ggplotLayer
-
+        Return New ggplotStatPvalue
     End Function
 
     <ExportAPI("stat_compare_means")>
     Public Function stat_compare_means() As ggplotLayer
-
+        Return New ggplotStatPvalue
     End Function
 
     ''' <summary>

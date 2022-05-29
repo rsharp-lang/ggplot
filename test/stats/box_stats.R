@@ -14,7 +14,7 @@ bitmap(file = "./myeloma_box.png") {
 	+ geom_boxplot(width = 0.8)
 	+ geom_jitter(width = 0.3)
 	+ geom_hline(yintercept = mean(myeloma$DEPDC1), linetype=2)# Add horizontal line at base mean 
-	+ ggtitle(name)
+	+ ggtitle("DEPDC1 ~ molecular_group")
 	+ ylab("DEPDC1")
 	+ xlab("")
 	+ scale_y_continuous(labels = "G2")
