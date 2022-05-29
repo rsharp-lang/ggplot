@@ -15,7 +15,7 @@ print(myeloma, max.print = 13);
 print("myeloma$DEPDC1");
 print(myeloma$DEPDC1);
 
-bitmap(file = "./myeloma_box_ttest.png", size = [1800,2400]) {
+bitmap(file = "./myeloma_box_ttest.png", size = [1800,2100]) {
 	
 	ggplot(myeloma, aes(x = "molecular_group", y = "DEPDC1"))
 	+ geom_hline(yintercept = mean(myeloma$DEPDC1), linetype="dash", line.width = 6, color = "red")# Add horizontal line at base mean 
@@ -27,9 +27,7 @@ bitmap(file = "./myeloma_box_ttest.png", size = [1800,2400]) {
 	+ scale_y_continuous(labels = "F0")
 	+ stat_compare_means(method = "anova", label.y = 1600) # Add global annova p-value 
     # + stat_compare_means(label = "p.signif", method = "t.test", ref.group = ".all.", hide.ns = TRUE)# Pairwise comparison against all
-	+ geom_signif(list(		
-v4 = ["MAF","Proliferation"]
-	))	
+	+ geom_signif(list(vs = ["MAF","Proliferation"]))	
 	+ theme(axis.text.x = element_text(angle = 45), plot.title = element_text(family = "Cambria Math", size = 16))
 	;
 
