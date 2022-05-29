@@ -746,8 +746,15 @@ Public Module ggplot2
     End Function
 
     <ExportAPI("stat_compare_means")>
-    Public Function stat_compare_means(Optional method As String = "anova") As ggplotLayer
-        Return New ggplotStatPvalue With {.method = method}
+    Public Function stat_compare_means(Optional method As String = "anova",
+                                       Optional ref_group As String = ".all.",
+                                       Optional hide_ns As Boolean = True) As ggplotLayer
+
+        Return New ggplotStatPvalue With {
+            .method = method,
+            .hide_ns = hide_ns,
+            .ref_group = ref_group
+        }
     End Function
 
     ''' <summary>
