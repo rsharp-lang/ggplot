@@ -50,6 +50,7 @@ Imports ggplot.elements
 Imports ggplot.layers
 Imports ggplot.layers.layer3d
 Imports ggplot.options
+Imports Microsoft.VisualBasic.ApplicationServices.Debugging.Logging
 Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
@@ -642,7 +643,17 @@ Public Module ggplot2
     ''' <param name="layer"></param>
     ''' <returns></returns>
     <ROperator("+")>
-    Public Function add_layer(ggplot As ggplot, layer As ggplotLayer) As ggplot
+    <RApiReturn(GetType(ggplot))>
+    Public Function add_layer(ggplot As ggplot, layer As ggplotLayer) As Object
+        If layer Is Nothing Then
+            If ggplot.environment.globalEnvironment.options.strict Then
+                Return Internal.debug.stop("the given ggplot layer object can not be nothing!", ggplot.environment)
+            Else
+                Call ggplot.environment.AddMessage("the given ggplot layer object is nothing...", MSG_TYPES.WRN)
+                Return ggplot
+            End If
+        End If
+
         If Not ggplot.base.reader.isPlain2D Then
             If TypeOf layer Is ggplotScatter Then
                 layer = New ggplotScatter3d(layer)
@@ -731,6 +742,11 @@ Public Module ggplot2
 
     <ExportAPI("stat_pvalue_manual")>
     Public Function stat_pvalue_manual() As ggplotLayer
+
+    End Function
+
+    <ExportAPI("stat_compare_means")>
+    Public Function stat_compare_means() As ggplotLayer
 
     End Function
 
