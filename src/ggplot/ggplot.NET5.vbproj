@@ -112,6 +112,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\R-sharp\R#\Rsharp-netcore5.vbproj" />
+    <ProjectReference Include="..\..\..\sciBASIC#\Data_science\Mathematica\Math\ANOVA\ANOVA.vbproj" />
     <ProjectReference Include="..\..\..\sciBASIC#\Data_science\Mathematica\Math\Math\Math.NET5.vbproj" />
     <ProjectReference Include="..\..\..\sciBASIC#\Data_science\Visualization\Plots\plots-netcore5.vbproj" />
     <ProjectReference Include="..\..\..\sciBASIC#\gr\Microsoft.VisualBasic.Imaging\imaging.NET5.vbproj" />
