@@ -11,12 +11,18 @@ Namespace layers
 
         Protected Overrides Function PlotOrdinal(stream As ggplotPipeline, x As OrdinalScale) As IggplotLegendElement
             Select Case method
-                Case "t.test"
+                Case "t.test" : stats = ttest(stream).ToArray
                 Case "wilcox.test"
                     Throw New NotImplementedException("wilcox.test")
                 Case Else
                     Throw New NotImplementedException(method)
             End Select
+
+            Return MyBase.PlotOrdinal(stream, x)
+        End Function
+
+        Private Iterator Function ttest(stream As ggplotPipeline) As IEnumerable(Of compare_means)
+
         End Function
     End Class
 End Namespace

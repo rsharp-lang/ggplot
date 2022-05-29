@@ -1,5 +1,8 @@
-﻿Imports ggplot.elements.legend
+﻿Imports System.Drawing
+Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.Imaging.d3js.scale
+Imports Microsoft.VisualBasic.MIME.Html.CSS
+Imports stdNum = System.Math
 
 Namespace layers
 
@@ -13,9 +16,40 @@ Namespace layers
         ' #2 len   0.5    2          8.41e-8   2.5e-7 8.4e-08  ****    
         ' #3 len   1      2          1.77e-4   1.8e-4 0.00018  ***     
         ' ## … with 1 more variable: method <chr>
+        Public Property stats As compare_means()
 
         Protected Overrides Function PlotOrdinal(stream As ggplotPipeline, x As OrdinalScale) As IggplotLegendElement
-            Throw New NotImplementedException()
+            Call drawLayer(stream, x)
+            Return Nothing
         End Function
+
+        Private Sub drawLayer(stream As ggplotPipeline, x As OrdinalScale)
+            Dim data As Dictionary(Of String, Double()) = getDataGroups(stream) _
+                .ToDictionary(Function(v) v.name,
+                              Function(v)
+                                  Return v.value
+                              End Function)
+            Dim line As Pen = Stroke.TryParse(stream.theme.lineStroke).GDIObject
+            Dim font As Font = CSSFont.TryParse(stream.theme.tagCSS).GDIObject(stream.g.Dpi)
+            Dim lbsize As SizeF
+            Dim pos As PointF
+
+            For Each compare As compare_means In stats
+                Dim group1 As Double() = data.TryGetValue(compare.group1)
+                Dim group2 As Double() = data.TryGetValue(compare.group2)
+                Dim x1 As Double = x(compare.group1)
+                Dim x2 As Double = x(compare.group2)
+                Dim len As Double = stdNum.Abs(x1 - x2)
+                Dim left As Double = stdNum.Min(x1, x2)
+                Dim y As Double = stream.scale.TranslateY(stdNum.Max(group1.Max, group2.Max) * 1.125)
+                Dim siglab As String = compare.psignif
+
+                lbsize = stream.g.MeasureString(siglab, font)
+                pos = New PointF(left + (len - lbsize.Width) / 2, y - lbsize.Height * 1.125)
+
+                Call stream.g.DrawLine(line, New PointF(x1, y), New PointF(x2, y))
+                Call stream.g.DrawString(siglab, font, Brushes.Black, pos)
+            Next
+        End Sub
     End Class
 End Namespace

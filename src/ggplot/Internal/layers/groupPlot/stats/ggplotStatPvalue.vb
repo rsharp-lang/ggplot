@@ -51,28 +51,14 @@ Namespace layers
 
             For Each group As NamedCollection(Of Double) In data
                 Dim p As TwoSampleResult = t.Test(group, ref, varEqual:=True)
-                Dim pvalue As Double = p.Pvalue
-                Dim sig As String
+                Dim pvalue As New compare_means With {.pvalue = p.Pvalue}
+                Dim sig As String = pvalue.psignif
 
-                If pvalue <= 0.00001 Then
-                    sig = $"*****({pvalue.ToString("G3")})"
-                ElseIf pvalue <= 0.0001 Then
-                    sig = $"****({pvalue.ToString("G3")})"
-                ElseIf pvalue <= 0.001 Then
-                    sig = $"***({pvalue.ToString("F3")})"
-                ElseIf pvalue <= 0.01 Then
-                    sig = $"**({pvalue.ToString("F3")})"
-                ElseIf pvalue <= 0.05 Then
-                    sig = $"*({pvalue.ToString("F3")})"
-                ElseIf pvalue <= 0.1 Then
-                    sig = "."
-                ElseIf hide_ns Then
+                If hide_ns AndAlso (sig = compare_means.ns OrElse sig = ".") Then
                     Continue For
                 Else
-                    sig = $"n.sig"
+                    lbsize = stream.g.MeasureString(sig, font)
                 End If
-
-                lbsize = stream.g.MeasureString(sig, font)
 
                 Dim x As Double = xscale(group.name) - lbsize.Width / 2
                 Dim y As Double = stream.scale.TranslateY(group.Max) - lbsize.Height * 1.125
