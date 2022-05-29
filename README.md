@@ -1,5 +1,8 @@
 # ggplot
-A R language ggplot2 package liked grammar of graphics library for R# language programming
+
+> A R language ggplot2 package liked grammar of graphics library for R# language programming.
+
+The ``R#`` language is another scientific computing language which is designed for .NET runtime, ``R#`` is evolved from the R language. There is a famous graphics library called ``ggplot2`` in R language, so keeps the same, there is a graphics library called ``ggplot`` was developed for ``R#`` language.
 
 ## usage
 
