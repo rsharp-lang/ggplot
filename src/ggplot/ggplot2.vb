@@ -458,7 +458,7 @@ Public Module ggplot2
     <ExportAPI("geom_hline")>
     Public Function geom_hline(yintercept As Double,
                                Optional color As Object = "black",
-                               Optional line_width! = 2,
+                               Optional line_width! = 3,
                                Optional linetype As DashStyle = DashStyle.Solid) As ggplotLayer
 
         Dim a As New PointF(Single.NegativeInfinity, yintercept)

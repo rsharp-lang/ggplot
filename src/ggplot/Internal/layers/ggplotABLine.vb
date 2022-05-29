@@ -72,19 +72,26 @@ Namespace layers
                 a = scale.Translate(a)
                 b = scale.Translate(b)
             Else
-                If a.X < Single.MinValue Then
-                    a = New PointF With {.X = scale.X.rangeMin, .Y = scale.TranslateY(a.Y)}
-                ElseIf a.X > Single.MaxValue Then
-                    a = New PointF With {.X = scale.X.rangeMax, .Y = scale.TranslateY(a.Y)}
-                Else
-                    ' 直接是绘图数据了？
-                    ' 不做任何转换
-                End If
+                a = translateOrdinal(a, scale)
+                b = translateOrdinal(b, scale)
             End If
 
             Call stream.g.DrawLine(abline.Stroke, a, b)
 
             Return Nothing
+        End Function
+
+        Private Shared Function translateOrdinal(a As PointF, scale As DataScaler) As PointF
+            If a.X < Single.MinValue Then
+                a = New PointF With {.X = scale.X.rangeMin, .Y = scale.TranslateY(a.Y)}
+            ElseIf a.X > Single.MaxValue Then
+                a = New PointF With {.X = scale.X.rangeMax, .Y = scale.TranslateY(a.Y)}
+            Else
+                ' 直接是绘图数据了？
+                ' 不做任何转换
+            End If
+
+            Return a
         End Function
 
         Private Shared Function constraint(pf As PointF, scale As DataScaler) As PointF
@@ -98,6 +105,8 @@ Namespace layers
                 Else
                     x = pf.X
                 End If
+            Else
+                x = pf.X
             End If
 
             If pf.Y < Single.MinValue Then
