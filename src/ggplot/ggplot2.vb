@@ -758,6 +758,19 @@ Public Module ggplot2
     End Function
 
     ''' <summary>
+    ''' ## Create significance layer
+    ''' 
+    ''' </summary>
+    ''' <returns></returns>
+    <ExportAPI("geom_signif")>
+    Public Function geom_signif(comparisons As list, Optional test As String = "t.test") As ggplotLayer
+        Return New ggplotSignifLayer With {
+            .comparision = comparisons,
+            .method = test
+        }
+    End Function
+
+    ''' <summary>
     ''' ## Modify axis, legend, and plot labels
     ''' 
     ''' Good labels are critical for making your plots accessible to a 
