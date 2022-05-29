@@ -6,7 +6,7 @@ Namespace layers
     Public Class ggplotStatPvalue : Inherits ggplotGroup
 
         Protected Overrides Function PlotOrdinal(stream As ggplotPipeline, x As OrdinalScale) As IggplotLegendElement
-            Throw New NotImplementedException()
+
         End Function
     End Class
 End Namespace

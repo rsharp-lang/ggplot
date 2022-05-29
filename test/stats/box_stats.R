@@ -8,7 +8,7 @@ print(myeloma, max.print = 13);
 print("myeloma$DEPDC1");
 print(myeloma$DEPDC1);
 
-bitmap(file = "./myeloma_box.png") {
+bitmap(file = "./myeloma_box.png", size = [3600,2100]) {
 	
 	ggplot(myeloma, aes(x = "molecular_group", y = "DEPDC1"))
 	+ geom_boxplot(width = 0.8)
