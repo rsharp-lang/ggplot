@@ -50,21 +50,21 @@ Namespace layers
             End If
 
             For Each group As NamedCollection(Of Double) In data
-                Dim p As TwoSampleResult = t.Test(group, ref)
+                Dim p As TwoSampleResult = t.Test(group, ref, varEqual:=True)
                 Dim pvalue As Double = p.Pvalue
                 Dim sig As String
 
-                If pvalue < 0.00001 Then
+                If pvalue <= 0.00001 Then
                     sig = $"*****({pvalue.ToString("G3")})"
-                ElseIf pvalue < 0.0001 Then
+                ElseIf pvalue <= 0.0001 Then
                     sig = $"****({pvalue.ToString("G3")})"
-                ElseIf pvalue < 0.001 Then
+                ElseIf pvalue <= 0.001 Then
                     sig = $"***({pvalue.ToString("F3")})"
-                ElseIf pvalue < 0.01 Then
+                ElseIf pvalue <= 0.01 Then
                     sig = $"**({pvalue.ToString("F3")})"
-                ElseIf pvalue < 0.05 Then
+                ElseIf pvalue <= 0.05 Then
                     sig = $"*({pvalue.ToString("F3")})"
-                ElseIf pvalue < 0.1 Then
+                ElseIf pvalue <= 0.1 Then
                     sig = "."
                 ElseIf hide_ns Then
                     Continue For
