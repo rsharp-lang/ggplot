@@ -24,7 +24,7 @@ Namespace ggraph.render
             Return 8
         End Function
 
-        Private Function getRadius(graph As NetworkGraph) As Func(Of Node, Single)
+        Friend Function getRadius(graph As NetworkGraph) As Func(Of Node, Single)
             If radius Is Nothing Then
                 Return Function(any) 45.0!
             Else
@@ -39,7 +39,7 @@ Namespace ggraph.render
             End If
         End Function
 
-        Private Function getShapes(graph As NetworkGraph) As Func(Of Node, LegendStyles)
+        Friend Function getShapes(graph As NetworkGraph) As Func(Of Node, LegendStyles)
             If shape Is Nothing Then
                 Return Function(any) LegendStyles.Circle
             Else

@@ -3,6 +3,7 @@ Imports ggplot.elements.legend
 Imports ggplot.layers
 Imports Microsoft.VisualBasic.Data.visualize.Network
 Imports Microsoft.VisualBasic.Data.visualize.Network.Graph
+Imports Microsoft.VisualBasic.Data.visualize.Network.Styling.FillBrushes
 Imports Microsoft.VisualBasic.Data.visualize.Network.Styling.Numeric
 
 Namespace ggraph.render
@@ -11,6 +12,7 @@ Namespace ggraph.render
 
         Public Property fontsize As IGetSize
         Public Property iteration As Integer = 30
+        Public Property color As IGetBrush
 
         Private Function getFontSize(graph As NetworkGraph) As Func(Of Node, Single)
             If fontsize Is Nothing Then
@@ -40,7 +42,7 @@ Namespace ggraph.render
                 showLabelerProgress:=False,
                 defaultLabelColorValue:="black",
                 labelTextStrokeCSS:=Nothing,
-                getLabelColor:=Function() Color.Black
+                getLabelColor:=Function() color.Black
             )
             Dim allLabels As New List(Of LayoutLabel)
             Dim fontsize As Func(Of Node, Single) = getFontSize(stream.ggplot.data)

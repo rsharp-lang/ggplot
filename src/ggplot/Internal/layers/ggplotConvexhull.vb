@@ -21,6 +21,7 @@ Namespace layers
         ''' </summary>
         ''' <returns></returns>
         Public Property scale As Double = 1.25
+        Public Property polygonShape As LegendStyles = LegendStyles.RoundRectangle
 
         Protected Overridable Function getClassTags(stream As ggplotPipeline) As String()
             Return reader.getMapData(Of String)(
@@ -92,7 +93,7 @@ Namespace layers
                 ' just not display data object?
                 Return New LegendObject With {
                     .title = polygon.name,
-                    .style = LegendStyles.Circle,
+                    .style = polygonShape,
                     .fontstyle = stream.theme.legendLabelCSS,
                     .color = fillcolor.ToHtmlColor
                 }
@@ -116,7 +117,7 @@ Namespace layers
 
             Return New LegendObject With {
                 .title = polygon.name,
-                .style = LegendStyles.Circle,
+                .style = polygonShape,
                 .fontstyle = stream.theme.legendLabelCSS,
                 .color = color
             }
