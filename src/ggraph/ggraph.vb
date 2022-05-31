@@ -88,7 +88,7 @@ Module ggraphPkg
 
         Dim fill As IGetBrush = Nothing
         Dim size As IGetSize = Nothing
-        Dim shape As String = Nothing
+        Dim shape As IGetShape = Nothing
 
         If Not mapping Is Nothing Then
             Dim arguments As list = DirectCast(mapping, ggplotReader).args
@@ -99,8 +99,9 @@ Module ggraphPkg
             size = any _
                 .ToString(arguments.getValue("size", env, New Object)) _
                 .DoCall(AddressOf SizeExpression.Evaluate)
-
-            shape = If(DirectCast(mapping, ggplotReader).shape, arguments.getValue(Of String)("shape", env))
+            shape = any _
+                .ToString(If(DirectCast(mapping, ggplotReader).shape, arguments.getValue(Of String)("shape", env, "map(shape, *=circle)"))) _
+                .DoCall(AddressOf ShapeExpression.Evaluate)
         End If
 
         Return New nodeRender With {

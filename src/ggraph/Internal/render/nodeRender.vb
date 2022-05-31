@@ -5,6 +5,7 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Data.visualize.Network
 Imports Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic
 Imports Microsoft.VisualBasic.Data.visualize.Network.Graph
+Imports Microsoft.VisualBasic.Data.visualize.Network.Styling
 Imports Microsoft.VisualBasic.Data.visualize.Network.Styling.FillBrushes
 Imports Microsoft.VisualBasic.Data.visualize.Network.Styling.Numeric
 Imports Microsoft.VisualBasic.Imaging
@@ -17,7 +18,7 @@ Namespace ggraph.render
         Public Property defaultColor As Color = Color.SteelBlue
         Public Property fill As IGetBrush
         Public Property radius As IGetSize
-        Public Property shape As String
+        Public Property shape As IGetShape
 
         Private Function getFontSize(node As Node) As Single
             Return 8
@@ -38,9 +39,25 @@ Namespace ggraph.render
             End If
         End Function
 
+        Private Function getShapes(graph As NetworkGraph) As Func(Of Node, LegendStyles)
+            If shape Is Nothing Then
+                Return Function(any) LegendStyles.Circle
+            Else
+                Dim map As Dictionary(Of String, LegendStyles) = shape _
+                    .GetShapes(graph.vertex) _
+                    .ToDictionary(Function(n) n.Key.label,
+                                  Function(n)
+                                      Return n.Maps
+                                  End Function)
+
+                Return Function(n) map.TryGetValue(n.label, [default]:=LegendStyles.Circle)
+            End If
+        End Function
+
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim graph As NetworkGraph = stream.ggplot.data
             Dim stroke As Pen = Pens.White
+            Dim shapeAs = getShapes(stream.ggplot.data)
             Dim baseFont As Font = CSSFont.TryParse(stream.theme.tagCSS).GDIObject(stream.g.Dpi)
             Dim drawNodeShape As DrawNodeShape =
                 Function(id As String,
@@ -50,17 +67,7 @@ Namespace ggraph.render
                          center As PointF) As RectangleF
 
                     Dim v As Node = graph.GetElementByID(id)
-                    Dim shape As String = Nothing
-
-                    If Not Me.shape.StringEmpty Then
-                        shape = v.data(Me.shape)
-                    End If
-
-                    If shape.StringEmpty Then
-                        shape = "circle"
-                    End If
-
-                    Dim legendStyle As LegendStyles = [Enum].Parse(GetType(LegendStyles), shape, ignoreCase:=True)
+                    Dim legendStyle As LegendStyles = shapeAs(v)
 
                     center = New PointF(center.X - radius / 2, center.Y - radius / 2)
                     g.DrawLegendShape(center, New SizeF(radius, radius), legendStyle, brush)
