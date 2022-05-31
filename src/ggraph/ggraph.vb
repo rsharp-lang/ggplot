@@ -88,6 +88,7 @@ Module ggraphPkg
 
         Dim fill As IGetBrush = Nothing
         Dim size As IGetSize = Nothing
+        Dim shape As String = Nothing
 
         If Not mapping Is Nothing Then
             Dim arguments As list = DirectCast(mapping, ggplotReader).args
@@ -98,6 +99,8 @@ Module ggraphPkg
             size = any _
                 .ToString(arguments.getValue("size", env, New Object)) _
                 .DoCall(AddressOf SizeExpression.Evaluate)
+
+            shape = arguments.getValue(Of String)("shape", env)
         End If
 
         Return New nodeRender With {
@@ -105,7 +108,8 @@ Module ggraphPkg
                 .getColor(defaultColor, NameOf(Color.SteelBlue)) _
                 .TranslateColor,
             .fill = fill,
-            .radius = size
+            .radius = size,
+            .shape = shape
         }
     End Function
 
