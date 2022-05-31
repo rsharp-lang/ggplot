@@ -37,9 +37,9 @@ Module ggforcePkg
     End Function
 
     <ExportAPI("layout_springforce")>
-    Public Function spring_force(Optional stiffness# = 80,
-                                 Optional repulsion# = 4000,
-                                 Optional damping# = 0.83,
+    Public Function spring_force(Optional stiffness# = 50000,
+                                 Optional repulsion# = 100,
+                                 Optional damping# = 0.9,
                                  Optional iterations% = 1000,
                                  Optional time_step As Double = 0.0001) As spring_force
 
