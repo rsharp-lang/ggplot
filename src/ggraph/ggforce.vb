@@ -40,13 +40,15 @@ Module ggforcePkg
     Public Function spring_force(Optional stiffness# = 80,
                                  Optional repulsion# = 4000,
                                  Optional damping# = 0.83,
-                                 Optional iterations% = 1000) As spring_force
+                                 Optional iterations% = 1000,
+                                 Optional time_step As Double = 0.0001) As spring_force
 
         Return New spring_force With {
             .damping = damping,
             .iterations = iterations,
             .repulsion = repulsion,
-            .stiffness = stiffness
+            .stiffness = stiffness,
+            .[step] = time_step
         }
     End Function
 
