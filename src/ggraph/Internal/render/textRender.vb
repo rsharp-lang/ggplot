@@ -42,7 +42,7 @@ Namespace ggraph.render
                 showLabelerProgress:=False,
                 defaultLabelColorValue:="black",
                 labelTextStrokeCSS:=Nothing,
-                getLabelColor:=Function() color.Black
+                getLabelColor:=Function() Drawing.Color.Black
             )
             Dim allLabels As New List(Of LayoutLabel)
             Dim fontsize As Func(Of Node, Single) = getFontSize(stream.ggplot.data)
