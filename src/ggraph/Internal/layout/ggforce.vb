@@ -15,11 +15,16 @@ Namespace ggraph.layout
         Public Sub createLayout(ByRef g As NetworkGraph, env As Environment)
             Dim algorithm As IPlanner = createAlgorithm(g.doRandomLayout)
             Dim println = env.WriteLineHandler
+            Dim delta As Integer = iterations / 10
 
             Call println("start create layout...")
 
             For i As Integer = 0 To iterations
                 Call algorithm.Collide(0.05)
+
+                If i Mod delta = 0 Then
+                    Call println($"[{(i / iterations * 100).ToString("F0")}%] ... {i}/{iterations}")
+                End If
             Next
 
             If algorithm.GetType.ImplementInterface(Of IDisposable) Then
