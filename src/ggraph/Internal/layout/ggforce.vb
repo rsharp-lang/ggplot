@@ -9,6 +9,7 @@ Namespace ggraph.layout
     Public MustInherit Class ggforce : Inherits ggplotOption
 
         Public Property iterations As Integer = 10000 * 2
+        Public Property [step] As Double = 0.001
 
         Protected MustOverride Function createAlgorithm(g As NetworkGraph) As IPlanner
 
@@ -20,7 +21,7 @@ Namespace ggraph.layout
             Call println("start create layout...")
 
             For i As Integer = 0 To iterations
-                Call algorithm.Collide(0.05)
+                Call algorithm.Collide(timeStep:=[step])
 
                 If i Mod delta = 0 Then
                     Call println($"[{(i / iterations * 100).ToString("F0")}%] ... {i}/{iterations}")

@@ -58,6 +58,7 @@ Module ggforcePkg
                                          <RRawVectorArgument> Optional dist_threshold As Object = "30,250",
                                          <RRawVectorArgument> Optional size As Object = "1000,1000",
                                          Optional iterations As Integer = 20000,
+                                         Optional time_step As Double = 0.00001,
                                          <RRawVectorArgument(GetType(String))>
                                          Optional algorithm As Object = "force_directed|degree_weighted|group_weighted|edge_weighted",
                                          Optional env As Environment = Nothing) As force_directed
@@ -72,7 +73,8 @@ Module ggforcePkg
             .maxty = maxty,
             .size = InteropArgumentHelper.getSize(size, env, "1000,1000"),
             .iterations = iterations,
-            .algorithm = algorithm
+            .algorithm = algorithm,
+            .[step] = time_step
         }
     End Function
 End Module
