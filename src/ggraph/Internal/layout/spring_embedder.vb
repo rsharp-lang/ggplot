@@ -1,4 +1,5 @@
 ﻿
+Imports System.Drawing
 Imports Microsoft.VisualBasic.Data.visualize.Network.Graph
 Imports Microsoft.VisualBasic.Data.visualize.Network.Layouts
 
@@ -6,8 +7,11 @@ Namespace ggraph.layout
 
     Public Class spring_embedder : Inherits ggforce
 
-        Protected Overrides Function createAlgorithm(g As NetworkGraph) As IPlanner
+        Public Property canvasSize As Size
+        Public Property maxRepulsiveForceDistance As Double = 10
 
+        Protected Overrides Function createAlgorithm(g As NetworkGraph) As IPlanner
+            Return New SpringEmbedder(g, canvasSize, maxRepulsiveForceDistance)
         End Function
     End Class
 End Namespace

@@ -1,14 +1,31 @@
 ﻿
+Imports System.Drawing
 Imports ggplot.ggraph
 Imports ggplot.ggraph.layout
 Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.Scripting.MetaData
+Imports Microsoft.VisualBasic.Scripting.Runtime
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Interop
 Imports REnv = SMRUCC.Rsharp.Runtime
 
 <Package("ggforce")>
 Module ggforcePkg
+
+    <ExportAPI("layout_springembedder")>
+    Public Function layout_springembedder(<RRawVectorArgument>
+                                          canvas As Object,
+                                          Optional iterations As Integer = 100,
+                                          Optional env As Environment = Nothing) As spring_embedder
+
+        Dim sizeDesc As String = InteropArgumentHelper.getSize(canvas, env)
+        Dim size As Size = sizeDesc.SizeParser
+
+        Return New spring_embedder With {
+            .canvasSize = size,
+            .iterations = iterations
+        }
+    End Function
 
     <ExportAPI("layout_random")>
     Public Function layout_random() As ggforce
