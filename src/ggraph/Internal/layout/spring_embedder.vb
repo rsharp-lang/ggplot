@@ -9,9 +9,10 @@ Namespace ggraph.layout
 
         Public Property canvasSize As Size
         Public Property maxRepulsiveForceDistance As Double = 10
+        Public Property c As Double
 
         Protected Overrides Function createAlgorithm(g As NetworkGraph) As IPlanner
-            Return New SpringEmbedder(g, canvasSize, maxRepulsiveForceDistance)
+            Return New SpringEmbedder(g, canvasSize, maxRepulsiveForceDistance, c:=c)
         End Function
     End Class
 End Namespace

@@ -15,6 +15,8 @@ Module ggforcePkg
     <ExportAPI("layout_springembedder")>
     Public Function layout_springembedder(<RRawVectorArgument>
                                           canvas As Object,
+                                          Optional maxRepulsiveForceDistance As Double = 10,
+                                          Optional c As Double = 2,
                                           Optional iterations As Integer = 100,
                                           Optional env As Environment = Nothing) As spring_embedder
 
@@ -23,7 +25,9 @@ Module ggforcePkg
 
         Return New spring_embedder With {
             .canvasSize = size,
-            .iterations = iterations
+            .iterations = iterations,
+            .c = c,
+            .maxRepulsiveForceDistance = maxRepulsiveForceDistance
         }
     End Function
 
