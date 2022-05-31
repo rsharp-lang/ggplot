@@ -62,7 +62,8 @@ Namespace ggraph.render
 
                     Dim legendStyle As LegendStyles = [Enum].Parse(GetType(LegendStyles), shape, ignoreCase:=True)
 
-                    Call g.DrawLegendShape(center, New SizeF(radius, radius), legendStyle, brush)
+                    center = New PointF(center.X - radius / 2, center.Y - radius / 2)
+                    g.DrawLegendShape(center, New SizeF(radius, radius), legendStyle, brush)
                 End Function
 
             Dim renderNode As New NodeRendering(

@@ -100,7 +100,7 @@ Module ggraphPkg
                 .ToString(arguments.getValue("size", env, New Object)) _
                 .DoCall(AddressOf SizeExpression.Evaluate)
 
-            shape = arguments.getValue(Of String)("shape", env)
+            shape = If(DirectCast(mapping, ggplotReader).shape, arguments.getValue(Of String)("shape", env))
         End If
 
         Return New nodeRender With {
