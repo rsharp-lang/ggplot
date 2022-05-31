@@ -88,6 +88,14 @@ Namespace layers
             '
             If polygon.Length <= 3 Then
                 Return Nothing
+            ElseIf alpha = 0 AndAlso stroke_width = 0 Then
+                ' just not display data object?
+                Return New LegendObject With {
+                    .title = polygon.name,
+                    .style = LegendStyles.Circle,
+                    .fontstyle = stream.theme.legendLabelCSS,
+                    .color = fillcolor.ToHtmlColor
+                }
             End If
 
             Dim hull As PointF() = polygon.JarvisMatch.Enlarge(scale)
