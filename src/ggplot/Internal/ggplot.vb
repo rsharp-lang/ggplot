@@ -419,11 +419,19 @@ Public Class ggplot : Inherits Plot
             Call DrawMainTitle(g, canvas.PlotRegion)
         End If
         If theme.drawLegend Then
-            Call DrawLegends(From group As IggplotLegendElement In legends.SafeQuery Where Not group Is Nothing, g, canvas)
+            Call DrawLegends(From group As IggplotLegendElement
+                             In legends.SafeQuery
+                             Where Not group Is Nothing, g:=g,
+                                                         canvas:=canvas,
+                                                         pos:=Nothing)
         End If
     End Sub
 
-    Private Overloads Sub DrawLegends(legends As IEnumerable(Of IggplotLegendElement), g As IGraphics, canvas As GraphicsRegion)
+    Protected Overloads Sub DrawLegends(legends As IEnumerable(Of IggplotLegendElement),
+                                        g As IGraphics,
+                                        canvas As GraphicsRegion,
+                                        pos As PointF)
+
         Dim all As IggplotLegendElement() = legends.ToArray
 
         If all.Length > 1 Then
@@ -436,20 +444,28 @@ Public Class ggplot : Inherits Plot
                         .ToArray
                 }
 
-                Call DrawSingle(union, g, canvas)
+                Call DrawSingle(union, g, canvas, pos)
             Else
-                Call DrawMultiple(all, g, canvas)
+                Call DrawMultiple(all, g, canvas, pos)
             End If
         ElseIf all.Length = 1 Then
-            Call DrawSingle(all(Scan0), g, canvas)
+            Call DrawSingle(all(Scan0), g, canvas, pos)
         End If
     End Sub
 
-    Private Sub DrawMultiple(all As IggplotLegendElement(), g As IGraphics, canvas As GraphicsRegion)
+    Private Sub DrawMultiple(all As IggplotLegendElement(), g As IGraphics, canvas As GraphicsRegion, pos As PointF)
         Dim width As Double = canvas.Padding.Right / (all.Length + 1)
         Dim box As Rectangle = canvas.PlotRegion
-        Dim x As Double = box.Right + width / 4
-        Dim y As Double = box.Top + box.Height / 3
+        Dim x As Double
+        Dim y As Double
+
+        If pos.IsEmpty Then
+            x = box.Right + width / 4
+            y = box.Top + box.Height / 3
+        Else
+            x = pos.X
+            y = pos.Y
+        End If
 
         For i As Integer = 0 To all.Length - 1
             all(i).Draw(g, canvas, x, y, theme)
@@ -457,14 +473,21 @@ Public Class ggplot : Inherits Plot
         Next
     End Sub
 
-    Private Sub DrawSingle(legend As IggplotLegendElement, g As IGraphics, canvas As GraphicsRegion)
+    Private Sub DrawSingle(legend As IggplotLegendElement, g As IGraphics, canvas As GraphicsRegion, pos As PointF)
         If legend.size > 0 Then
             Dim size As SizeF = legend.MeasureSize(g)
             Dim rect As Rectangle = canvas.PlotRegion
-
             ' default is padding right / middle in height
-            Dim x As Single = (canvas.Padding.Right - size.Width) / 2 + rect.Right
-            Dim y As Single = (rect.Height - size.Height) / 2 + rect.Top
+            Dim x As Single
+            Dim y As Single
+
+            If pos.IsEmpty Then
+                x = (canvas.Padding.Right - size.Width) / 2 + rect.Right
+                y = (rect.Height - size.Height) / 2 + rect.Top
+            Else
+                x = pos.X
+                y = pos.Y
+            End If
 
             Call legend.Draw(g, canvas, x, y, theme)
         End If
