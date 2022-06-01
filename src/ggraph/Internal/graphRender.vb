@@ -104,28 +104,31 @@ Namespace ggraph
                 Dim r As Double = degree.ScaleMapping(degree.Min, radiusRange)
                 Dim rmax As Double = degree.ScaleMapping(degree.Max, radiusRange)
 
-                x = canvas.PlotRegion.Right + radiusRange.Max * 1.125
+                x = canvas.PlotRegion.Right + radiusRange.Max * 1.5
                 y = canvas.PlotRegion.Top + radiusRange.Min * 1.125
-                ytop = y + r + 40
+                ytop = y
 
-                Call g.DrawString("Node Degree", labelFont, Brushes.Black, New PointF(x - rmax, ytop - A.Height))
+                Call g.DrawString("Node Degree", labelFont, Brushes.Black, New PointF(x - rmax / 2, ytop - A.Height * 1.5))
 
-                For Each d As Double In degree.Enumerate(4)
-                    r = degree.ScaleMapping(d, radiusRange) * 0.85
+                For Each d As Double In degree.Enumerate(3)
+                    r = degree.ScaleMapping(d, radiusRange) * 0.65
                     y += r
                     g.DrawCircle(New PointF(x, y), r, Brushes.Black)
-                    ybottom = y + 40
+                    ybottom = y + 20
                     y = ybottom
                 Next
 
+                ybottom -= 40
+
                 ' draw radius axis
-                Call g.DrawLine(line, New PointF(x + r * 1.125, ytop), New PointF(x + r * 1.125, ybottom))
-                Call g.DrawString(degree.Min.ToString("F0"), labelFont, Brushes.Black, New PointF(x + r * 1.125, ytop))
-                Call g.DrawString(degree.Max.ToString("F0"), labelFont, Brushes.Black, New PointF(x + r * 1.125, ybottom))
+                Call g.DrawLine(line, New PointF(x + r * 1.25, ytop + r / 3), New PointF(x + r * 1.25, ybottom + r / 3))
+                Call g.DrawString(degree.Min.ToString("F0"), labelFont, Brushes.Black, New PointF(x + r * 1.5, ytop))
+                Call g.DrawString(degree.Max.ToString("F0"), labelFont, Brushes.Black, New PointF(x + r * 1.5, ybottom))
 
                 ' draw node shape type
                 y += r * 2
                 r *= 0.85
+                x = canvas.PlotRegion.Right + radiusRange.Max * 1.125
 
                 Dim shapes = nodeStyle.getShapes(graph)
                 Dim nodeShapes = graph.vertex _
@@ -142,11 +145,21 @@ Namespace ggraph
                             End Function) _
                     .ToArray
 
-                Call g.DrawString("Shape Types", labelFont, Brushes.Black, New PointF(x, y))
+                Call g.DrawString("Shape Types", labelFont, Brushes.Black, New PointF(x, y - r * 1.5))
+
+                Dim pos As PointF
 
                 For Each shape In nodeShapes
-                    Call Legend.DrawLegend(g, New PointF(x, y), New SizeF(r, r), shape)
-                    y += r * 2
+                    pos = New PointF(x, y)
+
+                    ' there is a lyaout bug about circle
+                    If shape.style = LegendStyles.Circle Then
+                        pos = New PointF(x - r / 2, y)
+                        shape.title = " " & shape.title
+                    End If
+
+                    Legend.DrawLegend(g, pos, New SizeF(r, r), shape)
+                    y += r * 1.5
                 Next
             End If
 
@@ -158,9 +171,11 @@ Namespace ggraph
                 Dim w As Double
                 Dim deltaX As Double = 50
 
+                y += deltaX
+
                 Call g.DrawString("Edge Weight", labelFont, Brushes.Black, New PointF(x, y))
 
-                ytop = y
+                ytop = y + w + 30
 
                 For Each d As Double In weights.Enumerate(4)
                     w = weights.ScaleMapping(d, widths)
@@ -171,8 +186,10 @@ Namespace ggraph
 
                 ' draw radius axis
                 Call g.DrawLine(line, New PointF(x + deltaX, ytop), New PointF(x + deltaX, ybottom))
-                Call g.DrawString(weights.Min.ToString("F3"), labelFont, Brushes.Black, New PointF(x + deltaX, ytop))
-                Call g.DrawString(weights.Max.ToString("F3"), labelFont, Brushes.Black, New PointF(x + deltaX, ybottom))
+                Call g.DrawString(weights.Min.ToString("F3"), labelFont, Brushes.Black, New PointF(x + deltaX * 1.25, ytop))
+                Call g.DrawString(weights.Max.ToString("F3"), labelFont, Brushes.Black, New PointF(x + deltaX * 1.25, ybottom - A.Height / 2))
+
+                y += deltaX * 1.5
             End If
 
             If Not legendList.IsNullOrEmpty Then

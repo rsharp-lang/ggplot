@@ -5,6 +5,7 @@ Imports Microsoft.VisualBasic.Data.visualize.Network
 Imports Microsoft.VisualBasic.Data.visualize.Network.Graph
 Imports Microsoft.VisualBasic.Data.visualize.Network.Styling.FillBrushes
 Imports Microsoft.VisualBasic.Data.visualize.Network.Styling.Numeric
+Imports Microsoft.VisualBasic.Imaging
 
 Namespace ggraph.render
 
@@ -13,10 +14,11 @@ Namespace ggraph.render
         Public Property fontsize As IGetSize
         Public Property iteration As Integer = 30
         Public Property color As IGetBrush
+        Public Property defaultSize As Single = 45.0!
 
-        Private Function getFontSize(graph As NetworkGraph) As Func(Of Node, Single)
+        Private Function getFontSize(graph As NetworkGraph, dpi As Integer) As Func(Of Node, Single)
             If fontsize Is Nothing Then
-                Return Function(any) 45.0!
+                Return Function(any) FontFace.PointSizeScale(defaultSize, dpi)
             Else
                 Dim map As Dictionary(Of String, Single) = fontsize _
                     .GetSize(graph.vertex) _
@@ -27,9 +29,9 @@ Namespace ggraph.render
 
                 Return Function(n)
                            If n Is Nothing Then
-                               Return 45.0!
+                               Return FontFace.PointSizeScale(defaultSize, dpi)
                            Else
-                               Return map.TryGetValue(n.label, [default]:=45.0!)
+                               Return FontFace.PointSizeScale(map.TryGetValue(n.label, [default]:=45.0!), dpi)
                            End If
                        End Function
             End If
@@ -45,7 +47,7 @@ Namespace ggraph.render
                 getLabelColor:=Function() Drawing.Color.Black
             )
             Dim allLabels As New List(Of LayoutLabel)
-            Dim fontsize As Func(Of Node, Single) = getFontSize(stream.ggplot.data)
+            Dim fontsize As Func(Of Node, Single) = getFontSize(stream.ggplot.data, stream.g.Dpi)
 
             For Each label As LayoutLabel In DirectCast(stream, graphPipeline).labels.Where(Function(lb) lb.hasGDIData)
                 label.style = New Font(
