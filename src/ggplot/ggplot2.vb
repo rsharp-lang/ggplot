@@ -741,8 +741,10 @@ Public Module ggplot2
     End Function
 
     <ExportAPI("stat_pvalue_manual")>
-    Public Function stat_pvalue_manual() As ggplotLayer
-        Return New ggplotStatPvalue
+    Public Function stat_pvalue_manual(comparisons As dataframe) As ggplotLayer
+        Return New ggplotStatsLayer With {
+            .stats = compare_means.fromManualData(comparisons)
+        }
     End Function
 
     <ExportAPI("stat_compare_means")>

@@ -1,4 +1,6 @@
-﻿Namespace layers
+﻿Imports SMRUCC.Rsharp.Runtime.Internal.Object
+
+Namespace layers
 
     Public Class compare_means
 
@@ -32,6 +34,23 @@
 
         Public Overrides Function ToString() As String
             Return psignif
+        End Function
+
+        Public Shared Function fromManualData(data As dataframe) As compare_means()
+            Dim group1 As String() = data.getColumnVector("group1")
+            Dim group2 As String() = data.getColumnVector("group2")
+            Dim pvalue As Double() = data.getColumnVector("pvalue")
+
+            Return pvalue _
+                .Select(Function(p, i)
+                            Return New compare_means With {
+                                .group1 = group1(i),
+                                .group2 = group2(i),
+                                .pvalue = p,
+                                .padj = p
+                            }
+                        End Function) _
+                .ToArray
         End Function
 
     End Class

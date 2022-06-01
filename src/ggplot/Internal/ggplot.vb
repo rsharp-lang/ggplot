@@ -416,7 +416,7 @@ Public Class ggplot : Inherits Plot
 
     Protected Sub Draw2DElements(g As IGraphics, canvas As GraphicsRegion, legends As List(Of IggplotLegendElement))
         If Not main.StringEmpty Then
-            Call DrawMainTitle(g, canvas.PlotRegion)
+            Call DrawMainTitle(g, canvas.PlotRegion, offsetFactor:=2)
         End If
         If theme.drawLegend Then
             Call DrawLegends(From group As IggplotLegendElement
