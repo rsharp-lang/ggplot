@@ -62,20 +62,22 @@ Namespace layers
             Dim boxWidth As Double = binWidth * groupWidth
             Dim lineStroke As Pen = Stroke.TryParse(stream.theme.lineStroke).GDIObject
             Dim labelFont As Font = CSSFont.TryParse(stream.theme.tagCSS).GDIObject(g.Dpi)
-            Dim colors As LoopArray(Of Color) = Designer.GetColors(stream.theme.colorSet)
+            Dim allGroupData = getDataGroups(stream).ToArray
+            Dim colors = colorMap.ColorHandler(stream.ggplot, allGroupData.Select(Function(i) i.name).ToArray)
             Dim y As DataScaler = stream.scale
 
-            For Each group As NamedCollection(Of Double) In getDataGroups(stream)
+            For Each group As NamedCollection(Of Double) In allGroupData
                 Dim x As Double = xscale(group.name)
                 Dim data As New NamedValue(Of Vector) With {
                     .Name = group.name,
                     .Value = group.AsVector
                 }
+                Dim color As String = colors(group.name)
 
                 Call Box.PlotBox(
                     group:=data,
                     x0:=x - boxWidth / 2,
-                    brush:=New SolidBrush(++colors),
+                    brush:=New SolidBrush(color.TranslateColor),
                     boxWidth:=boxWidth,
                     fillBox:=True,
                     lineWidth:=2,

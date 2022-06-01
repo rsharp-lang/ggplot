@@ -22,10 +22,12 @@ Namespace layers
             Dim semiWidth As Double = binWidth / 2 * groupWidth
             Dim lineStroke As Pen = Stroke.TryParse(stream.theme.lineStroke).GDIObject
             Dim labelFont As Font = CSSFont.TryParse(stream.theme.tagCSS).GDIObject(g.Dpi)
-            Dim colors As LoopArray(Of Color) = Designer.GetColors(stream.theme.colorSet)
+            Dim allGroupData = getDataGroups(stream).ToArray
+            Dim colors = colorMap.ColorHandler(stream.ggplot, allGroupData.Select(Function(i) i.name).ToArray)
 
-            For Each group As NamedCollection(Of Double) In getDataGroups(stream)
+            For Each group As NamedCollection(Of Double) In allGroupData
                 Dim x As Double = xscale(group.name)
+                Dim color As String = colors(group.name)
 
                 Call Violin.PlotViolin(
                     group:=group,
@@ -36,7 +38,7 @@ Namespace layers
                     polygonStroke:=lineStroke,
                     showStats:=showStats,
                     labelFont:=labelFont,
-                    color:=++colors,
+                    color:=color.TranslateColor,
                     g:=g,
                     canvas:=stream.canvas,
                     theme:=stream.theme

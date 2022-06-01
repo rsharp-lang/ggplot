@@ -606,18 +606,36 @@ Public Module ggplot2
     '''   The American Statistician 32, 12-16.
     ''' </remarks>
     <ExportAPI("geom_boxplot")>
-    Public Function geom_boxplot(Optional width As Double = 1) As ggplotLayer
-        Return New ggplotBoxplot With {.groupWidth = width}
+    Public Function geom_boxplot(Optional color As list = Nothing,
+                                 Optional width As Double = 1,
+                                 Optional env As Environment = Nothing) As ggplotLayer
+
+        Return New ggplotBoxplot With {
+            .groupWidth = width,
+            .colorMap = ggplotColorMap.CreateColorMap(color, 1, env)
+        }
     End Function
 
     <ExportAPI("geom_barplot")>
-    Public Function geom_barplot(Optional width As Double = 1) As ggplotLayer
-        Return New ggplotBarplot With {.groupWidth = width}
+    Public Function geom_barplot(Optional color As list = Nothing,
+                                 Optional width As Double = 1,
+                                 Optional env As Environment = Nothing) As ggplotLayer
+
+        Return New ggplotBarplot With {
+            .groupWidth = width,
+            .colorMap = ggplotColorMap.CreateColorMap(color, 1, env)
+        }
     End Function
 
     <ExportAPI("geom_violin")>
-    Public Function geom_violin(Optional width As Double = 0.9) As ggplotLayer
-        Return New ggplotViolin With {.groupWidth = width}
+    Public Function geom_violin(Optional color As list = Nothing,
+                                Optional width As Double = 0.9,
+                                Optional env As Environment = Nothing) As ggplotLayer
+
+        Return New ggplotViolin With {
+            .groupWidth = width,
+            .colorMap = ggplotColorMap.CreateColorMap(color, 1, env)
+        }
     End Function
 
     <ExportAPI("geom_jitter")>

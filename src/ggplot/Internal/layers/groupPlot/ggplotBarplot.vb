@@ -1,4 +1,5 @@
 ﻿Imports System.Drawing
+Imports ggplot.colors
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.ComponentModel.DataStructures
@@ -18,17 +19,19 @@ Namespace layers
             Dim boxWidth As Double = binWidth * groupWidth
             Dim lineStroke As Pen = Stroke.TryParse(stream.theme.lineStroke).GDIObject
             Dim labelFont As Font = CSSFont.TryParse(stream.theme.tagCSS).GDIObject(g.Dpi)
-            Dim colors As LoopArray(Of Color) = Designer.GetColors(stream.theme.colorSet)
+            Dim allGroupData = getDataGroups(stream).ToArray
+            Dim colors = colorMap.ColorHandler(stream.ggplot, allGroupData.Select(Function(i) i.name).ToArray)
             Dim y As DataScaler = stream.scale
             Dim bottom As Double = stream.canvas.PlotRegion.Bottom
 
-            For Each group As NamedCollection(Of Double) In getDataGroups(stream)
+            For Each group As NamedCollection(Of Double) In allGroupData
                 Dim x As Double = xscale(group.name)
                 Dim mean As Double = group.Average
                 Dim yi As Double = y.TranslateY(mean)
                 Dim bar As New RectangleF(x - boxWidth / 2, yi, boxWidth, bottom - yi)
+                Dim color As String = colors(group.name)
 
-                Call g.FillRectangle(New SolidBrush(++colors), bar)
+                Call g.FillRectangle(color.GetBrush, bar)
                 Call g.DrawRectangle(lineStroke, bar)
             Next
 
