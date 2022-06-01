@@ -92,31 +92,36 @@ Namespace ggraph
             Dim y As Double
             Dim line As Pen = Stroke.TryParse(theme.axisStroke)
             Dim labelFont As Font = CSSFont.TryParse(theme.legendLabelCSS).GDIObject(g.Dpi)
+            Dim ytop As Double = y
+            Dim ybottom As Double
+            Dim A As SizeF = g.MeasureString("A", labelFont)
 
             If Not nodeStyle Is Nothing Then
                 ' draw node radius
                 Dim radius = nodeStyle.getRadius(graph)
                 Dim radiusRange = graph.vertex.Select(Function(v) CDbl(radius(v))).Range
                 Dim degree = graph.vertex.Select(Function(v) CDbl(v.degree.In + v.degree.Out)).Range
+                Dim r As Double = degree.ScaleMapping(degree.Min, radiusRange)
+                Dim rmax As Double = degree.ScaleMapping(degree.Max, radiusRange)
 
                 x = canvas.PlotRegion.Right + radiusRange.Max * 1.125
                 y = canvas.PlotRegion.Top + radiusRange.Min * 1.125
+                ytop = y + r + 40
 
-                Dim ytop As Double = y
-                Dim ybottom As Double
-                Dim r As Double
+                Call g.DrawString("Node Degree", labelFont, Brushes.Black, New PointF(x - rmax, ytop - A.Height))
 
                 For Each d As Double In degree.Enumerate(4)
-                    r = degree.ScaleMapping(d, radiusRange)
-                    y += r + 30
-                    ybottom = y
+                    r = degree.ScaleMapping(d, radiusRange) * 0.85
+                    y += r
                     g.DrawCircle(New PointF(x, y), r, Brushes.Black)
+                    ybottom = y + 40
+                    y = ybottom
                 Next
 
                 ' draw radius axis
-                Call g.DrawLine(line, New PointF(x + r, ytop), New PointF(x + r, ybottom))
-                Call g.DrawString(degree.Min.ToString("F0"), labelFont, Brushes.Black, New PointF(x + r, ytop))
-                Call g.DrawString(degree.Max.ToString("F0"), labelFont, Brushes.Black, New PointF(x + r, ybottom))
+                Call g.DrawLine(line, New PointF(x + r * 1.125, ytop), New PointF(x + r * 1.125, ybottom))
+                Call g.DrawString(degree.Min.ToString("F0"), labelFont, Brushes.Black, New PointF(x + r * 1.125, ytop))
+                Call g.DrawString(degree.Max.ToString("F0"), labelFont, Brushes.Black, New PointF(x + r * 1.125, ybottom))
 
                 ' draw node shape type
                 y += r * 2
@@ -137,6 +142,8 @@ Namespace ggraph
                             End Function) _
                     .ToArray
 
+                Call g.DrawString("Shape Types", labelFont, Brushes.Black, New PointF(x, y))
+
                 For Each shape In nodeShapes
                     Call Legend.DrawLegend(g, New PointF(x, y), New SizeF(r, r), shape)
                     y += r * 2
@@ -145,6 +152,27 @@ Namespace ggraph
 
             If Not edgeStyle Is Nothing Then
                 ' draw edge width
+                Dim lineWidth = edgeStyle.getWeightScale(graph)
+                Dim widths = graph.graphEdges.Select(Function(l) CDbl(lineWidth(l))).Range
+                Dim weights = graph.graphEdges.Select(Function(l) l.weight).Range
+                Dim w As Double
+                Dim deltaX As Double = 50
+
+                Call g.DrawString("Edge Weight", labelFont, Brushes.Black, New PointF(x, y))
+
+                ytop = y
+
+                For Each d As Double In weights.Enumerate(4)
+                    w = weights.ScaleMapping(d, widths)
+                    y += w + 30
+                    ybottom = y
+                    g.DrawLine(New Pen(Brushes.Black, w), New PointF(x, y), New PointF(x + deltaX - 10, y))
+                Next
+
+                ' draw radius axis
+                Call g.DrawLine(line, New PointF(x + deltaX, ytop), New PointF(x + deltaX, ybottom))
+                Call g.DrawString(weights.Min.ToString("F3"), labelFont, Brushes.Black, New PointF(x + deltaX, ytop))
+                Call g.DrawString(weights.Max.ToString("F3"), labelFont, Brushes.Black, New PointF(x + deltaX, ybottom))
             End If
 
             If Not legendList.IsNullOrEmpty Then
