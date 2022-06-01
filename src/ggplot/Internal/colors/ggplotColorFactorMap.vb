@@ -31,15 +31,13 @@ Namespace colors
             Dim colorMap As Dictionary(Of String, String) = Me.colorMap
             Dim alphaColors As New Dictionary(Of String, String)
 
-            If alpha <> 1.0 Then
-                For Each factor In colorMap
-                    alphaColors(factor.Key) = factor _
-                        .Value _
-                        .TranslateColor _
-                        .Alpha(alpha * 255) _
-                        .ARGBExpression
-                Next
-            End If
+            For Each factor In colorMap
+                alphaColors(factor.Key) = factor _
+                    .Value _
+                    .TranslateColor _
+                    .Alpha(alpha * 255) _
+                    .ARGBExpression
+            Next
 
             Return Function(keyObj) alphaColors.TryGetValue(any.ToString(keyObj), [default]:="black")
         End Function
