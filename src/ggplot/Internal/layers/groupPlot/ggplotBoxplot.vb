@@ -41,6 +41,7 @@
 #End Region
 
 Imports System.Drawing
+Imports ggplot.colors
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.ComponentModel.DataStructures
@@ -63,6 +64,11 @@ Namespace layers
             Dim lineStroke As Pen = Stroke.TryParse(stream.theme.lineStroke).GDIObject
             Dim labelFont As Font = CSSFont.TryParse(stream.theme.tagCSS).GDIObject(g.Dpi)
             Dim allGroupData = getDataGroups(stream).ToArray
+
+            If colorMap Is Nothing Then
+                colorMap = ggplotColorMap.CreateColorMap("Paper", alpha, stream.ggplot.environment)
+            End If
+
             Dim colors = colorMap.ColorHandler(stream.ggplot, allGroupData.Select(Function(i) i.name).ToArray)
             Dim y As DataScaler = stream.scale
 
