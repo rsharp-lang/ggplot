@@ -1,11 +1,8 @@
 ﻿Imports System.Drawing
-Imports ggplot.colors
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
-Imports Microsoft.VisualBasic.ComponentModel.DataStructures
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Imaging
-Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 
 Namespace layers
@@ -30,8 +27,9 @@ Namespace layers
                 Dim yi As Double = y.TranslateY(mean)
                 Dim bar As New RectangleF(x - boxWidth / 2, yi, boxWidth, bottom - yi)
                 Dim color As String = colors(group.name)
+                Dim paint As Brush = color.GetBrush
 
-                Call g.FillRectangle(color.GetBrush, bar)
+                Call g.FillRectangle(paint, bar)
                 Call g.DrawRectangle(lineStroke, bar)
             Next
 

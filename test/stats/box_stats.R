@@ -56,6 +56,10 @@ plotViolin = function() {
 	;
 }
 
+svg(file = "./myeloma_bar.svg", size = [3600,2100]) {
+	plotBar();
+}
+
 bitmap(file = "./myeloma_box.png", size = [3600,2100]) {
 	plotBox();
 }
@@ -70,10 +74,6 @@ bitmap(file = "./myeloma_violin.png", size = [3600,2100]) {
 
 svg(file = "./myeloma_box.svg", size = [3600,2100]) {
 	plotBox();
-}
-
-svg(file = "./myeloma_bar.svg", size = [3600,2100]) {
-	plotBar();
 }
 
 svg(file = "./myeloma_violin.svg", size = [3600,2100]) {
