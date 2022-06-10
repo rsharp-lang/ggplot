@@ -1,0 +1,1132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" width="3600px" height="2100px" viewBox="0 0 3600 2100" preserveAspectRatio="xMaxYMax" xmlns="http://www.w3.org/2000/svg">
+   <style type="text/css">svg{ background: #FFFFFF; }</style>
+   <!--
+      SVG document was created by sciBASIC svg image driver:
+
+         visit: https://github.com/xieguigang/sciBASIC
+
+      
+           model:     Microsoft.VisualBasic.Imaging.SVG.XML.SVGXml
+           assembly:  Microsoft.VisualBasic.Imaging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+           version:   1.0.0.0
+           built:     1/1/2000 12:00:00 AM
+           md5:       d633e1f43a8f7e4bc9948c196dd89a1e
+           timestamp: 6/10/2022 3:09:35 PM
+        
+      
+  -->
+   <g z-index="0">
+      <rect style="fill: #FFFFFF" z-index="0" height="1550" width="3150" y="250" x="300" />
+   </g>
+   <g z-index="1">
+      <line style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" z-index="0" y2="1800" x2="3450" y1="1800" x1="300" stroke-dasharray="8 4" />
+   </g>
+   <g z-index="2">
+      <line style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" z-index="0" y2="1645" x2="3450" y1="1645" x1="300" stroke-dasharray="8 4" />
+   </g>
+   <g z-index="3">
+      <line style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" z-index="0" y2="1490" x2="3450" y1="1490" x1="300" stroke-dasharray="8 4" />
+   </g>
+   <g z-index="4">
+      <line style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" z-index="0" y2="1335" x2="3450" y1="1335" x1="300" stroke-dasharray="8 4" />
+   </g>
+   <g z-index="5">
+      <line style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" z-index="0" y2="1180" x2="3450" y1="1180" x1="300" stroke-dasharray="8 4" />
+   </g>
+   <g z-index="6">
+      <line style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" z-index="0" y2="1025" x2="3450" y1="1025" x1="300" stroke-dasharray="8 4" />
+   </g>
+   <g z-index="7">
+      <line style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" z-index="0" y2="870" x2="3450" y1="870" x1="300" stroke-dasharray="8 4" />
+   </g>
+   <g z-index="8">
+      <line style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" z-index="0" y2="715" x2="3450" y1="715" x1="300" stroke-dasharray="8 4" />
+   </g>
+   <g z-index="9">
+      <line style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" z-index="0" y2="560" x2="3450" y1="560" x1="300" stroke-dasharray="8 4" />
+   </g>
+   <g z-index="10">
+      <line style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" z-index="0" y2="405" x2="3450" y1="405" x1="300" stroke-dasharray="8 4" />
+   </g>
+   <g z-index="11">
+      <line style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" z-index="0" y2="250" x2="3450" y1="250" x1="300" stroke-dasharray="8 4" />
+   </g>
+   <g z-index="12">
+      <line style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="1800" x2="3450" y1="1800" x1="300" />
+   </g>
+   <g z-index="13">
+      <line style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="1810" x2="525" y1="1800" x1="525" />
+   </g>
+   <g z-index="14">
+      <text style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000" z-index="0" y="1843.25" x="520.25">Cyclin D-1</text>
+   </g>
+   <g z-index="15">
+      <line style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="1810" x2="975" y1="1800" x1="975" />
+   </g>
+   <g z-index="16">
+      <text style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000" z-index="0" y="1843.25" x="970.25">Cyclin D-2</text>
+   </g>
+   <g z-index="17">
+      <line style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="1810" x2="1425" y1="1800" x1="1425" />
+   </g>
+   <g z-index="18">
+      <text style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000" z-index="0" y="1843.25" x="1429.25">MMSET</text>
+   </g>
+   <g z-index="19">
+      <line style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="1810" x2="1875" y1="1800" x1="1875" />
+   </g>
+   <g z-index="20">
+      <text style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000" z-index="0" y="1843.25" x="1889.25">MAF</text>
+   </g>
+   <g z-index="21">
+      <line style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="1810" x2="2325" y1="1800" x1="2325" />
+   </g>
+   <g z-index="22">
+      <text style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000" z-index="0" y="1843.25" x="2311.25">Hyperdiploid</text>
+   </g>
+   <g z-index="23">
+      <line style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="1810" x2="2775" y1="1800" x1="2775" />
+   </g>
+   <g z-index="24">
+      <text style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000" z-index="0" y="1843.25" x="2763.25">Proliferation</text>
+   </g>
+   <g z-index="25">
+      <line style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="1810" x2="3225" y1="1800" x1="3225" />
+   </g>
+   <g z-index="26">
+      <text style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000" z-index="0" y="1843.25" x="3195.25">Low bone disease</text>
+   </g>
+   <g z-index="27">
+      <line style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="250" x2="300" y1="1800" x1="300" />
+   </g>
+   <g z-index="28">
+      <line style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="1800" x2="290" y1="1800" x1="300" />
+   </g>
+   <g z-index="29">
+      <text style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000" z-index="0" y="1821.6178" x="308.75217">0</text>
+   </g>
+   <g z-index="30">
+      <line style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="1645" x2="290" y1="1645" x1="300" />
+   </g>
+   <g z-index="31">
+      <text style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000" z-index="0" y="1666.6178" x="292.64542">150</text>
+   </g>
+   <g z-index="32">
+      <line style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="1490" x2="290" y1="1490" x1="300" />
+   </g>
+   <g z-index="33">
+      <text style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000" z-index="0" y="1511.6178" x="292.64542">300</text>
+   </g>
+   <g z-index="34">
+      <line style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="1335" x2="290" y1="1335" x1="300" />
+   </g>
+   <g z-index="35">
+      <text style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000" z-index="0" y="1356.6178" x="292.64542">450</text>
+   </g>
+   <g z-index="36">
+      <line style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="1180" x2="290" y1="1180" x1="300" />
+   </g>
+   <g z-index="37">
+      <text style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000" z-index="0" y="1201.6178" x="292.64542">600</text>
+   </g>
+   <g z-index="38">
+      <line style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="1025" x2="290" y1="1025" x1="300" />
+   </g>
+   <g z-index="39">
+      <text style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000" z-index="0" y="1046.6179" x="292.64542">750</text>
+   </g>
+   <g z-index="40">
+      <line style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="870" x2="290" y1="870" x1="300" />
+   </g>
+   <g z-index="41">
+      <text style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000" z-index="0" y="891.61786" x="292.64542">900</text>
+   </g>
+   <g z-index="42">
+      <line style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="715" x2="290" y1="715" x1="300" />
+   </g>
+   <g z-index="43">
+      <text style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000" z-index="0" y="736.61786" x="284.59204">1050</text>
+   </g>
+   <g z-index="44">
+      <line style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="560" x2="290" y1="560" x1="300" />
+   </g>
+   <g z-index="45">
+      <text style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000" z-index="0" y="581.61786" x="284.59204">1200</text>
+   </g>
+   <g z-index="46">
+      <line style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="405" x2="290" y1="405" x1="300" />
+   </g>
+   <g z-index="47">
+      <text style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000" z-index="0" y="426.61783" x="284.59204">1350</text>
+   </g>
+   <g z-index="48">
+      <line style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" z-index="0" y2="250" x2="290" y1="250" x1="300" />
+   </g>
+   <g z-index="49">
+      <text style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000" z-index="0" y="271.61786" x="284.59204">1500</text>
+   </g>
+   <g z-index="50">
+      <text style="font-style: strong;font-weight:bold;font-size: 37.5px;font-family: Microsoft YaHei;color: black;fill: #000000" z-index="0" y="1097.6393" x="259.39584">DEPDC1</text>
+   </g>
+   <g z-index="51">
+      <line style="stroke: #FF0000; stroke-width: 6px; stroke-dash: dash;" z-index="0" y2="1501.0897" x2="3450" y1="1501.0897" x1="300" stroke-dasharray="8 4" />
+   </g>
+   <g z-index="52">
+      <rect style="fill: #D02823" z-index="0" height="410" width="292" y="1259" x="379" />
+   </g>
+   <g z-index="53">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="1128" x2="598" y1="1128" x1="452" />
+   </g>
+   <g z-index="54">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="1780" x2="598" y1="1780" x1="452" />
+   </g>
+   <g z-index="55">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="1519" x2="671" y1="1519" x1="379" />
+   </g>
+   <g z-index="56">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="1521" x2="671" y1="1521" x1="379" />
+   </g>
+   <g z-index="57">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="1523" x2="671" y1="1523" x1="379" />
+   </g>
+   <g z-index="58">
+      <line style="stroke: #D02823; stroke-width: 2px; stroke-dash: dash;" z-index="0" y2="1669" x2="525" y1="1780" x1="525" stroke-dasharray="8 4" />
+   </g>
+   <g z-index="59">
+      <line style="stroke: #D02823; stroke-width: 2px; stroke-dash: dash;" z-index="0" y2="1333" x2="525" y1="1128" x1="525" stroke-dasharray="8 4" />
+   </g>
+   <g z-index="60">
+      <rect style="fill: #0491D0" z-index="0" height="236" width="292" y="1386" x="829" />
+   </g>
+   <g z-index="61">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="1187" x2="1048" y1="1187" x1="902" />
+   </g>
+   <g z-index="62">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="1778" x2="1048" y1="1778" x1="902" />
+   </g>
+   <g z-index="63">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="1553" x2="1121" y1="1553" x1="829" />
+   </g>
+   <g z-index="64">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="1555" x2="1121" y1="1555" x1="829" />
+   </g>
+   <g z-index="65">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="1557" x2="1121" y1="1557" x1="829" />
+   </g>
+   <g z-index="66">
+      <line style="stroke: #0491D0; stroke-width: 2px; stroke-dash: dash;" z-index="0" y2="1654" x2="975" y1="1778" x1="975" stroke-dasharray="8 4" />
+   </g>
+   <g z-index="67">
+      <line style="stroke: #0491D0; stroke-width: 2px; stroke-dash: dash;" z-index="0" y2="1461" x2="975" y1="1187" x1="975" stroke-dasharray="8 4" />
+   </g>
+   <g z-index="68">
+      <rect style="fill: #F2CE3F" z-index="0" height="405" width="292" y="1284" x="1279" />
+   </g>
+   <g z-index="69">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="855" x2="1498" y1="855" x1="1352" />
+   </g>
+   <g z-index="70">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="1778" x2="1498" y1="1778" x1="1352" />
+   </g>
+   <g z-index="71">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="1511" x2="1571" y1="1511" x1="1279" />
+   </g>
+   <g z-index="72">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="1513" x2="1571" y1="1513" x1="1279" />
+   </g>
+   <g z-index="73">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="1515" x2="1571" y1="1515" x1="1279" />
+   </g>
+   <g z-index="74">
+      <line style="stroke: #F2CE3F; stroke-width: 2px; stroke-dash: dash;" z-index="0" y2="1689" x2="1425" y1="1778" x1="1425" stroke-dasharray="8 4" />
+   </g>
+   <g z-index="75">
+      <line style="stroke: #F2CE3F; stroke-width: 2px; stroke-dash: dash;" z-index="0" y2="1284" x2="1425" y1="855" x1="1425" stroke-dasharray="8 4" />
+   </g>
+   <g z-index="76">
+      <rect style="fill: #583B73" z-index="0" height="483" width="292" y="1182" x="1729" />
+   </g>
+   <g z-index="77">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="648" x2="1948" y1="648" x1="1802" />
+   </g>
+   <g z-index="78">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="1772" x2="1948" y1="1772" x1="1802" />
+   </g>
+   <g z-index="79">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="1540" x2="2021" y1="1540" x1="1729" />
+   </g>
+   <g z-index="80">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="1542" x2="2021" y1="1542" x1="1729" />
+   </g>
+   <g z-index="81">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="1544" x2="2021" y1="1544" x1="1729" />
+   </g>
+   <g z-index="82">
+      <line style="stroke: #583B73; stroke-width: 2px; stroke-dash: dash;" z-index="0" y2="1665" x2="1875" y1="1772" x1="1875" stroke-dasharray="8 4" />
+   </g>
+   <g z-index="83">
+      <line style="stroke: #583B73; stroke-width: 2px; stroke-dash: dash;" z-index="0" y2="1182" x2="1875" y1="648" x1="1875" stroke-dasharray="8 4" />
+   </g>
+   <g z-index="84">
+      <rect style="fill: #88BB64" z-index="0" height="189" width="292" y="1555" x="2179" />
+   </g>
+   <g z-index="85">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="1336" x2="2398" y1="1336" x1="2252" />
+   </g>
+   <g z-index="86">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="1782" x2="2398" y1="1782" x1="2252" />
+   </g>
+   <g z-index="87">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="1630" x2="2471" y1="1630" x1="2179" />
+   </g>
+   <g z-index="88">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="1632" x2="2471" y1="1632" x1="2179" />
+   </g>
+   <g z-index="89">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="1634" x2="2471" y1="1634" x1="2179" />
+   </g>
+   <g z-index="90">
+      <line style="stroke: #88BB64; stroke-width: 2px; stroke-dash: dash;" z-index="0" y2="1745" x2="2325" y1="1782" x1="2325" stroke-dasharray="8 4" />
+   </g>
+   <g z-index="91">
+      <line style="stroke: #88BB64; stroke-width: 2px; stroke-dash: dash;" z-index="0" y2="1555" x2="2325" y1="1336" x1="2325" stroke-dasharray="8 4" />
+   </g>
+   <g z-index="92">
+      <rect style="fill: #8858BF" z-index="0" height="456" width="292" y="1003" x="2629" />
+   </g>
+   <g z-index="93">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="364" x2="2848" y1="364" x1="2702" />
+   </g>
+   <g z-index="94">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="1738" x2="2848" y1="1738" x1="2702" />
+   </g>
+   <g z-index="95">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="1207" x2="2921" y1="1207" x1="2629" />
+   </g>
+   <g z-index="96">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="1209" x2="2921" y1="1209" x1="2629" />
+   </g>
+   <g z-index="97">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="1211" x2="2921" y1="1211" x1="2629" />
+   </g>
+   <g z-index="98">
+      <line style="stroke: #8858BF; stroke-width: 2px; stroke-dash: dash;" z-index="0" y2="1459" x2="2775" y1="1738" x1="2775" stroke-dasharray="8 4" />
+   </g>
+   <g z-index="99">
+      <line style="stroke: #8858BF; stroke-width: 2px; stroke-dash: dash;" z-index="0" y2="1003" x2="2775" y1="364" x1="2775" stroke-dasharray="8 4" />
+   </g>
+   <g z-index="100">
+      <rect style="fill: #15DBFF" z-index="0" height="147" width="292" y="1560" x="3079" />
+   </g>
+   <g z-index="101">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="1384" x2="3298" y1="1384" x1="3152" />
+   </g>
+   <g z-index="102">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="1779" x2="3298" y1="1779" x1="3152" />
+   </g>
+   <g z-index="103">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="1647" x2="3371" y1="1647" x1="3079" />
+   </g>
+   <g z-index="104">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="1649" x2="3371" y1="1649" x1="3079" />
+   </g>
+   <g z-index="105">
+      <line style="stroke: #000000; stroke-width: 2px; stroke-dash: solid;" z-index="0" y2="1651" x2="3371" y1="1651" x1="3079" />
+   </g>
+   <g z-index="106">
+      <line style="stroke: #15DBFF; stroke-width: 2px; stroke-dash: dash;" z-index="0" y2="1734" x2="3225" y1="1779" x1="3225" stroke-dasharray="8 4" />
+   </g>
+   <g z-index="107">
+      <line style="stroke: #15DBFF; stroke-width: 2px; stroke-dash: dash;" z-index="0" y2="1575" x2="3225" y1="1384" x1="3225" stroke-dasharray="8 4" />
+   </g>
+   <g z-index="108">
+      <path style="fill: #000000" z-index="0" d="M 505.6446,1249.05 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="109">
+      <path style="fill: #000000" z-index="0" d="M 514.51764,1451.3767 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="110">
+      <path style="fill: #000000" z-index="0" d="M 566.4122,1323.2433 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="111">
+      <path style="fill: #000000" z-index="0" d="M 517.83484,1598.0067 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="112">
+      <path style="fill: #000000" z-index="0" d="M 499.85544,1757.76 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="113">
+      <path style="fill: #000000" z-index="0" d="M 559.7707,1508.6233 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="114">
+      <path style="fill: #000000" z-index="0" d="M 478.05652,1659.18 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="115">
+      <path style="fill: #000000" z-index="0" d="M 547.5526,1298.96 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="116">
+      <path style="fill: #000000" z-index="0" d="M 463.73108,1225.18 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="117">
+      <path style="fill: #000000" z-index="0" d="M 579.8444,524.37335 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="118">
+      <path style="fill: #000000" z-index="0" d="M 533.7755,1687.7 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="119">
+      <path style="fill: #000000" z-index="0" d="M 470.701,1464.2933 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="120">
+      <path style="fill: #000000" z-index="0" d="M 505.8344,1580.9567 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="121">
+      <path style="fill: #000000" z-index="0" d="M 476.43277,1370.57 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="122">
+      <path style="fill: #000000" z-index="0" d="M 463.96225,1472.9734 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="123">
+      <path style="fill: #000000" z-index="0" d="M 464.411,1740.8134 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="124">
+      <path style="fill: #000000" z-index="0" d="M 480.12976,1512.1367 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="125">
+      <path style="fill: #000000" z-index="0" d="M 509.40234,1666.2067 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="126">
+      <path style="fill: #000000" z-index="0" d="M 547.20734,1117.8167 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="127">
+      <path style="fill: #000000" z-index="0" d="M 566.45746,1769.6433 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="128">
+      <path style="fill: #000000" z-index="0" d="M 548.30304,579.86334 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="129">
+      <path style="fill: #000000" z-index="0" d="M 479.8289,1508.7267 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="130">
+      <path style="fill: #000000" z-index="0" d="M 929.1141,1768.1967 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="131">
+      <path style="fill: #000000" z-index="0" d="M 938.9999,1281.29 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="132">
+      <path style="fill: #000000" z-index="0" d="M 955.40314,1330.9933 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="133">
+      <path style="fill: #000000" z-index="0" d="M 909.19684,1375.53 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="134">
+      <path style="fill: #000000" z-index="0" d="M 951.26337,1734.7167 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="135">
+      <path style="fill: #000000" z-index="0" d="M 995.9382,1292.14 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="136">
+      <path style="fill: #000000" z-index="0" d="M 1025.6102,1725.3134 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="137">
+      <path style="fill: #000000" z-index="0" d="M 947.67523,1643.5767 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="138">
+      <path style="fill: #000000" z-index="0" d="M 929.248,1245.2267 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="139">
+      <path style="fill: #000000" z-index="0" d="M 912.81805,1477.1067 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="140">
+      <path style="fill: #000000" z-index="0" d="M 928.97955,1537.35 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="141">
+      <path style="fill: #000000" z-index="0" d="M 999.5188,859.17334 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="142">
+      <path style="fill: #000000" z-index="0" d="M 969.02496,1506.97 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="143">
+      <path style="fill: #000000" z-index="0" d="M 933.13574,1582.4033 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="144">
+      <path style="fill: #000000" z-index="0" d="M 1011.92896,1755.7966 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="145">
+      <path style="fill: #000000" z-index="0" d="M 906.17615,1586.95 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="146">
+      <path style="fill: #000000" z-index="0" d="M 907.6997,1290.9 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="147">
+      <path style="fill: #000000" z-index="0" d="M 968.71747,1529.91 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="148">
+      <path style="fill: #000000" z-index="0" d="M 911.72626,1450.86 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="149">
+      <path style="fill: #000000" z-index="0" d="M 904.8586,1176.6133 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="150">
+      <path style="fill: #000000" z-index="0" d="M 926.66315,1767.37 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="151">
+      <path style="fill: #000000" z-index="0" d="M 957.12866,1662.59 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="152">
+      <path style="fill: #000000" z-index="0" d="M 994.1457,1320.8667 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="153">
+      <path style="fill: #000000" z-index="0" d="M 974.80396,1512.55 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="154">
+      <path style="fill: #000000" z-index="0" d="M 935.3923,1323.3467 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="155">
+      <path style="fill: #000000" z-index="0" d="M 997.5515,1536.73 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="156">
+      <path style="fill: #000000" z-index="0" d="M 936.0569,1536.6267 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="157">
+      <path style="fill: #000000" z-index="0" d="M 950.6725,1595.32 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="158">
+      <path style="fill: #000000" z-index="0" d="M 998.2812,1548.4066 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="159">
+      <path style="fill: #000000" z-index="0" d="M 911.1166,1708.3667 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="160">
+      <path style="fill: #000000" z-index="0" d="M 938.3585,1597.0767 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="161">
+      <path style="fill: #000000" z-index="0" d="M 902.5584,1673.0266 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="162">
+      <path style="fill: #000000" z-index="0" d="M 977.5008,1529.4967 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="163">
+      <path style="fill: #000000" z-index="0" d="M 923.31573,1589.2234 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="164">
+      <path style="fill: #000000" z-index="0" d="M 932.90356,1542.62 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="165">
+      <path style="fill: #000000" z-index="0" d="M 974.9123,1678.9166 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="166">
+      <path style="fill: #000000" z-index="0" d="M 909.93164,1507.59 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="167">
+      <path style="fill: #000000" z-index="0" d="M 938.15857,1552.6433 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="168">
+      <path style="fill: #000000" z-index="0" d="M 956.0074,1455.9233 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="169">
+      <path style="fill: #000000" z-index="0" d="M 964.61835,1578.9933 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="170">
+      <path style="fill: #000000" z-index="0" d="M 1004.4424,1611.3367 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="171">
+      <path style="fill: #000000" z-index="0" d="M 998.55585,1700.2034 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="172">
+      <path style="fill: #000000" z-index="0" d="M 998.09644,1551.61 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="173">
+      <path style="fill: #000000" z-index="0" d="M 1418.4574,1590.67 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="174">
+      <path style="fill: #000000" z-index="0" d="M 1474.2214,1599.1433 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="175">
+      <path style="fill: #000000" z-index="0" d="M 1438.8156,1353.21 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="176">
+      <path style="fill: #000000" z-index="0" d="M 1439.9078,1713.74 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="177">
+      <path style="fill: #000000" z-index="0" d="M 1463.3265,1225.8 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="178">
+      <path style="fill: #000000" z-index="0" d="M 1384.982,1699.2733 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="179">
+      <path style="fill: #000000" z-index="0" d="M 1371.4536,1649.4667 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="180">
+      <path style="fill: #000000" z-index="0" d="M 1399.2026,1767.7833 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="181">
+      <path style="fill: #000000" z-index="0" d="M 1375.9899,1361.4767 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="182">
+      <path style="fill: #000000" z-index="0" d="M 1452.2312,1593.8733 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="183">
+      <path style="fill: #000000" z-index="0" d="M 1440.9445,1493.33 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="184">
+      <path style="fill: #000000" z-index="0" d="M 1350.6658,1450.0333 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="185">
+      <path style="fill: #000000" z-index="0" d="M 1454.4854,1733.4767 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="186">
+      <path style="fill: #000000" z-index="0" d="M 1427.3542,1032.2567 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="187">
+      <path style="fill: #000000" z-index="0" d="M 1463.0992,1242.85 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="188">
+      <path style="fill: #000000" z-index="0" d="M 1456.3046,1502.4233 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="189">
+      <path style="fill: #000000" z-index="0" d="M 1436.2119,1491.6766 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="190">
+      <path style="fill: #000000" z-index="0" d="M 1407.3813,1541.07 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="191">
+      <path style="fill: #000000" z-index="0" d="M 1422.4377,1622.4967 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="192">
+      <path style="fill: #000000" z-index="0" d="M 1431.894,1693.1766 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="193">
+      <path style="fill: #000000" z-index="0" d="M 1365.6313,1245.5366 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="194">
+      <path style="fill: #000000" z-index="0" d="M 1456.9595,1496.5333 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="195">
+      <path style="fill: #000000" z-index="0" d="M 1373.9211,1726.9667 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="196">
+      <path style="fill: #000000" z-index="0" d="M 1369.518,1227.8667 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="197">
+      <path style="fill: #000000" z-index="0" d="M 1393.2092,932.43665 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="198">
+      <path style="fill: #000000" z-index="0" d="M 1347.7322,1273.7467 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="199">
+      <path style="fill: #000000" z-index="0" d="M 1384.5166,1162.0433 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="200">
+      <path style="fill: #000000" z-index="0" d="M 1478.7445,1738.0233 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="201">
+      <path style="fill: #000000" z-index="0" d="M 1452.0411,1483.6167 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="202">
+      <path style="fill: #000000" z-index="0" d="M 1360.2101,1746.4967 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="203">
+      <path style="fill: #000000" z-index="0" d="M 1429.6079,1260.83 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="204">
+      <path style="fill: #000000" z-index="0" d="M 1382.9163,845.12 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="205">
+      <path style="fill: #000000" z-index="0" d="M 1410.6073,1401.3633 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="206">
+      <path style="fill: #000000" z-index="0" d="M 1441.5322,1692.04 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="207">
+      <path style="fill: #000000" z-index="0" d="M 1373.1882,1650.5 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="208">
+      <path style="fill: #000000" z-index="0" d="M 1433.0825,1500.8733 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="209">
+      <path style="fill: #000000" z-index="0" d="M 1429.0767,1350.0067 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="210">
+      <path style="fill: #000000" z-index="0" d="M 1355.1437,1701.8567 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="211">
+      <path style="fill: #000000" z-index="0" d="M 1405.2303,1619.81 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="212">
+      <path style="fill: #000000" z-index="0" d="M 1363.1904,1535.18 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="213">
+      <path style="fill: #000000" z-index="0" d="M 1424.3276,1747.7367 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="214">
+      <path style="fill: #000000" z-index="0" d="M 1444.414,1308.3633 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="215">
+      <path style="fill: #000000" z-index="0" d="M 1359.8687,1678.71 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="216">
+      <path style="fill: #000000" z-index="0" d="M 1382.8271,936.36334 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="217">
+      <path style="fill: #000000" z-index="0" d="M 1919.0563,1570.9333 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="218">
+      <path style="fill: #000000" z-index="0" d="M 1820.15,777.85 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="219">
+      <path style="fill: #000000" z-index="0" d="M 1860.9182,1727.5867 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="220">
+      <path style="fill: #000000" z-index="0" d="M 1930.0581,1742.88 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="221">
+      <path style="fill: #000000" z-index="0" d="M 1829.3324,846.25665 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="222">
+      <path style="fill: #000000" z-index="0" d="M 1864.354,1407.2533 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="223">
+      <path style="fill: #000000" z-index="0" d="M 1902.2955,1654.9434 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="224">
+      <path style="fill: #000000" z-index="0" d="M 1804.737,1633.5533 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="225">
+      <path style="fill: #000000" z-index="0" d="M 1829.5046,1598.8334 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="226">
+      <path style="fill: #000000" z-index="0" d="M 1814.1619,1529.91 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="227">
+      <path style="fill: #000000" z-index="0" d="M 1879.9651,638.24664 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="228">
+      <path style="fill: #000000" z-index="0" d="M 1893.9979,646.5133 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="229">
+      <path style="fill: #000000" z-index="0" d="M 1897.8003,1762.41 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="230">
+      <path style="fill: #000000" z-index="0" d="M 1866.7976,1581.06 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="231">
+      <path style="fill: #000000" z-index="0" d="M 1844.1986,1672.6133 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="232">
+      <path style="fill: #000000" z-index="0" d="M 1913.0944,1171.86 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="233">
+      <path style="fill: #000000" z-index="0" d="M 1797.9655,1723.1433 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="234">
+      <path style="fill: #000000" z-index="0" d="M 1825.2091,1448.1733 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="235">
+      <path style="fill: #000000" z-index="0" d="M 1879.6615,1364.37 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="236">
+      <path style="fill: #000000" z-index="0" d="M 1813.2799,1254.63 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="237">
+      <path style="fill: #000000" z-index="0" d="M 1820.1233,1541.38 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="238">
+      <path style="fill: #000000" z-index="0" d="M 2305.5283,1437.0133 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="239">
+      <path style="fill: #000000" z-index="0" d="M 2322.5583,1630.7633 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="240">
+      <path style="fill: #000000" z-index="0" d="M 2260.4531,1587.9833 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="241">
+      <path style="fill: #000000" z-index="0" d="M 2301.666,1596.4567 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="242">
+      <path style="fill: #000000" z-index="0" d="M 2277.5166,1644.4033 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="243">
+      <path style="fill: #000000" z-index="0" d="M 2274.7278,1749.1833 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="244">
+      <path style="fill: #000000" z-index="0" d="M 2328.568,1326.3434 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="245">
+      <path style="fill: #000000" z-index="0" d="M 2249.651,1736.37 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="246">
+      <path style="fill: #000000" z-index="0" d="M 2306.7473,1646.9867 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="247">
+      <path style="fill: #000000" z-index="0" d="M 2255.0664,1599.5566 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="248">
+      <path style="fill: #000000" z-index="0" d="M 2303.7175,1757.0366 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="249">
+      <path style="fill: #000000" z-index="0" d="M 2344.5908,1738.85 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="250">
+      <path style="fill: #000000" z-index="0" d="M 2373.594,1619.9133 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="251">
+      <path style="fill: #000000" z-index="0" d="M 2282.9617,1510.38 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="252">
+      <path style="fill: #000000" z-index="0" d="M 2270.5593,1482.9967 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="253">
+      <path style="fill: #000000" z-index="0" d="M 2319.314,1419.86 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="254">
+      <path style="fill: #000000" z-index="0" d="M 2286.9585,1648.8467 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="255">
+      <path style="fill: #000000" z-index="0" d="M 2346.912,1460.6766 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="256">
+      <path style="fill: #000000" z-index="0" d="M 2285.187,1662.4867 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="257">
+      <path style="fill: #000000" z-index="0" d="M 2290.4146,1553.47 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="258">
+      <path style="fill: #000000" z-index="0" d="M 2322.3708,1582.1967 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="259">
+      <path style="fill: #000000" z-index="0" d="M 2250.9116,1577.03 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="260">
+      <path style="fill: #000000" z-index="0" d="M 2293.9456,1725.52 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="261">
+      <path style="fill: #000000" z-index="0" d="M 2259.0671,1596.0433 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="262">
+      <path style="fill: #000000" z-index="0" d="M 2311.6904,1569.3833 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="263">
+      <path style="fill: #000000" z-index="0" d="M 2367.7822,1682.0167 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="264">
+      <path style="fill: #000000" z-index="0" d="M 2259.779,1606.6866 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="265">
+      <path style="fill: #000000" z-index="0" d="M 2343.445,1542.5167 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="266">
+      <path style="fill: #000000" z-index="0" d="M 2324.636,1743.19 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="267">
+      <path style="fill: #000000" z-index="0" d="M 2262.725,1570.1067 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="268">
+      <path style="fill: #000000" z-index="0" d="M 2296.6187,1594.9066 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="269">
+      <path style="fill: #000000" z-index="0" d="M 2262.2524,1738.3334 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="270">
+      <path style="fill: #000000" z-index="0" d="M 2379.0889,1367.6766 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="271">
+      <path style="fill: #000000" z-index="0" d="M 2260.2039,1761.9967 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="272">
+      <path style="fill: #000000" z-index="0" d="M 2311.028,1611.3367 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="273">
+      <path style="fill: #000000" z-index="0" d="M 2330.0916,1675.61 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="274">
+      <path style="fill: #000000" z-index="0" d="M 2297.965,1451.5834 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="275">
+      <path style="fill: #000000" z-index="0" d="M 2325.892,1760.3434 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="276">
+      <path style="fill: #000000" z-index="0" d="M 2249.3157,1660.73 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="277">
+      <path style="fill: #000000" z-index="0" d="M 2287.1262,1748.3567 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="278">
+      <path style="fill: #000000" z-index="0" d="M 2271.2273,1734.6133 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="279">
+      <path style="fill: #000000" z-index="0" d="M 2252.5862,1733.3733 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="280">
+      <path style="fill: #000000" z-index="0" d="M 2355.2573,1771.8134 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="281">
+      <path style="fill: #000000" z-index="0" d="M 2256.5955,1564.2167 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="282">
+      <path style="fill: #000000" z-index="0" d="M 2273.7476,1748.8733 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="283">
+      <path style="fill: #000000" z-index="0" d="M 2381.907,1745.36 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="284">
+      <path style="fill: #000000" z-index="0" d="M 2356.7063,1487.8534 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="285">
+      <path style="fill: #000000" z-index="0" d="M 2281.336,1554.6067 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="286">
+      <path style="fill: #000000" z-index="0" d="M 2271.1394,1756.4166 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="287">
+      <path style="fill: #000000" z-index="0" d="M 2291.2803,1744.0167 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="288">
+      <path style="fill: #000000" z-index="0" d="M 2343.5068,1406.7367 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="289">
+      <path style="fill: #000000" z-index="0" d="M 2310.7969,1645.6433 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="290">
+      <path style="fill: #000000" z-index="0" d="M 2291.9744,1738.7467 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="291">
+      <path style="fill: #000000" z-index="0" d="M 2355.3652,1411.18 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="292">
+      <path style="fill: #000000" z-index="0" d="M 2330.2524,1667.6533 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="293">
+      <path style="fill: #000000" z-index="0" d="M 2302.1167,1522.3667 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="294">
+      <path style="fill: #000000" z-index="0" d="M 2276.113,1749.5967 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="295">
+      <path style="fill: #000000" z-index="0" d="M 2248.886,1711.26 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="296">
+      <path style="fill: #000000" z-index="0" d="M 2372.4756,1554.2966 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="297">
+      <path style="fill: #000000" z-index="0" d="M 2292.2344,1689.56 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="298">
+      <path style="fill: #000000" z-index="0" d="M 2262.4487,1403.9467 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="299">
+      <path style="fill: #000000" z-index="0" d="M 2367.623,1620.74 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="300">
+      <path style="fill: #000000" z-index="0" d="M 2307.515,1587.88 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="301">
+      <path style="fill: #000000" z-index="0" d="M 2291.5222,1511.8267 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="302">
+      <path style="fill: #000000" z-index="0" d="M 2340.9478,1634.4833 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="303">
+      <path style="fill: #000000" z-index="0" d="M 2288.965,1545.3066 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="304">
+      <path style="fill: #000000" z-index="0" d="M 2798.0022,617.4767 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="305">
+      <path style="fill: #000000" z-index="0" d="M 2810.8901,1203.0667 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="306">
+      <path style="fill: #000000" z-index="0" d="M 2804.4336,1598.6267 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="307">
+      <path style="fill: #000000" z-index="0" d="M 2772.9678,1432.26 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="308">
+      <path style="fill: #000000" z-index="0" d="M 2718.849,1727.8966 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="309">
+      <path style="fill: #000000" z-index="0" d="M 2793.5664,1051.3733 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="310">
+      <path style="fill: #000000" z-index="0" d="M 2795.0964,1532.2866 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="311">
+      <path style="fill: #000000" z-index="0" d="M 2830.5608,1243.3667 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="312">
+      <path style="fill: #000000" z-index="0" d="M 2716.6873,1452.8234 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="313">
+      <path style="fill: #000000" z-index="0" d="M 2767.285,984.31 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="314">
+      <path style="fill: #000000" z-index="0" d="M 2728.154,1197.1766 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="315">
+      <path style="fill: #000000" z-index="0" d="M 2734.85,1184.6733 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="316">
+      <path style="fill: #000000" z-index="0" d="M 2817.8196,1139.7234 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="317">
+      <path style="fill: #000000" z-index="0" d="M 2762.2832,1340.19 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="318">
+      <path style="fill: #000000" z-index="0" d="M 2708.576,950.31335 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="319">
+      <path style="fill: #000000" z-index="0" d="M 2810.943,353.97665 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="320">
+      <path style="fill: #000000" z-index="0" d="M 2769.8057,1270.5433 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="321">
+      <path style="fill: #000000" z-index="0" d="M 2730.8557,1233.24 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="322">
+      <path style="fill: #000000" z-index="0" d="M 2751.7183,744.57666 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="323">
+      <path style="fill: #000000" z-index="0" d="M 2818.3215,1342.05 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="324">
+      <path style="fill: #000000" z-index="0" d="M 2802.778,1074.83 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="325">
+      <path style="fill: #000000" z-index="0" d="M 2721.2234,992.68 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="326">
+      <path style="fill: #000000" z-index="0" d="M 2762.4517,1549.0266 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="327">
+      <path style="fill: #000000" z-index="0" d="M 2706.4114,1544.3767 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="328">
+      <path style="fill: #000000" z-index="0" d="M 2751.4785,1000.01666 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="329">
+      <path style="fill: #000000" z-index="0" d="M 2746.5789,1108.5167 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="330">
+      <path style="fill: #000000" z-index="0" d="M 2785.9165,1449 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="331">
+      <path style="fill: #000000" z-index="0" d="M 2789.5813,1479.69 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="332">
+      <path style="fill: #000000" z-index="0" d="M 2722.1775,781.7767 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="333">
+      <path style="fill: #000000" z-index="0" d="M 3186.1042,1300.7167 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="334">
+      <path style="fill: #000000" z-index="0" d="M 3227.5713,1623.1167 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="335">
+      <path style="fill: #000000" z-index="0" d="M 3211.235,1600.3833 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="336">
+      <path style="fill: #000000" z-index="0" d="M 3198.1477,1626.5266 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="337">
+      <path style="fill: #000000" z-index="0" d="M 3267.2827,1769.1267 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="338">
+      <path style="fill: #000000" z-index="0" d="M 3181.405,1740.9166 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="339">
+      <path style="fill: #000000" z-index="0" d="M 3278.3162,1651.6367 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="340">
+      <path style="fill: #000000" z-index="0" d="M 3209.4023,1692.5566 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="341">
+      <path style="fill: #000000" z-index="0" d="M 3230.6716,1748.8733 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="342">
+      <path style="fill: #000000" z-index="0" d="M 3169.9312,1683.7733 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="343">
+      <path style="fill: #000000" z-index="0" d="M 3282.4404,1761.5834 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="344">
+      <path style="fill: #000000" z-index="0" d="M 3248.2007,1637.17 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="345">
+      <path style="fill: #000000" z-index="0" d="M 3193.9136,1732.34 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="346">
+      <path style="fill: #000000" z-index="0" d="M 3236.178,1436.8066 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="347">
+      <path style="fill: #000000" z-index="0" d="M 3160.4675,1550.06 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="348">
+      <path style="fill: #000000" z-index="0" d="M 3171.4626,1605.4467 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="349">
+      <path style="fill: #000000" z-index="0" d="M 3273.763,1578.6833 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="350">
+      <path style="fill: #000000" z-index="0" d="M 3163.5667,1492.6067 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="351">
+      <path style="fill: #000000" z-index="0" d="M 3207.6924,1564.63 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="352">
+      <path style="fill: #000000" z-index="0" d="M 3181.1584,1689.0433 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="353">
+      <path style="fill: #000000" z-index="0" d="M 3184.0056,1460.47 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="354">
+      <path style="fill: #000000" z-index="0" d="M 3195.3174,1697.2067 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="355">
+      <path style="fill: #000000" z-index="0" d="M 3174.1592,1586.1233 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="356">
+      <path style="fill: #000000" z-index="0" d="M 3272.304,1374.1866 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="357">
+      <path style="fill: #000000" z-index="0" d="M 3255.1262,1640.89 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="358">
+      <path style="fill: #000000" z-index="0" d="M 3218.687,1759.5167 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="359">
+      <path style="fill: #000000" z-index="0" d="M 3224.2786,1767.5767 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="360">
+      <path style="fill: #000000" z-index="0" d="M 3195.9385,1526.81 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="361">
+      <path style="fill: #000000" z-index="0" d="M 3245.5222,1632.21 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="362">
+      <path style="fill: #000000" z-index="0" d="M 3168.989,1654.0133 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="363">
+      <path style="fill: #000000" z-index="0" d="M 3254.77,1723.66 a 10 10 0 1 1 0 1 z" />
+   </g>
+   <g z-index="364">
+      <text style="font-style: normal;font-size: 37.5px;font-family: Bookman Old Style;color: black;fill: #000000" z-index="0" y="287.5" x="347.5">ANOVA, p-value=3.99E-14</text>
+   </g>
+   <g z-index="365">
+      <text style="font-style: normal;font-size: 37.5px;font-family: Bookman Old Style;color: black;fill: #000000" z-index="0" y="549.37335" x="528.19666">*(0.028)</text>
+   </g>
+   <g z-index="366">
+      <text style="font-style: normal;font-size: 37.5px;font-family: Bookman Old Style;color: black;fill: #000000" z-index="0" y="663.24664" x="1878.1967">*(0.018)</text>
+   </g>
+   <g z-index="367">
+      <text style="font-style: normal;font-size: 37.5px;font-family: Bookman Old Style;color: black;fill: #000000" z-index="0" y="1351.3434" x="2302.9817">****(2.88E-05)</text>
+   </g>
+   <g z-index="368">
+      <text style="font-style: normal;font-size: 37.5px;font-family: Bookman Old Style;color: black;fill: #000000" z-index="0" y="378.97668" x="2749.3567">*****(4.74E-09)</text>
+   </g>
+   <g z-index="369">
+      <text style="font-style: normal;font-size: 37.5px;font-family: Bookman Old Style;color: black;fill: #000000" z-index="0" y="1325.7167" x="3220.9465">***(0.001)</text>
+   </g>
+   <g z-index="370">
+      <text style="font-style: strong;font-weight:bold;font-size: 50px;font-family: Cambria Math;color: black;fill: #000000" z-index="0" y="252" x="1790.2361">DEPDC1 ~ molecular_group</text>
+   </g>
+</svg>

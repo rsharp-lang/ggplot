@@ -20,7 +20,7 @@ Namespace layers
             Dim lineStroke As Pen = Stroke.TryParse(stream.theme.lineStroke).GDIObject
             Dim labelFont As Font = CSSFont.TryParse(stream.theme.tagCSS).GDIObject(g.Dpi)
             Dim allGroupData = getDataGroups(stream).ToArray
-            Dim colors = colorMap.ColorHandler(stream.ggplot, allGroupData.Select(Function(i) i.name).ToArray)
+            Dim colors As Func(Of Object, String) = getColors(stream, allGroupData.Select(Function(i) i.name))
             Dim y As DataScaler = stream.scale
             Dim bottom As Double = stream.canvas.PlotRegion.Bottom
 
