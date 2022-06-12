@@ -118,6 +118,7 @@ Public Class ggplot : Inherits Plot
     ''' </summary>
     ''' <returns></returns>
     Public Property driver As Drivers = Drivers.GDI
+    Public Property titleOffset As Double = 2
 
     ''' <summary>
     ''' the <see cref="data"/> template
@@ -415,15 +416,20 @@ Public Class ggplot : Inherits Plot
     End Sub
 
     Protected Sub Draw2DElements(g As IGraphics, canvas As GraphicsRegion, legends As List(Of IggplotLegendElement))
+        Dim legendGroups = From group As IggplotLegendElement
+                           In legends.SafeQuery
+                           Where Not group Is Nothing
+
         If Not main.StringEmpty Then
-            Call DrawMainTitle(g, canvas.PlotRegion, offsetFactor:=2)
+            Call DrawMainTitle(g, canvas.PlotRegion, offsetFactor:=titleOffset)
         End If
         If theme.drawLegend Then
-            Call DrawLegends(From group As IggplotLegendElement
-                             In legends.SafeQuery
-                             Where Not group Is Nothing, g:=g,
-                                                         canvas:=canvas,
-                                                         pos:=Nothing)
+            Call DrawLegends(
+                legends:=legendGroups,
+                g:=g,
+                canvas:=canvas,
+                pos:=Nothing
+            )
         End If
     End Sub
 
