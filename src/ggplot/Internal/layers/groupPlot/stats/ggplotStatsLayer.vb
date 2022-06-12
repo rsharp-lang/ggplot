@@ -42,7 +42,9 @@ Namespace layers
                 Dim x2 As Double = x(compare.group2)
                 Dim len As Double = stdNum.Abs(x1 - x2)
                 Dim left As Double = stdNum.Min(x1, x2)
-                Dim y As Double = stream.scale.TranslateY(stdNum.Max(group1.Max, group2.Max) * 1.025)
+                Dim y1 As Double = getLabelPosY(group1, stream.scale, factor:=1.025)
+                Dim y2 As Double = getLabelPosY(group2, stream.scale, factor:=1.025)
+                Dim y As Double = stdNum.Min(y1, y2)
                 Dim siglab As String = compare.psignif
 
                 lbsize = stream.g.MeasureString(siglab, font)

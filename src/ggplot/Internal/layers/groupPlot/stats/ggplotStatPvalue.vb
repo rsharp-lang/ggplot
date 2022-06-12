@@ -61,7 +61,7 @@ Namespace layers
                 End If
 
                 Dim x As Double = xscale(group.name) - lbsize.Width / 2
-                Dim y As Double = stream.scale.TranslateY(group.Max) - lbsize.Height * 1.125
+                Dim y As Double = getLabelPosY(group, stream.scale) - lbsize.Height * 1.125
 
                 Call stream.g.DrawString(sig, font, Brushes.Black, New PointF(x, y))
             Next

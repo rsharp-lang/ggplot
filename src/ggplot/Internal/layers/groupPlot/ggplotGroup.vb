@@ -1,6 +1,9 @@
 ﻿Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
+Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Imaging
+Imports Microsoft.VisualBasic.Math.LinearAlgebra
+Imports Microsoft.VisualBasic.Math.Quantile
 
 Namespace layers
 
@@ -25,6 +28,19 @@ Namespace layers
                     .value = group.Value.ToArray
                 }
             Next
+        End Function
+
+        Protected Function getLabelPosY(group As IEnumerable(Of Double), y As DataScaler, Optional factor As Double = 1) As Double
+            Dim groupVal As Double() = group.ToArray
+            Dim quartile = groupVal.Quartile
+            Dim outlier = groupVal.AsVector.Outlier(quartile)
+
+            If Not outlier.outlier.IsNullOrEmpty Then
+                quartile = outlier.normal.Quartile
+            End If
+
+            ' max
+            Return y.TranslateY(quartile.range.Max * factor)
         End Function
 
         Protected Function getDataGroups(stream As ggplotPipeline) As IEnumerable(Of NamedCollection(Of Double))
