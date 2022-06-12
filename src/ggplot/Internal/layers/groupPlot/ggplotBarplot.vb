@@ -17,7 +17,7 @@ Namespace layers
             Dim lineStroke As Pen = Stroke.TryParse(stream.theme.lineStroke).GDIObject
             Dim labelFont As Font = CSSFont.TryParse(stream.theme.tagCSS).GDIObject(g.Dpi)
             Dim allGroupData = getDataGroups(stream).ToArray
-            Dim colors = colorMap.ColorHandler(stream.ggplot, allGroupData.Select(Function(i) i.name).ToArray)
+            Dim colors As Func(Of Object, String) = getColors(stream, allGroupData.Select(Function(i) i.name))
             Dim y As DataScaler = stream.scale
             Dim bottom As Double = stream.canvas.PlotRegion.Bottom
 
@@ -27,8 +27,9 @@ Namespace layers
                 Dim yi As Double = y.TranslateY(mean)
                 Dim bar As New RectangleF(x - boxWidth / 2, yi, boxWidth, bottom - yi)
                 Dim color As String = colors(group.name)
+                Dim paint As Brush = color.GetBrush
 
-                Call g.FillRectangle(color.GetBrush, bar)
+                Call g.FillRectangle(paint, bar)
                 Call g.DrawRectangle(lineStroke, bar)
             Next
 

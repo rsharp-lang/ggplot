@@ -1,4 +1,5 @@
-﻿Imports ggplot.elements.legend
+﻿Imports ggplot.colors
+Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Imaging
@@ -10,6 +11,14 @@ Namespace layers
     Public MustInherit Class ggplotGroup : Inherits ggplotLayer
 
         Public Property groupWidth As Double = 0.5
+
+        Protected Function getColors(stream As ggplotPipeline, groupNames As IEnumerable(Of String)) As Func(Of Object, String)
+            If colorMap Is Nothing Then
+                colorMap = ggplotColorMap.CreateColorMap("Paper", alpha, stream.ggplot.environment)
+            End If
+
+            Return colorMap.ColorHandler(stream.ggplot, groupNames.ToArray)
+        End Function
 
         Public Shared Iterator Function getDataGroups(tags As String(), y As Double()) As IEnumerable(Of NamedCollection(Of Double))
             Dim data As New Dictionary(Of String, List(Of Double))
