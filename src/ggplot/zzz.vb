@@ -74,7 +74,8 @@ Public Class zzz
                 .Height = size.Height - padding.Vertical
             }
 
-            Call ggplot.Plot(dev.g, layout)
+            ggplot.clearCanvas = False
+            ggplot.Plot(dev.g, layout)
         End If
 
         Return Nothing

@@ -119,6 +119,7 @@ Public Class ggplot : Inherits Plot
     ''' <returns></returns>
     Public Property driver As Drivers = Drivers.GDI
     Public Property titleOffset As Double = 2
+    Public Property clearCanvas As Boolean = True
 
     ''' <summary>
     ''' the <see cref="data"/> template
@@ -176,7 +177,9 @@ Public Class ggplot : Inherits Plot
     Protected Overrides Sub PlotInternal(ByRef g As IGraphics, canvas As GraphicsRegion)
         Dim baseData As ggplotData = base.getGgplotData(Me)
 
-        Call g.Clear(theme.background.TranslateColor)
+        If clearCanvas Then
+            Call g.Clear(theme.background.TranslateColor)
+        End If
 
         If base.reader.isPlain2D Then
             Call plot2D(baseData, g, canvas)
