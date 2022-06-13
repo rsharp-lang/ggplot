@@ -22,7 +22,7 @@ Namespace layers
             Dim labelFont As Font = CSSFont.TryParse(stream.theme.tagCSS).GDIObject(g.Dpi)
             Dim allGroupData = getDataGroups(stream).ToArray
             Dim colors As Func(Of Object, String) = getColors(stream, allGroupData.Select(Function(i) i.name))
-            Dim gridPen As Pen = Stroke.TryParse(stream.theme.axisStroke)
+            Dim gridPen As Pen = Stroke.TryParse(stream.theme.gridStrokeX)
             Dim bottom = stream.canvas.PlotRegion.Bottom
             Dim top = stream.canvas.PlotRegion.Top
 
