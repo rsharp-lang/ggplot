@@ -22,11 +22,15 @@ Namespace layers
             Dim labelFont As Font = CSSFont.TryParse(stream.theme.tagCSS).GDIObject(g.Dpi)
             Dim allGroupData = getDataGroups(stream).ToArray
             Dim colors As Func(Of Object, String) = getColors(stream, allGroupData.Select(Function(i) i.name))
+            Dim gridPen As Pen = Stroke.TryParse(stream.theme.axisStroke)
+            Dim bottom = stream.canvas.PlotRegion.Bottom
+            Dim top = stream.canvas.PlotRegion.Top
 
             For Each group As NamedCollection(Of Double) In allGroupData
                 Dim x As Double = xscale(group.name)
                 Dim color As String = colors(group.name)
 
+                Call g.DrawLine(gridPen, New PointF(x, top), New PointF(x, bottom))
                 Call Violin.PlotViolin(
                     group:=group,
                     x:=x,

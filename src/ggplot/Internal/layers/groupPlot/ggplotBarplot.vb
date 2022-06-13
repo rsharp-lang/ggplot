@@ -20,6 +20,8 @@ Namespace layers
             Dim colors As Func(Of Object, String) = getColors(stream, allGroupData.Select(Function(i) i.name))
             Dim y As DataScaler = stream.scale
             Dim bottom As Double = stream.canvas.PlotRegion.Bottom
+            Dim top As Double = stream.canvas.PlotRegion.Top
+            Dim line As Pen = Stroke.TryParse(stream.theme.axisStroke).GDIObject
 
             For Each group As NamedCollection(Of Double) In allGroupData
                 Dim x As Double = xscale(group.name)
@@ -29,6 +31,7 @@ Namespace layers
                 Dim color As String = colors(group.name)
                 Dim paint As Brush = color.GetBrush
 
+                Call g.DrawLine(line, New PointF(x, top), New PointF(x, bottom))
                 Call g.FillRectangle(paint, bar)
                 Call g.DrawRectangle(lineStroke, bar)
             Next

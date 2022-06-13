@@ -58,11 +58,13 @@ Namespace layers
             Dim binWidth As Double = DirectCast(stream.scale.X, d3js.scale.OrdinalScale).binWidth
             Dim yscale As YScaler = stream.scale
             Dim boxWidth As Double = binWidth * groupWidth
-            Dim lineStroke As Pen = Stroke.TryParse(stream.theme.lineStroke).GDIObject
+            Dim lineStroke As Pen = Stroke.TryParse(stream.theme.axisStroke).GDIObject
             Dim labelFont As Font = CSSFont.TryParse(stream.theme.tagCSS).GDIObject(g.Dpi)
             Dim allGroupData = getDataGroups(stream).ToArray
             Dim colors As Func(Of Object, String) = getColors(stream, allGroupData.Select(Function(i) i.name))
             Dim y As DataScaler = stream.scale
+            Dim bottom = stream.canvas.PlotRegion.Bottom
+            Dim top = stream.canvas.PlotRegion.Top
 
             For Each group As NamedCollection(Of Double) In allGroupData
                 Dim x As Double = xscale(group.name)
@@ -72,6 +74,7 @@ Namespace layers
                 }
                 Dim color As String = colors(group.name)
 
+                Call g.DrawLine(lineStroke, New PointF(x, top), New PointF(x, bottom))
                 Call Box.PlotBox(
                     group:=data,
                     x0:=x - boxWidth / 2,
