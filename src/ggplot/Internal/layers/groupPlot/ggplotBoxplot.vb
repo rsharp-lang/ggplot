@@ -81,7 +81,7 @@ Namespace layers
                     brush:=New SolidBrush(color),
                     boxWidth:=boxWidth,
                     fillBox:=True,
-                    lineWidth:=2,
+                    lineWidth:=5,
                     y:=y,
                     dotSize:=10,
                     showDataPoints:=False,

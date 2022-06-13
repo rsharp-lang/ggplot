@@ -3,7 +3,9 @@ Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Imaging
+Imports Microsoft.VisualBasic.Math
 Imports Microsoft.VisualBasic.MIME.Html.CSS
+Imports stdNum = System.Math
 
 Namespace layers
 
@@ -30,10 +32,21 @@ Namespace layers
                 Dim bar As New RectangleF(x - boxWidth / 2, yi, boxWidth, bottom - yi)
                 Dim color As Color = colors(group.name).TranslateColor.Alpha(255 * alpha)
                 Dim paint As New SolidBrush(color)
+                Dim std As Double = stdNum.Abs(group.SD)
 
                 Call g.DrawLine(line, New PointF(x, top), New PointF(x, bottom))
                 Call g.FillRectangle(paint, bar)
                 Call g.DrawRectangle(lineStroke, bar)
+
+                Dim y1 As Double = y.TranslateY(mean + std)
+                Dim y2 As Double = y.TranslateY(mean - std)
+                Dim widthInner As Double = boxWidth / 3
+                Dim line2 As New Pen(color, line.Width * 2)
+
+                Call g.DrawLine(line2, New PointF(x - widthInner, y1), New PointF(x + widthInner, y1))
+                Call g.DrawLine(line2, New PointF(x - widthInner, y2), New PointF(x + widthInner, y2))
+                Call g.DrawLine(line2, New PointF(x, y1), New PointF(x, yi))
+                Call g.DrawLine(line2, New PointF(x, y2), New PointF(x, yi))
             Next
 
             Return Nothing
