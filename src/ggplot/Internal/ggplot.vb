@@ -181,10 +181,14 @@ Public Class ggplot : Inherits Plot
             Call g.Clear(theme.background.TranslateColor)
         End If
 
-        If base.reader.isPlain2D Then
-            Call plot2D(baseData, g, canvas)
+        If baseData.x Is Nothing AndAlso baseData.y Is Nothing Then
+            Call Draw2DElements(g, canvas, New List(Of IggplotLegendElement))
         Else
-            Call plot3D(baseData, g, canvas)
+            If base.reader.isPlain2D Then
+                Call plot2D(baseData, g, canvas)
+            Else
+                Call plot3D(baseData, g, canvas)
+            End If
         End If
     End Sub
 
