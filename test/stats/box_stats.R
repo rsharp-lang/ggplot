@@ -12,8 +12,8 @@ plotBox = function() {
 	ggplot(myeloma, aes(x = "molecular_group", y = "DEPDC1"))
 	# Add horizontal line at base mean 
 	+ geom_hline(yintercept = mean(myeloma$DEPDC1), linetype="dash", line.width = 6, color = "red")
-	+ geom_boxplot(width = 0.65)
-	+ geom_jitter(width = 0.3)	
+	+ geom_boxplot(width = 0.65, alpha = 0.85)
+	+ geom_jitter(width = 0.3, alpha = 1)	
 	+ ggtitle("DEPDC1 ~ molecular_group")
 	+ ylab("DEPDC1")
 	+ xlab("")
@@ -28,8 +28,8 @@ plotBar = function() {
 	ggplot(myeloma, aes(x = "molecular_group", y = "DEPDC1"))
 	# Add horizontal line at base mean 
 	+ geom_hline(yintercept = mean(myeloma$DEPDC1), linetype="dash", line.width = 6, color = "red")
-	+ geom_barplot(width = 0.65)
-	+ geom_jitter(width = 0.3)
+	+ geom_barplot(width = 0.65, alpha = 0.85)
+	+ geom_jitter(width = 0.3, alpha = 1)
 	+ ggtitle("DEPDC1 ~ molecular_group")
 	+ ylab("DEPDC1")
 	+ xlab("")
@@ -44,8 +44,8 @@ plotViolin = function() {
 	ggplot(myeloma, aes(x = "molecular_group", y = "DEPDC1"))
 	# Add horizontal line at base mean 
 	+ geom_hline(yintercept = mean(myeloma$DEPDC1), linetype="dash", line.width = 6, color = "red")
-	+ geom_violin(width = 0.65)
-	+ geom_jitter(width = 0.3)	
+	+ geom_violin(width = 0.65, alpha = 0.85)
+	+ geom_jitter(width = 0.3, alpha = 1)	
 	+ ggtitle("DEPDC1 ~ molecular_group")
 	+ ylab("DEPDC1")
 	+ xlab("")

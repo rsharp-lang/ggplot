@@ -28,7 +28,7 @@ Namespace layers
 
             For Each group As NamedCollection(Of Double) In allGroupData
                 Dim x As Double = xscale(group.name)
-                Dim color As String = colors(group.name)
+                Dim color As Color = colors(group.name).TranslateColor.Alpha(alpha * 255)
 
                 Call g.DrawLine(gridPen, New PointF(x, top), New PointF(x, bottom))
                 Call Violin.PlotViolin(
@@ -40,7 +40,7 @@ Namespace layers
                     polygonStroke:=lineStroke,
                     showStats:=showStats,
                     labelFont:=labelFont,
-                    color:=color.TranslateColor,
+                    color:=color,
                     g:=g,
                     canvas:=stream.canvas,
                     theme:=stream.theme

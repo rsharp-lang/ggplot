@@ -28,8 +28,8 @@ Namespace layers
                 Dim mean As Double = group.Average
                 Dim yi As Double = y.TranslateY(mean)
                 Dim bar As New RectangleF(x - boxWidth / 2, yi, boxWidth, bottom - yi)
-                Dim color As String = colors(group.name)
-                Dim paint As Brush = color.GetBrush
+                Dim color As Color = colors(group.name).TranslateColor.Alpha(255 * alpha)
+                Dim paint As New SolidBrush(color)
 
                 Call g.DrawLine(line, New PointF(x, top), New PointF(x, bottom))
                 Call g.FillRectangle(paint, bar)

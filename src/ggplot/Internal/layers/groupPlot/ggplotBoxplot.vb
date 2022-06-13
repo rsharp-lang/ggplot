@@ -72,13 +72,13 @@ Namespace layers
                     .Name = group.name,
                     .Value = group.AsVector
                 }
-                Dim color As String = colors(group.name)
+                Dim color As Color = colors(group.name).TranslateColor.Alpha(alpha * 255)
 
                 Call g.DrawLine(lineStroke, New PointF(x, top), New PointF(x, bottom))
                 Call Box.PlotBox(
                     group:=data,
                     x0:=x - boxWidth / 2,
-                    brush:=New SolidBrush(color.TranslateColor),
+                    brush:=New SolidBrush(color),
                     boxWidth:=boxWidth,
                     fillBox:=True,
                     lineWidth:=2,
