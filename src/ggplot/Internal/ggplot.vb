@@ -50,6 +50,7 @@ Imports System.Drawing
 Imports System.Drawing.Imaging
 Imports System.IO
 Imports System.Runtime.CompilerServices
+Imports ggplot.elements
 Imports ggplot.elements.legend
 Imports ggplot.layers
 Imports ggplot.layers.layer3d
@@ -119,6 +120,12 @@ Public Class ggplot : Inherits Plot
     ''' <returns></returns>
     Public Property driver As Drivers = Drivers.GDI
     Public Property titleOffset As Double = 2
+    Public Property clearCanvas As Boolean = True
+    ''' <summary>
+    ''' works on 2D chart plot
+    ''' </summary>
+    ''' <returns></returns>
+    Public Property panelBorder As rectElement
 
     ''' <summary>
     ''' the <see cref="data"/> template
@@ -176,12 +183,18 @@ Public Class ggplot : Inherits Plot
     Protected Overrides Sub PlotInternal(ByRef g As IGraphics, canvas As GraphicsRegion)
         Dim baseData As ggplotData = base.getGgplotData(Me)
 
-        Call g.Clear(theme.background.TranslateColor)
+        If clearCanvas Then
+            Call g.Clear(theme.background.TranslateColor)
+        End If
 
-        If base.reader.isPlain2D Then
-            Call plot2D(baseData, g, canvas)
+        If baseData.x Is Nothing AndAlso baseData.y Is Nothing Then
+            Call Draw2DElements(g, canvas, New List(Of IggplotLegendElement))
         Else
-            Call plot3D(baseData, g, canvas)
+            If base.reader.isPlain2D Then
+                Call plot2D(baseData, g, canvas)
+            Else
+                Call plot3D(baseData, g, canvas)
+            End If
         End If
     End Sub
 
@@ -376,6 +389,15 @@ Public Class ggplot : Inherits Plot
 
         If reverse_y AndAlso y.Length > 0 Then
             Call reverse(y)
+        End If
+
+        If Not panelBorder Is Nothing Then
+            If Not panelBorder.fill.StringEmpty AndAlso panelBorder.fill <> "NA" Then
+                Call g.FillRectangle(panelBorder.fill.GetBrush, canvas.PlotRegion)
+            End If
+            If Not panelBorder.border Is Nothing Then
+                Call g.DrawRectangle(panelBorder.border.GDIObject, canvas.PlotRegion)
+            End If
         End If
 
         Call Axis.DrawAxis(
