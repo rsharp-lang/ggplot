@@ -108,6 +108,10 @@ Namespace options
                 theme.xAxisRotate = axis_text_x.angle
             End If
 
+            If Not panel_border Is Nothing Then
+                ggplot.panelBorder = panel_border
+            End If
+
             Return ggplot
         End Function
     End Class
