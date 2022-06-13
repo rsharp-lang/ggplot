@@ -62,6 +62,7 @@ Namespace options
         Public Property plot_title As textElement
         Public Property panel_background As String
         Public Property panel_grid As String
+        Public Property panel_border As rectElement
 
         Public Overrides Function Config(ggplot As ggplot) As ggplot
             Dim theme As Theme = ggplot.ggplotTheme
