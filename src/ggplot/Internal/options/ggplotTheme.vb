@@ -62,6 +62,7 @@ Namespace options
         Public Property plot_title As textElement
         Public Property panel_background As String
         Public Property panel_grid As String
+        Public Property panel_border As rectElement
 
         Public Overrides Function Config(ggplot As ggplot) As ggplot
             Dim theme As Theme = ggplot.ggplotTheme
@@ -105,6 +106,10 @@ Namespace options
 
             If Not axis_text_x Is Nothing Then
                 theme.xAxisRotate = axis_text_x.angle
+            End If
+
+            If Not panel_border Is Nothing Then
+                ggplot.panelBorder = panel_border
             End If
 
             Return ggplot

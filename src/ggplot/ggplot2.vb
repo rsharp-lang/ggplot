@@ -909,7 +909,8 @@ Public Module ggplot2
                           Optional plot_background As String = "white",
                           Optional plot_title As textElement = Nothing,
                           Optional panel_background As String = "white",
-                          Optional panel_grid As String = Stroke.AxisGridStroke) As ggplotOption
+                          Optional panel_grid As String = Stroke.AxisGridStroke,
+                          Optional panel_border As rectElement = Nothing) As ggplotOption
 
         Return New ggplotTheme With {
             .axis_text = axis_text,
@@ -923,7 +924,8 @@ Public Module ggplot2
             .plot_title = plot_title,
             .axis_title = axis_title,
             .legend_split = legend_split,
-            .axis_text_x = axis_text_x
+            .axis_text_x = axis_text_x,
+            .panel_border = panel_border
         }
     End Function
 
@@ -1111,6 +1113,54 @@ Public Module ggplot2
             .style = css,
             .color = color Or defaultTextColor,
             .angle = angle
+        }
+    End Function
+
+    ''' <summary>
+    ''' ## Theme elements
+    ''' 
+    ''' In conjunction with the theme system, the ``element_`` functions
+    ''' specify the display of how non-data components of the plot are 
+    ''' drawn.
+    ''' 
+    ''' borders and backgrounds.
+    ''' </summary>
+    ''' <param name="fill">Fill colour.</param>
+    ''' <param name="color">Line/border colour. Color is an alias for colour.</param>
+    ''' <param name="colour">Line/border colour. Color is an alias for colour.</param>
+    ''' <param name="size">Line/border size in mm; text size in pts.</param>
+    ''' <param name="linetype">
+    ''' Line type. An integer (0:8), a name (blank, solid, dashed, dotted, 
+    ''' dotdash, longdash, twodash), or a string with an even number (up 
+    ''' to eight) of hexadecimal digits which give the lengths in consecutive 
+    ''' positions in the string.
+    ''' </param>
+    ''' <param name="inherit_blank">
+    ''' Should this element inherit the existence of an element_blank 
+    ''' among its parents? If TRUE the existence of a blank element
+    ''' among its parents will cause this element to be blank as well. 
+    ''' If FALSE any blank parent element will be ignored when calculating
+    ''' final element state.
+    ''' </param>
+    ''' <returns></returns>
+    <ExportAPI("element_rect")>
+    Public Function element_rect(Optional fill As Object = NULL,
+                                 Optional colour As Object = NULL,
+                                 Optional size As Single = 1,
+                                 Optional linetype As DashStyle = DashStyle.Solid,
+                                 Optional color As Object = NULL,
+                                 Optional inherit_blank As Boolean = False,
+                                 Optional env As Environment = Nothing) As rectElement
+
+        Dim css As New Stroke
+
+        css.fill = RColorPalette.getColor(If(colour, color), [default]:=Nothing)
+        css.dash = linetype
+        css.width = size
+
+        Return New rectElement With {
+            .fill = RColorPalette.getColor(fill, [default]:=Nothing),
+            .border = css
         }
     End Function
 End Module
