@@ -1113,5 +1113,9 @@ Public Module ggplot2
             .angle = angle
         }
     End Function
+
+    Public Function element_rect() As rectelement
+
+    End Function
 End Module
 
