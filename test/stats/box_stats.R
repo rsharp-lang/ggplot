@@ -20,7 +20,11 @@ plotBox = function() {
 	+ scale_y_continuous(labels = "F0")
 	+ stat_compare_means(method = "anova", label.y = 1600) # Add global annova p-value 
     + stat_compare_means(label = "p.signif", method = "t.test", ref.group = ".all.", hide.ns = TRUE)# Pairwise comparison against all
-	+ theme(axis.text.x = element_text(angle = 45), plot.title = element_text(family = "Cambria Math", size = 16))
+	+ theme(
+		axis.text.x = element_text(angle = 45),
+		plot.title = element_text(family = "Cambria Math", size = 16),
+		panel.border = element_rect(size = 10, linetype = "Solid")
+	)
 	;
 }
 
@@ -36,7 +40,11 @@ plotBar = function() {
 	+ scale_y_continuous(labels = "F0")
 	+ stat_compare_means(method = "anova", label.y = 1600) # Add global annova p-value 
     + stat_compare_means(label = "p.signif", method = "t.test", ref.group = ".all.", hide.ns = TRUE)# Pairwise comparison against all
-	+ theme(axis.text.x = element_text(angle = 45), plot.title = element_text(family = "Cambria Math", size = 16))
+	+ theme(
+		axis.text.x = element_text(angle = 45), 
+		plot.title = element_text(family = "Cambria Math", size = 16),
+		panel.border = element_rect(size = 10, linetype = "Solid")
+	)
 	;
 }
 
@@ -52,7 +60,11 @@ plotViolin = function() {
 	+ scale_y_continuous(labels = "F0")
 	+ stat_compare_means(method = "anova", label.y = 1600) # Add global annova p-value 
     + stat_compare_means(label = "p.signif", method = "t.test", ref.group = ".all.", hide.ns = TRUE)# Pairwise comparison against all
-	+ theme(axis.text.x = element_text(angle = 45), plot.title = element_text(family = "Cambria Math", size = 16))
+	+ theme(
+		axis.text.x = element_text(angle = 45), 
+		plot.title = element_text(family = "Cambria Math", size = 16),
+		panel.border = element_rect(size = 10, linetype = "Solid")
+	)
 	;
 }
 

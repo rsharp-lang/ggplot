@@ -1160,7 +1160,7 @@ Public Module ggplot2
 
         Dim css As New Stroke
 
-        css.fill = RColorPalette.getColor(If(colour, color), [default]:=Nothing)
+        css.fill = RColorPalette.getColor(If(colour, color), [default]:="black")
         css.dash = linetype
         css.width = size
 
