@@ -71,6 +71,8 @@ Namespace ggraph.render
 
                     center = New PointF(center.X - radius / 2, center.Y - radius / 2)
                     g.DrawLegendShape(center, New SizeF(radius, radius), legendStyle, brush)
+
+                    Return New RectangleF(center, New SizeF(radius, radius))
                 End Function
 
             Dim renderNode As New NodeRendering(
