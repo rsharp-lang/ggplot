@@ -19,6 +19,12 @@ Namespace ggraph
 
     Public Class graphRender : Inherits ggplot
 
+        Public ReadOnly Property edgeWeightTitle As String
+            Get
+                Return args.getValue(Of String)("edge_weight.title", environment, [default]:="Edge Weight")
+            End Get
+        End Property
+
         Public Sub New(theme As Theme)
             MyBase.New(theme)
         End Sub
@@ -173,7 +179,7 @@ Namespace ggraph
 
                 y += deltaX
 
-                Call g.DrawString("Edge Weight", labelFont, Brushes.Black, New PointF(x, y))
+                Call g.DrawString(edgeWeightTitle, labelFont, Brushes.Black, New PointF(x, y))
 
                 ytop = y + w + 30
 
