@@ -57,8 +57,8 @@ Namespace ggraph.render
                 )
 
                 With stream.g.MeasureString(label.label.text, label.style)
-                    label.label.width = .Width
-                    label.label.height = .Height
+                    label.label.width = .Width * 2
+                    label.label.height = .Height * 2
                 End With
 
                 Call allLabels.Add(label)
