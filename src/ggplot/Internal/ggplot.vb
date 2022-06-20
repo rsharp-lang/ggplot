@@ -314,7 +314,7 @@ Public Class ggplot : Inherits Plot
         End If
 
         Dim yTicks = y.Range.CreateAxisTicks
-        Dim scaleX = d3js.scale.ordinal.domain(values:=[default].x).range(integers:={rect.Left, rect.Right})
+        Dim scaleX = d3js.scale.ordinal.domain(tags:=[default].x).range(integers:={rect.Left, rect.Right})
         Dim scaleY = d3js.scale.linear.domain(values:=yTicks).range(integers:={rect.Bottom, rect.Top})
         Dim scale As New DataScaler() With {
             .AxisTicks = (Nothing, yTicks.AsVector),
