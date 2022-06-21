@@ -252,7 +252,7 @@ Public Module ggplot2
                                Optional alpha As Double = 1,
                                Optional env As Environment = Nothing) As ggplotLayer
 
-        Dim colorMap As ggplotColorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color, Nothing), alpha, env)
+        Dim colorMap As ggplotColorMap = ggplotColorMap.CreateColorMap(color, alpha, env)
         Dim strokeCss As String = InteropArgumentHelper.getStrokePenCSS(stroke, [default]:=Nothing)
 
         If mapping IsNot Nothing AndAlso Not mapping.isPlain2D Then
@@ -384,7 +384,7 @@ Public Module ggplot2
         Return New ggplotTextLabel With {
             .reader = mapping,
             .showLegend = show_legend,
-            .colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color), alpha, env),
+            .colorMap = ggplotColorMap.CreateColorMap(color, alpha, env),
             .which = which,
             .check_overlap = check_overlap,
             .fontSize = size
