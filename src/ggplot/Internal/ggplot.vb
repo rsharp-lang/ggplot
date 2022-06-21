@@ -162,11 +162,23 @@ Public Class ggplot : Inherits Plot
     End Function
 
     Public Function getText(source As String) As String()
-        Return REnv.asVector(Of String)(DirectCast(data, dataframe).getColumnVector(source))
+        Dim data As dataframe = DirectCast(Me.data, dataframe)
+
+        If data.hasName(source) Then
+            Return REnv.asVector(Of String)(data.getColumnVector(source))
+        Else
+            Return Nothing
+        End If
     End Function
 
     Public Function getValue(source As String) As Double()
-        Return REnv.asVector(Of Double)(DirectCast(data, dataframe).getColumnVector(source))
+        Dim data As dataframe = DirectCast(Me.data, dataframe)
+
+        If data.hasName(source) Then
+            Return REnv.asVector(Of Double)(data.getColumnVector(source))
+        Else
+            Return Nothing
+        End If
     End Function
 
     Private Sub reverse(ByRef vec As Double())

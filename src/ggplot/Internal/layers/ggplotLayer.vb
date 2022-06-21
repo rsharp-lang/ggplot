@@ -43,6 +43,7 @@
 
 #End Region
 
+Imports System.Data
 Imports ggplot.colors
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
@@ -147,6 +148,11 @@ Namespace layers
                 Return data.Select(Function(d) maps(d)).ToArray
             Else
                 Dim factors As String() = ggplot.getText(reader?.color)
+
+                If factors Is Nothing Then
+                    Throw New MissingPrimaryKeyException()
+                End If
+
                 Dim maps As Func(Of Object, String) = colorMap.ColorHandler(ggplot, factors)
                 Dim legendItems As LegendObject() = colorMap.TryGetFactorLegends(factors, If(shape Is Nothing, LegendStyles.Circle, shape), ggplot.ggplotTheme)
                 Dim colors = factors.Select(Function(factor) maps(factor)).ToArray
