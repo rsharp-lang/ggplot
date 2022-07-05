@@ -35,7 +35,15 @@ Namespace ggraph.render
                                       Return n.Maps
                                   End Function)
 
-                Return Function(n) map.TryGetValue(n.label, [default]:=45.0!)
+                Return Function(n)
+                           Dim r As Single = map.TryGetValue(n.label, [default]:=45.0!)
+
+                           If r <= 0 OrElse r.IsNaNImaginary Then
+                               Return 45
+                           Else
+                               Return r
+                           End If
+                       End Function
             End If
         End Function
 

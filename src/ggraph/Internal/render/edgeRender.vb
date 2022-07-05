@@ -17,7 +17,16 @@ Namespace ggraph.render
         Friend Function getWeightScale(graph As NetworkGraph) As Func(Of Edge, Single)
             Dim scale As DoubleRange = graph.graphEdges.Select(Function(e) e.weight).Range
             Dim wscale As DoubleRange = width
-            Dim linkWidth As Func(Of Edge, Single) = Function(e) scale.ScaleMapping(e.weight, wscale)
+            Dim linkWidth As Func(Of Edge, Single) =
+                Function(e)
+                    Dim w As Single = scale.ScaleMapping(e.weight, wscale)
+
+                    If w <= 0 OrElse w.IsNaNImaginary Then
+                        Return width.Min
+                    Else
+                        Return w
+                    End If
+                End Function
 
             Return linkWidth
         End Function
