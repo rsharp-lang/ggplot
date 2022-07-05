@@ -650,13 +650,16 @@ Public Module ggplot2
                                 Optional stat As Object = "identity",
                                 Optional width As Double = 0.5,
                                 Optional radius As Double = 10,
-                                Optional alpha As Double = 0.85) As ggplotLayer
+                                Optional alpha As Double = 0.85,
+                                Optional color As list = Nothing,
+                                Optional env As Environment = Nothing) As ggplotLayer
 
         Return New ggplotJitter With {
             .reader = mapping,
             .groupWidth = width,
             .alpha = alpha,
-            .radius = radius
+            .radius = radius,
+            .colorMap = ggplotColorMap.CreateColorMap(color, 1, env)
         }
     End Function
 

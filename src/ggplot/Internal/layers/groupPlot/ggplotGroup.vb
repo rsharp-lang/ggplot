@@ -12,9 +12,20 @@ Namespace layers
 
         Public Property groupWidth As Double = 0.5
 
+        ''' <summary>
+        ''' get colorset mapping from <see cref="colorMap"/> or 
+        ''' use default color set 'paper'.
+        ''' </summary>
+        ''' <param name="stream"></param>
+        ''' <param name="groupNames"></param>
+        ''' <returns></returns>
         Protected Function getColors(stream As ggplotPipeline, groupNames As IEnumerable(Of String)) As Func(Of Object, String)
             If colorMap Is Nothing Then
-                colorMap = ggplotColorMap.CreateColorMap("Paper", alpha, stream.ggplot.environment)
+                colorMap = ggplotColorMap.CreateColorMap(
+                    map:="Paper",
+                    alpha:=alpha,
+                    env:=stream.ggplot.environment
+                )
             End If
 
             Return colorMap.ColorHandler(stream.ggplot, groupNames.ToArray)
