@@ -84,7 +84,8 @@ Namespace layers
             Call base.cat(anova.ToString, env:=stream.ggplot.environment)
 
             Dim pvalue As Double = anova.singlePvalue
-            Dim tagStr As String = $"ANOVA, p-value={pvalue.ToString("G3")}"
+            Dim ptag As String = If(pvalue.ToString = "0", "<1e-100", "=" & pvalue.ToString("G3"))
+            Dim tagStr As String = $"ANOVA, p-value{ptag}"
             Dim font As Font = CSSFont.TryParse(stream.theme.tagCSS).GDIObject(stream.g.Dpi)
             Dim pos As New PointF(stream.scale.X.rangeMin + 10, stream.canvas.Padding.Top)
 
