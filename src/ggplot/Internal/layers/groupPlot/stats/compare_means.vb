@@ -14,6 +14,10 @@ Namespace layers
 
         Public ReadOnly Property psignif As String
             Get
+                If pvalue.ToString = "0" Then
+                    Return $"*****(<1e-100)"
+                End If
+
                 If pvalue <= 0.00001 Then
                     Return $"*****({pvalue.ToString("G3")})"
                 ElseIf pvalue <= 0.0001 Then
