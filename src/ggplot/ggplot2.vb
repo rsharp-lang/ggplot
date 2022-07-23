@@ -95,13 +95,13 @@ Public Module ggplot2
     ''' <param name="environment"></param>
     ''' <returns></returns>
     ''' <remarks>
-    ''' ggplot() is used to construct the initial plot object, and is 
+    ''' ``ggplot()`` is used to construct the initial plot object, and is 
     ''' almost always followed by + to add component to the plot. There 
-    ''' are three common ways to invoke ggplot():
+    ''' are three common ways to invoke ``ggplot()``:
     ''' 
-    ''' + ggplot(df, aes(x, y, other aesthetics))
-    ''' + ggplot(df)
-    ''' + ggplot()
+    ''' + ``ggplot(df, aes(x, y, other aesthetics))``
+    ''' + ``ggplot(df)``
+    ''' + ``ggplot()``
     ''' 
     ''' The first method Is recommended If all layers use the same data 
     ''' And the same Set Of aesthetics, although this method can also be 
