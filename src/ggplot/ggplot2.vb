@@ -75,7 +75,7 @@ Public Module ggplot2
     ''' <summary>
     ''' ### Create a new ggplot
     ''' 
-    ''' ggplot() initializes a ggplot object. It can be used to declare 
+    ''' ``ggplot()`` initializes a ggplot object. It can be used to declare 
     ''' the input data frame for a graphic and to specify the set of 
     ''' plot aesthetics intended to be common throughout all subsequent 
     ''' layers unless specifically overridden.
@@ -93,15 +93,19 @@ Public Module ggplot2
     ''' Other arguments passed on to methods. Not currently used.
     ''' </param>
     ''' <param name="environment"></param>
-    ''' <returns></returns>
+    ''' <returns>
+    ''' a ggplot base layer object which can be rendering to graphics by 
+    ''' invoke the ``plot`` function.
+    ''' </returns>
     ''' <remarks>
-    ''' ggplot() is used to construct the initial plot object, and is 
+    ''' ``ggplot()`` is used to construct the initial plot object, and is 
     ''' almost always followed by + to add component to the plot. There 
-    ''' are three common ways to invoke ggplot():
+    ''' are three common ways to invoke ``ggplot()``:
     ''' 
-    ''' + ggplot(df, aes(x, y, other aesthetics))
-    ''' + ggplot(df)
-    ''' + ggplot()
+    ''' + ``ggplot(df, aes(x, y, other aesthetics))``
+    ''' + ``ggplot(df)``
+    ''' + ``ggplot()``
+    ''' 
     ''' 
     ''' The first method Is recommended If all layers use the same data 
     ''' And the same Set Of aesthetics, although this method can also be 
