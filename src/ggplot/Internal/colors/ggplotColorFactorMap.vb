@@ -1,4 +1,59 @@
-﻿Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
+﻿#Region "Microsoft.VisualBasic::ed650df4ce5abe1b01a9a210c8f69ce4, ggplot\src\ggplot\Internal\colors\ggplotColorFactorMap.vb"
+
+    ' Author:
+    ' 
+    '       xieguigang (I@xieguigang.me)
+    ' 
+    ' Copyright (c) 2021 R# language
+    ' 
+    ' 
+    ' MIT License
+    ' 
+    ' 
+    ' Permission is hereby granted, free of charge, to any person obtaining a copy
+    ' of this software and associated documentation files (the "Software"), to deal
+    ' in the Software without restriction, including without limitation the rights
+    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    ' copies of the Software, and to permit persons to whom the Software is
+    ' furnished to do so, subject to the following conditions:
+    ' 
+    ' The above copyright notice and this permission notice shall be included in all
+    ' copies or substantial portions of the Software.
+    ' 
+    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    ' SOFTWARE.
+
+
+
+    ' /********************************************************************************/
+
+    ' Summaries:
+
+
+    ' Code Statistics:
+
+    '   Total Lines: 49
+    '    Code Lines: 38
+    ' Comment Lines: 3
+    '   Blank Lines: 8
+    '     File Size: 2.00 KB
+
+
+    '     Class ggplotColorFactorMap
+    ' 
+    '         Function: ColorHandler, GetLegends, ToString, TryGetFactorLegends
+    ' 
+    ' 
+    ' /********************************************************************************/
+
+#End Region
+
+Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Linq

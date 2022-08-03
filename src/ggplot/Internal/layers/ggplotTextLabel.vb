@@ -1,44 +1,57 @@
-﻿#Region "Microsoft.VisualBasic::efaca294bbd2eda39567ab58cfbfcba4, src\Internal\layers\ggplotTextLabel.vb"
+﻿#Region "Microsoft.VisualBasic::f5b1f994b4cc4cd6e0c1662e56ddd4cd, ggplot\src\ggplot\Internal\layers\ggplotTextLabel.vb"
 
-' Author:
-' 
-'       asuka (amethyst.asuka@gcmodeller.org)
-'       xie (genetics@smrucc.org)
-'       xieguigang (xie.guigang@live.com)
-' 
-' Copyright (c) 2018 GPL3 Licensed
-' 
-' 
-' GNU GENERAL PUBLIC LICENSE (GPL3)
-' 
-' 
-' This program is free software: you can redistribute it and/or modify
-' it under the terms of the GNU General Public License as published by
-' the Free Software Foundation, either version 3 of the License, or
-' (at your option) any later version.
-' 
-' This program is distributed in the hope that it will be useful,
-' but WITHOUT ANY WARRANTY; without even the implied warranty of
-' MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-' GNU General Public License for more details.
-' 
-' You should have received a copy of the GNU General Public License
-' along with this program. If not, see <http://www.gnu.org/licenses/>.
+    ' Author:
+    ' 
+    '       xieguigang (I@xieguigang.me)
+    ' 
+    ' Copyright (c) 2021 R# language
+    ' 
+    ' 
+    ' MIT License
+    ' 
+    ' 
+    ' Permission is hereby granted, free of charge, to any person obtaining a copy
+    ' of this software and associated documentation files (the "Software"), to deal
+    ' in the Software without restriction, including without limitation the rights
+    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    ' copies of the Software, and to permit persons to whom the Software is
+    ' furnished to do so, subject to the following conditions:
+    ' 
+    ' The above copyright notice and this permission notice shall be included in all
+    ' copies or substantial portions of the Software.
+    ' 
+    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    ' SOFTWARE.
 
 
 
-' /********************************************************************************/
+    ' /********************************************************************************/
 
-' Summaries:
+    ' Summaries:
 
-'     Class ggplotTextLabel
-' 
-'         Properties: isLabeler
-' 
-'         Function: layoutLabels, Plot
-' 
-' 
-' /********************************************************************************/
+
+    ' Code Statistics:
+
+    '   Total Lines: 131
+    '    Code Lines: 97
+    ' Comment Lines: 12
+    '   Blank Lines: 22
+    '     File Size: 5.12 KB
+
+
+    '     Class ggplotTextLabel
+    ' 
+    '         Properties: check_overlap, fontSize, isLabeler
+    ' 
+    '         Function: layoutLabels, Plot
+    ' 
+    ' 
+    ' /********************************************************************************/
 
 #End Region
 

@@ -1,4 +1,58 @@
-﻿Imports System.Drawing
+﻿#Region "Microsoft.VisualBasic::6a43d8e0b14051a806a14abd4ded5b14, ggplot\src\ggraph\ggraph.vb"
+
+    ' Author:
+    ' 
+    '       xieguigang (I@xieguigang.me)
+    ' 
+    ' Copyright (c) 2021 R# language
+    ' 
+    ' 
+    ' MIT License
+    ' 
+    ' 
+    ' Permission is hereby granted, free of charge, to any person obtaining a copy
+    ' of this software and associated documentation files (the "Software"), to deal
+    ' in the Software without restriction, including without limitation the rights
+    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    ' copies of the Software, and to permit persons to whom the Software is
+    ' furnished to do so, subject to the following conditions:
+    ' 
+    ' The above copyright notice and this permission notice shall be included in all
+    ' copies or substantial portions of the Software.
+    ' 
+    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    ' SOFTWARE.
+
+
+
+    ' /********************************************************************************/
+
+    ' Summaries:
+
+
+    ' Code Statistics:
+
+    '   Total Lines: 200
+    '    Code Lines: 134
+    ' Comment Lines: 40
+    '   Blank Lines: 26
+    '     File Size: 8.42 KB
+
+
+    ' Module ggraphPkg
+    ' 
+    '     Function: geom_edge_link, geom_node_convexHull, geom_node_point, geom_node_text, map
+    ' 
+    ' /********************************************************************************/
+
+#End Region
+
+Imports System.Drawing
 Imports ggplot.ggraph.render
 Imports ggplot.layers
 Imports Microsoft.VisualBasic.CommandLine.Reflection
@@ -198,3 +252,4 @@ Module ggraphPkg
     End Function
 
 End Module
+

@@ -1,4 +1,62 @@
-﻿Imports SMRUCC.Rsharp.Runtime.Internal.Object
+﻿#Region "Microsoft.VisualBasic::076fae5429989e09a69cfa8668fa8697, ggplot\src\ggplot\Internal\layers\groupPlot\stats\compare_means.vb"
+
+    ' Author:
+    ' 
+    '       xieguigang (I@xieguigang.me)
+    ' 
+    ' Copyright (c) 2021 R# language
+    ' 
+    ' 
+    ' MIT License
+    ' 
+    ' 
+    ' Permission is hereby granted, free of charge, to any person obtaining a copy
+    ' of this software and associated documentation files (the "Software"), to deal
+    ' in the Software without restriction, including without limitation the rights
+    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    ' copies of the Software, and to permit persons to whom the Software is
+    ' furnished to do so, subject to the following conditions:
+    ' 
+    ' The above copyright notice and this permission notice shall be included in all
+    ' copies or substantial portions of the Software.
+    ' 
+    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    ' SOFTWARE.
+
+
+
+    ' /********************************************************************************/
+
+    ' Summaries:
+
+
+    ' Code Statistics:
+
+    '   Total Lines: 61
+    '    Code Lines: 51
+    ' Comment Lines: 0
+    '   Blank Lines: 10
+    '     File Size: 2.15 KB
+
+
+    '     Class compare_means
+    ' 
+    '         Properties: group1, group2, padj, psignif, pvalue
+    '                     y
+    ' 
+    '         Function: fromManualData, ToString
+    ' 
+    ' 
+    ' /********************************************************************************/
+
+#End Region
+
+Imports SMRUCC.Rsharp.Runtime.Internal.Object
 
 Namespace layers
 

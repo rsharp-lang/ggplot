@@ -1,45 +1,59 @@
-﻿#Region "Microsoft.VisualBasic::f013147e9f47b39ef191ae3ef7c3b77d, src\ggplot2.vb"
+﻿#Region "Microsoft.VisualBasic::a2d9dac2b0d6c19aa45841d9a01b7798, ggplot\src\ggplot\ggplot2.vb"
 
-' Author:
-' 
-'       asuka (amethyst.asuka@gcmodeller.org)
-'       xie (genetics@smrucc.org)
-'       xieguigang (xie.guigang@live.com)
-' 
-' Copyright (c) 2018 GPL3 Licensed
-' 
-' 
-' GNU GENERAL PUBLIC LICENSE (GPL3)
-' 
-' 
-' This program is free software: you can redistribute it and/or modify
-' it under the terms of the GNU General Public License as published by
-' the Free Software Foundation, either version 3 of the License, or
-' (at your option) any later version.
-' 
-' This program is distributed in the hope that it will be useful,
-' but WITHOUT ANY WARRANTY; without even the implied warranty of
-' MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-' GNU General Public License for more details.
-' 
-' You should have received a copy of the GNU General Public License
-' along with this program. If not, see <http://www.gnu.org/licenses/>.
+    ' Author:
+    ' 
+    '       xieguigang (I@xieguigang.me)
+    ' 
+    ' Copyright (c) 2021 R# language
+    ' 
+    ' 
+    ' MIT License
+    ' 
+    ' 
+    ' Permission is hereby granted, free of charge, to any person obtaining a copy
+    ' of this software and associated documentation files (the "Software"), to deal
+    ' in the Software without restriction, including without limitation the rights
+    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    ' copies of the Software, and to permit persons to whom the Software is
+    ' furnished to do so, subject to the following conditions:
+    ' 
+    ' The above copyright notice and this permission notice shall be included in all
+    ' copies or substantial portions of the Software.
+    ' 
+    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    ' SOFTWARE.
 
 
 
-' /********************************************************************************/
+    ' /********************************************************************************/
 
-' Summaries:
+    ' Summaries:
 
-' Module ggplot2
-' 
-'     Function: add_layer, aes, configPlot, element_text, geom_boxplot
-'               geom_histogram, geom_hline, geom_line, geom_path, geom_point
-'               geom_text, geom_vline, ggplot, ggtitle, labs
-'               scale_colour_manual, scale_x_continuous, scale_y_continuous, scale_y_reverse, theme
-'               xlab, ylab
-' 
-' /********************************************************************************/
+
+    ' Code Statistics:
+
+    '   Total Lines: 1134
+    '    Code Lines: 476
+    ' Comment Lines: 585
+    '   Blank Lines: 73
+    '     File Size: 50.09 KB
+
+
+    ' Module ggplot2
+    ' 
+    '     Function: add_layer, aes, configPlot, element_rect, element_text
+    '               geom_barplot, geom_boxplot, geom_convexHull, geom_histogram, geom_hline
+    '               geom_jitter, geom_line, geom_path, geom_point, geom_signif
+    '               geom_text, geom_violin, geom_vline, ggplot, ggtitle
+    '               labs, scale_colour_manual, scale_x_continuous, scale_y_continuous, scale_y_reverse
+    '               stat_compare_means, stat_pvalue_manual, theme, xlab, ylab
+    ' 
+    ' /********************************************************************************/
 
 #End Region
 
@@ -1177,4 +1191,3 @@ Public Module ggplot2
         }
     End Function
 End Module
-
