@@ -534,7 +534,7 @@ Public Module ggplot2
     ''' <returns></returns>
     <ExportAPI("geom_path")>
     Public Function geom_path() As ggplotLayer
-
+        Throw New NotImplementedException
     End Function
 
     <ExportAPI("geom_convexHull")>
@@ -956,6 +956,30 @@ Public Module ggplot2
         }
     End Function
 
+    ''' <summary>
+    ''' ### Modify axis, legend, and plot labels
+    ''' 
+    ''' Good labels are critical for making your plots accessible 
+    ''' to a wider audience. Always ensure the axis and legend 
+    ''' labels display the full variable name. Use the plot title 
+    ''' and subtitle to explain the main findings. It's common to 
+    ''' use the caption to provide information about the data 
+    ''' source. tag can be used for adding identification tags to 
+    ''' differentiate between multiple plots.
+    ''' </summary>
+    ''' <param name="title">The text for the title.</param>
+    ''' <returns></returns>
+    ''' <remarks>
+    ''' You can also set axis and legend labels in the individual 
+    ''' scales (using the first argument, the name). If you're
+    ''' changing other scale options, this is recommended.
+    ''' 
+    ''' If a plot already has a title, subtitle, caption, etc., And
+    ''' you want To remove it, you can Do so by setting the respective 
+    ''' argument To NULL. For example, If plot p has a subtitle, Then
+    ''' p + labs(subtitle = NULL) will remove the subtitle from the 
+    ''' plot.
+    ''' </remarks>
     <ExportAPI("ggtitle")>
     Public Function ggtitle(title As String) As ggplotOption
         Return New ggplotTitle(title)
