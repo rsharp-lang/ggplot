@@ -323,7 +323,11 @@ Public Class ggplot : Inherits Plot
             .Where(Function(d) Not d.IsNaNImaginary) _
             .ToArray
 
-        Dim hasViolin As Boolean = layers.Any(Function(layer) TypeOf layer Is ggplotViolin)
+        Dim hasViolin As Boolean = layers _
+            .Any(Function(layer)
+                     Return TypeOf layer Is ggplotViolin OrElse
+                            TypeOf layer Is ggplotBoxplot
+                 End Function)
 
         If hasViolin OrElse layers.Any(Function(layer) TypeOf layer Is ggplotBoxplot) Then
             For Each group In ggplotGroup.getDataGroups([default].x, [default].y)
@@ -337,9 +341,14 @@ Public Class ggplot : Inherits Plot
                     End If
                 End If
 
-                y = y.JoinIterates({upperBound, lowerBound}).ToArray
+                y = y.JoinIterates({upperBound}).ToArray
+                ' y = y.JoinIterates({upperBound, lowerBound}).ToArray
             Next
         End If
+
+        y = y _
+            .JoinIterates({y.Max * 1.25}) _
+            .ToArray
 
         Dim yTicks = y.Range.CreateAxisTicks
         Dim scaleX = d3js.scale.ordinal.domain(tags:=[default].x).range(integers:={rect.Left, rect.Right})
