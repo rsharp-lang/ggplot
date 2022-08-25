@@ -61,6 +61,7 @@ Namespace options
     Public Class ggplotTitle : Inherits ggplotOption
 
         Public Property title As String
+        Public Property text_wrap As Boolean = False
 
         Sub New(title As String)
             Me.title = title
@@ -68,6 +69,8 @@ Namespace options
 
         Public Overrides Function Config(ggplot As ggplot) As ggplot
             ggplot.main = title
+            ggplot.ggplotTheme.mainTextWrap = text_wrap
+
             Return ggplot
         End Function
     End Class

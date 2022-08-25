@@ -981,8 +981,8 @@ Public Module ggplot2
     ''' plot.
     ''' </remarks>
     <ExportAPI("ggtitle")>
-    Public Function ggtitle(title As String) As ggplotOption
-        Return New ggplotTitle(title)
+    Public Function ggtitle(title As String, Optional text_wrap As Boolean = False) As ggplotOption
+        Return New ggplotTitle(title) With {.text_wrap = text_wrap}
     End Function
 
     ''' <summary>
