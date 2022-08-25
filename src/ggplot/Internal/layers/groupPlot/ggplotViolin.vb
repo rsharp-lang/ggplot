@@ -69,6 +69,8 @@ Namespace layers
 
         Public Property splineDegree As Single = 2
         Public Property showStats As Boolean = False
+        Public Property nbins As Integer = 25
+        Public Property zero_break As Boolean = True
 
         Protected Overrides Function PlotOrdinal(stream As ggplotPipeline, xscale As d3js.scale.OrdinalScale) As IggplotLegendElement
             Dim g As IGraphics = stream.g
@@ -100,7 +102,9 @@ Namespace layers
                     color:=color,
                     g:=g,
                     canvas:=stream.canvas,
-                    theme:=stream.theme
+                    theme:=stream.theme,
+                    zeroBreak:=zero_break,
+                    nbins:=nbins
                 )
             Next
 
