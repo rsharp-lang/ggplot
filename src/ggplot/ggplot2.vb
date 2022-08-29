@@ -933,12 +933,14 @@ Public Module ggplot2
                           Optional legend_background As String = "white",
                           Optional legend_text As textElement = Nothing,
                           Optional legend_split As Integer = 6,
-                          Optional plot_background As String = "white",
+                          Optional plot_background As String = Nothing,
                           Optional plot_title As textElement = Nothing,
-                          Optional panel_background As String = "white",
+                          Optional panel_background As String = Nothing,
                           Optional panel_grid As String = Stroke.AxisGridStroke,
                           Optional panel_border As rectElement = Nothing) As ggplotOption
-
+        ' 20220829
+        ' 大部分的参数值都应该设置为空值
+        ' 否则会在配置theme对象的时候出现错误覆盖的问题
         Return New ggplotTheme With {
             .axis_text = axis_text,
             .text = text,
