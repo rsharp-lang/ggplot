@@ -681,6 +681,27 @@ Public Module ggplot2
         }
     End Function
 
+    Public Function geom_scatterpie()
+
+    End Function
+
+    ''' <summary>
+    ''' annotation_raster: Annotation: high-performance rectangular tiling
+    ''' 
+    ''' This is a special version of geom_raster() optimised for static 
+    ''' annotations that are the same in every panel. These annotations 
+    ''' will not affect scales (i.e. the x and y axes will not grow to cover 
+    ''' the range of the raster, and the raster must already have its own 
+    ''' colours). This is useful for adding bitmap images.
+    ''' </summary>
+    ''' <param name="raster">
+    ''' raster object to display, may be an array or a nativeRaster
+    ''' </param>
+    ''' <returns></returns>
+    Public Function annotation_raster(<RRawVectorArgument> raster As Object)
+
+    End Function
+
     ''' <summary>
     ''' add a ggplot plot layer
     ''' </summary>
