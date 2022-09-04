@@ -36,9 +36,13 @@ Namespace layers
                 .ToArray
             Dim labelFont As Font = CSSFont.TryParse(stream.theme.tagCSS).GDIObject(stream.g.Dpi)
             Dim r As Single = stdNum.Min(stream.canvas.PlotRegion.Height, stream.canvas.PlotRegion.Width) / 2
+            Dim topLeft As New Point With {
+                .X = stream.canvas.Padding.Left,
+                .Y = stream.canvas.Padding.Top
+            }
 
             Call stream.g.PlotPie(
-                stream.canvas, pie,
+                topLeft, pie,
                 valueLabelFont:=labelFont,
                 font:=labelFont,
                 layoutRect:=Nothing,
