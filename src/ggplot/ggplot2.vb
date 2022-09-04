@@ -686,6 +686,11 @@ Public Module ggplot2
 
     End Function
 
+    <ExportAPI("geom_pie")>
+    Public Function geom_pie() As ggplotLayer
+        Return New ggplotPie
+    End Function
+
     ''' <summary>
     ''' annotation_raster: Annotation: high-performance rectangular tiling
     ''' 
