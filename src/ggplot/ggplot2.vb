@@ -681,7 +681,8 @@ Public Module ggplot2
         }
     End Function
 
-    Public Function geom_scatterpie()
+    <ExportAPI("geom_scatterpie")>
+    Public Function geom_scatterpie() As ggplotLayer
 
     End Function
 
