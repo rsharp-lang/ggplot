@@ -683,7 +683,7 @@ Public Module ggplot2
 
     <ExportAPI("geom_scatterpie")>
     Public Function geom_scatterpie() As ggplotLayer
-
+        Return New ggplotScatterpie
     End Function
 
     <ExportAPI("geom_pie")>
