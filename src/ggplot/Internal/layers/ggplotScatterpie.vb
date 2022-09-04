@@ -14,6 +14,14 @@ Namespace layers
     Public Class ggplotScatterpie : Inherits ggplotLayer
 
         Public Property pie As String()
+        Public Property minCell As Integer = 16
+
+        Private Function getMeanCell(data As Double(), top_n As Integer) As Double
+            Return NumberGroups.diff(data.OrderBy(Function(xi) xi).ToArray) _
+                .OrderByDescending(Function(a) a) _
+                .Take(top_n) _
+                .Average
+        End Function
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             ' get scatter data
@@ -26,14 +34,19 @@ Namespace layers
                                   Return DirectCast(REnv.asVector(Of Double)(data.getVector(name, fullSize:=True)), Double())
                               End Function)
             ' evaluate cells grid
-            Dim cellWidth = NumberGroups.diff(x.OrderBy(Function(xi) xi).ToArray).OrderByDescending(Function(a) a).Take(10).Average
-            Dim cellHeight = NumberGroups.diff(y.OrderBy(Function(yi) yi).ToArray).OrderByDescending(Function(a) a).Take(10).Average
+            Dim topN As Integer = stdNum.Min(x.Length / 5, 100)
+            Dim cellWidth = getMeanCell(x, topN)
+            Dim cellHeight = getMeanCell(y, topN)
             Dim colors As Color() = Designer.GetColors(stream.theme.colorSet, n:=pie.Length)
-            Dim radius As Single = stdNum.Min(cellWidth, cellHeight)
+            Dim radius As Single = stdNum.Min(cellWidth, cellHeight) / 2
+
+            If radius < minCell Then
+                radius = minCell
+            End If
 
             For i As Integer = 0 To x.Length - 1
-                Dim xi = x(i)
-                Dim yi = y(i)
+                Dim xi = x(i) - radius
+                Dim yi = y(i) - radius
                 Dim pie As FractionData() = Me.pie _
                     .Select(Function(name, pi)
 #Disable Warning
