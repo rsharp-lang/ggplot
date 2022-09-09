@@ -11,9 +11,21 @@ Imports stdNum = System.Math
 
 Namespace layers
 
+    ''' <summary>
+    ''' this plot combine the scatter plot with the pie 
+    ''' plot, each scatter point is a pie chart.
+    ''' </summary>
     Public Class ggplotScatterpie : Inherits ggplotLayer
 
+        ''' <summary>
+        ''' the pie group names across all scatter points data
+        ''' </summary>
+        ''' <returns></returns>
         Public Property pie As String()
+        ''' <summary>
+        ''' the min cell width/height
+        ''' </summary>
+        ''' <returns></returns>
         Public Property minCell As Integer = 16
 
         Private Function getMeanCell(data As Double(), top_n As Integer) As Double
