@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::b890a8db00b372f58c3406597f53db20, ggplot\src\ggraph\Internal\graphRender.vb"
+﻿#Region "Microsoft.VisualBasic::c631eb722b27886b07dec74c6ad04196, ggplot\src\ggraph\Internal\graphRender.vb"
 
     ' Author:
     ' 
@@ -37,10 +37,10 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 207
+    '   Total Lines: 206
     '    Code Lines: 159
     ' Comment Lines: 9
-    '   Blank Lines: 39
+    '   Blank Lines: 38
     '     File Size: 9.04 KB
 
 
@@ -55,7 +55,6 @@
     ' /********************************************************************************/
 
 #End Region
-
 
 Imports System.Drawing
 Imports ggplot.elements.legend

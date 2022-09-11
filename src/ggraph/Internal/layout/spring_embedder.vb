@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::7d8d89462dd098d355a767b80da50fd2, ggplot\src\ggraph\Internal\layout\spring_embedder.vb"
+﻿#Region "Microsoft.VisualBasic::b1328ecf650b95de7cc6ee1d0f405287, ggplot\src\ggraph\Internal\layout\spring_embedder.vb"
 
     ' Author:
     ' 
@@ -37,11 +37,11 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 18
+    '   Total Lines: 17
     '    Code Lines: 13
     ' Comment Lines: 0
-    '   Blank Lines: 5
-    '     File Size: 603 B
+    '   Blank Lines: 4
+    '     File Size: 601 B
 
 
     '     Class spring_embedder
@@ -54,7 +54,6 @@
     ' /********************************************************************************/
 
 #End Region
-
 
 Imports System.Drawing
 Imports Microsoft.VisualBasic.Data.visualize.Network.Graph

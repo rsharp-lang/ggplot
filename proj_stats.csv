@@ -1,11 +1,11 @@
 proj,files,totalLines,commentLines,blankLines,lineOfCodes,class,property,method,functions,operator,size(bytes),size
-ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\ggplot2.vb,1134,585,73,476,1,0,0,30,0,50094,50.09 KB
-ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\ggplot3.vb,46,7,8,31,1,0,0,1,0,1381,1.38 KB
+ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\ggplot2.vb,1189,625,75,489,1,0,0,33,0,52599,52.60 KB
+ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\ggplot3.vb,45,7,7,31,1,0,0,1,0,1377,1.38 KB
 ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\zzz.vb,42,1,7,34,1,0,1,1,0,1387,1.39 KB
-ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\ggplot.vb,494,23,71,400,1,11,10,9,0,19184,19.18 KB
+ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\ggplot.vb,503,24,72,407,1,11,10,9,0,19472,19.47 KB
 ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\ggplotBase.vb,35,3,8,24,1,2,0,2,0,1163,1.16 KB
 ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\ggplotData.vb,42,0,10,32,2,6,0,0,0,1029,1.03 KB
-ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\ggplotPipeline.vb,52,0,8,44,1,2,0,2,0,1645,1.65 KB
+ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\ggplotPipeline.vb,52,0,8,44,1,2,0,2,0,1643,1.64 KB
 ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\ggplotReader.vb,172,7,21,144,1,10,0,7,0,6266,6.27 KB
 ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\colors\ggplotColorFactorMap.vb,49,3,8,38,1,0,0,4,0,1999,2.00 KB
 ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\colors\ggplotColorLiteral.vb,39,0,6,33,1,0,0,4,0,1552,1.55 KB
@@ -28,12 +28,14 @@ ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\layers\ggplotLayer.vb,151,4
 ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\layers\ggplotLayerType.vb,8,0,1,7,1,0,0,0,0,118,118 B
 ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\layers\ggplotLine.vb,63,0,10,53,1,1,0,1,0,2860,2.86 KB
 ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\layers\ggplotScatter.vb,116,0,16,100,1,3,0,2,0,4760,4.76 KB
+ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\layers\ggplotScatterpie.vb,102,14,9,79,1,2,0,2,0,4105,4.11 KB
 ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\layers\ggplotTextLabel.vb,131,12,22,97,1,3,0,2,0,5121,5.12 KB
 ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\layers\groupPlot\ggplotBarplot.vb,55,0,8,47,1,0,0,1,0,2830,2.83 KB
 ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\layers\groupPlot\ggplotBoxplot.vb,54,0,6,48,1,0,0,1,0,2389,2.39 KB
 ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\layers\groupPlot\ggplotGroup.vb,84,8,17,59,1,1,0,5,0,3240,3.24 KB
 ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\layers\groupPlot\ggplotJitter.vb,38,0,7,31,1,1,0,1,0,1566,1.57 KB
-ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\layers\groupPlot\ggplotViolin.vb,53,0,7,46,1,2,0,1,0,2365,2.37 KB
+ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\layers\groupPlot\ggplotPie.vb,72,0,6,66,1,1,0,1,0,3113,3.11 KB
+ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\layers\groupPlot\ggplotViolin.vb,57,0,7,50,1,4,0,1,0,2545,2.54 KB
 ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\layers\groupPlot\stats\compare_means.vb,61,0,10,51,1,6,0,2,0,2146,2.15 KB
 ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\layers\groupPlot\stats\ggplotSignifLayer.vb,49,0,8,41,1,2,0,2,0,1961,1.96 KB
 ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\layers\groupPlot\stats\ggplotStatPvalue.vb,95,0,17,78,1,3,2,1,0,3980,3.98 KB
@@ -46,39 +48,39 @@ ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\options\ggplotColorProfile.
 ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\options\ggplotOption.vb,11,0,5,6,1,0,0,0,0,198,198 B
 ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\options\ggplotTheme.vb,74,0,14,60,1,13,0,1,0,2788,2.79 KB
 ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\options\ggplotTicks.vb,92,25,16,51,2,5,0,2,0,3047,3.05 KB
-ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\options\ggplotTitle.vb,16,0,4,12,1,1,1,1,0,383,383 B
-ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\My Project\Application.Designer.vb,13,9,2,2,0,0,0,0,0,438,438 B
+ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\options\ggplotTitle.vb,19,0,5,14,1,2,1,1,0,496,496 B
+ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\My Project\Application.Designer.vb,12,9,1,2,0,0,0,0,0,434,434 B
 ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\My Project\AssemblyInfo.vb,36,15,6,15,0,0,0,0,0,1176,1.18 KB
-ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\My Project\Resources.Designer.vb,62,23,8,31,1,2,0,0,0,2774,2.77 KB
+ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\My Project\Resources.Designer.vb,62,23,8,31,1,2,0,0,0,2772,2.77 KB
 ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\My Project\Settings.Designer.vb,74,9,12,53,2,2,1,0,0,3015,3.02 KB
-ggplot\src\ggplot\ggplot.NET5.vbproj,"ggplot\obj\x64\Rsharp_app_release\net48\.NETFramework,Version=v4.8.AssemblyAttributes.vb",7,1,1,5,0,0,0,0,0,309,309 B
-ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\obj\x64\Rsharp_app_release\net48\ggplot.NET5.AssemblyInfo.vb,27,10,3,14,0,0,0,0,0,1426,1.43 KB
-ggplot\src\ggplot\ggplot.NET5.vbproj,"ggplot\obj\x64\Rsharp_app_release\net5.0\.NETCoreApp,Version=v5.0.AssemblyAttributes.vb",7,1,1,5,0,0,0,0,0,297,297 B
-ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\obj\x64\Rsharp_app_release\net5.0\ggplot.NET5.AssemblyInfo.vb,27,10,3,14,0,0,0,0,0,1426,1.43 KB
-ggplot\src\ggplot\ggplot.NET5.vbproj,"ggplot\obj\x64\Rsharp_app_release\net6.0\.NETCoreApp,Version=v6.0.AssemblyAttributes.vb",7,1,1,5,0,0,0,0,0,297,297 B
-ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\obj\x64\Rsharp_app_release\net6.0\ggplot.NET5.AssemblyInfo.vb,27,10,3,14,0,0,0,0,0,1426,1.43 KB
-ggplot\src\ggplot\ggplot.NET5.vbproj,<project>,4440,820,611,3009,53,120,23,115,0,178243,178.24 KB
-ggplot\src\ggraph\ggraph.vbproj,ggraph\ggforce.vb,82,0,11,71,1,0,0,4,0,3658,3.66 KB
-ggplot\src\ggraph\ggraph.vbproj,ggraph\ggraph.vb,200,40,26,134,1,0,0,5,0,8417,8.42 KB
+ggplot\src\ggplot\ggplot.NET5.vbproj,"ggplot\obj\x64\Rsharp_app_release\net48\.NETFramework,Version=v4.8.AssemblyAttributes.vb",7,1,1,5,0,0,0,0,0,307,307 B
+ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\obj\x64\Rsharp_app_release\net48\ggplot.NET5.AssemblyInfo.vb,27,10,3,14,0,0,0,0,0,1424,1.42 KB
+ggplot\src\ggplot\ggplot.NET5.vbproj,"ggplot\obj\x64\Rsharp_app_release\net5.0\.NETCoreApp,Version=v5.0.AssemblyAttributes.vb",7,1,1,5,0,0,0,0,0,295,295 B
+ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\obj\x64\Rsharp_app_release\net5.0\ggplot.NET5.AssemblyInfo.vb,27,10,3,14,0,0,0,0,0,1424,1.42 KB
+ggplot\src\ggplot\ggplot.NET5.vbproj,"ggplot\obj\x64\Rsharp_app_release\net6.0\.NETCoreApp,Version=v6.0.AssemblyAttributes.vb",7,1,1,5,0,0,0,0,0,295,295 B
+ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\obj\x64\Rsharp_app_release\net6.0\ggplot.NET5.AssemblyInfo.vb,27,10,3,14,0,0,0,0,0,1424,1.42 KB
+ggplot\src\ggplot\ggplot.NET5.vbproj,<project>,4683,875,628,3180,55,126,23,121,0,188523,188.52 KB
+ggplot\src\ggraph\ggraph.vbproj,ggraph\ggforce.vb,81,0,10,71,1,0,0,4,0,3654,3.65 KB
+ggplot\src\ggraph\ggraph.vbproj,ggraph\ggraph.vb,200,40,26,134,1,0,0,5,0,8415,8.41 KB
 ggplot\src\ggraph\ggraph.vbproj,ggraph\zzz.vb,12,0,3,9,1,0,1,0,0,321,321 B
 ggplot\src\ggraph\ggraph.vbproj,ggraph\Internal\graphPipeline.vb,11,0,4,7,1,0,0,0,0,242,242 B
 ggplot\src\ggraph\ggraph.vbproj,ggraph\Internal\graphReader.vb,12,0,3,9,1,0,0,1,0,320,320 B
-ggplot\src\ggraph\ggraph.vbproj,ggraph\Internal\graphRender.vb,207,9,39,159,1,1,4,0,0,9040,9.04 KB
+ggplot\src\ggraph\ggraph.vbproj,ggraph\Internal\graphRender.vb,206,9,38,159,1,1,4,0,0,9038,9.04 KB
 ggplot\src\ggraph\ggraph.vbproj,ggraph\Internal\layout\force_directed.vb,49,4,5,40,1,1,0,1,0,1831,1.83 KB
 ggplot\src\ggraph\ggraph.vbproj,ggraph\Internal\layout\ggforce.vb,44,0,12,32,1,2,1,1,0,1542,1.54 KB
 ggplot\src\ggraph\ggraph.vbproj,ggraph\Internal\layout\random.vb,13,0,3,10,1,0,0,1,0,457,457 B
-ggplot\src\ggraph\ggraph.vbproj,ggraph\Internal\layout\spring_embedder.vb,18,0,5,13,1,3,0,1,0,603,603 B
+ggplot\src\ggraph\ggraph.vbproj,ggraph\Internal\layout\spring_embedder.vb,17,0,4,13,1,3,0,1,0,601,601 B
 ggplot\src\ggraph\ggraph.vbproj,ggraph\Internal\layout\spring_force.vb,17,0,4,13,1,3,0,1,0,640,640 B
 ggplot\src\ggraph\ggraph.vbproj,ggraph\Internal\render\convexHullRender.vb,58,0,11,47,1,0,0,3,0,2349,2.35 KB
 ggplot\src\ggraph\ggraph.vbproj,ggraph\Internal\render\edgeRender.vb,56,0,9,47,1,2,0,2,0,2137,2.14 KB
 ggplot\src\ggraph\ggraph.vbproj,ggraph\Internal\render\nodeRender.vb,115,0,17,98,1,4,0,4,0,4781,4.78 KB
 ggplot\src\ggraph\ggraph.vbproj,ggraph\Internal\render\textRender.vb,75,0,11,64,1,4,0,2,0,3068,3.07 KB
 ggplot\src\ggraph\ggraph.vbproj,ggraph\My Project\AssemblyInfo.vb,36,14,7,15,0,0,0,0,0,1057,1.06 KB
-ggplot\src\ggraph\ggraph.vbproj,"ggraph\obj\x64\Rsharp_app_release\net48\.NETFramework,Version=v4.8.AssemblyAttributes.vb",7,1,1,5,0,0,0,0,0,309,309 B
-ggplot\src\ggraph\ggraph.vbproj,ggraph\obj\x64\Rsharp_app_release\net48\ggraph.AssemblyInfo.vb,24,10,3,11,0,0,0,0,0,1051,1.05 KB
-ggplot\src\ggraph\ggraph.vbproj,"ggraph\obj\x64\Rsharp_app_release\net5.0\.NETCoreApp,Version=v5.0.AssemblyAttributes.vb",7,1,1,5,0,0,0,0,0,297,297 B
-ggplot\src\ggraph\ggraph.vbproj,ggraph\obj\x64\Rsharp_app_release\net5.0\ggraph.AssemblyInfo.vb,24,10,3,11,0,0,0,0,0,1051,1.05 KB
-ggplot\src\ggraph\ggraph.vbproj,"ggraph\obj\x64\Rsharp_app_release\net6.0\.NETCoreApp,Version=v6.0.AssemblyAttributes.vb",7,1,1,5,0,0,0,0,0,297,297 B
-ggplot\src\ggraph\ggraph.vbproj,ggraph\obj\x64\Rsharp_app_release\net6.0\ggraph.AssemblyInfo.vb,24,10,3,11,0,0,0,0,0,1051,1.05 KB
-ggplot\src\ggraph\ggraph.vbproj,<project>,1098,100,182,816,15,20,6,26,0,44519,44.52 KB
-E:\GCModeller\src\runtime\ggplot,<root>,11076,1840,1586,7650,136,280,58,282,0,445524,445.52 KB
+ggplot\src\ggraph\ggraph.vbproj,"ggraph\obj\x64\Rsharp_app_release\net48\.NETFramework,Version=v4.8.AssemblyAttributes.vb",7,1,1,5,0,0,0,0,0,307,307 B
+ggplot\src\ggraph\ggraph.vbproj,ggraph\obj\x64\Rsharp_app_release\net48\ggraph.AssemblyInfo.vb,24,10,3,11,0,0,0,0,0,1049,1.05 KB
+ggplot\src\ggraph\ggraph.vbproj,"ggraph\obj\x64\Rsharp_app_release\net5.0\.NETCoreApp,Version=v5.0.AssemblyAttributes.vb",7,1,1,5,0,0,0,0,0,295,295 B
+ggplot\src\ggraph\ggraph.vbproj,ggraph\obj\x64\Rsharp_app_release\net5.0\ggraph.AssemblyInfo.vb,24,10,3,11,0,0,0,0,0,1049,1.05 KB
+ggplot\src\ggraph\ggraph.vbproj,"ggraph\obj\x64\Rsharp_app_release\net6.0\.NETCoreApp,Version=v6.0.AssemblyAttributes.vb",7,1,1,5,0,0,0,0,0,295,295 B
+ggplot\src\ggraph\ggraph.vbproj,ggraph\obj\x64\Rsharp_app_release\net6.0\ggraph.AssemblyInfo.vb,24,10,3,11,0,0,0,0,0,1049,1.05 KB
+ggplot\src\ggraph\ggraph.vbproj,<project>,1095,100,179,816,15,20,6,26,0,44497,44.50 KB
+E:\GCModeller\src\runtime\ggplot,<root>,11556,1950,1614,7992,140,292,58,294,0,466040,466.04 KB

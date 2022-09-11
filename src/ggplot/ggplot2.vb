@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::a2d9dac2b0d6c19aa45841d9a01b7798, ggplot\src\ggplot\ggplot2.vb"
+﻿#Region "Microsoft.VisualBasic::057defa26f7662a4ed23489fc0143977, ggplot\src\ggplot\ggplot2.vb"
 
     ' Author:
     ' 
@@ -37,21 +37,22 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 1134
-    '    Code Lines: 476
-    ' Comment Lines: 585
-    '   Blank Lines: 73
-    '     File Size: 50.09 KB
+    '   Total Lines: 1189
+    '    Code Lines: 489
+    ' Comment Lines: 625
+    '   Blank Lines: 75
+    '     File Size: 52.60 KB
 
 
     ' Module ggplot2
     ' 
-    '     Function: add_layer, aes, configPlot, element_rect, element_text
-    '               geom_barplot, geom_boxplot, geom_convexHull, geom_histogram, geom_hline
-    '               geom_jitter, geom_line, geom_path, geom_point, geom_signif
-    '               geom_text, geom_violin, geom_vline, ggplot, ggtitle
-    '               labs, scale_colour_manual, scale_x_continuous, scale_y_continuous, scale_y_reverse
-    '               stat_compare_means, stat_pvalue_manual, theme, xlab, ylab
+    '     Function: add_layer, aes, annotation_raster, configPlot, element_rect
+    '               element_text, geom_barplot, geom_boxplot, geom_convexHull, geom_histogram
+    '               geom_hline, geom_jitter, geom_line, geom_path, geom_pie
+    '               geom_point, geom_scatterpie, geom_signif, geom_text, geom_violin
+    '               geom_vline, ggplot, ggtitle, labs, scale_colour_manual
+    '               scale_x_continuous, scale_y_continuous, scale_y_reverse, stat_compare_means, stat_pvalue_manual
+    '               theme, xlab, ylab
     ' 
     ' /********************************************************************************/
 
