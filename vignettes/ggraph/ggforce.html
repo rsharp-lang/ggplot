@@ -1,0 +1,156 @@
+<!DOCTYPE html><html lang="zh-CN">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>ggforce</title>
+    <meta name="author" content="xie.guigang@gcmodeller.org" />
+    <meta name="copyright" content="SMRUCC genomics Copyright (c) 2020" />
+    <meta name="keywords" content="GCModeller; Xanthomonas; Artificial Life" />
+    <meta name="generator" content="https://github.com/xieguigang/xDoc" />
+    <meta name="theme-color" content="#333" />
+    <meta name="last-update" content="2022-09-13" />
+    <meta name="description" content="A software system aim at Artificial Life system design and analysis." />
+    <meta class="foundation-data-attribute-namespace" />
+    <meta class="foundation-mq-xxlarge" />
+    <meta class="foundation-mq-xlarge" />
+    <meta class="foundation-mq-large" />
+    <meta class="foundation-mq-medium" />
+    <meta class="foundation-mq-small" />
+    <meta class="foundation-mq-topbar" />
+  </head>
+  <body>
+    <table width="100%" summary="page for {ggforce}">
+      <tbody>
+        <tr>
+          <td>{ggforce}</td>
+          <td style="text-align: right;">R# Documentation</td>
+        </tr>
+      </tbody>
+    </table>
+    <h1>ggforce</h1>
+    <hr />
+    <p></p>
+    <div id="main-wrapper">
+                           <div>
+  <h2 id="layout_springembedder">
+    <a href="./ggforce/layout_springembedder.html">layout_springembedder</a>
+  </h2>
+  <hr />
+  <p>
+                      
+                
+                    <pre><p>let <code>layout_springembedder</code> as function(<code>canvas</code> as any, 
+<code>maxRepulsiveForceDistance</code> as double = 10, 
+<code>c</code> as double = 2, 
+<code>iterations</code> as integer = 100, 
+[<code>&lt;Environment&gt;</code>]) -> <code>&lt;generic&gt; spring_embedder</code> {
+    #
+    # .NET API information
+    #
+    # module: ggplot.ggforcePkg
+    # LibPath: D:/GCModeller/src/runtime/ggplot/assembly/net6.0
+    # library: ggraph.dll
+    # package: "ggforce"
+    #
+    return call <code>R&#35;.interop_[ggforcePkg::layout_springembedder]</code>(...);
+}</p></pre>
+
+                    
+                       
+                    
+
+                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
+</div><br /><div>
+  <h2 id="layout_random">
+    <a href="./ggforce/layout_random.html">layout_random</a>
+  </h2>
+  <hr />
+  <p>
+                      
+                
+                    <pre><p>let <code>layout_random</code> as function() -> <code>&lt;generic&gt; ggforce</code> {
+    #
+    # .NET API information
+    #
+    # module: ggplot.ggforcePkg
+    # LibPath: D:/GCModeller/src/runtime/ggplot/assembly/net6.0
+    # library: ggraph.dll
+    # package: "ggforce"
+    #
+    return call <code>R&#35;.interop_[ggforcePkg::layout_random]</code>(...);
+}</p></pre>
+
+                    
+                       
+                    
+
+                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
+</div><br /><div>
+  <h2 id="layout_springforce">
+    <a href="./ggforce/layout_springforce.html">layout_springforce</a>
+  </h2>
+  <hr />
+  <p>
+                      
+                
+                    <pre><p>let <code>layout_springforce</code> as function(<code>stiffness</code> as double = 50000, 
+<code>repulsion</code> as double = 100, 
+<code>damping</code> as double = 0.9, 
+<code>iterations</code> as integer = 1000, 
+<code>time_step</code> as double = 0.0001) -> <code>&lt;generic&gt; spring_force</code> {
+    #
+    # .NET API information
+    #
+    # module: ggplot.ggforcePkg
+    # LibPath: D:/GCModeller/src/runtime/ggplot/assembly/net6.0
+    # library: ggraph.dll
+    # package: "ggforce"
+    #
+    return call <code>R&#35;.interop_[ggforcePkg::spring_force]</code>(...);
+}</p></pre>
+
+                    
+                       
+                    
+
+                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
+</div><br /><div>
+  <h2 id="layout_forcedirected">
+    <a href="./ggforce/layout_forcedirected.html">layout_forcedirected</a>
+  </h2>
+  <hr />
+  <p>
+                      
+                
+                    <pre><p>let <code>layout_forcedirected</code> as function(<code>ejectFactor</code> as integer = 6, 
+<code>condenseFactor</code> as integer = 3, 
+<code>maxtx</code> as integer = 4, 
+<code>maxty</code> as integer = 3, 
+<code>dist_threshold</code> as any = "30,250", 
+<code>size</code> as any = "1000,1000", 
+<code>iterations</code> as integer = 20000, 
+<code>time_step</code> as double = 1E-05, 
+<code>algorithm</code> as any = ["force_directed","degree_weighted","group_weighted","edge_weighted"], 
+[<code>&lt;Environment&gt;</code>]) -> <code>&lt;generic&gt; force_directed</code> {
+    #
+    # .NET API information
+    #
+    # module: ggplot.ggforcePkg
+    # LibPath: D:/GCModeller/src/runtime/ggplot/assembly/net6.0
+    # library: ggraph.dll
+    # package: "ggforce"
+    #
+    return call <code>R&#35;.interop_[ggforcePkg::layout_forcedirected]</code>(...);
+}</p></pre>
+
+                    
+                       
+                    
+
+                    <span style="font-size:0.9em; display: none"><h4>Details</h4><blockquote></blockquote></span></p>
+</div>
+                       </div>
+  </body>
+</html>
