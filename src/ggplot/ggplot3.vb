@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::8138214c683bf97e1c72b5a62f59615b, ggplot\src\ggplot\ggplot3.vb"
+﻿#Region "Microsoft.VisualBasic::02bca4c553be9a2ef6e451c3f8a7d775, ggplot\src\ggplot\ggplot3.vb"
 
     ' Author:
     ' 
@@ -37,10 +37,10 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 46
+    '   Total Lines: 45
     '    Code Lines: 31
     ' Comment Lines: 7
-    '   Blank Lines: 8
+    '   Blank Lines: 7
     '     File Size: 1.38 KB
 
 
@@ -51,7 +51,6 @@
     ' /********************************************************************************/
 
 #End Region
-
 
 Imports ggplot.options
 Imports Microsoft.VisualBasic.CommandLine.Reflection
@@ -98,4 +97,3 @@ Module ggplot3
     End Function
 
 End Module
-

@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::fd96e04fe7fa011446acca2d3b8d7042, ggplot\src\ggplot\Internal\ggplotPipeline.vb"
+﻿#Region "Microsoft.VisualBasic::2291f735b89754ec089c443489058600, ggplot\src\ggplot\Internal\ggplotPipeline.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 44
     ' Comment Lines: 0
     '   Blank Lines: 8
-    '     File Size: 1.65 KB
+    '     File Size: 1.64 KB
 
 
     ' Class ggplotPipeline
@@ -106,4 +106,3 @@ Public Class ggplotPipeline
     End Function
 
 End Class
-

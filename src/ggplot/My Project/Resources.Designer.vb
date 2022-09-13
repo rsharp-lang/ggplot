@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::dc540d2b96154aff4e37f1f45310607f, ggplot\src\ggplot\My Project\Resources.Designer.vb"
+﻿#Region "Microsoft.VisualBasic::2834e243023e37602ee780943263b066, ggplot\src\ggplot\My Project\Resources.Designer.vb"
 
     ' Author:
     ' 
@@ -115,4 +115,3 @@ Namespace My.Resources
         End Property
     End Module
 End Namespace
-

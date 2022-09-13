@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::6a43d8e0b14051a806a14abd4ded5b14, ggplot\src\ggraph\ggraph.vb"
+﻿#Region "Microsoft.VisualBasic::144da15e414a9a8580abd9769dde0b8f, ggplot\src\ggraph\ggraph.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 134
     ' Comment Lines: 40
     '   Blank Lines: 26
-    '     File Size: 8.42 KB
+    '     File Size: 8.41 KB
 
 
     ' Module ggraphPkg
@@ -252,4 +252,3 @@ Module ggraphPkg
     End Function
 
 End Module
-

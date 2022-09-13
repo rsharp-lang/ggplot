@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::d50ce5b646e755646f720d3391bf0ba4, ggplot\src\ggplot\Internal\layers\groupPlot\ggplotViolin.vb"
+﻿#Region "Microsoft.VisualBasic::29da371876924aa4c9546b4bc68679f8, ggplot\src\ggplot\Internal\layers\groupPlot\ggplotViolin.vb"
 
     ' Author:
     ' 
@@ -37,16 +37,16 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 53
-    '    Code Lines: 46
+    '   Total Lines: 57
+    '    Code Lines: 50
     ' Comment Lines: 0
     '   Blank Lines: 7
-    '     File Size: 2.37 KB
+    '     File Size: 2.54 KB
 
 
     '     Class ggplotViolin
     ' 
-    '         Properties: showStats, splineDegree
+    '         Properties: nbins, showStats, splineDegree, zero_break
     ' 
     '         Function: PlotOrdinal
     ' 

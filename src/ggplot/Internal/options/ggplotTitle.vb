@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::87cf2d226c36bdf8224c3ec3e2376f81, ggplot\src\ggplot\Internal\options\ggplotTitle.vb"
+﻿#Region "Microsoft.VisualBasic::9d35dcb9cc486aee0d6dd1eb6d69b7c5, ggplot\src\ggplot\Internal\options\ggplotTitle.vb"
 
     ' Author:
     ' 
@@ -37,16 +37,16 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 16
-    '    Code Lines: 12
+    '   Total Lines: 19
+    '    Code Lines: 14
     ' Comment Lines: 0
-    '   Blank Lines: 4
-    '     File Size: 383 B
+    '   Blank Lines: 5
+    '     File Size: 496 B
 
 
     '     Class ggplotTitle
     ' 
-    '         Properties: title
+    '         Properties: text_wrap, title
     ' 
     '         Constructor: (+1 Overloads) Sub New
     '         Function: Config

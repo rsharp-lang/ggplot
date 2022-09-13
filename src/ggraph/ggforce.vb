@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::107b4a240c6c78e583f54be14ce1bd27, ggplot\src\ggraph\ggforce.vb"
+﻿#Region "Microsoft.VisualBasic::ced988f44e7aded9af16894523c12397, ggplot\src\ggraph\ggforce.vb"
 
     ' Author:
     ' 
@@ -37,11 +37,11 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 82
+    '   Total Lines: 81
     '    Code Lines: 71
     ' Comment Lines: 0
-    '   Blank Lines: 11
-    '     File Size: 3.66 KB
+    '   Blank Lines: 10
+    '     File Size: 3.65 KB
 
 
     ' Module ggforcePkg
@@ -51,7 +51,6 @@
     ' /********************************************************************************/
 
 #End Region
-
 
 Imports System.Drawing
 Imports ggplot.ggraph
@@ -134,4 +133,3 @@ Module ggforcePkg
         }
     End Function
 End Module
-
