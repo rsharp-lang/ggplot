@@ -61,7 +61,6 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Fractions
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
-Imports Microsoft.VisualBasic.Math
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports REnv = SMRUCC.Rsharp.Runtime
 Imports stdNum = System.Math
@@ -72,25 +71,13 @@ Namespace layers
     ''' this plot combine the scatter plot with the pie 
     ''' plot, each scatter point is a pie chart.
     ''' </summary>
-    Public Class ggplotScatterpie : Inherits ggplotLayer
+    Public Class ggplotScatterpie : Inherits ggplotScatterLayer
 
         ''' <summary>
         ''' the pie group names across all scatter points data
         ''' </summary>
         ''' <returns></returns>
         Public Property pie As String()
-        ''' <summary>
-        ''' the min cell width/height
-        ''' </summary>
-        ''' <returns></returns>
-        Public Property minCell As Integer = 16
-
-        Private Function getMeanCell(data As Double(), top_n As Integer) As Double
-            Return NumberGroups.diff(data.OrderBy(Function(xi) xi).ToArray) _
-                .OrderByDescending(Function(a) a) _
-                .Take(top_n) _
-                .Average
-        End Function
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             ' get scatter data
@@ -102,12 +89,9 @@ Namespace layers
                               Function(name)
                                   Return DirectCast(REnv.asVector(Of Double)(data.getVector(name, fullSize:=True)), Double())
                               End Function)
-            ' evaluate cells grid
-            Dim topN As Integer = stdNum.Min(x.Length / 5, 100)
-            Dim cellWidth = getMeanCell(x, topN)
-            Dim cellHeight = getMeanCell(y, topN)
+            Dim cellSize = getCellsize(x, y)
             Dim colors As Color() = Designer.GetColors(stream.theme.colorSet, n:=pie.Length)
-            Dim radius As Single = stdNum.Min(cellWidth, cellHeight) / 2
+            Dim radius As Single = stdNum.Min(cellSize.Width, cellSize.Height) / 2
 
             If radius < minCell Then
                 radius = minCell
