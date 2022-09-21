@@ -80,7 +80,9 @@ Namespace colors
         ''' color alpha channel value between [0,1]
         ''' </param>
         ''' <param name="env"></param>
-        ''' <returns></returns>
+        ''' <returns>
+        ''' returns nothing if the given color <paramref name="map"/> data is nothing
+        ''' </returns>
         Public Shared Function CreateColorMap(map As Object, alpha As Double, env As Environment) As ggplotColorMap
             If TypeOf map Is vector Then
                 map = DirectCast(map, vector).data

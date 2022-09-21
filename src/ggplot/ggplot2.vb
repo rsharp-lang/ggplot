@@ -684,14 +684,21 @@ Public Module ggplot2
 
     <ExportAPI("geom_scatterpie")>
     Public Function geom_scatterpie(data As String()) As ggplotLayer
+
         Return New ggplotScatterpie With {
             .pie = data
         }
     End Function
 
     <ExportAPI("geom_scatterheatmap")>
-    Public Function geom_scatterheatmap(data As String) As ggplotLayer
-        Return New ggplotScatterheatmap With {.layer = data}
+    Public Function geom_scatterheatmap(data As String,
+                                        Optional colors As String = Nothing,
+                                        Optional env As Environment = Nothing) As ggplotLayer
+
+        Return New ggplotScatterheatmap With {
+            .layer = data,
+            .colorMap = ggplotColorMap.CreateColorMap(colors, 1, env)
+        }
     End Function
 
     <ExportAPI("geom_pie")>
