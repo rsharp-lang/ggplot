@@ -7,6 +7,8 @@ bitmap(file = `${@dir}/UMAP3d.png`, size = [2400, 2000]) {
 	data = read.csv(`${@dir}/UMAP3D.csv`, row.names = 1);
 	data[, "class"] = `class_${data[, "class"]}`;
 	
+	print(unique(data[, "class"]));
+	
 	# create ggplot layers and tweaks via ggplot style options
 	ggplot(data, aes(x = "X", y = "Y", z = "Z"), padding = "padding:250px 500px 100px 100px;")
 	+ geom_point(aes(color = "class"), color = "paper", shape = "triangle", size = 20)
