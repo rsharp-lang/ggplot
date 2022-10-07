@@ -1,64 +1,64 @@
 ﻿#Region "Microsoft.VisualBasic::1f16b45912db5bee3c084e57a91e5de1, ggplot\src\ggplot\Internal\ggplot.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (I@xieguigang.me)
-    ' 
-    ' Copyright (c) 2021 R# language
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (I@xieguigang.me)
+' 
+' Copyright (c) 2021 R# language
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
-
-
-    ' Code Statistics:
-
-    '   Total Lines: 503
-    '    Code Lines: 407
-    ' Comment Lines: 24
-    '   Blank Lines: 72
-    '     File Size: 19.47 KB
+' Summaries:
 
 
-    ' Class ggplot
-    ' 
-    '     Properties: args, base, clearCanvas, data, driver
-    '                 environment, ggplotTheme, is3D, layers, panelBorder
-    '                 titleOffset
-    ' 
-    '     Constructor: (+1 Overloads) Sub New
-    ' 
-    '     Function: Camera, CreateReader, CreateRender, (+2 Overloads) get2DScale, getText
-    '               getValue, populateModels, Save
-    ' 
-    '     Sub: Draw2DElements, DrawLegends, DrawMultiple, DrawSingle, plot2D
-    '          plot3D, PlotInternal, Register, reverse
-    ' 
-    ' /********************************************************************************/
+' Code Statistics:
+
+'   Total Lines: 503
+'    Code Lines: 407
+' Comment Lines: 24
+'   Blank Lines: 72
+'     File Size: 19.47 KB
+
+
+' Class ggplot
+' 
+'     Properties: args, base, clearCanvas, data, driver
+'                 environment, ggplotTheme, is3D, layers, panelBorder
+'                 titleOffset
+' 
+'     Constructor: (+1 Overloads) Sub New
+' 
+'     Function: Camera, CreateReader, CreateRender, (+2 Overloads) get2DScale, getText
+'               getValue, populateModels, Save
+' 
+'     Sub: Draw2DElements, DrawLegends, DrawMultiple, DrawSingle, plot2D
+'          plot3D, PlotInternal, Register, reverse
+' 
+' /********************************************************************************/
 
 #End Region
 
@@ -71,6 +71,7 @@ Imports ggplot.elements.legend
 Imports ggplot.layers
 Imports ggplot.layers.layer3d
 Imports Microsoft.VisualBasic.ComponentModel.DataStructures
+Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
@@ -274,18 +275,21 @@ Public Class ggplot : Inherits Plot
                                              legends As List(Of IggplotLegendElement)) As IEnumerable(Of Element3D())
 
         Dim ppi As Integer = g.Dpi
-        Dim xTicks = x.Range.CreateAxisTicks
-        Dim yTicks = y.Range.CreateAxisTicks
-        Dim zTicks = z.Range.CreateAxisTicks
+        Dim max As Double = x.JoinIterates(y).JoinIterates(z).Max
+        Dim min As Double = x.JoinIterates(y).JoinIterates(z).Min
+        'Dim xTicks = x.Range.CreateAxisTicks
+        'Dim yTicks = y.Range.CreateAxisTicks
+        'Dim zTicks = z.Range.CreateAxisTicks
+        Dim ticks = New DoubleRange(min, max).CreateAxisTicks
         Dim tickCss As String = CSSFont.TryParse(theme.axisTickCSS).SetFontColor(theme.mainTextColor).ToString
 
         ' 然后生成底部的网格
-        Yield Grids.Grid1(xTicks, yTicks, (xTicks(1) - xTicks(0), yTicks(1) - yTicks(0)), zTicks.Min, showTicks:=Not theme.axisTickCSS.StringEmpty, strokeCSS:=theme.gridStrokeX, tickCSS:=tickCss).ToArray
-        Yield Grids.Grid2(xTicks, zTicks, (xTicks(1) - xTicks(0), zTicks(1) - zTicks(0)), yTicks.Min, showTicks:=Not theme.axisTickCSS.StringEmpty, strokeCSS:=theme.gridStrokeX, tickCSS:=tickCss).ToArray
-        Yield Grids.Grid3(yTicks, zTicks, (yTicks(1) - yTicks(0), zTicks(1) - zTicks(0)), xTicks.Max, showTicks:=Not theme.axisTickCSS.StringEmpty, strokeCSS:=theme.gridStrokeX, tickCSS:=tickCss).ToArray
+        Yield Grids.Grid1(ticks, ticks, (ticks(1) - ticks(0), ticks(1) - ticks(0)), ticks.Min, showTicks:=Not theme.axisTickCSS.StringEmpty, strokeCSS:=theme.gridStrokeX, tickCSS:=tickCss).ToArray
+        Yield Grids.Grid2(ticks, ticks, (ticks(1) - ticks(0), ticks(1) - ticks(0)), ticks.Min, showTicks:=Not theme.axisTickCSS.StringEmpty, strokeCSS:=theme.gridStrokeX, tickCSS:=tickCss).ToArray
+        Yield Grids.Grid3(ticks, ticks, (ticks(1) - ticks(0), ticks(1) - ticks(0)), ticks.Max, showTicks:=Not theme.axisTickCSS.StringEmpty, strokeCSS:=theme.gridStrokeX, tickCSS:=tickCss).ToArray
 
         Yield AxisDraw.Axis(
-            xrange:=xTicks, yrange:=yTicks, zrange:=zTicks,
+            xrange:=ticks, yrange:=ticks, zrange:=ticks,
             labelFontCss:=theme.axisLabelCSS,
             labels:=(xlabel, ylabel, zlabel),
             strokeCSS:=theme.axisStroke,
