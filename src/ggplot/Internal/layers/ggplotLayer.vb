@@ -203,7 +203,7 @@ Namespace layers
                 i.Add(REnv.single(which.Evaluate(measure)))
             Next
 
-            Return New BooleanVector(REnv.asLogical(i.ToArray))
+            Return New BooleanVector(Vectorization.asLogical(i.ToArray))
         End Function
     End Class
 End Namespace
