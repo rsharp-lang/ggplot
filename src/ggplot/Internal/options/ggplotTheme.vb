@@ -108,7 +108,11 @@ Namespace options
             End If
 
             If Not axis_line.StringEmpty Then
-                theme.axisStroke = axis_line
+                If axis_line = NameOf(element_blank) Then
+                    theme.axisStroke = Nothing
+                Else
+                    theme.axisStroke = axis_line
+                End If
             End If
             If Not panel_grid.StringEmpty Then
                 If panel_grid = NameOf(element_blank) Then
