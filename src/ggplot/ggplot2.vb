@@ -482,7 +482,8 @@ Public Module ggplot2
 
         Dim a As New PointF(Single.NegativeInfinity, yintercept)
         Dim b As New PointF(Single.PositiveInfinity, yintercept)
-        Dim style As New Pen(RColorPalette.getColor(color).TranslateColor, line_width) With {
+        Dim lineColor As Color = RColorPalette.getColor(color).TranslateColor
+        Dim style As New Pen(lineColor, line_width) With {
             .DashStyle = linetype
         }
 
@@ -514,7 +515,8 @@ Public Module ggplot2
 
         Dim a As New PointF(xintercept, Single.NegativeInfinity)
         Dim b As New PointF(xintercept, Single.PositiveInfinity)
-        Dim style As New Pen(RColorPalette.getColor(color).TranslateColor, line_width) With {
+        Dim line_color = RColorPalette.getColor(color).TranslateColor
+        Dim style As New Pen(line_color, line_width) With {
             .DashStyle = linetype
         }
 
@@ -684,7 +686,6 @@ Public Module ggplot2
 
     <ExportAPI("geom_scatterpie")>
     Public Function geom_scatterpie(data As String()) As ggplotLayer
-
         Return New ggplotScatterpie With {
             .pie = data
         }
@@ -719,8 +720,10 @@ Public Module ggplot2
     ''' raster object to display, may be an array or a nativeRaster
     ''' </param>
     ''' <returns></returns>
-    Public Function annotation_raster(<RRawVectorArgument> raster As Object)
-
+    ''' 
+    <ExportAPI("annotation_raster")>
+    Public Function annotation_raster(<RRawVectorArgument> raster As Object) As Object
+        Throw New NotImplementedException
     End Function
 
     ''' <summary>
@@ -978,7 +981,7 @@ Public Module ggplot2
                           Optional plot_background As String = Nothing,
                           Optional plot_title As textElement = Nothing,
                           Optional panel_background As String = Nothing,
-                          Optional panel_grid As String = Stroke.AxisGridStroke,
+                          Optional panel_grid As Object = Stroke.AxisGridStroke,
                           Optional panel_border As rectElement = Nothing) As ggplotOption
         ' 20220829
         ' 大部分的参数值都应该设置为空值
@@ -989,7 +992,7 @@ Public Module ggplot2
             .legend_background = legend_background,
             .plot_background = plot_background,
             .panel_background = panel_background,
-            .panel_grid = panel_grid,
+            .panel_grid = options.element_blank.GetCssStroke(panel_grid),
             .axis_line = axis_line,
             .legend_text = legend_text,
             .plot_title = plot_title,
@@ -998,6 +1001,11 @@ Public Module ggplot2
             .axis_text_x = axis_text_x,
             .panel_border = panel_border
         }
+    End Function
+
+    <ExportAPI("element_blank")>
+    Public Function element_blank() As element_blank
+        Return New element_blank()
     End Function
 
     ''' <summary>

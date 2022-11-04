@@ -111,8 +111,13 @@ Namespace options
                 theme.axisStroke = axis_line
             End If
             If Not panel_grid.StringEmpty Then
-                theme.gridStrokeX = panel_grid
-                theme.gridStrokeY = panel_grid
+                If panel_grid = NameOf(element_blank) Then
+                    theme.gridStrokeX = Nothing
+                    theme.gridStrokeY = Nothing
+                Else
+                    theme.gridStrokeX = panel_grid
+                    theme.gridStrokeY = panel_grid
+                End If
             End If
 
             If legend_split > 0 Then
