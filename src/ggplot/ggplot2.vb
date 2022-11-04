@@ -1009,6 +1009,24 @@ Public Module ggplot2
     End Function
 
     ''' <summary>
+    ''' Theme element: line.
+    ''' </summary>
+    ''' <param name="colour">line colour</param>
+    ''' <param name="size">line size</param>
+    ''' <param name="linetype">line type</param>
+    ''' <param name="lineend">line end</param>
+    ''' <param name="color">an alias for ``colour``</param>
+    ''' <returns></returns>
+    <ExportAPI("element_line")>
+    Public Function element_line(Optional colour As Object = NULL,
+                                 Optional size As Object = NULL,
+                                 Optional linetype As Object = NULL,
+                                 Optional lineend As Object = NULL,
+                                 Optional color As Object = NULL) As lineElement
+        Return New lineElement
+    End Function
+
+    ''' <summary>
     ''' ### Modify axis, legend, and plot labels
     ''' 
     ''' Good labels are critical for making your plots accessible 
