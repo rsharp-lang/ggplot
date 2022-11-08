@@ -221,7 +221,12 @@ Namespace ggraph
                         shape.title = " " & shape.title
                     End If
 
-                    Legend.DrawLegend(g, pos, New SizeF(r, r), shape)
+                    Try
+                        Legend.DrawLegend(g, pos, New SizeF(r, r), shape)
+                    Catch ex As Exception
+                        Call Console.WriteLine(New RectangleF(pos, New SizeF(r, r)))
+                    End Try
+
                     y += r * 1.5
                 Next
             End If
