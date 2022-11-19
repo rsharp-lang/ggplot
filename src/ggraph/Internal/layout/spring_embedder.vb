@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::b1328ecf650b95de7cc6ee1d0f405287, ggplot\src\ggraph\Internal\layout\spring_embedder.vb"
+﻿#Region "Microsoft.VisualBasic::efe1894547e07c20c0081378e0d86953, ggplot\src\ggraph\Internal\layout\spring_embedder.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 13
     ' Comment Lines: 0
     '   Blank Lines: 4
-    '     File Size: 601 B
+    '     File Size: 585 B
 
 
     '     Class spring_embedder

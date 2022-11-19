@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::c03324da998616fa47408fbec3e97394, ggplot\src\ggplot\Internal\layers\ggplotScatterpie.vb"
+﻿#Region "Microsoft.VisualBasic::a76c52ada9cb24a63fcc04a540b2f5e7, ggplot\src\ggplot\Internal\layers\scatter\ggplotScatterpie.vb"
 
     ' Author:
     ' 
@@ -37,18 +37,18 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 102
-    '    Code Lines: 79
-    ' Comment Lines: 14
-    '   Blank Lines: 9
-    '     File Size: 4.11 KB
+    '   Total Lines: 86
+    '    Code Lines: 69
+    ' Comment Lines: 9
+    '   Blank Lines: 8
+    '     File Size: 3.38 KB
 
 
     '     Class ggplotScatterpie
     ' 
-    '         Properties: minCell, pie
+    '         Properties: pie
     ' 
-    '         Function: getMeanCell, Plot
+    '         Function: Plot
     ' 
     ' 
     ' /********************************************************************************/

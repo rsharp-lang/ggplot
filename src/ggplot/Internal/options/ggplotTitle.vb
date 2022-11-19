@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::9d35dcb9cc486aee0d6dd1eb6d69b7c5, ggplot\src\ggplot\Internal\options\ggplotTitle.vb"
+﻿#Region "Microsoft.VisualBasic::273e296bfcc66dafd8925d9b0594af41, ggplot\src\ggplot\Internal\options\ggplotTitle.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 14
     ' Comment Lines: 0
     '   Blank Lines: 5
-    '     File Size: 496 B
+    '     File Size: 478 B
 
 
     '     Class ggplotTitle

@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::88805fe918f4f3868ec160804c4c014a, ggplot\src\ggplot\Internal\options\ggplotTheme.vb"
+﻿#Region "Microsoft.VisualBasic::e18a02071ec64bb50c04049991708689, ggplot\src\ggplot\Internal\options\ggplotTheme.vb"
 
     ' Author:
     ' 
@@ -37,11 +37,11 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 74
-    '    Code Lines: 60
+    '   Total Lines: 83
+    '    Code Lines: 69
     ' Comment Lines: 0
     '   Blank Lines: 14
-    '     File Size: 2.79 KB
+    '     File Size: 3.08 KB
 
 
     '     Class ggplotTheme

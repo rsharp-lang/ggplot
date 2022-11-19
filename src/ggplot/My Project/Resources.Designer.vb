@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::2834e243023e37602ee780943263b066, ggplot\src\ggplot\My Project\Resources.Designer.vb"
+﻿#Region "Microsoft.VisualBasic::e72a948ea54b9fabed8bfa439c32941e, ggplot\src\ggplot\My Project\Resources.Designer.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 31
     ' Comment Lines: 23
     '   Blank Lines: 8
-    '     File Size: 2.77 KB
+    '     File Size: 2.71 KB
 
 
     '     Module Resources
