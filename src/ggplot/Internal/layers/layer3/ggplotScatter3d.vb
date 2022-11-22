@@ -60,6 +60,7 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Plot3D.Device
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing3D
+Imports SMRUCC.Rsharp.Runtime.Vectorization
 
 Namespace layers.layer3d
 
@@ -118,10 +119,18 @@ Namespace layers.layer3d
                 .Height = Me.size
             }
             Dim nsize As Integer = x.Length
+            Dim colorList As Func(Of Integer, String)
+
+            If colors.IsNullOrEmpty Then
+                ' default black
+                colorList = GetVectorElement.Create(Of String)("black").Getter(Of String)
+            Else
+                colorList = GetVectorElement.Create(Of String)(colors).Getter(Of String)
+            End If
 
             For i As Integer = 0 To nsize - 1
                 Yield New ShapePoint With {
-                    .Fill = colors(i).GetBrush,
+                    .Fill = colorList(i).GetBrush,
                     .Location = New Point3D(x(i), y(i), z(i)),
                     .Size = size,
                     .Style = shape,
