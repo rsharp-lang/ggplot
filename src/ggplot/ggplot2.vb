@@ -156,7 +156,7 @@ Public Module ggplot2
             .colorSet = RColorPalette.getColorSet(colorSet, [default]:="paper")
         }
         Dim args2 = environment.GetAcceptorArguments
-        Dim ggplotDriver As ggplot = ggplot.CreateRender(data, theme)
+        Dim ggplotDriver As ggplot = ggplot.CreateRender(data, environment, theme)
         Dim base As ggplotBase = ggplotDriver.CreateReader(mapping)
 
         ' union arguments
@@ -172,7 +172,6 @@ Public Module ggplot2
             .layers = New List(Of ggplotLayer)
             .base = base
             .args = args
-            .environment = environment
             .xlabel = base.reader.x
             .ylabel = base.reader.y
             .zlabel = base.reader.z
