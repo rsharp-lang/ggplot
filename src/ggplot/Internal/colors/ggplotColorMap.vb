@@ -64,9 +64,28 @@ Imports REnv = SMRUCC.Rsharp.Runtime
 
 Namespace colors
 
+    ''' <summary>
+    ''' + <see cref="ggplotColorLiteral"/>: target color value is a single color value
+    ''' + <see cref="ggplotColorPalette"/>: target color string is a color scaler name
+    ''' + <see cref="ggplotColorFactorMap"/>: target color value is a mapping of factor string to color name
+    ''' </summary>
     Public MustInherit Class ggplotColorMap
 
+        ''' <summary>
+        ''' for each data object, this property value has different meanings:
+        ''' 
+        ''' 1. <see cref="ggplotColorLiteral"/>: a single color value
+        ''' 2. <see cref="ggplotColorPalette"/>: a color set name string
+        ''' 3. <see cref="ggplotColorFactorMap"/>: a list mapping of factor to color value
+        ''' 
+        ''' </summary>
+        ''' <returns></returns>
         Public Property colorMap As Object
+        ''' <summary>
+        ''' value range of this property value is in [0, 1], controls 
+        ''' the transparent alpha channel value. 
+        ''' </summary>
+        ''' <returns></returns>
         Public Property alpha As Double
 
         Public MustOverride Function ColorHandler(ggplot As ggplot, factors As Array) As Func(Of Object, String)
