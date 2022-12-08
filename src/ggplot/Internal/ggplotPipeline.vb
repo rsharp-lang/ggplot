@@ -64,6 +64,9 @@ Imports Microsoft.VisualBasic.Imaging.Drawing2D
 <Assembly: InternalsVisibleTo("MSImaging")>
 <Assembly: InternalsVisibleTo("ggraph")>
 
+''' <summary>
+''' a wrapper of a collection of the ggplot rendering objects
+''' </summary>
 Public Class ggplotPipeline
 
     Friend g As IGraphics
