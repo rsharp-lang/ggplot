@@ -130,6 +130,13 @@ Public Class ggplot : Inherits Plot
     Public Property layers As New List(Of ggplotLayer)
     Public Property base As ggplotBase
     Public Property args As list
+    ''' <summary>
+    ''' the runtime environment for current ggplot object, 
+    ''' which is comes from the first 
+    ''' <see cref="ggplot2.ggplot(Object, Object, Object, list, Environment)"/> 
+    ''' function calls.
+    ''' </summary>
+    ''' <returns></returns>
     Public Property environment As Environment
     ''' <summary>
     ''' the driver flag for the graphics device
