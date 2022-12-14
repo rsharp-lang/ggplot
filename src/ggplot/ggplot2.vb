@@ -153,7 +153,9 @@ Public Module ggplot2
             .padding = InteropArgumentHelper.getPadding(args.getByName("padding"), g.DefaultUltraLargePadding),
             .drawLegend = True,
             .legendLabelCSS = "font-style: normal; font-size: 13; font-family: " & FontFace.MicrosoftYaHei & ";",
-            .colorSet = RColorPalette.getColorSet(colorSet, [default]:="paper")
+            .colorSet = RColorPalette.getColorSet(colorSet, [default]:="paper"),
+            .xAxisLayout = args.getXAxisLayout(),
+            .yAxisLayout = args.getYAxisLayout()
         }
         Dim args2 = environment.GetAcceptorArguments
         Dim ggplotDriver As ggplot = ggplot.CreateRender(data, environment, theme)
