@@ -102,6 +102,9 @@ Namespace colors
         ''' <returns>
         ''' returns nothing if the given color <paramref name="map"/> data is nothing
         ''' </returns>
+        ''' <remarks>
+        ''' grays is the color palette name of the gray scale
+        ''' </remarks>
         Public Shared Function CreateColorMap(map As Object, alpha As Double, env As Environment) As ggplotColorMap
             If TypeOf map Is vector Then
                 map = DirectCast(map, vector).data
@@ -141,6 +144,10 @@ Namespace colors
             If isColor Then
                 Return New ggplotColorLiteral With {.colorMap = map, .alpha = alpha}
             ElseIf TypeOf map Is String Then
+                If map.TextEquals("grays") Then
+                    map = "gray"
+                End If
+
                 Return New ggplotColorPalette With {.colorMap = map, .alpha = alpha}
             Else
                 Return New ggplotColorFactorMap With {.colorMap = map, .alpha = alpha}
