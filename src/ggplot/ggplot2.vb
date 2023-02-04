@@ -68,6 +68,7 @@ Imports ggplot.layers.layer3d
 Imports ggplot.options
 Imports Microsoft.VisualBasic.ApplicationServices.Debugging.Logging
 Imports Microsoft.VisualBasic.CommandLine.Reflection
+Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
@@ -81,6 +82,7 @@ Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports SMRUCC.Rsharp.Runtime.Interop
+Imports REnv = SMRUCC.Rsharp.Runtime
 
 ''' <summary>
 ''' Create Elegant Data Visualisations Using the Grammar of Graphics
@@ -427,11 +429,20 @@ Public Module ggplot2
     Public Function geom_histogram(bins As Integer,
                                    Optional color As Object = Nothing,
                                    Optional alpha As Double = 1,
+                                   <RRawVectorArgument>
+                                   Optional range As Object = Nothing,
                                    Optional env As Environment = Nothing) As ggplotLayer
+
+        Dim minMax As DoubleRange = Nothing
+
+        If Not range Is Nothing Then
+            minMax = DirectCast(REnv.asVector(Of Double)(range), Double())
+        End If
 
         Return New ggplotHistogram With {
             .bins = bins,
-            .colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color), alpha, env)
+            .colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color), alpha, env),
+            .range = minMax
         }
     End Function
 

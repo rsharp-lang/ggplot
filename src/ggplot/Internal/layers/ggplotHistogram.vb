@@ -61,6 +61,7 @@ Imports System.Drawing
 Imports ggplot.colors
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
+Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Data.ChartPlots.BarPlot.Histogram
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
@@ -72,6 +73,7 @@ Namespace layers
     Public Class ggplotHistogram : Inherits ggplotLayer
 
         Public Property bins As Integer
+        Public Property range As DoubleRange
 
         Dim binData As DataBinBox(Of Double)()
 
@@ -117,7 +119,12 @@ Namespace layers
 
             Dim dataX As Double() = REnv.asVector(Of Double)(data.x)
             Dim bins = CutBins _
-                .FixedWidthBins(dataX, k:=hist.bins, Function(xi) xi) _
+                .FixedWidthBins(
+                    data:=dataX,
+                    k:=hist.bins,
+                    eval:=Function(xi) xi,
+                    range:=hist.range
+                ) _
                 .ToArray
             Dim y As Double() = bins.Select(Function(d) CDbl(d.Count)).ToArray
 
