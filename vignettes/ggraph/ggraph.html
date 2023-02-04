@@ -10,13 +10,7 @@
     <meta name="keywords" content="R#; ggraph; ggraph" />
     <meta name="generator" content="https://github.com/rsharp-lang" />
     <meta name="theme-color" content="#333" />
-    <meta name="description" content="<h1>A grammar of graphics for relational data</h1>
-
-<p>ggraph is an extension of ggplot2 aimed at supporting relational <br />
- data structures such as networks, graphs, and trees. While it <br />
- builds upon the foundation of ggplot2 and its API it comes with <br />
- its own self-contained set of geoms, facets, etc., as well as <br />
- adding the concept of layouts to the grammar.</p>" />
+    <meta name="description" content="A grammar of graphics for relational data ggraph is an extension..." />
     <meta class="foundation-data-attribute-namespace" />
     <meta class="foundation-mq-xxlarge" />
     <meta class="foundation-mq-xlarge" />
@@ -24,6 +18,36 @@
     <meta class="foundation-mq-medium" />
     <meta class="foundation-mq-small" />
     <meta class="foundation-mq-topbar" />
+    <style>
+
+.table-three-line {
+border-collapse:collapse; /* 关键属性：合并表格内外边框(其实表格边框有2px，外面1px，里面还有1px哦) */
+border:solid #000000; /* 设置边框属性；样式(solid=实线)、颜色(#999=灰) */
+border-width:2px 0 2px 0px; /* 设置边框状粗细：上 右 下 左 = 对应：1px 0 0 1px */
+}
+.left-1{
+    border:solid #000000;border-width:1px 1px 2px 0px;padding:2px;
+    font-weight:bolder;
+}
+.right-1{
+    border:solid #000000;border-width:1px 0px 2px 1px;padding:2px;
+    font-weight:bolder;
+}
+.mid-1{
+    border:solid #000000;border-width:1px 1px 2px 1px;padding:2px;
+    font-weight:bolder;
+}
+.left{
+    border:solid #000000;border-width:1px 1px 1px 0px;padding:2px;
+}
+.right{
+    border:solid #000000;border-width:1px 0px 1px 1px;padding:2px;
+}
+.mid{
+    border:solid #000000;border-width:1px 1px 1px 1px;padding:2px;
+}
+table caption {font-size:14px;font-weight:bolder;}
+</style>
   </head>
   <body>
     <table width="100%" summary="page for {ggraph}">
@@ -36,24 +60,12 @@
     </table>
     <h1>ggraph</h1>
     <hr />
-    <p>
+    <p style="     font-size: 1.125em;     line-height: .8em;     margin-left: 0.5%;     background-color: #fbfbfb;     padding: 24px; ">
       <code>
         <span style="color: blue;">require</span>(<span style="color: black; font-weight: bold;">ggplot</span>);
-                               <br /><br /><span style="color: green;">#' 
-A grammar of graphics for relational data
-
-ggraph is an extension of ggplot2 aimed at supporting relational 
-#' 
- data structures such as networks, graphs, and trees. While it 
-#' 
- builds upon the foundation of ggplot2 and its API it comes with 
-#' 
- its own self-contained set of geoms, facets, etc., as well as 
-#' 
- adding the concept of layouts to the grammar.</span><br /><span style="color: blue;">imports</span><span style="color: brown"> "ggraph"</span><span style="color: blue;"> from</span><span style="color: brown"> "ggraph"</span>;
+                               <br /><br /><span style="color: green;">#' A grammar of graphics for relational data</span><br /><span style="color: blue;">imports</span><span style="color: brown"> "ggraph"</span><span style="color: blue;"> from</span><span style="color: brown"> "ggraph"</span>;
                            </code>
     </p>
-    <br />
     <p><h1>A grammar of graphics for relational data</h1>
 
 <p>ggraph is an extension of ggplot2 aimed at supporting relational <br />
@@ -61,7 +73,9 @@ ggraph is an extension of ggplot2 aimed at supporting relational
  builds upon the foundation of ggplot2 and its API it comes with <br />
  its own self-contained set of geoms, facets, etc., as well as <br />
  adding the concept of layouts to the grammar.</p></p>
-    <p style="font-style: italic; font-size: 0.9em;"><h3>The core concepts</h3>
+    <blockquote>
+      <p style="font-style: italic; font-size: 0.9em;">
+                           <h3>The core concepts</h3>
 
 <p>ggraph builds upon three core concepts that are quite easy To <br />
  understand:</p>
@@ -84,9 +98,11 @@ geom_edge_*() family Of geoms that contain a lot Of different <br />
 edge types For different scenarios. Sometimes the edges are implied <br />
 by the layout (e.g. With treemaps) And need Not be plotted, <br />
 but often some sort Of line Is warranted.</li>
-</ul></p>
+</ul>
+                           </p>
+    </blockquote>
     <div id="main-wrapper">
-      <table>
+      <table class="table-three-line">
         <tbody><tr>
   <td id="geom_edge_link">
     <a href="./ggraph/geom_edge_link.html">geom_edge_link</a>
