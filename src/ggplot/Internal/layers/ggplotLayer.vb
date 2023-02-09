@@ -72,6 +72,7 @@ Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
+Imports SMRUCC.Rsharp.Runtime.Vectorization
 Imports REnv = SMRUCC.Rsharp.Runtime
 
 Namespace layers
@@ -191,19 +192,23 @@ Namespace layers
                 .SeqIterator _
                 .ToArray
 
-            For Each var In x
+            For Each var As SeqValue(Of String) In x
                 Call measure.Push(var.value, Nothing, [readonly]:=False)
             Next
 
-            For Each row As NamedCollection(Of Object) In DirectCast(ggplot.data, dataframe).forEachRow(x.Select(Function(xi) xi.value).ToArray)
-                For Each var In x
+            Dim fields As String() = x _
+                .Select(Function(xi) xi.value) _
+                .ToArray
+
+            For Each row As NamedCollection(Of Object) In DirectCast(ggplot.data, dataframe).forEachRow(fields)
+                For Each var As SeqValue(Of String) In x
                     Call measure(var.value).SetValue(row(var), measure)
                 Next
 
                 i.Add(REnv.single(which.Evaluate(measure)))
             Next
 
-            Return New BooleanVector(Vectorization.asLogical(i.ToArray))
+            Return New BooleanVector(CLRVector.asLogical(i.ToArray))
         End Function
     End Class
 End Namespace
