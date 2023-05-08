@@ -3,7 +3,7 @@
 // package_source=ggplot
 
 declare namespace ggplot {
-   module  {
+   module _ {
       /**
       */
       function onLoad(): object;
