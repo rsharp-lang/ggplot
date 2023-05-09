@@ -10,11 +10,11 @@ declare namespace ggplot {
    }
    /**
    */
+   function msoffice(): object;
+   /**
+   */
    function theme_black(): object;
    /**
    */
    function theme_default(): object;
-   /**
-   */
-   function msoffice(): object;
 }
