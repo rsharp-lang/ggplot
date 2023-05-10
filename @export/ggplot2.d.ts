@@ -648,6 +648,8 @@ declare namespace ggplot2 {
    */
    function theme(text?: object, axis_text?: object, axis_title?: object, axis_line?: any, axis_text_x?: object, legend_background?: string, legend_text?: object, legend_split?: object, plot_background?: string, plot_title?: object, panel_background?: string, panel_grid?: any, panel_border?: object): object;
    /**
+    * 
+    * 
    */
    function element_blank(): object;
    /**
