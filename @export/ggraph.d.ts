@@ -41,7 +41,7 @@ declare namespace ggraph {
      * @param width default value Is ``'2,5'``.
      * @param env default value Is ``null``.
    */
-   function geom_edge_link(mapping?:any, color?:any, width?:any, env?:object): object;
+   function geom_edge_link(mapping?: any, color?: any, width?: any, env?: object): object;
    /**
      * @param mapping default value Is ``null``.
      * @param alpha default value Is ``1``.
@@ -55,13 +55,21 @@ declare namespace ggraph {
      * @param defaultColor default value Is ``'SteelBlue'``.
      * @param env default value Is ``null``.
    */
-   function geom_node_point(mapping?:any, defaultColor?:any, env?:object): object;
+   function geom_node_point(mapping?: any, defaultColor?: any, env?: object): object;
    /**
      * @param mapping default value Is ``null``.
      * @param iteration default value Is ``-1``.
      * @param env default value Is ``null``.
    */
-   function geom_node_text(mapping?:any, iteration?:object, env?:object): object;
+   function geom_node_text(mapping?: any, iteration?: object, env?: object): object;
+   /**
+     * @param mapping default value Is ``null``.
+     * @param alpha default value Is ``1``.
+     * @param scale default value Is ``1.125``.
+     * @param stroke_width default value Is ``3``.
+     * @param spline default value Is ``0``.
+   */
+   function geom_node_convexHull(mapping?: object, alpha?: number, scale?: number, stroke_width?: number, spline?: number): object;
    /**
     * create style mapping for do graph rendering
     * 
@@ -74,5 +82,5 @@ declare namespace ggraph {
      * 
      * + default value Is ``null``.
    */
-   function map(key:string, vals?:any, env?:object): string;
+   function map(key: string, vals?: any, env?: object): string;
 }
