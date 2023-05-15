@@ -57,6 +57,7 @@ Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.Imaging.Drawing3D
 Imports Microsoft.VisualBasic.Scripting.MetaData
 Imports SMRUCC.Rsharp.Runtime.Interop
+Imports SMRUCC.Rsharp.Runtime.Vectorization
 Imports REnv = SMRUCC.Rsharp.Runtime
 
 ''' <summary>
@@ -75,7 +76,7 @@ Module ggplot3
                                 <RRawVectorArgument(GetType(Double))>
                                 Optional angle As Object = "31.5,65,125") As ggplotCamera
 
-        Dim angles As Double() = REnv.asVector(Of Double)(angle)
+        Dim angles As Double() = CLRVector.asNumeric(angle)
 
         If angles.IsNullOrEmpty Then
             angles = {0, 0, 0}

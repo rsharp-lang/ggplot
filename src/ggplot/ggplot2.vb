@@ -721,6 +721,13 @@ Public Module ggplot2
         Return New ggplotPie
     End Function
 
+    <ExportAPI("geom_raster")>
+    Public Function geom_raster(bitmap As Object,
+                                Optional layout As Object = Nothing,
+                                Optional env As Environment = Nothing) As Object
+
+    End Function
+
     ''' <summary>
     ''' annotation_raster: Annotation: high-performance rectangular tiling
     ''' 

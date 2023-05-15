@@ -64,6 +64,9 @@ Imports Microsoft.VisualBasic.Imaging.Drawing2D
 
 Namespace elements.legend
 
+    ''' <summary>
+    ''' legend element to draw of current ggplot layer
+    ''' </summary>
     Public Interface IggplotLegendElement
 
         Property layout As Layout
