@@ -1,7 +1,7 @@
 
 #' The black theme for ggplot
 #' 
-const theme_black as function() {
+const theme_black = function() {
     ggplot2::theme(
         text = element_text(color = "white"),
         plot.background = "black",

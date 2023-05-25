@@ -68,6 +68,7 @@ Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Components
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
+Imports SMRUCC.Rsharp.Runtime.Vectorization
 Imports any = Microsoft.VisualBasic.Scripting
 Imports REnv = SMRUCC.Rsharp.Runtime
 
@@ -183,7 +184,7 @@ Public Class ggplotReader
                                 theme As Theme,
                                 env As Environment) As (htmlColors As String(), legends As IggplotLegendElement)
 
-        Dim v As String() = REnv.asVector(Of String)(unifySource(data, color, env))
+        Dim v As String() = CLRVector.asCharacter(unifySource(data, color, env))
         Dim uniqV As Index(Of String) = v.Distinct.Indexing
 
         If uniqV.Objects.All(Function(vi) Val(vi) > 0 AndAlso vi.IsInteger) Then

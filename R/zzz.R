@@ -1,7 +1,9 @@
 imports ["ggplot2", "ggplot3"] from "ggplot";
 imports ["ggraph", "ggforce"] from "ggraph";
 
-const .onLoad as function() {
+require(REnv);
+
+const .onLoad = function() {
     cat(" --=== Create Elegant Data Visualisations Using the Grammar of Graphics ===--\n");
     cat(" *                                                                          *\n");
     cat(" * ggplot is an open-source data visualization                              *\n");

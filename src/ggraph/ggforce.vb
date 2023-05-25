@@ -60,7 +60,7 @@ Imports Microsoft.VisualBasic.Scripting.MetaData
 Imports Microsoft.VisualBasic.Scripting.Runtime
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Interop
-Imports REnv = SMRUCC.Rsharp.Runtime
+Imports SMRUCC.Rsharp.Runtime.Vectorization
 
 <Package("ggforce")>
 Module ggforcePkg
@@ -118,7 +118,7 @@ Module ggforcePkg
                                          Optional algorithm As Object = "force_directed|degree_weighted|group_weighted|edge_weighted",
                                          Optional env As Environment = Nothing) As force_directed
 
-        algorithm = DirectCast(REnv.asVector(Of String)(algorithm), String())(Scan0)
+        algorithm = CLRVector.asCharacter(algorithm).First
 
         Return New force_directed With {
             .condenseFactor = condenseFactor,

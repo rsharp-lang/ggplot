@@ -2,6 +2,6 @@
 #' Excel liked theme style for ggplot
 #' 
 #' 
-const msoffice as function() {
+const msoffice = function() {
     ggplot2::theme();    
 }

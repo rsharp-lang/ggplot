@@ -224,6 +224,7 @@ Public Module ggplot2
                         Optional z As Object = Nothing,
                         Optional label As Object = Nothing,
                         Optional color As Object = Nothing,
+                        Optional fill As Object = Nothing,
                         Optional title As String = Nothing,
                         Optional shape As Object = Nothing,
                         Optional [class] As Object = Nothing,
@@ -235,7 +236,7 @@ Public Module ggplot2
             .x = x,
             .y = y,
             .z = z,
-            .color = color,
+            .color = If(color, fill),
             .label = label,
             .args = args,
             .title = title,
@@ -650,6 +651,22 @@ Public Module ggplot2
             .groupWidth = width,
             .colorMap = ggplotColorMap.CreateColorMap(color, 1, env),
             .alpha = alpha
+        }
+    End Function
+
+    <ExportAPI("geom_bar")>
+    Public Function geom_bar(Optional stat As Object = "identity",
+                             Optional position As Object = "stack",
+                             Optional color As Object = "black",
+                             Optional width As Double = 0.7,
+                             Optional size As Double = 0.25,
+                             Optional env As Environment = Nothing) As geom_bar
+
+        Return New geom_bar With {
+            .position = position,
+            .stat = stat,
+            .groupWidth = width,
+            .colorMap = ggplotColorMap.CreateColorMap(color, 1, env)
         }
     End Function
 
