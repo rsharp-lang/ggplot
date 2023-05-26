@@ -72,7 +72,6 @@ Imports ggplot.layers
 Imports ggplot.render
 Imports Microsoft.VisualBasic.ComponentModel.DataStructures
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Plot3D.Device
 Imports Microsoft.VisualBasic.Imaging
@@ -204,15 +203,6 @@ Public Class ggplot : Inherits Plot
         End If
     End Function
 
-    Private Sub reverse(ByRef vec As Double())
-        Dim max As Double = vec.Max
-        Dim min As Double = vec.Min
-
-        For i As Integer = 0 To vec.Length - 1
-            vec(i) = max - vec(i) + min
-        Next
-    End Sub
-
     Public Shared UnionGgplotLayers As Func(Of IEnumerable(Of ggplotLayer), IEnumerable(Of ggplotLayer))
 
     Protected Overrides Sub PlotInternal(ByRef g As IGraphics, canvas As GraphicsRegion)
@@ -253,93 +243,7 @@ Public Class ggplot : Inherits Plot
         Call Draw2DElements(g, canvas, legends)
     End Sub
 
-    Private Sub plot2D(baseData As ggplotData, ByRef g As IGraphics, canvas As GraphicsRegion)
-        Dim x As axisMap = baseData.x
-        Dim y As Double() = baseData.y.ToNumeric
-        Dim reverse_y As Boolean = args.getValue("scale_y_reverse", env:=environment, [default]:=False)
-        Dim layers As New Queue(Of ggplotLayer)(
-            collection:=If(UnionGgplotLayers Is Nothing, Me.layers, UnionGgplotLayers(Me.layers))
-        )
-        Dim scale As DataScaler
-        Dim xAxis As Array
-
-        If baseData.xscale = d3js.scale.scalers.linear Then
-            xAxis = x.ToNumeric
-            scale = get2DScale(
-                rect:=canvas.PlotRegion,
-                [default]:=(x.ToNumeric, y),
-                layerData:=From layer As ggplotLayer
-                           In layers
-                           Let data As ggplotData = layer.initDataSet(ggplot:=Me)
-                           Where Not data Is Nothing
-                           Select data
-            )
-        Else
-            xAxis = x.ToFactors
-            scale = get2DScale(
-                rect:=canvas.PlotRegion,
-                [default]:=(x.ToFactors, y),
-                layerData:=From layer As ggplotLayer
-                           In layers
-                           Let data As ggplotData = layer.initDataSet(ggplot:=Me)
-                           Where Not data Is Nothing
-                           Select data
-            )
-        End If
-
-        If reverse_y AndAlso y.Length > 0 Then
-            Call reverse(y)
-        End If
-
-        If Not panelBorder Is Nothing Then
-            If Not panelBorder.fill.StringEmpty AndAlso panelBorder.fill <> "NA" Then
-                Call g.FillRectangle(panelBorder.fill.GetBrush, canvas.PlotRegion)
-            End If
-            If Not panelBorder.border Is Nothing Then
-                Call g.DrawRectangle(panelBorder.border.GDIObject, canvas.PlotRegion)
-            End If
-        End If
-
-        Call Axis.DrawAxis(
-            g, canvas,
-            scaler:=scale,
-            showGrid:=theme.drawGrid,
-            xlabel:=xlabel,
-            ylabel:=ylabel,
-            gridFill:=theme.gridFill,
-            axisStroke:=theme.axisStroke,
-            gridX:=theme.gridStrokeX,
-            gridY:=theme.gridStrokeY,
-            labelFont:=theme.axisLabelCSS,
-            tickFontStyle:=theme.axisTickCSS,
-            XtickFormat:=theme.XaxisTickFormat,
-            YtickFormat:=theme.YaxisTickFormat,
-            xlabelRotate:=theme.xAxisRotate,
-            xlayout:=theme.xAxisLayout,
-            ylayout:=theme.yAxisLayout
-        )
-
-        Dim legends As New List(Of IggplotLegendElement)
-        Dim stream As New ggplotPipeline With {
-            .ggplot = Me,
-            .canvas = canvas,
-            .g = g,
-            .scale = scale,
-            .x = xAxis,
-            .y = y
-        }
-
-        Do While layers.Count > 0
-            Call layers _
-                .Dequeue _
-                .Plot(stream) _
-                .DoCall(AddressOf legends.Add)
-        Loop
-
-        Call Draw2DElements(g, canvas, legends)
-    End Sub
-
-    Protected Sub Draw2DElements(g As IGraphics, canvas As GraphicsRegion, legends As List(Of IggplotLegendElement))
+    Protected Friend Sub Draw2DElements(g As IGraphics, canvas As GraphicsRegion, legends As List(Of IggplotLegendElement))
         Dim legendGroups = From group As IggplotLegendElement
                            In legends.SafeQuery
                            Where Not group Is Nothing
