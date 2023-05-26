@@ -1141,6 +1141,17 @@ Public Module ggplot2
         }
     End Function
 
+    <ExportAPI("scale_fill_manual")>
+    Public Function scale_fill_manual(<RRawVectorArgument>
+                                      values As Object,
+                                      Optional alpha As Double = 1,
+                                      Optional env As Environment = Nothing) As ggplotOption
+
+        Return New ggplotColorProfile With {
+            .profile = ggplotColorMap.CreateColorMap(values, alpha, env)
+        }
+    End Function
+
     ''' <summary>
     ''' Position scales for continuous data (x &amp; y)
     ''' </summary>

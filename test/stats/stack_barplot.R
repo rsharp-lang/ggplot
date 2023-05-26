@@ -1,6 +1,6 @@
-imports "package_utils" from "ggplot";
+imports "package_utils" from "devkit";
 
-package_utils::attach(`${@dir}/../../test/`);
+package_utils::attach(`${@dir}/../../`);
 
 require(ggplot);
 
