@@ -1,6 +1,11 @@
-﻿Imports ggplot.elements
+﻿Imports System.Drawing
+Imports ggplot.elements
 Imports ggplot.elements.legend
+Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
+Imports Microsoft.VisualBasic.Data.ChartPlots.BarPlot
+Imports Microsoft.VisualBasic.Data.ChartPlots.BarPlot.Data
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
+Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.d3js.scale
 Imports SMRUCC.Rsharp.Runtime.Internal.[Object]
 Imports SMRUCC.Rsharp.Runtime.Vectorization
@@ -44,7 +49,7 @@ Namespace layers
         Protected Overrides Function PlotOrdinal(stream As ggplotPipeline, x As OrdinalScale) As IggplotLegendElement
             Dim groupName As String = stream.ggplot.base.reader.color
             Dim ggplot As ggplot = stream.ggplot
-            Dim legends As IggplotLegendElement = Nothing
+            Dim legends As legendGroupElement = Nothing
 
             If TypeOf stream.ggplot.data Is dataframe Then
                 Dim groupFactors As String() = CLRVector.asCharacter(DirectCast(stream.ggplot.data, dataframe)(groupName))
@@ -59,13 +64,41 @@ Namespace layers
                 End If
 
                 Dim zip = groupFactors.Zip(y).Zip(CLRVector.asCharacter(stream.x)).GroupBy(Function(a) a.Second).ToArray
+                Dim fill = legends.legends _
+                    .Select(Function(l) New NamedValue(Of Color)(l.title, l.color.TranslateColor)) _
+                    .ToArray
+                Dim groupData As New List(Of BarDataSample)
 
+                For Each group In zip
+                    Dim sum = group _
+                        .Select(Function(d) d.First) _
+                        .GroupBy(Function(a) a.First) _
+                        .ToDictionary(Function(a) a.Key,
+                                      Function(a)
+                                          Return aggregate_sum(a)
+                                      End Function)
 
+                    Call groupData.Add(New BarDataSample With {
+                        .tag = group.Key,
+                        .data = fill.Select(Function(a) sum.TryGetValue(a.Name, [default]:=0))
+                    })
+                Next
+
+                Dim stackbars As New BarDataGroup With {
+                    .Samples = groupData.ToArray,
+                    .Serials = fill
+                }
+
+                Call StackedPercentageBarPlot.DrawStackBars(stackbars, stream.g, stream.canvas, 1)
             Else
                 Throw New NotImplementedException
             End If
 
             Return legends
+        End Function
+
+        Private Shared Function aggregate_sum(a As IEnumerable(Of (first$, second#))) As Double
+            Return Aggregate xi In a Into Sum(xi.second)
         End Function
     End Class
 End Namespace
