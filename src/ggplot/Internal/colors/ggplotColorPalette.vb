@@ -69,7 +69,7 @@ Namespace colors
     ''' <summary>
     ''' A color palette literal mapping, mapping from a term to a set of the color names
     ''' </summary>
-    Public Class ggplotColorPalette : Inherits ggplotColorMap
+    Public Class ggplotColorPalette : Inherits ggplotColorCustomSet
 
         <MethodImpl(MethodImplOptions.AggressiveInlining)>
         Public Overrides Function ToString() As String

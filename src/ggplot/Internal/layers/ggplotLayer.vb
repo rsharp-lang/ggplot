@@ -1,58 +1,58 @@
 ﻿#Region "Microsoft.VisualBasic::842e74764385dd4fdf7582d786eca586, ggplot\src\ggplot\Internal\layers\ggplotLayer.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (I@xieguigang.me)
-    ' 
-    ' Copyright (c) 2021 R# language
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (I@xieguigang.me)
+' 
+' Copyright (c) 2021 R# language
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
-
-
-    ' Code Statistics:
-
-    '   Total Lines: 151
-    '    Code Lines: 121
-    ' Comment Lines: 4
-    '   Blank Lines: 26
-    '     File Size: 6.46 KB
+' Summaries:
 
 
-    '     Class ggplotLayer
-    ' 
-    '         Properties: alpha, colorMap, reader, showLegend, useCustomColorMaps
-    '                     useCustomData, which, zindex
-    ' 
-    '         Function: getColorSet, getFilter, initDataSet
-    ' 
-    ' 
-    ' /********************************************************************************/
+' Code Statistics:
+
+'   Total Lines: 151
+'    Code Lines: 121
+' Comment Lines: 4
+'   Blank Lines: 26
+'     File Size: 6.46 KB
+
+
+'     Class ggplotLayer
+' 
+'         Properties: alpha, colorMap, reader, showLegend, useCustomColorMaps
+'                     useCustomData, which, zindex
+' 
+'         Function: getColorSet, getFilter, initDataSet
+' 
+' 
+' /********************************************************************************/
 
 #End Region
 
@@ -146,9 +146,9 @@ Namespace layers
                 }
 
                 Return colors
-            ElseIf reader Is Nothing AndAlso TypeOf colorMap Is ggplotColorPalette Then
+            ElseIf reader Is Nothing AndAlso colorMap.GetType.IsInheritsFrom(GetType(ggplotColorCustomSet)) Then
                 Dim maplevels As Integer = 30
-                Dim palette As ggplotColorPalette = DirectCast(colorMap, ggplotColorPalette)
+                Dim palette As ggplotColorCustomSet = DirectCast(colorMap, ggplotColorCustomSet)
                 Dim maps As Func(Of Object, String) = palette.ColorHandler(ggplot, data)
                 Dim theme As Theme = ggplot.ggplotTheme
                 Dim padding As New GraphicsRegion(g.Size, theme.padding)
@@ -209,7 +209,7 @@ Namespace layers
 
             For Each row As NamedCollection(Of Object) In DirectCast(ggplot.data, dataframe).forEachRow(fields)
                 For Each var As SeqValue(Of String) In x
-                    Call measure(var.value).SetValue(row(var), measure)
+                    Call measure(var.value).setValue(row(var), measure)
                 Next
 
                 i.Add(REnv.single(which.Evaluate(measure)))
