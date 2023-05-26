@@ -7,8 +7,15 @@ Imports REnv = SMRUCC.Rsharp.Runtime
 
 Namespace elements
 
+    ''' <summary>
+    ''' the axis value mapper
+    ''' </summary>
     Public Class axisMap
 
+        ''' <summary>
+        ''' the axis data type
+        ''' </summary>
+        ''' <returns></returns>
         Public ReadOnly Property mapper As MapperTypes
         Public ReadOnly Property range As DoubleRange
         Public ReadOnly Property value As Array
@@ -25,6 +32,11 @@ Namespace elements
         <MethodImpl(MethodImplOptions.AggressiveInlining)>
         Public Function ToNumeric() As Double()
             Return CLRVector.asNumeric(value)
+        End Function
+
+        <MethodImpl(MethodImplOptions.AggressiveInlining)>
+        Public Function ToFloat() As Single()
+            Return CLRVector.asFloat(value)
         End Function
 
         <MethodImpl(MethodImplOptions.AggressiveInlining)>
@@ -46,6 +58,10 @@ Namespace elements
         ''' <param name="value"></param>
         ''' <returns></returns>
         Public Shared Function FromArray(value As Array) As axisMap
+            If value Is Nothing Then
+                Return Nothing
+            End If
+
             value = REnv.MeltArray(value)
 
             If DataFramework.IsNumericType(value.GetType.GetElementType) Then
@@ -74,6 +90,16 @@ Namespace elements
 
             Return mapper
         End Function
+
+        <MethodImpl(MethodImplOptions.AggressiveInlining)>
+        Public Shared Narrowing Operator CType(axis As axisMap) As String()
+            Return axis.ToFactors
+        End Operator
+
+        <MethodImpl(MethodImplOptions.AggressiveInlining)>
+        Public Shared Narrowing Operator CType(axis As axisMap) As Double()
+            Return axis.ToNumeric
+        End Operator
 
     End Class
 End Namespace

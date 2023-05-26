@@ -62,6 +62,7 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
+Imports SMRUCC.Rsharp.Runtime.Vectorization
 Imports REnv = SMRUCC.Rsharp.Runtime
 Imports stdNum = System.Math
 
@@ -81,7 +82,7 @@ Namespace layers
             Dim data As dataframe = stream.ggplot.data
             Dim x As Double() = stream.scale.X(stream.x)
             Dim y As Double() = stream.scale.Y(stream.y)
-            Dim layerdata = DirectCast(REnv.asVector(Of Double)(data.getVector(Me.layer, fullSize:=True)), Double())
+            Dim layerdata = CLRVector.asNumeric(data.getVector(Me.layer, fullSize:=True))
             Dim cellSize = getCellsize(x, y)
             Dim colors As SolidBrush() = Designer _
                 .GetColors(stream.theme.colorSet, n:=maplevels) _

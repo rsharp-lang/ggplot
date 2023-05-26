@@ -61,6 +61,7 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Data.ChartPlots.Plots
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Math.Interpolation
+Imports SMRUCC.Rsharp.Runtime.Vectorization
 
 Namespace layers
 
@@ -76,7 +77,7 @@ Namespace layers
             Dim g As IGraphics = stream.g
 
             If Not useCustomData Then
-                Dim x = stream.x
+                Dim x = CLRVector.asFloat(stream.x)
                 Dim y = stream.y
                 Dim nsize As Integer = x.Length
 
@@ -86,7 +87,7 @@ Namespace layers
                     colors = ggplot.base.getColors(ggplot, legends, LegendStyles.SolidLine)
                 End If
 
-                serial = ggplotScatter.createSerialData(ggplot.base.reader.ToString, x, y, colors, line_width, LegendStyles.SolidLine, colorMap)
+                serial = ggplotScatter.createSerialData(ggplot.base.reader.ToString, x, CLRVector.asFloat(y), colors, line_width, LegendStyles.SolidLine, colorMap)
             Else
                 With Me.data
                     If useCustomColorMaps Then
@@ -105,7 +106,7 @@ Namespace layers
                         }
                     End If
 
-                    serial = ggplotScatter.createSerialData(reader.ToString, .x, .y, colors, line_width, LegendStyles.SolidLine, colorMap)
+                    serial = ggplotScatter.createSerialData(reader.ToString, .x.ToFloat, .y.ToFloat, colors, line_width, LegendStyles.SolidLine, colorMap)
                 End With
             End If
 

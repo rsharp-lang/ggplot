@@ -57,6 +57,7 @@
 #End Region
 
 Imports System.Runtime.CompilerServices
+Imports ggplot.elements
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ApplicationServices.Debugging.Diagnostics
 Imports Microsoft.VisualBasic.ComponentModel.Collection
@@ -130,9 +131,9 @@ Public Class ggplotReader
 
     Public Overridable Function getMapData(data As Object, env As Environment) As ggplotData
         Return New ggplotData With {
-            .x = unifySource(data, x, env),
-            .y = unifySource(data, y, env),
-            .z = If(isPlain2D, Nothing, unifySource(data, z, env))
+            .x = axisMap.FromArray(unifySource(data, x, env)),
+            .y = axisMap.FromArray(unifySource(data, y, env)),
+            .z = axisMap.FromArray(If(isPlain2D, Nothing, unifySource(data, z, env)))
         }
     End Function
 

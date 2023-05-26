@@ -66,6 +66,7 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.BarPlot.Histogram
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Math.Distributions.BinBox
+Imports SMRUCC.Rsharp.Runtime.Vectorization
 Imports REnv = SMRUCC.Rsharp.Runtime
 
 Namespace layers
@@ -117,7 +118,7 @@ Namespace layers
                 data = ggplot.base.reader.getMapData(ggplot.data, ggplot.environment)
             End If
 
-            Dim dataX As Double() = REnv.asVector(Of Double)(data.x)
+            Dim dataX As Double() = CLRVector.asNumeric(data.x)
             Dim bins = CutBins _
                 .FixedWidthBins(
                     data:=dataX,

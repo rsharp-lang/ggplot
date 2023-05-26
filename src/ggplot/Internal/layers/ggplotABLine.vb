@@ -56,6 +56,7 @@
 #End Region
 
 Imports System.Drawing
+Imports ggplot.elements
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Imaging.d3js.scale
@@ -69,8 +70,8 @@ Namespace layers
 
         Protected Friend Overrides Function initDataSet(ggplot As ggplot) As ggplotData
             data = New ggplotData With {
-                .x = New Double() {abline.A.X, abline.B.X},
-                .y = New Double() {abline.A.Y, abline.B.Y}
+                .x = axisMap.FromNumeric(New Double() {abline.A.X, abline.B.X}),
+                .y = axisMap.FromNumeric(New Double() {abline.A.Y, abline.B.Y})
             }
 
             Return data

@@ -62,7 +62,7 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
-Imports REnv = SMRUCC.Rsharp.Runtime
+Imports SMRUCC.Rsharp.Runtime.Vectorization
 Imports stdNum = System.Math
 
 Namespace layers
@@ -87,7 +87,7 @@ Namespace layers
             Dim piedata = pie _
                 .ToDictionary(Function(name) name,
                               Function(name)
-                                  Return DirectCast(REnv.asVector(Of Double)(data.getVector(name, fullSize:=True)), Double())
+                                  Return CLRVector.asNumeric(data.getVector(name, fullSize:=True))
                               End Function)
             Dim cellSize = getCellsize(x, y)
             Dim colors As Color() = Designer.GetColors(stream.theme.colorSet, n:=pie.Length)

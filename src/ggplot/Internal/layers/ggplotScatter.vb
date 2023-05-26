@@ -64,6 +64,7 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Plots
 Imports Microsoft.VisualBasic.Imaging.Driver
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.MIME.Html
+Imports SMRUCC.Rsharp.Runtime.Vectorization
 
 Namespace layers
 
@@ -81,12 +82,12 @@ Namespace layers
             Dim size As Single = If(ggplot.driver = Drivers.SVG, Me.size * stream.g.Dpi / 96, Me.size)
 
             If Not useCustomData Then
-                Dim x = stream.x
-                Dim y = stream.y
+                Dim x = CLRVector.asFloat(stream.x)
+                Dim y = CLRVector.asFloat(stream.y)
                 Dim nsize As Integer = x.Length
 
                 If useCustomColorMaps Then
-                    colors = getColorSet(ggplot, stream.g, nsize, shape, y, legends)
+                    colors = getColorSet(ggplot, stream.g, nsize, shape, CLRVector.asNumeric(y), legends)
                 ElseIf Not ggplot.base.reader.color Is Nothing Then
                     colors = ggplot.base.getColors(ggplot, legends, shape)
                 End If
@@ -110,7 +111,7 @@ Namespace layers
                         }
                     End If
 
-                    serial = createSerialData(reader.ToString, .x, .y, colors, size, shape, colorMap)
+                    serial = createSerialData(reader.ToString, .x.ToFloat, .y.ToFloat, colors, size, shape, colorMap)
                 End With
             End If
 
@@ -132,8 +133,8 @@ Namespace layers
         End Function
 
         Protected Friend Shared Function createSerialData(legend As String,
-                                                          x As Array,
-                                                          y As Array,
+                                                          x As Single(),
+                                                          y As Single(),
                                                           colors As String(),
                                                           size!,
                                                           shape As LegendStyles?,
@@ -162,7 +163,7 @@ Namespace layers
                 .pts = x _
                     .AsObjectEnumerator _
                     .Select(Function(xi, i)
-                                Return New PointData(CSng(xi), CSng(y(i))) With {
+                                Return New PointData(xi, y(i)) With {
                                     .color = If(colors Is Nothing, Nothing, colors(i))
                                 }
                             End Function) _
