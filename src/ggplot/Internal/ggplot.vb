@@ -216,7 +216,7 @@ Public Class ggplot : Inherits Plot
             Call Draw2DElements(g, canvas, New List(Of IggplotLegendElement))
         Else
             If base.reader.isPlain2D Then
-                Call plot2D(baseData, g, canvas)
+                Call chart2D.plot2D(Me, baseData, g, canvas)
             Else
                 Call plot3D(baseData, g, canvas)
             End If

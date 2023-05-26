@@ -77,7 +77,7 @@ Public Class ggplotBase
     Public Function getGgplotData(ggplot As ggplot) As ggplotData
         Dim dataXy = reader.getMapData(ggplot.data, ggplot.environment)
 
-        If dataXy.y Is Nothing OrElse dataXy.y.Length = 0 Then
+        If dataXy.y Is Nothing OrElse dataXy.y.size = 0 Then
             If data.ContainsKey("y") Then
                 dataXy.y = data!y
             Else
