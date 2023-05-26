@@ -91,7 +91,11 @@ Namespace layers
                     .Serials = fill
                 }
 
-                Call StackedPercentageBarPlot.DrawStackBars(stackbars, stream.g, stream.canvas, 1)
+                If ggplot.ggplotTheme.flipAxis Then
+                    Call StackedPercentageBarPlot.DrawStackBarsFlip(stackbars, stream.g, stream.canvas, 1)
+                Else
+                    Call StackedPercentageBarPlot.DrawStackBars(stackbars, stream.g, stream.canvas, 1)
+                End If
             Else
                 Throw New NotImplementedException
             End If
