@@ -1,65 +1,67 @@
 ﻿#Region "Microsoft.VisualBasic::363b633989d1db011338c524b91fc6e0, ggplot\src\ggplot\Internal\colors\ggplotColorMap.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (I@xieguigang.me)
-    ' 
-    ' Copyright (c) 2021 R# language
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (I@xieguigang.me)
+' 
+' Copyright (c) 2021 R# language
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
-
-
-    ' Code Statistics:
-
-    '   Total Lines: 75
-    '    Code Lines: 52
-    ' Comment Lines: 11
-    '   Blank Lines: 12
-    '     File Size: 2.91 KB
+' Summaries:
 
 
-    '     Class ggplotColorMap
-    ' 
-    '         Properties: alpha, colorMap
-    ' 
-    '         Function: CreateColorMap, directMap, stringMap
-    ' 
-    ' 
-    ' /********************************************************************************/
+' Code Statistics:
+
+'   Total Lines: 75
+'    Code Lines: 52
+' Comment Lines: 11
+'   Blank Lines: 12
+'     File Size: 2.91 KB
+
+
+'     Class ggplotColorMap
+' 
+'         Properties: alpha, colorMap
+' 
+'         Function: CreateColorMap, directMap, stringMap
+' 
+' 
+' /********************************************************************************/
 
 #End Region
 
+Imports System.Runtime.CompilerServices
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
+Imports SMRUCC.Rsharp.Runtime.Vectorization
 Imports REnv = SMRUCC.Rsharp.Runtime
 
 Namespace colors
@@ -77,7 +79,7 @@ Namespace colors
         ''' 1. <see cref="ggplotColorLiteral"/>: a single color value
         ''' 2. <see cref="ggplotColorPalette"/>: a color set name string
         ''' 3. <see cref="ggplotColorFactorMap"/>: a list mapping of factor to color value
-        ''' 
+        ''' 4. <see cref="ggplotColorCustomSet"/>: a character vector of the color list
         ''' </summary>
         ''' <returns></returns>
         Public Property colorMap As Object
@@ -115,7 +117,7 @@ Namespace colors
             ElseIf TypeOf map Is String Then
                 Return stringMap(DirectCast(map, String), alpha)
             ElseIf map.GetType.IsArray Then
-                Dim strArray As String() = REnv.asVector(Of String)(map)
+                Dim strArray As String() = CLRVector.asCharacter(map)
 
                 If strArray.Length = 1 Then
                     Return stringMap(strArray(Scan0), alpha)
@@ -132,8 +134,9 @@ Namespace colors
             End If
         End Function
 
+        <MethodImpl(MethodImplOptions.AggressiveInlining)>
         Private Shared Function directMap(maps As String(), alpha As Double) As ggplotColorMap
-            Throw New NotImplementedException
+            Return New ggplotColorCustomSet With {.alpha = alpha, .colorMap = maps}
         End Function
 
         Private Shared Function stringMap(map As String, alpha As Double) As ggplotColorMap

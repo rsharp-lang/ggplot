@@ -57,10 +57,14 @@ Imports System.Drawing
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
+Imports SMRUCC.Rsharp.Runtime.Vectorization
 Imports REnv = SMRUCC.Rsharp.Runtime
 
 Namespace colors
 
+    ''' <summary>
+    ''' A single color literal value mapping
+    ''' </summary>
     Public Class ggplotColorLiteral : Inherits ggplotColorMap
 
         Public Overrides Function ToString() As String
@@ -79,7 +83,7 @@ Namespace colors
         End Function
 
         Public Overrides Function TryGetFactorLegends(factors As Array, shape As LegendStyles, theme As Theme) As LegendObject()
-            Return DirectCast(REnv.asVector(Of String)(factors), String()) _
+            Return CLRVector.asCharacter(factors) _
                 .Select(Function(name)
                             Return New LegendObject With {
                                 .color = DirectCast(colorMap, String),
