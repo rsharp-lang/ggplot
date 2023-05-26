@@ -57,6 +57,7 @@ Imports System.Drawing
 Imports ggplot.layers
 Imports Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic
 Imports Microsoft.VisualBasic.Data.visualize.Network.Graph
+Imports SMRUCC.Rsharp.Runtime.Vectorization
 Imports any = Microsoft.VisualBasic.Scripting
 Imports REnv = SMRUCC.Rsharp.Runtime
 
@@ -70,7 +71,7 @@ Namespace ggraph.render
             If [class].Length = 1 Then
                 Return classFromGraphData(stream, any.ToString([class].GetValue(Scan0)))
             Else
-                Return REnv.asVector(Of String)([class])
+                Return CLRVector.asCharacter([class])
             End If
         End Function
 

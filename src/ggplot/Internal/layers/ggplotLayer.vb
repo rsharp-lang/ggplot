@@ -77,6 +77,10 @@ Imports REnv = SMRUCC.Rsharp.Runtime
 
 Namespace layers
 
+    Public Class AxisMap
+
+    End Class
+
     Public MustInherit Class ggplotLayer
 
         Public Property reader As ggplotReader

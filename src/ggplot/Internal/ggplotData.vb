@@ -93,8 +93,4 @@ Public Class ggplotData : Inherits ggplotAdapter
 
 End Class
 
-Public Class ggplotAdapter
 
-    Public Property [error] As Message
-
-End Class
