@@ -7,6 +7,8 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.BarPlot.Data
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.d3js.scale
+Imports Microsoft.VisualBasic.Linq
+Imports Microsoft.VisualBasic.Serialization.JSON
 Imports SMRUCC.Rsharp.Runtime.Internal.[Object]
 Imports SMRUCC.Rsharp.Runtime.Vectorization
 Imports stdNum = System.Math
@@ -91,10 +93,24 @@ Namespace layers
                     .Serials = fill
                 }
 
+                Call stackbars.Samples _
+                    .Select(Function(a) a.tag) _
+                    .ToArray _
+                    .GetJson _
+                    .DoCall(AddressOf VBDebugger.EchoLine)
+
                 If ggplot.ggplotTheme.flipAxis Then
-                    Call StackedPercentageBarPlot.DrawStackBarsFlip(stackbars, stream.g, stream.canvas, 1)
+                    Dim width = stream.canvas.PlotRegion.Height / stackbars.Samples.Length
+                    width = width - width * groupWidth
+                    Dim dw As Double = width / 2
+
+                    Call StackedPercentageBarPlot.DrawStackBarsFlip(stackbars, stream.g, stream.canvas, dw)
                 Else
-                    Call StackedPercentageBarPlot.DrawStackBars(stackbars, stream.g, stream.canvas, 1)
+                    Dim width = stream.canvas.PlotRegion.Width / stackbars.Samples.Length
+                    width = width - width * groupWidth
+                    Dim dw As Double = width / 2
+
+                    Call StackedPercentageBarPlot.DrawStackBars(stackbars, stream.g, stream.canvas, dw)
                 End If
             Else
                 Throw New NotImplementedException
