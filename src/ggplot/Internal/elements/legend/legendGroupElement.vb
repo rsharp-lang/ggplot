@@ -65,6 +65,9 @@ Imports Microsoft.VisualBasic.Imaging.Drawing2D
 
 Namespace elements.legend
 
+    ''' <summary>
+    ''' A category group color legends
+    ''' </summary>
     Public Class legendGroupElement : Inherits ggplotElement
         Implements IggplotLegendElement
 

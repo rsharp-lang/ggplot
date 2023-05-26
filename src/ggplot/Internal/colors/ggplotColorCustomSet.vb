@@ -18,6 +18,12 @@ Namespace colors
     ''' </remarks>
     Public Class ggplotColorCustomSet : Inherits ggplotColorMap
 
+        ''' <summary>
+        ''' get color mapper from a character vector or numeric vector
+        ''' </summary>
+        ''' <param name="ggplot"></param>
+        ''' <param name="factors"></param>
+        ''' <returns></returns>
         Public Overrides Function ColorHandler(ggplot As ggplot, factors As Array) As Func(Of Object, String)
             If factors.GetType.GetRTypeCode.IsNumeric Then
                 ' level mapping

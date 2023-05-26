@@ -203,6 +203,29 @@ Namespace layers
         End Function
 
         Protected Function getColorSet(ggplot As ggplot,
+                                       shape As LegendStyles?,
+                                       data As String(),
+                                       ByRef legends As IggplotLegendElement) As String()
+
+            If Not colorMap.GetType.IsInheritsFrom(GetType(ggplotColorCustomSet), strict:=False) Then
+                Throw New InvalidConstraintException("category data must be map color from a category mapper!")
+            Else
+                Dim palette As ggplotColorCustomSet = DirectCast(colorMap, ggplotColorCustomSet)
+                Dim maps As Func(Of Object, String) = palette.ColorHandler(ggplot, data)
+                Dim theme As Theme = ggplot.ggplotTheme
+
+                legends = ggplotReader.FactorLegends(
+                    factors:=data.Distinct.Indexing,
+                    colors:=maps,
+                    shape:=If(shape, LegendStyles.Rectangle),
+                    labelCss:=theme.legendLabelCSS
+                )
+
+                Return data.Select(Function(d) maps(d)).ToArray
+            End If
+        End Function
+
+        Protected Function getColorSet(ggplot As ggplot,
                                        g As IGraphics,
                                        nsize As Integer,
                                        shape As LegendStyles?,

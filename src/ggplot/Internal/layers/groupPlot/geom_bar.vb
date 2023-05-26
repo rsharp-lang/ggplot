@@ -23,7 +23,7 @@ Namespace layers
                 Dim y As Double() = stream.y
 
                 If useCustomColorMaps Then
-                    colors = getColorSet(ggplot, stream.g, nsize, LegendStyles.Rectangle, y, legends)
+                    colors = getColorSet(ggplot, LegendStyles.Rectangle, groupFactors, legends)
                 ElseIf Not ggplot.base.reader.color Is Nothing Then
                     colors = ggplot.base.getColors(ggplot, legends, LegendStyles.Rectangle)
                 End If

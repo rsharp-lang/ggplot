@@ -75,7 +75,8 @@ Namespace elements
             Dim range As New DoubleRange(New Double() {0, factors.Distinct.Count})
             Dim mapper As New axisMap With {
                 ._mapper = MapperTypes.Discrete,
-                ._range = range
+                ._range = range,
+                ._value = factors
             }
 
             Return mapper
@@ -85,7 +86,8 @@ Namespace elements
             Dim range As New DoubleRange(x)
             Dim mapper As New axisMap With {
                 ._mapper = MapperTypes.Continuous,
-                ._range = range
+                ._range = range,
+                ._value = x
             }
 
             Return mapper
