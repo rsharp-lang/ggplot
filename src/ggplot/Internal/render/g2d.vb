@@ -1,5 +1,6 @@
 ﻿Imports System.Drawing
 Imports System.Runtime.CompilerServices
+Imports ggplot.elements
 Imports ggplot.layers
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Imaging
@@ -33,6 +34,7 @@ Namespace render
                 .JoinIterates(limitsY) _
                 .Where(Function(d) Not d.IsNaNImaginary) _
                 .ToArray
+            y = validateAxis(y, ggplot)
 
             Dim hasViolin As Boolean = ggplot.layers _
                 .Any(Function(layer)
@@ -91,6 +93,7 @@ Namespace render
             ' function
             x = x.JoinIterates([default].x).JoinIterates(limitsX).Where(Function(d) Not d.IsNaNImaginary).ToArray
             y = y.JoinIterates([default].y).JoinIterates(limitsY).Where(Function(d) Not d.IsNaNImaginary).ToArray
+            y = validateAxis(y, ggplot)
 
             Dim xTicks = x.Range.CreateAxisTicks
             Dim yTicks = y.Range.CreateAxisTicks
@@ -106,5 +109,33 @@ Namespace render
             Return scale
         End Function
 
+        Private Function validateAxis(y As Double(), ggplot As ggplot) As Double()
+            Dim maps As New List(Of axisMap)
+            Dim layerMap As axisMap
+
+            For Each layer As ggplotLayer In ggplot.layers
+                layerMap = layer.getYAxis(y, ggplot)
+
+                If Not layerMap Is Nothing Then
+                    Call maps.Add(layerMap)
+                End If
+            Next
+
+            ' no mapping was defined, use the default value
+            If maps.IsNullOrEmpty Then
+                Return y
+            End If
+
+            ' check mapper type at first
+            Dim check_mapper As Boolean = maps.Select(Function(a) a.mapper).Distinct.Count = 1
+
+            If Not check_mapper Then
+                Throw New InvalidOperationException("The axis mapping of the value data type is not mutually compatible!")
+            End If
+
+            ' check value range 
+            Dim ys = maps.Select(Function(a) a.ToNumeric).IteratesALL.ToArray
+            Return ys
+        End Function
     End Module
 End Namespace

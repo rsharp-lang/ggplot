@@ -1,4 +1,5 @@
-﻿Imports ggplot.elements.legend
+﻿Imports ggplot.elements
+Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging.d3js.scale
 Imports SMRUCC.Rsharp.Runtime.Internal.[Object]
@@ -10,6 +11,10 @@ Namespace layers
 
         Public Property stat As String
         Public Property position As String
+
+        Public Overrides Function getYAxis(y() As Double, ggplot As ggplot) As axisMap
+
+        End Function
 
         Protected Overrides Function PlotOrdinal(stream As ggplotPipeline, x As OrdinalScale) As IggplotLegendElement
             Dim groupName As String = stream.ggplot.base.reader.color

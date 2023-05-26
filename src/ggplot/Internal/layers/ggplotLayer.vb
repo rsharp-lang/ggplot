@@ -58,6 +58,7 @@
 
 Imports System.Data
 Imports ggplot.colors
+Imports ggplot.elements
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
@@ -119,6 +120,10 @@ Namespace layers
             End If
 
             Return data
+        End Function
+
+        Public Overridable Function getYAxis(y As Double(), ggplot As ggplot) As axisMap
+            Return Nothing
         End Function
 
         Private Function mapFromPalette(ggplot As ggplot, data As Double(), g As IGraphics, ByRef legends As IggplotLegendElement) As String()
@@ -215,7 +220,7 @@ Namespace layers
                 Dim theme As Theme = ggplot.ggplotTheme
 
                 legends = ggplotReader.FactorLegends(
-                    factors:=data.Distinct.Indexing,
+                    factors:=data.Distinct,
                     colors:=maps,
                     shape:=If(shape, LegendStyles.Rectangle),
                     labelCss:=theme.legendLabelCSS
