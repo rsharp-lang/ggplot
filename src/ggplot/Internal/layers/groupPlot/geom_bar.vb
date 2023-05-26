@@ -58,6 +58,9 @@ Namespace layers
                     colors = ggplot.base.getColors(ggplot, legends, LegendStyles.Rectangle)
                 End If
 
+                Dim zip = groupFactors.Zip(y).Zip(CLRVector.asCharacter(stream.x)).GroupBy(Function(a) a.Second).ToArray
+
+
             Else
                 Throw New NotImplementedException
             End If

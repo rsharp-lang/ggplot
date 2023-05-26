@@ -971,6 +971,15 @@ Public Module ggplot2
     End Function
 
     ''' <summary>
+    ''' Swapping X- and Y-Axes
+    ''' </summary>
+    ''' <returns></returns>
+    <ExportAPI("coord_flip")>
+    Public Function coord_flip() As coord_flip
+
+    End Function
+
+    ''' <summary>
     ''' ## Modify components of a theme
     ''' 
     ''' Themes are a powerful way to customize the non-data components of 
