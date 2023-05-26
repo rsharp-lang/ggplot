@@ -98,6 +98,13 @@ Namespace layers
             End Get
         End Property
 
+        ''' <summary>
+        ''' the local <see cref="colorMap"/> is not nothing means use the custom color maps
+        ''' </summary>
+        ''' <returns></returns>
+        ''' <remarks>
+        ''' the local mapping always overrides the global mapping
+        ''' </remarks>
         Protected ReadOnly Property useCustomColorMaps As Boolean
             Get
                 Return colorMap IsNot Nothing OrElse ((Not reader Is Nothing) AndAlso Not reader.color Is Nothing)
