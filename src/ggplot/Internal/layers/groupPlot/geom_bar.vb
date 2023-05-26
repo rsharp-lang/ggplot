@@ -80,7 +80,9 @@ Namespace layers
 
                     Call groupData.Add(New BarDataSample With {
                         .tag = group.Key,
-                        .data = fill.Select(Function(a) sum.TryGetValue(a.Name, [default]:=0))
+                        .data = fill _
+                            .Select(Function(a) sum.TryGetValue(a.Name, [default]:=0)) _
+                            .ToArray
                     })
                 Next
 
