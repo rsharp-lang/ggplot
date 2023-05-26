@@ -60,7 +60,7 @@ Namespace render
             End If
 
             y = y _
-                .JoinIterates({y.Max * 1.25}) _
+                .JoinIterates({y.Max * 1.125}) _
                 .ToArray
 
             Dim yTicks = y.Range.CreateAxisTicks
