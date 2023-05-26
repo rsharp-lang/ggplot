@@ -660,13 +660,15 @@ Public Module ggplot2
                              Optional color As Object = "black",
                              Optional width As Double = 0.7,
                              Optional size As Double = 0.25,
+                             Optional show_legend As Boolean = True,
                              Optional env As Environment = Nothing) As geom_bar
 
         Return New geom_bar With {
             .position = position,
             .stat = stat,
             .groupWidth = width,
-            .colorMap = ggplotColorMap.CreateColorMap(color, 1, env)
+            .colorMap = ggplotColorMap.CreateColorMap(color, 1, env)，
+            .showLegend = show_legend
         }
     End Function
 
@@ -976,7 +978,7 @@ Public Module ggplot2
     ''' <returns></returns>
     <ExportAPI("coord_flip")>
     Public Function coord_flip() As coord_flip
-
+        Return New coord_flip
     End Function
 
     ''' <summary>

@@ -100,7 +100,11 @@ Namespace layers
                 Throw New NotImplementedException
             End If
 
-            Return legends
+            If showLegend Then
+                Return legends
+            Else
+                Return Nothing
+            End If
         End Function
 
         Private Shared Function aggregate_sum(a As IEnumerable(Of (first$, second#))) As Double

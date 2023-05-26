@@ -14,8 +14,9 @@ let mydata = melt(bezdekIris, id.vars = "class");
 print(mydata);
 
 bitmap( file = `${@dir}/stack_bar.png`) {
-    ggplot(data=mydata,aes("variable","value",fill="class"))
-    + geom_bar(stat="identity",position="stack", color="black", width=0.7,size=0.25)
+    ggplot(data=mydata,aes("variable","value",fill="class"),y.axis.layout = "none", x.axis.layout = "none")
+    + geom_bar(stat="identity",position="stack", color="black", width=0.7,size=0.25, show.legend = FALSE)
     + scale_fill_manual(values=c("red", "blue", "green","darkgreen","black"))
     + labs(x = "",y = "Nutrient (mg/L)")
+    + coord_flip()
 }
