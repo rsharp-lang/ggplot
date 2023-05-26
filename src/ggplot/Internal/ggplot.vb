@@ -1,64 +1,64 @@
 ﻿#Region "Microsoft.VisualBasic::9af17d7e2994089396b23348b742c8b7, ggplot\src\ggplot\Internal\ggplot.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (I@xieguigang.me)
-    ' 
-    ' Copyright (c) 2021 R# language
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (I@xieguigang.me)
+' 
+' Copyright (c) 2021 R# language
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
-
-
-    ' Code Statistics:
-
-    '   Total Lines: 507
-    '    Code Lines: 408
-    ' Comment Lines: 27
-    '   Blank Lines: 72
-    '     File Size: 19.71 KB
+' Summaries:
 
 
-    ' Class ggplot
-    ' 
-    '     Properties: args, base, clearCanvas, data, driver
-    '                 environment, ggplotTheme, is3D, layers, panelBorder
-    '                 titleOffset
-    ' 
-    '     Constructor: (+1 Overloads) Sub New
-    ' 
-    '     Function: Camera, CreateReader, CreateRender, (+2 Overloads) get2DScale, getText
-    '               getValue, populateModels, Save
-    ' 
-    '     Sub: Draw2DElements, DrawLegends, DrawMultiple, DrawSingle, plot2D
-    '          plot3D, PlotInternal, Register, reverse
-    ' 
-    ' /********************************************************************************/
+' Code Statistics:
+
+'   Total Lines: 507
+'    Code Lines: 408
+' Comment Lines: 27
+'   Blank Lines: 72
+'     File Size: 19.71 KB
+
+
+' Class ggplot
+' 
+'     Properties: args, base, clearCanvas, data, driver
+'                 environment, ggplotTheme, is3D, layers, panelBorder
+'                 titleOffset
+' 
+'     Constructor: (+1 Overloads) Sub New
+' 
+'     Function: Camera, CreateReader, CreateRender, (+2 Overloads) get2DScale, getText
+'               getValue, populateModels, Save
+' 
+'     Sub: Draw2DElements, DrawLegends, DrawMultiple, DrawSingle, plot2D
+'          plot3D, PlotInternal, Register, reverse
+' 
+' /********************************************************************************/
 
 #End Region
 
@@ -69,15 +69,12 @@ Imports System.Runtime.CompilerServices
 Imports ggplot.elements
 Imports ggplot.elements.legend
 Imports ggplot.layers
-Imports ggplot.layers.layer3d
+Imports ggplot.render
 Imports Microsoft.VisualBasic.ComponentModel.DataStructures
-Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Plot3D.Device
-Imports Microsoft.VisualBasic.Data.ChartPlots.Plot3D.Model
-Imports Microsoft.VisualBasic.Emit.Delegates
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.BitmapImage
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
@@ -88,7 +85,6 @@ Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.Math
 Imports Microsoft.VisualBasic.Math.LinearAlgebra
 Imports Microsoft.VisualBasic.Math.Quantile
-Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports SMRUCC.Rsharp.Runtime.Vectorization
@@ -247,7 +243,7 @@ Public Class ggplot : Inherits Plot
         Dim camera As Camera = Me.Camera(canvas.PlotRegion.Size)
         Dim legends As New List(Of IggplotLegendElement)
 
-        Call populateModels(g, baseData, x, y, z, legends) _
+        Call g3d.populateModels(Me, g, baseData, x, y, z, legends) _
             .IteratesALL _
             .RenderAs3DChart(
                 canvas:=g,

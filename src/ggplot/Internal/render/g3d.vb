@@ -1,13 +1,26 @@
 ﻿Imports System.Drawing
 Imports System.Runtime.CompilerServices
+Imports ggplot.elements.legend
+Imports ggplot.layers
+Imports ggplot.layers.layer3d
+Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
+Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
+Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
+Imports Microsoft.VisualBasic.Data.ChartPlots.Plot3D.Device
+Imports Microsoft.VisualBasic.Data.ChartPlots.Plot3D.Model
+Imports Microsoft.VisualBasic.Emit.Delegates
+Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing3D
+Imports Microsoft.VisualBasic.Linq
+Imports Microsoft.VisualBasic.Math
+Imports Microsoft.VisualBasic.MIME.Html.CSS
 
 Namespace render
 
     Module g3d
 
         <Extension>
-        Private Function Camera(ggplot As ggplot, plotSize As Size) As Camera
+        Public Function Camera(ggplot As ggplot, plotSize As Size) As Camera
             Dim cameraVal As Object = ggplot.args.getByName("camera")
 
             If cameraVal Is Nothing Then
@@ -27,16 +40,18 @@ Namespace render
             End If
         End Function
 
-        Private Iterator Function populateModels(g As IGraphics,
-                                                 baseData As ggplotData,
-                                                 x() As Double,
-                                                 y() As Double,
-                                                 z() As Double,
-                                                 legends As List(Of IggplotLegendElement)) As IEnumerable(Of Element3D())
+        Public Iterator Function populateModels(ggplot As ggplot,
+                                                g As IGraphics,
+                                                baseData As ggplotData,
+                                                x() As Double,
+                                                y() As Double,
+                                                z() As Double,
+                                                legends As List(Of IggplotLegendElement)) As IEnumerable(Of Element3D())
 
             Dim ppi As Integer = g.Dpi
             Dim max As Double = x.JoinIterates(y).JoinIterates(z).Max
             Dim min As Double = x.JoinIterates(y).JoinIterates(z).Min
+            Dim theme As Theme = ggplot.ggplotTheme
             'Dim xTicks = x.Range.CreateAxisTicks
             'Dim yTicks = y.Range.CreateAxisTicks
             'Dim zTicks = z.Range.CreateAxisTicks
@@ -49,21 +64,23 @@ Namespace render
             Yield Grids.Grid3(ticks, ticks, (ticks(1) - ticks(0), ticks(1) - ticks(0)), ticks.Max, showTicks:=Not theme.axisTickCSS.StringEmpty, strokeCSS:=theme.gridStrokeX, tickCSS:=tickCss).ToArray
 
             Yield AxisDraw.Axis(
-            xrange:=ticks, yrange:=ticks, zrange:=ticks,
-            labelFontCss:=theme.axisLabelCSS,
-            labels:=(xlabel, ylabel, zlabel),
-            strokeCSS:=theme.axisStroke,
-            arrowFactor:="1,2",
-            labelColorVal:=theme.mainTextColor
-        )
+                xrange:=ticks, yrange:=ticks, zrange:=ticks,
+                labelFontCss:=theme.axisLabelCSS,
+                labels:=(ggplot.xlabel, ggplot.ylabel, ggplot.zlabel),
+                strokeCSS:=theme.axisStroke,
+                arrowFactor:="1,2",
+                labelColorVal:=theme.mainTextColor
+            )
 
-            For Each layer As ggplotLayer In layers.ToArray
+            Dim ggplotLayers As New List(Of ggplotLayer)(ggplot.layers)
+
+            For Each layer As ggplotLayer In ggplotLayers.ToArray
                 If layer.GetType.ImplementInterface(Of Ilayer3d) Then
-                    Call layers.Remove(layer)
+                    Call ggplotLayers.Remove(layer)
 
                     Yield DirectCast(layer, Ilayer3d) _
-                    .populateModels(g, baseData, x, y, z, Me, theme, legends) _
-                    .ToArray
+                        .populateModels(g, baseData, x, y, z, ggplot, theme, legends) _
+                        .ToArray
                 End If
             Next
         End Function
