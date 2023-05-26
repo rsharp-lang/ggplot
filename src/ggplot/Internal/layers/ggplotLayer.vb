@@ -121,6 +121,87 @@ Namespace layers
             Return data
         End Function
 
+        Private Function mapFromPalette(ggplot As ggplot, data As Double(), g As IGraphics, ByRef legends As IggplotLegendElement) As String()
+            Dim maplevels As Integer = 30
+            Dim palette As ggplotColorCustomSet = DirectCast(colorMap, ggplotColorCustomSet)
+            Dim maps As Func(Of Object, String) = palette.ColorHandler(ggplot, data)
+            Dim theme As Theme = ggplot.ggplotTheme
+            Dim padding As New GraphicsRegion(g.Size, theme.padding)
+            Dim legend As ColorMapLegend
+
+            If TypeOf colorMap Is ggplotColorPalette Then
+                legend = New ColorMapLegend(DirectCast(palette.colorMap, String), maplevels)
+            Else
+                legend = New ColorMapLegend(CLRVector.asCharacter(palette.colorMap), maplevels)
+            End If
+
+            With legend
+                .title = ggplot.base.reader.getLegendLabel
+                .tickAxisStroke = Stroke.TryParse(theme.legendTickAxisStroke).GDIObject
+                .tickFont = CSSFont.TryParse(theme.legendTickCSS).GDIObject(g.Dpi)
+                .format = theme.legendTickFormat
+                .ticks = data.CreateAxisTicks
+                .titleFont = CSSFont.TryParse(theme.legendTitleCSS).GDIObject(g.Dpi)
+            End With
+
+            legends = New legendColorMapElement With {
+                .colorMapLegend = legend,
+                .width = padding.Padding.Right * 3 / 4,
+                .height = padding.PlotRegion.Height
+            }
+
+            Return data.Select(Function(d) maps(d)).ToArray
+        End Function
+
+        Private Function mapFromBase(ggplot As ggplot, shape As LegendStyles?, ByRef legends As IggplotLegendElement) As String()
+            Dim factors As String() = ggplot.getText(reader?.color)
+
+            If factors.IsNullOrEmpty Then
+                Throw New MissingPrimaryKeyException("no color mapping!")
+            End If
+
+            Dim maps As Func(Of Object, String) = colorMap.ColorHandler(ggplot, factors)
+            Dim legendItems As LegendObject() = colorMap.TryGetFactorLegends(
+                factors:=factors,
+                shape:=If(shape Is Nothing, LegendStyles.Circle, shape),
+                theme:=ggplot.ggplotTheme
+            )
+            Dim colors As String() = factors.Select(Function(factor) maps(factor)).ToArray
+
+            legends = New legendGroupElement With {
+                .legends = legendItems
+            }
+
+            If legendItems.IsNullOrEmpty Then
+                legends = Nothing
+            End If
+
+            Return colors
+        End Function
+
+        Private Function mapFromLiteral(ggplot As ggplot,
+                                        shape As LegendStyles?,
+                                        nsize As Integer,
+                                        ByRef legends As IggplotLegendElement) As String()
+
+            Dim colorString As String = DirectCast(colorMap, ggplotColorLiteral).ToString
+            Dim colors As String() = Enumerable _
+                .Range(0, nsize) _
+                .Select(Function(any) colorString) _
+                .ToArray
+
+            legends = New ggplotLegendElement With {
+                .legend = New LegendObject With {
+                    .color = colorString,
+                    .fontstyle = ggplot.ggplotTheme.legendLabelCSS,
+                    .style = If(shape Is Nothing, LegendStyles.Circle, shape.Value),
+                    .title = ggplot.base.reader.getLegendLabel
+                }
+            }
+
+            Return colors
+        End Function
+
         Protected Function getColorSet(ggplot As ggplot,
                                        g As IGraphics,
                                        nsize As Integer,
@@ -130,72 +211,11 @@ Namespace layers
             legends = Nothing
 
             If reader Is Nothing AndAlso TypeOf colorMap Is ggplotColorLiteral Then
-                Dim colorString As String = DirectCast(colorMap, ggplotColorLiteral).ToString
-                Dim colors As String() = Enumerable _
-                    .Range(0, nsize) _
-                    .Select(Function(any) colorString) _
-                    .ToArray
-
-                legends = New ggplotLegendElement With {
-                    .legend = New LegendObject With {
-                        .color = colorString,
-                        .fontstyle = ggplot.ggplotTheme.legendLabelCSS,
-                        .style = If(shape Is Nothing, LegendStyles.Circle, shape.Value),
-                        .title = ggplot.base.reader.getLegendLabel
-                    }
-                }
-
-                Return colors
+                Return mapFromLiteral(ggplot, shape, nsize, legends)
             ElseIf reader Is Nothing AndAlso colorMap.GetType.IsInheritsFrom(GetType(ggplotColorCustomSet), strict:=False) Then
-                Dim maplevels As Integer = 30
-                Dim palette As ggplotColorCustomSet = DirectCast(colorMap, ggplotColorCustomSet)
-                Dim maps As Func(Of Object, String) = palette.ColorHandler(ggplot, data)
-                Dim theme As Theme = ggplot.ggplotTheme
-                Dim padding As New GraphicsRegion(g.Size, theme.padding)
-                Dim legend As ColorMapLegend
-
-                If TypeOf colorMap Is ggplotColorPalette Then
-                    legend = New ColorMapLegend(DirectCast(palette.colorMap, String), maplevels)
-                Else
-                    legend = New ColorMapLegend(CLRVector.asCharacter(palette.colorMap), maplevels)
-                End If
-
-                With legend
-                    .title = ggplot.base.reader.getLegendLabel
-                    .tickAxisStroke = Stroke.TryParse(theme.legendTickAxisStroke).GDIObject
-                    .tickFont = CSSFont.TryParse(theme.legendTickCSS).GDIObject(g.Dpi)
-                    .format = theme.legendTickFormat
-                    .ticks = data.CreateAxisTicks
-                    .titleFont = CSSFont.TryParse(theme.legendTitleCSS).GDIObject(g.Dpi)
-                End With
-
-                legends = New legendColorMapElement With {
-                    .colorMapLegend = legend,
-                    .width = padding.Padding.Right * 3 / 4,
-                    .height = padding.PlotRegion.Height
-                }
-
-                Return data.Select(Function(d) maps(d)).ToArray
+                Return mapFromPalette(ggplot, data, g, legends)
             Else
-                Dim factors As String() = ggplot.getText(reader?.color)
-
-                If factors Is Nothing Then
-                    Throw New MissingPrimaryKeyException()
-                End If
-
-                Dim maps As Func(Of Object, String) = colorMap.ColorHandler(ggplot, factors)
-                Dim legendItems As LegendObject() = colorMap.TryGetFactorLegends(factors, If(shape Is Nothing, LegendStyles.Circle, shape), ggplot.ggplotTheme)
-                Dim colors = factors.Select(Function(factor) maps(factor)).ToArray
-
-                legends = New legendGroupElement With {
-                    .legends = legendItems
-                }
-
-                If legendItems.IsNullOrEmpty Then
-                    legends = Nothing
-                End If
-
-                Return colors
+                Return mapFromBase(ggplot, shape, legends)
             End If
         End Function
 
@@ -221,7 +241,7 @@ Namespace layers
                     Call measure(var.value).setValue(row(var), measure)
                 Next
 
-                i.Add(REnv.single(which.Evaluate(measure)))
+                Call i.Add(REnv.single(which.Evaluate(measure)))
             Next
 
             Return New BooleanVector(CLRVector.asLogical(i.ToArray))
