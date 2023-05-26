@@ -91,7 +91,7 @@ Imports Microsoft.VisualBasic.Math.Quantile
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
-Imports REnv = SMRUCC.Rsharp.Runtime
+Imports SMRUCC.Rsharp.Runtime.Vectorization
 
 ''' <summary>
 ''' graphics drawing engine of the ggplot library
@@ -193,8 +193,8 @@ Public Class ggplot : Inherits Plot
     Public Function getText(source As String) As String()
         Dim data As dataframe = DirectCast(Me.data, dataframe)
 
-        If data.hasName(source) Then
-            Return REnv.asVector(Of String)(data.getColumnVector(source))
+        If source IsNot Nothing AndAlso data.hasName(source) Then
+            Return CLRVector.asCharacter(data.getColumnVector(source))
         Else
             Return Nothing
         End If
@@ -203,8 +203,8 @@ Public Class ggplot : Inherits Plot
     Public Function getValue(source As String) As Double()
         Dim data As dataframe = DirectCast(Me.data, dataframe)
 
-        If data.hasName(source) Then
-            Return REnv.asVector(Of Double)(data.getColumnVector(source))
+        If source IsNot Nothing AndAlso data.hasName(source) Then
+            Return CLRVector.asNumeric(data.getColumnVector(source))
         Else
             Return Nothing
         End If
@@ -260,9 +260,9 @@ Public Class ggplot : Inherits Plot
     End Function
 
     Private Sub plot3D(baseData As ggplotData, ByRef g As IGraphics, canvas As GraphicsRegion)
-        Dim x As Double() = REnv.asVector(Of Double)(baseData.x)
-        Dim y As Double() = REnv.asVector(Of Double)(baseData.y)
-        Dim z As Double() = REnv.asVector(Of Double)(baseData.z)
+        Dim x As Double() = CLRVector.asNumeric(baseData.x)
+        Dim y As Double() = CLRVector.asNumeric(baseData.y)
+        Dim z As Double() = CLRVector.asNumeric(baseData.z)
         Dim labelColor As New SolidBrush(theme.tagColor.TranslateColor)
         Dim camera As Camera = Me.Camera(canvas.PlotRegion.Size)
         Dim legends As New List(Of IggplotLegendElement)
@@ -327,11 +327,11 @@ Public Class ggplot : Inherits Plot
         Dim allDataset As ggplotData() = layerData.ToArray
         Dim y As Double() = allDataset _
             .Select(Function(d)
-                        Return DirectCast(REnv.asVector(Of Double)(d.y), Double())
+                        Return CLRVector.asNumeric(d.y)
                     End Function) _
             .IteratesALL _
             .ToArray
-        Dim limitsY As Double() = REnv.asVector(Of Double)(args.getByName("range_y"))
+        Dim limitsY As Double() = CLRVector.asNumeric(args.getByName("range_y"))
 
         y = y _
             .JoinIterates([default].y) _
@@ -384,10 +384,10 @@ Public Class ggplot : Inherits Plot
                                 layerData As IEnumerable(Of ggplotData)) As DataScaler
 
         Dim allDataset As ggplotData() = layerData.ToArray
-        Dim x As Double() = allDataset.Select(Function(d) DirectCast(REnv.asVector(Of Double)(d.x), Double())).IteratesALL.ToArray
-        Dim y As Double() = allDataset.Select(Function(d) DirectCast(REnv.asVector(Of Double)(d.y), Double())).IteratesALL.ToArray
-        Dim limitsX As Double() = REnv.asVector(Of Double)(args.getByName("range_x"))
-        Dim limitsY As Double() = REnv.asVector(Of Double)(args.getByName("range_y"))
+        Dim x As Double() = allDataset.Select(Function(d) CLRVector.asNumeric(d.x)).IteratesALL.ToArray
+        Dim y As Double() = allDataset.Select(Function(d) CLRVector.asNumeric(d.y)).IteratesALL.ToArray
+        Dim limitsX As Double() = CLRVector.asNumeric(args.getByName("range_x"))
+        Dim limitsY As Double() = CLRVector.asNumeric(args.getByName("range_y"))
 
         ' there are missing value from the 
         ' geom_vline and geom_hline
@@ -411,7 +411,7 @@ Public Class ggplot : Inherits Plot
 
     Private Sub plot2D(baseData As ggplotData, ByRef g As IGraphics, canvas As GraphicsRegion)
         Dim x As Array = baseData.x
-        Dim y As Double() = REnv.asVector(Of Double)(baseData.y)
+        Dim y As Double() = CLRVector.asNumeric(baseData.y)
         Dim reverse_y As Boolean = args.getValue("scale_y_reverse", env:=environment, [default]:=False)
         Dim layers As New Queue(Of ggplotLayer)(
             collection:=If(UnionGgplotLayers Is Nothing, Me.layers, UnionGgplotLayers(Me.layers))
@@ -421,7 +421,7 @@ Public Class ggplot : Inherits Plot
         If baseData.xscale = d3js.scale.scalers.linear Then
             scale = get2DScale(
                 rect:=canvas.PlotRegion,
-                [default]:=(DirectCast(REnv.asVector(Of Double)(x), Double()), y),
+                [default]:=(CLRVector.asNumeric(x), y),
                 layerData:=From layer As ggplotLayer
                            In layers
                            Let data As ggplotData = layer.initDataSet(ggplot:=Me)
@@ -431,7 +431,7 @@ Public Class ggplot : Inherits Plot
         Else
             scale = get2DScale(
                 rect:=canvas.PlotRegion,
-                [default]:=(DirectCast(REnv.asVector(Of String)(x), String()), y),
+                [default]:=(CLRVector.asCharacter(x), y),
                 layerData:=From layer As ggplotLayer
                            In layers
                            Let data As ggplotData = layer.initDataSet(ggplot:=Me)
