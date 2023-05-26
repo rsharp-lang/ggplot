@@ -410,18 +410,20 @@ Public Class ggplot : Inherits Plot
     End Function
 
     Private Sub plot2D(baseData As ggplotData, ByRef g As IGraphics, canvas As GraphicsRegion)
-        Dim x As Array = baseData.x
-        Dim y As Double() = CLRVector.asNumeric(baseData.y)
+        Dim x As axisMap = baseData.x
+        Dim y As Double() = baseData.y.ToNumeric
         Dim reverse_y As Boolean = args.getValue("scale_y_reverse", env:=environment, [default]:=False)
         Dim layers As New Queue(Of ggplotLayer)(
             collection:=If(UnionGgplotLayers Is Nothing, Me.layers, UnionGgplotLayers(Me.layers))
         )
         Dim scale As DataScaler
+        Dim xAxis As Array
 
         If baseData.xscale = d3js.scale.scalers.linear Then
+            xAxis = x.ToNumeric
             scale = get2DScale(
                 rect:=canvas.PlotRegion,
-                [default]:=(CLRVector.asNumeric(x), y),
+                [default]:=(x.ToNumeric, y),
                 layerData:=From layer As ggplotLayer
                            In layers
                            Let data As ggplotData = layer.initDataSet(ggplot:=Me)
@@ -429,9 +431,10 @@ Public Class ggplot : Inherits Plot
                            Select data
             )
         Else
+            xAxis = x.ToFactors
             scale = get2DScale(
                 rect:=canvas.PlotRegion,
-                [default]:=(CLRVector.asCharacter(x), y),
+                [default]:=(x.ToFactors, y),
                 layerData:=From layer As ggplotLayer
                            In layers
                            Let data As ggplotData = layer.initDataSet(ggplot:=Me)
@@ -478,7 +481,7 @@ Public Class ggplot : Inherits Plot
             .canvas = canvas,
             .g = g,
             .scale = scale,
-            .x = x,
+            .x = xAxis,
             .y = y
         }
 
