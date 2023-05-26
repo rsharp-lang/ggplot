@@ -13,6 +13,9 @@ Namespace colors
     ''' <summary>
     ''' use a character vector that contains multiple color values for make item category mapping or scale mapping
     ''' </summary>
+    ''' <remarks>
+    ''' ``scale_fill_manual``
+    ''' </remarks>
     Public Class ggplotColorCustomSet : Inherits ggplotColorMap
 
         Public Overrides Function ColorHandler(ggplot As ggplot, factors As Array) As Func(Of Object, String)

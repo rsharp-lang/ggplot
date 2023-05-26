@@ -146,22 +146,31 @@ Namespace layers
                 }
 
                 Return colors
-            ElseIf reader Is Nothing AndAlso colorMap.GetType.IsInheritsFrom(GetType(ggplotColorCustomSet)) Then
+            ElseIf reader Is Nothing AndAlso colorMap.GetType.IsInheritsFrom(GetType(ggplotColorCustomSet), strict:=False) Then
                 Dim maplevels As Integer = 30
                 Dim palette As ggplotColorCustomSet = DirectCast(colorMap, ggplotColorCustomSet)
                 Dim maps As Func(Of Object, String) = palette.ColorHandler(ggplot, data)
                 Dim theme As Theme = ggplot.ggplotTheme
                 Dim padding As New GraphicsRegion(g.Size, theme.padding)
+                Dim legend As ColorMapLegend
+
+                If TypeOf colorMap Is ggplotColorPalette Then
+                    legend = New ColorMapLegend(DirectCast(palette.colorMap, String), maplevels)
+                Else
+                    legend = New ColorMapLegend(CLRVector.asCharacter(palette.colorMap), maplevels)
+                End If
+
+                With legend
+                    .title = ggplot.base.reader.getLegendLabel
+                    .tickAxisStroke = Stroke.TryParse(theme.legendTickAxisStroke).GDIObject
+                    .tickFont = CSSFont.TryParse(theme.legendTickCSS).GDIObject(g.Dpi)
+                    .format = theme.legendTickFormat
+                    .ticks = data.CreateAxisTicks
+                    .titleFont = CSSFont.TryParse(theme.legendTitleCSS).GDIObject(g.Dpi)
+                End With
 
                 legends = New legendColorMapElement With {
-                    .colorMapLegend = New ColorMapLegend(palette.colorMap, maplevels) With {
-                        .title = ggplot.base.reader.getLegendLabel,
-                        .tickAxisStroke = Stroke.TryParse(theme.legendTickAxisStroke).GDIObject,
-                        .tickFont = CSSFont.TryParse(theme.legendTickCSS).GDIObject(g.Dpi),
-                        .format = theme.legendTickFormat,
-                        .ticks = data.CreateAxisTicks,
-                        .titleFont = CSSFont.TryParse(theme.legendTitleCSS).GDIObject(g.Dpi)
-                    },
+                    .colorMapLegend = legend,
                     .width = padding.Padding.Right * 3 / 4,
                     .height = padding.PlotRegion.Height
                 }
