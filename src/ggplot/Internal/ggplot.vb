@@ -224,9 +224,9 @@ Public Class ggplot : Inherits Plot
     End Sub
 
     Private Sub plot3D(baseData As ggplotData, ByRef g As IGraphics, canvas As GraphicsRegion)
-        Dim x As Double() = CLRVector.asNumeric(baseData.x)
-        Dim y As Double() = CLRVector.asNumeric(baseData.y)
-        Dim z As Double() = CLRVector.asNumeric(baseData.z)
+        Dim x As Double() = baseData.x.ToNumeric
+        Dim y As Double() = baseData.y.ToNumeric
+        Dim z As Double() = baseData.z.ToNumeric
         Dim labelColor As New SolidBrush(theme.tagColor.TranslateColor)
         Dim camera As Camera = Me.Camera(canvas.PlotRegion.Size)
         Dim legends As New List(Of IggplotLegendElement)
