@@ -2,15 +2,15 @@ require(ggplot);
 
 options(strict = FALSE);
 
-bitmap(file = `${@dir}/UMAP3d.png`, size = [2400, 2000]) {
+bitmap(file = `${@dir}/UMAP3d.png`, size = [4800, 3600]) {
     
-	data = read.csv(`${@dir}/UMAP3D.csv`, row.names = 1);
-	data[, "class"] = `class_${data[, "class"]}`;
+	let data = read.csv(`${@dir}/UMAP3D.csv`, row.names = 1);
+	data[, "class"] = `class_${rownames(data)}`;
 	
 	colorset = {
 	class_5:"red",
 	class_0:"blue",
-	class_4:"white",
+	class_4:"black",
 	class_1:"yellow",
 	class_9:"green",
 	class_2:"skyblue",
@@ -27,7 +27,7 @@ bitmap(file = `${@dir}/UMAP3d.png`, size = [2400, 2000]) {
 	+ geom_point(aes(color = "class"), color = colorset, shape = "triangle", size = 20)
 	+ view_camera(angle = [31.5,65,125], fov = 100000)
 	+ ggtitle("Scatter UMAP 3D")
-	+ theme_black()
+	+ theme_default()
 	;
 
 }
