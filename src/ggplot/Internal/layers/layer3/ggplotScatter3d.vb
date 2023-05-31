@@ -90,7 +90,7 @@ Namespace layers.layer3d
                                        legendList As List(Of IggplotLegendElement)) As IEnumerable(Of Element3D) Implements Ilayer3d.populateModels
 
             Dim colors As String() = Nothing
-            Dim legends As legendGroupElement = Nothing
+            Dim legends As IggplotLegendElement = Nothing
 
             If useCustomColorMaps Then
                 colors = getColorSet(ggplot, g, x.Length, shape, Nothing, legends)
