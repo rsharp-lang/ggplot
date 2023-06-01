@@ -224,6 +224,8 @@ Public Module ggplot2
                         Optional z As Object = Nothing,
                         Optional label As Object = Nothing,
                         Optional color As Object = Nothing,
+                        Optional colour As Object = Nothing,
+                        Optional alpha As Object = Nothing,
                         Optional fill As Object = Nothing,
                         Optional title As String = Nothing,
                         Optional shape As Object = Nothing,
@@ -482,7 +484,11 @@ Public Module ggplot2
     End Function
 
     ''' <summary>
+    ''' ### Reference line defined by Y intercept. Useful for annotating plots.
     ''' 
+    ''' Using the described geometry, you can insert a simple geometric 
+    ''' object into your data visualization – a line defined by a position 
+    ''' on the Y axis. 
     ''' </summary>
     ''' <param name="yintercept"></param>
     ''' <param name="color"></param>
@@ -654,6 +660,88 @@ Public Module ggplot2
         }
     End Function
 
+    ''' <summary>
+    ''' ### Bar charts
+    ''' 
+    ''' There are two types of bar charts: geom_bar() and geom_col(). geom_bar() 
+    ''' makes the height of the bar proportional to the number of cases in each
+    ''' group (or if the weight aesthetic is supplied, the sum of the weights).
+    ''' If you want the heights of the bars to represent values in the data, use 
+    ''' geom_col() instead. geom_bar() uses stat_count() by default: it counts 
+    ''' the number of cases at each x position. geom_col() uses stat_identity():
+    ''' it leaves the data as is.
+    ''' </summary>
+    ''' <param name="mapping">Set of aesthetic mappings created by aes(). If specified
+    ''' and inherit.aes = TRUE (the default), it is combined with the default mapping 
+    ''' at the top level of the plot. You must supply mapping if there is no plot 
+    ''' mapping.</param>
+    ''' <param name="data">The data to be displayed in this layer. There are three options:
+    ''' If NULL, the Default, the data Is inherited from the plot data As specified 
+    ''' In the Call To ggplot().
+    ''' A data.frame, Or other Object, will override the plot data. All objects will be
+    ''' fortified To produce a data frame. See fortify() For which variables will be
+    ''' created.
+    ''' A Function will be called With a Single argument, the plot data. The Return 
+    ''' value must be a data.frame, And will be used As the layer data. A Function 
+    ''' can be created from a formula (e.g. ~ head(.x, 10)).</param>
+    ''' <param name="position">Position adjustment, either as a string naming the 
+    ''' adjustment (e.g. "jitter" to use position_jitter), or the result of a call 
+    ''' to a position adjustment function. Use the latter if you need to change the
+    ''' settings of the adjustment.</param>
+    ''' <param name="just">Adjustment for column placement. Set to 0.5 by default, 
+    ''' meaning that columns will be centered about axis breaks. Set to 0 or 1 to place 
+    ''' columns to the left/right of axis breaks. Note that this argument may have 
+    ''' unintended behaviour when used with alternative positions, e.g. position_dodge().</param>
+    ''' <param name="width">Bar width. By default, set to 90% of the resolution() of
+    ''' the data.</param>
+    ''' <param name="na_rm">If FALSE, the default, missing values are removed with a
+    ''' warning. If TRUE, missing values are silently removed.</param>
+    ''' <param name="show_legend">logical. Should this layer be included in the legends? 
+    ''' NA, the default, includes if any aesthetics are mapped. FALSE never includes, 
+    ''' and TRUE always includes. It can also be a named logical vector to finely select 
+    ''' the aesthetics to display.</param>
+    ''' <param name="inherit_aes">If FALSE, overrides the default aesthetics, rather 
+    ''' than combining with them. This is most useful for helper functions that define 
+    ''' both data and aesthetics and shouldn't inherit behaviour from the default plot 
+    ''' specification, e.g. borders().</param>
+    ''' <param name="args">Other arguments passed on to layer(). These are often aesthetics,
+    ''' used to set an aesthetic to a fixed value, like colour = "red" or size = 3. They 
+    ''' may also be parameters to the paired geom/stat.</param>
+    ''' <param name="env"></param>
+    ''' <returns></returns>
+    <ExportAPI("geom_col")>
+    Public Function geom_col(Optional mapping As Object = NULL,
+                             Optional data As Object = NULL,
+                             Optional position As Object = "stack",
+                             Optional just As Double = 0.5,
+                             Optional width As Double = NULL,
+                             Optional na_rm As Boolean = False,
+                             Optional show_legend As Boolean? = NULL,
+                             Optional inherit_aes As Boolean = True,
+                             Optional args As list = Nothing,
+                             Optional env As Environment = Nothing)
+
+    End Function
+
+    ''' <summary>
+    ''' ### Bar charts
+    ''' 
+    ''' There are two types of bar charts: geom_bar() and geom_col(). geom_bar() 
+    ''' makes the height of the bar proportional to the number of cases in each
+    ''' group (or if the weight aesthetic is supplied, the sum of the weights).
+    ''' If you want the heights of the bars to represent values in the data, use 
+    ''' geom_col() instead. geom_bar() uses stat_count() by default: it counts 
+    ''' the number of cases at each x position. geom_col() uses stat_identity():
+    ''' it leaves the data as is.
+    ''' </summary>
+    ''' <param name="stat"></param>
+    ''' <param name="position"></param>
+    ''' <param name="color"></param>
+    ''' <param name="width"></param>
+    ''' <param name="size"></param>
+    ''' <param name="show_legend"></param>
+    ''' <param name="env"></param>
+    ''' <returns></returns>
     <ExportAPI("geom_bar")>
     Public Function geom_bar(Optional stat As Object = "identity",
                              Optional position As Object = "stack",
