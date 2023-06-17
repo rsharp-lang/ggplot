@@ -23,7 +23,7 @@ Namespace render
             Dim allDataset As ggplotData() = layerData.ToArray
             Dim y As Double() = allDataset _
                 .Select(Function(d)
-                            Return CLRVector.asNumeric(d.y)
+                            Return d.y.ToNumeric
                         End Function) _
                 .IteratesALL _
                 .ToArray
