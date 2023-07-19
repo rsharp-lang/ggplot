@@ -17,4 +17,7 @@ declare namespace ggplot {
    /**
    */
    function theme_default(): object;
+   /**
+   */
+   function theme_light(): object;
 }

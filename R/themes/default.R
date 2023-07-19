@@ -7,3 +7,9 @@ const theme_default = function() {
         plot.background = "white"
     );
 }
+
+const theme_light = function() {
+    ggplot2::theme(
+        plot.background = "white"
+    );
+}
