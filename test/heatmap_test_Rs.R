@@ -1,6 +1,6 @@
-library(ggplot);
+require(ggplot);
 
-
+setwd(@dir);
 spinrates <- read.csv("../data/spinrates.csv",
                       stringsAsFactors = FALSE);
 
