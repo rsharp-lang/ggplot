@@ -29,8 +29,13 @@
         code {
             color: rgb(194, 42, 42);
             background: inherit;
-            font-style:italic;
+            font-style: italic;
             font-weight: bold;
+        }
+
+        pre code {
+            color: rgb(54, 54, 54);
+            font-style: normal;
         }
 
         body {
@@ -158,9 +163,9 @@
 
         <div style="width: 100%; padding-left: 3%; color: black;">
             <pre><code class='language-R' style="color: black; font-weight:normal;"><strong>layout_springembedder</strong>(<i>canvas</i>,
-    <i>maxRepulsiveForceDistance</i> = 10,
-    <i>c</i> = 2,
-    <i>iterations</i> = 100);</code></pre>
+    <i>maxRepulsiveForceDistance</i> = <span style='color: green;'>10</span>,
+    <i>c</i> = <span style='color: green;'>2</span>,
+    <i>iterations</i> = <span style='color: green;'>100</span>);</code></pre>
         </div>
 
         <h3>Arguments</h3>
@@ -178,6 +183,10 @@
         <h3>Value</h3>
 
         this function returns data object of type <a href="/clr/ggplot/ggraph/layout/spring_embedder.html">spring_embedder</a>.
+
+        <h3 style="display: none;">Examples</h3>
+
+        
 
         <hr />
         <div style="text-align: center;">[Package <em>ggforce</em> version 1.0.0.0 <a

@@ -29,8 +29,13 @@
         code {
             color: rgb(194, 42, 42);
             background: inherit;
-            font-style:italic;
+            font-style: italic;
             font-weight: bold;
+        }
+
+        pre code {
+            color: rgb(54, 54, 54);
+            font-style: normal;
         }
 
         body {
@@ -158,14 +163,14 @@
 
         <div style="width: 100%; padding-left: 3%; color: black;">
             <pre><code class='language-R' style="color: black; font-weight:normal;"><strong>layout_forcedirected</strong>(
-    <i>ejectFactor</i> = 6,
-    <i>condenseFactor</i> = 3,
-    <i>maxtx</i> = 4,
-    <i>maxty</i> = 3,
+    <i>ejectFactor</i> = <span style='color: green;'>6</span>,
+    <i>condenseFactor</i> = <span style='color: green;'>3</span>,
+    <i>maxtx</i> = <span style='color: green;'>4</span>,
+    <i>maxty</i> = <span style='color: green;'>3</span>,
     <i>dist.threshold</i> = <span style='color: brown;'><strong>"30,250"</strong></span>,
     <i>size</i> = <span style='color: brown;'><strong>"1000,1000"</strong></span>,
-    <i>iterations</i> = 20000,
-    <i>time.step</i> = 1E-05,
+    <i>iterations</i> = <span style='color: green;'>20000</span>,
+    <i>time.step</i> = <span style='color: green;'>1E-05</span>,
     <i>algorithm</i> = ["force_directed","degree_weighted","group_weighted","edge_weighted"]);</code></pre>
         </div>
 
@@ -184,6 +189,10 @@
         <h3>Value</h3>
 
         this function returns data object of type <a href="/clr/ggplot/ggraph/layout/force_directed.html">force_directed</a>.
+
+        <h3 style="display: none;">Examples</h3>
+
+        
 
         <hr />
         <div style="text-align: center;">[Package <em>ggforce</em> version 1.0.0.0 <a

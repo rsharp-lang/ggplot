@@ -29,8 +29,13 @@
         code {
             color: rgb(194, 42, 42);
             background: inherit;
-            font-style:italic;
+            font-style: italic;
             font-weight: bold;
+        }
+
+        pre code {
+            color: rgb(54, 54, 54);
+            font-style: normal;
         }
 
         body {
@@ -158,11 +163,11 @@
 
         <div style="width: 100%; padding-left: 3%; color: black;">
             <pre><code class='language-R' style="color: black; font-weight:normal;"><strong>layout_springforce</strong>(
-    <i>stiffness</i> = 50000,
-    <i>repulsion</i> = 100,
-    <i>damping</i> = 0.9,
-    <i>iterations</i> = 1000,
-    <i>time.step</i> = 0.0001);</code></pre>
+    <i>stiffness</i> = <span style='color: green;'>50000</span>,
+    <i>repulsion</i> = <span style='color: green;'>100</span>,
+    <i>damping</i> = <span style='color: green;'>0.9</span>,
+    <i>iterations</i> = <span style='color: green;'>1000</span>,
+    <i>time.step</i> = <span style='color: green;'>0.0001</span>);</code></pre>
         </div>
 
         <h3>Arguments</h3>
@@ -180,6 +185,10 @@
         <h3>Value</h3>
 
         this function returns data object of type <a href="/clr/ggplot/ggraph/layout/spring_force.html">spring_force</a>.
+
+        <h3 style="display: none;">Examples</h3>
+
+        
 
         <hr />
         <div style="text-align: center;">[Package <em>ggforce</em> version 1.0.0.0 <a

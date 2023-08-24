@@ -69,7 +69,7 @@ Namespace ggraph.render
     Public Class edgeRender : Inherits ggplotLayer
 
         Public Property color As String
-        Public Property width As DoubleRange = {2, 5}
+        Public Property width As New DoubleRange({2, 5})
 
         Friend Function getWeightScale(graph As NetworkGraph) As Func(Of Edge, Single)
             Dim scale As DoubleRange = graph.graphEdges.Select(Function(e) e.weight).Range
