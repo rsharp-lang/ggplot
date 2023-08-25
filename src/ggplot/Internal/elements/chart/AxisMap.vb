@@ -2,6 +2,7 @@
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Imaging.d3js.scale
+Imports SMRUCC.Rsharp.Runtime.Interop.[CType]
 Imports SMRUCC.Rsharp.Runtime.Vectorization
 Imports REnv = SMRUCC.Rsharp.Runtime
 
@@ -10,7 +11,7 @@ Namespace elements
     ''' <summary>
     ''' the axis value mapper
     ''' </summary>
-    Public Class axisMap
+    Public Class axisMap : Implements ICTypeVector
 
         ''' <summary>
         ''' the axis data type
@@ -30,17 +31,27 @@ Namespace elements
         End Property
 
         <MethodImpl(MethodImplOptions.AggressiveInlining)>
-        Public Function ToNumeric() As Double()
+        Public Function ToInteger() As Integer() Implements ICTypeVector.ToInteger
+            Return CLRVector.asInteger(value)
+        End Function
+
+        <MethodImpl(MethodImplOptions.AggressiveInlining)>
+        Public Function ToLong() As Long() Implements ICTypeVector.ToLong
+            Return CLRVector.asLong(value)
+        End Function
+
+        <MethodImpl(MethodImplOptions.AggressiveInlining)>
+        Public Function ToNumeric() As Double() Implements ICTypeVector.ToNumeric
             Return CLRVector.asNumeric(value)
         End Function
 
         <MethodImpl(MethodImplOptions.AggressiveInlining)>
-        Public Function ToFloat() As Single()
+        Public Function ToFloat() As Single() Implements ICTypeVector.ToFloat
             Return CLRVector.asFloat(value)
         End Function
 
         <MethodImpl(MethodImplOptions.AggressiveInlining)>
-        Public Function ToFactors() As String()
+        Public Function ToFactors() As String() Implements ICTypeVector.ToFactors
             Return CLRVector.asCharacter(value)
         End Function
 
