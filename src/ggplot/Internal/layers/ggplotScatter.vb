@@ -89,7 +89,11 @@ Namespace layers
                 If useCustomColorMaps Then
                     colors = getColorSet(ggplot, stream.g, nsize, shape, CLRVector.asNumeric(y), legends)
                 ElseIf Not ggplot.base.reader.color Is Nothing Then
-                    colors = ggplot.base.getColors(ggplot, legends, shape)
+                    colors = ggplot.base.getColors(
+                        ggplot:=ggplot,
+                        legends:=legends,
+                        shape:=If(shape, LegendStyles.Circle)
+                    )
                 End If
 
                 serial = createSerialData(stream.defaultTitle, x, y, colors, size, shape, colorMap)
