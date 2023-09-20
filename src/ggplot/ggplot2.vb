@@ -203,7 +203,8 @@ Public Module ggplot2
     ''' must be named.
     ''' </param>
     ''' <param name="y"></param>
-    ''' <param name="color"></param>
+    ''' <param name="color">The color mapping name</param>
+    ''' <param name="colour">the alias name of the color parameter</param>
     ''' <param name="class">
     ''' mapping data of the element class group.
     ''' </param>
@@ -233,6 +234,10 @@ Public Module ggplot2
                         <RListObjectArgument>
                         Optional args As list = Nothing,
                         Optional env As Environment = Nothing) As ggplotReader
+
+        If color Is Nothing Then
+            color = colour
+        End If
 
         Return New ggplotReader With {
             .x = x,

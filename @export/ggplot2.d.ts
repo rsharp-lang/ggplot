@@ -38,10 +38,11 @@ declare namespace ggplot2 {
      * + default value Is ``null``.
      * @param label 
      * + default value Is ``null``.
-     * @param color -
+     * @param color The color mapping name
      * 
      * + default value Is ``null``.
-     * @param colour 
+     * @param colour the alias name of the color parameter
+     * 
      * + default value Is ``null``.
      * @param alpha 
      * + default value Is ``null``.
