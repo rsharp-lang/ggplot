@@ -121,6 +121,7 @@ Namespace layers.layer3d
             }
             Dim nsize As Integer = x.Length
             Dim colorList As Func(Of Integer, String)
+            Dim shape = If(Me.shape, LegendStyles.Circle)
 
             If colors.IsNullOrEmpty Then
                 ' default black
