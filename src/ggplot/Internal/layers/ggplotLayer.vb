@@ -80,6 +80,10 @@ Namespace layers
 
     Public MustInherit Class ggplotLayer
 
+        ''' <summary>
+        ''' the custom data reader for each ggplot plot layer
+        ''' </summary>
+        ''' <returns></returns>
         Public Property reader As ggplotReader
         Public Property colorMap As ggplotColorMap
         Public Property showLegend As Boolean = True
@@ -95,7 +99,7 @@ Namespace layers
             Get
                 If reader Is Nothing Then Return False
 
-                Return Not (reader.y.StringEmpty AndAlso reader.label.StringEmpty)
+                Return Not (reader.y.StringEmpty AndAlso reader.label Is Nothing)
             End Get
         End Property
 

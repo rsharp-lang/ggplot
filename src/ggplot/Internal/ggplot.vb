@@ -183,11 +183,16 @@ Public Class ggplot : Inherits Plot
         }
     End Function
 
-    Public Function getText(source As String) As String()
+    Public Function getText(sourceData As Object) As String()
         Dim data As dataframe = DirectCast(Me.data, dataframe)
+        Dim source As String() = CLRVector.asCharacter(sourceData)
 
-        If source IsNot Nothing AndAlso data.hasName(source) Then
-            Return CLRVector.asCharacter(data.getColumnVector(source))
+        If source IsNot Nothing Then
+            If source.Length = 1 AndAlso data.hasName(source(0)) Then
+                Return CLRVector.asCharacter(data.getColumnVector(source(0)))
+            Else
+                Return source
+            End If
         Else
             Return Nothing
         End If
