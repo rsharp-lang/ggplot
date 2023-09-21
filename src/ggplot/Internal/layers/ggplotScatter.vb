@@ -88,14 +88,14 @@ Namespace layers
                 shape:=serial.shape,
                 pointSize:=serial.pointSize,
                 getPointBrush:=brush,
-                CSS.Stroke.TryParse(stroke, Nothing)
+                strokeCss:=CSS.Stroke.TryParse(stroke, Nothing)
             ) _
             .ToArray
 
             Return legends
         End Function
 
-        Public Function GetSerialData(stream As ggplotPipeline, <Out> ByRef legends As IggplotLegendElement) As SerialData
+        Public Function GetSerialData(stream As ggplotPipeline, <Out> Optional ByRef legends As IggplotLegendElement = Nothing) As SerialData
             Dim colors As String() = Nothing
             Dim ggplot As ggplot = stream.ggplot
             Dim size As Single = If(ggplot.driver = Drivers.SVG, Me.size * stream.g.Dpi / 96, Me.size)
@@ -146,7 +146,6 @@ Namespace layers
                                                           size!,
                                                           shape As LegendStyles?,
                                                           colorMap As ggplotColorMap) As SerialData
-
             Dim color As Color
 
             If colors Is Nothing Then
