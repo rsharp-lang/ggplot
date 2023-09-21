@@ -1,5 +1,6 @@
 imports ["ggplot2", "ggplot3"] from "ggplot";
 imports ["ggraph", "ggforce"] from "ggraph";
+imports "ggpubr" from "ggpubr";
 
 require(REnv);
 
