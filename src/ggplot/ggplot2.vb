@@ -208,6 +208,9 @@ Public Module ggplot2
     ''' <param name="class">
     ''' mapping data of the element class group.
     ''' </param>
+    ''' <param name="label">
+    ''' data source for the scatter annotation label text
+    ''' </param>
     ''' <param name="env"></param>
     ''' <returns>
     ''' A list with class uneval. Components of the list are either quosures 
@@ -223,6 +226,7 @@ Public Module ggplot2
     Public Function aes(Optional x As Object = Nothing,
                         Optional y As Object = Nothing,
                         Optional z As Object = Nothing,
+                        <RRawVectorArgument>
                         Optional label As Object = Nothing,
                         Optional color As Object = Nothing,
                         Optional colour As Object = Nothing,

@@ -78,8 +78,20 @@ Imports REnv = SMRUCC.Rsharp.Runtime
 ''' </summary>
 Public Class ggplotReader
 
+    ''' <summary>
+    ''' the x axis mapping
+    ''' </summary>
+    ''' <returns></returns>
     Public Property x As String
+    ''' <summary>
+    ''' the y axis mapping
+    ''' </summary>
+    ''' <returns></returns>
     Public Property y As String
+    ''' <summary>
+    ''' the z axis mapping
+    ''' </summary>
+    ''' <returns></returns>
     Public Property z As String
     Public Property color As Object
     Public Property shape As Object
@@ -89,7 +101,12 @@ Public Class ggplotReader
     ''' </summary>
     ''' <returns></returns>
     Public Property title As String
-    Public Property label As String
+
+    ''' <summary>
+    ''' the scatter text label mapping
+    ''' </summary>
+    ''' <returns></returns>
+    Public Property label As Object
     Public Property args As list
 
     Public ReadOnly Property isPlain2D As Boolean
