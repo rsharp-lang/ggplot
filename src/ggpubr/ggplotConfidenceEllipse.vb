@@ -12,7 +12,7 @@ Public Class ggplotConfidenceEllipse : Inherits ggplotGroup
     Public Property level As Double = 0.95
 
     Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
-        Dim allGroupData = getDataGroups(stream).ToArray
+        Dim allGroupData = getDataGroups(stream.).ToArray
 
         Dim x As Double()
         Dim y As Double()

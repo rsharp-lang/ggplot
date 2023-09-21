@@ -1,61 +1,62 @@
 ﻿#Region "Microsoft.VisualBasic::82f67dc01a8dedcd3c3a48aa0f6b7e04, ggplot\src\ggplot\Internal\layers\ggplotScatter.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (I@xieguigang.me)
-    ' 
-    ' Copyright (c) 2021 R# language
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (I@xieguigang.me)
+' 
+' Copyright (c) 2021 R# language
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
-
-
-    ' Code Statistics:
-
-    '   Total Lines: 116
-    '    Code Lines: 100
-    ' Comment Lines: 0
-    '   Blank Lines: 16
-    '     File Size: 4.76 KB
+' Summaries:
 
 
-    '     Class ggplotScatter
-    ' 
-    '         Properties: shape, size, stroke
-    ' 
-    '         Function: createSerialData, Plot
-    ' 
-    ' 
-    ' /********************************************************************************/
+' Code Statistics:
+
+'   Total Lines: 116
+'    Code Lines: 100
+' Comment Lines: 0
+'   Blank Lines: 16
+'     File Size: 4.76 KB
+
+
+'     Class ggplotScatter
+' 
+'         Properties: shape, size, stroke
+' 
+'         Function: createSerialData, Plot
+' 
+' 
+' /********************************************************************************/
 
 #End Region
 
 Imports System.Drawing
+Imports System.Runtime.InteropServices
 Imports ggplot.colors
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.Data.ChartPlots
@@ -75,9 +76,27 @@ Namespace layers
         Public Property stroke As String
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
-            Dim serial As SerialData
-            Dim colors As String() = Nothing
             Dim legends As IggplotLegendElement = Nothing
+            Dim serial As SerialData = GetSerialData(stream, legends)
+            Dim brush = serial.BrushHandler
+
+            Call Scatter2D.DrawScatter(
+                g:=stream.g,
+                scatter:=serial.pts,
+                scaler:=stream.scale,
+                fillPie:=True,
+                shape:=serial.shape,
+                pointSize:=serial.pointSize,
+                getPointBrush:=brush,
+                CSS.Stroke.TryParse(stroke, Nothing)
+            ) _
+            .ToArray
+
+            Return legends
+        End Function
+
+        Public Function GetSerialData(stream As ggplotPipeline, <Out> ByRef legends As IggplotLegendElement) As SerialData
+            Dim colors As String() = Nothing
             Dim ggplot As ggplot = stream.ggplot
             Dim size As Single = If(ggplot.driver = Drivers.SVG, Me.size * stream.g.Dpi / 96, Me.size)
 
@@ -96,7 +115,7 @@ Namespace layers
                     )
                 End If
 
-                serial = createSerialData(stream.defaultTitle, x, y, colors, size, shape, colorMap)
+                Return createSerialData(stream.defaultTitle, x, y, colors, size, shape, colorMap)
             Else
                 With Me.data
                     If useCustomColorMaps Then
@@ -115,25 +134,9 @@ Namespace layers
                         }
                     End If
 
-                    serial = createSerialData(reader.ToString, .x.ToFloat, .y.ToFloat, colors, size, shape, colorMap)
+                    Return createSerialData(reader.ToString, .x.ToFloat, .y.ToFloat, colors, size, shape, colorMap)
                 End With
             End If
-
-            Dim brush = serial.BrushHandler
-
-            Call Scatter2D.DrawScatter(
-                g:=stream.g,
-                scatter:=serial.pts,
-                scaler:=stream.scale,
-                fillPie:=True,
-                shape:=serial.shape,
-                pointSize:=serial.pointSize,
-                getPointBrush:=brush,
-                CSS.Stroke.TryParse(stroke, Nothing)
-            ) _
-            .ToArray
-
-            Return legends
         End Function
 
         Protected Friend Shared Function createSerialData(legend As String,
@@ -165,7 +168,6 @@ Namespace layers
                 .shape = If(shape Is Nothing, LegendStyles.Circle, shape.Value),
                 .title = legend,
                 .pts = x _
-                    .AsObjectEnumerator _
                     .Select(Function(xi, i)
                                 Return New PointData(xi, y(i)) With {
                                     .color = If(colors Is Nothing, Nothing, colors(i))
