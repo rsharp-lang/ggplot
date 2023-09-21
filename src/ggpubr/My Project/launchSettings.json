@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "ggpubr": {
+      "commandName": "Project"
+    },
+    "run_dll": {
+      "commandName": "Executable",
+      "executablePath": "\\GCModeller\\src\\R-sharp\\App\\net6.0\\R#.exe",
+      "commandLineArgs": "\\GCModeller\\src\\R-sharp\\test\\unitTest\\funcs\\plot.R --attach \\GCModeller\\src\\runtime\\ggplot --debug"
+    }
+  }
+}
