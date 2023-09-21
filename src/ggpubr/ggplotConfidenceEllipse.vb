@@ -22,7 +22,10 @@ Public Class ggplotConfidenceEllipse : Inherits ggplotGroup
         Dim allGroupData = getDataGroups(groups, x, y).ToArray
 
         For Each group_data As NamedCollection(Of PointF) In allGroupData
-            Dim group As New Polygon2D(CType(group_data, PointF()))
+            Dim translate As PointF() = group_data _
+                .Select(Function(p) stream.scale.Translate(p)) _
+                .ToArray
+            Dim group As New Polygon2D(translate)
             Dim shape As Ellipse = Ellipse.ConfidenceEllipse(group, level)
             Dim path As GraphicsPath = shape.BuildPath
             Dim fill As Brush = group_data.name.GetBrush
