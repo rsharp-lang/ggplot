@@ -74,6 +74,9 @@ Public Class ggplotPipeline
     Friend canvas As GraphicsRegion
     Friend x As Array
     Friend y As Double()
+    ''' <summary>
+    ''' Do [x,y] translation
+    ''' </summary>
     Friend scale As DataScaler
     Friend ggplot As ggplot
     Friend layout As Dictionary(Of String, PointF)
