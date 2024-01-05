@@ -59,6 +59,9 @@ Imports Microsoft.VisualBasic.Imaging.Drawing3D
 
 Namespace options
 
+    ''' <summary>
+    ''' 3d camera wrapper object in ggplot
+    ''' </summary>
     Public Class ggplotCamera : Inherits ggplotOption
 
         Public Property camera As Camera

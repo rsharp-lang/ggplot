@@ -69,8 +69,12 @@ Module ggplot3
     ''' <summary>
     ''' Create view camera for 3D plot
     ''' </summary>
+    ''' <param name="angle">
+    ''' should be a numeric vector with 3 elements, the camera view angle to the canvas
+    ''' </param>
     ''' <returns></returns>
     <ExportAPI("view_camera")>
+    <RApiReturn(GetType(ggplotCamera))>
     Public Function view_camera(Optional view_distance As Integer = -75,
                                 Optional fov As Integer = 100000,
                                 <RRawVectorArgument(GetType(Double))>
