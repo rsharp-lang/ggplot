@@ -78,7 +78,9 @@ Imports Microsoft.VisualBasic.Imaging.Driver
 Imports Microsoft.VisualBasic.Language.Default
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports Microsoft.VisualBasic.Scripting.MetaData
+Imports SMRUCC.Rsharp.Interpreter
 Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine
+Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine.ExpressionSymbols.DataSets
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports SMRUCC.Rsharp.Runtime.Interop
@@ -231,6 +233,7 @@ Public Module ggplot2
                         Optional color As Object = Nothing,
                         Optional colour As Object = Nothing,
                         Optional alpha As Object = Nothing,
+                        <RLazyExpression>
                         Optional fill As Object = Nothing,
                         Optional title As String = Nothing,
                         Optional shape As Object = Nothing,
@@ -241,6 +244,23 @@ Public Module ggplot2
 
         If color Is Nothing Then
             color = colour
+        End If
+        If Not fill Is Nothing Then
+            If TypeOf fill Is Expression Then
+                Dim eval = DirectCast(fill, Expression).Evaluate(env)
+
+                If Program.isException(eval) Then
+                    If TypeOf fill Is SymbolReference Then
+                        fill = DirectCast(fill, SymbolReference).symbol
+                    Else
+                        Return eval
+                    End If
+                Else
+                    fill = eval
+                End If
+            Else
+                ' do nothing
+            End If
         End If
 
         Return New ggplotReader With {
