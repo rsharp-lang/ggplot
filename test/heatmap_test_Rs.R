@@ -4,8 +4,7 @@ setwd(@dir);
 spinrates <- read.csv("../data/spinrates.csv",
                       stringsAsFactors = FALSE);
 
-png(file = "./test_heatmap.png");
-
+let ggplot2 = function() {
 
 p <- ggplot(spinrates, aes(x = "velocity", y = "spinrate")) +
   geom_tile(aes(fill = "swing_miss")) +
@@ -14,6 +13,13 @@ p <- ggplot(spinrates, aes(x = "velocity", y = "spinrate")) +
   labs(title = "Likelihood of swinging and missing on a fastball",
        y = "spin rate (rpm)");
 
-plot(p);
+      p;
+}
 
+png(file = "./test_heatmap.png");
+plot(ggplot2());
+dev.off();
+
+svg(file = "./test_heatmap.svg");
+plot(ggplot2());
 dev.off();
