@@ -864,6 +864,11 @@ Public Module ggplot2
 
     End Function
 
+    <ExportAPI("geom_tile")>
+    Public Function geom_tile(Optional mapping As ggplotReader = NULL) As Object
+
+    End Function
+
     ''' <summary>
     ''' annotation_raster: Annotation: high-performance rectangular tiling
     ''' 
