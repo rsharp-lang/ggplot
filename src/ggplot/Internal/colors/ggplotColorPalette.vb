@@ -61,6 +61,7 @@ Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports Microsoft.VisualBasic.Linq
 Imports SMRUCC.Rsharp.Runtime
+Imports SMRUCC.Rsharp.Runtime.Internal.[Object]
 Imports SMRUCC.Rsharp.Runtime.Vectorization
 Imports any = Microsoft.VisualBasic.Scripting
 
@@ -84,7 +85,13 @@ Namespace colors
                 Return ggplotColorCustomSet.NumericFactorMapping(CLRVector.asNumeric(factors), colors)
             Else
                 Dim factorList As String() = CLRVector.asCharacter(factors)
-                Dim colors As String() = getColors(factorList.Distinct.Count)
+                Dim factorSize As Integer = factorList.Distinct.Count
+                Dim colors As String() = getColors(factorSize)
+                Dim check_warn As String = factor.checkSize(factorSize, factorList)
+
+                If Not check_warn.StringEmpty Then
+                    Call check_warn.Warning
+                End If
 
                 Return ggplotColorCustomSet.StringFactorMapping(factorList, colors)
             End If

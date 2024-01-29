@@ -21,6 +21,8 @@ Namespace layers
 
             End If
 
+            Call stream.g.DrawImage(image, layout)
+
             Return Nothing
         End Function
     End Class

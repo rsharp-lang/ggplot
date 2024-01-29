@@ -4,6 +4,10 @@ setwd(@dir);
 spinrates <- read.csv("../data/spinrates.csv",
                       stringsAsFactors = FALSE);
 
+spinrates[, "swing_miss"] = as.numeric(spinrates$swing_miss);
+
+print(spinrates);
+
 let ggplot2 = function() {
 
 p <- ggplot(spinrates, aes(x = "velocity", y = "spinrate")) +
