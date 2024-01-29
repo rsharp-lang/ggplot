@@ -4,6 +4,7 @@ Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Math
+Imports Microsoft.VisualBasic.Math.LinearAlgebra
 Imports SMRUCC.Rsharp.Runtime.Vectorization
 
 Namespace layers
@@ -26,9 +27,9 @@ Namespace layers
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim x = CLRVector.asNumeric(stream.x)
             Dim y = CLRVector.asNumeric(stream.y)
-            Dim diffx As Double() = NumberGroups.diff(x.OrderByDescending(Function(xi) xi).ToArray)
-            Dim diffy As Double() = NumberGroups.diff(y.OrderByDescending(Function(xi) xi).ToArray)
-            Dim tile_size As SizeF = stream.scale.TranslateSize(diffx.Average, diffy.Average)
+            Dim diffx As Vector = NumberGroups.diff(x.OrderBy(Function(xi) xi).ToArray)
+            Dim diffy As Vector = NumberGroups.diff(y.OrderBy(Function(xi) xi).ToArray)
+            Dim tile_size As SizeF = stream.scale.TranslateSize(diffx(diffx > 0).Average, diffy(diffy > 0).Average)
             Dim rect As RectangleF
             Dim offsetx As Double = tile_size.Width / 2
             Dim offsety As Double = tile_size.Height / 2
