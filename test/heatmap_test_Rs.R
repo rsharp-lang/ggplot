@@ -16,7 +16,7 @@ p <- ggplot(spinrates, aes(x = "velocity", y = "spinrate")) +
       p;
 }
 
-png(file = "./test_heatmap.png");
+png(filename = "./test_heatmap.png");
 plot(ggplot2());
 dev.off();
 

@@ -866,7 +866,7 @@ Public Module ggplot2
 
     <ExportAPI("geom_tile")>
     Public Function geom_tile(Optional mapping As ggplotReader = NULL) As Object
-
+        Return New ggplotTileLayer With {.reader = mapping}
     End Function
 
     ''' <summary>
@@ -1282,6 +1282,17 @@ Public Module ggplot2
 
         Return New ggplotColorProfile With {
             .profile = ggplotColorMap.CreateColorMap(values, alpha, env)
+        }
+    End Function
+
+    <ExportAPI("scale_fill_distiller")>
+    Public Function scale_fill_distiller(Optional palette As String = "YlGnBu",
+                                         Optional direction As Integer = 1,
+                                         Optional alpha As Double = 1,
+                                         Optional env As Environment = Nothing) As Object
+
+        Return New ggplotColorProfile With {
+            .profile = ggplotColorMap.CreateColorMap(palette, alpha, env)
         }
     End Function
 
