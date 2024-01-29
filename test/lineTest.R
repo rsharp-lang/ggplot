@@ -13,3 +13,9 @@ bitmap(file = "./line_sin.png", width = 2400, height = 1600) {
     + geom_line(width = 8, show.legend = TRUE, color = "Jet")
     ;
 }
+
+svg(file = "./line_sin.svg", width = 2400, height = 1600) {
+    ggplot(line_data, aes(x = "x", y = "y"), padding = "padding: 200px 500px 200px 200px;")
+    + geom_line(width = 8, show.legend = TRUE, color = "Jet")
+    ;
+}
