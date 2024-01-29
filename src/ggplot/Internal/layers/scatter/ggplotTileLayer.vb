@@ -28,11 +28,10 @@ Namespace layers
             Dim y = CLRVector.asNumeric(stream.y)
             Dim diffx As Double() = NumberGroups.diff(x.OrderByDescending(Function(xi) xi).ToArray)
             Dim diffy As Double() = NumberGroups.diff(y.OrderByDescending(Function(xi) xi).ToArray)
-            Dim dx As Double = diffx.Average ' width
-            Dim dy As Double = diffy.Average ' height
+            Dim tile_size As SizeF = stream.scale.TranslateSize(diffx.Average, diffy.Average)
             Dim rect As RectangleF
-            Dim offsetx As Double = dx / 2
-            Dim offsety As Double = dy / 2
+            Dim offsetx As Double = tile_size.Width / 2
+            Dim offsety As Double = tile_size.Height / 2
             Dim fill As Brush
             Dim fillData As Double() = getFillData(stream)
             Dim valuerange As New DoubleRange(fillData)
@@ -42,9 +41,12 @@ Namespace layers
             Dim textures As Brush() = colors.Select(Function(c) c.GetBrush).ToArray
             Dim indexrange As New DoubleRange(0, 99)
             Dim offset As Integer
+            Dim rxi, ryi As Double
 
             For i As Integer = 0 To x.Length - 1
-                rect = New RectangleF(x(i) - offsetx, y(i) - offsety, dx, dy)
+                rxi = stream.scale.TranslateX(x(i) - offsetx)
+                ryi = stream.scale.TranslateY(y(i) - offsety)
+                rect = New RectangleF(New PointF(rxi, ryi), tile_size)
                 offset = valuerange.ScaleMapping(fillData(i), indexrange)
                 fill = textures(offset)
                 stream.g.FillRectangle(fill, rect)
