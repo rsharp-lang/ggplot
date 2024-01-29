@@ -20,7 +20,7 @@ p <- ggplot(spinrates, aes(x = "velocity", y = "spinrate")) +
       p;
 }
 
-png(filename = "./test_heatmap.png",  width = 900, height = 2000);
+png(filename = "./test_heatmap.png",  width = 2000, height = 1200);
 plot(ggplot2());
 dev.off();
 
