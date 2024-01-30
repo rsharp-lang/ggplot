@@ -240,6 +240,18 @@ Namespace layers
             End If
         End Function
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="ggplot"></param>
+        ''' <param name="g"></param>
+        ''' <param name="nsize"></param>
+        ''' <param name="shape"></param>
+        ''' <param name="data"></param>
+        ''' <param name="legends"></param>
+        ''' <returns>the generated colors vector its element size equals to the size of the given <paramref name="data"/> 
+        ''' vector, which means the colors array has already been mapping from the data, not the raw color 
+        ''' palette value.</returns>
         Protected Function getColorSet(ggplot As ggplot,
                                        g As IGraphics,
                                        nsize As Integer,

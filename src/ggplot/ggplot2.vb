@@ -1264,6 +1264,7 @@ Public Module ggplot2
     ''' package And references therein.
     ''' </remarks>
     <ExportAPI("scale_colour_manual")>
+    <RApiReturn(GetType(ggplotColorProfile))>
     Public Function scale_colour_manual(<RRawVectorArgument>
                                         values As Object,
                                         Optional alpha As Double = 1,
@@ -1275,6 +1276,7 @@ Public Module ggplot2
     End Function
 
     <ExportAPI("scale_fill_manual")>
+    <RApiReturn(GetType(ggplotColorProfile))>
     Public Function scale_fill_manual(<RRawVectorArgument>
                                       values As Object,
                                       Optional alpha As Double = 1,
@@ -1286,6 +1288,7 @@ Public Module ggplot2
     End Function
 
     <ExportAPI("scale_fill_distiller")>
+    <RApiReturn(GetType(ggplotColorProfile))>
     Public Function scale_fill_distiller(Optional palette As String = "YlGnBu",
                                          Optional direction As Integer = 1,
                                          Optional alpha As Double = 1,
@@ -1309,6 +1312,7 @@ Public Module ggplot2
     ''' </param>
     ''' <returns></returns>
     <ExportAPI("scale_x_continuous")>
+    <RApiReturn(GetType(ggplotTicks))>
     Public Function scale_x_continuous(Optional labels As String = Nothing,
                                        Optional limits As Double() = Nothing,
                                        Optional env As Environment = Nothing) As ggplotOption

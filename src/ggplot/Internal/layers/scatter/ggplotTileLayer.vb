@@ -1,7 +1,5 @@
 ﻿Imports System.Drawing
-Imports System.IO
 Imports ggplot.elements.legend
-Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
@@ -43,31 +41,27 @@ Namespace layers
             Dim y = CLRVector.asNumeric(stream.y)
             Dim diffx As Vector = NumberGroups.diff(x.OrderBy(Function(xi) xi).ToArray)
             Dim diffy As Vector = NumberGroups.diff(y.OrderBy(Function(xi) xi).ToArray)
-            Dim tile_size As SizeF = stream.scale.TranslateSize(diffx(diffx > 0).Average, diffy(diffy > 0).Average)
+            Dim tile_size As SizeF = stream.scale.TranslateSize(diffx(diffx > 0).Min, diffy(diffy > 0).Min)
             Dim rect As RectangleF
-            Dim offsetx As Double = tile_size.Width / 2
-            Dim offsety As Double = tile_size.Height / 2
+            ' Dim offsetx As Double = tile_size.Width / 2
+            ' Dim offsety As Double = tile_size.Height / 2
             Dim fill As Brush
             Dim fillData As Double() = getFillData(stream)
-            Dim valuerange As New DoubleRange(fillData)
             Dim ggplot = stream.ggplot
             Dim colors As String() = getColorSet(ggplot, stream.g, mapLevels, LegendStyles.SolidLine, fillData, Nothing)
             Dim textures As Brush() = colors.Select(Function(c) c.GetBrush).ToArray
-            Dim indexrange As New DoubleRange(0, mapLevels - 1)
-            Dim offset As Integer
             Dim rxi, ryi As Double
 
             For i As Integer = 0 To x.Length - 1
-                rxi = stream.scale.TranslateX(x(i)) - offsetx
-                ryi = stream.scale.TranslateY(y(i)) - offsety
+                rxi = stream.scale.TranslateX(x(i)) - tile_size.Width
+                ryi = stream.scale.TranslateY(y(i)) '- offsety
                 rect = New RectangleF(New PointF(rxi, ryi), tile_size)
-                offset = valuerange.ScaleMapping(fillData(i), indexrange)
-                fill = textures(offset)
+                fill = textures(i)
                 stream.g.FillRectangle(fill, rect)
             Next
 
             Return New legendColorMapElement With {
-                .colorMapLegend = New ColorMapLegend(stream.theme.colorSet, mapLevels) With {
+                .colorMapLegend = New ColorMapLegend(colorMap.ToString, mapLevels) With {
                     .title = getDataLabel(stream),
                     .tickAxisStroke = Stroke.TryParse(stream.theme.legendTickAxisStroke).GDIObject,
                     .tickFont = CSSFont.TryParse(stream.theme.legendTickCSS).GDIObject(stream.g.Dpi),

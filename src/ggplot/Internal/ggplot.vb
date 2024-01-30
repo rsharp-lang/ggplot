@@ -85,6 +85,7 @@ Imports Microsoft.VisualBasic.Math
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports SMRUCC.Rsharp.Runtime.Vectorization
+Imports std = System.Math
 
 ''' <summary>
 ''' graphics drawing engine of the ggplot library
@@ -321,7 +322,8 @@ Public Class ggplot : Inherits Plot
             Dim y As Single
 
             If pos.IsEmpty Then
-                x = (canvas.Padding.Right - size.Width) / 2 + rect.Right
+                x = (canvas.Padding.Right - size.Width) / 2
+                x = std.Max(x, 10) + rect.Right
                 y = (rect.Height - size.Height) / 2 + rect.Top
             Else
                 x = pos.X
