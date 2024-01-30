@@ -1153,6 +1153,7 @@ Public Module ggplot2
                           Optional plot_title As textElement = Nothing,
                           Optional panel_background As String = Nothing,
                           Optional panel_grid As Object = Stroke.AxisGridStroke,
+                          Optional panel_grid_major As Object = Stroke.AxisGridStroke,
                           Optional panel_border As rectElement = Nothing) As ggplotOption
         ' 20220829
         ' 大部分的参数值都应该设置为空值
@@ -1163,7 +1164,7 @@ Public Module ggplot2
             .legend_background = legend_background,
             .plot_background = plot_background,
             .panel_background = panel_background,
-            .panel_grid = options.element_blank.GetCssStroke(panel_grid),
+            .panel_grid = options.element_blank.GetCssStroke(If(panel_grid, panel_grid_major)),
             .axis_line = options.element_blank.GetCssStroke(axis_line),
             .legend_text = legend_text,
             .plot_title = plot_title,
