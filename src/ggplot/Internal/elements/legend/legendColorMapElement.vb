@@ -65,6 +65,9 @@ Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 
 Namespace elements.legend
 
+    ''' <summary>
+    ''' legend for heatmap scale
+    ''' </summary>
     Public Class legendColorMapElement : Inherits ggplotElement
         Implements IggplotLegendElement
 

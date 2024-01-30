@@ -10,7 +10,7 @@ print(spinrates);
 
 let ggplot2 = function() {
 
-p <- ggplot(spinrates, aes(x = "velocity", y = "spinrate")) +
+p <- ggplot(spinrates, aes(x = "velocity", y = "spinrate"),padding = "padding:250px 400px 250px 300px;") +
   geom_tile(aes(fill = "swing_miss")) +
   scale_fill_distiller(palette = "YlGnBu", direction = 1) +
   theme_light() +
@@ -24,6 +24,6 @@ png(filename = "./test_heatmap.png",  width = 2000, height = 1200);
 plot(ggplot2());
 dev.off();
 
-svg(file = "./test_heatmap.svg");
+svg(file = "./test_heatmap.svg",  width = 2000, height = 1200);
 plot(ggplot2());
 dev.off();

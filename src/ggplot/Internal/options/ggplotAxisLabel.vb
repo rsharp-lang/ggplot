@@ -66,6 +66,7 @@ Namespace options
         Public Overrides Function Config(ggplot As ggplot) As ggplot
             ggplot.xlabel = If(x, ggplot.xlabel)
             ggplot.ylabel = If(y, ggplot.ylabel)
+            ggplot.main = If(title, ggplot.main)
 
             Return ggplot
         End Function
