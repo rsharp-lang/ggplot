@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMaxYMax" width="2700" height="2000" viewBox="0 0 2700 2000">
+  <rect x="300" y="250" width="1800" height="1500" style="fill: #FFFFFF" />
+  <line x1="300" x2="300" y1="250" y2="1750" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="480" x2="480" y1="250" y2="1750" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="660" x2="660" y1="250" y2="1750" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="840" x2="840" y1="250" y2="1750" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="1020" x2="1020" y1="250" y2="1750" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="1200" x2="1200" y1="250" y2="1750" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="1380" x2="1380" y1="250" y2="1750" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="1560" x2="1560" y1="250" y2="1750" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="1740" x2="1740" y1="250" y2="1750" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="1920" x2="1920" y1="250" y2="1750" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="2100" x2="2100" y1="250" y2="1750" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="300" x2="2100" y1="1750" y2="1750" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="300" x2="2100" y1="1536" y2="1536" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="300" x2="2100" y1="1321" y2="1321" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="300" x2="2100" y1="1107" y2="1107" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="300" x2="2100" y1="893" y2="893" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="300" x2="2100" y1="679" y2="679" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="300" x2="2100" y1="464" y2="464" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="300" x2="2100" y1="250" y2="250" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="300" x2="2100" y1="1750" y2="1750" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <line x1="300" x2="300" y1="1750" y2="1760" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="294" y="1762" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000">0</text>
+  <line x1="480" x2="480" y1="1750" y2="1760" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="463" y="1762" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000">2.50</text>
+  <line x1="660" x2="660" y1="1750" y2="1760" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="643" y="1762" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000">5.00</text>
+  <line x1="840" x2="840" y1="1750" y2="1760" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="823" y="1762" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000">7.50</text>
+  <line x1="1020" x2="1020" y1="1750" y2="1760" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="999" y="1762" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000">10.00</text>
+  <line x1="1200" x2="1200" y1="1750" y2="1760" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="1179" y="1762" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000">12.50</text>
+  <line x1="1380" x2="1380" y1="1750" y2="1760" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="1359" y="1762" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000">15.00</text>
+  <line x1="1560" x2="1560" y1="1750" y2="1760" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="1539" y="1762" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000">17.50</text>
+  <line x1="1740" x2="1740" y1="1750" y2="1760" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="1719" y="1762" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000">20.00</text>
+  <line x1="1920" x2="1920" y1="1750" y2="1760" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="1899" y="1762" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000">22.50</text>
+  <line x1="2100" x2="2100" y1="1750" y2="1760" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="2079" y="1762" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000">25.00</text>
+  <text x="1136.243408203125" y="1863.44140625" style="font-style: strong;font-weight:bold;font-size: 37.5px;font-family: Microsoft YaHei;color: black;fill: #000000">-log10(p-value)</text>
+  <line x1="300" x2="300" y1="1750" y2="250" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <line x1="300" x2="290" y1="1750" y2="1750" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="277.08551025390625" y="1740.3677978515625" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000">0</text>
+  <line x1="300" x2="290" y1="1535.7142333984375" y2="1535.7142333984375" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="268.6154479980469" y="1526.08203125" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000">50</text>
+  <line x1="300" x2="290" y1="1321.4285888671875" y2="1321.4285888671875" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="260.1454162597656" y="1311.79638671875" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000">100</text>
+  <line x1="300" x2="290" y1="1107.142822265625" y2="1107.142822265625" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="260.1454162597656" y="1097.5106201171875" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000">150</text>
+  <line x1="300" x2="290" y1="892.8571166992188" y2="892.8571166992188" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="260.1454162597656" y="883.2249755859375" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000">200</text>
+  <line x1="300" x2="290" y1="678.5714111328125" y2="678.5714111328125" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="260.1454162597656" y="668.9392700195312" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000">250</text>
+  <line x1="300" x2="290" y1="464.28570556640625" y2="464.28570556640625" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="260.1454162597656" y="454.6535339355469" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000">300</text>
+  <line x1="300" x2="290" y1="250" y2="250" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="260.1454162597656" y="240.3678436279297" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000">350</text>
+  <text x="232.10092163085938" y="1026.6431884765625" style="font-style: strong;font-weight:bold;font-size: 37.5px;font-family: Microsoft YaHei;color: black;fill: #000000">Count</text>
+  <rect x="300.05828857421875" y="455.71429443359375" width="33.031429290771484" height="1294.2857666015625" style="fill: #4682B4" />
+  <rect x="300.05828857421875" y="455.71429443359375" width="33.031429290771484" height="1294.2857666015625" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="333.0897216796875" y="922.8571166992188" width="33.031429290771484" height="827.1428833007812" style="fill: #4682B4" />
+  <rect x="333.0897216796875" y="922.8571166992188" width="33.031429290771484" height="827.1428833007812" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="366.12115478515625" y="957.1428833007812" width="33.031429290771484" height="792.8571166992188" style="fill: #4682B4" />
+  <rect x="366.12115478515625" y="957.1428833007812" width="33.031429290771484" height="792.8571166992188" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="399.152587890625" y="1072.857177734375" width="33.031429290771484" height="677.1428833007812" style="fill: #4682B4" />
+  <rect x="399.152587890625" y="1072.857177734375" width="33.031429290771484" height="677.1428833007812" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="432.1839904785156" y="1042.857177734375" width="33.031429290771484" height="707.1428833007812" style="fill: #4682B4" />
+  <rect x="432.1839904785156" y="1042.857177734375" width="33.031429290771484" height="707.1428833007812" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="465.2154235839844" y="1210" width="33.031429290771484" height="540" style="fill: #4682B4" />
+  <rect x="465.2154235839844" y="1210" width="33.031429290771484" height="540" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="498.2468566894531" y="1115.7142333984375" width="33.031429290771484" height="634.2857055664062" style="fill: #4682B4" />
+  <rect x="498.2468566894531" y="1115.7142333984375" width="33.031429290771484" height="634.2857055664062" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="531.2783203125" y="1167.142822265625" width="33.031429290771484" height="582.8571166992188" style="fill: #4682B4" />
+  <rect x="531.2783203125" y="1167.142822265625" width="33.031429290771484" height="582.8571166992188" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="564.3096923828125" y="1261.4285888671875" width="33.031429290771484" height="488.5714416503906" style="fill: #4682B4" />
+  <rect x="564.3096923828125" y="1261.4285888671875" width="33.031429290771484" height="488.5714416503906" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="597.3411254882812" y="1235.7142333984375" width="33.031429290771484" height="514.2857055664062" style="fill: #4682B4" />
+  <rect x="597.3411254882812" y="1235.7142333984375" width="33.031429290771484" height="514.2857055664062" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="630.37255859375" y="1312.857177734375" width="33.031429290771484" height="437.1428527832031" style="fill: #4682B4" />
+  <rect x="630.37255859375" y="1312.857177734375" width="33.031429290771484" height="437.1428527832031" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="663.4039916992188" y="1330" width="33.031429290771484" height="420" style="fill: #4682B4" />
+  <rect x="663.4039916992188" y="1330" width="33.031429290771484" height="420" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="696.4354248046875" y="1351.4285888671875" width="33.031429290771484" height="398.5714416503906" style="fill: #4682B4" />
+  <rect x="696.4354248046875" y="1351.4285888671875" width="33.031429290771484" height="398.5714416503906" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="729.4668579101562" y="1342.857177734375" width="33.031429290771484" height="407.1428527832031" style="fill: #4682B4" />
+  <rect x="729.4668579101562" y="1342.857177734375" width="33.031429290771484" height="407.1428527832031" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="762.498291015625" y="1334.2857666015625" width="33.031429290771484" height="415.71429443359375" style="fill: #4682B4" />
+  <rect x="762.498291015625" y="1334.2857666015625" width="33.031429290771484" height="415.71429443359375" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="795.5297241210938" y="1420" width="33.031429290771484" height="330" style="fill: #4682B4" />
+  <rect x="795.5297241210938" y="1420" width="33.031429290771484" height="330" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="828.5611572265625" y="1450" width="33.031429290771484" height="300" style="fill: #4682B4" />
+  <rect x="828.5611572265625" y="1450" width="33.031429290771484" height="300" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="861.5925903320312" y="1402.857177734375" width="33.031429290771484" height="347.1428527832031" style="fill: #4682B4" />
+  <rect x="861.5925903320312" y="1402.857177734375" width="33.031429290771484" height="347.1428527832031" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="894.6240234375" y="1492.857177734375" width="33.031429290771484" height="257.1428527832031" style="fill: #4682B4" />
+  <rect x="894.6240234375" y="1492.857177734375" width="33.031429290771484" height="257.1428527832031" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="927.6554565429688" y="1467.142822265625" width="33.031429290771484" height="282.8571472167969" style="fill: #4682B4" />
+  <rect x="927.6554565429688" y="1467.142822265625" width="33.031429290771484" height="282.8571472167969" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="960.6868896484375" y="1552.857177734375" width="33.031429290771484" height="197.14285278320312" style="fill: #4682B4" />
+  <rect x="960.6868896484375" y="1552.857177734375" width="33.031429290771484" height="197.14285278320312" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="993.7183227539062" y="1548.5714111328125" width="33.031429290771484" height="201.42857360839844" style="fill: #4682B4" />
+  <rect x="993.7183227539062" y="1548.5714111328125" width="33.031429290771484" height="201.42857360839844" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="1026.749755859375" y="1552.857177734375" width="33.031429290771484" height="197.14285278320312" style="fill: #4682B4" />
+  <rect x="1026.749755859375" y="1552.857177734375" width="33.031429290771484" height="197.14285278320312" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="1059.7811279296875" y="1608.5714111328125" width="33.031429290771484" height="141.42857360839844" style="fill: #4682B4" />
+  <rect x="1059.7811279296875" y="1608.5714111328125" width="33.031429290771484" height="141.42857360839844" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="1092.8126220703125" y="1634.2857666015625" width="33.031429290771484" height="115.71428680419922" style="fill: #4682B4" />
+  <rect x="1092.8126220703125" y="1634.2857666015625" width="33.031429290771484" height="115.71428680419922" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="1125.843994140625" y="1638.5714111328125" width="33.031429290771484" height="111.42857360839844" style="fill: #4682B4" />
+  <rect x="1125.843994140625" y="1638.5714111328125" width="33.031429290771484" height="111.42857360839844" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="1158.87548828125" y="1681.4285888671875" width="33.031429290771484" height="68.57142639160156" style="fill: #4682B4" />
+  <rect x="1158.87548828125" y="1681.4285888671875" width="33.031429290771484" height="68.57142639160156" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="1191.9068603515625" y="1681.4285888671875" width="33.031429290771484" height="68.57142639160156" style="fill: #4682B4" />
+  <rect x="1191.9068603515625" y="1681.4285888671875" width="33.031429290771484" height="68.57142639160156" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="1224.9383544921875" y="1694.2857666015625" width="33.031429290771484" height="55.71428680419922" style="fill: #4682B4" />
+  <rect x="1224.9383544921875" y="1694.2857666015625" width="33.031429290771484" height="55.71428680419922" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="1257.9697265625" y="1702.857177734375" width="33.031429290771484" height="47.14285659790039" style="fill: #4682B4" />
+  <rect x="1257.9697265625" y="1702.857177734375" width="33.031429290771484" height="47.14285659790039" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="1291.001220703125" y="1720" width="33.031429290771484" height="30" style="fill: #4682B4" />
+  <rect x="1291.001220703125" y="1720" width="33.031429290771484" height="30" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="1324.0325927734375" y="1715.7142333984375" width="33.031429290771484" height="34.28571319580078" style="fill: #4682B4" />
+  <rect x="1324.0325927734375" y="1715.7142333984375" width="33.031429290771484" height="34.28571319580078" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="1357.0640869140625" y="1720" width="33.031429290771484" height="30" style="fill: #4682B4" />
+  <rect x="1357.0640869140625" y="1720" width="33.031429290771484" height="30" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="1390.095458984375" y="1724.2857666015625" width="33.031429290771484" height="25.714284896850586" style="fill: #4682B4" />
+  <rect x="1390.095458984375" y="1724.2857666015625" width="33.031429290771484" height="25.714284896850586" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="1423.1268310546875" y="1707.142822265625" width="33.031429290771484" height="42.85714340209961" style="fill: #4682B4" />
+  <rect x="1423.1268310546875" y="1707.142822265625" width="33.031429290771484" height="42.85714340209961" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="1456.1583251953125" y="1741.4285888671875" width="33.031429290771484" height="8.571428298950195" style="fill: #4682B4" />
+  <rect x="1456.1583251953125" y="1741.4285888671875" width="33.031429290771484" height="8.571428298950195" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="1489.189697265625" y="1737.142822265625" width="33.031429290771484" height="12.857142448425293" style="fill: #4682B4" />
+  <rect x="1489.189697265625" y="1737.142822265625" width="33.031429290771484" height="12.857142448425293" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="1522.22119140625" y="1728.5714111328125" width="33.031429290771484" height="21.428571701049805" style="fill: #4682B4" />
+  <rect x="1522.22119140625" y="1728.5714111328125" width="33.031429290771484" height="21.428571701049805" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="1555.2525634765625" y="1741.4285888671875" width="33.031429290771484" height="8.571428298950195" style="fill: #4682B4" />
+  <rect x="1555.2525634765625" y="1741.4285888671875" width="33.031429290771484" height="8.571428298950195" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="1588.2840576171875" y="1745.7142333984375" width="33.031429290771484" height="4.285714149475098" style="fill: #4682B4" />
+  <rect x="1588.2840576171875" y="1745.7142333984375" width="33.031429290771484" height="4.285714149475098" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="1621.3154296875" y="1741.4285888671875" width="33.031429290771484" height="8.571428298950195" style="fill: #4682B4" />
+  <rect x="1621.3154296875" y="1741.4285888671875" width="33.031429290771484" height="8.571428298950195" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="1654.346923828125" y="1741.4285888671875" width="33.031429290771484" height="8.571428298950195" style="fill: #4682B4" />
+  <rect x="1654.346923828125" y="1741.4285888671875" width="33.031429290771484" height="8.571428298950195" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="1687.3782958984375" y="1745.7142333984375" width="33.031429290771484" height="4.285714149475098" style="fill: #4682B4" />
+  <rect x="1687.3782958984375" y="1745.7142333984375" width="33.031429290771484" height="4.285714149475098" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="1720.4097900390625" y="1750" width="33.031429290771484" height="0" style="fill: #4682B4" />
+  <rect x="1720.4097900390625" y="1750" width="33.031429290771484" height="0" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="1753.441162109375" y="1750" width="33.031429290771484" height="0" style="fill: #4682B4" />
+  <rect x="1753.441162109375" y="1750" width="33.031429290771484" height="0" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="1786.47265625" y="1745.7142333984375" width="33.031429290771484" height="4.285714149475098" style="fill: #4682B4" />
+  <rect x="1786.47265625" y="1745.7142333984375" width="33.031429290771484" height="4.285714149475098" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="1819.5040283203125" y="1750" width="33.031429290771484" height="0" style="fill: #4682B4" />
+  <rect x="1819.5040283203125" y="1750" width="33.031429290771484" height="0" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="1852.5355224609375" y="1750" width="33.031429290771484" height="0" style="fill: #4682B4" />
+  <rect x="1852.5355224609375" y="1750" width="33.031429290771484" height="0" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="1885.56689453125" y="1745.7142333984375" width="33.031429290771484" height="4.285714149475098" style="fill: #4682B4" />
+  <rect x="1885.56689453125" y="1745.7142333984375" width="33.031429290771484" height="4.285714149475098" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="1918.5982666015625" y="1750" width="33.031429290771484" height="0" style="fill: #4682B4" />
+  <rect x="1918.5982666015625" y="1750" width="33.031429290771484" height="0" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <rect x="1951.6297607421875" y="1745.7142333984375" width="33.031429290771484" height="4.285714149475098" style="fill: #4682B4" />
+  <rect x="1951.6297607421875" y="1745.7142333984375" width="33.031429290771484" height="4.285714149475098" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;; fill: transparent;" />
+  <text x="1050.487060546875" y="169.56251525878906" style="font-style: strong;font-weight:bold;font-size: 75px;font-family: Microsoft Sans Serif;color: black;fill: #000000">Frequency of -logP</text>
+  <rect x="2321" y="991" width="54" height="37" style="fill: #4682B4" />
+  <text x="2392.037109375" y="997.4564208984375" style="font-style: normal;font-size: 40.625px;font-family: Microsoft YaHei;color: black;fill: #000000">-log10(p-value)</text>
+</svg>

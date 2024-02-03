@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMaxYMax" width="3300" height="2700" viewBox="0 0 3300 2700">
+  <rect x="300" y="250" width="2850" height="2150" style="fill: #FFFFFF" />
+  <line x1="300" x2="3150" y1="2400" y2="2400" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="300" x2="3150" y1="2131" y2="2131" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="300" x2="3150" y1="1862" y2="1862" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="300" x2="3150" y1="1594" y2="1594" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="300" x2="3150" y1="1325" y2="1325" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="300" x2="3150" y1="1056" y2="1056" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="300" x2="3150" y1="788" y2="788" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="300" x2="3150" y1="519" y2="519" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="300" x2="3150" y1="250" y2="250" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="300" x2="3150" y1="2400" y2="2400" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <line x1="656.25" x2="656.25" y1="2400" y2="2410" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="649" y="2412" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000">A</text>
+  <line x1="1368.75" x2="1368.75" y1="2400" y2="2410" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="1362" y="2412" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000">B</text>
+  <line x1="2081.25" x2="2081.25" y1="2400" y2="2410" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="2074" y="2412" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000">C</text>
+  <line x1="2793.75" x2="2793.75" y1="2400" y2="2410" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="2786" y="2412" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000">D</text>
+  <text x="1687.8841552734375" y="2538.44140625" style="font-style: strong;font-weight:bold;font-size: 37.5px;font-family: Microsoft YaHei;color: black;fill: #000000">category</text>
+  <line x1="300" x2="300" y1="2400" y2="250" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <line x1="300" x2="290" y1="2400" y2="2400" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="256.2196350097656" y="2390.367919921875" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000">5.00</text>
+  <line x1="300" x2="290" y1="2131.25" y2="2131.25" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="247.74957275390625" y="2121.617919921875" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000">10.00</text>
+  <line x1="300" x2="290" y1="1862.5" y2="1862.5" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="247.74957275390625" y="1852.8677978515625" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000">15.00</text>
+  <line x1="300" x2="290" y1="1593.75" y2="1593.75" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="247.74957275390625" y="1584.1177978515625" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000">20.00</text>
+  <line x1="300" x2="290" y1="1325" y2="1325" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="247.74957275390625" y="1315.3677978515625" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000">25.00</text>
+  <line x1="300" x2="290" y1="1056.25" y2="1056.25" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="247.74957275390625" y="1046.6177978515625" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000">30.00</text>
+  <line x1="300" x2="290" y1="787.5" y2="787.5" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="247.74957275390625" y="777.8678588867188" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000">35.00</text>
+  <line x1="300" x2="290" y1="518.75" y2="518.75" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="247.74957275390625" y="509.1178283691406" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000">40.00</text>
+  <line x1="300" x2="290" y1="250" y2="250" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="247.74957275390625" y="240.3678436279297" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000">45.00</text>
+  <text x="213.50717163085938" y="1358.408935546875" style="font-style: strong;font-weight:bold;font-size: 37.5px;font-family: Microsoft YaHei;color: black;fill: #000000">amount</text>
+  <path d="M 300,250 a 1075 1075 0 1 1 0 1 z" style="fill: #D02823" />
+  <text x="1851" y="1832" style="font-style: normal;font-size: 37.5px;font-family: Microsoft Sans Serif;color: black;fill: #FFFFFF">25.00%</text>
+  <path d="M 300,250 a 1075 1075 0 1 1 0 1 z" style="fill: #0491D0" />
+  <text x="663" y="1546" style="font-style: normal;font-size: 37.5px;font-family: Microsoft Sans Serif;color: black;fill: #FFFFFF">40.00%</text>
+  <path d="M 300,250 a 1075 1075 0 1 1 0 1 z" style="fill: #88BB64" />
+  <text x="1501" y="626" style="font-style: normal;font-size: 37.5px;font-family: Microsoft Sans Serif;color: black;fill: #FFFFFF">27.00%</text>
+  <path d="M 300,250 a 1075 1075 0 1 1 0 1 z" style="fill: #15DBFF" />
+  <text x="2043" y="1147" style="font-style: normal;font-size: 37.5px;font-family: Microsoft Sans Serif;color: black;fill: #FFFFFF">8.00%</text>
+  <rect x="3215" y="1262" width="0" height="0" style="fill: #D02823" />
+  <text x="3220.3994140625" y="1249.8690185546875" style="font-style: normal;font-size: 40.625px;font-family: Microsoft YaHei;color: black;fill: #000000">A</text>
+  <rect x="3215" y="1292" width="0" height="0" style="fill: #0491D0" />
+  <text x="3220" y="1279.4781494140625" style="font-style: normal;font-size: 40.625px;font-family: Microsoft YaHei;color: black;fill: #000000">B</text>
+  <rect x="3215" y="1322" width="0" height="0" style="fill: #88BB64" />
+  <text x="3220" y="1309.4781494140625" style="font-style: normal;font-size: 40.625px;font-family: Microsoft YaHei;color: black;fill: #000000">C</text>
+  <rect x="3215" y="1352" width="0" height="0" style="fill: #15DBFF" />
+  <text x="3220" y="1339.4781494140625" style="font-style: normal;font-size: 40.625px;font-family: Microsoft YaHei;color: black;fill: #000000">D</text>
+</svg>

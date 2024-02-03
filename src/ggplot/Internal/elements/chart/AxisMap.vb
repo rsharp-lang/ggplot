@@ -63,6 +63,16 @@ Namespace elements
             End If
         End Function
 
+        Public Shared Function Create(x As Object) As axisMap
+            If TypeOf x Is axisMap Then
+                Return x
+            ElseIf x.GetType.IsArray Then
+                Return FromArray(x)
+            Else
+                Return FromArray({x.ToString})
+            End If
+        End Function
+
         ''' <summary>
         ''' Create axis mapping with type auto mapping
         ''' </summary>

@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMaxYMax" width="2400" height="1600" viewBox="0 0 2400 1600">
+  <rect x="200" y="200" width="1700" height="1200" style="fill: #FFFFFF" />
+  <line x1="200" x2="200" y1="200" y2="1400" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="370" x2="370" y1="200" y2="1400" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="540" x2="540" y1="200" y2="1400" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="710" x2="710" y1="200" y2="1400" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="880" x2="880" y1="200" y2="1400" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="1050" x2="1050" y1="200" y2="1400" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="1220" x2="1220" y1="200" y2="1400" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="1390" x2="1390" y1="200" y2="1400" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="1560" x2="1560" y1="200" y2="1400" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="1730" x2="1730" y1="200" y2="1400" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="1900" x2="1900" y1="200" y2="1400" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="200" x2="1900" y1="1400" y2="1400" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="200" x2="1900" y1="1280" y2="1280" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="200" x2="1900" y1="1160" y2="1160" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="200" x2="1900" y1="1040" y2="1040" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="200" x2="1900" y1="920" y2="920" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="200" x2="1900" y1="800" y2="800" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="200" x2="1900" y1="680" y2="680" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="200" x2="1900" y1="560" y2="560" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="200" x2="1900" y1="440" y2="440" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="200" x2="1900" y1="320" y2="320" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="200" x2="1900" y1="200" y2="200" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
+  <line x1="200" x2="1900" y1="1400" y2="1400" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <line x1="200" x2="200" y1="1400" y2="1410" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="160.71661376953125" y="1452.1340001424153" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000;">-5.00</text>
+  <line x1="370" x2="370" y1="1400" y2="1410" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="330.71661376953125" y="1452.1340001424153" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000;">-4.00</text>
+  <line x1="540" x2="540" y1="1400" y2="1410" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="500.71661376953125" y="1452.1340001424153" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000;">-3.00</text>
+  <line x1="710" x2="710" y1="1400" y2="1410" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="670.7166137695312" y="1452.1340001424153" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000;">-2.00</text>
+  <line x1="880" x2="880" y1="1400" y2="1410" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="840.7166137695312" y="1452.1340001424153" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000;">-1.00</text>
+  <line x1="1050" x2="1050" y1="1400" y2="1410" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="1036.50927734375" y="1452.1340001424153" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000;">0</text>
+  <line x1="1220" x2="1220" y1="1400" y2="1410" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="1186.6207275390625" y="1452.1340001424153" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000;">1.00</text>
+  <line x1="1390" x2="1390" y1="1400" y2="1410" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="1356.6207275390625" y="1452.1340001424153" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000;">2.00</text>
+  <line x1="1560" x2="1560" y1="1400" y2="1410" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="1526.6207275390625" y="1452.1340001424153" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000;">3.00</text>
+  <line x1="1730" x2="1730" y1="1400" y2="1410" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="1696.6207275390625" y="1452.1340001424153" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000;">4.00</text>
+  <line x1="1900" x2="1900" y1="1400" y2="1410" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="1866.6207275390625" y="1452.1340001424153" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000;">5.00</text>
+  <text x="1034.4022216796875" y="1512.0401967366536" style="font-style: strong;font-weight:bold;font-size: 37.5px;font-family: Microsoft YaHei;color: black;fill: #000000;">x</text>
+  <line x1="200" x2="200" y1="1400" y2="200" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <line x1="200" x2="190" y1="1400" y2="1400" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="91.41693878173828" y="1410.0335362752278" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000;">-1.00</text>
+  <line x1="200" x2="190" y1="1280" y2="1280" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="91.41693878173828" y="1290.0335362752278" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000;">-0.80</text>
+  <line x1="200" x2="190" y1="1160" y2="1160" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="91.41693878173828" y="1170.0335362752278" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000;">-0.60</text>
+  <line x1="200" x2="190" y1="1040" y2="1040" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="91.41693878173828" y="1050.0334752400715" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000;">-0.40</text>
+  <line x1="200" x2="190" y1="920" y2="920" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="91.41693878173828" y="930.0334752400717" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000;">-0.20</text>
+  <line x1="200" x2="190" y1="800" y2="800" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="157.4535675048828" y="810.0334752400717" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000;">0</text>
+  <line x1="200" x2="190" y1="680" y2="680" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="106.89613342285156" y="690.0334752400717" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000;">0.20</text>
+  <line x1="200" x2="190" y1="560" y2="560" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="106.89613342285156" y="570.0334752400717" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000;">0.40</text>
+  <line x1="200" x2="190" y1="440" y2="440" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="106.89613342285156" y="450.0335057576497" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000;">0.60</text>
+  <line x1="200" x2="190" y1="320" y2="320" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="106.89613342285156" y="330.0335057576497" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000;">0.80</text>
+  <line x1="200" x2="190" y1="200" y2="200" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <text x="106.89613342285156" y="210.03350575764975" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000;">1.00</text>
+  <text x="12.70534896850586" y="871.2768910725912" style="font-style: strong;font-weight:bold;font-size: 37.5px;font-family: Microsoft YaHei;color: black;fill: #000000;transform-origin: 5px 823.1161px;" transform="rotate(-90)">y</text>
+  <line x1="200" x2="233.99996948242188" y1="224.64541625976562" y2="202.3012237548828" style="stroke: #D20400; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="233.99996948242188" x2="268.0000305175781" y1="202.3012237548828" y2="203.78538513183594" style="stroke: #CC0000; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="268.0000305175781" x2="301.9999694824219" y1="203.78538513183594" y2="229.0387420654297" style="stroke: #D20400; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="301.9999694824219" x2="336.0000305175781" y1="229.0387420654297" y2="277.0545349121094" style="stroke: #E20F00; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="336.0000305175781" x2="370" y1="277.0545349121094" y2="345.9184875488281" style="stroke: #F62800; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="370" x2="404" y1="345.9184875488281" y2="432.88525390625" style="stroke: #FF5801; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="404" x2="438.0000305175781" y1="432.88525390625" y2="534.4877319335938" style="stroke: #FFA801; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="438.0000305175781" x2="471.9999694824219" y1="534.4877319335938" y2="646.6753540039062" style="stroke: #F3EC0C; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="471.9999694824219" x2="506" y1="646.6753540039062" y2="764.9755249023438" style="stroke: #B2FF4D; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="506" x2="540" y1="764.9755249023438" y2="884.6719970703125" style="stroke: #54FEAC; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="540" x2="574" y1="884.6719970703125" y2="1000.9928588867188" style="stroke: #14E3EA; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="574" x2="608" y1="1000.9928588867188" y2="1109.30078125" style="stroke: #00A2FF; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="608" x2="642" y1="1109.30078125" y2="1205.2779541015625" style="stroke: #004EFF; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="642" x2="676" y1="1205.2779541015625" y2="1285.097900390625" style="stroke: #0012FC; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="676" x2="710" y1="1285.097900390625" y2="1345.5784912109375" style="stroke: #0000E6; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="710" x2="744" y1="1345.5784912109375" y2="1384.30859375" style="stroke: #0000BB; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="744" x2="778" y1="1384.30859375" y2="1399.744140625" style="stroke: #00009F; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="778" x2="812" y1="1399.744140625" y2="1391.2698974609375" style="stroke: #00009F; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="812" x2="846" y1="1391.2698974609375" y2="1359.223388671875" style="stroke: #0000B0; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="846" x2="880" y1="1359.223388671875" y2="1304.882568359375" style="stroke: #0000D4; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="880" x2="914" y1="1304.882568359375" y2="1230.4136962890625" style="stroke: #000AF6; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="914" x2="948" y1="1230.4136962890625" y2="1138.7855224609375" style="stroke: #003CFF; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="948" x2="982" y1="1138.7855224609375" y2="1033.6510009765625" style="stroke: #008FFF; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="982" x2="1016" y1="1033.6510009765625" y2="919.2015991210938" style="stroke: #0CD6F4; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="1016" x2="1050" y1="919.2015991210938" y2="800" style="stroke: #3CF9C3; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="1050" x2="1084" y1="800" y2="680.7984008789062" style="stroke: #96FF6A; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="1084" x2="1118" y1="680.7984008789062" y2="566.3489990234375" style="stroke: #E4F81B; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="1118" x2="1152" y1="566.3489990234375" y2="461.2145080566406" style="stroke: #FFC400; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="1152" x2="1186" y1="461.2145080566406" y2="369.5863342285156" style="stroke: #FF7000; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="1186" x2="1220" y1="369.5863342285156" y2="295.117431640625" style="stroke: #FA3500; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="1220" x2="1254" y1="295.117431640625" y2="240.77655029296875" style="stroke: #EA1600; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="1254" x2="1288" y1="240.77655029296875" y2="208.73016357421875" style="stroke: #D80800; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="1288" x2="1322" y1="208.73016357421875" y2="200.25584411621094" style="stroke: #CF0200; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="1322" x2="1356" y1="200.25584411621094" y2="215.69142150878906" style="stroke: #CF0200; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="1356" x2="1390" y1="215.69142150878906" y2="254.4215545654297" style="stroke: #DE0C00; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="1390" x2="1424" y1="254.4215545654297" y2="314.90216064453125" style="stroke: #F32000; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="1424" x2="1458" y1="314.90216064453125" y2="394.7220764160156" style="stroke: #FE4301; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="1458" x2="1492" y1="394.7220764160156" y2="490.69915771484375" style="stroke: #FF8401; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="1492" x2="1526" y1="490.69915771484375" y2="599.0071411132812" style="stroke: #FFD500; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="1526" x2="1560" y1="599.0071411132812" y2="715.3280029296875" style="stroke: #D4FE2B; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="1560" x2="1594" y1="715.3280029296875" y2="835.0244750976562" style="stroke: #78FF87; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="1594" x2="1628" y1="835.0244750976562" y2="953.3246459960938" style="stroke: #28F2D6; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="1628" x2="1662" y1="953.3246459960938" y2="1065.51220703125" style="stroke: #05C2FA; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="1662" x2="1696" y1="1065.51220703125" y2="1167.11474609375" style="stroke: #0072FF; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="1696" x2="1730" y1="1167.11474609375" y2="1254.08154296875" style="stroke: #0024FF; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="1730" x2="1764" y1="1254.08154296875" y2="1322.9454345703125" style="stroke: #0002ED; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="1764" x2="1798" y1="1322.9454345703125" y2="1370.9613037109375" style="stroke: #0000C6; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="1798" x2="1832" y1="1370.9613037109375" y2="1396.214599609375" style="stroke: #0000A4; stroke-width: 8px; stroke-dash: solid;" />
+  <line x1="1832" x2="1866" y1="1396.214599609375" y2="1397.69873046875" style="stroke: #000099; stroke-width: 8px; stroke-dash: solid;" />
+  <text x="1955.500732421875" y="264.2144012451172" style="font-style: strong;font-weight:bold;font-size: 50px;font-family: Microsoft YaHei;color: black;fill: #000000;">x ~ y</text>
+  <rect x="1962" y="397.6431884765625" width="125" height="33.41189193725586" style="fill: #E00C00" />
+  <rect x="1962" y="431.0550842285156" width="125" height="33.41189193725586" style="fill: #F11A00" />
+  <rect x="1962" y="464.46697998046875" width="125" height="33.41189193725586" style="fill: #FD2C00" />
+  <rect x="1962" y="497.8788757324219" width="125" height="33.41189193725586" style="fill: #FF4301" />
+  <rect x="1962" y="531.290771484375" width="125" height="33.41189193725586" style="fill: #FF6002" />
+  <rect x="1962" y="564.70263671875" width="125" height="33.41189193725586" style="fill: #FF8102" />
+  <rect x="1962" y="598.114501953125" width="125" height="33.41189193725586" style="fill: #FFA500" />
+  <rect x="1962" y="631.5263671875" width="125" height="33.41189193725586" style="fill: #FFCA00" />
+  <rect x="1962" y="664.938232421875" width="125" height="33.41189193725586" style="fill: #FFEA00" />
+  <rect x="1962" y="698.35009765625" width="125" height="33.41189193725586" style="fill: #FFFF00" />
+  <rect x="1962" y="731.761962890625" width="125" height="33.41189193725586" style="fill: #EAFF16" />
+  <rect x="1962" y="765.173828125" width="125" height="33.41189193725586" style="fill: #CAFF36" />
+  <rect x="1962" y="798.585693359375" width="125" height="33.41189193725586" style="fill: #A5FF5A" />
+  <rect x="1962" y="831.99755859375" width="125" height="33.41189193725586" style="fill: #81FE7D" />
+  <rect x="1962" y="865.409423828125" width="125" height="33.41189193725586" style="fill: #61FF9E" />
+  <rect x="1962" y="898.8212890625" width="125" height="33.41189193725586" style="fill: #44FFBB" />
+  <rect x="1962" y="932.233154296875" width="125" height="33.41189193725586" style="fill: #2BFDD4" />
+  <rect x="1962" y="965.64501953125" width="125" height="33.41189193725586" style="fill: #17F3E8" />
+  <rect x="1962" y="999.056884765625" width="125" height="33.41189193725586" style="fill: #09E2F7" />
+  <rect x="1962" y="1032.46875" width="125" height="33.41189193725586" style="fill: #00CCFF" />
+  <rect x="1962" y="1065.880615234375" width="125" height="33.41189193725586" style="fill: #00B2FF" />
+  <rect x="1962" y="1099.29248046875" width="125" height="33.41189193725586" style="fill: #0093FF" />
+  <rect x="1962" y="1132.704345703125" width="125" height="33.41189193725586" style="fill: #0072FF" />
+  <rect x="1962" y="1166.1162109375" width="125" height="33.41189193725586" style="fill: #014EFF" />
+  <rect x="1962" y="1199.528076171875" width="125" height="33.41189193725586" style="fill: #012BFF" />
+  <rect x="1962" y="1232.93994140625" width="125" height="33.41189193725586" style="fill: #000EFF" />
+  <rect x="1962" y="1266.351806640625" width="125" height="33.41189193725586" style="fill: #0000FA" />
+  <rect x="1962" y="1299.763671875" width="125" height="33.41189193725586" style="fill: #0000E1" />
+  <rect x="1962" y="1333.175537109375" width="125" height="33.41189193725586" style="fill: #0000BF" />
+  <rect x="1962" y="1366.58740234375" width="125" height="33.41189193725586" style="fill: #000099" />
+  <line x1="2097" x2="2097" y1="397.6431884765625" y2="1400" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
+  <line x1="2097" x2="2107" y1="397.6431884765625" y2="397.6431884765625" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;" />
+  <line x1="2097" x2="2107" y1="1400" y2="1400" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;" />
+  <text x="2131.94482421875" y="412.8039906819661" style="font-style: normal;font-size: 37.5px;font-family: Microsoft YaHei;color: black;fill: #000000;">1.00</text>
+  <text x="2135.659912109375" y="1415.1608022054036" style="font-style: normal;font-size: 37.5px;font-family: Microsoft YaHei;color: black;fill: #000000;">-1.00</text>
+  <line x1="2102" x2="2097" y1="475.8788757324219" y2="475.8788757324219" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;" />
+  <text x="2122.736572265625" y="498.0128758748372" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000;"> 0.80</text>
+  <line x1="2102" x2="2097" y1="576.1145629882812" y2="576.1145629882812" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;" />
+  <text x="2122.736572265625" y="598.2485631306967" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000;"> 0.60</text>
+  <line x1="2102" x2="2097" y1="676.3502197265625" y2="676.3502197265625" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;" />
+  <text x="2122.736572265625" y="698.4842198689779" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000;"> 0.40</text>
+  <line x1="2102" x2="2097" y1="776.5858764648438" y2="776.5858764648438" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;" />
+  <text x="2122.736572265625" y="798.7198766072592" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000;"> 0.20</text>
+  <line x1="2102" x2="2097" y1="876.821533203125" y2="876.821533203125" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;" />
+  <text x="2122.736572265625" y="898.9555333455404" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000;"> 0.00</text>
+  <line x1="2102" x2="2097" y1="977.0571899414062" y2="977.0571899414062" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;" />
+  <text x="2123.716552734375" y="999.1911900838217" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000;">-0.20</text>
+  <line x1="2102" x2="2097" y1="1077.2928466796875" y2="1077.2928466796875" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;" />
+  <text x="2123.716552734375" y="1099.4268468221028" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000;">-0.40</text>
+  <line x1="2102" x2="2097" y1="1177.528564453125" y2="1177.528564453125" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;" />
+  <text x="2123.716552734375" y="1199.6625645955403" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000;">-0.60</text>
+  <line x1="2102" x2="2097" y1="1277.7642822265625" y2="1277.7642822265625" style="stroke: #000000; stroke-width: 1px; stroke-dash: solid;" />
+  <text x="2123.716552734375" y="1299.8982823689778" style="font-style: normal;font-size: 31.25px;font-family: Microsoft YaHei;color: black;fill: #000000;">-0.80</text>
+</svg>

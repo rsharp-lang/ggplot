@@ -61,6 +61,7 @@ Imports ggplot.colors
 Imports ggplot.elements
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
+Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel.TypeCast
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
@@ -163,10 +164,12 @@ Namespace layers
         End Function
 
         Private Function mapFromBase(ggplot As ggplot, shape As LegendStyles?, ByRef legends As IggplotLegendElement) As String()
-            Dim factors As String() = ggplot.getText(reader?.color)
+            Dim factors As Array = ggplot.getText(reader?.color)
 
             If factors.IsNullOrEmpty Then
                 Throw New MissingPrimaryKeyException("no color mapping!")
+            ElseIf DataFramework.IsNumericType(DataImports.SampleForType(CLRVector.asCharacter(factors))) Then
+                factors = CLRVector.asNumeric(factors)
             End If
 
             Dim maps As Func(Of Object, String) = colorMap.ColorHandler(ggplot, factors)
@@ -175,7 +178,10 @@ Namespace layers
                 shape:=If(shape Is Nothing, LegendStyles.Circle, shape),
                 theme:=ggplot.ggplotTheme
             )
-            Dim colors As String() = factors.Select(Function(factor) maps(factor)).ToArray
+            Dim colors As String() = factors _
+                .AsObjectEnumerator _
+                .Select(Function(factor) maps(factor)) _
+                .ToArray
 
             legends = New legendGroupElement With {
                 .legends = legendItems
@@ -234,6 +240,18 @@ Namespace layers
             End If
         End Function
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="ggplot"></param>
+        ''' <param name="g"></param>
+        ''' <param name="nsize"></param>
+        ''' <param name="shape"></param>
+        ''' <param name="data"></param>
+        ''' <param name="legends"></param>
+        ''' <returns>the generated colors vector its element size equals to the size of the given <paramref name="data"/> 
+        ''' vector, which means the colors array has already been mapping from the data, not the raw color 
+        ''' palette value.</returns>
         Protected Function getColorSet(ggplot As ggplot,
                                        g As IGraphics,
                                        nsize As Integer,

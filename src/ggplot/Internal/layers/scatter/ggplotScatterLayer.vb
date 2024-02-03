@@ -58,7 +58,7 @@
 Imports System.Drawing
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Math
-Imports stdNum = System.Math
+Imports std = System.Math
 
 Namespace layers
 
@@ -79,7 +79,7 @@ Namespace layers
 
         Protected Function getCellsize(x As Double(), y As Double()) As SizeF
             ' evaluate cells grid
-            Dim topN As Integer = stdNum.Min(x.Length / 5, 100)
+            Dim topN As Integer = std.Min(x.Length / 5, 100)
             Dim cellWidth = getMeanCell(x, topN)
             Dim cellHeight = getMeanCell(y, topN)
 

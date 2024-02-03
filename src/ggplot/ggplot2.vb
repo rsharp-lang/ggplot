@@ -78,7 +78,9 @@ Imports Microsoft.VisualBasic.Imaging.Driver
 Imports Microsoft.VisualBasic.Language.Default
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports Microsoft.VisualBasic.Scripting.MetaData
+Imports SMRUCC.Rsharp.Interpreter
 Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine
+Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine.ExpressionSymbols.DataSets
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports SMRUCC.Rsharp.Runtime.Interop
@@ -231,6 +233,7 @@ Public Module ggplot2
                         Optional color As Object = Nothing,
                         Optional colour As Object = Nothing,
                         Optional alpha As Object = Nothing,
+                        <RLazyExpression>
                         Optional fill As Object = Nothing,
                         Optional title As String = Nothing,
                         Optional shape As Object = Nothing,
@@ -241,6 +244,23 @@ Public Module ggplot2
 
         If color Is Nothing Then
             color = colour
+        End If
+        If Not fill Is Nothing Then
+            If TypeOf fill Is Expression Then
+                Dim eval = DirectCast(fill, Expression).Evaluate(env)
+
+                If Program.isException(eval) Then
+                    If TypeOf fill Is SymbolReference Then
+                        fill = DirectCast(fill, SymbolReference).symbol
+                    Else
+                        Return eval
+                    End If
+                Else
+                    fill = eval
+                End If
+            Else
+                ' do nothing
+            End If
         End If
 
         Return New ggplotReader With {
@@ -844,6 +864,11 @@ Public Module ggplot2
 
     End Function
 
+    <ExportAPI("geom_tile")>
+    Public Function geom_tile(Optional mapping As ggplotReader = NULL) As Object
+        Return New ggplotTileLayer With {.reader = mapping}
+    End Function
+
     ''' <summary>
     ''' annotation_raster: Annotation: high-performance rectangular tiling
     ''' 
@@ -1128,6 +1153,7 @@ Public Module ggplot2
                           Optional plot_title As textElement = Nothing,
                           Optional panel_background As String = Nothing,
                           Optional panel_grid As Object = Stroke.AxisGridStroke,
+                          Optional panel_grid_major As Object = Stroke.AxisGridStroke,
                           Optional panel_border As rectElement = Nothing) As ggplotOption
         ' 20220829
         ' 大部分的参数值都应该设置为空值
@@ -1138,7 +1164,7 @@ Public Module ggplot2
             .legend_background = legend_background,
             .plot_background = plot_background,
             .panel_background = panel_background,
-            .panel_grid = options.element_blank.GetCssStroke(panel_grid),
+            .panel_grid = options.element_blank.GetCssStroke(If(panel_grid, panel_grid_major)),
             .axis_line = options.element_blank.GetCssStroke(axis_line),
             .legend_text = legend_text,
             .plot_title = plot_title,
@@ -1239,6 +1265,7 @@ Public Module ggplot2
     ''' package And references therein.
     ''' </remarks>
     <ExportAPI("scale_colour_manual")>
+    <RApiReturn(GetType(ggplotColorProfile))>
     Public Function scale_colour_manual(<RRawVectorArgument>
                                         values As Object,
                                         Optional alpha As Double = 1,
@@ -1250,6 +1277,7 @@ Public Module ggplot2
     End Function
 
     <ExportAPI("scale_fill_manual")>
+    <RApiReturn(GetType(ggplotColorProfile))>
     Public Function scale_fill_manual(<RRawVectorArgument>
                                       values As Object,
                                       Optional alpha As Double = 1,
@@ -1257,6 +1285,18 @@ Public Module ggplot2
 
         Return New ggplotColorProfile With {
             .profile = ggplotColorMap.CreateColorMap(values, alpha, env)
+        }
+    End Function
+
+    <ExportAPI("scale_fill_distiller")>
+    <RApiReturn(GetType(ggplotColorProfile))>
+    Public Function scale_fill_distiller(Optional palette As String = "YlGnBu",
+                                         Optional direction As Integer = 1,
+                                         Optional alpha As Double = 1,
+                                         Optional env As Environment = Nothing) As Object
+
+        Return New ggplotColorProfile With {
+            .profile = ggplotColorMap.CreateColorMap(palette, alpha, env)
         }
     End Function
 
@@ -1273,6 +1313,7 @@ Public Module ggplot2
     ''' </param>
     ''' <returns></returns>
     <ExportAPI("scale_x_continuous")>
+    <RApiReturn(GetType(ggplotTicks))>
     Public Function scale_x_continuous(Optional labels As String = Nothing,
                                        Optional limits As Double() = Nothing,
                                        Optional env As Environment = Nothing) As ggplotOption

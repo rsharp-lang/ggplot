@@ -1,59 +1,60 @@
 ﻿#Region "Microsoft.VisualBasic::93863b0ea5ee00a7e17ec87d0dc0d372, ggplot\src\ggplot\Internal\ggplotBase.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (I@xieguigang.me)
-    ' 
-    ' Copyright (c) 2021 R# language
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (I@xieguigang.me)
+' 
+' Copyright (c) 2021 R# language
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
-
-
-    ' Code Statistics:
-
-    '   Total Lines: 35
-    '    Code Lines: 24
-    ' Comment Lines: 3
-    '   Blank Lines: 8
-    '     File Size: 1.16 KB
+' Summaries:
 
 
-    ' Class ggplotBase
-    ' 
-    '     Properties: data, reader
-    ' 
-    '     Function: getColors, getGgplotData
-    ' 
-    ' /********************************************************************************/
+' Code Statistics:
+
+'   Total Lines: 35
+'    Code Lines: 24
+' Comment Lines: 3
+'   Blank Lines: 8
+'     File Size: 1.16 KB
+
+
+' Class ggplotBase
+' 
+'     Properties: data, reader
+' 
+'     Function: getColors, getGgplotData
+' 
+' /********************************************************************************/
 
 #End Region
 
+Imports ggplot.elements
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports SMRUCC.Rsharp.Runtime
@@ -79,7 +80,7 @@ Public Class ggplotBase
 
         If dataXy.y Is Nothing OrElse dataXy.y.size = 0 Then
             If data.ContainsKey("y") Then
-                dataXy.y = data!y
+                dataXy.y = axisMap.Create(data!y)
             Else
                 dataXy.error = Internal.debug.stop("no axis y data mapping!", ggplot.environment, suppress:=True)
             End If
