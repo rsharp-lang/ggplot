@@ -1,12 +1,34 @@
 .\" man page create by R# package system.
 .TH GGPUBR 1 2000-Jan "stat_ellipse" "stat_ellipse"
 .SH NAME
-stat_ellipse \- 
+stat_ellipse \- Compute normal data ellipses
 .SH SYNOPSIS
 \fIstat_ellipse(\fBdata\fR as any = \fB<NULL>\fR, 
 \fBcolor\fR as any = \fB<NULL>\fR, 
 \fBlevel\fR as double = 0.95, 
 \fBalpha\fR as double = 0.6);\fR
+.SH DESCRIPTION
+.PP
+Compute normal data ellipses
+.PP
+.SH OPTIONS
+.PP
+\fBdata\fB \fR\- 
+ The data to be displayed in this layer. There are three options:
+ If NULL, the Default, the data Is inherited from the plot data As specified In the Call To ggplot().
+ A data.frame, Or other Object, will override the plot data. All objects will be fortified To produce a data frame. See fortify() For which variables will be created.
+ A Function will be called With a Single argument, the plot data. The Return value must be a data.frame, And will be used As the layer data. A Function can be created from a formula (e.g. ~ head(.x, 10)).
+. 
+.PP
+.PP
+\fBcolor\fB \fR\- -. 
+.PP
+.PP
+\fBlevel\fB \fR\- The level at which to draw an ellipse, or, if type="euclid", the radius of the circle to be drawn.. 
+.PP
+.PP
+\fBalpha\fB \fR\- -. 
+.PP
 .SH SEE ALSO
 ggpubr
 .SH FILES

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>stat_ellipse</title>
+    <title>Compute normal data ellipses</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
     <link rel="stylesheet" type="text/css" href="../../_assets/page.css">
@@ -18,11 +18,11 @@
             </tr>
         </table>
 
-        <h2>stat_ellipse</h2>
+        <h2>Compute normal data ellipses</h2>
 
         <h3>Description</h3>
 
-        stat_ellipse
+        
 
         <h3>Usage</h3>
 
@@ -38,6 +38,24 @@
 
         <table>
             
+<dt>data</dt>
+<dd><p><p>The data to be displayed in this layer. There are three options:<br />
+ If NULL, the Default, the data Is inherited from the plot data As specified In the Call To ggplot().<br />
+ A data.frame, Or other Object, will override the plot data. All objects will be fortified To produce a data frame. See fortify() For which variables will be created.<br />
+ A Function will be called With a Single argument, the plot data. The Return value must be a data.frame, And will be used As the layer data. A Function can be created from a formula (e.g. ~ head(.x, 10)).</p></p></dd>
+
+
+<dt>color</dt>
+<dd><p><p>-</p></p></dd>
+
+
+<dt>level</dt>
+<dd><p><p>The level at which to draw an ellipse, or, if type="euclid", the radius of the circle to be drawn.</p></p></dd>
+
+
+<dt>alpha</dt>
+<dd><p><p>-</p></p></dd>
+
         </table>
 
 
