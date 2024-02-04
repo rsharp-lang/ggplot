@@ -61,6 +61,12 @@ Imports Microsoft.VisualBasic.Data.visualize.Network.Layouts
 
 Namespace ggraph.layout
 
+    ''' <summary>
+    ''' Spring embedder layout algorithm
+    ''' </summary>
+    ''' <remarks>
+    ''' this module works based on the <see cref="SpringEmbedder"/>
+    ''' </remarks>
     Public Class spring_embedder : Inherits ggforce
 
         Public Property canvasSize As Size

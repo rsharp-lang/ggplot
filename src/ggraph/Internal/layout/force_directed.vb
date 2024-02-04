@@ -57,10 +57,17 @@
 
 Imports Microsoft.VisualBasic.Data.visualize.Network.Graph
 Imports Microsoft.VisualBasic.Data.visualize.Network.Layouts
-Imports Microsoft.VisualBasic.Data.visualize.Network.Layouts.ForceDirected
 
 Namespace ggraph.layout
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
+    ''' <remarks>
+    ''' based on the <see cref="algorithm"/> parameter, this module run based on the
+    ''' <see cref="ForceDirected.Planner"/> for "naive" or <see cref="ForceDirected.GroupPlanner"/>
+    ''' for "group_weighted"
+    ''' </remarks>
     Public Class force_directed : Inherits ggforce
 
         Public ejectFactor As Integer = 6,

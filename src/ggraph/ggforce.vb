@@ -85,6 +85,7 @@ Module ggforcePkg
     End Function
 
     <ExportAPI("layout_random")>
+    <RApiReturn(GetType(random))>
     Public Function layout_random() As ggforce
         Return New layout.random
     End Function

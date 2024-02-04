@@ -61,6 +61,12 @@ Imports Microsoft.VisualBasic.Data.visualize.Network.Layouts.SpringForce
 
 Namespace ggraph.layout
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
+    ''' <remarks>
+    ''' this module works based on the <see cref="ForceDirected2D"/> algorithm module
+    ''' </remarks>
     Public Class spring_force : Inherits ggforce
 
         Public Property stiffness As Double = 80
