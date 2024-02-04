@@ -57,6 +57,9 @@ Imports ggplot.elements
 
 Namespace options
 
+    ''' <summary>
+    ''' usually use the option model for configs the last added ggplot layer
+    ''' </summary>
     Public MustInherit Class ggplotOption
 
         Public MustOverride Function Config(ggplot As ggplot) As ggplot
