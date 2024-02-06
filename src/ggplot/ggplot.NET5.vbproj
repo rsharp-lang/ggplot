@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <RootNamespace>ggplot</RootNamespace>
-    <TargetFrameworks>net6.0-windows;net6.0</TargetFrameworks>
+    <TargetFrameworks>net6.0-windows;net6.0;net48</TargetFrameworks>
     <AssemblyName>ggplot</AssemblyName>
     <Platforms>AnyCPU;ARM32;x64</Platforms>
     <Configurations>Debug;Release;Rsharp_app_release;PlantMAT</Configurations>
@@ -272,6 +272,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\R-sharp\R#\Rsharp-netcore5.vbproj" />
     <ProjectReference Include="..\..\..\sciBASIC#\Data_science\Mathematica\Math\ANOVA\ANOVA.vbproj" />
+    <ProjectReference Include="..\..\..\sciBASIC#\Data_science\Mathematica\Math\DataFrame\dataframeUtils-netcore5.vbproj" />
+    <ProjectReference Include="..\..\..\sciBASIC#\Data_science\Mathematica\Math\Math.Statistics\stats-netcore5.vbproj" />
     <ProjectReference Include="..\..\..\sciBASIC#\Data_science\Mathematica\Math\Math\Math.NET5.vbproj" />
     <ProjectReference Include="..\..\..\sciBASIC#\Data_science\Visualization\Plots\plots-netcore5.vbproj" />
     <ProjectReference Include="..\..\..\sciBASIC#\gr\Microsoft.VisualBasic.Imaging\imaging.NET5.vbproj" />
