@@ -106,7 +106,16 @@ Namespace layers
                 Dim nsize As Integer = x.Length
 
                 If useCustomColorMaps Then
-                    colors = getColorSet(ggplot, stream.g, nsize, shape, CLRVector.asNumeric(y), legends)
+                    Dim source As Double()
+                    Dim reader = stream.ggplot.base.reader
+
+                    If reader.color IsNot Nothing Then
+                        source = CLRVector.asNumeric(reader.getColorSource(ggplot))
+                    Else
+                        source = CLRVector.asNumeric(y)
+                    End If
+
+                    colors = getColorSet(ggplot, stream.g, nsize, shape, source, legends)
                 ElseIf Not ggplot.base.reader.color Is Nothing Then
                     colors = ggplot.base.getColors(
                         ggplot:=ggplot,

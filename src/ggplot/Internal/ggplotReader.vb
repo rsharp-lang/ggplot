@@ -197,6 +197,10 @@ Public Class ggplotReader
         Return REnv.TryCastGenericArray(vec, env)
     End Function
 
+    Public Function getColorSource(ggplot As ggplot) As Array
+        Return unifySource(ggplot.data, color, ggplot.environment)
+    End Function
+
     Public Function getMapColor(data As Object,
                                 shape As LegendStyles,
                                 theme As Theme,
