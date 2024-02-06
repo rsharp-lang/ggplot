@@ -1701,6 +1701,7 @@ Global
 		..\..\R-sharp\Library\shares\R_graphic.interop\R_graphic.interop.projitems*{53af2b13-ccd5-4f73-94d5-612191e785a9}*SharedItemsImports = 13
 		..\..\R-sharp\Library\shares\R_graphic.interop\R_graphic.interop.projitems*{a74998af-839b-46b9-a8a9-95fb69355ba1}*SharedItemsImports = 5
 		..\..\R-sharp\studio\Rstudio.common\Rstudio.common.projitems*{c8649c05-aea9-44a4-907d-2a9c6ef69536}*SharedItemsImports = 5
+		..\..\R-sharp\Library\shares\dataframeHelper\dataframeHelper.projitems*{fcad265b-db4a-416d-bc4f-521063d1909e}*SharedItemsImports = 5
 		..\..\R-sharp\Library\shares\R_graphic.interop\R_graphic.interop.projitems*{fcad265b-db4a-416d-bc4f-521063d1909e}*SharedItemsImports = 5
 		..\..\R-sharp\Library\shares\R_plot.interop\R_plot.interop.projitems*{fcad265b-db4a-416d-bc4f-521063d1909e}*SharedItemsImports = 5
 	EndGlobalSection
