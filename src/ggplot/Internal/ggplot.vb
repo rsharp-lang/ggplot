@@ -86,6 +86,7 @@ Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports SMRUCC.Rsharp.Runtime.Vectorization
 Imports std = System.Math
+Imports stdDataframe = Microsoft.VisualBasic.Math.DataFrame.DataFrame
 
 ''' <summary>
 ''' graphics drawing engine of the ggplot library
@@ -160,7 +161,14 @@ Public Class ggplot : Inherits Plot
     Public Shared Function CreateRender(driver As Object, env As Environment, theme As Theme) As ggplot
         If driver Is Nothing Then
             Return New ggplot(theme) With {.template = Nothing, .data = driver, .environment = env}
-        ElseIf TypeOf driver Is dataframe OrElse TypeOf driver Is list Then
+        ElseIf TypeOf driver Is dataframe OrElse
+            TypeOf driver Is stdDataframe OrElse
+            TypeOf driver Is list Then
+
+            If TypeOf driver Is stdDataframe Then
+                driver = MathDataSet.toDataframe(DirectCast(driver, stdDataframe), list.empty, env)
+            End If
+
             Return New ggplot(theme) With {
                 .template = driver.GetType,
                 .data = driver,
