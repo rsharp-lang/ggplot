@@ -61,6 +61,7 @@ Imports ggplot.elements.legend
 Imports ggplot.ggraph.layout
 Imports ggplot.ggraph.render
 Imports ggplot.layers
+Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
@@ -162,7 +163,11 @@ Namespace ggraph
             If Not nodeStyle Is Nothing Then
                 ' draw node radius
                 Dim radius = nodeStyle.getRadius(graph)
-                Dim radiusRange = graph.vertex.Select(Function(v) CDbl(radius(v))).Range
+                Dim radiusRange As DoubleRange = graph.vertex _
+                    .Select(Function(v) radius(v)) _
+                    .IteratesALL _
+                    .Select(Function(s) CDbl(s)) _
+                    .Range
                 Dim degree = graph.vertex.Select(Function(v) CDbl(v.degree.In + v.degree.Out)).Range
                 Dim r As Double = degree.ScaleMapping(degree.Min, radiusRange)
                 Dim rmax As Double = degree.ScaleMapping(degree.Max, radiusRange)

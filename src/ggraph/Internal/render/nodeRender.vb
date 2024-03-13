@@ -81,9 +81,9 @@ Namespace ggraph.render
             Return 8
         End Function
 
-        Friend Function getRadius(graph As NetworkGraph) As Func(Of Node, Single)
+        Friend Function getRadius(graph As NetworkGraph) As Func(Of Node, Single())
             If radius Is Nothing Then
-                Return Function(any) 45.0!
+                Return Function(any) {45.0!}
             Else
                 Dim map As Dictionary(Of String, Single) = radius _
                     .GetSize(graph.vertex) _
@@ -96,9 +96,9 @@ Namespace ggraph.render
                            Dim r As Single = map.TryGetValue(n.label, [default]:=45.0!)
 
                            If r <= 0 OrElse r.IsNaNImaginary Then
-                               Return 45
+                               Return {45}
                            Else
-                               Return r
+                               Return {r}
                            End If
                        End Function
             End If
@@ -128,19 +128,27 @@ Namespace ggraph.render
                 Function(id As String,
                          g As IGraphics,
                          brush As Brush,
-                         radius As Single,
+                         radius As Single(),
                          center As PointF) As RectangleF
 
                     Dim v As Node = graph.GetElementByID(id)
                     Dim legendStyle As LegendStyles = shapeAs(v)
+                    Dim size As SizeF
 
-                    center = New PointF(center.X - radius / 2, center.Y - radius / 2)
-                    g.DrawLegendShape(center, New SizeF(radius, radius), legendStyle, brush)
+                    If radius.Length = 1 Then
+                        size = New SizeF(radius(0), radius(0))
+                    Else
+                        size = New SizeF(radius(0), radius(1))
+                    End If
 
-                    Return New RectangleF(center, New SizeF(radius, radius))
+                    center = New PointF(center.X - size.Width / 2, center.Y - size.Height / 2)
+                    g.DrawLegendShape(center, size, legendStyle, brush)
+
+                    Return New RectangleF(center, size)
                 End Function
 
             Dim renderNode As New NodeRendering(
+                graph,
                 radiusValue:=getRadius(graph),
                 fontSizeValue:=AddressOf getFontSize,
                 defaultColor:=defaultColor,
@@ -152,7 +160,8 @@ Namespace ggraph.render
                 drawNodeShape:=drawNodeShape,
                 getLabelPosition:=Nothing,
                 labelWordWrapWidth:=-1,
-                nodeWidget:=Nothing
+                nodeWidget:=Nothing,
+                drawShape:=Nothing
             )
 
             Dim vertex As Node() = graph.vertex _
