@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::90c90d4a823208ba598e2ef6dac2ccd1, ggplot\src\ggraph\Internal\layout\spring_force.vb"
+﻿#Region "Microsoft.VisualBasic::d140ebcae3a8cfa956da769b0cf48306, G:/GCModeller/src/runtime/ggplot/src/ggraph//Internal/layout/spring_force.vb"
 
     ' Author:
     ' 
@@ -37,11 +37,11 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 17
+    '   Total Lines: 23
     '    Code Lines: 13
-    ' Comment Lines: 0
+    ' Comment Lines: 6
     '   Blank Lines: 4
-    '     File Size: 640 B
+    '     File Size: 815 B
 
 
     '     Class spring_force

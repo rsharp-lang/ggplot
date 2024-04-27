@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::cfb3585fe0b35bd096fc88b1c700dd64, ggplot\src\ggplot\Internal\layers\scatter\ggplotScatterLayer.vb"
+﻿#Region "Microsoft.VisualBasic::aa413c4fbbfd59b259dbc8a8d553f254, G:/GCModeller/src/runtime/ggplot/src/ggplot//Internal/layers/scatter/ggplotScatterLayer.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 21
     ' Comment Lines: 5
     '   Blank Lines: 6
-    '     File Size: 1.05 KB
+    '     File Size: 1.07 KB
 
 
     '     Class ggplotScatterLayer

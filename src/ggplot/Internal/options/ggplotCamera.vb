@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::c68ff147ff7739d82fb0e1545d45c4b1, ggplot\src\ggplot\Internal\options\ggplotCamera.vb"
+﻿#Region "Microsoft.VisualBasic::934bc7bfe19b93b67ada263e792ec24d, G:/GCModeller/src/runtime/ggplot/src/ggplot//Internal/options/ggplotCamera.vb"
 
     ' Author:
     ' 
@@ -37,11 +37,11 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 14
+    '   Total Lines: 17
     '    Code Lines: 10
-    ' Comment Lines: 0
+    ' Comment Lines: 3
     '   Blank Lines: 4
-    '     File Size: 367 B
+    '     File Size: 450 B
 
 
     '     Class ggplotCamera

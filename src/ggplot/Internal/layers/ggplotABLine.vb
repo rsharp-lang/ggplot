@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::400b3812845974f6327f0967c258cd4c, ggplot\src\ggplot\Internal\layers\ggplotABLine.vb"
+﻿#Region "Microsoft.VisualBasic::76a70c82a3dca1875b32e0e5bf36f048, G:/GCModeller/src/runtime/ggplot/src/ggplot//Internal/layers/ggplotABLine.vb"
 
     ' Author:
     ' 
@@ -37,11 +37,11 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 79
-    '    Code Lines: 62
+    '   Total Lines: 80
+    '    Code Lines: 63
     ' Comment Lines: 2
     '   Blank Lines: 15
-    '     File Size: 2.63 KB
+    '     File Size: 2.70 KB
 
 
     '     Class ggplotABLine

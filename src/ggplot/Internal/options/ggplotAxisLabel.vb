@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::ac6e576a458206911a5e73c8ce7974ce, ggplot\src\ggplot\Internal\options\ggplotAxisLabel.vb"
+﻿#Region "Microsoft.VisualBasic::9731639fdc26e7422ad022ed906a9cce, G:/GCModeller/src/runtime/ggplot/src/ggplot//Internal/options/ggplotAxisLabel.vb"
 
     ' Author:
     ' 
@@ -37,11 +37,11 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 16
-    '    Code Lines: 12
+    '   Total Lines: 17
+    '    Code Lines: 13
     ' Comment Lines: 0
     '   Blank Lines: 4
-    '     File Size: 447 B
+    '     File Size: 497 B
 
 
     '     Class ggplotAxisLabel

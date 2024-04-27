@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::4d134998e04d84aa89c1fbcdda16fd74, ggplot\src\ggraph\Internal\layout\ggforce.vb"
+﻿#Region "Microsoft.VisualBasic::4d134998e04d84aa89c1fbcdda16fd74, G:/GCModeller/src/runtime/ggplot/src/ggraph//Internal/layout/ggforce.vb"
 
     ' Author:
     ' 

@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::e8d7f72998928a2e9acadec57a9efd9d, ggplot\src\ggplot\Internal\layers\ggplotHistogram.vb"
+﻿#Region "Microsoft.VisualBasic::3bcbc3906407ec7131c6dc6b98a8b6e0, G:/GCModeller/src/runtime/ggplot/src/ggplot//Internal/layers/ggplotHistogram.vb"
 
     ' Author:
     ' 
@@ -37,16 +37,16 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 73
-    '    Code Lines: 60
+    '   Total Lines: 81
+    '    Code Lines: 68
     ' Comment Lines: 0
     '   Blank Lines: 13
-    '     File Size: 2.74 KB
+    '     File Size: 3.02 KB
 
 
     '     Class ggplotHistogram
     ' 
-    '         Properties: bins
+    '         Properties: bins, range
     ' 
     '         Function: getColorName, Plot
     ' 

@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::08f538eca438352bed63957b182667fb, ggplot\src\ggplot\Internal\elements\legend\legendColorMapElement.vb"
+﻿#Region "Microsoft.VisualBasic::6cdf55ff007650e6f65e268d6d183b9e, G:/GCModeller/src/runtime/ggplot/src/ggplot//Internal/elements/legend/legendColorMapElement.vb"
 
     ' Author:
     ' 
@@ -37,11 +37,11 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 39
-    '    Code Lines: 32
-    ' Comment Lines: 0
+    '   Total Lines: 41
+    '    Code Lines: 31
+    ' Comment Lines: 3
     '   Blank Lines: 7
-    '     File Size: 1.58 KB
+    '     File Size: 1.59 KB
 
 
     '     Class legendColorMapElement

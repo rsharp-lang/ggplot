@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::076fae5429989e09a69cfa8668fa8697, ggplot\src\ggplot\Internal\layers\groupPlot\stats\compare_means.vb"
+﻿#Region "Microsoft.VisualBasic::076fae5429989e09a69cfa8668fa8697, G:/GCModeller/src/runtime/ggplot/src/ggplot//Internal/layers/groupPlot/stats/compare_means.vb"
 
     ' Author:
     ' 

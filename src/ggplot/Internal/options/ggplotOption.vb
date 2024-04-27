@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::a238d46c08533ab4edd853d39fa7b0f1, ggplot\src\ggplot\Internal\options\ggplotOption.vb"
+﻿#Region "Microsoft.VisualBasic::456cf3a8a8032676ea3fcfc81e92405f, G:/GCModeller/src/runtime/ggplot/src/ggplot//Internal/options/ggplotOption.vb"
 
     ' Author:
     ' 
@@ -37,11 +37,11 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 11
+    '   Total Lines: 14
     '    Code Lines: 6
-    ' Comment Lines: 0
+    ' Comment Lines: 3
     '   Blank Lines: 5
-    '     File Size: 198 B
+    '     File Size: 315 B
 
 
     '     Class ggplotOption

@@ -1,57 +1,57 @@
-﻿#Region "Microsoft.VisualBasic::0bac6530aa52e49678be7c9c498faea8, ggplot\src\ggplot\Internal\layers\groupPlot\ggplotGroup.vb"
+﻿#Region "Microsoft.VisualBasic::c7e2aa622fe4dbad8f6a74e3e7f07418, G:/GCModeller/src/runtime/ggplot/src/ggplot//Internal/layers/groupPlot/ggplotGroup.vb"
 
-' Author:
-' 
-'       xieguigang (I@xieguigang.me)
-' 
-' Copyright (c) 2021 R# language
-' 
-' 
-' MIT License
-' 
-' 
-' Permission is hereby granted, free of charge, to any person obtaining a copy
-' of this software and associated documentation files (the "Software"), to deal
-' in the Software without restriction, including without limitation the rights
-' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-' copies of the Software, and to permit persons to whom the Software is
-' furnished to do so, subject to the following conditions:
-' 
-' The above copyright notice and this permission notice shall be included in all
-' copies or substantial portions of the Software.
-' 
-' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-' SOFTWARE.
-
-
-
-' /********************************************************************************/
-
-' Summaries:
+    ' Author:
+    ' 
+    '       xieguigang (I@xieguigang.me)
+    ' 
+    ' Copyright (c) 2021 R# language
+    ' 
+    ' 
+    ' MIT License
+    ' 
+    ' 
+    ' Permission is hereby granted, free of charge, to any person obtaining a copy
+    ' of this software and associated documentation files (the "Software"), to deal
+    ' in the Software without restriction, including without limitation the rights
+    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    ' copies of the Software, and to permit persons to whom the Software is
+    ' furnished to do so, subject to the following conditions:
+    ' 
+    ' The above copyright notice and this permission notice shall be included in all
+    ' copies or substantial portions of the Software.
+    ' 
+    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    ' SOFTWARE.
 
 
-' Code Statistics:
 
-'   Total Lines: 84
-'    Code Lines: 59
-' Comment Lines: 8
-'   Blank Lines: 17
-'     File Size: 3.24 KB
+    ' /********************************************************************************/
+
+    ' Summaries:
 
 
-'     Class ggplotGroup
-' 
-'         Properties: groupWidth
-' 
-'         Function: getColors, (+2 Overloads) getDataGroups, getLabelPosY, Plot
-' 
-' 
-' /********************************************************************************/
+    ' Code Statistics:
+
+    '   Total Lines: 104
+    '    Code Lines: 75
+    ' Comment Lines: 8
+    '   Blank Lines: 21
+    '     File Size: 4.01 KB
+
+
+    '     Class ggplotGroup
+    ' 
+    '         Properties: groupWidth
+    ' 
+    '         Function: getColors, (+3 Overloads) getDataGroups, getLabelPosY, Plot
+    ' 
+    ' 
+    ' /********************************************************************************/
 
 #End Region
 

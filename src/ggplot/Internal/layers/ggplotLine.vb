@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::62e18c473e6a0a7e09742f2cff003c65, ggplot\src\ggplot\Internal\layers\ggplotLine.vb"
+﻿#Region "Microsoft.VisualBasic::8242551e125dbbbc8076b0076b454116, G:/GCModeller/src/runtime/ggplot/src/ggplot//Internal/layers/ggplotLine.vb"
 
     ' Author:
     ' 
@@ -37,11 +37,11 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 63
-    '    Code Lines: 53
+    '   Total Lines: 61
+    '    Code Lines: 51
     ' Comment Lines: 0
     '   Blank Lines: 10
-    '     File Size: 2.86 KB
+    '     File Size: 2.79 KB
 
 
     '     Class ggplotLine

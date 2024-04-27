@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::a76c52ada9cb24a63fcc04a540b2f5e7, ggplot\src\ggplot\Internal\layers\scatter\ggplotScatterpie.vb"
+﻿#Region "Microsoft.VisualBasic::3adabe3b61bdef5c1f889d3711e50f12, G:/GCModeller/src/runtime/ggplot/src/ggplot//Internal/layers/scatter/ggplotScatterpie.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 69
     ' Comment Lines: 9
     '   Blank Lines: 8
-    '     File Size: 3.38 KB
+    '     File Size: 3.44 KB
 
 
     '     Class ggplotScatterpie

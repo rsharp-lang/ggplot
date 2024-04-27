@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::3e8757a321731367e9ea4ca0eb0901ec, ggplot\src\ggplot\Internal\elements\legend\legendGroupElement.vb"
+﻿#Region "Microsoft.VisualBasic::4374d0954fbdb119b43878efb496a5e4, G:/GCModeller/src/runtime/ggplot/src/ggplot//Internal/elements/legend/legendGroupElement.vb"
 
     ' Author:
     ' 
@@ -37,11 +37,11 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 51
+    '   Total Lines: 54
     '    Code Lines: 41
-    ' Comment Lines: 0
+    ' Comment Lines: 3
     '   Blank Lines: 10
-    '     File Size: 2.00 KB
+    '     File Size: 2.08 KB
 
 
     '     Class legendGroupElement

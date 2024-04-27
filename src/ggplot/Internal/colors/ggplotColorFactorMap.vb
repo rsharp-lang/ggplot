@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::ed650df4ce5abe1b01a9a210c8f69ce4, ggplot\src\ggplot\Internal\colors\ggplotColorFactorMap.vb"
+﻿#Region "Microsoft.VisualBasic::ed650df4ce5abe1b01a9a210c8f69ce4, G:/GCModeller/src/runtime/ggplot/src/ggplot//Internal/colors/ggplotColorFactorMap.vb"
 
     ' Author:
     ' 

@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::4b643e97cc747874c1862dd8a6131b84, ggplot\src\ggplot\Internal\colors\ggplotColorLiteral.vb"
+﻿#Region "Microsoft.VisualBasic::3d18fb2d4a63a2ff8c0774a850947042, G:/GCModeller/src/runtime/ggplot/src/ggplot//Internal/colors/ggplotColorLiteral.vb"
 
     ' Author:
     ' 
@@ -37,11 +37,11 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 39
-    '    Code Lines: 33
-    ' Comment Lines: 0
+    '   Total Lines: 43
+    '    Code Lines: 34
+    ' Comment Lines: 3
     '   Blank Lines: 6
-    '     File Size: 1.55 KB
+    '     File Size: 1.66 KB
 
 
     '     Class ggplotColorLiteral

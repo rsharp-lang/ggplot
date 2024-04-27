@@ -1,56 +1,56 @@
-﻿#Region "Microsoft.VisualBasic::8aea086d7ac1cf8da8c5a2843c0e083a, ggplot\src\ggplot\Internal\ggplotPipeline.vb"
+﻿#Region "Microsoft.VisualBasic::203007048bb4e08fd566ad477b2f275d, G:/GCModeller/src/runtime/ggplot/src/ggplot//Internal/ggplotPipeline.vb"
 
-' Author:
-' 
-'       xieguigang (I@xieguigang.me)
-' 
-' Copyright (c) 2021 R# language
-' 
-' 
-' MIT License
-' 
-' 
-' Permission is hereby granted, free of charge, to any person obtaining a copy
-' of this software and associated documentation files (the "Software"), to deal
-' in the Software without restriction, including without limitation the rights
-' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-' copies of the Software, and to permit persons to whom the Software is
-' furnished to do so, subject to the following conditions:
-' 
-' The above copyright notice and this permission notice shall be included in all
-' copies or substantial portions of the Software.
-' 
-' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-' SOFTWARE.
-
-
-
-' /********************************************************************************/
-
-' Summaries:
+    ' Author:
+    ' 
+    '       xieguigang (I@xieguigang.me)
+    ' 
+    ' Copyright (c) 2021 R# language
+    ' 
+    ' 
+    ' MIT License
+    ' 
+    ' 
+    ' Permission is hereby granted, free of charge, to any person obtaining a copy
+    ' of this software and associated documentation files (the "Software"), to deal
+    ' in the Software without restriction, including without limitation the rights
+    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    ' copies of the Software, and to permit persons to whom the Software is
+    ' furnished to do so, subject to the following conditions:
+    ' 
+    ' The above copyright notice and this permission notice shall be included in all
+    ' copies or substantial portions of the Software.
+    ' 
+    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    ' SOFTWARE.
 
 
-' Code Statistics:
 
-'   Total Lines: 52
-'    Code Lines: 44
-' Comment Lines: 0
-'   Blank Lines: 8
-'     File Size: 1.59 KB
+    ' /********************************************************************************/
+
+    ' Summaries:
 
 
-' Class ggplotPipeline
-' 
-'     Properties: defaultTitle, theme
-' 
-'     Function: GetRawData, TranslateX
-' 
-' /********************************************************************************/
+    ' Code Statistics:
+
+    '   Total Lines: 59
+    '    Code Lines: 45
+    ' Comment Lines: 6
+    '   Blank Lines: 8
+    '     File Size: 1.85 KB
+
+
+    ' Class ggplotPipeline
+    ' 
+    '     Properties: defaultTitle, theme
+    ' 
+    '     Function: GetRawData, TranslateX
+    ' 
+    ' /********************************************************************************/
 
 #End Region
 

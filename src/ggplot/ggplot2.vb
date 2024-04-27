@@ -1,61 +1,62 @@
-﻿#Region "Microsoft.VisualBasic::bbcaad611cf70262591a239f0784f917, ggplot\src\ggplot\ggplot2.vb"
+﻿#Region "Microsoft.VisualBasic::ca53f3fd9fcbf28c69497aef11719acb, G:/GCModeller/src/runtime/ggplot/src/ggplot//ggplot2.vb"
 
-' Author:
-' 
-'       xieguigang (I@xieguigang.me)
-' 
-' Copyright (c) 2021 R# language
-' 
-' 
-' MIT License
-' 
-' 
-' Permission is hereby granted, free of charge, to any person obtaining a copy
-' of this software and associated documentation files (the "Software"), to deal
-' in the Software without restriction, including without limitation the rights
-' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-' copies of the Software, and to permit persons to whom the Software is
-' furnished to do so, subject to the following conditions:
-' 
-' The above copyright notice and this permission notice shall be included in all
-' copies or substantial portions of the Software.
-' 
-' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-' SOFTWARE.
-
-
-
-' /********************************************************************************/
-
-' Summaries:
+    ' Author:
+    ' 
+    '       xieguigang (I@xieguigang.me)
+    ' 
+    ' Copyright (c) 2021 R# language
+    ' 
+    ' 
+    ' MIT License
+    ' 
+    ' 
+    ' Permission is hereby granted, free of charge, to any person obtaining a copy
+    ' of this software and associated documentation files (the "Software"), to deal
+    ' in the Software without restriction, including without limitation the rights
+    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    ' copies of the Software, and to permit persons to whom the Software is
+    ' furnished to do so, subject to the following conditions:
+    ' 
+    ' The above copyright notice and this permission notice shall be included in all
+    ' copies or substantial portions of the Software.
+    ' 
+    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    ' SOFTWARE.
 
 
-' Code Statistics:
 
-'   Total Lines: 1227
-'    Code Lines: 514
-' Comment Lines: 635
-'   Blank Lines: 78
-'     File Size: 53.01 KB
+    ' /********************************************************************************/
+
+    ' Summaries:
 
 
-' Module ggplot2
-' 
-'     Function: add_layer, aes, annotation_raster, configPlot, element_blank
-'               element_line, element_rect, element_text, geom_barplot, geom_boxplot
-'               geom_convexHull, geom_histogram, geom_hline, geom_jitter, geom_line
-'               geom_path, geom_pie, geom_point, geom_scatterheatmap, geom_scatterpie
-'               geom_signif, geom_text, geom_violin, geom_vline, ggplot
-'               ggtitle, labs, scale_colour_manual, scale_x_continuous, scale_y_continuous
-'               scale_y_reverse, stat_compare_means, stat_pvalue_manual, theme, xlab
-'               ylab
-' 
-' /********************************************************************************/
+    ' Code Statistics:
+
+    '   Total Lines: 1427
+    '    Code Lines: 613
+    ' Comment Lines: 720
+    '   Blank Lines: 94
+    '     File Size: 64.09 KB
+
+
+    ' Module ggplot2
+    ' 
+    '     Function: add_layer, aes, annotation_raster, configPlot, coord_flip
+    '               element_blank, element_line, element_rect, element_text, geom_bar
+    '               geom_barplot, geom_boxplot, geom_col, geom_convexHull, geom_histogram
+    '               geom_hline, geom_jitter, geom_line, geom_path, geom_pie
+    '               geom_point, geom_raster, geom_scatterheatmap, geom_scatterpie, geom_signif
+    '               geom_text, geom_tile, geom_violin, geom_vline, ggplot
+    '               ggtitle, labs, scale_colour_manual, scale_fill_distiller, scale_fill_manual
+    '               scale_x_continuous, scale_y_continuous, scale_y_reverse, stat_compare_means, stat_pvalue_manual
+    '               theme, xlab, ylab
+    ' 
+    ' /********************************************************************************/
 
 #End Region
 

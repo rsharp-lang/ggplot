@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::953bf8514ec0a77091b123bfd4edb69b, ggplot\src\ggraph\ggforce.vb"
+﻿#Region "Microsoft.VisualBasic::8ea3370848885888fe208791826e236e, G:/GCModeller/src/runtime/ggplot/src/ggraph//ggforce.vb"
 
     ' Author:
     ' 
@@ -37,11 +37,11 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 81
-    '    Code Lines: 71
+    '   Total Lines: 82
+    '    Code Lines: 72
     ' Comment Lines: 0
     '   Blank Lines: 10
-    '     File Size: 3.57 KB
+    '     File Size: 3.67 KB
 
 
     ' Module ggforcePkg

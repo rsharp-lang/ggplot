@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::8547f3be6c38b7db554b5780da406930, ggplot\src\ggplot\Internal\layers\ggplotLayerType.vb"
+﻿#Region "Microsoft.VisualBasic::8547f3be6c38b7db554b5780da406930, G:/GCModeller/src/runtime/ggplot/src/ggplot//Internal/layers/ggplotLayerType.vb"
 
     ' Author:
     ' 

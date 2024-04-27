@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::6f0178147ced4a8f6b9c6e518ba6686b, ggplot\src\ggplot\Internal\options\element_blank.vb"
+﻿#Region "Microsoft.VisualBasic::5106048fb894eb45410ec465ccaa1e56, G:/GCModeller/src/runtime/ggplot/src/ggplot//Internal/options/element_blank.vb"
 
     ' Author:
     ' 
@@ -41,7 +41,7 @@
     '    Code Lines: 14
     ' Comment Lines: 0
     '   Blank Lines: 3
-    '     File Size: 467 B
+    '     File Size: 483 B
 
 
     '     Class element_blank

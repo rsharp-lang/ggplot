@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::5bbe2671d3b50341b1cc57ca108fdae8, ggplot\src\ggplot\ggplot3.vb"
+﻿#Region "Microsoft.VisualBasic::f1e0e79c3b371a3fa3020db7ab6b7378, G:/GCModeller/src/runtime/ggplot/src/ggplot//ggplot3.vb"
 
     ' Author:
     ' 
@@ -37,11 +37,11 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 45
-    '    Code Lines: 31
-    ' Comment Lines: 7
+    '   Total Lines: 50
+    '    Code Lines: 33
+    ' Comment Lines: 10
     '   Blank Lines: 7
-    '     File Size: 1.33 KB
+    '     File Size: 1.59 KB
 
 
     ' Module ggplot3

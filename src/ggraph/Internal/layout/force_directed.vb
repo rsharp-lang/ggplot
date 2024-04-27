@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::ef5c46092aaa1559dc4e81f7a2c6acc5, ggplot\src\ggraph\Internal\layout\force_directed.vb"
+﻿#Region "Microsoft.VisualBasic::fe7722c4c18410ca2fe6ce1691007599, G:/GCModeller/src/runtime/ggplot/src/ggraph//Internal/layout/force_directed.vb"
 
     ' Author:
     ' 
@@ -37,11 +37,11 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 49
-    '    Code Lines: 40
-    ' Comment Lines: 4
+    '   Total Lines: 56
+    '    Code Lines: 39
+    ' Comment Lines: 12
     '   Blank Lines: 5
-    '     File Size: 1.83 KB
+    '     File Size: 2.06 KB
 
 
     '     Class force_directed

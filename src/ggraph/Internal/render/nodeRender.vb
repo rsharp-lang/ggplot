@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::2427b17755a5b449f69504b472eda2a4, ggplot\src\ggraph\Internal\render\nodeRender.vb"
+﻿#Region "Microsoft.VisualBasic::4dcc0d5a38f934e7b2810cfc135030a5, G:/GCModeller/src/runtime/ggplot/src/ggraph//Internal/render/nodeRender.vb"
 
     ' Author:
     ' 
@@ -37,11 +37,11 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 115
-    '    Code Lines: 98
+    '   Total Lines: 124
+    '    Code Lines: 106
     ' Comment Lines: 0
-    '   Blank Lines: 17
-    '     File Size: 4.78 KB
+    '   Blank Lines: 18
+    '     File Size: 5.09 KB
 
 
     '     Class nodeRender

@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::f5b1f994b4cc4cd6e0c1662e56ddd4cd, ggplot\src\ggplot\Internal\layers\ggplotTextLabel.vb"
+﻿#Region "Microsoft.VisualBasic::f5b1f994b4cc4cd6e0c1662e56ddd4cd, G:/GCModeller/src/runtime/ggplot/src/ggplot//Internal/layers/ggplotTextLabel.vb"
 
     ' Author:
     ' 

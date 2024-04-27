@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::8da274990e528c4e9fb31f38075be62f, ggplot\src\ggplot\Internal\layers\groupPlot\ggplotBarplot.vb"
+﻿#Region "Microsoft.VisualBasic::8da274990e528c4e9fb31f38075be62f, G:/GCModeller/src/runtime/ggplot/src/ggplot//Internal/layers/groupPlot/ggplotBarplot.vb"
 
     ' Author:
     ' 
