@@ -1,5 +1,5 @@
 ﻿proj,files,totalLines,commentLines,blankLines,lineOfCodes,class,property,method,functions,operator,size(bytes),size
-E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\ggplot2.vb,1427,720,94,613,1,0,0,43,0,64091,64.09 KB
+E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\ggplot2.vb,1498,761,100,637,1,0,0,44,0,67389,67.39 KB
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\ggplot3.vb,50,10,7,33,1,0,0,1,0,1595,1.59 KB
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\zzz.vb,42,1,7,34,1,0,1,1,0,1387,1.39 KB
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\ggplot.vb,287,26,41,220,1,11,8,5,0,10258,10.26 KB
@@ -11,7 +11,7 @@ E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\g
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\colors\ggplotColorCustomSet.vb,95,14,13,68,1,0,0,6,0,4034,4.03 KB
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\colors\ggplotColorFactorMap.vb,49,3,8,38,1,0,0,4,0,1999,2.00 KB
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\colors\ggplotColorLiteral.vb,43,3,6,34,1,0,0,4,0,1657,1.66 KB
-E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\colors\ggplotColorMap.vb,104,33,13,58,1,2,0,3,0,4413,4.41 KB
+E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\colors\ggplotColorMap.vb,117,46,13,58,1,2,0,3,0,4946,4.95 KB
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\colors\ggplotColorPalette.vb,71,4,11,56,1,0,0,4,0,3001,3.00 KB
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\elements\ggplotElement.vb,17,7,4,6,1,1,0,0,0,445,445 B
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\elements\lineElement.vb,10,0,4,6,1,1,0,0,0,197,197 B
@@ -54,7 +54,7 @@ E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\o
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\options\element_blank.vb,17,0,3,14,1,0,0,1,0,483,483 B
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\options\ggplotAxisLabel.vb,17,0,4,13,1,3,0,1,0,497,497 B
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\options\ggplotCamera.vb,17,3,4,10,1,1,0,1,0,450,450 B
-E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\options\ggplotColorProfile.vb,20,5,4,11,1,1,0,1,0,582,582 B
+E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\options\ggplotColorProfile.vb,72,13,6,53,1,1,0,2,0,4966,4.97 KB
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\options\ggplotOption.vb,14,3,5,6,1,0,0,0,0,315,315 B
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\options\ggplotTheme.vb,83,0,14,69,1,13,0,1,0,3157,3.16 KB
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\options\ggplotTicks.vb,92,25,16,51,2,5,0,2,0,3047,3.05 KB
@@ -65,7 +65,7 @@ E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\r
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\My Project\Application.Designer.vb,12,9,1,2,0,0,0,0,0,434,434 B
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\My Project\Resources.Designer.vb,62,23,8,31,1,2,0,0,0,2772,2.77 KB
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\My Project\Settings.Designer.vb,74,9,12,53,2,2,1,0,0,3015,3.02 KB
-E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,<project>,5740,1106,760,3874,67,138,23,170,0,232425,232.43 KB
+E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,<project>,5876,1168,768,3940,67,138,23,172,0,240640,240.64 KB
 E:\GCModeller\src\runtime\ggplot\src\ggpubr\ggpubr.vbproj,ggpubr\ggpubr.vb,37,15,3,19,1,0,0,1,0,1726,1.73 KB
 E:\GCModeller\src\runtime\ggplot\src\ggpubr\ggpubr.vbproj,ggpubr\zzz.vb,7,0,3,4,1,0,0,0,0,100,100 B
 E:\GCModeller\src\runtime\ggplot\src\ggpubr\ggpubr.vbproj,ggpubr\layers\ggplotConfidenceEllipse.vb,48,6,7,35,1,1,0,2,0,1952,1.95 KB
@@ -86,4 +86,4 @@ E:\GCModeller\src\runtime\ggplot\src\ggraph\ggraph.vbproj,ggraph\Internal\render
 E:\GCModeller\src\runtime\ggplot\src\ggraph\ggraph.vbproj,ggraph\Internal\render\nodeRender.vb,124,0,18,106,1,4,0,4,0,5089,5.09 KB
 E:\GCModeller\src\runtime\ggplot\src\ggraph\ggraph.vbproj,ggraph\Internal\render\textRender.vb,75,0,11,64,1,4,0,2,0,3068,3.07 KB
 E:\GCModeller\src\runtime\ggplot\src\ggraph\ggraph.vbproj,<project>,1006,73,162,771,15,20,6,26,0,40751,40.75 KB
-../,<root>,13676,2400,1870,9406,170,318,58,398,0,553908,553.91 KB
+../,<root>,13948,2524,1886,9538,170,318,58,402,0,570338,570.34 KB
