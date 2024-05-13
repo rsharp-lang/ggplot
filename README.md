@@ -200,3 +200,7 @@ ggplot(data, aes(x = "X", y = "Y", z = "Z"), padding = "padding:250px 500px 100p
 ```
 
 ![](docs/UMAP3d_black.png)
+
+## Vignettes
+
+read the online [help document](./vignettes/index.html).
