@@ -94,9 +94,12 @@ Namespace colors
         Public MustOverride Function TryGetFactorLegends(factors As Array, shape As LegendStyles, theme As Theme) As LegendObject()
 
         ''' <summary>
-        ''' 
+        ''' Create a color palette mapping object
         ''' </summary>
-        ''' <param name="map"></param>
+        ''' <param name="map">
+        ''' any kind of the color palette data, could be a name of the supported 
+        ''' color palette name, a set of color values, etc.
+        ''' </param>
         ''' <param name="alpha">
         ''' color alpha channel value between [0,1]
         ''' </param>
@@ -119,6 +122,8 @@ Namespace colors
             ElseIf map.GetType.IsArray Then
                 Dim strArray As String() = CLRVector.asCharacter(map)
 
+                ' color or color palette name when is
+                ' a single string value
                 If strArray.Length = 1 Then
                     Return stringMap(strArray(Scan0), alpha)
                 Else
@@ -139,7 +144,15 @@ Namespace colors
             Return New ggplotColorCustomSet With {.alpha = alpha, .colorMap = maps}
         End Function
 
-        Private Shared Function stringMap(map As String, alpha As Double) As ggplotColorMap
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="map"></param>
+        ''' <param name="alpha">
+        ''' color alpha channel value between [0,1]
+        ''' </param>
+        ''' <returns></returns>
+        Friend Shared Function stringMap(map As String, alpha As Double) As ggplotColorMap
             Dim isColor As Boolean = False
 
             Call map.TranslateColor(throwEx:=False, success:=isColor)

@@ -1,62 +1,62 @@
 ﻿#Region "Microsoft.VisualBasic::ca53f3fd9fcbf28c69497aef11719acb, src\ggplot\ggplot2.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (I@xieguigang.me)
-    ' 
-    ' Copyright (c) 2021 R# language
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (I@xieguigang.me)
+' 
+' Copyright (c) 2021 R# language
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
-
-
-    ' Code Statistics:
-
-    '   Total Lines: 1427
-    '    Code Lines: 613
-    ' Comment Lines: 720
-    '   Blank Lines: 94
-    '     File Size: 64.09 KB
+' Summaries:
 
 
-    ' Module ggplot2
-    ' 
-    '     Function: add_layer, aes, annotation_raster, configPlot, coord_flip
-    '               element_blank, element_line, element_rect, element_text, geom_bar
-    '               geom_barplot, geom_boxplot, geom_col, geom_convexHull, geom_histogram
-    '               geom_hline, geom_jitter, geom_line, geom_path, geom_pie
-    '               geom_point, geom_raster, geom_scatterheatmap, geom_scatterpie, geom_signif
-    '               geom_text, geom_tile, geom_violin, geom_vline, ggplot
-    '               ggtitle, labs, scale_colour_manual, scale_fill_distiller, scale_fill_manual
-    '               scale_x_continuous, scale_y_continuous, scale_y_reverse, stat_compare_means, stat_pvalue_manual
-    '               theme, xlab, ylab
-    ' 
-    ' /********************************************************************************/
+' Code Statistics:
+
+'   Total Lines: 1427
+'    Code Lines: 613
+' Comment Lines: 720
+'   Blank Lines: 94
+'     File Size: 64.09 KB
+
+
+' Module ggplot2
+' 
+'     Function: add_layer, aes, annotation_raster, configPlot, coord_flip
+'               element_blank, element_line, element_rect, element_text, geom_bar
+'               geom_barplot, geom_boxplot, geom_col, geom_convexHull, geom_histogram
+'               geom_hline, geom_jitter, geom_line, geom_path, geom_pie
+'               geom_point, geom_raster, geom_scatterheatmap, geom_scatterpie, geom_signif
+'               geom_text, geom_tile, geom_violin, geom_vline, ggplot
+'               ggtitle, labs, scale_colour_manual, scale_fill_distiller, scale_fill_manual
+'               scale_x_continuous, scale_y_continuous, scale_y_reverse, stat_compare_means, stat_pvalue_manual
+'               theme, xlab, ylab
+' 
+' /********************************************************************************/
 
 #End Region
 
@@ -77,12 +77,14 @@ Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Shapes
 Imports Microsoft.VisualBasic.Imaging.Driver
 Imports Microsoft.VisualBasic.Language.Default
+Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports Microsoft.VisualBasic.Scripting.MetaData
 Imports SMRUCC.Rsharp.Interpreter
 Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine
 Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine.ExpressionSymbols.DataSets
 Imports SMRUCC.Rsharp.Runtime
+Imports SMRUCC.Rsharp.Runtime.Components
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports SMRUCC.Rsharp.Runtime.Interop
 Imports SMRUCC.Rsharp.Runtime.Vectorization
@@ -1273,6 +1275,75 @@ Public Module ggplot2
 
         Return New ggplotColorProfile With {
             .profile = ggplotColorMap.CreateColorMap(values, alpha, env)
+        }
+    End Function
+
+    ''' <summary>
+    ''' Sequential, diverging and qualitative colour scales from ColorBrewer
+    ''' </summary>
+    ''' <param name="name">
+    ''' The name of the scale. Used as the axis or legend title. If waiver(), the default,
+    ''' the name of the scale is taken from the first mapping used for that aesthetic. 
+    ''' If NULL, the legend title will be omitted.
+    ''' </param>
+    ''' <param name="direction">
+    ''' Sets the order Of colours In the scale. If 1, the Default, colours are 
+    ''' As output by RColorBrewer:brewer.pal(). If -1, the order of colours 
+    ''' Is reversed.
+    ''' </param>
+    ''' <param name="alpha">
+    ''' color alpha channel value between [0,1]
+    ''' </param>
+    ''' <param name="env"></param>
+    ''' <returns></returns>
+    ''' <remarks>
+    ''' The brewer scales provide sequential, diverging and qualitative colour
+    ''' schemes from ColorBrewer. These are particularly well suited to display 
+    ''' discrete values on a map. See https://colorbrewer2.org for more 
+    ''' information.
+    ''' 
+    ''' The brewer scales were carefully designed and tested on discrete data. 
+    ''' They were not designed to be extended to continuous data, but results 
+    ''' often look good. Your mileage may vary.
+    ''' 
+    ''' The following palettes are available for use with these scales:
+    ''' 
+    ''' #### Diverging
+    ''' BrBG, PiYG, PRGn, PuOr, RdBu, RdGy, RdYlBu, RdYlGn, Spectral
+    ''' 
+    ''' #### Qualitative
+    ''' Accent, Dark2, Paired, Pastel1, Pastel2, Set1, Set2, Set3
+    ''' 
+    ''' #### Sequential
+    ''' Blues, BuGn, BuPu, GnBu, Greens, Greys, Oranges, OrRd, PuBu, PuBuGn, PuRd, Purples, RdPu, Reds, YlGn, YlGnBu, YlOrBr, YlOrRd
+    ''' 
+    ''' Modify the palette through the palette argument.
+    ''' </remarks>
+    <ExportAPI("scale_color_brewer")>
+    <RApiReturn(GetType(ggplotOption))>
+    Public Function scale_color_brewer(<RRawVectorArgument(TypeCodes.string)>
+                                       Optional name As Object = "BrBG|PiYG|PRGn|PuOr|RdBu|RdGy|RdYlBu|RdYlGn|Spectral|Accent|Dark2|Paired|Pastel1|Pastel2|Set1|Set2|Set3|Blues|BuGn|BuPu|GnBu|Greens|Greys|Oranges|OrRd|PuBu|PuBuGn|PuRd|Purples|RdPu|Reds|YlGn|YlGnBu|YlOrBr|YlOrRd",
+                                       Optional direction As Integer = 1,
+                                       Optional alpha As Double = 1,
+                                       Optional env As Environment = Nothing) As Object
+
+        Dim pal_name As String = CLRVector.asCharacter(name).DefaultFirst
+
+        If pal_name.StringEmpty Then
+            Return Internal.debug.stop("the required color brewer color palette name should not be empty!", env)
+        End If
+
+        Dim colors As ggplotColorMap = ggplotColorProfile.MapColorBrewer(pal_name, alpha)
+
+        If colors Is Nothing Then
+            Return Internal.debug.stop({
+                $"the given color palette name({pal_name}) is not a color brewer palette name!",
+                $"given palette: {pal_name}"
+            }, env)
+        End If
+
+        Return New ggplotColorProfile With {
+            .profile = colors
         }
     End Function
 
