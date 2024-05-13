@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::4dcc0d5a38f934e7b2810cfc135030a5, G:/GCModeller/src/runtime/ggplot/src/ggraph//Internal/render/nodeRender.vb"
+﻿#Region "Microsoft.VisualBasic::4dcc0d5a38f934e7b2810cfc135030a5, src\ggraph\Internal\render\nodeRender.vb"
 
     ' Author:
     ' 

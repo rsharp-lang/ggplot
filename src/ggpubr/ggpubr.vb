@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::540f37d9ccd6d713243143c220aa7c58, G:/GCModeller/src/runtime/ggplot/src/ggpubr//ggpubr.vb"
+﻿#Region "Microsoft.VisualBasic::8c6cb6f04f884bb976c736d3b0a810ed, src\ggpubr\ggpubr.vb"
 
     ' Author:
     ' 
@@ -37,10 +37,10 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 38
+    '   Total Lines: 37
     '    Code Lines: 19
     ' Comment Lines: 15
-    '   Blank Lines: 4
+    '   Blank Lines: 3
     '     File Size: 1.73 KB
 
 
@@ -51,7 +51,6 @@
     ' /********************************************************************************/
 
 #End Region
-
 
 Imports ggplot.layers
 Imports Microsoft.VisualBasic.CommandLine.Reflection
@@ -90,4 +89,3 @@ Module Rscript
         }
     End Function
 End Module
-

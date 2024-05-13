@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::44d20a2903433ac20b105c4546cbd540, G:/GCModeller/src/runtime/ggplot/src/ggpubr//layers/ggplotConfidenceEllipse.vb"
+﻿#Region "Microsoft.VisualBasic::0e3c7172fa1d5821fba3e59571fc49ee, src\ggpubr\layers\ggplotConfidenceEllipse.vb"
 
     ' Author:
     ' 
@@ -102,4 +102,3 @@ Public Class ggplotConfidenceEllipse : Inherits ggplotGroup
         Throw New NotImplementedException()
     End Function
 End Class
-

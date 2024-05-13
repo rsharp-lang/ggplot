@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::d20bdbcc34be7fccc7874f9cfd92b264, G:/GCModeller/src/runtime/ggplot/src/ggplot//Internal/filters/ggfx_gauss.vb"
+﻿#Region "Microsoft.VisualBasic::d20bdbcc34be7fccc7874f9cfd92b264, src\ggplot\Internal\filters\ggfx_gauss.vb"
 
     ' Author:
     ' 

@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::76a70c82a3dca1875b32e0e5bf36f048, G:/GCModeller/src/runtime/ggplot/src/ggplot//Internal/layers/ggplotABLine.vb"
+﻿#Region "Microsoft.VisualBasic::76a70c82a3dca1875b32e0e5bf36f048, src\ggplot\Internal\layers\ggplotABLine.vb"
 
     ' Author:
     ' 

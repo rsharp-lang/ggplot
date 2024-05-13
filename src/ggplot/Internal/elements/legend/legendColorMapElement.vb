@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::6cdf55ff007650e6f65e268d6d183b9e, G:/GCModeller/src/runtime/ggplot/src/ggplot//Internal/elements/legend/legendColorMapElement.vb"
+﻿#Region "Microsoft.VisualBasic::6cdf55ff007650e6f65e268d6d183b9e, src\ggplot\Internal\elements\legend\legendColorMapElement.vb"
 
     ' Author:
     ' 

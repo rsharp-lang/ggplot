@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::2834e243023e37602ee780943263b066, G:/GCModeller/src/runtime/ggplot/src/ggplot//My Project/Resources.Designer.vb"
+﻿#Region "Microsoft.VisualBasic::2834e243023e37602ee780943263b066, src\ggplot\My Project\Resources.Designer.vb"
 
     ' Author:
     ' 

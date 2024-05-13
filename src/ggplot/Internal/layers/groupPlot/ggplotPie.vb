@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::d1d614ff61e5590b66359922d80fbd74, G:/GCModeller/src/runtime/ggplot/src/ggplot//Internal/layers/groupPlot/ggplotPie.vb"
+﻿#Region "Microsoft.VisualBasic::d1d614ff61e5590b66359922d80fbd74, src\ggplot\Internal\layers\groupPlot\ggplotPie.vb"
 
     ' Author:
     ' 

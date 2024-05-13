@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::3bcbc3906407ec7131c6dc6b98a8b6e0, G:/GCModeller/src/runtime/ggplot/src/ggplot//Internal/layers/ggplotHistogram.vb"
+﻿#Region "Microsoft.VisualBasic::3bcbc3906407ec7131c6dc6b98a8b6e0, src\ggplot\Internal\layers\ggplotHistogram.vb"
 
     ' Author:
     ' 

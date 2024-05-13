@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::9731639fdc26e7422ad022ed906a9cce, G:/GCModeller/src/runtime/ggplot/src/ggplot//Internal/options/ggplotAxisLabel.vb"
+﻿#Region "Microsoft.VisualBasic::9731639fdc26e7422ad022ed906a9cce, src\ggplot\Internal\options\ggplotAxisLabel.vb"
 
     ' Author:
     ' 

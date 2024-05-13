@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::427ef0062e7bd9cc3f88b4c3546899a6, G:/GCModeller/src/runtime/ggplot/src/ggraph//Internal/render/edgeRender.vb"
+﻿#Region "Microsoft.VisualBasic::427ef0062e7bd9cc3f88b4c3546899a6, src\ggraph\Internal\render\edgeRender.vb"
 
     ' Author:
     ' 

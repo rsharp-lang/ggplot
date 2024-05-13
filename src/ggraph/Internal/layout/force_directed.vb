@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::fe7722c4c18410ca2fe6ce1691007599, G:/GCModeller/src/runtime/ggplot/src/ggraph//Internal/layout/force_directed.vb"
+﻿#Region "Microsoft.VisualBasic::fe7722c4c18410ca2fe6ce1691007599, src\ggraph\Internal\layout\force_directed.vb"
 
     ' Author:
     ' 

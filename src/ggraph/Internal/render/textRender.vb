@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::38f911ab95bac89f2521a7340a689558, G:/GCModeller/src/runtime/ggplot/src/ggraph//Internal/render/textRender.vb"
+﻿#Region "Microsoft.VisualBasic::38f911ab95bac89f2521a7340a689558, src\ggraph\Internal\render\textRender.vb"
 
     ' Author:
     ' 

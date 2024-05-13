@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::a034c8f7767dd61575f337abe586cd6c, G:/GCModeller/src/runtime/ggplot/src/ggplot//Internal/colors/ggplotColorCustomSet.vb"
+﻿#Region "Microsoft.VisualBasic::a034c8f7767dd61575f337abe586cd6c, src\ggplot\Internal\colors\ggplotColorCustomSet.vb"
 
     ' Author:
     ' 

@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::d140ebcae3a8cfa956da769b0cf48306, G:/GCModeller/src/runtime/ggplot/src/ggraph//Internal/layout/spring_force.vb"
+﻿#Region "Microsoft.VisualBasic::d140ebcae3a8cfa956da769b0cf48306, src\ggraph\Internal\layout\spring_force.vb"
 
     ' Author:
     ' 

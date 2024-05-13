@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::352135a0204adbf099eeef7fea11702e, G:/GCModeller/src/runtime/ggplot/src/ggplot//Internal/ggplotReader.vb"
+﻿#Region "Microsoft.VisualBasic::352135a0204adbf099eeef7fea11702e, src\ggplot\Internal\ggplotReader.vb"
 
     ' Author:
     ' 

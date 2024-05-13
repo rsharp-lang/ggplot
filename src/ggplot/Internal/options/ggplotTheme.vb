@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::250ad7f3a7e7636f6cd986c4552d5ea0, G:/GCModeller/src/runtime/ggplot/src/ggplot//Internal/options/ggplotTheme.vb"
+﻿#Region "Microsoft.VisualBasic::250ad7f3a7e7636f6cd986c4552d5ea0, src\ggplot\Internal\options\ggplotTheme.vb"
 
     ' Author:
     ' 

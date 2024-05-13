@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::4374d0954fbdb119b43878efb496a5e4, G:/GCModeller/src/runtime/ggplot/src/ggplot//Internal/elements/legend/legendGroupElement.vb"
+﻿#Region "Microsoft.VisualBasic::4374d0954fbdb119b43878efb496a5e4, src\ggplot\Internal\elements\legend\legendGroupElement.vb"
 
     ' Author:
     ' 

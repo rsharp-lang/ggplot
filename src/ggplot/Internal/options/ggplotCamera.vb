@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::934bc7bfe19b93b67ada263e792ec24d, G:/GCModeller/src/runtime/ggplot/src/ggplot//Internal/options/ggplotCamera.vb"
+﻿#Region "Microsoft.VisualBasic::934bc7bfe19b93b67ada263e792ec24d, src\ggplot\Internal\options\ggplotCamera.vb"
 
     ' Author:
     ' 

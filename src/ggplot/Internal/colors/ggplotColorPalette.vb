@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::7d3d1500aa2e0d48e88f4365eea891e2, G:/GCModeller/src/runtime/ggplot/src/ggplot//Internal/colors/ggplotColorPalette.vb"
+﻿#Region "Microsoft.VisualBasic::7d3d1500aa2e0d48e88f4365eea891e2, src\ggplot\Internal\colors\ggplotColorPalette.vb"
 
     ' Author:
     ' 

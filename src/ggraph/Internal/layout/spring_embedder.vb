@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::40e6083b29e91cf621610c80aba5e7ec, G:/GCModeller/src/runtime/ggplot/src/ggraph//Internal/layout/spring_embedder.vb"
+﻿#Region "Microsoft.VisualBasic::40e6083b29e91cf621610c80aba5e7ec, src\ggraph\Internal\layout\spring_embedder.vb"
 
     ' Author:
     ' 

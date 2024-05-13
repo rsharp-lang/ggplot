@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::144da15e414a9a8580abd9769dde0b8f, G:/GCModeller/src/runtime/ggplot/src/ggraph//ggraph.vb"
+﻿#Region "Microsoft.VisualBasic::144da15e414a9a8580abd9769dde0b8f, src\ggraph\ggraph.vb"
 
     ' Author:
     ' 
