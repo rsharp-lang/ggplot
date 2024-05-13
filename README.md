@@ -204,3 +204,4 @@ ggplot(data, aes(x = "X", y = "Y", z = "Z"), padding = "padding:250px 500px 100p
 ## Vignettes
 
 read the online [help document](./vignettes/index.html).
+blog article about ggplot implements: https://stack.xieguigang.me/2021/implements-ggplot-package-for-rsharp-language/
