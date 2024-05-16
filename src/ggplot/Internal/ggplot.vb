@@ -343,7 +343,8 @@ Public Class ggplot : Inherits Plot
 
     Public Function Save(stream As Stream, format As ImageFormat) As Boolean Implements SaveGdiBitmap.Save
         Dim size As SizeF = graphicsPipeline.getSize(args.slots, environment, New SizeF(1920, 1600))
-        Dim image As GraphicsData = Plot($"{size.Width},{size.Height}", driver:=driver)
+        Dim defaultPpi As Integer = If(driver = Drivers.GDI, 300, 100)
+        Dim image As GraphicsData = Plot($"{size.Width},{size.Height}", defaultPpi, driver:=driver)
 
         Return image.Save(stream)
     End Function
