@@ -72,6 +72,7 @@ Namespace options
         Public Property text As textElement
         Public Property legend_background As String
         Public Property legend_text As textElement
+        Public Property legend_tick As textElement
         Public Property legend_split As Integer
         Public Property plot_background As String
         Public Property plot_title As textElement
@@ -105,6 +106,9 @@ Namespace options
 
             If Not legend_text Is Nothing Then
                 theme.legendLabelCSS = legend_text.GetCSS
+            End If
+            If Not legend_tick Is Nothing Then
+                theme.legendTickCSS = legend_tick.GetCSS
             End If
 
             If Not axis_line.StringEmpty Then

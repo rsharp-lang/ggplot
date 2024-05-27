@@ -1150,6 +1150,7 @@ Public Module ggplot2
                           Optional axis_text_x As textElement = Nothing,
                           Optional legend_background As String = "white",
                           Optional legend_text As textElement = Nothing,
+                          Optional legend_tick As textElement = Nothing,
                           Optional legend_split As Integer = 6,
                           Optional plot_background As String = Nothing,
                           Optional plot_title As textElement = Nothing,
@@ -1173,7 +1174,8 @@ Public Module ggplot2
             .axis_title = axis_title,
             .legend_split = legend_split,
             .axis_text_x = axis_text_x,
-            .panel_border = panel_border
+            .panel_border = panel_border,
+            .legend_tick = legend_tick
         }
     End Function
 
