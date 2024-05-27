@@ -25,52 +25,52 @@
   <line x1="200" x2="1900" y1="200" y2="200" style="stroke: #D3D3D3; stroke-width: 2px; stroke-dash: dash;" stroke-dasharray="8 4" />
   <line x1="200" x2="1900" y1="1400" y2="1400" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
   <line x1="200" x2="200" y1="1400" y2="1410" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
-  <text x="187.57220458984375" y="1425.3780517578125" style="font-style: normal;font-size: 10.416667px;font-family: Microsoft YaHei;color: black;fill: #000000;">-5.00</text>
+  <text x="180.51553344726562" y="1433.40478515625" style="font-style: normal;font-size: 16.666666px;font-family: Microsoft YaHei;color: black;fill: #FF0000;">-5.00</text>
   <line x1="370" x2="370" y1="1400" y2="1410" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
-  <text x="357.57220458984375" y="1425.3780517578125" style="font-style: normal;font-size: 10.416667px;font-family: Microsoft YaHei;color: black;fill: #000000;">-4.00</text>
+  <text x="350.5155334472656" y="1433.40478515625" style="font-style: normal;font-size: 16.666666px;font-family: Microsoft YaHei;color: black;fill: #FF0000;">-4.00</text>
   <line x1="540" x2="540" y1="1400" y2="1410" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
-  <text x="527.5722045898438" y="1425.3780517578125" style="font-style: normal;font-size: 10.416667px;font-family: Microsoft YaHei;color: black;fill: #000000;">-3.00</text>
+  <text x="520.5155029296875" y="1433.40478515625" style="font-style: normal;font-size: 16.666666px;font-family: Microsoft YaHei;color: black;fill: #FF0000;">-3.00</text>
   <line x1="710" x2="710" y1="1400" y2="1410" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
-  <text x="697.5722045898438" y="1425.3780517578125" style="font-style: normal;font-size: 10.416667px;font-family: Microsoft YaHei;color: black;fill: #000000;">-2.00</text>
+  <text x="690.5155029296875" y="1433.40478515625" style="font-style: normal;font-size: 16.666666px;font-family: Microsoft YaHei;color: black;fill: #FF0000;">-2.00</text>
   <line x1="880" x2="880" y1="1400" y2="1410" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
-  <text x="867.5722045898438" y="1425.3780517578125" style="font-style: normal;font-size: 10.416667px;font-family: Microsoft YaHei;color: black;fill: #000000;">-1.00</text>
+  <text x="860.5155029296875" y="1433.40478515625" style="font-style: normal;font-size: 16.666666px;font-family: Microsoft YaHei;color: black;fill: #FF0000;">-1.00</text>
   <line x1="1050" x2="1050" y1="1400" y2="1410" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
-  <text x="1046.1697998046875" y="1425.3780517578125" style="font-style: normal;font-size: 10.416667px;font-family: Microsoft YaHei;color: black;fill: #000000;">0</text>
+  <text x="1043.4716796875" y="1433.40478515625" style="font-style: normal;font-size: 16.666666px;font-family: Microsoft YaHei;color: black;fill: #FF0000;">0</text>
   <line x1="1220" x2="1220" y1="1400" y2="1410" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
-  <text x="1209.540283203125" y="1425.3780517578125" style="font-style: normal;font-size: 10.416667px;font-family: Microsoft YaHei;color: black;fill: #000000;">1.00</text>
+  <text x="1202.8643798828125" y="1433.40478515625" style="font-style: normal;font-size: 16.666666px;font-family: Microsoft YaHei;color: black;fill: #FF0000;">1.00</text>
   <line x1="1390" x2="1390" y1="1400" y2="1410" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
-  <text x="1379.540283203125" y="1425.3780517578125" style="font-style: normal;font-size: 10.416667px;font-family: Microsoft YaHei;color: black;fill: #000000;">2.00</text>
+  <text x="1372.8643798828125" y="1433.40478515625" style="font-style: normal;font-size: 16.666666px;font-family: Microsoft YaHei;color: black;fill: #FF0000;">2.00</text>
   <line x1="1560" x2="1560" y1="1400" y2="1410" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
-  <text x="1549.540283203125" y="1425.3780517578125" style="font-style: normal;font-size: 10.416667px;font-family: Microsoft YaHei;color: black;fill: #000000;">3.00</text>
+  <text x="1542.8643798828125" y="1433.40478515625" style="font-style: normal;font-size: 16.666666px;font-family: Microsoft YaHei;color: black;fill: #FF0000;">3.00</text>
   <line x1="1730" x2="1730" y1="1400" y2="1410" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
-  <text x="1719.540283203125" y="1425.3780517578125" style="font-style: normal;font-size: 10.416667px;font-family: Microsoft YaHei;color: black;fill: #000000;">4.00</text>
+  <text x="1712.8643798828125" y="1433.40478515625" style="font-style: normal;font-size: 16.666666px;font-family: Microsoft YaHei;color: black;fill: #FF0000;">4.00</text>
   <line x1="1900" x2="1900" y1="1400" y2="1410" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
-  <text x="1889.540283203125" y="1425.3780517578125" style="font-style: normal;font-size: 10.416667px;font-family: Microsoft YaHei;color: black;fill: #000000;">5.00</text>
-  <text x="1045.112548828125" y="1452.0535888671875" style="font-style: strong;font-weight:bold;font-size: 12.5px;font-family: Microsoft YaHei;color: black;fill: #000000;">x</text>
+  <text x="1882.8643798828125" y="1433.40478515625" style="font-style: normal;font-size: 16.666666px;font-family: Microsoft YaHei;color: black;fill: #FF0000;">5.00</text>
+  <text x="1041.06689453125" y="1490.107177734375" style="font-style: normal;font-size: 25px;font-family: Microsoft YaHei;color: black;fill: #FF0000;">x</text>
   <line x1="200" x2="200" y1="1400" y2="200" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
   <line x1="200" x2="190" y1="1400" y2="1400" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
-  <text x="158.71630859375" y="1403.745849609375" style="font-style: normal;font-size: 10.416667px;font-family: Microsoft YaHei;color: black;fill: #000000;">-1.00</text>
+  <text x="139.94610595703125" y="1405.9932861328125" style="font-style: normal;font-size: 16.666666px;font-family: Microsoft YaHei;color: black;fill: #FF0000;">-1.00</text>
   <line x1="200" x2="190" y1="1280" y2="1280" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
-  <text x="158.71630859375" y="1283.745849609375" style="font-style: normal;font-size: 10.416667px;font-family: Microsoft YaHei;color: black;fill: #000000;">-0.80</text>
+  <text x="139.94610595703125" y="1285.9932861328125" style="font-style: normal;font-size: 16.666666px;font-family: Microsoft YaHei;color: black;fill: #FF0000;">-0.80</text>
   <line x1="200" x2="190" y1="1160" y2="1160" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
-  <text x="158.71630859375" y="1163.745849609375" style="font-style: normal;font-size: 10.416667px;font-family: Microsoft YaHei;color: black;fill: #000000;">-0.60</text>
+  <text x="139.94610595703125" y="1165.9932861328125" style="font-style: normal;font-size: 16.666666px;font-family: Microsoft YaHei;color: black;fill: #FF0000;">-0.60</text>
   <line x1="200" x2="190" y1="1040" y2="1040" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
-  <text x="158.71630859375" y="1043.745849609375" style="font-style: normal;font-size: 10.416667px;font-family: Microsoft YaHei;color: black;fill: #000000;">-0.40</text>
+  <text x="139.94610595703125" y="1045.9932861328125" style="font-style: normal;font-size: 16.666666px;font-family: Microsoft YaHei;color: black;fill: #FF0000;">-0.40</text>
   <line x1="200" x2="190" y1="920" y2="920" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
-  <text x="158.71630859375" y="923.745849609375" style="font-style: normal;font-size: 10.416667px;font-family: Microsoft YaHei;color: black;fill: #000000;">-0.20</text>
+  <text x="139.94610595703125" y="925.9933471679688" style="font-style: normal;font-size: 16.666666px;font-family: Microsoft YaHei;color: black;fill: #FF0000;">-0.20</text>
   <line x1="200" x2="190" y1="800" y2="800" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
-  <text x="179.67193603515625" y="803.745849609375" style="font-style: normal;font-size: 10.416667px;font-family: Microsoft YaHei;color: black;fill: #000000;">0</text>
+  <text x="173.47509765625" y="805.9933471679688" style="font-style: normal;font-size: 16.666666px;font-family: Microsoft YaHei;color: black;fill: #FF0000;">0</text>
   <line x1="200" x2="190" y1="680" y2="680" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
-  <text x="163.6283721923828" y="683.745849609375" style="font-style: normal;font-size: 10.416667px;font-family: Microsoft YaHei;color: black;fill: #000000;">0.20</text>
+  <text x="147.80538940429688" y="685.9933471679688" style="font-style: normal;font-size: 16.666666px;font-family: Microsoft YaHei;color: black;fill: #FF0000;">0.20</text>
   <line x1="200" x2="190" y1="560" y2="560" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
-  <text x="163.6283721923828" y="563.745849609375" style="font-style: normal;font-size: 10.416667px;font-family: Microsoft YaHei;color: black;fill: #000000;">0.40</text>
+  <text x="147.80538940429688" y="565.9933471679688" style="font-style: normal;font-size: 16.666666px;font-family: Microsoft YaHei;color: black;fill: #FF0000;">0.40</text>
   <line x1="200" x2="190" y1="440" y2="440" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
-  <text x="163.6283721923828" y="443.7458190917969" style="font-style: normal;font-size: 10.416667px;font-family: Microsoft YaHei;color: black;fill: #000000;">0.60</text>
+  <text x="147.80538940429688" y="445.99334716796875" style="font-style: normal;font-size: 16.666666px;font-family: Microsoft YaHei;color: black;fill: #FF0000;">0.60</text>
   <line x1="200" x2="190" y1="320" y2="320" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
-  <text x="163.6283721923828" y="323.7458190917969" style="font-style: normal;font-size: 10.416667px;font-family: Microsoft YaHei;color: black;fill: #000000;">0.80</text>
+  <text x="147.80538940429688" y="325.99334716796875" style="font-style: normal;font-size: 16.666666px;font-family: Microsoft YaHei;color: black;fill: #FF0000;">0.80</text>
   <line x1="200" x2="190" y1="200" y2="200" style="stroke: #000000; stroke-width: 5px; stroke-dash: solid;" />
-  <text x="163.6283721923828" y="203.745849609375" style="font-style: normal;font-size: 10.416667px;font-family: Microsoft YaHei;color: black;fill: #000000;">1.00</text>
-  <text x="122.66741943359375" y="823.45068359375" style="font-style: strong;font-weight:bold;font-size: 12.5px;font-family: Microsoft YaHei;color: black;fill: #000000;transform-origin: 122.66742px 823.4507px;" transform="rotate(-90)">y</text>
+  <text x="147.80538940429688" y="205.99334716796875" style="font-style: normal;font-size: 16.666666px;font-family: Microsoft YaHei;color: black;fill: #FF0000;">1.00</text>
+  <text x="67.79338073730469" y="846.1671142578125" style="font-style: normal;font-size: 25px;font-family: Microsoft YaHei;color: black;fill: #FF0000;transform-origin: 67.79338px 846.1671px;" transform="rotate(-90)">y</text>
   <line x1="200" x2="233.99996948242188" y1="224.64541625976562" y2="202.3012237548828" style="stroke: #D20400; stroke-width: 8px; stroke-dash: solid;" />
   <line x1="233.99996948242188" x2="268.0000305175781" y1="202.3012237548828" y2="203.78538513183594" style="stroke: #CC0000; stroke-width: 8px; stroke-dash: solid;" />
   <line x1="268.0000305175781" x2="301.9999694824219" y1="203.78538513183594" y2="229.0387420654297" style="stroke: #D20400; stroke-width: 8px; stroke-dash: solid;" />

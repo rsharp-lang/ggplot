@@ -9,6 +9,13 @@ print(line_data, max.print = 13);
 let plot_line = function() {
     ggplot(line_data, aes(x = "x", y = "y"), padding = "padding: 200px 500px 200px 200px;")
     + geom_line(width = 8, show.legend = TRUE, color = "Jet")
+    + theme(axis.text = element_text(family = "Microsoft YaHei",
+                                 size = 16,
+                                 color = "red"),
+            axis.title = element_text(family = "Microsoft YaHei",
+                                 size = 24,
+                                 color = "red")
+        )
     ;
 }
 
