@@ -60,6 +60,9 @@ Imports SMRUCC.Rsharp.Runtime.Internal.Object
 
 Namespace layers
 
+    ''' <summary>
+    ''' group stats comparision result
+    ''' </summary>
     Public Class compare_means
 
         Public Property y As String
@@ -98,6 +101,18 @@ Namespace layers
             Return psignif
         End Function
 
+        ''' <summary>
+        ''' load stats pvalue result from the group compares
+        ''' </summary>
+        ''' <param name="data">
+        ''' a dataframe object that should contains the data fiels at least:
+        ''' 
+        ''' + group1: the label name of the group 1
+        ''' + group2: the label name of the group 2
+        ''' + pvalue: a numeric vector of the t-test pvalue between group 1 and group 2.
+        ''' 
+        ''' </param>
+        ''' <returns></returns>
         Public Shared Function fromManualData(data As dataframe) As compare_means()
             Dim group1 As String() = data.getColumnVector("group1")
             Dim group2 As String() = data.getColumnVector("group2")

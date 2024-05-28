@@ -65,6 +65,10 @@ Namespace layers
 
     Public Class ggplotSignifLayer : Inherits ggplotStatsLayer
 
+        ''' <summary>
+        ''' a tuple list of the comparision group labels
+        ''' </summary>
+        ''' <returns></returns>
         Public Property comparision As list
         Public Property method As String = "t.test"
 
@@ -88,6 +92,7 @@ Namespace layers
                               End Function)
 
             For Each groupKey As String In comparision.getNames
+                ' get group labels for extract sample vector for run t.test
                 Dim two As String() = comparision.getValue(Of String())(groupKey, stream.ggplot.environment)
                 Dim group1 = data.TryGetValue(two(0))
                 Dim group2 = data.TryGetValue(two(1))

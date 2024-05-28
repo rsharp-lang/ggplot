@@ -994,6 +994,19 @@ Public Module ggplot2
         }
     End Function
 
+    ''' <summary>
+    ''' set stats p-value for the plot
+    ''' </summary>
+    ''' <param name="comparisons">
+    ''' 
+    ''' a dataframe object that should contains the data fiels at least:
+    ''' 
+    ''' + group1: the label name of the group 1
+    ''' + group2: the label name of the group 2
+    ''' + pvalue: a numeric vector of the t-test pvalue between group 1 and group 2.
+    ''' 
+    ''' </param>
+    ''' <returns></returns>
     <ExportAPI("stat_pvalue_manual")>
     Public Function stat_pvalue_manual(comparisons As dataframe) As ggplotLayer
         Return New ggplotStatsLayer With {
@@ -1001,6 +1014,13 @@ Public Module ggplot2
         }
     End Function
 
+    ''' <summary>
+    ''' default create anova test for compares all groups
+    ''' </summary>
+    ''' <param name="method"></param>
+    ''' <param name="ref_group"></param>
+    ''' <param name="hide_ns">hide not sig result?</param>
+    ''' <returns></returns>
     <ExportAPI("stat_compare_means")>
     Public Function stat_compare_means(Optional method As String = "anova",
                                        Optional ref_group As String = ".all.",
@@ -1017,6 +1037,14 @@ Public Module ggplot2
     ''' ## Create significance layer
     ''' 
     ''' </summary>
+    ''' <param name="comparisons">
+    ''' the comparision groups tuple list, each tuple value should be 
+    ''' two group label for extract the corresponding sample vector 
+    ''' from the ggplot input raw dataframe for run the ``t.test``.
+    ''' </param>
+    ''' <param name="test">
+    ''' the stats test method between two groups: t.test or wilcox.test
+    ''' </param>
     ''' <returns></returns>
     <ExportAPI("geom_signif")>
     Public Function geom_signif(comparisons As list, Optional test As String = "t.test") As ggplotLayer
@@ -1182,7 +1210,7 @@ Public Module ggplot2
     End Function
 
     ''' <summary>
-    ''' 
+    ''' means nothing
     ''' </summary>
     ''' <returns></returns>
     <ExportAPI("element_blank")>
@@ -1205,7 +1233,24 @@ Public Module ggplot2
                                  Optional linetype As Object = NULL,
                                  Optional lineend As Object = NULL,
                                  Optional color As Object = NULL) As lineElement
-        Return New lineElement
+
+        Dim col As String = RColorPalette.getColor(If(colour, color), [default]:="black")
+        Dim w As Double = CLRVector.asNumeric(size).DefaultFirst(-1)
+        Dim dash As DashStyle = DashStyle.Solid
+
+        If linetype IsNot Nothing Then
+            If TypeOf linetype Is String OrElse TypeOf linetype Is Char Then
+                dash = Stroke.GetDashStyle(CStr(linetype))
+            ElseIf TypeOf linetype Is Integer OrElse TypeOf linetype Is Long Then
+                dash = CType(CInt(linetype), DashStyle)
+            End If
+        End If
+
+        Return New lineElement With {
+            .color = col,
+            .width = w,
+            .linetype = dash
+        }
     End Function
 
     ''' <summary>
