@@ -95,12 +95,20 @@ Public Class ggplot : Inherits Plot
 
     Protected Friend ReadOnly colors As LoopArray(Of String)
 
+    ''' <summary>
+    ''' the theme of the plot
+    ''' </summary>
+    ''' <returns></returns>
     Public ReadOnly Property ggplotTheme As Theme
         Get
             Return theme
         End Get
     End Property
 
+    ''' <summary>
+    ''' does the given plot data has [x,y,z] axis data?
+    ''' </summary>
+    ''' <returns></returns>
     Public ReadOnly Property is3D As Boolean
         Get
             Return Not base.reader.isPlain2D
@@ -117,12 +125,20 @@ Public Class ggplot : Inherits Plot
     End Sub
 
     ''' <summary>
-    ''' dataframe, list, and others
+    ''' the source data for the ggplot chartting plot, data value type could be dataframe, list, and others
     ''' </summary>
     ''' <returns></returns>
     Public Property data As Object
+    ''' <summary>
+    ''' the plot layers: scatter, line, bar, etc
+    ''' </summary>
+    ''' <returns></returns>
     Public Property layers As New List(Of ggplotLayer)
     Public Property base As ggplotBase
+    ''' <summary>
+    ''' a tuple list of the plot arguments
+    ''' </summary>
+    ''' <returns></returns>
     Public Property args As list
     ''' <summary>
     ''' the runtime environment for current ggplot object, 
@@ -152,6 +168,18 @@ Public Class ggplot : Inherits Plot
 
     Shared ReadOnly templates As New Dictionary(Of Type, Func(Of Theme, ggplot))
 
+    ''' <summary>
+    ''' register the data driver for invoke ggplot
+    ''' </summary>
+    ''' <param name="driver">
+    ''' the clr data type of the ggplot framework that going to supports.
+    ''' </param>
+    ''' <param name="activator"></param>
+    ''' <remarks>
+    ''' default data source that ggplot <see cref="data"/> supports dataframe, tuple 
+    ''' list these R# language internal object, but with this function, the data type 
+    ''' that ggplot supports could be extends to more.
+    ''' </remarks>
     <MethodImpl(MethodImplOptions.AggressiveInlining)>
     Public Shared Sub Register(driver As Type, activator As Func(Of Theme, ggplot))
         templates(driver) = activator

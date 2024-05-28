@@ -58,11 +58,15 @@
 #End Region
 
 Imports ggplot.elements
+Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 
 Namespace options
 
+    ''' <summary>
+    ''' a wrapper for the scibasic.net internal <see cref="Canvas.Theme"/> object
+    ''' </summary>
     Public Class ggplotTheme : Inherits ggplotOption
 
         Public Property axis_text As textElement
@@ -81,6 +85,11 @@ Namespace options
         Public Property panel_grid As String
         Public Property panel_border As rectElement
 
+        ''' <summary>
+        ''' set up the <see cref="ggplot.ggplotTheme"/> object
+        ''' </summary>
+        ''' <param name="ggplot"></param>
+        ''' <returns></returns>
         Public Overrides Function Config(ggplot As ggplot) As ggplot
             Dim theme As Theme = ggplot.ggplotTheme
 

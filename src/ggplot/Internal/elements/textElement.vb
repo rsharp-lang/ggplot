@@ -59,10 +59,25 @@ Imports Microsoft.VisualBasic.MIME.Html.CSS
 
 Namespace elements
 
+    ''' <summary>
+    ''' data model helper for create the css font object
+    ''' </summary>
     Public Class textElement : Inherits ggplotElement
 
+        ''' <summary>
+        ''' the font for drawing the specific text elements
+        ''' </summary>
+        ''' <returns></returns>
         Public Property style As CSSFont
+        ''' <summary>
+        ''' the text drawing color
+        ''' </summary>
+        ''' <returns></returns>
         Public Property color As String
+        ''' <summary>
+        ''' the text drawing angle
+        ''' </summary>
+        ''' <returns></returns>
         Public Property angle As Single
 
         Public Function GetCSS() As String
