@@ -403,7 +403,7 @@ declare namespace ggplot2 {
     *  
     *  Visualise the distribution of a single continuous variable by dividing 
     *  the x axis into bins and counting the number of observations in each bin. 
-    *  Histograms (geom_histogram()) display the counts with bars;
+    *  Histograms (``geom_histogram()``) display the counts with bars;
     * 
     * 
      * @param bins Number of bins. Overridden by binwidth. Defaults to 30.
