@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::94f9b8fd173df7889def9207aca2c26e, src\ggplot\Internal\layers\groupPlot\stats\ggplotSignifLayer.vb"
+﻿#Region "Microsoft.VisualBasic::a8db8b88de1a3eb88935af9a04da249e, src\ggplot\Internal\layers\groupPlot\stats\ggplotSignifLayer.vb"
 
     ' Author:
     ' 
@@ -37,11 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 49
-    '    Code Lines: 41
-    ' Comment Lines: 0
-    '   Blank Lines: 8
-    '     File Size: 1.96 KB
+    '   Total Lines: 54
+    '    Code Lines: 41 (75.93%)
+    ' Comment Lines: 5 (9.26%)
+    '    - Xml Docs: 80.00%
+    ' 
+    '   Blank Lines: 8 (14.81%)
+    '     File Size: 2.18 KB
 
 
     '     Class ggplotSignifLayer

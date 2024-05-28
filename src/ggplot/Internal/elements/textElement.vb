@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::9ffd2cc1e9f2ef1ae61a344e78842e7d, src\ggplot\Internal\elements\textElement.vb"
+﻿#Region "Microsoft.VisualBasic::2f090420ad0a3bb941365d212bf58a06, src\ggplot\Internal\elements\textElement.vb"
 
     ' Author:
     ' 
@@ -37,11 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 26
-    '    Code Lines: 20
-    ' Comment Lines: 0
-    '   Blank Lines: 6
-    '     File Size: 701 B
+    '   Total Lines: 41
+    '    Code Lines: 20 (48.78%)
+    ' Comment Lines: 15 (36.59%)
+    '    - Xml Docs: 100.00%
+    ' 
+    '   Blank Lines: 6 (14.63%)
+    '     File Size: 1.17 KB
 
 
     '     Class textElement

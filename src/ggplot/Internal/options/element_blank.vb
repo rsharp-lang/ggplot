@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::5106048fb894eb45410ec465ccaa1e56, src\ggplot\Internal\options\element_blank.vb"
+﻿#Region "Microsoft.VisualBasic::9a52fdf89151b516ea40030eca89cf14, src\ggplot\Internal\options\element_blank.vb"
 
     ' Author:
     ' 
@@ -37,14 +37,18 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 17
-    '    Code Lines: 14
-    ' Comment Lines: 0
-    '   Blank Lines: 3
-    '     File Size: 483 B
+    '   Total Lines: 43
+    '    Code Lines: 15 (34.88%)
+    ' Comment Lines: 24 (55.81%)
+    '    - Xml Docs: 87.50%
+    ' 
+    '   Blank Lines: 4 (9.30%)
+    '     File Size: 1.59 KB
 
 
     '     Class element_blank
+    ' 
+    '         Properties: waiver
     ' 
     '         Function: GetCssStroke
     ' 

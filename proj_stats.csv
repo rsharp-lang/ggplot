@@ -1,8 +1,8 @@
 ﻿proj,files,totalLines,commentLines,blankLines,lineOfCodes,class,property,method,functions,operator,size(bytes),size
-E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\ggplot2.vb,1498,761,100,637,1,0,0,44,0,67389,67.39 KB
+E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\ggplot2.vb,1561,798,104,659,1,0,0,45,0,69970,69.97 KB
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\ggplot3.vb,50,10,7,33,1,0,0,1,0,1595,1.59 KB
-E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\zzz.vb,42,1,7,34,1,0,1,1,0,1387,1.39 KB
-E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\ggplot.vb,287,26,41,220,1,11,8,5,0,10258,10.26 KB
+E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\zzz.vb,45,1,8,36,1,0,1,1,0,1473,1.47 KB
+E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\ggplot.vb,316,54,41,221,1,11,8,5,0,11395,11.39 KB
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\ggplotAdapter.vb,7,0,3,4,1,1,0,0,0,125,125 B
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\ggplotBase.vb,36,3,8,25,1,2,0,2,0,1202,1.20 KB
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\ggplotData.vb,36,3,7,26,1,5,0,0,0,933,933 B
@@ -14,9 +14,9 @@ E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\c
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\colors\ggplotColorMap.vb,117,46,13,58,1,2,0,3,0,4946,4.95 KB
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\colors\ggplotColorPalette.vb,71,4,11,56,1,0,0,4,0,3001,3.00 KB
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\elements\ggplotElement.vb,17,7,4,6,1,1,0,0,0,445,445 B
-E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\elements\lineElement.vb,10,0,4,6,1,1,0,0,0,197,197 B
+E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\elements\lineElement.vb,41,0,9,32,1,3,0,3,0,1125,1.12 KB
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\elements\rectElement.vb,14,3,4,7,1,2,0,0,0,324,324 B
-E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\elements\textElement.vb,26,0,6,20,1,3,0,2,0,701,701 B
+E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\elements\textElement.vb,41,15,6,20,1,3,0,2,0,1171,1.17 KB
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\elements\chart\AxisMap.vb,128,12,20,96,1,4,0,10,0,4560,4.56 KB
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\elements\legend\ggplotLegendElement.vb,51,0,9,42,1,4,1,1,0,1916,1.92 KB
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\elements\legend\IggplotLegendElement.vb,27,9,6,12,1,2,1,1,0,825,825 B
@@ -40,8 +40,8 @@ E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\l
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\layers\groupPlot\ggplotJitter.vb,38,0,7,31,1,1,0,1,0,1566,1.57 KB
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\layers\groupPlot\ggplotPie.vb,72,0,6,66,1,1,0,1,0,3113,3.11 KB
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\layers\groupPlot\ggplotViolin.vb,57,0,7,50,1,4,0,1,0,2545,2.54 KB
-E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\layers\groupPlot\stats\compare_means.vb,61,0,10,51,1,6,0,2,0,2146,2.15 KB
-E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\layers\groupPlot\stats\ggplotSignifLayer.vb,49,0,8,41,1,2,0,2,0,1961,1.96 KB
+E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\layers\groupPlot\stats\compare_means.vb,76,15,10,51,1,6,0,2,0,2724,2.72 KB
+E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\layers\groupPlot\stats\ggplotSignifLayer.vb,54,5,8,41,1,2,0,2,0,2176,2.18 KB
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\layers\groupPlot\stats\ggplotStatPvalue.vb,95,0,17,78,1,3,2,1,0,3980,3.98 KB
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\layers\groupPlot\stats\ggplotStatsLayer.vb,62,8,9,45,1,1,1,1,0,2956,2.96 KB
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\layers\layer3\ggplotScatter3d.vb,88,1,12,75,1,0,2,2,0,3693,3.69 KB
@@ -51,12 +51,12 @@ E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\l
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\layers\scatter\ggplotScatterpie.vb,86,9,8,69,1,1,0,1,0,3445,3.44 KB
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\layers\scatter\ggplotTileLayer.vb,77,6,9,62,1,1,0,3,0,3703,3.70 KB
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\options\coord_flip.vb,10,0,2,8,1,0,0,1,0,271,271 B
-E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\options\element_blank.vb,17,0,3,14,1,0,0,1,0,483,483 B
+E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\options\element_blank.vb,43,24,4,15,1,1,0,1,0,1586,1.59 KB
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\options\ggplotAxisLabel.vb,17,0,4,13,1,3,0,1,0,497,497 B
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\options\ggplotCamera.vb,17,3,4,10,1,1,0,1,0,450,450 B
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\options\ggplotColorProfile.vb,72,13,6,53,1,1,0,2,0,4966,4.97 KB
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\options\ggplotOption.vb,14,3,5,6,1,0,0,0,0,315,315 B
-E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\options\ggplotTheme.vb,83,0,14,69,1,13,0,1,0,3157,3.16 KB
+E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\options\ggplotTheme.vb,100,8,14,78,1,15,0,1,0,3881,3.88 KB
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\options\ggplotTicks.vb,92,25,16,51,2,5,0,2,0,3047,3.05 KB
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\options\ggplotTitle.vb,19,0,5,14,1,2,1,1,0,496,496 B
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\render\chart2D.vb,118,0,13,105,1,0,2,0,0,4555,4.55 KB
@@ -65,7 +65,7 @@ E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\Internal\r
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\My Project\Application.Designer.vb,12,9,1,2,0,0,0,0,0,434,434 B
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\My Project\Resources.Designer.vb,62,23,8,31,1,2,0,0,0,2772,2.77 KB
 E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,ggplot\My Project\Settings.Designer.vb,74,9,12,53,2,2,1,0,0,3015,3.02 KB
-E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,<project>,5876,1168,768,3940,67,138,23,172,0,240640,240.64 KB
+E:\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj,<project>,6080,1300,779,4001,67,143,23,176,0,248462,248.46 KB
 E:\GCModeller\src\runtime\ggplot\src\ggpubr\ggpubr.vbproj,ggpubr\ggpubr.vb,37,15,3,19,1,0,0,1,0,1726,1.73 KB
 E:\GCModeller\src\runtime\ggplot\src\ggpubr\ggpubr.vbproj,ggpubr\zzz.vb,7,0,3,4,1,0,0,0,0,100,100 B
 E:\GCModeller\src\runtime\ggplot\src\ggpubr\ggpubr.vbproj,ggpubr\layers\ggplotConfidenceEllipse.vb,48,6,7,35,1,1,0,2,0,1952,1.95 KB
@@ -86,4 +86,4 @@ E:\GCModeller\src\runtime\ggplot\src\ggraph\ggraph.vbproj,ggraph\Internal\render
 E:\GCModeller\src\runtime\ggplot\src\ggraph\ggraph.vbproj,ggraph\Internal\render\nodeRender.vb,124,0,18,106,1,4,0,4,0,5089,5.09 KB
 E:\GCModeller\src\runtime\ggplot\src\ggraph\ggraph.vbproj,ggraph\Internal\render\textRender.vb,75,0,11,64,1,4,0,2,0,3068,3.07 KB
 E:\GCModeller\src\runtime\ggplot\src\ggraph\ggraph.vbproj,<project>,1006,73,162,771,15,20,6,26,0,40751,40.75 KB
-../,<root>,13948,2524,1886,9538,170,318,58,402,0,570338,570.34 KB
+../,<root>,14356,2788,1908,9660,170,328,58,410,0,585982,585.98 KB

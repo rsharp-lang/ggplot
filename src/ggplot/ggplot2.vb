@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::e1e4e50a31ffc60776dfb2039c706209, src\ggplot\ggplot2.vb"
+﻿#Region "Microsoft.VisualBasic::86b8342c858558317d7285b05e2cc120, src\ggplot\ggplot2.vb"
 
     ' Author:
     ' 
@@ -37,11 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 1498
-    '    Code Lines: 637
-    ' Comment Lines: 761
-    '   Blank Lines: 100
-    '     File Size: 67.39 KB
+    '   Total Lines: 1561
+    '    Code Lines: 659 (42.22%)
+    ' Comment Lines: 798 (51.12%)
+    '    - Xml Docs: 90.98%
+    ' 
+    '   Blank Lines: 104 (6.66%)
+    '     File Size: 69.97 KB
 
 
     ' Module ggplot2
@@ -54,7 +56,7 @@
     '               geom_text, geom_tile, geom_violin, geom_vline, ggplot
     '               ggtitle, labs, scale_color_brewer, scale_colour_manual, scale_fill_distiller
     '               scale_fill_manual, scale_x_continuous, scale_y_continuous, scale_y_reverse, stat_compare_means
-    '               stat_pvalue_manual, theme, xlab, ylab
+    '               stat_pvalue_manual, theme, waiver, xlab, ylab
     ' 
     ' /********************************************************************************/
 

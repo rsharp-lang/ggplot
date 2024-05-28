@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::250ad7f3a7e7636f6cd986c4552d5ea0, src\ggplot\Internal\options\ggplotTheme.vb"
+﻿#Region "Microsoft.VisualBasic::4249b66ce4b9ecc2bfd5080aa88f2c9f, src\ggplot\Internal\options\ggplotTheme.vb"
 
     ' Author:
     ' 
@@ -37,18 +37,20 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 83
-    '    Code Lines: 69
-    ' Comment Lines: 0
-    '   Blank Lines: 14
-    '     File Size: 3.16 KB
+    '   Total Lines: 100
+    '    Code Lines: 78 (78.00%)
+    ' Comment Lines: 8 (8.00%)
+    '    - Xml Docs: 100.00%
+    ' 
+    '   Blank Lines: 14 (14.00%)
+    '     File Size: 3.88 KB
 
 
     '     Class ggplotTheme
     ' 
     '         Properties: axis_line, axis_text, axis_text_x, axis_title, legend_background
-    '                     legend_split, legend_text, panel_background, panel_border, panel_grid
-    '                     plot_background, plot_title, text
+    '                     legend_split, legend_text, legend_tick, legend_title, panel_background
+    '                     panel_border, panel_grid, plot_background, plot_title, text
     ' 
     '         Function: Config
     ' 

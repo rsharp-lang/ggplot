@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::076fae5429989e09a69cfa8668fa8697, src\ggplot\Internal\layers\groupPlot\stats\compare_means.vb"
+﻿#Region "Microsoft.VisualBasic::37eb43626c6f18bf8520f5809ea72329, src\ggplot\Internal\layers\groupPlot\stats\compare_means.vb"
 
     ' Author:
     ' 
@@ -37,11 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 61
-    '    Code Lines: 51
-    ' Comment Lines: 0
-    '   Blank Lines: 10
-    '     File Size: 2.15 KB
+    '   Total Lines: 76
+    '    Code Lines: 51 (67.11%)
+    ' Comment Lines: 15 (19.74%)
+    '    - Xml Docs: 86.67%
+    ' 
+    '   Blank Lines: 10 (13.16%)
+    '     File Size: 2.72 KB
 
 
     '     Class compare_means
