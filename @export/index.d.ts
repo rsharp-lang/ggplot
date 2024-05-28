@@ -9,8 +9,9 @@ declare namespace ggplot {
       function onLoad(): object;
    }
    /**
+     * @param accents default value Is ``["#44546a", "#e7e6e6", "#5b9bd5", "#ed7d31", "#a5a5a5", "#ffc000", "#4472c4", "#70ad47"]``.
    */
-   function msoffice(): object;
+   function msoffice(accents?: any): object;
    /**
    */
    function theme_black(): object;
