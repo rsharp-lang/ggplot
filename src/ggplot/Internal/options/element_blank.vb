@@ -57,8 +57,34 @@ Imports any = Microsoft.VisualBasic.Scripting
 
 Namespace options
 
+    ''' <summary>
+    ''' a flag object for indicates the NULL or default value
+    ''' </summary>
     Public Class element_blank
 
+        ''' <summary>
+        ''' does current blank value means ggplot2 liked waiver object?
+        ''' 
+        ''' A waiver is a "flag" object, similar to NULL, that indicates the calling function 
+        ''' should just use the default value. It is used in certain functions to distinguish 
+        ''' between displaying nothing (NULL) and displaying a default value calculated 
+        ''' elsewhere (waiver())
+        ''' </summary>
+        ''' <returns></returns>
+        Public Property waiver As Boolean
+
+        ''' <summary>
+        ''' gets the default value
+        ''' </summary>
+        ''' <param name="stroke"></param>
+        ''' <returns>
+        ''' this function may returns values of:
+        ''' 
+        ''' 1. nothing, for the given object is nothing
+        ''' 2. element_blank, if the given object is <see cref="element_blank"/>
+        ''' 3. css value, if the given object is scibasic.net internal css object
+        ''' 
+        ''' </returns>
         Public Shared Function GetCssStroke(stroke As Object) As String
             If stroke Is Nothing Then
                 Return Nothing

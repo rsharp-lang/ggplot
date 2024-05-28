@@ -1219,6 +1219,20 @@ Public Module ggplot2
     End Function
 
     ''' <summary>
+    ''' ### A waiver object.
+    ''' 
+    ''' A waiver is a "flag" object, similar to NULL, that indicates the calling 
+    ''' function should just use the default value. It is used in certain functions 
+    ''' to distinguish between displaying nothing (NULL) and displaying a default 
+    ''' value calculated elsewhere (waiver())
+    ''' </summary>
+    ''' <returns></returns>
+    <ExportAPI("waiver")>
+    Public Function waiver() As element_blank
+        Return New element_blank With {.waiver = True}
+    End Function
+
+    ''' <summary>
     ''' Theme element: line.
     ''' </summary>
     ''' <param name="colour">line colour</param>
