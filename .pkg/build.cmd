@@ -1,4 +1,4 @@
-@echo off
+REM @echo off
 
 SET drive=%~d0
 SET R_HOME=%drive%/GCModeller\src\R-sharp\App\net6.0
