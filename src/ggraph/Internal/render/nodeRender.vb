@@ -69,6 +69,7 @@ Imports Microsoft.VisualBasic.Data.visualize.Network.Styling.FillBrushes
 Imports Microsoft.VisualBasic.Data.visualize.Network.Styling.Numeric
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.MIME.Html.CSS
+Imports Microsoft.VisualBasic.MIME.Html.Render
 
 Namespace ggraph.render
 
@@ -125,7 +126,8 @@ Namespace ggraph.render
             Dim graph As NetworkGraph = stream.ggplot.data
             Dim stroke As Pen = Pens.White
             Dim shapeAs = getShapes(stream.ggplot.data)
-            Dim baseFont As Font = CSSFont.TryParse(stream.theme.tagCSS).GDIObject(stream.g.Dpi)
+            Dim css As CSSEnvirnment = stream.g.LoadEnvironment
+            Dim baseFont As Font = css.GetFont(stream.theme.tagCSS)
             Dim drawNodeShape As DrawNodeShape =
                 Function(id As String,
                          g As IGraphics,
@@ -155,7 +157,7 @@ Namespace ggraph.render
                 fontSizeValue:=AddressOf getFontSize,
                 defaultColor:=defaultColor,
                 stroke:=stroke,
-                baseFont:=baseFont,
+                baseFontCss:=baseFont,
                 scalePos:=stream.layout,
                 throwEx:=False,
                 getDisplayLabel:=Function(n) n.data.label,

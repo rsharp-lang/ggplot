@@ -64,7 +64,8 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.d3js.scale
 Imports Microsoft.VisualBasic.MIME.Html.CSS
-Imports stdNum = System.Math
+Imports Microsoft.VisualBasic.MIME.Html.Render
+Imports std = System.Math
 
 Namespace layers
 
@@ -93,8 +94,9 @@ Namespace layers
                             }
                         End Function) _
                 .ToArray
-            Dim labelFont As Font = CSSFont.TryParse(stream.theme.tagCSS).GDIObject(stream.g.Dpi)
-            Dim r As Single = stdNum.Min(stream.canvas.PlotRegion.Height, stream.canvas.PlotRegion.Width) / 2
+            Dim css As CSSEnvirnment = stream.g.LoadEnvironment
+            Dim labelFont As Font = css.GetFont(CSSFont.TryParse(stream.theme.tagCSS))
+            Dim r As Single = std.Min(stream.canvas.PlotRegion.Height, stream.canvas.PlotRegion.Width) / 2
             Dim topLeft As New Point With {
                 .X = stream.canvas.Padding.Left,
                 .Y = stream.canvas.Padding.Top

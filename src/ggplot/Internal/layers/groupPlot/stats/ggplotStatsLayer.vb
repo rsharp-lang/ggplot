@@ -63,7 +63,8 @@ Imports System.Drawing
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.Imaging.d3js.scale
 Imports Microsoft.VisualBasic.MIME.Html.CSS
-Imports stdNum = System.Math
+Imports Microsoft.VisualBasic.MIME.Html.Render
+Imports std = System.Math
 
 Namespace layers
 
@@ -90,8 +91,9 @@ Namespace layers
                               Function(v)
                                   Return v.value
                               End Function)
+            Dim css As CSSEnvirnment = stream.g.LoadEnvironment
             Dim line As Pen = Stroke.TryParse(stream.theme.lineStroke).GDIObject
-            Dim font As Font = CSSFont.TryParse(stream.theme.tagCSS).GDIObject(stream.g.Dpi)
+            Dim font As Font = css.GetFont(CSSFont.TryParse(stream.theme.tagCSS))
             Dim lbsize As SizeF
             Dim pos As PointF
             Dim h As Double
@@ -101,11 +103,11 @@ Namespace layers
                 Dim group2 As Double() = data.TryGetValue(compare.group2)
                 Dim x1 As Double = x(compare.group1)
                 Dim x2 As Double = x(compare.group2)
-                Dim len As Double = stdNum.Abs(x1 - x2)
-                Dim left As Double = stdNum.Min(x1, x2)
+                Dim len As Double = std.Abs(x1 - x2)
+                Dim left As Double = std.Min(x1, x2)
                 Dim y1 As Double = getLabelPosY(group1, stream.scale, factor:=1.025)
                 Dim y2 As Double = getLabelPosY(group2, stream.scale, factor:=1.025)
-                Dim y As Double = stdNum.Min(y1, y2)
+                Dim y As Double = std.Min(y1, y2)
                 Dim siglab As String = compare.psignif
 
                 lbsize = stream.g.MeasureString(siglab, font)

@@ -66,6 +66,7 @@ Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Text.Nudge
 Imports Microsoft.VisualBasic.Language.Vectorization
 Imports Microsoft.VisualBasic.MIME.Html.CSS
+Imports Microsoft.VisualBasic.MIME.Html.Render
 
 Namespace layers
 
@@ -84,7 +85,8 @@ Namespace layers
             Dim labels As String()
             Dim ggplot As ggplot = stream.ggplot
             Dim g As IGraphics = stream.g
-            Dim labelStyle As Font = CSSFont.TryParse(stream.theme.tagCSS).GDIObject(g.Dpi)
+            Dim css As CSSEnvirnment = g.LoadEnvironment
+            Dim labelStyle As Font = css.GetFont(CSSFont.TryParse(stream.theme.tagCSS))
             Dim x = stream.x
             Dim y = stream.y
             Dim scale As DataScaler = stream.scale

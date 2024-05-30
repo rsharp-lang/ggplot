@@ -66,6 +66,7 @@ Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports Microsoft.VisualBasic.Math
 Imports Microsoft.VisualBasic.Math.LinearAlgebra
 Imports Microsoft.VisualBasic.MIME.Html.CSS
+Imports Microsoft.VisualBasic.MIME.Html.Render
 Imports SMRUCC.Rsharp.Runtime.Vectorization
 
 Namespace layers
@@ -110,6 +111,7 @@ Namespace layers
             Dim colors As String() = getColorSet(ggplot, stream.g, mapLevels, LegendStyles.SolidLine, fillData, Nothing)
             Dim textures As Brush() = colors.Select(Function(c) c.GetBrush).ToArray
             Dim rxi, ryi As Double
+            Dim css As CSSEnvirnment = stream.g.LoadEnvironment
 
             For i As Integer = 0 To x.Length - 1
                 rxi = stream.scale.TranslateX(x(i)) - tile_size.Width
@@ -123,10 +125,10 @@ Namespace layers
                 .colorMapLegend = New ColorMapLegend(colorMap.ToString, mapLevels) With {
                     .title = getDataLabel(stream),
                     .tickAxisStroke = Stroke.TryParse(stream.theme.legendTickAxisStroke).GDIObject,
-                    .tickFont = CSSFont.TryParse(stream.theme.legendTickCSS).GDIObject(stream.g.Dpi),
+                    .tickFont = css.GetFont(stream.theme.legendTickCSS),
                     .format = stream.theme.legendTickFormat,
                     .ticks = fillData.CreateAxisTicks,
-                    .titleFont = CSSFont.TryParse(stream.theme.legendTitleCSS).GDIObject(stream.g.Dpi)
+                    .titleFont = css.GetFont(stream.theme.legendTitleCSS)
                 },
                 .width = stream.canvas.Padding.Right * 3 / 4,
                 .height = stream.canvas.PlotRegion.Height

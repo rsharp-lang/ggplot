@@ -63,9 +63,10 @@ Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports Microsoft.VisualBasic.MIME.Html.CSS
+Imports Microsoft.VisualBasic.MIME.Html.Render
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports SMRUCC.Rsharp.Runtime.Vectorization
-Imports stdNum = System.Math
+Imports std = System.Math
 
 Namespace layers
 
@@ -84,12 +85,13 @@ Namespace layers
             Dim x As Double() = stream.scale.X(stream.x)
             Dim y As Double() = stream.scale.Y(stream.y)
             Dim layerdata = CLRVector.asNumeric(data.getVector(Me.layer, fullSize:=True))
+            Dim css As CSSEnvirnment = stream.g.LoadEnvironment
             Dim cellSize = getCellsize(x, y)
             Dim colors As SolidBrush() = Designer _
                 .GetColors(stream.theme.colorSet, n:=maplevels) _
                 .Select(Function(c) New SolidBrush(c)) _
                 .ToArray
-            Dim radius As Single = stdNum.Min(cellSize.Width, cellSize.Height) / 2
+            Dim radius As Single = std.Min(cellSize.Width, cellSize.Height) / 2
             Dim valueRange As New DoubleRange(layerdata)
             Dim indexRange As New DoubleRange(0, maplevels - 1)
             Dim layerIndex As Integer() = layerdata _
@@ -112,10 +114,10 @@ Namespace layers
                 .colorMapLegend = New ColorMapLegend(stream.theme.colorSet, maplevels) With {
                     .title = Me.layer,
                     .tickAxisStroke = Stroke.TryParse(stream.theme.legendTickAxisStroke).GDIObject,
-                    .tickFont = CSSFont.TryParse(stream.theme.legendTickCSS).GDIObject(stream.g.Dpi),
+                    .tickFont = css.GetFont(CSSFont.TryParse(stream.theme.legendTickCSS)),
                     .format = stream.theme.legendTickFormat,
                     .ticks = layerdata.CreateAxisTicks,
-                    .titleFont = CSSFont.TryParse(stream.theme.legendTitleCSS).GDIObject(stream.g.Dpi)
+                    .titleFont = css.GetFont(CSSFont.TryParse(stream.theme.legendTitleCSS))
                 },
                 .width = stream.canvas.Padding.Right * 3 / 4,
                 .height = stream.canvas.PlotRegion.Height

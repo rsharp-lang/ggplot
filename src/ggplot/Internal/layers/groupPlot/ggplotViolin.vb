@@ -64,6 +64,7 @@ Imports Microsoft.VisualBasic.Data.ChartPlots
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.MIME.Html.CSS
+Imports Microsoft.VisualBasic.MIME.Html.Render
 
 Namespace layers
 
@@ -79,8 +80,9 @@ Namespace layers
             Dim binWidth As Double = DirectCast(stream.scale.X, d3js.scale.OrdinalScale).binWidth
             Dim yscale As YScaler = stream.scale
             Dim semiWidth As Double = binWidth / 2 * groupWidth
+            Dim css As CSSEnvirnment = g.LoadEnvironment
             Dim lineStroke As Pen = Stroke.TryParse(stream.theme.lineStroke).GDIObject
-            Dim labelFont As Font = CSSFont.TryParse(stream.theme.tagCSS).GDIObject(g.Dpi)
+            Dim labelFont As Font = css.GetFont(CSSFont.TryParse(stream.theme.tagCSS))
             Dim allGroupData = getDataGroups(stream).ToArray
             Dim colors As Func(Of Object, String) = getColors(stream, allGroupData.Select(Function(i) i.name))
             Dim gridPen As Pen = Stroke.TryParse(stream.theme.gridStrokeX)

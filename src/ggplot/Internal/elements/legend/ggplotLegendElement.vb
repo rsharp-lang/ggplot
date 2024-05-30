@@ -64,6 +64,7 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
+Imports Microsoft.VisualBasic.MIME.Html.Render
 
 Namespace elements.legend
 
@@ -101,7 +102,7 @@ Namespace elements.legend
 
         Public Function MeasureSize(g As IGraphics) As SizeF Implements IggplotLegendElement.MeasureSize
             Dim maxSizeLabel As String = legend.title
-            Dim maxSize As SizeF = g.MeasureString(maxSizeLabel, legend.GetFont(g.Dpi))
+            Dim maxSize As SizeF = g.MeasureString(maxSizeLabel, legend.GetFont(g.LoadEnvironment))
 
             maxSize = New SizeF(shapeSize.Width + maxSize.Width, maxSize.Height)
             maxSize = New SizeF(maxSize.Width, maxSize.Height)

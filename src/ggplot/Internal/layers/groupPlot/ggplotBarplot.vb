@@ -56,13 +56,14 @@
 #End Region
 
 Imports System.Drawing
+Imports System.Math
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Math
 Imports Microsoft.VisualBasic.MIME.Html.CSS
-Imports stdNum = System.Math
+Imports Microsoft.VisualBasic.MIME.Html.Render
 
 Namespace layers
 
@@ -73,8 +74,9 @@ Namespace layers
             Dim binWidth As Double = DirectCast(stream.scale.X, d3js.scale.OrdinalScale).binWidth
             Dim yscale As YScaler = stream.scale
             Dim boxWidth As Double = binWidth * groupWidth
+            Dim css As CSSEnvirnment = g.LoadEnvironment
             Dim lineStroke As Pen = Stroke.TryParse(stream.theme.lineStroke).GDIObject
-            Dim labelFont As Font = CSSFont.TryParse(stream.theme.tagCSS).GDIObject(g.Dpi)
+            Dim labelFont As Font = css.GetFont(stream.theme.tagCSS)
             Dim allGroupData = getDataGroups(stream).ToArray
             Dim colors As Func(Of Object, String) = getColors(stream, allGroupData.Select(Function(i) i.name))
             Dim y As DataScaler = stream.scale
@@ -89,7 +91,7 @@ Namespace layers
                 Dim bar As New RectangleF(x - boxWidth / 2, yi, boxWidth, bottom - yi)
                 Dim color As Color = colors(group.name).TranslateColor.Alpha(255 * alpha)
                 Dim paint As New SolidBrush(color)
-                Dim std As Double = stdNum.Abs(group.SD)
+                Dim std As Double = Abs(group.SD)
 
                 Call g.DrawLine(line, New PointF(x, top), New PointF(x, bottom))
                 Call g.FillRectangle(paint, bar)

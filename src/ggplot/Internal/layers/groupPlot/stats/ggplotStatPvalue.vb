@@ -67,6 +67,7 @@ Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.Math.Statistics.Hypothesis
 Imports Microsoft.VisualBasic.Math.Statistics.Hypothesis.ANOVA
 Imports Microsoft.VisualBasic.MIME.Html.CSS
+Imports Microsoft.VisualBasic.MIME.Html.Render
 Imports SMRUCC.Rsharp.Runtime.Internal.Invokes
 
 Namespace layers
@@ -91,7 +92,8 @@ Namespace layers
         Private Sub plotTtest(stream As ggplotPipeline, xscale As OrdinalScale)
             Dim data = getDataGroups(stream).ToArray
             Dim ref As Double()
-            Dim font As Font = CSSFont.TryParse(stream.theme.tagCSS).GDIObject(stream.g.Dpi)
+            Dim css As CSSEnvirnment = stream.g.LoadEnvironment
+            Dim font As Font = css.GetFont(CSSFont.TryParse(stream.theme.tagCSS))
             Dim lbsize As SizeF
 
             If ref_group = ".all." Then
@@ -144,10 +146,11 @@ Namespace layers
             Call base.cat("\n", env:=stream.ggplot.environment)
             Call base.cat(anova.ToString, env:=stream.ggplot.environment)
 
+            Dim css As CSSEnvirnment = stream.g.LoadEnvironment
             Dim pvalue As Double = anova.singlePvalue
             Dim ptag As String = If(pvalue.ToString = "0", "<1e-100", "=" & pvalue.ToString("G3"))
             Dim tagStr As String = $"ANOVA, p-value{ptag}"
-            Dim font As Font = CSSFont.TryParse(stream.theme.tagCSS).GDIObject(stream.g.Dpi)
+            Dim font As Font = css.GetFont(CSSFont.TryParse(stream.theme.tagCSS))
             Dim pos As New PointF(stream.scale.X.rangeMin + 10, stream.canvas.Padding.Top)
 
             Call stream.g.DrawString(tagStr, font, Brushes.Black, pos)

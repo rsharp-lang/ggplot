@@ -74,6 +74,7 @@ Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports Microsoft.VisualBasic.Language.Vectorization
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.MIME.Html.CSS
+Imports Microsoft.VisualBasic.MIME.Html.Render
 Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
@@ -141,6 +142,7 @@ Namespace layers
             Dim theme As Theme = ggplot.ggplotTheme
             Dim padding As New GraphicsRegion(g.Size, theme.padding)
             Dim legend As ColorMapLegend
+            Dim css As CSSEnvirnment = g.LoadEnvironment
 
             If TypeOf colorMap Is ggplotColorPalette Then
                 legend = New ColorMapLegend(DirectCast(palette.colorMap, String), maplevels)
@@ -151,10 +153,10 @@ Namespace layers
             With legend
                 .title = ggplot.base.reader.getLegendLabel
                 .tickAxisStroke = Stroke.TryParse(theme.legendTickAxisStroke).GDIObject
-                .tickFont = CSSFont.TryParse(theme.legendTickCSS).GDIObject(g.Dpi)
+                .tickFont = css.GetFont(theme.legendTickCSS)
                 .format = theme.legendTickFormat
                 .ticks = data.CreateAxisTicks
-                .titleFont = CSSFont.TryParse(theme.legendTitleCSS).GDIObject(g.Dpi)
+                .titleFont = css.GetFont(theme.legendTitleCSS)
             End With
 
             legends = New legendColorMapElement With {

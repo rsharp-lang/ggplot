@@ -74,6 +74,7 @@ Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.MIME.Html.CSS
+Imports Microsoft.VisualBasic.MIME.Html.Render
 
 Namespace ggraph
 
@@ -157,7 +158,8 @@ Namespace ggraph
             Dim x As Double
             Dim y As Double
             Dim line As Pen = Stroke.TryParse(theme.axisStroke)
-            Dim labelFont As Font = CSSFont.TryParse(theme.legendLabelCSS).GDIObject(g.Dpi)
+            Dim css As CSSEnvirnment = g.LoadEnvironment
+            Dim labelFont As Font = css.GetFont(CSSFont.TryParse(theme.legendLabelCSS))
             Dim ytop As Double = y
             Dim ybottom As Double
             Dim A As SizeF = g.MeasureString("A", labelFont)
