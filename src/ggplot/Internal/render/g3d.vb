@@ -71,6 +71,7 @@ Imports Microsoft.VisualBasic.Imaging.Drawing3D
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.Math
 Imports Microsoft.VisualBasic.MIME.Html.CSS
+Imports Microsoft.VisualBasic.MIME.Html.Render
 
 Namespace render
 
@@ -105,7 +106,7 @@ Namespace render
                                                 z() As Double,
                                                 legends As List(Of IggplotLegendElement)) As IEnumerable(Of Element3D())
 
-            Dim ppi As Integer = g.Dpi
+            Dim css As CSSEnvirnment = g.LoadEnvironment
             Dim max As Double = x.JoinIterates(y).JoinIterates(z).Max
             Dim min As Double = x.JoinIterates(y).JoinIterates(z).Min
             Dim theme As Theme = ggplot.ggplotTheme
@@ -116,11 +117,12 @@ Namespace render
             Dim tickCss As String = CSSFont.TryParse(theme.axisTickCSS).SetFontColor(theme.mainTextColor).ToString
 
             ' 然后生成底部的网格
-            Yield Grids.Grid1(ticks, ticks, (ticks(1) - ticks(0), ticks(1) - ticks(0)), ticks.Min, showTicks:=Not theme.axisTickCSS.StringEmpty, strokeCSS:=theme.gridStrokeX, tickCSS:=tickCss).ToArray
-            Yield Grids.Grid2(ticks, ticks, (ticks(1) - ticks(0), ticks(1) - ticks(0)), ticks.Min, showTicks:=Not theme.axisTickCSS.StringEmpty, strokeCSS:=theme.gridStrokeX, tickCSS:=tickCss).ToArray
-            Yield Grids.Grid3(ticks, ticks, (ticks(1) - ticks(0), ticks(1) - ticks(0)), ticks.Max, showTicks:=Not theme.axisTickCSS.StringEmpty, strokeCSS:=theme.gridStrokeX, tickCSS:=tickCss).ToArray
+            Yield Grids.Grid1(css, ticks, ticks, (ticks(1) - ticks(0), ticks(1) - ticks(0)), ticks.Min, showTicks:=Not theme.axisTickCSS.StringEmpty, strokeCSS:=theme.gridStrokeX, tickCSS:=tickCss).ToArray
+            Yield Grids.Grid2(css, ticks, ticks, (ticks(1) - ticks(0), ticks(1) - ticks(0)), ticks.Min, showTicks:=Not theme.axisTickCSS.StringEmpty, strokeCSS:=theme.gridStrokeX, tickCSS:=tickCss).ToArray
+            Yield Grids.Grid3(css, ticks, ticks, (ticks(1) - ticks(0), ticks(1) - ticks(0)), ticks.Max, showTicks:=Not theme.axisTickCSS.StringEmpty, strokeCSS:=theme.gridStrokeX, tickCSS:=tickCss).ToArray
 
             Yield AxisDraw.Axis(
+                css,
                 xrange:=ticks, yrange:=ticks, zrange:=ticks,
                 labelFontCss:=theme.axisLabelCSS,
                 labels:=(ggplot.xlabel, ggplot.ylabel, ggplot.zlabel),

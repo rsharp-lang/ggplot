@@ -75,14 +75,14 @@ Namespace layers
             Dim yscale As YScaler = stream.scale
             Dim boxWidth As Double = binWidth * groupWidth
             Dim css As CSSEnvirnment = g.LoadEnvironment
-            Dim lineStroke As Pen = Stroke.TryParse(stream.theme.lineStroke).GDIObject
+            Dim lineStroke As Pen = css.GetPen(Stroke.TryParse(stream.theme.lineStroke))
             Dim labelFont As Font = css.GetFont(stream.theme.tagCSS)
             Dim allGroupData = getDataGroups(stream).ToArray
             Dim colors As Func(Of Object, String) = getColors(stream, allGroupData.Select(Function(i) i.name))
             Dim y As DataScaler = stream.scale
             Dim bottom As Double = stream.canvas.PlotRegion.Bottom
             Dim top As Double = stream.canvas.PlotRegion.Top
-            Dim line As Pen = Stroke.TryParse(stream.theme.gridStrokeX).GDIObject
+            Dim line As Pen = css.GetPen(Stroke.TryParse(stream.theme.gridStrokeX))
 
             For Each group As NamedCollection(Of Double) In allGroupData
                 Dim x As Double = xscale(group.name)

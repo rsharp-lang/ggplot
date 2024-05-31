@@ -75,7 +75,7 @@ Namespace layers
             Dim yscale As YScaler = stream.scale
             Dim boxWidth As Double = binWidth * groupWidth
             Dim css As CSSEnvirnment = g.LoadEnvironment
-            Dim lineStroke As Pen = Stroke.TryParse(stream.theme.gridStrokeX).GDIObject
+            Dim lineStroke As Pen = css.GetPen(Stroke.TryParse(stream.theme.gridStrokeX))
             Dim labelFont As Font = css.GetFont(CSSFont.TryParse(stream.theme.tagCSS))
             Dim allGroupData = getDataGroups(stream).ToArray
             Dim colors As Func(Of Object, String) = getColors(stream, allGroupData.Select(Function(i) i.name))

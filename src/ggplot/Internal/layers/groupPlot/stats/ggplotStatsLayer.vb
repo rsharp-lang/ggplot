@@ -92,7 +92,7 @@ Namespace layers
                                   Return v.value
                               End Function)
             Dim css As CSSEnvirnment = stream.g.LoadEnvironment
-            Dim line As Pen = Stroke.TryParse(stream.theme.lineStroke).GDIObject
+            Dim line As Pen = css.GetPen(Stroke.TryParse(stream.theme.lineStroke))
             Dim font As Font = css.GetFont(CSSFont.TryParse(stream.theme.tagCSS))
             Dim lbsize As SizeF
             Dim pos As PointF

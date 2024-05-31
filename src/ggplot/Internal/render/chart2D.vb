@@ -66,6 +66,8 @@ Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.Math
+Imports Microsoft.VisualBasic.MIME.Html.CSS
+Imports Microsoft.VisualBasic.MIME.Html.Render
 
 Namespace render
 
@@ -94,6 +96,7 @@ Namespace render
             Dim scale As DataScaler
             Dim xAxis As Array
             Dim theme As Theme = ggplot.ggplotTheme
+            Dim css As CSSEnvirnment = g.LoadEnvironment
 
             If baseData.xscale = d3js.scale.scalers.linear Then
                 xAxis = x.ToNumeric
@@ -128,7 +131,7 @@ Namespace render
                     Call g.FillRectangle(ggplot.panelBorder.fill.GetBrush, canvas.PlotRegion)
                 End If
                 If Not ggplot.panelBorder.border Is Nothing Then
-                    Call g.DrawRectangle(ggplot.panelBorder.border.GDIObject, canvas.PlotRegion)
+                    Call g.DrawRectangle(css.GetPen(ggplot.panelBorder.border), canvas.PlotRegion)
                 End If
             End If
 

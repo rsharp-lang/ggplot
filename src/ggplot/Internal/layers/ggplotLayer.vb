@@ -152,7 +152,7 @@ Namespace layers
 
             With legend
                 .title = ggplot.base.reader.getLegendLabel
-                .tickAxisStroke = Stroke.TryParse(theme.legendTickAxisStroke).GDIObject
+                .tickAxisStroke = css.GetPen(Stroke.TryParse(theme.legendTickAxisStroke))
                 .tickFont = css.GetFont(theme.legendTickCSS)
                 .format = theme.legendTickFormat
                 .ticks = data.CreateAxisTicks

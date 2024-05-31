@@ -113,7 +113,7 @@ Namespace layers
             Return New legendColorMapElement With {
                 .colorMapLegend = New ColorMapLegend(stream.theme.colorSet, maplevels) With {
                     .title = Me.layer,
-                    .tickAxisStroke = Stroke.TryParse(stream.theme.legendTickAxisStroke).GDIObject,
+                    .tickAxisStroke = css.GetPen(Stroke.TryParse(stream.theme.legendTickAxisStroke)),
                     .tickFont = css.GetFont(CSSFont.TryParse(stream.theme.legendTickCSS)),
                     .format = stream.theme.legendTickFormat,
                     .ticks = layerdata.CreateAxisTicks,

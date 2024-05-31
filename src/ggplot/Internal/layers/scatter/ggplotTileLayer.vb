@@ -124,7 +124,7 @@ Namespace layers
             Return New legendColorMapElement With {
                 .colorMapLegend = New ColorMapLegend(colorMap.ToString, mapLevels) With {
                     .title = getDataLabel(stream),
-                    .tickAxisStroke = Stroke.TryParse(stream.theme.legendTickAxisStroke).GDIObject,
+                    .tickAxisStroke = css.GetPen(Stroke.TryParse(stream.theme.legendTickAxisStroke)),
                     .tickFont = css.GetFont(stream.theme.legendTickCSS),
                     .format = stream.theme.legendTickFormat,
                     .ticks = fillData.CreateAxisTicks,
