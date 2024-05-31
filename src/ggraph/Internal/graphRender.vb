@@ -157,8 +157,8 @@ Namespace ggraph
                               Where Not group Is Nothing).ToArray
             Dim x As Double
             Dim y As Double
-            Dim line As Pen = Stroke.TryParse(theme.axisStroke)
             Dim css As CSSEnvirnment = g.LoadEnvironment
+            Dim line As Pen = css.GetPen(Stroke.TryParse(theme.axisStroke))
             Dim labelFont As Font = css.GetFont(CSSFont.TryParse(theme.legendLabelCSS))
             Dim ytop As Double = y
             Dim ybottom As Double
