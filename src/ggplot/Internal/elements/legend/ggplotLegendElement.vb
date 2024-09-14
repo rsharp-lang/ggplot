@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::fa80839d40c2d255a5202d99da5d0963, src\ggplot\Internal\elements\legend\ggplotLegendElement.vb"
+﻿#Region "Microsoft.VisualBasic::8bd9cfaa5309d99d9a2a96ea297cc1d2, src\ggplot\Internal\elements\legend\ggplotLegendElement.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 51
-    '    Code Lines: 42 (82.35%)
+    '   Total Lines: 52
+    '    Code Lines: 43 (82.69%)
     ' Comment Lines: 0 (0.00%)
     '    - Xml Docs: 0.00%
     ' 
-    '   Blank Lines: 9 (17.65%)
-    '     File Size: 1.92 KB
+    '   Blank Lines: 9 (17.31%)
+    '     File Size: 1.98 KB
 
 
     '     Class ggplotLegendElement

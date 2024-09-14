@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::1d67a428631f5cc668e5e4e868661c76, src\ggplot\Internal\layers\groupPlot\stats\ggplotStatsLayer.vb"
+﻿#Region "Microsoft.VisualBasic::3082b13f4afc0687f581ac474796ab9f, src\ggplot\Internal\layers\groupPlot\stats\ggplotStatsLayer.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 62
-    '    Code Lines: 45 (72.58%)
-    ' Comment Lines: 8 (12.90%)
+    '   Total Lines: 64
+    '    Code Lines: 47 (73.44%)
+    ' Comment Lines: 8 (12.50%)
     '    - Xml Docs: 0.00%
     ' 
-    '   Blank Lines: 9 (14.52%)
-    '     File Size: 2.96 KB
+    '   Blank Lines: 9 (14.06%)
+    '     File Size: 3.05 KB
 
 
     '     Class ggplotStatsLayer

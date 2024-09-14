@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::237b75ce952237cac318844081293827, src\ggplot\Internal\render\g3d.vb"
+﻿#Region "Microsoft.VisualBasic::eda7210996fbb0eb2b172b281537f75a, src\ggplot\Internal\render\g3d.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 89
-    '    Code Lines: 73 (82.02%)
-    ' Comment Lines: 4 (4.49%)
+    '   Total Lines: 91
+    '    Code Lines: 75 (82.42%)
+    ' Comment Lines: 4 (4.40%)
     '    - Xml Docs: 0.00%
     ' 
-    '   Blank Lines: 12 (13.48%)
-    '     File Size: 4.12 KB
+    '   Blank Lines: 12 (13.19%)
+    '     File Size: 4.22 KB
 
 
     '     Module g3d

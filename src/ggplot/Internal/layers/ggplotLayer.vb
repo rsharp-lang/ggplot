@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::d3590bc9e0244b9107e54ea459627711, src\ggplot\Internal\layers\ggplotLayer.vb"
+﻿#Region "Microsoft.VisualBasic::0766fcb644d73a3a57519d7d76a6d6eb, src\ggplot\Internal\layers\ggplotLayer.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 242
-    '    Code Lines: 177 (73.14%)
-    ' Comment Lines: 27 (11.16%)
+    '   Total Lines: 244
+    '    Code Lines: 179 (73.36%)
+    ' Comment Lines: 27 (11.07%)
     '    - Xml Docs: 96.30%
     ' 
-    '   Blank Lines: 38 (15.70%)
-    '     File Size: 10.51 KB
+    '   Blank Lines: 38 (15.57%)
+    '     File Size: 10.57 KB
 
 
     '     Class ggplotLayer

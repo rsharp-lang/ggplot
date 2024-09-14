@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::4dcc0d5a38f934e7b2810cfc135030a5, src\ggraph\Internal\render\nodeRender.vb"
+﻿#Region "Microsoft.VisualBasic::f4cd83b34f4164297e45a373586d5a5b, src\ggraph\Internal\render\nodeRender.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 124
-    '    Code Lines: 106 (85.48%)
+    '   Total Lines: 126
+    '    Code Lines: 108 (85.71%)
     ' Comment Lines: 0 (0.00%)
     '    - Xml Docs: 0.00%
     ' 
-    '   Blank Lines: 18 (14.52%)
-    '     File Size: 5.09 KB
+    '   Blank Lines: 18 (14.29%)
+    '     File Size: 5.18 KB
 
 
     '     Class nodeRender

@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::86bd8f2a837acc2bd73483317052a753, src\ggplot\Internal\render\chart2D.vb"
+﻿#Region "Microsoft.VisualBasic::3cde93000ddff88e12e480b96fc71bf2, src\ggplot\Internal\render\chart2D.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 118
-    '    Code Lines: 105 (88.98%)
+    '   Total Lines: 121
+    '    Code Lines: 108 (89.26%)
     ' Comment Lines: 0 (0.00%)
     '    - Xml Docs: 0.00%
     ' 
-    '   Blank Lines: 13 (11.02%)
-    '     File Size: 4.55 KB
+    '   Blank Lines: 13 (10.74%)
+    '     File Size: 4.71 KB
 
 
     '     Module chart2D

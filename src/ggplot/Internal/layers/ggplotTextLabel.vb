@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::f5b1f994b4cc4cd6e0c1662e56ddd4cd, src\ggplot\Internal\layers\ggplotTextLabel.vb"
+﻿#Region "Microsoft.VisualBasic::ce1d10df0434806be2616bb03e1be793, src\ggplot\Internal\layers\ggplotTextLabel.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 131
-    '    Code Lines: 97 (74.05%)
-    ' Comment Lines: 12 (9.16%)
+    '   Total Lines: 133
+    '    Code Lines: 99 (74.44%)
+    ' Comment Lines: 12 (9.02%)
     '    - Xml Docs: 33.33%
     ' 
-    '   Blank Lines: 22 (16.79%)
-    '     File Size: 5.12 KB
+    '   Blank Lines: 22 (16.54%)
+    '     File Size: 5.22 KB
 
 
     '     Class ggplotTextLabel

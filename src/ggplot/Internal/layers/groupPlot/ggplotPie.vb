@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::d1d614ff61e5590b66359922d80fbd74, src\ggplot\Internal\layers\groupPlot\ggplotPie.vb"
+﻿#Region "Microsoft.VisualBasic::86156fe484b9f5aa42b3fa372a367e17, src\ggplot\Internal\layers\groupPlot\ggplotPie.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 72
-    '    Code Lines: 66 (91.67%)
+    '   Total Lines: 74
+    '    Code Lines: 68 (91.89%)
     ' Comment Lines: 0 (0.00%)
     '    - Xml Docs: 0.00%
     ' 
-    '   Blank Lines: 6 (8.33%)
-    '     File Size: 3.11 KB
+    '   Blank Lines: 6 (8.11%)
+    '     File Size: 3.21 KB
 
 
     '     Class ggplotPie

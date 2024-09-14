@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::4354ac27a3b9e8aff78877cae739b3d5, src\ggplot\Internal\layers\groupPlot\stats\ggplotStatPvalue.vb"
+﻿#Region "Microsoft.VisualBasic::7e7da0b36b834d6c495f54b6e04785ca, src\ggplot\Internal\layers\groupPlot\stats\ggplotStatPvalue.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 95
-    '    Code Lines: 78 (82.11%)
+    '   Total Lines: 98
+    '    Code Lines: 81 (82.65%)
     ' Comment Lines: 0 (0.00%)
     '    - Xml Docs: 0.00%
     ' 
-    '   Blank Lines: 17 (17.89%)
-    '     File Size: 3.98 KB
+    '   Blank Lines: 17 (17.35%)
+    '     File Size: 4.14 KB
 
 
     '     Class ggplotStatPvalue

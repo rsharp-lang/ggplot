@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::7d036d9740c3029e7305ff6a1d396d2e, src\ggraph\Internal\graphRender.vb"
+﻿#Region "Microsoft.VisualBasic::422a1249ce0a83601940ebdcafb01ea6, src\ggraph\Internal\graphRender.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 216
-    '    Code Lines: 168 (77.78%)
-    ' Comment Lines: 9 (4.17%)
+    '   Total Lines: 218
+    '    Code Lines: 170 (77.98%)
+    ' Comment Lines: 9 (4.13%)
     '    - Xml Docs: 0.00%
     ' 
-    '   Blank Lines: 39 (18.06%)
-    '     File Size: 9.43 KB
+    '   Blank Lines: 39 (17.89%)
+    '     File Size: 9.54 KB
 
 
     '     Class graphRender
