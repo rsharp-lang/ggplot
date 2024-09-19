@@ -95,7 +95,7 @@ Imports SMRUCC.Rsharp.Runtime.Vectorization
 ''' Create Elegant Data Visualisations Using the Grammar of Graphics
 ''' </summary>
 <Package("ggplot2")>
-Public Module ggplot2
+Module ggplot2
 
     ''' <summary>
     ''' ### Create a new ggplot
