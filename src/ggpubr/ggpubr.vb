@@ -56,6 +56,7 @@
 
 Imports ggplot.layers
 Imports Microsoft.VisualBasic.CommandLine.Reflection
+Imports Microsoft.VisualBasic.Math.Statistics
 Imports Microsoft.VisualBasic.Scripting.MetaData
 Imports SMRUCC.Rsharp.Runtime.Interop
 
@@ -85,7 +86,7 @@ Module Rscript
                                  Optional alpha As Double = 0.6) As ggplotLayer
 
         Return New ggplotConfidenceEllipse With {
-            .level = level,
+            .level = ChiSquareTest.TranslateLevel(level),
             .showLegend = False,
             .alpha = alpha
         }

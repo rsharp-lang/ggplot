@@ -67,10 +67,11 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Statistics.PCA
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.d3js.scale
 Imports Microsoft.VisualBasic.Imaging.Math2D
+Imports Microsoft.VisualBasic.Math.Statistics
 
 Public Class ggplotConfidenceEllipse : Inherits ggplotGroup
 
-    Public Property level As Double = 0.95
+    Public Property level As ChiSquareTest.ConfidenceLevels
 
     Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
         Dim sourceData As SerialData = New ggplotScatter().GetSerialData(stream)
@@ -78,6 +79,7 @@ Public Class ggplotConfidenceEllipse : Inherits ggplotGroup
         Dim x As Double() = sourceData.pts.Select(Function(p) CDbl(p.pt.X)).ToArray
         Dim y As Double() = sourceData.pts.Select(Function(p) CDbl(p.pt.Y)).ToArray
         Dim allGroupData = getDataGroups(groups, x, y).ToArray
+        Dim alpha As Integer = Me.alpha * 255
 
         For Each group_data As NamedCollection(Of PointF) In allGroupData
             Dim translate As PointF() = group_data _
@@ -87,6 +89,10 @@ Public Class ggplotConfidenceEllipse : Inherits ggplotGroup
             Dim shape As Ellipse = Ellipse.ConfidenceEllipse(group, level)
             Dim path As GraphicsPath = shape.BuildPath
             Dim fill As Brush = group_data.name.GetBrush
+
+            If TypeOf fill Is SolidBrush Then
+                fill = New SolidBrush(DirectCast(fill, SolidBrush).Color.Alpha(alpha))
+            End If
 
             Call stream.g.FillPath(fill, path)
         Next
