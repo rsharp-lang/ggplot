@@ -59,7 +59,7 @@ Public Class ggplotTextRepelLabel : Inherits ggplotTextLabel
                 .X = x(i) - rect.Left,
                 .Y = y(i) - rect.Top,
                 .fixed = False,
-                .size = 60
+                .size = 3
             }
             text_size = g.MeasureString(label_strs(i), labelStyle)
             source.Add(New PointF(nodes(i).X, nodes(i).Y))
@@ -75,10 +75,10 @@ Public Class ggplotTextRepelLabel : Inherits ggplotTextLabel
             Dim n As Node = nodes(i)
             Dim size = labels(n)
             Dim r1 As New RectangleF(source(i).X, source(i).Y, size.Width, size.Height)
-            Dim r2 As New RectangleF(n.X, n.Y, size.Width, size.Height)
+            Dim r2 As New RectangleF(n.X + rect.Left, n.Y + rect.Top, size.Width, size.Height)
 
             Call g.DrawLine(arrow, r1.Centre, r2.Centre)
-            Call g.DrawString((i + 1).ToString, labelStyle, colors(i).GetBrush, r2.Centre)
+            Call g.DrawString(label_strs(i), labelStyle, colors(i).GetBrush, r2.Centre)
         Next
 
         If showLegend Then
