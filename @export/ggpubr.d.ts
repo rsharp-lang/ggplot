@@ -9,6 +9,25 @@
 */
 declare namespace ggpubr {
    /**
+     * @param mapping default value Is ``null``.
+     * @param data default value Is ``null``.
+     * @param stat default value Is ``'identity'``.
+     * @param position default value Is ``'identity'``.
+     * @param parse default value Is ``false``.
+     * @param nudge_x default value Is ``0``.
+     * @param nudge_y default value Is ``0``.
+     * @param na_rm default value Is ``false``.
+     * @param show_legend default value Is ``false``.
+     * @param inherit_aes default value Is ``true``.
+     * @param color default value Is ``'steelblue'``.
+     * @param which default value Is ``null``.
+     * @param alpha default value Is ``1``.
+     * @param size default value Is ``null``.
+     * @param args default value Is ``null``.
+     * @param env default value Is ``null``.
+   */
+   function geom_text_repel(mapping?: object, data?: any, stat?: string, position?: string, parse?: boolean, nudge_x?: number, nudge_y?: number, na_rm?: boolean, show_legend?: boolean, inherit_aes?: boolean, color?: any, which?: object, alpha?: number, size?: object, args?: object, env?: object): object;
+   /**
     * ### Compute normal data ellipses
     * 
     * 

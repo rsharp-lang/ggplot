@@ -153,6 +153,7 @@
     <ProjectReference Include="..\..\..\sciBASIC#\Data_science\Mathematica\Math\Math\Math.NET5.vbproj" />
     <ProjectReference Include="..\..\..\sciBASIC#\Data_science\Visualization\Plots-statistics\plots_extensions-netcore5.vbproj" />
     <ProjectReference Include="..\..\..\sciBASIC#\gr\Microsoft.VisualBasic.Imaging\imaging.NET5.vbproj" />
+    <ProjectReference Include="..\..\..\sciBASIC#\gr\physics\physics-netcore5.vbproj" />
     <ProjectReference Include="..\..\..\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj" />
     <ProjectReference Include="..\..\..\sciBASIC#\mime\text%html\html_netcore5.vbproj" />
     <ProjectReference Include="..\ggplot\ggplot.NET5.vbproj" />
