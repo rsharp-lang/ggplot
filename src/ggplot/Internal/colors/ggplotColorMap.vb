@@ -112,7 +112,7 @@ Namespace colors
         ''' <remarks>
         ''' grays is the color palette name of the gray scale
         ''' </remarks>
-        Public Shared Function CreateColorMap(map As Object, alpha As Double, env As Environment) As ggplotColorMap
+        Public Shared Function CreateColorMap(map As Object, alpha As Double, Optional env As Environment = Nothing) As ggplotColorMap
             If TypeOf map Is vector Then
                 map = DirectCast(map, vector).data
             End If

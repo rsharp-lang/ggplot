@@ -1,65 +1,65 @@
 ﻿#Region "Microsoft.VisualBasic::f96cc398a9161069c075aadb4ffd4eb3, src\ggplot\Internal\ggplot.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (I@xieguigang.me)
-    ' 
-    ' Copyright (c) 2021 R# language
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (I@xieguigang.me)
+' 
+' Copyright (c) 2021 R# language
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
-
-
-    ' Code Statistics:
-
-    '   Total Lines: 316
-    '    Code Lines: 221 (69.94%)
-    ' Comment Lines: 54 (17.09%)
-    '    - Xml Docs: 98.15%
-    ' 
-    '   Blank Lines: 41 (12.97%)
-    '     File Size: 11.39 KB
+' Summaries:
 
 
-    ' Class ggplot
-    ' 
-    '     Properties: args, base, clearCanvas, data, driver
-    '                 environment, ggplotTheme, is3D, layers, panelBorder
-    '                 titleOffset
-    ' 
-    '     Constructor: (+1 Overloads) Sub New
-    ' 
-    '     Function: CreateReader, CreateRender, getText, getValue, Save
-    ' 
-    '     Sub: Draw2DElements, DrawLegends, DrawMultiple, DrawSingle, plot3D
-    '          PlotInternal, Register
-    ' 
-    ' /********************************************************************************/
+' Code Statistics:
+
+'   Total Lines: 316
+'    Code Lines: 221 (69.94%)
+' Comment Lines: 54 (17.09%)
+'    - Xml Docs: 98.15%
+' 
+'   Blank Lines: 41 (12.97%)
+'     File Size: 11.39 KB
+
+
+' Class ggplot
+' 
+'     Properties: args, base, clearCanvas, data, driver
+'                 environment, ggplotTheme, is3D, layers, panelBorder
+'                 titleOffset
+' 
+'     Constructor: (+1 Overloads) Sub New
+' 
+'     Function: CreateReader, CreateRender, getText, getValue, Save
+' 
+'     Sub: Draw2DElements, DrawLegends, DrawMultiple, DrawSingle, plot3D
+'          PlotInternal, Register
+' 
+' /********************************************************************************/
 
 #End Region
 
@@ -70,6 +70,7 @@ Imports System.Runtime.CompilerServices
 Imports ggplot.elements
 Imports ggplot.elements.legend
 Imports ggplot.layers
+Imports ggplot.layers.layer3d
 Imports ggplot.render
 Imports Microsoft.VisualBasic.ComponentModel.DataStructures
 Imports Microsoft.VisualBasic.Data
@@ -191,6 +192,20 @@ Public Class ggplot : Inherits Plot
         templates(driver) = activator
     End Sub
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
+    ''' <param name="driver">
+    ''' clr data object for make canvas,standard data type could be:
+    ''' 
+    ''' 1. R# runtime dataframe
+    ''' 2. sciBASIC# dataframe
+    ''' 
+    ''' other data type that registered in <see cref="templates"/> is accepeted.
+    ''' </param>
+    ''' <param name="env"></param>
+    ''' <param name="theme"></param>
+    ''' <returns></returns>
     Public Shared Function CreateRender(driver As Object, env As Environment, theme As Theme) As ggplot
         If driver Is Nothing Then
             Return New ggplot(theme) With {.template = Nothing, .data = driver, .environment = env}
@@ -219,6 +234,7 @@ Public Class ggplot : Inherits Plot
         End If
     End Function
 
+    <MethodImpl(MethodImplOptions.AggressiveInlining)>
     Public Overridable Function CreateReader(mapping As ggplotReader) As ggplotBase
         Return New ggplotBase With {
             .reader = mapping
@@ -382,4 +398,31 @@ Public Class ggplot : Inherits Plot
 
         Return image.Save(stream)
     End Function
+
+    ''' <summary>
+    ''' add plot layer to the ggplot canvas
+    ''' </summary>
+    ''' <param name="ggplot"></param>
+    ''' <param name="layer"></param>
+    ''' <returns></returns>
+    Public Shared Operator +(ggplot As ggplot, layer As ggplotLayer) As ggplot
+        If layer Is Nothing Then
+            Return ggplot
+        End If
+
+        If Not ggplot.base.reader.isPlain2D Then
+            If TypeOf layer Is ggplotScatter Then
+                layer = New ggplotScatter3d(layer)
+            End If
+        End If
+
+        If TypeOf layer Is ggplotHistogram Then
+            Call ggplotHistogram.configHistogram(ggplot, layer)
+        End If
+
+        ggplot.layers.Add(layer)
+        layer.zindex = ggplot.layers.Count
+
+        Return ggplot
+    End Operator
 End Class

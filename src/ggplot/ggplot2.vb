@@ -908,22 +908,9 @@ Module ggplot2
                 Call ggplot.environment.AddMessage("the given ggplot layer object is nothing...", MSG_TYPES.WRN)
                 Return ggplot
             End If
+        Else
+            Return ggplot + layer
         End If
-
-        If Not ggplot.base.reader.isPlain2D Then
-            If TypeOf layer Is ggplotScatter Then
-                layer = New ggplotScatter3d(layer)
-            End If
-        End If
-
-        If TypeOf layer Is ggplotHistogram Then
-            Call ggplotHistogram.configHistogram(ggplot, layer)
-        End If
-
-        ggplot.layers.Add(layer)
-        layer.zindex = ggplot.layers.Count
-
-        Return ggplot
     End Function
 
     <ROperator("+")>
