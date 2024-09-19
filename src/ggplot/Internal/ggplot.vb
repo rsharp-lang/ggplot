@@ -72,6 +72,7 @@ Imports ggplot.elements.legend
 Imports ggplot.layers
 Imports ggplot.render
 Imports Microsoft.VisualBasic.ComponentModel.DataStructures
+Imports Microsoft.VisualBasic.Data
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Plot3D.Device
@@ -92,6 +93,9 @@ Imports stdDataframe = Microsoft.VisualBasic.Math.DataFrame.DataFrame
 ''' <summary>
 ''' graphics drawing engine of the ggplot library
 ''' </summary>
+''' <remarks>
+''' ggplot is a chart <see cref="ChartPlots.Graphic.Plot"/>
+''' </remarks>
 Public Class ggplot : Inherits Plot
     Implements SaveGdiBitmap
 

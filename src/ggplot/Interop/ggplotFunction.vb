@@ -1,5 +1,5 @@
 ﻿''' <summary>
-''' ggplot function exports
+''' ggplot function exports for interop
 ''' </summary>
 Public Module ggplotFunction
 
