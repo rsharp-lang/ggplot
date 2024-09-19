@@ -44,7 +44,6 @@ Public Module ggplotFunction
 
         With ggplotDriver
             .driver = Drivers.Default
-            .data = data
             .layers = New List(Of ggplotLayer)
             .base = base
             .args = args
@@ -87,7 +86,7 @@ Public Module ggplotFunction
                 .shape = shape,
                 .size = size,
                 .showLegend = show_legend,
-                .stroke = stroke.ToString
+                .stroke = stroke?.ToString
             }
         Else
             ' 2D
@@ -97,7 +96,7 @@ Public Module ggplotFunction
                 .size = size,
                 .showLegend = show_legend,
                 .reader = mapping,
-                .stroke = stroke.ToString
+                .stroke = stroke?.ToString
             }
         End If
     End Function
