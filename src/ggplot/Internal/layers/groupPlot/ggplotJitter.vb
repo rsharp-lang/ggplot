@@ -63,6 +63,12 @@ Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.Data.ChartPlots
 Imports Microsoft.VisualBasic.Imaging
 
+#If NET48 Then
+Imports SoliBrush = System.Drawing.SolidBrush
+#Else
+Imports SolidBrush = Microsoft.VisualBasic.Imaging.SolidBrush
+#End If
+
 Namespace layers
 
     Public Class ggplotJitter : Inherits ggplotGroup
@@ -87,7 +93,7 @@ Namespace layers
                 color = colors(group.name).TranslateColor.Alpha(alpha * 255)
 
                 For i As Integer = 0 To x.Length - 1
-                    Call g.DrawCircle(New PointF(x(i), y(i)), radius, New SolidBrush(color))
+                    Call g.DrawCircle(New PointF(x(i), y(i)), CSng(radius), New SolidBrush(color))
                 Next
             Next
 

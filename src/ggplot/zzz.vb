@@ -59,9 +59,8 @@
 Imports System.Diagnostics.CodeAnalysis
 Imports System.Drawing
 Imports Microsoft.VisualBasic.MIME.Html.CSS
+Imports R_graphics.Common.Runtime
 Imports SMRUCC.Rsharp.Runtime
-Imports SMRUCC.Rsharp.Runtime.Internal
-Imports SMRUCC.Rsharp.Runtime.Internal.Invokes
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports SMRUCC.Rsharp.Runtime.Interop
 
@@ -79,7 +78,7 @@ Public Class zzz
             Call ggplot.args.setByName(arg.Key, arg.Value, env)
         Next
 
-        If Invokes.graphics.curDev.isEmpty Then
+        If curDev.isEmpty Then
             Return ggplot
         Else
             ' draw on current graphics context

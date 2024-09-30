@@ -70,7 +70,7 @@ Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.Serialization.JSON
 Imports SMRUCC.Rsharp.Runtime.Internal.[Object]
 Imports SMRUCC.Rsharp.Runtime.Vectorization
-Imports stdNum = System.Math
+Imports std = System.Math
 
 Namespace layers
 
@@ -95,11 +95,11 @@ Namespace layers
 
             If TypeOf ggplot.data Is dataframe Then
                 Dim groupFactors As String() = CLRVector.asCharacter(DirectCast(ggplot.data, dataframe)(groupName))
-                Dim zip = y.Zip(groupFactors).GroupBy(Function(z) z.Second).ToArray
+                Dim zip = y.Zip(join:=groupFactors).GroupBy(Function(z) z.Second).ToArray
                 Dim max As Double = zip.Max(Function(a) a.Sum(Function(i) i.First))
                 Dim min As Double = zip.Min(Function(a) a.Sum(Function(i) i.First))
 
-                min = stdNum.Min(0, min)
+                min = std.Min(0, min)
 
                 Return axisMap.FromNumeric({min, max})
             Else
@@ -124,7 +124,7 @@ Namespace layers
                     colors = ggplot.base.getColors(ggplot, legends, LegendStyles.Rectangle)
                 End If
 
-                Dim zip = groupFactors.Zip(y).Zip(CLRVector.asCharacter(stream.x)).GroupBy(Function(a) a.Second).ToArray
+                Dim zip = groupFactors.Zip(join:=y).Zip(join:=CLRVector.asCharacter(stream.x)).GroupBy(Function(a) a.Second).ToArray
                 Dim fill = legends.legends _
                     .Select(Function(l) New NamedValue(Of Color)(l.title, l.color.TranslateColor)) _
                     .ToArray
