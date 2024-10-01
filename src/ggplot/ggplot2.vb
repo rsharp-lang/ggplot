@@ -90,6 +90,7 @@ Imports SMRUCC.Rsharp.Runtime.Components
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports SMRUCC.Rsharp.Runtime.Interop
 Imports SMRUCC.Rsharp.Runtime.Vectorization
+Imports RInternal = SMRUCC.Rsharp.Runtime.Internal
 
 #If NET48 Then
 Imports Pen = System.Drawing.Pen
@@ -929,7 +930,7 @@ Module ggplot2
     Public Function add_layer(ggplot As ggplot, layer As ggplotLayer) As Object
         If layer Is Nothing Then
             If ggplot.environment.globalEnvironment.options.strict Then
-                Return Internal.debug.stop("the given ggplot layer object can not be nothing!", ggplot.environment)
+                Return RInternal.debug.stop("the given ggplot layer object can not be nothing!", ggplot.environment)
             Else
                 Call ggplot.environment.AddMessage("the given ggplot layer object is nothing...", MSG_TYPES.WRN)
                 Return ggplot
@@ -1408,13 +1409,13 @@ Module ggplot2
         Dim pal_name As String = CLRVector.asCharacter(name).DefaultFirst
 
         If pal_name.StringEmpty Then
-            Return Internal.debug.stop("the required color brewer color palette name should not be empty!", env)
+            Return RInternal.debug.stop("the required color brewer color palette name should not be empty!", env)
         End If
 
         Dim colors As ggplotColorMap = ggplotColorProfile.MapColorBrewer(pal_name, alpha)
 
         If colors Is Nothing Then
-            Return Internal.debug.stop({
+            Return RInternal.debug.stop({
                 $"the given color palette name({pal_name}) is not a color brewer palette name!",
                 $"given palette: {pal_name}"
             }, env)

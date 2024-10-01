@@ -59,7 +59,7 @@
 Imports ggplot.elements
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
-Imports SMRUCC.Rsharp.Runtime
+Imports RInternal = SMRUCC.Rsharp.Runtime.Internal
 
 ''' <summary>
 ''' 只绘制出一个基本的坐标轴
@@ -84,7 +84,7 @@ Public Class ggplotBase
             If data.ContainsKey("y") Then
                 dataXy.y = axisMap.Create(data!y)
             Else
-                dataXy.error = Internal.debug.stop("no axis y data mapping!", ggplot.environment, suppress:=True)
+                dataXy.error = RInternal.debug.stop("no axis y data mapping!", ggplot.environment, suppress:=True)
             End If
         End If
 
