@@ -187,7 +187,7 @@ Public Class ggplot : Inherits Plot
     ''' the driver flag for the graphics device
     ''' </summary>
     ''' <returns></returns>
-    Public Property driver As Drivers = Drivers.GDI
+    Public Property driver As Drivers = Drivers.Default
     Public Property titleOffset As Double = 2
     Public Property clearCanvas As Boolean = True
     ''' <summary>
@@ -421,6 +421,12 @@ Public Class ggplot : Inherits Plot
 
     Public Function Save(stream As Stream, format As ImageFormats) As Boolean Implements SaveGdiBitmap.Save
         Dim size As SizeF = graphicsPipeline.getSize(args.slots, environment, New SizeF(1920, 1600))
+        Dim driver As Drivers = If(format <> ImageFormats.Unknown, format.ConvertFormat, Me.driver)
+
+        If driver = Drivers.Default Then
+            driver = DriverLoad.DefaultGraphicsDevice
+        End If
+
         Dim defaultPpi As Integer = If(driver = Drivers.GDI, 300, 100)
         Dim image As GraphicsData = Plot($"{size.Width},{size.Height}", defaultPpi, driver:=driver)
 
