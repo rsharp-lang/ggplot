@@ -66,7 +66,7 @@ Imports SMRUCC.Rsharp.Runtime.Interop
 Imports RInternal = SMRUCC.Rsharp.Runtime.Internal
 
 <Assembly: RPackageModule>
-<Assembly: SuppressMessage("", "CA1416")>
+' <Assembly: SuppressMessage("", "CA1416")>
 
 Public Class zzz
 
