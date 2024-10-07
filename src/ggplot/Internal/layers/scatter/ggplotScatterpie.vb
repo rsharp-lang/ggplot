@@ -65,7 +65,7 @@ Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports SMRUCC.Rsharp.Runtime.Vectorization
-Imports stdNum = System.Math
+Imports std = System.Math
 
 Namespace layers
 
@@ -93,7 +93,7 @@ Namespace layers
                               End Function)
             Dim cellSize = getCellsize(x, y)
             Dim colors As Color() = Designer.GetColors(stream.theme.colorSet, n:=pie.Length)
-            Dim radius As Single = stdNum.Min(cellSize.Width, cellSize.Height) / 2
+            Dim radius As Single = std.Min(cellSize.Width, cellSize.Height) / 2
 
             If radius < minCell Then
                 radius = minCell
