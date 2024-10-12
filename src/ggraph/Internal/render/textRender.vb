@@ -110,7 +110,7 @@ Namespace ggraph.render
 
             For Each label As LayoutLabel In DirectCast(stream, graphPipeline).labels.Where(Function(lb) lb.hasGDIData)
                 label.style = New Font(
-                    family:=label.style.FontFamily,
+                    label.style.Name,
                     emSize:=fontsize(label.node),
                     style:=label.style.Style
                 )

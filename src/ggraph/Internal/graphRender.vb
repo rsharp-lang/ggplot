@@ -173,7 +173,7 @@ Namespace ggraph
                     .Select(Function(s) CDbl(s)) _
                     .Range
                 Dim degree = graph.vertex.Select(Function(v) CDbl(v.degree.In + v.degree.Out)).Range
-                Dim r As Double = degree.ScaleMapping(degree.Min, radiusRange)
+                Dim r As Single = degree.ScaleMapping(degree.Min, radiusRange)
                 Dim rmax As Double = degree.ScaleMapping(degree.Max, radiusRange)
 
                 x = canvas.PlotRegion.Right + radiusRange.Max * 1.5
