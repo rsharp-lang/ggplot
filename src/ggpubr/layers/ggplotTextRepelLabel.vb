@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::322e3efb99dacfc37dd793b27c08f172, src\ggpubr\layers\ggplotTextRepelLabel.vb"
+﻿#Region "Microsoft.VisualBasic::a0c06c5492cf0bd703c8e3221dfa6b27, src\ggpubr\layers\ggplotTextRepelLabel.vb"
 
     ' Author:
     ' 
@@ -187,4 +187,3 @@ Public Class ggplotTextRepelLabel : Inherits ggplotTextLabel
         End If
     End Function
 End Class
-

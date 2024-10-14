@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::5c0fca426ffc209831e0f184f058447d, src\ggplot\Interop\ggplotFunction.vb"
+﻿#Region "Microsoft.VisualBasic::5eba8ffe403a9a97e6c9327bd3e39b3a, src\ggplot\Interop\ggplotFunction.vb"
 
     ' Author:
     ' 
@@ -158,4 +158,3 @@ Public Module ggplotFunction
     End Function
 
 End Module
-
