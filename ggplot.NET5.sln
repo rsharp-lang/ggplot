@@ -71,6 +71,8 @@ Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Drawing-net4.8", "..\sciBAS
 EndProject
 Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "R_graphics.common_runtime", "..\..\R-sharp\Library\shares\graphics.common_runtime\R_graphics.common_runtime.vbproj", "{002F8EE5-771A-47FE-8DF8-A5225FDD0555}"
 EndProject
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Microsoft.VisualBasic.Drawing", "..\..\..\..\Microsoft.VisualBasic.Drawing\src\Microsoft.VisualBasic.Drawing\Microsoft.VisualBasic.Drawing.vbproj", "{0E014727-16AE-45E0-A4AB-28EDF88AE59F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1785,6 +1787,66 @@ Global
 		{002F8EE5-771A-47FE-8DF8-A5225FDD0555}.Rsharp_app_release|ARM32.Build.0 = Release|Any CPU
 		{002F8EE5-771A-47FE-8DF8-A5225FDD0555}.Rsharp_app_release|x64.ActiveCfg = Release|x64
 		{002F8EE5-771A-47FE-8DF8-A5225FDD0555}.Rsharp_app_release|x64.Build.0 = Release|x64
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.Debug|ARM32.ActiveCfg = Debug|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.Debug|ARM32.Build.0 = Debug|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.Debug|x64.ActiveCfg = Debug|x64
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.Debug|x64.Build.0 = Debug|x64
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.gcmodeller_desktop|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.gcmodeller_desktop|Any CPU.Build.0 = Debug|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.gcmodeller_desktop|ARM32.ActiveCfg = Debug|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.gcmodeller_desktop|ARM32.Build.0 = Debug|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.gcmodeller_desktop|x64.ActiveCfg = Debug|x64
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.gcmodeller_desktop|x64.Build.0 = Debug|x64
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.LipidSearch|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.LipidSearch|Any CPU.Build.0 = Debug|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.LipidSearch|ARM32.ActiveCfg = Debug|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.LipidSearch|ARM32.Build.0 = Debug|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.LipidSearch|x64.ActiveCfg = Debug|x64
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.LipidSearch|x64.Build.0 = Debug|x64
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.mzkit_win32|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.mzkit_win32|Any CPU.Build.0 = Debug|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.mzkit_win32|ARM32.ActiveCfg = Debug|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.mzkit_win32|ARM32.Build.0 = Debug|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.mzkit_win32|x64.ActiveCfg = Debug|x64
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.mzkit_win32|x64.Build.0 = Debug|x64
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.mzkit|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.mzkit|Any CPU.Build.0 = Debug|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.mzkit|ARM32.ActiveCfg = Debug|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.mzkit|ARM32.Build.0 = Debug|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.mzkit|x64.ActiveCfg = Debug|x64
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.mzkit|x64.Build.0 = Debug|x64
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.NPSearch|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.NPSearch|Any CPU.Build.0 = Debug|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.NPSearch|ARM32.ActiveCfg = Debug|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.NPSearch|ARM32.Build.0 = Debug|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.NPSearch|x64.ActiveCfg = Debug|x64
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.NPSearch|x64.Build.0 = Debug|x64
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.nuget_release|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.nuget_release|Any CPU.Build.0 = Debug|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.nuget_release|ARM32.ActiveCfg = Debug|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.nuget_release|ARM32.Build.0 = Debug|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.nuget_release|x64.ActiveCfg = Debug|x64
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.nuget_release|x64.Build.0 = Debug|x64
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.PlantMAT|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.PlantMAT|Any CPU.Build.0 = Debug|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.PlantMAT|ARM32.ActiveCfg = Debug|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.PlantMAT|ARM32.Build.0 = Debug|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.PlantMAT|x64.ActiveCfg = Debug|x64
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.PlantMAT|x64.Build.0 = Debug|x64
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.Release|ARM32.ActiveCfg = Release|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.Release|ARM32.Build.0 = Release|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.Release|x64.ActiveCfg = Release|x64
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.Release|x64.Build.0 = Release|x64
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.Rsharp_app_release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.Rsharp_app_release|Any CPU.Build.0 = Release|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.Rsharp_app_release|ARM32.ActiveCfg = Release|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.Rsharp_app_release|ARM32.Build.0 = Release|Any CPU
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.Rsharp_app_release|x64.ActiveCfg = Release|x64
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.Rsharp_app_release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1819,6 +1881,7 @@ Global
 		{9A5C1958-82B4-4762-9173-4D4957B06640} = {9F1D1BBC-EF37-4733-9D84-0F15C699B504}
 		{4DBD2EEE-8ACC-461B-9FC4-2280431D1AEC} = {ADC0BF32-B9DC-419A-8321-B7B3A6DD1F06}
 		{002F8EE5-771A-47FE-8DF8-A5225FDD0555} = {6B74B0FE-13EE-4DD5-AA9C-7258223BA131}
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F} = {ADC0BF32-B9DC-419A-8321-B7B3A6DD1F06}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5BBD0EC6-3AF0-4985-BEAA-16C62D091DD8}
