@@ -1,63 +1,63 @@
 ﻿#Region "Microsoft.VisualBasic::466e7560a33dd46834c75a289693078c, src\ggplot\zzz.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (I@xieguigang.me)
-    ' 
-    ' Copyright (c) 2021 R# language
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (I@xieguigang.me)
+' 
+' Copyright (c) 2021 R# language
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
-
-
-    ' Code Statistics:
-
-    '   Total Lines: 45
-    '    Code Lines: 36 (80.00%)
-    ' Comment Lines: 1 (2.22%)
-    '    - Xml Docs: 0.00%
-    ' 
-    '   Blank Lines: 8 (17.78%)
-    '     File Size: 1.47 KB
+' Summaries:
 
 
-    ' Class zzz
-    ' 
-    '     Function: plotGGplot
-    ' 
-    '     Sub: onLoad
-    ' 
-    ' /********************************************************************************/
+' Code Statistics:
+
+'   Total Lines: 45
+'    Code Lines: 36 (80.00%)
+' Comment Lines: 1 (2.22%)
+'    - Xml Docs: 0.00%
+' 
+'   Blank Lines: 8 (17.78%)
+'     File Size: 1.47 KB
+
+
+' Class zzz
+' 
+'     Function: plotGGplot
+' 
+'     Sub: onLoad
+' 
+' /********************************************************************************/
 
 #End Region
 
-Imports System.Diagnostics.CodeAnalysis
 Imports System.Drawing
+Imports Microsoft.VisualBasic.Drawing
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports R_graphics.Common.Runtime
 Imports SMRUCC.Rsharp.Runtime
@@ -72,6 +72,12 @@ Public Class zzz
 
     Public Shared Sub onLoad()
         Call RInternal.generic.add("plot", GetType(ggplot), AddressOf plotGGplot)
+
+#If NET48 Then
+
+#Else
+        Call SkiaDriver.Register()
+#End If
     End Sub
 
     Public Shared Function plotGGplot(ggplot As ggplot, args As list, env As Environment) As Object
