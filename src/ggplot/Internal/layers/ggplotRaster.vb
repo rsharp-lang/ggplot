@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::19cf8588f76acdcec3d8ad00d7068e25, src\ggplot\Internal\layers\ggplotRaster.vb"
+﻿#Region "Microsoft.VisualBasic::4c46b7f121809c819b90731974fd15c8, src\ggplot\Internal\layers\ggplotRaster.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 29
-    '    Code Lines: 14 (48.28%)
-    ' Comment Lines: 8 (27.59%)
+    '   Total Lines: 57
+    '    Code Lines: 41 (71.93%)
+    ' Comment Lines: 8 (14.04%)
     '    - Xml Docs: 100.00%
     ' 
-    '   Blank Lines: 7 (24.14%)
-    '     File Size: 823 B
+    '   Blank Lines: 8 (14.04%)
+    '     File Size: 2.08 KB
 
 
     '     Class ggplotRaster

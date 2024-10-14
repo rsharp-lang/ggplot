@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::432a813947ca2bc24eb6c73f8b87c275, src\ggplot\Internal\layers\scatter\ggplotScatterheatmap.vb"
+﻿#Region "Microsoft.VisualBasic::79ac4431fd287666e484befd2244a468, src\ggplot\Internal\layers\scatter\ggplotScatterheatmap.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 68
-    '    Code Lines: 55 (80.88%)
-    ' Comment Lines: 5 (7.35%)
+    '   Total Lines: 96
+    '    Code Lines: 82 (85.42%)
+    ' Comment Lines: 5 (5.21%)
     '    - Xml Docs: 80.00%
     ' 
-    '   Blank Lines: 8 (11.76%)
-    '     File Size: 3.08 KB
+    '   Blank Lines: 9 (9.38%)
+    '     File Size: 4.33 KB
 
 
     '     Class ggplotScatterheatmap

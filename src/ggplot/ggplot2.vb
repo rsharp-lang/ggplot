@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::86b8342c858558317d7285b05e2cc120, src\ggplot\ggplot2.vb"
+﻿#Region "Microsoft.VisualBasic::23f44be7380534c22f8d2a2b8f43d8bb, src\ggplot\ggplot2.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 1561
-    '    Code Lines: 659 (42.22%)
-    ' Comment Lines: 798 (51.12%)
+    '   Total Lines: 1575
+    '    Code Lines: 676 (42.92%)
+    ' Comment Lines: 798 (50.67%)
     '    - Xml Docs: 90.98%
     ' 
-    '   Blank Lines: 104 (6.66%)
-    '     File Size: 69.97 KB
+    '   Blank Lines: 101 (6.41%)
+    '     File Size: 70.77 KB
 
 
     ' Module ggplot2

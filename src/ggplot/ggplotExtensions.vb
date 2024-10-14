@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::3c0b35849aeb68fdbe9936cf30f08ea3, src\ggplot\ggplotExtensions.vb"
+﻿#Region "Microsoft.VisualBasic::52a5821d3c899c0cb77466a7eecaaf21, src\ggplot\ggplotExtensions.vb"
 
     ' Author:
     ' 
@@ -43,7 +43,7 @@
     '    - Xml Docs: 0.00%
     ' 
     '   Blank Lines: 3 (16.67%)
-    '     File Size: 686 B
+    '     File Size: 684 B
 
 
     ' Module ggplotExtensions
@@ -72,4 +72,3 @@ Public Module ggplotExtensions
         End If
     End Function
 End Module
-

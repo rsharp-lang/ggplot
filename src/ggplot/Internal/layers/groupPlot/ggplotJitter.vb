@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::012e5beed27c1fe897d08c97e8c29319, src\ggplot\Internal\layers\groupPlot\ggplotJitter.vb"
+﻿#Region "Microsoft.VisualBasic::bd1f3755ce56802cf88ec4645110f85c, src\ggplot\Internal\layers\groupPlot\ggplotJitter.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 38
-    '    Code Lines: 31 (81.58%)
+    '   Total Lines: 44
+    '    Code Lines: 36 (81.82%)
     ' Comment Lines: 0 (0.00%)
     '    - Xml Docs: 0.00%
     ' 
-    '   Blank Lines: 7 (18.42%)
-    '     File Size: 1.57 KB
+    '   Blank Lines: 8 (18.18%)
+    '     File Size: 1.72 KB
 
 
     '     Class ggplotJitter

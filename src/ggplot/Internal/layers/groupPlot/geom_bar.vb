@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::4b3d2cbd2d52d93fd96292d5a58ee892, src\ggplot\Internal\layers\groupPlot\geom_bar.vb"
+﻿#Region "Microsoft.VisualBasic::6f5c609860c6f041066d21cb57107025, src\ggplot\Internal\layers\groupPlot\geom_bar.vb"
 
     ' Author:
     ' 
@@ -43,7 +43,7 @@
     '    - Xml Docs: 85.71%
     ' 
     '   Blank Lines: 21 (16.15%)
-    '     File Size: 5.52 KB
+    '     File Size: 5.54 KB
 
 
     '     Class geom_bar

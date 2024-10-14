@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::59b5f321b51b348b919fd4db1567c46d, src\ggplot\My Project\Settings.Designer.vb"
+﻿#Region "Microsoft.VisualBasic::48876c82236266970a4fd532632f2d6e, src\ggplot\My Project\Settings.Designer.vb"
 
     ' Author:
     ' 
@@ -43,7 +43,7 @@
     '    - Xml Docs: 0.00%
     ' 
     '   Blank Lines: 12 (16.22%)
-    '     File Size: 3.02 KB
+    '     File Size: 3.00 KB
 
 
     '     Class MySettings

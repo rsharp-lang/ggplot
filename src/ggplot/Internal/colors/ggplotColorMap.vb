@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::5ca50f6fc787c9f14507f51987620c2e, src\ggplot\Internal\colors\ggplotColorMap.vb"
+﻿#Region "Microsoft.VisualBasic::652f4a31effc0143adee00ebd075c9ed, src\ggplot\Internal\colors\ggplotColorMap.vb"
 
     ' Author:
     ' 
@@ -43,7 +43,7 @@
     '    - Xml Docs: 91.30%
     ' 
     '   Blank Lines: 13 (11.11%)
-    '     File Size: 4.95 KB
+    '     File Size: 4.96 KB
 
 
     '     Class ggplotColorMap

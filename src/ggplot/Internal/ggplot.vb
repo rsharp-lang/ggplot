@@ -1,65 +1,67 @@
-﻿#Region "Microsoft.VisualBasic::f96cc398a9161069c075aadb4ffd4eb3, src\ggplot\Internal\ggplot.vb"
+﻿#Region "Microsoft.VisualBasic::8412a2b7fa03e3621e529363c742a298, src\ggplot\Internal\ggplot.vb"
 
-' Author:
-' 
-'       xieguigang (I@xieguigang.me)
-' 
-' Copyright (c) 2021 R# language
-' 
-' 
-' MIT License
-' 
-' 
-' Permission is hereby granted, free of charge, to any person obtaining a copy
-' of this software and associated documentation files (the "Software"), to deal
-' in the Software without restriction, including without limitation the rights
-' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-' copies of the Software, and to permit persons to whom the Software is
-' furnished to do so, subject to the following conditions:
-' 
-' The above copyright notice and this permission notice shall be included in all
-' copies or substantial portions of the Software.
-' 
-' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-' SOFTWARE.
-
-
-
-' /********************************************************************************/
-
-' Summaries:
+    ' Author:
+    ' 
+    '       xieguigang (I@xieguigang.me)
+    ' 
+    ' Copyright (c) 2021 R# language
+    ' 
+    ' 
+    ' MIT License
+    ' 
+    ' 
+    ' Permission is hereby granted, free of charge, to any person obtaining a copy
+    ' of this software and associated documentation files (the "Software"), to deal
+    ' in the Software without restriction, including without limitation the rights
+    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    ' copies of the Software, and to permit persons to whom the Software is
+    ' furnished to do so, subject to the following conditions:
+    ' 
+    ' The above copyright notice and this permission notice shall be included in all
+    ' copies or substantial portions of the Software.
+    ' 
+    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    ' SOFTWARE.
 
 
-' Code Statistics:
 
-'   Total Lines: 316
-'    Code Lines: 221 (69.94%)
-' Comment Lines: 54 (17.09%)
-'    - Xml Docs: 98.15%
-' 
-'   Blank Lines: 41 (12.97%)
-'     File Size: 11.39 KB
+    ' /********************************************************************************/
+
+    ' Summaries:
 
 
-' Class ggplot
-' 
-'     Properties: args, base, clearCanvas, data, driver
-'                 environment, ggplotTheme, is3D, layers, panelBorder
-'                 titleOffset
-' 
-'     Constructor: (+1 Overloads) Sub New
-' 
-'     Function: CreateReader, CreateRender, getText, getValue, Save
-' 
-'     Sub: Draw2DElements, DrawLegends, DrawMultiple, DrawSingle, plot3D
-'          PlotInternal, Register
-' 
-' /********************************************************************************/
+    ' Code Statistics:
+
+    '   Total Lines: 397
+    '    Code Lines: 271 (68.26%)
+    ' Comment Lines: 77 (19.40%)
+    '    - Xml Docs: 94.81%
+    ' 
+    '   Blank Lines: 49 (12.34%)
+    '     File Size: 14.32 KB
+
+
+    ' Class ggplot
+    ' 
+    '     Properties: args, base, clearCanvas, data, driver
+    '                 environment, ggplotTheme, is3D, layers, panelBorder
+    '                 titleOffset
+    ' 
+    '     Constructor: (+1 Overloads) Sub New
+    ' 
+    '     Function: CreateReader, CreateRender, getText, getValue, Save
+    ' 
+    '     Sub: Draw2DElements, DrawLegends, DrawMultiple, DrawSingle, plot3D
+    '          PlotInternal, Register
+    ' 
+    '     Operators: +
+    ' 
+    ' /********************************************************************************/
 
 #End Region
 

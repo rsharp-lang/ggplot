@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::dad8ec65d144a49c94a7615116bf5723, src\ggplot\Internal\elements\lineElement.vb"
+﻿#Region "Microsoft.VisualBasic::58ed31a27910eaa3e58617b6f402f027, src\ggplot\Internal\elements\lineElement.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 41
-    '    Code Lines: 32 (78.05%)
+    '   Total Lines: 59
+    '    Code Lines: 49 (83.05%)
     ' Comment Lines: 0 (0.00%)
     '    - Xml Docs: 0.00%
     ' 
-    '   Blank Lines: 9 (21.95%)
-    '     File Size: 1.12 KB
+    '   Blank Lines: 10 (16.95%)
+    '     File Size: 1.83 KB
 
 
     '     Class lineElement

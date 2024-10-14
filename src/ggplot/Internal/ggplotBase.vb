@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::9b8dcb6393996f316330d5ea3251ad28, src\ggplot\Internal\ggplotBase.vb"
+﻿#Region "Microsoft.VisualBasic::23cd6f94e876abda05a3c174a0e9da0f, src\ggplot\Internal\ggplotBase.vb"
 
     ' Author:
     ' 
@@ -43,7 +43,7 @@
     '    - Xml Docs: 100.00%
     ' 
     '   Blank Lines: 8 (22.22%)
-    '     File Size: 1.20 KB
+    '     File Size: 1.22 KB
 
 
     ' Class ggplotBase

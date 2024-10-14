@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::3adabe3b61bdef5c1f889d3711e50f12, src\ggplot\Internal\layers\scatter\ggplotScatterpie.vb"
+﻿#Region "Microsoft.VisualBasic::a0d84ec15ec60af688ab358d6ce848d2, src\ggplot\Internal\layers\scatter\ggplotScatterpie.vb"
 
     ' Author:
     ' 

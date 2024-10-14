@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::0fac9b3c5d7129d678392dddacf29df4, src\ggplot\Internal\layers\scatter\ggplotTileLayer.vb"
+﻿#Region "Microsoft.VisualBasic::f919924fb767160ac2681a9b0fcd291d, src\ggplot\Internal\layers\scatter\ggplotTileLayer.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 79
-    '    Code Lines: 64 (81.01%)
-    ' Comment Lines: 6 (7.59%)
+    '   Total Lines: 107
+    '    Code Lines: 91 (85.05%)
+    ' Comment Lines: 6 (5.61%)
     '    - Xml Docs: 0.00%
     ' 
-    '   Blank Lines: 9 (11.39%)
-    '     File Size: 3.76 KB
+    '   Blank Lines: 10 (9.35%)
+    '     File Size: 5.01 KB
 
 
     '     Class ggplotTileLayer

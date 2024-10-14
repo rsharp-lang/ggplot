@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::1146423337e3311bb3263ba0a1a2e10d, src\ggplot\Internal\layers\groupPlot\ggplotViolin.vb"
+﻿#Region "Microsoft.VisualBasic::58a36755f24674cb480bf324aaad11fa, src\ggplot\Internal\layers\groupPlot\ggplotViolin.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 59
-    '    Code Lines: 52 (88.14%)
+    '   Total Lines: 87
+    '    Code Lines: 79 (90.80%)
     ' Comment Lines: 0 (0.00%)
     '    - Xml Docs: 0.00%
     ' 
-    '   Blank Lines: 7 (11.86%)
-    '     File Size: 2.66 KB
+    '   Blank Lines: 8 (9.20%)
+    '     File Size: 3.91 KB
 
 
     '     Class ggplotViolin

@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::7d893f21ecd83381f7ce4dbe9f33bdc7, src\ggplot\Internal\layers\groupPlot\ggplotBoxplot.vb"
+﻿#Region "Microsoft.VisualBasic::d9030e87850cca15bbfb9df81cdf20ae, src\ggplot\Internal\layers\groupPlot\ggplotBoxplot.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 56
-    '    Code Lines: 50 (89.29%)
+    '   Total Lines: 84
+    '    Code Lines: 77 (91.67%)
     ' Comment Lines: 0 (0.00%)
     '    - Xml Docs: 0.00%
     ' 
-    '   Blank Lines: 6 (10.71%)
-    '     File Size: 2.49 KB
+    '   Blank Lines: 7 (8.33%)
+    '     File Size: 3.75 KB
 
 
     '     Class ggplotBoxplot

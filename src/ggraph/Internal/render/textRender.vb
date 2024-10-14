@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::38f911ab95bac89f2521a7340a689558, src\ggraph\Internal\render\textRender.vb"
+﻿#Region "Microsoft.VisualBasic::0c799090a18981d3f9fb43d4e040c268, src\ggraph\Internal\render\textRender.vb"
 
     ' Author:
     ' 
@@ -43,7 +43,7 @@
     '    - Xml Docs: 0.00%
     ' 
     '   Blank Lines: 11 (14.67%)
-    '     File Size: 3.07 KB
+    '     File Size: 3.05 KB
 
 
     '     Class textRender
