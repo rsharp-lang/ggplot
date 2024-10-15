@@ -68,6 +68,8 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.BarPlot.Histogram
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Math.Distributions.BinBox
+Imports Microsoft.VisualBasic.MIME.Html.CSS
+Imports Microsoft.VisualBasic.MIME.Html.Render
 Imports SMRUCC.Rsharp.Runtime.Vectorization
 Imports REnv = SMRUCC.Rsharp.Runtime
 
@@ -93,8 +95,9 @@ Namespace layers
                 .Name = legend.title,
                 .Value = color.TranslateColor
             }
+            Dim css As CSSEnvirnment = stream.g.LoadEnvironment
 
-            Call HistogramPlot.DrawSample(stream.g, stream.canvas.PlotRegion, histData, colorData, stream.scale)
+            Call HistogramPlot.DrawSample(stream.g, stream.canvas.PlotRegion(css), histData, colorData, stream.scale)
 
             Return New ggplotLegendElement With {
                 .legend = legend

@@ -124,7 +124,8 @@ Namespace layers
                 .ToArray
             Dim css As CSSEnvirnment = stream.g.LoadEnvironment
             Dim labelFont As Font = css.GetFont(CSSFont.TryParse(stream.theme.tagCSS))
-            Dim r As Single = std.Min(stream.canvas.PlotRegion.Height, stream.canvas.PlotRegion.Width) / 2
+            Dim plotRegion As Rectangle = stream.canvas.PlotRegion(css)
+            Dim r As Single = std.Min(plotRegion.Height, plotRegion.Width) / 2
             Dim topLeft As New Point With {
                 .X = stream.canvas.Padding.Left,
                 .Y = stream.canvas.Padding.Top

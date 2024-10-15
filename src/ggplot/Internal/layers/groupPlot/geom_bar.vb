@@ -67,6 +67,8 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.d3js.scale
 Imports Microsoft.VisualBasic.Linq
+Imports Microsoft.VisualBasic.MIME.Html.CSS
+Imports Microsoft.VisualBasic.MIME.Html.Render
 Imports Microsoft.VisualBasic.Serialization.JSON
 Imports SMRUCC.Rsharp.Runtime.Internal.[Object]
 Imports SMRUCC.Rsharp.Runtime.Vectorization
@@ -151,6 +153,8 @@ Namespace layers
                     .Samples = groupData.ToArray,
                     .Serials = fill
                 }
+                Dim css As CSSEnvirnment = stream.g.LoadEnvironment
+                Dim plotRegion As Rectangle = stream.canvas.PlotRegion(css)
 
                 Call stackbars.Samples _
                     .Select(Function(a) a.tag) _
@@ -159,13 +163,13 @@ Namespace layers
                     .DoCall(AddressOf VBDebugger.EchoLine)
 
                 If ggplot.ggplotTheme.flipAxis Then
-                    Dim width = stream.canvas.PlotRegion.Height / stackbars.Samples.Length
+                    Dim width = plotRegion.Height / stackbars.Samples.Length
                     width = width - width * groupWidth
                     Dim dw As Double = width / 2
 
                     Call StackedPercentageBarPlot.DrawStackBarsFlip(stackbars, stream.g, stream.canvas, dw)
                 Else
-                    Dim width = stream.canvas.PlotRegion.Width / stackbars.Samples.Length
+                    Dim width = plotRegion.Width / stackbars.Samples.Length
                     width = width - width * groupWidth
                     Dim dw As Double = width / 2
 

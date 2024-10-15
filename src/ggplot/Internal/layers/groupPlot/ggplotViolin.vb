@@ -114,8 +114,9 @@ Namespace layers
             Dim allGroupData = getDataGroups(stream).ToArray
             Dim colors As Func(Of Object, String) = getColors(stream, allGroupData.Select(Function(i) i.name))
             Dim gridPen As Pen = css.GetPen(Stroke.TryParse(stream.theme.gridStrokeX))
-            Dim bottom = stream.canvas.PlotRegion.Bottom
-            Dim top = stream.canvas.PlotRegion.Top
+            Dim plotRect As Rectangle = stream.canvas.PlotRegion(css)
+            Dim bottom = plotRect.Bottom
+            Dim top = plotRect.Top
 
             For Each group As NamedCollection(Of Double) In allGroupData
                 Dim x As Double = xscale(group.name)

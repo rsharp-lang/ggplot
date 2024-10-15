@@ -59,6 +59,7 @@
 Imports System.Drawing
 Imports Microsoft.VisualBasic.Drawing
 Imports Microsoft.VisualBasic.MIME.Html.CSS
+Imports Microsoft.VisualBasic.MIME.Html.Render
 Imports R_graphics.Common.Runtime
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
@@ -92,11 +93,12 @@ Public Class zzz
             Dim dev As graphicsDevice = curDev
             Dim padding As Padding = Padding.TryParse(ggplot.ggplotTheme.padding)
             Dim size As Size = dev.g.Size
+            Dim css As CSSEnvirnment = dev.g.LoadEnvironment
             Dim layout As New Rectangle With {
                 .X = padding.Left,
                 .Y = padding.Top,
-                .Width = size.Width - padding.Horizontal,
-                .Height = size.Height - padding.Vertical
+                .Width = size.Width - padding.Horizontal(css),
+                .Height = size.Height - padding.Vertical(css)
             }
 
             ggplot.clearCanvas = False

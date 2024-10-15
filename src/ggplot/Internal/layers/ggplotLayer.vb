@@ -162,7 +162,7 @@ Namespace layers
             legends = New legendColorMapElement With {
                 .colorMapLegend = legend,
                 .width = padding.Padding.Right * 3 / 4,
-                .height = padding.PlotRegion.Height
+                .height = padding.PlotRegion(css).Height
             }
 
             Return data.Select(Function(d) maps(d)).ToArray

@@ -159,7 +159,7 @@ Namespace layers
                     .titleFont = css.GetFont(stream.theme.legendTitleCSS)
                 },
                 .width = stream.canvas.Padding.Right * 3 / 4,
-                .height = stream.canvas.PlotRegion.Height
+                .height = stream.canvas.PlotRegion(css).Height
             }
         End Function
     End Class

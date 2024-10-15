@@ -92,6 +92,10 @@ Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports SMRUCC.Rsharp.Runtime.Vectorization
 Imports std = System.Math
 Imports stdDataframe = Microsoft.VisualBasic.Math.DataFrame.DataFrame
+Imports Microsoft.VisualBasic.MIME.Html.CSS
+Imports Microsoft.VisualBasic.MIME.Html.Render
+
+
 
 #If NET48 Then
 Imports Pen = System.Drawing.Pen
@@ -321,7 +325,8 @@ Public Class ggplot : Inherits Plot
         Dim y As Double() = baseData.y.ToNumeric
         Dim z As Double() = baseData.z.ToNumeric
         Dim labelColor As New SolidBrush(theme.tagColor.TranslateColor)
-        Dim camera As Camera = Me.Camera(canvas.PlotRegion.Size)
+        Dim css As CSSEnvirnment = g.LoadEnvironment
+        Dim camera As Camera = Me.Camera(canvas.PlotRegion(css).Size)
         Dim legends As New List(Of IggplotLegendElement)
 
         Call g3d.populateModels(Me, g, baseData, x, y, z, legends) _
@@ -340,9 +345,10 @@ Public Class ggplot : Inherits Plot
         Dim legendGroups = From group As IggplotLegendElement
                            In legends.SafeQuery
                            Where Not group Is Nothing
+        Dim css As CSSEnvirnment = g.LoadEnvironment
 
         If Not main.StringEmpty Then
-            Call DrawMainTitle(g, canvas.PlotRegion, offsetFactor:=titleOffset)
+            Call DrawMainTitle(g, canvas.PlotRegion(css), offsetFactor:=titleOffset)
         End If
         If theme.drawLegend Then
             Call DrawLegends(
@@ -382,7 +388,8 @@ Public Class ggplot : Inherits Plot
 
     Private Sub DrawMultiple(all As IggplotLegendElement(), g As IGraphics, canvas As GraphicsRegion, pos As PointF)
         Dim width As Double = canvas.Padding.Right / (all.Length + 1)
-        Dim box As Rectangle = canvas.PlotRegion
+        Dim css As CSSEnvirnment = g.LoadEnvironment
+        Dim box As Rectangle = canvas.PlotRegion(css)
         Dim x As Double
         Dim y As Double
 
@@ -403,7 +410,8 @@ Public Class ggplot : Inherits Plot
     Private Sub DrawSingle(legend As IggplotLegendElement, g As IGraphics, canvas As GraphicsRegion, pos As PointF)
         If legend.size > 0 Then
             Dim size As SizeF = legend.MeasureSize(g)
-            Dim rect As Rectangle = canvas.PlotRegion
+            Dim css As CSSEnvirnment = g.LoadEnvironment
+            Dim rect As Rectangle = canvas.PlotRegion(css)
             ' default is padding right / middle in height
             Dim x As Single
             Dim y As Single
