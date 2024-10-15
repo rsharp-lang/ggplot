@@ -163,6 +163,7 @@ Namespace ggraph
             Dim ytop As Double = y
             Dim ybottom As Double
             Dim A As SizeF = g.MeasureString("A", labelFont)
+            Dim plotRegion As Rectangle = canvas.PlotRegion(css)
 
             If Not nodeStyle Is Nothing Then
                 ' draw node radius
@@ -176,8 +177,8 @@ Namespace ggraph
                 Dim r As Single = degree.ScaleMapping(degree.Min, radiusRange)
                 Dim rmax As Double = degree.ScaleMapping(degree.Max, radiusRange)
 
-                x = canvas.PlotRegion.Right + radiusRange.Max * 1.5
-                y = canvas.PlotRegion.Top + radiusRange.Min * 1.125
+                x = plotRegion.Right + radiusRange.Max * 1.5
+                y = plotRegion.Top + radiusRange.Min * 1.125
                 ytop = y
 
                 Call g.DrawString("Node Degree", labelFont, Brushes.Black, New PointF(x - rmax / 2, ytop - A.Height * 1.5))
@@ -200,7 +201,7 @@ Namespace ggraph
                 ' draw node shape type
                 y += r * 2
                 r *= 0.85
-                x = canvas.PlotRegion.Right + radiusRange.Max * 1.125
+                x = plotRegion.Right + radiusRange.Max * 1.125
 
                 Dim shapes = nodeStyle.getShapes(graph)
                 Dim nodeShapes = graph.vertex _

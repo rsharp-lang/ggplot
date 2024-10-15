@@ -80,7 +80,7 @@ Public Class ggplotTextRepelLabel : Inherits ggplotTextLabel
         Dim x = stream.x
         Dim y = stream.y
         Dim scale As DataScaler = stream.scale
-        Dim rect As Rectangle = stream.canvas.PlotRegion
+        Dim rect As Rectangle = stream.canvas.PlotRegion(css)
 
         If useCustomData Then
             label_strs = ggplot.getText(reader.label)
