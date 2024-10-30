@@ -412,12 +412,13 @@ Public Class ggplot : Inherits Plot
             Dim size As SizeF = legend.MeasureSize(g)
             Dim css As CSSEnvirnment = g.LoadEnvironment
             Dim rect As Rectangle = canvas.PlotRegion(css)
+            Dim padding As New PaddingLayout(canvas.Padding.LayoutVector(css))
             ' default is padding right / middle in height
             Dim x As Single
             Dim y As Single
 
             If pos.IsEmpty Then
-                x = (canvas.Padding.Right - size.Width) / 2
+                x = (padding.Right - size.Width) / 2
                 x = std.Max(x, 10) + rect.Right
                 y = (rect.Height - size.Height) / 2 + rect.Top
             Else
