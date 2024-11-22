@@ -69,6 +69,11 @@ Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.MIME.Html
 Imports SMRUCC.Rsharp.Runtime.Vectorization
 
+#If NET48 Then
+#Else
+Imports Brush = Microsoft.VisualBasic.Imaging.Brush
+#End If
+
 Namespace layers
 
     Public Class ggplotScatter : Inherits ggplotLayer
@@ -79,25 +84,29 @@ Namespace layers
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim legends As IggplotLegendElement = Nothing
-            Dim serial As SerialData = GetSerialData(stream, legends)
-            Dim brush = serial.BrushHandler
+            Dim serials As SerialData() = GetSerialData(stream, legends).ToArray
+            Dim brush As Func(Of PointData, brush)
 
-            Call Scatter2D.DrawScatter(
-                g:=stream.g,
-                scatter:=serial.pts,
-                scaler:=stream.scale,
-                fillPie:=True,
-                shape:=serial.shape,
-                pointSize:=serial.pointSize,
-                getPointBrush:=brush,
-                strokeCss:=CSS.Stroke.TryParse(stroke, Nothing)
-            ) _
-            .ToArray
+            For Each serial As SerialData In serials
+                brush = serial.BrushHandler
+
+                Call Scatter2D.DrawScatter(
+                    g:=stream.g,
+                    scatter:=serial.pts,
+                    scaler:=stream.scale,
+                    fillPie:=True,
+                    shape:=serial.shape,
+                    pointSize:=serial.pointSize,
+                    getPointBrush:=brush,
+                    strokeCss:=CSS.Stroke.TryParse(stroke, Nothing)
+                ) _
+                .ToArray
+            Next
 
             Return legends
         End Function
 
-        Public Function GetSerialData(stream As ggplotPipeline, <Out> Optional ByRef legends As IggplotLegendElement = Nothing) As SerialData
+        Public Function GetSerialData(stream As ggplotPipeline, <Out> Optional ByRef legends As IggplotLegendElement = Nothing) As IEnumerable(Of SerialData)
             Dim colors As String() = Nothing
             Dim ggplot As ggplot = stream.ggplot
             Dim size As Single = If(ggplot.driver = Drivers.SVG, Me.size * stream.g.Dpi / 96, Me.size)
@@ -126,7 +135,11 @@ Namespace layers
                     )
                 End If
 
-                Return createSerialData(stream.defaultTitle, x, y, colors, size, shape, colorMap)
+                Return createSerialData(
+                    stream.defaultTitle,
+                    x, y, colors,
+                    size,
+                    ggplotBase.checkMultipleLegendGroup(legends), shape, colorMap)
             Else
                 With Me.data
                     If useCustomColorMaps Then
@@ -145,7 +158,11 @@ Namespace layers
                         }
                     End If
 
-                    Return createSerialData(reader.ToString, .x.ToFloat, .y.ToFloat, colors, size, shape, colorMap)
+                    Return createSerialData(
+                        reader.ToString,
+                        .x.ToFloat, .y.ToFloat, colors,
+                        size,
+                        ggplotBase.checkMultipleLegendGroup(legends), shape, colorMap)
                 End With
             End If
         End Function
