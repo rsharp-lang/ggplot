@@ -72,11 +72,12 @@ Namespace layers
         Public Property line_width As Single = 5
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
-            Dim serial As SerialData
+            Dim serials As SerialData()
             Dim colors As String() = Nothing
             Dim legends As IggplotLegendElement = Nothing
             Dim ggplot As ggplot = stream.ggplot
             Dim g As IGraphics = stream.g
+            Dim multiple_groups As Boolean
 
             If Not useCustomData Then
                 Dim x = CLRVector.asFloat(stream.x)
@@ -89,7 +90,12 @@ Namespace layers
                     colors = ggplot.base.getColors(ggplot, legends, LegendStyles.SolidLine)
                 End If
 
-                serial = ggplotScatter.createSerialData(ggplot.base.reader.ToString, x, CLRVector.asFloat(y), colors, line_width, LegendStyles.SolidLine, colorMap)
+                multiple_groups = ggplotBase.checkMultipleLegendGroup(legends)
+                serials = ggplotScatter.createSerialData(
+                    ggplot.base.reader.ToString,
+                    x, CLRVector.asFloat(y), colors,
+                    line_width,
+                    multiple_groups, LegendStyles.SolidLine, colorMap).ToArray
             Else
                 With Me.data
                     If useCustomColorMaps Then
@@ -108,11 +114,18 @@ Namespace layers
                         }
                     End If
 
-                    serial = ggplotScatter.createSerialData(reader.ToString, .x.ToFloat, .y.ToFloat, colors, line_width, LegendStyles.SolidLine, colorMap)
+                    multiple_groups = ggplotBase.checkMultipleLegendGroup(legends)
+                    serials = ggplotScatter.createSerialData(
+                        reader.ToString,
+                        .x.ToFloat, .y.ToFloat, colors,
+                        line_width,
+                        multiple_groups, LegendStyles.SolidLine, colorMap).ToArray
                 End With
             End If
 
-            Call LinePlot2D.DrawLine(stream.g, stream.canvas, stream.scale, serial, Splines.None)
+            For Each serial As SerialData In serials
+                Call LinePlot2D.DrawLine(stream.g, stream.canvas, stream.scale, serial, Splines.None)
+            Next
 
             Return legends
         End Function
