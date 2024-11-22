@@ -150,13 +150,14 @@ Namespace layers
             End If
         End Function
 
-        Protected Friend Shared Function createSerialData(legend As String,
-                                                          x As Single(),
-                                                          y As Single(),
-                                                          colors As String(),
-                                                          size!,
-                                                          shape As LegendStyles?,
-                                                          colorMap As ggplotColorMap) As SerialData
+        Protected Friend Shared Iterator Function createSerialData(legend As String,
+                                                                   x As Single(),
+                                                                   y As Single(),
+                                                                   colors As String(),
+                                                                   size!,
+                                                                   multiple_group As Boolean,
+                                                                   shape As LegendStyles?,
+                                                                   colorMap As ggplotColorMap) As IEnumerable(Of SerialData)
             Dim color As Color
 
             If colors Is Nothing Then
@@ -171,20 +172,33 @@ Namespace layers
                 color = Color.Black
             End If
 
-            Return New SerialData() With {
-                .color = color,
-                .pointSize = size,
-                .width = size,
-                .shape = If(shape Is Nothing, LegendStyles.Circle, shape.Value),
-                .title = legend,
-                .pts = x _
-                    .Select(Function(xi, i)
-                                Return New PointData(xi, y(i)) With {
-                                    .color = If(colors Is Nothing, Nothing, colors(i))
-                                }
-                            End Function) _
-                    .ToArray
-            }
+            If multiple_group Then
+                Dim groups As New Dictionary(Of String, List(Of PointData))
+                Dim color_str As String
+
+                For i As Integer = 0 To x.Length - 1
+                    color_str = If(colors Is Nothing, Nothing, colors(i))
+
+                    If Not groups.ContainsKey(color_str) Then
+
+                    End If
+                Next
+            Else
+                Yield New SerialData() With {
+                    .color = color,
+                    .pointSize = size,
+                    .width = size,
+                    .shape = If(shape Is Nothing, LegendStyles.Circle, shape.Value),
+                    .title = legend,
+                    .pts = x _
+                        .Select(Function(xi, i)
+                                    Return New PointData(xi, y(i)) With {
+                                        .color = If(colors Is Nothing, Nothing, colors(i))
+                                    }
+                                End Function) _
+                        .ToArray
+                }
+            End If
         End Function
     End Class
 End Namespace
