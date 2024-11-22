@@ -186,7 +186,7 @@ Module ggplot2
         Dim theme As New Theme With {
             .axisLabelCSS = "font-style: strong; font-size: 12; font-family: " & FontFace.MicrosoftYaHei & ";",
             .axisTickCSS = "font-style: normal; font-size: 10; font-family: " & FontFace.MicrosoftYaHei & ";",
-            .padding = InteropArgumentHelper.getPadding(args.getByName("padding"), g.DefaultUltraLargePadding),
+            .padding = InteropArgumentHelper.getPadding(args.getByName("padding"), "padding: 10% 20% 10% 10%;"),
             .drawLegend = True,
             .legendLabelCSS = "font-style: normal; font-size: 13; font-family: " & FontFace.MicrosoftYaHei & ";",
             .colorSet = RColorPalette.getColorSet(colorSet, [default]:="paper"),
