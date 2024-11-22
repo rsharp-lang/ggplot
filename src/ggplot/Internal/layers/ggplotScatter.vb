@@ -197,8 +197,23 @@ Namespace layers
                     color_str = If(colors Is Nothing, Nothing, colors(i))
 
                     If Not groups.ContainsKey(color_str) Then
-
+                        Call groups.Add(color_str, New List(Of PointData))
                     End If
+
+                    Call groups(color_str).Add(New PointData(x(i), y(i)) With {
+                        .color = color_str
+                    })
+                Next
+
+                For Each group In groups.Values
+                    Yield New SerialData() With {
+                        .color = color,
+                        .pointSize = size,
+                        .width = size,
+                        .shape = If(shape Is Nothing, LegendStyles.Circle, shape.Value),
+                        .title = legend,
+                        .pts = group.ToArray
+                    }
                 Next
             Else
                 Yield New SerialData() With {
