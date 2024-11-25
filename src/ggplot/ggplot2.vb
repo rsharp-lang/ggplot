@@ -827,6 +827,7 @@ Module ggplot2
     End Function
 
     <ExportAPI("geom_barplot")>
+    <RApiReturn(GetType(ggplotBarplot))>
     Public Function geom_barplot(Optional color As list = Nothing,
                                  Optional width As Double = 1,
                                  Optional alpha As Double = 0.95,
@@ -840,6 +841,7 @@ Module ggplot2
     End Function
 
     <ExportAPI("geom_violin")>
+    <RApiReturn(GetType(ggplotViolin))>
     Public Function geom_violin(Optional color As list = Nothing,
                                 Optional width As Double = 0.9,
                                 Optional alpha As Double = 0.95,
@@ -853,6 +855,7 @@ Module ggplot2
     End Function
 
     <ExportAPI("geom_jitter")>
+    <RApiReturn(GetType(ggplotJitter))>
     Public Function geom_jitter(Optional mapping As ggplotReader = NULL,
                                 Optional data As Object = NULL,
                                 Optional stat As Object = "identity",
@@ -872,6 +875,7 @@ Module ggplot2
     End Function
 
     <ExportAPI("geom_scatterpie")>
+    <RApiReturn(GetType(ggplotScatterpie))>
     Public Function geom_scatterpie(data As String()) As ggplotLayer
         Return New ggplotScatterpie With {
             .pie = data
@@ -879,6 +883,7 @@ Module ggplot2
     End Function
 
     <ExportAPI("geom_scatterheatmap")>
+    <RApiReturn(GetType(ggplotScatterheatmap))>
     Public Function geom_scatterheatmap(data As String,
                                         Optional colors As String = Nothing,
                                         Optional env As Environment = Nothing) As ggplotLayer
@@ -890,6 +895,7 @@ Module ggplot2
     End Function
 
     <ExportAPI("geom_pie")>
+    <RApiReturn(GetType(ggplotPie))>
     Public Function geom_pie() As ggplotLayer
         Return New ggplotPie
     End Function
@@ -902,6 +908,7 @@ Module ggplot2
     End Function
 
     <ExportAPI("geom_tile")>
+    <RApiReturn(GetType(ggplotTileLayer))>
     Public Function geom_tile(Optional mapping As ggplotReader = NULL) As Object
         Return New ggplotTileLayer With {.reader = mapping}
     End Function
@@ -1030,6 +1037,7 @@ Module ggplot2
     ''' </param>
     ''' <returns></returns>
     <ExportAPI("stat_pvalue_manual")>
+    <RApiReturn(GetType(ggplotStatsLayer))>
     Public Function stat_pvalue_manual(comparisons As dataframe) As ggplotLayer
         Return New ggplotStatsLayer With {
             .stats = compare_means.fromManualData(comparisons)
@@ -1044,6 +1052,7 @@ Module ggplot2
     ''' <param name="hide_ns">hide not sig result?</param>
     ''' <returns></returns>
     <ExportAPI("stat_compare_means")>
+    <RApiReturn(GetType(ggplotStatPvalue))>
     Public Function stat_compare_means(Optional method As String = "anova",
                                        Optional ref_group As String = ".all.",
                                        Optional hide_ns As Boolean = True) As ggplotLayer
@@ -1069,6 +1078,7 @@ Module ggplot2
     ''' </param>
     ''' <returns></returns>
     <ExportAPI("geom_signif")>
+    <RApiReturn(GetType(ggplotSignifLayer))>
     Public Function geom_signif(comparisons As list, Optional test As String = "t.test") As ggplotLayer
         Return New ggplotSignifLayer With {
             .comparision = comparisons,
@@ -1103,6 +1113,7 @@ Module ggplot2
     ''' will remove the subtitle from the plot.
     ''' </remarks>
     <ExportAPI("xlab")>
+    <RApiReturn(GetType(ggplotAxisLabel))>
     Public Function xlab(label As String) As ggplotOption
         Return New ggplotAxisLabel With {
             .x = label,
@@ -1138,6 +1149,7 @@ Module ggplot2
     ''' will remove the subtitle from the plot.
     ''' </remarks>
     <ExportAPI("ylab")>
+    <RApiReturn(GetType(ggplotAxisLabel))>
     Public Function ylab(label As String) As ggplotOption
         Return New ggplotAxisLabel With {
             .x = Nothing,
@@ -1181,7 +1193,9 @@ Module ggplot2
     ''' axis.line.x.top, axis.line.y.left, axis.line.y.right). ``axis.line.*.*`` 
     ''' inherits from axis.line.* which inherits from axis.line, which in turn 
     ''' inherits from line</param>
-    ''' <returns></returns>
+    ''' <returns>
+    ''' A style mapper for create the internal <see cref="Theme"/> object
+    ''' </returns>
     ''' <remarks>
     ''' Theme elements inherit properties from other theme elements hierarchically. 
     ''' For example, axis.title.x.bottom inherits from axis.title.x which inherits 
@@ -1193,22 +1207,23 @@ Module ggplot2
     ''' Learn more about setting these aesthetics In vignette("ggplot2-specs").
     ''' </remarks>
     <ExportAPI("theme")>
-    Public Function theme(Optional text As textElement = Nothing,
-                          Optional axis_text As textElement = Nothing,
-                          Optional axis_title As textElement = Nothing,
-                          Optional axis_line As Object = Stroke.AxisStroke,
-                          Optional axis_text_x As textElement = Nothing,
-                          Optional legend_background As String = "white",
-                          Optional legend_text As textElement = Nothing,
-                          Optional legend_tick As textElement = Nothing,
-                          Optional legend_title As textElement = Nothing,
-                          Optional legend_split As Integer = 6,
-                          Optional plot_background As String = Nothing,
-                          Optional plot_title As textElement = Nothing,
-                          Optional panel_background As String = Nothing,
-                          Optional panel_grid As Object = Stroke.AxisGridStroke,
-                          Optional panel_grid_major As Object = Stroke.AxisGridStroke,
-                          Optional panel_border As rectElement = Nothing) As ggplotOption
+    <RApiReturn(GetType(ggplotTheme))>
+    Public Function theme_f(Optional text As textElement = Nothing,
+                            Optional axis_text As textElement = Nothing,
+                            Optional axis_title As textElement = Nothing,
+                            Optional axis_line As Object = Stroke.AxisStroke,
+                            Optional axis_text_x As textElement = Nothing,
+                            Optional legend_background As String = "white",
+                            Optional legend_text As textElement = Nothing,
+                            Optional legend_tick As textElement = Nothing,
+                            Optional legend_title As textElement = Nothing,
+                            Optional legend_split As Integer = 6,
+                            Optional plot_background As String = Nothing,
+                            Optional plot_title As textElement = Nothing,
+                            Optional panel_background As String = Nothing,
+                            Optional panel_grid As Object = Stroke.AxisGridStroke,
+                            Optional panel_grid_major As Object = Stroke.AxisGridStroke,
+                            Optional panel_border As rectElement = Nothing) As ggplotOption
         ' 20220829
         ' 大部分的参数值都应该设置为空值
         ' 否则会在配置theme对象的时候出现错误覆盖的问题
