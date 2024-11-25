@@ -93,6 +93,7 @@ Namespace layers
     Public Class ggplotLine : Inherits ggplotLayer
 
         Public Property line_width As Single = 5
+        Public Property bspline As Boolean = False
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim serials As SerialData()
@@ -147,7 +148,11 @@ Namespace layers
             End If
 
             For Each serial As SerialData In serials
-                Call LinePlot2D.DrawLine(stream.g, stream.canvas, stream.scale, serial, Splines.None)
+                Call LinePlot2D.DrawLine(
+                    stream.g, stream.canvas, stream.scale,
+                    serial,
+                    interplot:=If(bspline, Splines.B_Spline, Splines.None)
+                )
             Next
 
             Return legends

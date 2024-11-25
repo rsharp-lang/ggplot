@@ -522,6 +522,9 @@ Module ggplot2
     ''' geom_step() creates a stairstep plot, highlighting exactly when changes 
     ''' occur. The group aesthetic determines which cases are connected together.
     ''' </summary>
+    ''' <param name="bspline">
+    ''' options for the b-spline smooth of the line plot
+    ''' </param>
     ''' <returns>A line chart plot layer</returns>
     ''' <remarks>
     ''' An alternative parameterisation is geom_segment(), where each line corresponds 
@@ -535,6 +538,7 @@ Module ggplot2
                               Optional width As Single = 5,
                               Optional show_legend As Boolean = True,
                               Optional alpha As Double = 1,
+                              Optional bspline As Boolean = False,
                               Optional env As Environment = Nothing) As ggplotLayer
 
         Dim rawColor As String = RColorPalette.getColor(color, Nothing)
@@ -544,7 +548,8 @@ Module ggplot2
             .showLegend = show_legend,
             .colorMap = colorMap,
             .line_width = width,
-            .reader = mapping
+            .reader = mapping,
+            .bspline = bspline
         }
     End Function
 
