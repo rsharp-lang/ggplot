@@ -806,8 +806,9 @@ Module ggplot2
     ''' <param name="size"></param>
     ''' <param name="show_legend"></param>
     ''' <param name="env"></param>
-    ''' <returns></returns>
+    ''' <returns>A bar plot layer</returns>
     <ExportAPI("geom_bar")>
+    <RApiReturn(GetType(geom_bar))>
     Public Function geom_bar(Optional stat As Object = "identity",
                              Optional position As Object = "stack",
                              Optional color As Object = "black",

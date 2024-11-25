@@ -96,6 +96,35 @@ Imports TextureBrush = Microsoft.VisualBasic.Imaging.TextureBrush
 
 Namespace layers
 
+    ''' <summary>
+    ''' The violin plot is a statistical graph used to visualize the distribution of numerical data, similar to a box plot but with more information. 
+    ''' It was introduced byHintze and Nelson in 1998. Here's how it works:
+    ''' 
+    ''' ### Key Components:
+    ''' 1. **Kernel Density Estimation (KDE)**: The violin plot uses KDE to provide a better understanding of the distribution of data. The width of the violin at a given y-value represents the density of data points at that value.
+    ''' 2. **Box Plot Elements**: Inside the violin, there is often a smaller box plot which provides summary statistics:
+    '''    - **Median**: A line inside the box that indicates the median value of the data.
+    '''    - **Interquartile Range (IQR)**: The box's width represents the IQR, which is the range between the first quartile (25th percentile) and the third quartile (75th percentile).
+    '''    - **Whiskers**: Lines extending from the box that represent the range of the data, typically 1.5 * IQR above the third quartile and below the first quartile.
+    '''    - **Outliers**: Individual points outside the whiskers, indicating values that are significantly different from the rest of the dataset.
+    '''    
+    ''' ### How to Interpret:
+    ''' - **Shape**: The shape of the violin plot reflects the underlying distribution of the data. A symmetric shape indicates a normal distribution, while an asymmetric shape indicates a skewed distribution.
+    ''' - **Size**: The width of the violin at different points is proportional to the number of data points in that region. Wider sections indicate more data points, while narrower sections indicate fewer data points.
+    ''' - **Box Plot Inside**: This gives you a quick view of the median, IQR, and potential outliers, which can be compared across violins if multiple violins are plotted side by side.
+    ''' 
+    ''' ### Advantages:
+    ''' - Provides more detailed information about the distribution of data than a traditional box plot.
+    ''' - Can easily compare distributions between groups by plotting multiple violins side by side.
+    ''' 
+    ''' ### Disadvantages:
+    ''' - Can be more complex to understand for those not familiar with statistical distributions.
+    ''' - May be less precise in representing the exact distribution of data, especially in the tails, compared to a histogram or density plot.
+    ''' 
+    ''' ### Use Cases:
+    ''' - Violin plots are commonly used in fields like data science, biostatistics, and economics to visualize distributions of datasets, 
+    '''   especially when comparing multiple datasets or groups.
+    ''' </summary>
     Public Class ggplotViolin : Inherits ggplotGroup
 
         Public Property splineDegree As Single = 2
