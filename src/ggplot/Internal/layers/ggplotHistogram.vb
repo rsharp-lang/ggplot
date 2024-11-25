@@ -71,10 +71,42 @@ Imports Microsoft.VisualBasic.Math.Distributions.BinBox
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports Microsoft.VisualBasic.MIME.Html.Render
 Imports SMRUCC.Rsharp.Runtime.Vectorization
-Imports REnv = SMRUCC.Rsharp.Runtime
 
 Namespace layers
 
+    ''' <summary>
+    ''' A histogram is a type of bar plot that represents the distribution of numerical data. It is an estimate of the 
+    ''' probability distribution of a continuous variable and was first introduced by Karl Pearson. Histograms are particularly 
+    ''' useful for showcasing the frequency distribution of a dataset, which can provide insights into the underlying
+    ''' properties of the data.
+    ''' 
+    ''' Here's how a histogram is constructed and what each of its components represents:
+    ''' 
+    ''' ### Construction of a Histogram:
+    ''' 1. **Data Grouping:** The data range is divided into a series of intervals, also known as bins. The choice of the number of bins can affect the shape of the histogram, so it's important to choose a number that accurately represents the data.
+    ''' 2. **Counting Frequencies:** For each bin, the number of data points that fall into the interval is counted. This is the frequency of the bin.
+    ''' 3. **Plotting:** The frequencies are plotted on the vertical axis, and the bin intervals are plotted on the horizontal axis. Each bar's height corresponds to the frequency of data points within the interval that the bar represents.
+    ''' 
+    ''' ### Components of a Histogram:
+    ''' - **BARS:** Each bar represents the frequency of data points within a particular interval. The taller the bar, the more data points fall into that interval.
+    ''' - **X-AXIS:** This axis represents the variable being measured and the intervals (bins) into which the data has been divided.
+    ''' - **Y-AXIS:** This axis represents the frequency of occurrences for each bin. It can also represent the relative frequency or density if the histogram is normalized.
+    ''' - **BIN WIDTH:** The width of the bins is constant and represents the range of values that are counted for each bar.
+    ''' 
+    ''' ### Types of Histograms:
+    ''' - **Normal Histogram:** The bars are centered around the mean value, and the distribution may be symmetric if the data is normally distributed.
+    ''' - **Cumulative Histogram:** Instead of showing the frequency for each bin, it shows the cumulative frequency up to each bin.
+    ''' - **Density Histogram:** In a density histogram, the height of the bar does not represent the frequency but the density of the data within each bin. The total area of all the bars sums to 1.
+    ''' 
+    ''' ### Uses of Histograms:
+    ''' - **Data Analysis:** To understand the distribution of the data, such as whether it is symmetric, skewed, bimodal, etc.
+    ''' - **Quality Control:** In manufacturing, histograms can help determine if a process is within acceptable limits.
+    ''' - **Statistical Analysis:** Histograms can help in choosing appropriate statistical tests or models for data analysis.
+    ''' 
+    ''' ### Limitations:
+    ''' - The shape of a histogram can be sensitive to the number of bins chosen.
+    ''' - Histograms do not show information about individual data points; they only show the frequency of data within intervals.
+    ''' </summary>
     Public Class ggplotHistogram : Inherits ggplotLayer
 
         Public Property bins As Integer

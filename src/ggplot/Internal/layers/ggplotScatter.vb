@@ -109,6 +109,9 @@ Namespace layers
     ''' - In fields like economics, biology, psychology, and social sciences to understand the dynamics between variables.
     ''' - In machine learning and data science for feature selection and to understand the underlying structure of data.
     ''' </summary>
+    ''' <remarks>
+    ''' scatter and bubble
+    ''' </remarks>
     Public Class ggplotScatter : Inherits ggplotLayer
 
         Public Property shape As LegendStyles?
