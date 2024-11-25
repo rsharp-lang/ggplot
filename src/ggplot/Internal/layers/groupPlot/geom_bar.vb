@@ -176,7 +176,11 @@ Namespace layers
                 colors = ggplot.base.getColors(ggplot, legends, LegendStyles.Rectangle)
             End If
 
-            Dim zip = groupFactors.Zip(join:=y).Zip(join:=CLRVector.asCharacter(stream.x)).GroupBy(Function(a) a.Second).ToArray
+            Dim zip = groupFactors _
+                .Zip(join:=y) _
+                .Zip(join:=CLRVector.asCharacter(stream.x)) _
+                .GroupBy(Function(a) a.Second) _
+                .ToArray
             Dim fill = legends.legends _
                 .Select(Function(l) New NamedValue(Of Color)(l.title, l.color.TranslateColor)) _
                 .ToArray
