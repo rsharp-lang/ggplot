@@ -471,11 +471,14 @@ declare namespace ggplot2 {
      * + default value Is ``true``.
      * @param alpha 
      * + default value Is ``1``.
+     * @param bspline options for the b-spline smooth of the line plot
+     * 
+     * + default value Is ``false``.
      * @param env 
      * + default value Is ``null``.
      * @return A line chart plot layer
    */
-   function geom_line(mapping?: object, color?: any, width?: number, show_legend?: boolean, alpha?: number, env?: object): object;
+   function geom_line(mapping?: object, color?: any, width?: number, show_legend?: boolean, alpha?: number, bspline?: boolean, env?: object): object;
    /**
     * ## Connect observations
     *  
