@@ -1,59 +1,59 @@
 ﻿#Region "Microsoft.VisualBasic::293893b2839678ac5f467c2a98143b55, src\ggplot\Internal\layers\ggplotScatter.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (I@xieguigang.me)
-    ' 
-    ' Copyright (c) 2021 R# language
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (I@xieguigang.me)
+' 
+' Copyright (c) 2021 R# language
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
-
-
-    ' Code Statistics:
-
-    '   Total Lines: 131
-    '    Code Lines: 114 (87.02%)
-    ' Comment Lines: 0 (0.00%)
-    '    - Xml Docs: 0.00%
-    ' 
-    '   Blank Lines: 17 (12.98%)
-    '     File Size: 5.57 KB
+' Summaries:
 
 
-    '     Class ggplotScatter
-    ' 
-    '         Properties: shape, size, stroke
-    ' 
-    '         Function: createSerialData, GetSerialData, Plot
-    ' 
-    ' 
-    ' /********************************************************************************/
+' Code Statistics:
+
+'   Total Lines: 131
+'    Code Lines: 114 (87.02%)
+' Comment Lines: 0 (0.00%)
+'    - Xml Docs: 0.00%
+' 
+'   Blank Lines: 17 (12.98%)
+'     File Size: 5.57 KB
+
+
+'     Class ggplotScatter
+' 
+'         Properties: shape, size, stroke
+' 
+'         Function: createSerialData, GetSerialData, Plot
+' 
+' 
+' /********************************************************************************/
 
 #End Region
 
@@ -76,6 +76,39 @@ Imports Brush = Microsoft.VisualBasic.Imaging.Brush
 
 Namespace layers
 
+    ''' <summary>
+    ''' A scatter plot is a type of data visualization that uses dots to represent the values of two different numerical variables. 
+    ''' The position of each dot on the horizontal and vertical axes corresponds to the values of the two variables being plotted. 
+    ''' Scatter plots are particularly useful for showing the relationship between two variables and are a key tool in statistics 
+    ''' and data analysis.
+    ''' 
+    ''' Here are some key aspects of scatter plots:
+    ''' 
+    ''' ### Purpose:
+    ''' - To observe and interpret relationships between two quantitative variables.
+    ''' - To identify trends, patterns, or clusters in data.
+    ''' - To help in making predictions or drawing conclusions based on the observed relationships.
+    ''' 
+    ''' ### Components:
+    ''' - **X-axis (Horizontal axis):** Represents one variable, often called the independent variable.
+    ''' - **Y-axis (Vertical axis):** Represents the other variable, often called the dependent variable.
+    ''' - **Data Points (Dots):** Each point represents an observation with coordinates corresponding to its values on both axes.
+    ''' 
+    ''' ### Types of Relationships:
+    ''' - **Positive Correlation:** As the value of one variable increases, the value of the other variable also increases. The points tend to rise from left to right.
+    ''' - **Negative Correlation:** As the value of one variable increases, the value of the other variable decreases. The points tend to fall from left to right.
+    ''' - **No Correlation:** There is no apparent relationship between the variables. The points are scattered randomly on the plot.
+    ''' - **Non-linear Relationship:** The relationship between variables is not a straight line but might be curved or follow another pattern.
+    ''' 
+    ''' ### Interpreting the Plot:
+    ''' - **Cluster:** A group of points that are close together, indicating a concentration of data points.
+    ''' - **Outlier:** A point that is distant from other points, indicating an unusual observation or a data error.
+    ''' - **Trend Line (or Line of Best Fit):** A line that best represents the relationship between the variables. It can be used to make predictions.
+    ''' 
+    ''' ### Uses:
+    ''' - In fields like economics, biology, psychology, and social sciences to understand the dynamics between variables.
+    ''' - In machine learning and data science for feature selection and to understand the underlying structure of data.
+    ''' </summary>
     Public Class ggplotScatter : Inherits ggplotLayer
 
         Public Property shape As LegendStyles?
@@ -85,7 +118,7 @@ Namespace layers
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim legends As IggplotLegendElement = Nothing
             Dim serials As SerialData() = GetSerialData(stream, legends).ToArray
-            Dim brush As Func(Of PointData, brush)
+            Dim brush As Func(Of PointData, Brush)
 
             For Each serial As SerialData In serials
                 brush = serial.BrushHandler
