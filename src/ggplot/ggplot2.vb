@@ -327,8 +327,9 @@ Module ggplot2
     ''' the aesthetics to display.
     ''' </param>
     ''' <param name="env"></param>
-    ''' <returns></returns>
+    ''' <returns>a scatter plot layer</returns>
     <ExportAPI("geom_point")>
+    <RApiReturn(GetType(ggplotScatter))>
     Public Function geom_point(Optional mapping As ggplotReader = NULL,
                                <RRawVectorArgument>
                                Optional color As Object = Nothing,
@@ -488,8 +489,11 @@ Module ggplot2
     ''' <param name="bins">
     ''' Number of bins. Overridden by binwidth. Defaults to 30.
     ''' </param>
-    ''' <returns></returns>
+    ''' <returns>
+    ''' A histogram plot layer
+    ''' </returns>
     <ExportAPI("geom_histogram")>
+    <RApiReturn(GetType(ggplotHistogram))>
     Public Function geom_histogram(bins As Integer,
                                    Optional color As Object = Nothing,
                                    Optional alpha As Double = 1,
@@ -518,12 +522,13 @@ Module ggplot2
     ''' geom_step() creates a stairstep plot, highlighting exactly when changes 
     ''' occur. The group aesthetic determines which cases are connected together.
     ''' </summary>
-    ''' <returns></returns>
+    ''' <returns>A line chart plot layer</returns>
     ''' <remarks>
     ''' An alternative parameterisation is geom_segment(), where each line corresponds 
     ''' to a single case which provides the start and end coordinates.
     ''' </remarks>
     <ExportAPI("geom_line")>
+    <RApiReturn(GetType(ggplotLine))>
     Public Function geom_line(Optional mapping As ggplotReader = NULL,
                               <RRawVectorArgument>
                               Optional color As Object = Nothing,
