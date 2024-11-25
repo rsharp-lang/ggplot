@@ -64,6 +64,7 @@ Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.Data.ChartPlots
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Data.ChartPlots.Plots
+Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Driver
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.MIME.Html
@@ -211,23 +212,10 @@ Namespace layers
                                                                    multiple_group As Boolean,
                                                                    shape As LegendStyles?,
                                                                    colorMap As ggplotColorMap) As IEnumerable(Of SerialData)
-            Dim color As Color
-
-            If colors Is Nothing Then
-                If Not colorMap Is Nothing Then
-                    color = DirectCast(colorMap, ggplotColorLiteral).ToColor
-                End If
-            Else
-                color = Nothing
-            End If
-
-            If color.IsEmpty Then
-                color = Color.Black
-            End If
-
             If multiple_group Then
                 Dim groups As New Dictionary(Of String, List(Of PointData))
                 Dim color_str As String
+                Dim color As Color
 
                 For i As Integer = 0 To x.Length - 1
                     color_str = If(colors Is Nothing, Nothing, colors(i))
@@ -242,6 +230,15 @@ Namespace layers
                 Next
 
                 For Each group In groups.Values
+                    ' set the default line color
+                    color = group _
+                        .Select(Function(c) If(c.color, "black")) _
+                        .GroupBy(Function(c_str) c_str) _
+                        .OrderByDescending(Function(a) a.Count) _
+                        .First _
+                        .Key _
+                        .TranslateColor
+
                     Yield New SerialData() With {
                         .color = color,
                         .pointSize = size,
@@ -252,6 +249,20 @@ Namespace layers
                     }
                 Next
             Else
+                Dim color As Color
+
+                If colors Is Nothing Then
+                    If Not colorMap Is Nothing Then
+                        color = DirectCast(colorMap, ggplotColorLiteral).ToColor
+                    End If
+                Else
+                    color = Nothing
+                End If
+
+                If color.IsEmpty Then
+                    color = Color.Black
+                End If
+
                 Yield New SerialData() With {
                     .color = color,
                     .pointSize = size,
