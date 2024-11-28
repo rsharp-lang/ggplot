@@ -1,10 +1,11 @@
-library(ggplot2)
+library(ggplot2);
 
+# run this script for heatmap plot in original R language
 
 spinrates <- read.csv("../data/spinrates.csv",
-                      stringsAsFactors = FALSE)
+                      stringsAsFactors = FALSE);
 
-png(file = "./test_heatmap.png")
+png(file = "./test_heatmap.png");
 
 
 p <- ggplot(spinrates, aes(x = velocity, y = spinrate)) +
@@ -12,8 +13,8 @@ p <- ggplot(spinrates, aes(x = velocity, y = spinrate)) +
   scale_fill_distiller(palette = "YlGnBu", direction = 1) +
   theme_light() +
   labs(title = "Likelihood of swinging and missing on a fastball",
-       y = "spin rate (rpm)")
+       y = "spin rate (rpm)");
 
-plot(p)
+plot(p);
 
-dev.off()
+dev.off();
