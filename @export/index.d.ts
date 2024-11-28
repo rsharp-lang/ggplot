@@ -19,6 +19,9 @@ declare namespace ggplot {
    */
    function theme_default(): object;
    /**
+     * @param axis.text default value Is ``null``.
+     * @param axis.title default value Is ``null``.
+     * @param legend.tick default value Is ``null``.
    */
-   function theme_light(): object;
+   function theme_light(axis.text?: any, axis.title?: any, legend.tick?: any): object;
 }
