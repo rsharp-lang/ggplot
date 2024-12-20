@@ -175,11 +175,12 @@ Namespace layers
             Call base.cat(anova.ToString, env:=stream.ggplot.environment)
 
             Dim css As CSSEnvirnment = stream.g.LoadEnvironment
+            Dim padding As PaddingLayout = PaddingLayout.EvaluateFromCSS(css, stream.canvas.Padding)
             Dim pvalue As Double = anova.singlePvalue
             Dim ptag As String = If(pvalue.ToString = "0", "<1e-100", "=" & pvalue.ToString("G3"))
             Dim tagStr As String = $"ANOVA, p-value{ptag}"
             Dim font As Font = css.GetFont(CSSFont.TryParse(stream.theme.tagCSS))
-            Dim pos As New PointF(stream.scale.X.rangeMin + 10, stream.canvas.Padding.Top)
+            Dim pos As New PointF(stream.scale.X.rangeMin + 10, padding.Top)
 
             Call stream.g.DrawString(tagStr, font, Brushes.Black, pos)
         End Sub
