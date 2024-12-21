@@ -143,6 +143,7 @@ Namespace layers
             Dim padding As New GraphicsRegion(g.Size, theme.padding)
             Dim legend As ColorMapLegend
             Dim css As CSSEnvirnment = g.LoadEnvironment
+            Dim margin As PaddingLayout = PaddingLayout.EvaluateFromCSS(css, theme.padding)
 
             If TypeOf colorMap Is ggplotColorPalette Then
                 legend = New ColorMapLegend(DirectCast(palette.colorMap, String), maplevels)
@@ -161,7 +162,7 @@ Namespace layers
 
             legends = New legendColorMapElement With {
                 .colorMapLegend = legend,
-                .width = padding.Padding.Right * 3 / 4,
+                .width = margin.Right * 3 / 4,
                 .height = padding.PlotRegion(css).Height
             }
 

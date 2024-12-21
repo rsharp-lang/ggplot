@@ -140,6 +140,7 @@ Namespace layers
             Dim textures As Brush() = colors.Select(Function(c) c.GetBrush).ToArray
             Dim rxi, ryi As Double
             Dim css As CSSEnvirnment = stream.g.LoadEnvironment
+            Dim padding As PaddingLayout = PaddingLayout.EvaluateFromCSS(css, stream.canvas.Padding)
 
             For i As Integer = 0 To x.Length - 1
                 rxi = stream.scale.TranslateX(x(i)) - tile_size.Width
@@ -158,7 +159,7 @@ Namespace layers
                     .ticks = fillData.CreateAxisTicks,
                     .titleFont = css.GetFont(stream.theme.legendTitleCSS)
                 },
-                .width = stream.canvas.Padding.Right * 3 / 4,
+                .width = padding.Right * 3 / 4,
                 .height = stream.canvas.PlotRegion(css).Height
             }
         End Function

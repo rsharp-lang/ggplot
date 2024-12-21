@@ -123,12 +123,13 @@ Namespace layers
                         End Function) _
                 .ToArray
             Dim css As CSSEnvirnment = stream.g.LoadEnvironment
+            Dim padding As PaddingLayout = PaddingLayout.EvaluateFromCSS(css, stream.canvas.Padding)
             Dim labelFont As Font = css.GetFont(CSSFont.TryParse(stream.theme.tagCSS))
             Dim plotRegion As Rectangle = stream.canvas.PlotRegion(css)
             Dim r As Single = std.Min(plotRegion.Height, plotRegion.Width) / 2
             Dim topLeft As New Point With {
-                .X = stream.canvas.Padding.Left,
-                .Y = stream.canvas.Padding.Top
+                .X = padding.Left,
+                .Y = padding.Top
             }
 
             Call stream.g.PlotPie(

@@ -384,9 +384,10 @@ Public Class ggplot : Inherits Plot
     End Sub
 
     Private Sub DrawMultiple(all As IggplotLegendElement(), g As IGraphics, canvas As GraphicsRegion, pos As PointF)
-        Dim width As Double = canvas.Padding.Right / (all.Length + 1)
         Dim css As CSSEnvirnment = g.LoadEnvironment
-        Dim box As Rectangle = canvas.PlotRegion(css)
+        Dim padding As PaddingLayout = PaddingLayout.EvaluateFromCSS(CSS, canvas.Padding)
+        Dim width As Double = padding.Right / (all.Length + 1)
+        Dim box As Rectangle = canvas.PlotRegion(CSS)
         Dim x As Double
         Dim y As Double
 

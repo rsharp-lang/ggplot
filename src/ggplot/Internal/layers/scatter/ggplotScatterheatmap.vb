@@ -138,6 +138,8 @@ Namespace layers
                 Call stream.g.FillRectangle(colors(layerIndex(i)), cell)
             Next
 
+            Dim padding As PaddingLayout = PaddingLayout.EvaluateFromCSS(css, stream.canvas.Padding)
+
             Return New legendColorMapElement With {
                 .colorMapLegend = New ColorMapLegend(stream.theme.colorSet, maplevels) With {
                     .title = Me.layer,
@@ -147,7 +149,7 @@ Namespace layers
                     .ticks = layerdata.CreateAxisTicks,
                     .titleFont = css.GetFont(CSSFont.TryParse(stream.theme.legendTitleCSS))
                 },
-                .width = stream.canvas.Padding.Right * 3 / 4,
+                .width = padding.Right * 3 / 4,
                 .height = stream.canvas.PlotRegion(css).Height
             }
         End Function
