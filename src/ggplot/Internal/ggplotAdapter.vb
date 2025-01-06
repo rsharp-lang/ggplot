@@ -54,9 +54,12 @@
 
 #End Region
 
+Imports System.Runtime.Serialization
 Imports ggplot.elements
 Imports ggplot.layers
+Imports Microsoft.VisualBasic.Imaging.d3js.scale
 Imports SMRUCC.Rsharp.Runtime.Components
+Imports SMRUCC.Rsharp.Runtime.Vectorization
 
 Public Class ggplotAdapter
 
@@ -81,7 +84,25 @@ Public Class ggplotAdapter
                                   Where layer.data IsNot Nothing
                                   Select getter(layer)).ToArray
 
+        If datas.All(Function(d) d.mapper = MapperTypes.Continuous) Then
+            Dim nums As New List(Of Double)
 
+            For Each data As axisMap In datas
+                Call nums.AddRange(CLRVector.asNumeric(data.value))
+            Next
+
+            Return axisMap.Create(nums.ToArray)
+        ElseIf datas.All(Function(d) d.mapper <> MapperTypes.Continuous) Then
+            Dim chrs As New List(Of String)
+
+            For Each data As axisMap In datas
+                Call chrs.AddRange(CLRVector.asCharacter(data.value))
+            Next
+
+            Return axisMap.Create(chrs.Distinct.ToArray)
+        Else
+            Throw New InvalidDataContractException("Mixed type of the axis data mapper is not supported!")
+        End If
     End Function
 
     Public Shared Function getXAxis(layers As IEnumerable(Of ggplotLayer), baseData As ggplotData) As axisMap
