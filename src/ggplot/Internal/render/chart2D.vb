@@ -89,8 +89,8 @@ Namespace render
             ' 20250106
             ' layers needs to be initialzed at first!
             Dim layers As New Queue(Of ggplotLayer)(collection:=ggplotAdapter.getLayers(ggplot))
-            Dim x As axisMap = ggplotAdapter.getXAxis(ggplot, baseData)
-            Dim y As axisMap = ggplotAdapter.getYAxis(ggplot, baseData)
+            Dim x As axisMap = ggplotAdapter.getXAxis(layers, baseData)
+            Dim y As axisMap = ggplotAdapter.getYAxis(layers, baseData)
             Dim reverse_y As Boolean = ggplot.args.getValue("scale_y_reverse", env:=ggplot.environment, [default]:=False)
             Dim scale As DataScaler
             Dim xAxis As Array

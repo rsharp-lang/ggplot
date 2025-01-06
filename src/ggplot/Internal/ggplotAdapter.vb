@@ -75,32 +75,33 @@ Public Class ggplotAdapter
         Next
     End Function
 
-    Private Shared Function getAxisLayerData(ggplot As ggplot, getter As Func(Of ggplotLayer, axisMap)) As axisMap
+    Private Shared Function getAxisLayerData(layers As IEnumerable(Of ggplotLayer), getter As Func(Of ggplotLayer, axisMap)) As axisMap
+        Dim datas = layers.Select(Function(i) i.data).ToArray
 
     End Function
 
-    Public Shared Function getXAxis(ggplot As ggplot, baseData As ggplotData) As axisMap
+    Public Shared Function getXAxis(layers As IEnumerable(Of ggplotLayer), baseData As ggplotData) As axisMap
         If baseData.x Is Nothing Then
             ' use custom data from each layer
-            Return getAxisLayerData(ggplot, Function(i) i.data.x)
+            Return getAxisLayerData(layers, Function(i) i.data.x)
         Else
             Return baseData.x
         End If
     End Function
 
-    Public Shared Function getYAxis(ggplot As ggplot, baseData As ggplotData) As axisMap
+    Public Shared Function getYAxis(layers As IEnumerable(Of ggplotLayer), baseData As ggplotData) As axisMap
         If baseData.y Is Nothing Then
             ' use custom data from each layer
-            Return getAxisLayerData(ggplot, Function(i) i.data.y)
+            Return getAxisLayerData(layers, Function(i) i.data.y)
         Else
             Return baseData.y
         End If
     End Function
 
-    Public Shared Function getZAxis(ggplot As ggplot, baseData As ggplotData) As axisMap
+    Public Shared Function getZAxis(layers As IEnumerable(Of ggplotLayer), baseData As ggplotData) As axisMap
         If baseData.z Is Nothing Then
             ' use custom data from each layer
-            Return getAxisLayerData(ggplot, Function(i) i.data.z)
+            Return getAxisLayerData(layers, Function(i) i.data.z)
         Else
             Return baseData.z
         End If
