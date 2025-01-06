@@ -86,10 +86,12 @@ Namespace render
         End Sub
 
         Public Sub plot2D(ggplot As ggplot, baseData As ggplotData, ByRef g As IGraphics, canvas As GraphicsRegion)
+            ' 20250106
+            ' layers needs to be initialzed at first!
+            Dim layers As New Queue(Of ggplotLayer)(collection:=ggplotAdapter.getLayers(ggplot))
             Dim x As axisMap = ggplotAdapter.getXAxis(ggplot, baseData)
             Dim y As axisMap = ggplotAdapter.getYAxis(ggplot, baseData)
             Dim reverse_y As Boolean = ggplot.args.getValue("scale_y_reverse", env:=ggplot.environment, [default]:=False)
-            Dim layers As New Queue(Of ggplotLayer)(collection:=ggplotAdapter.getLayers(ggplot))
             Dim scale As DataScaler
             Dim xAxis As Array
             Dim theme As Theme = ggplot.ggplotTheme
@@ -103,7 +105,7 @@ Namespace render
                     [default]:=(x.ToNumeric, y),
                     layerData:=From layer As ggplotLayer
                                In layers
-                               Let data As ggplotData = layer.initDataSet(ggplot:=ggplot)
+                               Let data As ggplotData = layer.data
                                Where Not data Is Nothing
                                Select data
                 )
@@ -114,7 +116,7 @@ Namespace render
                     [default]:=(x.ToFactors, y),
                     layerData:=From layer As ggplotLayer
                                In layers
-                               Let data As ggplotData = layer.initDataSet(ggplot:=ggplot)
+                               Let data As ggplotData = layer.data
                                Where Not data Is Nothing
                                Select data
                 )

@@ -62,24 +62,48 @@ Public Class ggplotAdapter
 
     Public Property [error] As Message
 
-    Public Shared Function getLayers(ggplot As ggplot) As IEnumerable(Of ggplotLayer)
-        Return If(
+    Public Shared Iterator Function getLayers(ggplot As ggplot) As IEnumerable(Of ggplotLayer)
+        Dim source As IEnumerable(Of ggplotLayer) = If(
             ggplot.UnionGgplotLayers Is Nothing,
             ggplot.layers,
             ggplot.UnionGgplotLayers(ggplot.layers)
         )
+
+        For Each layer As ggplotLayer In source
+            Call layer.initDataSet(ggplot:=ggplot)
+            Yield layer
+        Next
+    End Function
+
+    Private Shared Function getAxisLayerData(ggplot As ggplot, getter As Func(Of ggplotLayer, axisMap)) As axisMap
+
     End Function
 
     Public Shared Function getXAxis(ggplot As ggplot, baseData As ggplotData) As axisMap
-
+        If baseData.x Is Nothing Then
+            ' use custom data from each layer
+            Return getAxisLayerData(ggplot, Function(i) i.data.x)
+        Else
+            Return baseData.x
+        End If
     End Function
 
     Public Shared Function getYAxis(ggplot As ggplot, baseData As ggplotData) As axisMap
-
+        If baseData.y Is Nothing Then
+            ' use custom data from each layer
+            Return getAxisLayerData(ggplot, Function(i) i.data.y)
+        Else
+            Return baseData.y
+        End If
     End Function
 
     Public Shared Function getZAxis(ggplot As ggplot, baseData As ggplotData) As axisMap
-
+        If baseData.z Is Nothing Then
+            ' use custom data from each layer
+            Return getAxisLayerData(ggplot, Function(i) i.data.z)
+        Else
+            Return baseData.z
+        End If
     End Function
 
 End Class

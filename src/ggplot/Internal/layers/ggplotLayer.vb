@@ -125,7 +125,7 @@ Namespace layers
             End Get
         End Property
 
-        Protected data As ggplotData = Nothing
+        Protected Friend data As ggplotData = Nothing
 
         Protected Friend Overridable Function initDataSet(ggplot As ggplot) As ggplotData
             If useCustomData Then
