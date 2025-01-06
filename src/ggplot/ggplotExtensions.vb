@@ -59,13 +59,15 @@ Imports Microsoft.VisualBasic.MIME.Html.CSS
 
 Public Module ggplotExtensions
 
-    Public Function GetStroke(line As Object, Optional default$ = "stroke: white; stroke-width: 6px; stroke-dash: solid;") As Stroke
+    Const default_stroke As String = "stroke: white; stroke-width: 2px; stroke-dash: solid;"
+
+    Public Function GetStroke(line As Object, Optional default$ = default_stroke) As Stroke
         If TypeOf line Is lineElement Then
             Return DirectCast(line, lineElement).GetStroke
         ElseIf TypeOf line Is Stroke Then
             Return line
         Else
-            Dim css As String = InteropArgumentHelper.getStrokePenCSS(line, "stroke: white; stroke-width: 6px; stroke-dash: solid;")
+            Dim css As String = InteropArgumentHelper.getStrokePenCSS(line, default_stroke)
             Dim pen As Stroke = Stroke.TryParse(css)
 
             Return pen
