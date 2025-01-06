@@ -54,6 +54,7 @@
 
 #End Region
 
+Imports ggplot.elements
 Imports ggplot.layers
 Imports SMRUCC.Rsharp.Runtime.Components
 
@@ -61,12 +62,24 @@ Public Class ggplotAdapter
 
     Public Property [error] As Message
 
-    Public Shared Function GetLayers(ggplot As ggplot) As IEnumerable(Of ggplotLayer)
+    Public Shared Function getLayers(ggplot As ggplot) As IEnumerable(Of ggplotLayer)
         Return If(
             ggplot.UnionGgplotLayers Is Nothing,
             ggplot.layers,
             ggplot.UnionGgplotLayers(ggplot.layers)
         )
+    End Function
+
+    Public Shared Function getXAxis(ggplot As ggplot, baseData As ggplotData) As axisMap
+
+    End Function
+
+    Public Shared Function getYAxis(ggplot As ggplot, baseData As ggplotData) As axisMap
+
+    End Function
+
+    Public Shared Function getZAxis(ggplot As ggplot, baseData As ggplotData) As axisMap
+
     End Function
 
 End Class

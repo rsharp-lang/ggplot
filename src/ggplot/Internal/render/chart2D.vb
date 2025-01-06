@@ -64,11 +64,13 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Imaging
+Imports Microsoft.VisualBasic.Imaging.d3js.scale
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.Math
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports Microsoft.VisualBasic.MIME.Html.Render
+Imports SMRUCC.Rsharp.Runtime.Vectorization
 
 Namespace render
 
@@ -84,10 +86,10 @@ Namespace render
         End Sub
 
         Public Sub plot2D(ggplot As ggplot, baseData As ggplotData, ByRef g As IGraphics, canvas As GraphicsRegion)
-            Dim x As axisMap = baseData.x
-            Dim y As Double() = baseData.y.ToNumeric
+            Dim x As axisMap = ggplotAdapter.getXAxis(ggplot, baseData)
+            Dim y As axisMap = ggplotAdapter.getYAxis(ggplot, baseData)
             Dim reverse_y As Boolean = ggplot.args.getValue("scale_y_reverse", env:=ggplot.environment, [default]:=False)
-            Dim layers As New Queue(Of ggplotLayer)(collection:=ggplotAdapter.GetLayers(ggplot))
+            Dim layers As New Queue(Of ggplotLayer)(collection:=ggplotAdapter.getLayers(ggplot))
             Dim scale As DataScaler
             Dim xAxis As Array
             Dim theme As Theme = ggplot.ggplotTheme
@@ -118,8 +120,14 @@ Namespace render
                 )
             End If
 
-            If reverse_y AndAlso y.Length > 0 Then
-                Call reverse(y)
+            If reverse_y AndAlso y.size > 0 Then
+                If y.mapper = MapperTypes.Continuous Then
+                    Dim y_vec As Double() = y.ToNumeric
+                    Call reverse(y_vec)
+                    y = axisMap.Create(y_vec)
+                Else
+                    y = axisMap.Create(CLRVector.asCharacter(y.value).Reverse.ToArray)
+                End If
             End If
 
             If Not ggplot.panelBorder Is Nothing Then

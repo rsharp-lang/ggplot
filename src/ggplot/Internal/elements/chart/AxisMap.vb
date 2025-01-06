@@ -80,6 +80,11 @@ Namespace elements
         Public ReadOnly Property mapper As MapperTypes
         Public ReadOnly Property range As DoubleRange
         Public ReadOnly Property value As Array
+
+        ''' <summary>
+        ''' the length of the axis map data
+        ''' </summary>
+        ''' <returns></returns>
         Public ReadOnly Property size As Integer
             Get
                 If value.IsNullOrEmpty Then
