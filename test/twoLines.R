@@ -1,8 +1,10 @@
 require(ggplot);
 
-x = seq(-5,5, by = 0.2);
-y = sin(x);
-z = cos(y);
+let x = seq(-5,5, by = 0.2);
+let y = sin(x);
+let z = cos(y);
+
+print(x);
 
 bitmap(file = `${@dir}/line_3colors.png`, width = 2600, height = 1600) {
     ggplot(data.frame(x = x, sin =y, cos = z), padding = "padding: 200px 600px 200px 200px;") 

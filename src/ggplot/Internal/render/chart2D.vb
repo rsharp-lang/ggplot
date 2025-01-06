@@ -87,13 +87,7 @@ Namespace render
             Dim x As axisMap = baseData.x
             Dim y As Double() = baseData.y.ToNumeric
             Dim reverse_y As Boolean = ggplot.args.getValue("scale_y_reverse", env:=ggplot.environment, [default]:=False)
-            Dim layers As New Queue(Of ggplotLayer)(
-                collection:=If(
-                    ggplot.UnionGgplotLayers Is Nothing,
-                    ggplot.layers,
-                    ggplot.UnionGgplotLayers(ggplot.layers)
-                )
-            )
+            Dim layers As New Queue(Of ggplotLayer)(collection:=ggplotAdapter.GetLayers(ggplot))
             Dim scale As DataScaler
             Dim xAxis As Array
             Dim theme As Theme = ggplot.ggplotTheme

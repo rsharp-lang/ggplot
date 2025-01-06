@@ -111,6 +111,10 @@ Public Class ggplotReader
     Public Property label As Object
     Public Property args As list
 
+    ''' <summary>
+    ''' test for the 2d render mode based on test of the <see cref="z"/> is empty or not.
+    ''' </summary>
+    ''' <returns></returns>
     Public ReadOnly Property isPlain2D As Boolean
         Get
             Return z.StringEmpty

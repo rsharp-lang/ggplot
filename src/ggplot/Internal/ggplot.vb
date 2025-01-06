@@ -301,19 +301,26 @@ Public Class ggplot : Inherits Plot
 
     Protected Overrides Sub PlotInternal(ByRef g As IGraphics, canvas As GraphicsRegion)
         Dim baseData As ggplotData = base.getGgplotData(Me)
-
+        Dim no_mapping As Boolean = baseData.x Is Nothing AndAlso baseData.y Is Nothing
+        Dim custom_mapping As Boolean() = (From layer As ggplotLayer
+                                           In ggplotAdapter.GetLayers(Me)
+                                           Select layer.useCustomData).ToArray
         If clearCanvas Then
             Call g.Clear(theme.background.TranslateColor)
         End If
 
-        If baseData.x Is Nothing AndAlso baseData.y Is Nothing Then
-            Call Draw2DElements(g, canvas, New List(Of IggplotLegendElement))
-        Else
-            If base.reader.isPlain2D Then
-                Call chart2D.plot2D(Me, baseData, g, canvas)
-            Else
-                Call plot3D(baseData, g, canvas)
+        If no_mapping Then
+            ' custom mapping for each layer?
+            If Not custom_mapping.Any Then
+                Call Draw2DElements(g, canvas, New List(Of IggplotLegendElement))
+                Return
             End If
+        End If
+
+        If base.reader.isPlain2D Then
+            Call chart2D.plot2D(Me, baseData, g, canvas)
+        Else
+            Call plot3D(baseData, g, canvas)
         End If
     End Sub
 

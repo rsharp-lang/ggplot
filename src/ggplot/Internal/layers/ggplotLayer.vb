@@ -100,7 +100,11 @@ Namespace layers
         Public Property zindex As Integer
         Public Property alpha As Double = 1
 
-        Protected ReadOnly Property useCustomData As Boolean
+        ''' <summary>
+        ''' use the local custom data mapping source for the layer drawing
+        ''' </summary>
+        ''' <returns></returns>
+        Protected Friend ReadOnly Property useCustomData As Boolean
             Get
                 If reader Is Nothing Then Return False
 
