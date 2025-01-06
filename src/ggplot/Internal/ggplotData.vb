@@ -85,6 +85,15 @@ Public Class ggplotData : Inherits ggplotAdapter
         End Get
     End Property
 
+    Sub New()
+    End Sub
+
+    Sub New(x As axisMap, y As axisMap, Optional z As axisMap = Nothing)
+        Me.x = x
+        Me.y = y
+        Me.z = z
+    End Sub
+
     Public Shared Widening Operator CType(ex As Message) As ggplotData
         Return New ggplotData With {.[error] = ex}
     End Operator

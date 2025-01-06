@@ -98,6 +98,18 @@ Namespace render
             Dim css As CSSEnvirnment = g.LoadEnvironment
             Dim plotRegion As Rectangle = canvas.PlotRegion(css)
 
+            If reverse_y AndAlso y.size > 0 Then
+                If y.mapper = MapperTypes.Continuous Then
+                    Dim y_vec As Double() = y.ToNumeric
+                    Call reverse(y_vec)
+                    y = axisMap.Create(y_vec)
+                Else
+                    y = axisMap.Create(CLRVector.asCharacter(y.value).Reverse.ToArray)
+                End If
+            End If
+
+            baseData = New ggplotData(x, y)
+
             If baseData.xscale = d3js.scale.scalers.linear Then
                 xAxis = x.ToNumeric
                 scale = ggplot.get2DScale(
@@ -120,16 +132,6 @@ Namespace render
                                Where Not data Is Nothing
                                Select data
                 )
-            End If
-
-            If reverse_y AndAlso y.size > 0 Then
-                If y.mapper = MapperTypes.Continuous Then
-                    Dim y_vec As Double() = y.ToNumeric
-                    Call reverse(y_vec)
-                    y = axisMap.Create(y_vec)
-                Else
-                    y = axisMap.Create(CLRVector.asCharacter(y.value).Reverse.ToArray)
-                End If
             End If
 
             If Not ggplot.panelBorder Is Nothing Then
