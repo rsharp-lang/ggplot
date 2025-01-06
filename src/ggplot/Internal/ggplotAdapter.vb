@@ -76,7 +76,11 @@ Public Class ggplotAdapter
     End Function
 
     Private Shared Function getAxisLayerData(layers As IEnumerable(Of ggplotLayer), getter As Func(Of ggplotLayer, axisMap)) As axisMap
-        Dim datas = layers.Select(Function(i) i.data).ToArray
+        Dim datas As axisMap() = (From layer As ggplotLayer
+                                  In layers
+                                  Where layer.data IsNot Nothing
+                                  Select getter(layer)).ToArray
+
 
     End Function
 
