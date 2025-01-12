@@ -96,7 +96,7 @@ Namespace ggraph
         End Sub
 
         Private Sub plotGraph(ByRef g As IGraphics, canvas As GraphicsRegion)
-            Dim force As ggforce = args.getValue(Of ggforce)(NameOf(ggforce), environment, New force_directed)
+            Dim force As ggforce = args.getValue(Of ggforce)(NameOf(ggforce), environment, Nothing)
             Dim graph As NetworkGraph = DirectCast(data, NetworkGraph)
             Dim layers As New Queue(Of ggplotLayer)(
                 collection:=If(UnionGgplotLayers Is Nothing, Me.layers, UnionGgplotLayers(Me.layers))
@@ -105,7 +105,9 @@ Namespace ggraph
                 .Where(Function(l) TypeOf l Is nodeRender) _
                 .FirstOrDefault
 
-            Call force.createLayout(graph, environment)
+            If Not force Is Nothing Then
+                Call force.createLayout(graph, environment)
+            End If
 
             If nodeLayer IsNot Nothing AndAlso Not nodeLayer.fill Is Nothing Then
                 graph = graph.SetNodeFill(nodeLayer.fill)
