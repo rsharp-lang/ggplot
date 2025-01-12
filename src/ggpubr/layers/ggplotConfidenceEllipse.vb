@@ -57,7 +57,6 @@
 #End Region
 
 Imports System.Drawing
-Imports System.Drawing.Drawing2D
 Imports ggplot
 Imports ggplot.elements.legend
 Imports ggplot.layers
@@ -67,6 +66,7 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Statistics.PCA
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.d3js.scale
 Imports Microsoft.VisualBasic.Imaging.Math2D
+Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.Math.Statistics
 
 Public Class ggplotConfidenceEllipse : Inherits ggplotGroup
@@ -74,10 +74,11 @@ Public Class ggplotConfidenceEllipse : Inherits ggplotGroup
     Public Property level As ChiSquareTest.ConfidenceLevels
 
     Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
-        Dim sourceData As SerialData = New ggplotScatter().GetSerialData(stream)
-        Dim groups As String() = sourceData.pts.Select(Function(p) p.color).ToArray
-        Dim x As Double() = sourceData.pts.Select(Function(p) CDbl(p.pt.X)).ToArray
-        Dim y As Double() = sourceData.pts.Select(Function(p) CDbl(p.pt.Y)).ToArray
+        Dim sourceData As SerialData() = New ggplotScatter().GetSerialData(stream).ToArray
+        Dim alldata = sourceData.Select(Function(s) s.pts).IteratesALL.ToArray
+        Dim groups As String() = alldata.Select(Function(p) p.color).ToArray
+        Dim x As Double() = alldata.Select(Function(p) CDbl(p.pt.X)).ToArray
+        Dim y As Double() = alldata.Select(Function(p) CDbl(p.pt.Y)).ToArray
         Dim allGroupData = getDataGroups(groups, x, y).ToArray
         Dim alpha As Integer = Me.alpha * 255
 
