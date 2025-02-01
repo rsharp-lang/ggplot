@@ -63,6 +63,8 @@ Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Imaging.d3js.scale
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Shapes
+Imports Microsoft.VisualBasic.MIME.Html.CSS
+Imports Microsoft.VisualBasic.MIME.Html.Render
 
 Namespace layers
 
@@ -83,6 +85,7 @@ Namespace layers
             Dim scale As DataScaler = stream.scale
             Dim a As PointF = constraint(abline.A, scale)
             Dim b As PointF = constraint(abline.B, scale)
+            Dim css As CSSEnvirnment = stream.g.LoadEnvironment
 
             If scale.xscale <> scalers.ordinal Then
                 a = scale.Translate(a)
@@ -92,7 +95,7 @@ Namespace layers
                 b = translateOrdinal(b, scale)
             End If
 
-            Call stream.g.DrawLine(abline.Stroke, a, b)
+            Call stream.g.DrawLine(css.GetPen(abline.Stroke), a, b)
 
             Return Nothing
         End Function

@@ -574,8 +574,8 @@ Module ggplot2
         Dim a As New PointF(Single.NegativeInfinity, yintercept)
         Dim b As New PointF(Single.PositiveInfinity, yintercept)
         Dim lineColor As Color = RColorPalette.getColor(color).TranslateColor
-        Dim style As New Pen(lineColor, line_width) With {
-            .DashStyle = linetype
+        Dim style As New Stroke(lineColor, line_width) With {
+            .dash = linetype
         }
 
         Return New ggplotABLine With {
@@ -607,8 +607,8 @@ Module ggplot2
         Dim a As New PointF(xintercept, Single.NegativeInfinity)
         Dim b As New PointF(xintercept, Single.PositiveInfinity)
         Dim line_color = RColorPalette.getColor(color).TranslateColor
-        Dim style As New Pen(line_color, line_width) With {
-            .DashStyle = linetype
+        Dim style As New Stroke(line_color, line_width) With {
+            .dash = linetype
         }
 
         Return New ggplotABLine With {
