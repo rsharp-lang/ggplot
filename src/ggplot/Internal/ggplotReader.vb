@@ -76,7 +76,7 @@ Imports any = Microsoft.VisualBasic.Scripting
 Imports REnv = SMRUCC.Rsharp.Runtime
 
 ''' <summary>
-''' ggplot data mapper
+''' [aes] / [aes_string] ggplot data mapper
 ''' </summary>
 Public Class ggplotReader
 
