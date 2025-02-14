@@ -147,16 +147,17 @@ Module ggraphPkg
         Dim shape As IGetShape = Nothing
 
         If Not mapping Is Nothing Then
-            Dim arguments As list = DirectCast(mapping, ggplotReader).args
+            Dim aes = DirectCast(mapping, ggplotReader)
+            Dim arguments As list = aes.args
 
             fill = any _
-                .ToString(arguments.getValue("fill", env, New Object)) _
+                .ToString(arguments.getValue("fill", env, aes.color)) _
                 .DoCall(AddressOf BrushExpression.Evaluate)
             size = any _
                 .ToString(arguments.getValue("size", env, New Object)) _
                 .DoCall(AddressOf SizeExpression.Evaluate)
             shape = any _
-                .ToString(If(DirectCast(mapping, ggplotReader).shape, arguments.getValue(Of String)("shape", env, "map(shape, *=circle)"))) _
+                .ToString(If(aes.shape, arguments.getValue("shape", env, "map(shape, *=circle)"))) _
                 .DoCall(AddressOf ShapeExpression.Evaluate)
         End If
 
