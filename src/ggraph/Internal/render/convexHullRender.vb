@@ -96,10 +96,10 @@ Namespace ggraph.render
     Public Class convexHullRender : Inherits ggplotConvexhull
 
         Protected Overrides Function getClassTags(stream As ggplotPipeline) As String()
-            Dim [class] As Array = REnv.asVector(Of Object)(reader.class)
+            Dim [class] As String() = CLRVector.asCharacter(reader.class)
 
             If [class].Length = 1 Then
-                Return classFromGraphData(stream, any.ToString([class].GetValue(Scan0)))
+                Return classFromGraphData(stream, [class](Scan0))
             Else
                 Return CLRVector.asCharacter([class])
             End If
@@ -125,20 +125,29 @@ Namespace ggraph.render
         Private Function classFromGraphData(stream As ggplotPipeline, sourceMap As String) As String()
             Dim g As NetworkGraph = stream.ggplot.data
             Dim layouts = stream.layout
+            Dim groups As String()
+            Dim keyName As String
 
             Select Case sourceMap.ToLower
-                Case "group"
-                    Return layouts _
-                        .Select(Function(v)
-                                    Dim vex As Node = g.GetElementByID(v.Key)
-                                    Dim tag As String = vex.data(NamesOf.REFLECTION_ID_MAPPING_NODETYPE)
-
-                                    Return tag
-                                End Function) _
-                        .ToArray
+                Case "group" : keyName = NamesOf.REFLECTION_ID_MAPPING_NODETYPE
                 Case Else
-                    Throw New NotImplementedException(sourceMap)
+                    keyName = sourceMap
             End Select
+
+            groups = layouts _
+                .Select(Function(v)
+                            Dim vex As Node = g.GetElementByID(v.Key)
+                            Dim tag As String = vex.data(keyName)
+
+                            Return tag
+                        End Function) _
+                .ToArray
+
+            If groups.All(Function(str) str Is Nothing) Then
+                Throw New MissingMemberException($"missing group class mapping source, property attribute '{keyName}' should be existed in node metadata!")
+            Else
+                Return groups
+            End If
         End Function
     End Class
 End Namespace
