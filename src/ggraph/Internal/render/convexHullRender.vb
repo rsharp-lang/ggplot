@@ -62,6 +62,10 @@ Imports Microsoft.VisualBasic.Data.visualize.Network.Graph
 Imports SMRUCC.Rsharp.Runtime.Vectorization
 Imports any = Microsoft.VisualBasic.Scripting
 Imports REnv = SMRUCC.Rsharp.Runtime
+Imports Microsoft.VisualBasic.ComponentModel.DataStructures
+Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
+
+
 
 #If NET48 Then
 Imports Pen = System.Drawing.Pen
@@ -106,18 +110,35 @@ Namespace ggraph.render
         End Function
 
         Protected Overrides Function createColorMaps(class_tags() As String, stream As ggplotPipeline, ngroups As Integer) As Dictionary(Of String, Color)
-            Dim nodes As Node() = DirectCast(stream.ggplot.data, NetworkGraph).vertex.ToArray
             Dim maps As New Dictionary(Of String, Color)
             Dim group As String
+            Dim g As NetworkGraph = DirectCast(stream.ggplot.data, NetworkGraph)
 
-            For Each v As Node In nodes
-                group = v.data(NamesOf.REFLECTION_ID_MAPPING_NODETYPE)
-                group = If(group, "")
+            If class_tags.IsNullOrEmpty Then
+                Dim nodes As Node() = g.vertex.ToArray
 
-                If Not maps.ContainsKey(group) Then
-                    Call maps.Add(group, DirectCast(v.data.color, SolidBrush).Color)
-                End If
-            Next
+                For Each v As Node In nodes
+                    group = v.data(NamesOf.REFLECTION_ID_MAPPING_NODETYPE)
+                    group = If(group, "")
+
+                    If Not maps.ContainsKey(group) Then
+                        Call maps.Add(group, DirectCast(v.data.color, SolidBrush).Color)
+                    End If
+                Next
+            Else
+                Dim nodes = stream.layout.Keys.ToArray
+                Dim group_colors As Color() = Designer.GetColors("paper", class_tags.Distinct.Count)
+                Dim unique_groups = class_tags.Distinct.ToArray
+                Dim colorset As New Dictionary(Of String, Color)
+
+                For i As Integer = 0 To unique_groups.Length - 1
+                    Call colorset.Add(unique_groups(i), group_colors(i))
+                Next
+
+                For i As Integer = 0 To class_tags.Length - 1
+                    Call maps.Add(nodes(i), colorset(class_tags(i)))
+                Next
+            End If
 
             Return maps
         End Function
