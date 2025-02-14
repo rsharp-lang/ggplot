@@ -126,17 +126,11 @@ Namespace ggraph.render
                     End If
                 Next
             Else
-                Dim nodes = stream.layout.Keys.ToArray
                 Dim group_colors As Color() = Designer.GetColors("paper", class_tags.Distinct.Count)
                 Dim unique_groups = class_tags.Distinct.ToArray
-                Dim colorset As New Dictionary(Of String, Color)
 
                 For i As Integer = 0 To unique_groups.Length - 1
-                    Call colorset.Add(unique_groups(i), group_colors(i))
-                Next
-
-                For i As Integer = 0 To class_tags.Length - 1
-                    Call maps.Add(nodes(i), colorset(class_tags(i)))
+                    Call maps.Add(unique_groups(i), group_colors(i))
                 Next
             End If
 
