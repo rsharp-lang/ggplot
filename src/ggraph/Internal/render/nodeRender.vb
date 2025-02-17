@@ -138,7 +138,7 @@ Namespace ggraph.render
                     size = New SizeF(radius(0), radius(1))
                 End If
 
-                center = New PointF(center.X - size.Width / 2, center.Y - size.Height / 2)
+                center = New PointF(center.X - size.Width, center.Y - size.Height / 2)
                 g.DrawLegendShape(center, size, legendStyle, brush)
 
                 Return New RectangleF(center, size)

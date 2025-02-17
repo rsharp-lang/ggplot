@@ -179,11 +179,13 @@ Namespace ggraph
                 Dim r As Single = degree.ScaleMapping(degree.Min, radiusRange)
                 Dim rmax As Double = degree.ScaleMapping(degree.Max, radiusRange)
 
-                x = plotRegion.Right + radiusRange.Max * 1.5
+                x = plotRegion.Right + 20 + radiusRange.Max * 1.5
                 y = plotRegion.Top + radiusRange.Min * 1.125
                 ytop = y
 
                 Call g.DrawString("Node Degree", labelFont, Brushes.Black, New PointF(x - rmax / 2, ytop - A.Height * 1.5))
+
+                y += A.Height
 
                 For Each d As Double In degree.Enumerate(3)
                     r = degree.ScaleMapping(d, radiusRange) * 0.65
@@ -193,7 +195,7 @@ Namespace ggraph
                     y = ybottom
                 Next
 
-                ybottom -= 40
+                ybottom += r / 2
 
                 ' draw radius axis
                 Call g.DrawLine(line, New PointF(x + r * 1.25, ytop + r / 3), New PointF(x + r * 1.25, ybottom + r / 3))
@@ -201,7 +203,7 @@ Namespace ggraph
                 Call g.DrawString(degree.Max.ToString("F0"), labelFont, Brushes.Black, New PointF(x + r * 1.5, ybottom))
 
                 ' draw node shape type
-                y += r * 2
+                y += r * 2 + 200
                 r *= 0.85
                 x = plotRegion.Right + radiusRange.Max * 1.125
 
@@ -244,32 +246,32 @@ Namespace ggraph
             End If
 
             If Not edgeStyle Is Nothing Then
-                ' draw edge width
-                Dim lineWidth = edgeStyle.getWeightScale(graph)
-                Dim widths = graph.graphEdges.Select(Function(l) CDbl(lineWidth(l))).Range
-                Dim weights = graph.graphEdges.Select(Function(l) l.weight).Range
-                Dim w As Double
-                Dim deltaX As Double = 50
+                '' draw edge width
+                'Dim lineWidth = edgeStyle.getWeightScale(graph)
+                'Dim widths = graph.graphEdges.Select(Function(l) CDbl(lineWidth(l))).Range
+                'Dim weights = graph.graphEdges.Select(Function(l) l.weight).Range
+                'Dim w As Double
+                'Dim deltaX As Double = 50
 
-                y += deltaX
+                'y += deltaX
 
-                Call g.DrawString(edgeWeightTitle, labelFont, Brushes.Black, New PointF(x, y))
+                'Call g.DrawString(edgeWeightTitle, labelFont, Brushes.Black, New PointF(x, y))
 
-                ytop = y + w + 30
+                'ytop = y + w + 30
 
-                For Each d As Double In weights.Enumerate(4)
-                    w = weights.ScaleMapping(d, widths)
-                    y += w + 30
-                    ybottom = y
-                    g.DrawLine(New Pen(Brushes.Black, w), New PointF(x, y), New PointF(x + deltaX - 10, y))
-                Next
+                'For Each d As Double In weights.Enumerate(4)
+                '    w = weights.ScaleMapping(d, widths)
+                '    y += w + 30
+                '    ybottom = y
+                '    g.DrawLine(New Pen(Brushes.Black, w), New PointF(x, y), New PointF(x + deltaX - 10, y))
+                'Next
 
-                ' draw radius axis
-                Call g.DrawLine(line, New PointF(x + deltaX, ytop), New PointF(x + deltaX, ybottom))
-                Call g.DrawString(weights.Min.ToString("F3"), labelFont, Brushes.Black, New PointF(x + deltaX * 1.25, ytop))
-                Call g.DrawString(weights.Max.ToString("F3"), labelFont, Brushes.Black, New PointF(x + deltaX * 1.25, ybottom - A.Height / 2))
+                '' draw radius axis
+                'Call g.DrawLine(line, New PointF(x + deltaX, ytop), New PointF(x + deltaX, ybottom))
+                'Call g.DrawString(weights.Min.ToString("F3"), labelFont, Brushes.Black, New PointF(x + deltaX * 1.25, ytop))
+                'Call g.DrawString(weights.Max.ToString("F3"), labelFont, Brushes.Black, New PointF(x + deltaX * 1.25, ybottom - A.Height / 2))
 
-                y += deltaX * 1.5
+                'y += deltaX * 1.5
             End If
 
             If Not legendList.IsNullOrEmpty Then
