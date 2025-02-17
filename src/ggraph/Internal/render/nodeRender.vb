@@ -122,8 +122,6 @@ Namespace ggraph.render
             End If
         End Function
 
-
-
         Private Class Drawer
 
             Public graph As NetworkGraph
