@@ -1,59 +1,59 @@
 ﻿#Region "Microsoft.VisualBasic::f4cd83b34f4164297e45a373586d5a5b, src\ggraph\Internal\render\nodeRender.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (I@xieguigang.me)
-    ' 
-    ' Copyright (c) 2021 R# language
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (I@xieguigang.me)
+' 
+' Copyright (c) 2021 R# language
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
-
-
-    ' Code Statistics:
-
-    '   Total Lines: 126
-    '    Code Lines: 108 (85.71%)
-    ' Comment Lines: 0 (0.00%)
-    '    - Xml Docs: 0.00%
-    ' 
-    '   Blank Lines: 18 (14.29%)
-    '     File Size: 5.18 KB
+' Summaries:
 
 
-    '     Class nodeRender
-    ' 
-    '         Properties: defaultColor, fill, radius, shape
-    ' 
-    '         Function: getFontSize, getRadius, getShapes, Plot
-    ' 
-    ' 
-    ' /********************************************************************************/
+' Code Statistics:
+
+'   Total Lines: 126
+'    Code Lines: 108 (85.71%)
+' Comment Lines: 0 (0.00%)
+'    - Xml Docs: 0.00%
+' 
+'   Blank Lines: 18 (14.29%)
+'     File Size: 5.18 KB
+
+
+'     Class nodeRender
+' 
+'         Properties: defaultColor, fill, radius, shape
+' 
+'         Function: getFontSize, getRadius, getShapes, Plot
+' 
+' 
+' /********************************************************************************/
 
 #End Region
 
@@ -122,35 +122,38 @@ Namespace ggraph.render
             End If
         End Function
 
+
+
+        Private Class Drawer
+
+            Public graph As NetworkGraph
+            Public shapeAs As Func(Of Node, LegendStyles)
+
+            Public Function DrawNodeShape(id As String, g As IGraphics, brush As Brush, radius As Single(), center As PointF) As RectangleF
+                Dim v As Node = graph.GetElementByID(id)
+                Dim legendStyle As LegendStyles = shapeAs(v)
+                Dim size As SizeF
+
+                If radius.Length = 1 Then
+                    size = New SizeF(radius(0), radius(0))
+                Else
+                    size = New SizeF(radius(0), radius(1))
+                End If
+
+                center = New PointF(center.X - size.Width / 2, center.Y - size.Height / 2)
+                g.DrawLegendShape(center, size, legendStyle, brush)
+
+                Return New RectangleF(center, size)
+            End Function
+        End Class
+
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim graph As NetworkGraph = stream.ggplot.data
             Dim stroke As Pen = Pens.White
             Dim shapeAs = getShapes(stream.ggplot.data)
             Dim css As CSSEnvirnment = stream.g.LoadEnvironment
             Dim baseFont As Font = css.GetFont(stream.theme.tagCSS)
-            Dim drawNodeShape As DrawNodeShape =
-                Function(id As String,
-                         g As IGraphics,
-                         brush As Brush,
-                         radius As Single(),
-                         center As PointF) As RectangleF
-
-                    Dim v As Node = graph.GetElementByID(id)
-                    Dim legendStyle As LegendStyles = shapeAs(v)
-                    Dim size As SizeF
-
-                    If radius.Length = 1 Then
-                        size = New SizeF(radius(0), radius(0))
-                    Else
-                        size = New SizeF(radius(0), radius(1))
-                    End If
-
-                    center = New PointF(center.X - size.Width / 2, center.Y - size.Height / 2)
-                    g.DrawLegendShape(center, size, legendStyle, brush)
-
-                    Return New RectangleF(center, size)
-                End Function
-
+            Dim drawer As New Drawer With {.graph = graph, .shapeAs = shapeAs}
             Dim renderNode As New NodeRendering(
                 graph,
                 radiusValue:=getRadius(graph),
@@ -161,7 +164,7 @@ Namespace ggraph.render
                 scalePos:=stream.layout,
                 throwEx:=False,
                 getDisplayLabel:=Function(n) n.data.label,
-                drawNodeShape:=drawNodeShape,
+                drawNodeShape:=AddressOf drawer.DrawNodeShape,
                 getLabelPosition:=Nothing,
                 labelWordWrapWidth:=-1,
                 nodeWidget:=Nothing,
