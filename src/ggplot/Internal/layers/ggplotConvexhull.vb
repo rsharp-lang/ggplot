@@ -129,7 +129,7 @@ Namespace layers
             Dim legend As LegendObject
 
             For Each polygon As NamedCollection(Of PointF) In polygons
-                legend = renderPolygon(stream, colors(polygon.name), polygon)
+                legend = renderPolygon(stream, colors(If(polygon.name, "No Group")), polygon)
 
                 If Not legend Is Nothing Then
                     Call legendGroup.Add(legend)

@@ -130,7 +130,7 @@ Namespace ggraph.render
                 Dim unique_groups = class_tags.Distinct.ToArray
 
                 For i As Integer = 0 To unique_groups.Length - 1
-                    Call maps.Add(unique_groups(i), group_colors(i))
+                    Call maps.Add(If(unique_groups(i), "No Group"), group_colors(i))
                 Next
             End If
 
