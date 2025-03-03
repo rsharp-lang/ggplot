@@ -65,7 +65,7 @@ Imports Microsoft.VisualBasic.Imaging.Driver
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Internal.[Object]
-Imports df = Microsoft.VisualBasic.Math.DataFrame.DataFrame
+Imports df = Microsoft.VisualBasic.Data.Framework.DataFrame
 
 ''' <summary>
 ''' ggplot function exports for interop
