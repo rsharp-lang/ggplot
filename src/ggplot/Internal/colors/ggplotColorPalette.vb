@@ -66,6 +66,7 @@ Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Internal.[Object]
 Imports SMRUCC.Rsharp.Runtime.Vectorization
 Imports any = Microsoft.VisualBasic.Scripting
+Imports rdataframe = SMRUCC.Rsharp.Runtime.Internal.Object.dataframe
 
 Namespace colors
 
@@ -73,6 +74,21 @@ Namespace colors
     ''' A color palette literal mapping, mapping from a term to a set of the color names
     ''' </summary>
     Public Class ggplotColorPalette : Inherits ggplotColorCustomSet
+
+        ''' <summary>
+        ''' check of the <see cref="colorMap"/> is mapping from the ggplot data source?
+        ''' </summary>
+        ''' <param name="ggplot"></param>
+        ''' <returns></returns>
+        Public Function checkDataMap(ggplot As ggplot) As Boolean
+            Dim check_str As String() = CLRVector.asCharacter(colorMap)
+
+            If TypeOf ggplot.data Is rdataframe AndAlso check_str.TryCount = 1 Then
+                Return DirectCast(ggplot.data, rdataframe).hasName(check_str(0))
+            Else
+                Return False
+            End If
+        End Function
 
         <MethodImpl(MethodImplOptions.AggressiveInlining)>
         Public Overrides Function ToString() As String
@@ -90,7 +106,7 @@ Namespace colors
         Public Overrides Function ColorHandler(ggplot As ggplot, factors As Array) As Func(Of Object, String)
             Dim colorMap As Object = Me.colorMap
 
-            If ggplot.base.reader IsNot Nothing AndAlso ggplot.base.reader.color Is Nothing Then
+            If checkDataMap(ggplot) Then
                 colorMap = ggplot.ggplotTheme.colorSet
             End If
 
