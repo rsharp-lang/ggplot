@@ -114,13 +114,15 @@ Public Module ggplotFunction
 
     Public Function aes(x As String, y As String,
                         Optional z As String = Nothing,
+                        Optional color As Object = Nothing,
                         Optional label As String = Nothing) As ggplotReader
 
         Return New ggplotReader With {
             .x = x,
             .y = y,
             .z = z,
-            .label = label
+            .label = label,
+            .color = color
         }
     End Function
 
