@@ -124,6 +124,8 @@ Imports LineCap = Microsoft.VisualBasic.Imaging.LineCap
 <Package("ggplot2")>
 Module ggplot2
 
+    Dim _last_plot As ggplot
+
     ''' <summary>
     ''' ### Create a new ggplot
     ''' 
@@ -215,8 +217,36 @@ Module ggplot2
             .zlabel = base.reader.z
         End With
 
+        _last_plot = ggplotDriver
+
         Return ggplotDriver
     End Function
+
+    ''' <summary>
+    ''' ### Retrieve the last plot to be modified or created.
+    ''' 
+    ''' Retrieve the last plot to be modified or created.
+    ''' </summary>
+    ''' <returns></returns>
+    <ExportAPI("last_plot")>
+    Public Function get_last_plot() As ggplot
+        Return _last_plot
+    End Function
+
+    Public Function ggsave(
+  filename As String,
+ Optional plot As Object = "~last_plot()",
+  Optional device As Object = NULL,
+ Optional path As Object = NULL,
+  Optional scale As Single = 1,
+  Optional width As Object = NA,
+  Optional height As Object = NA,
+  Optional units As = c("in", "cm", "mm", "px"),
+  dpi = 300,
+  limitsize = True,
+  bg = NULL,
+  ...
+)
 
     ''' <summary>
     ''' ### Construct aesthetic mappings
@@ -1071,6 +1101,10 @@ Module ggplot2
     <ROperator("+")>
     <RApiReturn(GetType(ggplot))>
     Public Function add_layer(ggplot As ggplot, layer As ggplotLayer) As Object
+        If Not ggplot Is Nothing Then
+            _last_plot = ggplot
+        End If
+
         If layer Is Nothing Then
             If ggplot.environment.globalEnvironment.options.strict Then
                 Return RInternal.debug.stop("the given ggplot layer object can not be nothing!", ggplot.environment)
@@ -1085,6 +1119,10 @@ Module ggplot2
 
     <ROperator("+")>
     Public Function configPlot(ggplot As ggplot, opts As ggplotOption) As ggplot
+        If Not ggplot Is Nothing Then
+            _last_plot = ggplot
+        End If
+
         Return opts.Config(ggplot)
     End Function
 
