@@ -77,6 +77,7 @@ Public Module ggplotFunction
     Public Function ggplot(data As df,
                            Optional mapping As ggplotReader = Nothing,
                            Optional colorSet As String = "paper",
+                           Optional padding As String = "padding: 5% 15% 15% 15%;",
                            Optional args As list = Nothing) As ggplot
 
         Dim env As Environment = GlobalEnvironment.defaultEmpty
@@ -88,7 +89,7 @@ Public Module ggplotFunction
         Dim theme As New Theme With {
             .axisLabelCSS = "font-style: strong; font-size: 12; font-family: " & FontFace.MicrosoftYaHei & ";",
             .axisTickCSS = "font-style: normal; font-size: 10; font-family: " & FontFace.MicrosoftYaHei & ";",
-            .padding = InteropArgumentHelper.getPadding(args.getByName("padding"), g.DefaultUltraLargePadding),
+            .padding = padding,
             .drawLegend = True,
             .legendLabelCSS = "font-style: normal; font-size: 13; font-family: " & FontFace.MicrosoftYaHei & ";",
             .colorSet = RColorPalette.getColorSet(colorSet, [default]:="paper"),
@@ -129,7 +130,7 @@ Public Module ggplotFunction
                                Optional stroke As Stroke = Nothing,
                                Optional size As Single = 2,
                                Optional show_legend As Boolean = True,
-                               Optional alpha As Double = 1) As ggplotLayer
+                               Optional alpha As Double = 1) As ggplotScatter
 
         Dim colorMap As ggplotColorMap = ggplotColorMap.CreateColorMap(color, alpha)
         Dim strokeCss As String = InteropArgumentHelper.getStrokePenCSS(stroke, [default]:=Nothing)
