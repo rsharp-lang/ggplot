@@ -150,7 +150,7 @@ Namespace layers
             Dim margin As PaddingLayout = PaddingLayout.EvaluateFromCSS(css, theme.padding)
 
             If TypeOf colorMap Is ggplotColorPalette AndAlso DirectCast(colorMap, ggplotColorPalette).checkDataMap(ggplot) Then
-                legend = New ColorMapLegend(DirectCast(palette.colorMap, String), maplevels)
+                legend = New ColorMapLegend(ggplot.ggplotTheme.colorSet, maplevels)
             Else
                 legend = New ColorMapLegend(CLRVector.asCharacter(palette.colorMap), maplevels)
             End If
