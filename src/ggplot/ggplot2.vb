@@ -63,7 +63,6 @@
 #End Region
 
 Imports System.Drawing
-Imports System.Drawing.Drawing2D
 Imports ggplot.colors
 Imports ggplot.elements
 Imports ggplot.layers
@@ -75,7 +74,6 @@ Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
-Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Shapes
 Imports Microsoft.VisualBasic.Imaging.Driver
 Imports Microsoft.VisualBasic.Language.Default
@@ -123,6 +121,8 @@ Imports LineCap = Microsoft.VisualBasic.Imaging.LineCap
 ''' </summary>
 <Package("ggplot2")>
 Module ggplot2
+
+    Dim _last_plot As ggplot
 
     ''' <summary>
     ''' ### Create a new ggplot
@@ -182,7 +182,7 @@ Module ggplot2
                            Optional args As list = Nothing,
                            Optional environment As Environment = Nothing) As ggplot
 
-        Dim driver As Drivers = environment.getDriver
+        Dim driver As Drivers = environment.getDriver(default:=Drivers.PostScript)
         Dim theme As New Theme With {
             .axisLabelCSS = "font-style: strong; font-size: 12; font-family: " & FontFace.MicrosoftYaHei & ";",
             .axisTickCSS = "font-style: normal; font-size: 10; font-family: " & FontFace.MicrosoftYaHei & ";",
@@ -215,7 +215,92 @@ Module ggplot2
             .zlabel = base.reader.z
         End With
 
+        _last_plot = ggplotDriver
+
         Return ggplotDriver
+    End Function
+
+    ''' <summary>
+    ''' ### Retrieve the last plot to be modified or created.
+    ''' 
+    ''' Retrieve the last plot to be modified or created.
+    ''' </summary>
+    ''' <returns></returns>
+    <ExportAPI("last_plot")>
+    Public Function get_last_plot() As ggplot
+        Return _last_plot
+    End Function
+
+    ''' <summary>
+    ''' 
+    ''' </summary>
+    ''' <param name="filename"></param>
+    ''' <param name="plot"></param>
+    ''' <param name="device"></param>
+    ''' <param name="path"></param>
+    ''' <param name="scale"></param>
+    ''' <param name="width"></param>
+    ''' <param name="height"></param>
+    ''' <param name="units"></param>
+    ''' <param name="dpi"></param>
+    ''' <param name="limitsize"></param>
+    ''' <param name="bg"></param>
+    ''' <param name="args"></param>
+    ''' <param name="env"></param>
+    ''' <returns></returns>
+    <ExportAPI("ggsave")>
+    Public Function ggsave(filename As String,
+                           <RLazyExpression>
+                           Optional plot As Object = "~last_plot()",
+                           Optional device As Object = NULL,
+                           Optional path As Object = NULL,
+                           Optional scale As Single = 1,
+                           Optional width As Integer? = Nothing,
+                           Optional height As Integer? = Nothing,
+                           Optional units As CssUnit = CssUnit.Pixels,
+                           Optional dpi As Integer = 300,
+                           Optional limitsize As Boolean = True,
+                           Optional bg As Object = NULL,
+                           <RListObjectArgument>
+                           Optional args As list = Nothing,
+                           Optional env As Environment = Nothing) As Object
+
+        ' ggplot generates the ps model at first?
+        ' plot(xxx) -> PS_model -> rendering(png/svg/pdf)
+
+        Dim ggplot As ggplot = TryCast(plot, ggplot)
+
+        If plot Is Nothing Then
+            Call env.AddMessage("plot is nothing, no plot to save.", MSG_TYPES.WRN)
+            Return Nothing
+        ElseIf ggplot Is Nothing Then
+            Return Message.InCompatibleType(GetType(ggplot), plot.GetType, env)
+        End If
+
+        Dim img As ImageData
+
+        Select Case filename.ExtensionSuffix
+            Case "svg" : img = ggsave(ggplot, Drivers.SVG)
+            Case "pdf" : img = ggsave(ggplot, Drivers.PDF)
+            Case "png", "bmp", "jpg", "jpeg", "webp"
+                img = ggsave(ggplot, Drivers.GDI)
+            Case "ps" : img = ggsave(ggplot, Drivers.PS)
+
+            Case Else
+                Throw New NotSupportedException
+        End Select
+
+        Return img.Save(filename)
+    End Function
+
+    Private Function ggsave(ggplot As ggplot, type As Drivers) As ImageData
+        If ggplot.driver = Drivers.PostScript Then
+            ' convert from postscript model
+        ElseIf ggplot.driver = type Then
+            ' is identical
+        Else
+            Throw New InvalidProgramException
+        End If
     End Function
 
     ''' <summary>
@@ -1071,6 +1156,10 @@ Module ggplot2
     <ROperator("+")>
     <RApiReturn(GetType(ggplot))>
     Public Function add_layer(ggplot As ggplot, layer As ggplotLayer) As Object
+        If Not ggplot Is Nothing Then
+            _last_plot = ggplot
+        End If
+
         If layer Is Nothing Then
             If ggplot.environment.globalEnvironment.options.strict Then
                 Return RInternal.debug.stop("the given ggplot layer object can not be nothing!", ggplot.environment)
@@ -1085,6 +1174,10 @@ Module ggplot2
 
     <ROperator("+")>
     Public Function configPlot(ggplot As ggplot, opts As ggplotOption) As ggplot
+        If Not ggplot Is Nothing Then
+            _last_plot = ggplot
+        End If
+
         Return opts.Config(ggplot)
     End Function
 
