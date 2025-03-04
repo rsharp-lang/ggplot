@@ -79,16 +79,30 @@ Namespace colors
             Return any.ToString(colorMap)
         End Function
 
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="ggplot"></param>
+        ''' <param name="factors">
+        ''' the mapping source
+        ''' </param>
+        ''' <returns></returns>
         Public Overrides Function ColorHandler(ggplot As ggplot, factors As Array) As Func(Of Object, String)
+            Dim colorMap As Object = Me.colorMap
+
+            If ggplot.base.reader IsNot Nothing AndAlso ggplot.base.reader.color Is Nothing Then
+                colorMap = ggplot.ggplotTheme.colorSet
+            End If
+
             If factors.GetType.GetRTypeCode.IsNumeric Then
                 ' level mapping
-                Dim colors As String() = getColors(factorSize:=100)
+                Dim colors As String() = getColors(factorSize:=100, colorMap)
 
                 Return ggplotColorCustomSet.NumericFactorMapping(CLRVector.asNumeric(factors), colors)
             Else
                 Dim factorList As String() = CLRVector.asCharacter(factors)
                 Dim factorSize As Integer = factorList.Distinct.Count
-                Dim colors As String() = getColors(factorSize)
+                Dim colors As String() = getColors(factorSize, colorMap)
                 Dim check_warn As String = factor.checkSize(factorSize, factorList)
 
                 If Not check_warn.StringEmpty Then
@@ -99,8 +113,13 @@ Namespace colors
             End If
         End Function
 
+        ''' <summary>
+        ''' heatmap colors
+        ''' </summary>
+        ''' <param name="factorSize"></param>
+        ''' <returns></returns>
         <MethodImpl(MethodImplOptions.AggressiveInlining)>
-        Private Function getColors(factorSize As Integer) As String()
+        Private Function getColors(factorSize As Integer, colorMap As Object) As String()
             Return Designer _
                 .GetColors(
                     term:=any.ToString(colorMap),
@@ -111,6 +130,13 @@ Namespace colors
                 .ToArray
         End Function
 
+        ''' <summary>
+        ''' category colors
+        ''' </summary>
+        ''' <param name="factors"></param>
+        ''' <param name="shape"></param>
+        ''' <param name="theme"></param>
+        ''' <returns></returns>
         Public Overrides Function TryGetFactorLegends(factors As Array, shape As LegendStyles, theme As Theme) As LegendObject()
             If factors.GetType.GetRTypeCode.IsNumeric Then
                 Return Nothing
