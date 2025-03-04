@@ -268,7 +268,39 @@ Module ggplot2
         ' ggplot generates the ps model at first?
         ' plot(xxx) -> PS_model -> rendering(png/svg/pdf)
 
-        Throw New NotImplementedException
+        Dim ggplot As ggplot = TryCast(plot, ggplot)
+
+        If plot Is Nothing Then
+            Call env.AddMessage("plot is nothing, no plot to save.", MSG_TYPES.WRN)
+            Return Nothing
+        ElseIf ggplot Is Nothing Then
+            Return Message.InCompatibleType(GetType(ggplot), plot.GetType, env)
+        End If
+
+        Dim img As ImageData
+
+        Select Case filename.ExtensionSuffix
+            Case "svg" : img = ggsave(ggplot, Drivers.SVG)
+            Case "pdf" : img = ggsave(ggplot, Drivers.PDF)
+            Case "png", "bmp", "jpg", "jpeg", "webp"
+                img = ggsave(ggplot, Drivers.GDI)
+            Case "ps" : img = ggsave(ggplot, Drivers.PS)
+
+            Case Else
+                Throw New NotSupportedException
+        End Select
+
+        Return img.Save(filename)
+    End Function
+
+    Private Function ggsave(ggplot As ggplot, type As Drivers) As ImageData
+        If ggplot.driver = Drivers.PostScript Then
+            ' convert from postscript model
+        ElseIf ggplot.driver = type Then
+            ' is identical
+        Else
+            Throw New InvalidProgramException
+        End If
     End Function
 
     ''' <summary>
