@@ -63,7 +63,6 @@
 #End Region
 
 Imports System.Drawing
-Imports System.Drawing.Drawing2D
 Imports ggplot.colors
 Imports ggplot.elements
 Imports ggplot.layers
@@ -75,7 +74,6 @@ Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
-Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Shapes
 Imports Microsoft.VisualBasic.Imaging.Driver
 Imports Microsoft.VisualBasic.Language.Default
@@ -184,7 +182,7 @@ Module ggplot2
                            Optional args As list = Nothing,
                            Optional environment As Environment = Nothing) As ggplot
 
-        Dim driver As Drivers = environment.getDriver
+        Dim driver As Drivers = environment.getDriver(default:=Drivers.PostScript)
         Dim theme As New Theme With {
             .axisLabelCSS = "font-style: strong; font-size: 12; font-family: " & FontFace.MicrosoftYaHei & ";",
             .axisTickCSS = "font-style: normal; font-size: 10; font-family: " & FontFace.MicrosoftYaHei & ";",
