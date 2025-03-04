@@ -267,6 +267,9 @@ Module ggplot2
                            Optional args As list = Nothing,
                            Optional env As Environment = Nothing) As Object
 
+        ' ggplot generates the ps model at first?
+        ' plot(xxx) -> PS_model -> rendering(png/svg/pdf)
+
         Throw New NotImplementedException
     End Function
 
