@@ -233,20 +233,42 @@ Module ggplot2
         Return _last_plot
     End Function
 
-    Public Function ggsave(
-  filename As String,
- Optional plot As Object = "~last_plot()",
-  Optional device As Object = NULL,
- Optional path As Object = NULL,
-  Optional scale As Single = 1,
-  Optional width As Object = NA,
-  Optional height As Object = NA,
-  Optional units As = c("in", "cm", "mm", "px"),
-  dpi = 300,
-  limitsize = True,
-  bg = NULL,
-  ...
-)
+    ''' <summary>
+    ''' 
+    ''' </summary>
+    ''' <param name="filename"></param>
+    ''' <param name="plot"></param>
+    ''' <param name="device"></param>
+    ''' <param name="path"></param>
+    ''' <param name="scale"></param>
+    ''' <param name="width"></param>
+    ''' <param name="height"></param>
+    ''' <param name="units"></param>
+    ''' <param name="dpi"></param>
+    ''' <param name="limitsize"></param>
+    ''' <param name="bg"></param>
+    ''' <param name="args"></param>
+    ''' <param name="env"></param>
+    ''' <returns></returns>
+    <ExportAPI("ggsave")>
+    Public Function ggsave(filename As String,
+                           <RLazyExpression>
+                           Optional plot As Object = "~last_plot()",
+                           Optional device As Object = NULL,
+                           Optional path As Object = NULL,
+                           Optional scale As Single = 1,
+                           Optional width As Integer? = Nothing,
+                           Optional height As Integer? = Nothing,
+                           Optional units As CssUnit = CssUnit.Pixels,
+                           Optional dpi As Integer = 300,
+                           Optional limitsize As Boolean = True,
+                           Optional bg As Object = NULL,
+                           <RListObjectArgument>
+                           Optional args As list = Nothing,
+                           Optional env As Environment = Nothing) As Object
+
+        Throw New NotImplementedException
+    End Function
 
     ''' <summary>
     ''' ### Construct aesthetic mappings
