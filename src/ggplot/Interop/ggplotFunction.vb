@@ -125,7 +125,7 @@ Public Module ggplotFunction
     End Function
 
     Public Function geom_point(Optional mapping As ggplotReader = NULL,
-                               Optional color As String = Nothing,
+                               Optional color As Object = Nothing,
                                Optional shape As LegendStyles? = Nothing,
                                Optional stroke As Stroke = Nothing,
                                Optional size As Single = 2,
