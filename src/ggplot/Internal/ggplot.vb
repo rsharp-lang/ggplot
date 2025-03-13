@@ -467,10 +467,6 @@ Public Class ggplot : Inherits Plot
             End If
         End If
 
-        If TypeOf layer Is ggplotHistogram Then
-            Call ggplotHistogram.configHistogram(ggplot, layer)
-        End If
-
         ggplot.layers.Add(layer)
         layer.zindex = ggplot.layers.Count
 

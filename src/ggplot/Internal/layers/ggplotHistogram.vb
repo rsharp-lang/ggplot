@@ -67,6 +67,7 @@ Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Data.ChartPlots.BarPlot.Histogram
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
+Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.Math.Distributions.BinBox
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports Microsoft.VisualBasic.MIME.Html.Render
@@ -121,7 +122,7 @@ Namespace layers
         Public Property range As DoubleRange
         Public Property position As LayoutPosition
 
-        Dim binData As DataBinBox(Of Double)()
+        Dim binData As NamedCollection(Of DataBinBox(Of Double))()
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             ' check of the multiple serials group?
@@ -141,6 +142,16 @@ Namespace layers
                 ' read from base data
                 fillgroups = stream.ggplot.base.data(fillgroups(0))
             End If
+
+            Dim legends As IggplotLegendElement = Nothing
+            Dim colors = getColorSet(stream.ggplot, LegendStyles.Square, fillgroups, legends)
+            Dim css As CSSEnvirnment = stream.g.LoadEnvironment
+
+            For Each bin As NamedCollection(Of DataBinBox(Of Double)) In binData
+
+            Next
+
+            Return legends
         End Function
 
         Private Function singleGroup(stream As ggplotPipeline) As IggplotLegendElement
@@ -151,7 +162,7 @@ Namespace layers
                 .style = LegendStyles.Rectangle,
                 .title = stream.defaultTitle
             }
-            Dim histData As HistProfile = binData.NewModel(legend)
+            Dim histData As HistProfile = binData(0).NewModel(legend)
             Dim colorData As New NamedValue(Of Color) With {
                 .Name = legend.title,
                 .Value = color.TranslateColor
@@ -175,6 +186,11 @@ Namespace layers
             End If
         End Function
 
+        Protected Friend Overrides Function initDataSet(ggplot As ggplot) As ggplotData
+            Call configHistogram(ggplot, Me)
+            Return MyBase.initDataSet(ggplot)
+        End Function
+
         Friend Shared Sub configHistogram(ggplot As ggplot, hist As ggplotHistogram)
             Dim data As ggplotData
 
@@ -185,20 +201,49 @@ Namespace layers
             End If
 
             Dim dataX As Double() = CLRVector.asNumeric(data.x)
-            Dim bins = CutBins _
-                .FixedWidthBins(
-                    data:=dataX,
-                    k:=hist.bins,
-                    eval:=Function(xi) xi,
-                    range:=hist.range
-                ) _
-                .ToArray
-            Dim y As Double() = bins.Select(Function(d) CDbl(d.Count)).ToArray
+            Dim y As Double()
 
-            hist.binData = bins
+            If Not data.fill Is Nothing Then
+                Dim serials = dataX _
+                    .Zip(join:=data.fill.ToFactors) _
+                    .GroupBy(Function(i) i.Second) _
+                    .Select(Function(si)
+                                Dim bins = CutBins.FixedWidthBins(
+                                    data:=si.Select(Function(xi) xi.First),
+                                    k:=hist.bins,
+                                    eval:=Function(xi) xi,
+                                    range:=hist.range
+                                ).ToArray
 
-            If Not data.y Is Nothing Then Call ggplot.base.data.Add("y", y)
-            If Not data.fill Is Nothing Then Call ggplot.base.data.Add("fill", data.fill.ToFactors)
+                                Return New NamedCollection(Of DataBinBox(Of Double))(si.Key, bins)
+                            End Function) _
+                    .ToArray
+
+                y = serials _
+                    .Select(Function(a) a.value) _
+                    .IteratesALL _
+                    .Select(Function(d) CDbl(d.Count)) _
+                    .ToArray
+                hist.binData = serials
+            Else
+                Dim bins = CutBins _
+                    .FixedWidthBins(
+                        data:=dataX,
+                        k:=hist.bins,
+                        eval:=Function(xi) xi,
+                        range:=hist.range
+                    ) _
+                    .ToArray
+
+                y = bins.Select(Function(d) CDbl(d.Count)).ToArray
+                hist.binData = {New NamedCollection(Of DataBinBox(Of Double))(Nothing, bins)}
+            End If
+
+            ggplot.base.data!y = y
+
+            If Not data.fill Is Nothing Then
+                ggplot.base.data!fill = data.fill.ToFactors
+            End If
 
             If ggplot.ylabel.StringEmpty Then
                 ggplot.ylabel = "Count"

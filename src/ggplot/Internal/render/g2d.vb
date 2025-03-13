@@ -152,8 +152,8 @@ Namespace render
             y = y.JoinIterates([default].y).JoinIterates(limitsY).Where(Function(d) Not d.IsNaNImaginary).ToArray
             y = validateAxis(y, ggplot)
 
-            Dim xTicks = x.Range.CreateAxisTicks
-            Dim yTicks = y.Range.CreateAxisTicks
+            Dim xTicks As Double() = If(x.IsNullOrEmpty, {}, x.Range.CreateAxisTicks)
+            Dim yTicks As Double() = If(y.IsNullOrEmpty, {}, y.Range.CreateAxisTicks)
             Dim scaleX = d3js.scale.linear.domain(values:=xTicks).range(integers:={rect.Left, rect.Right})
             Dim scaleY = d3js.scale.linear.domain(values:=yTicks).range(integers:={rect.Bottom, rect.Top})
             Dim scale As New DataScaler() With {
