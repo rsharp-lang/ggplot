@@ -579,9 +579,11 @@ Module ggplot2
     ''' </returns>
     <ExportAPI("geom_histogram")>
     <RApiReturn(GetType(ggplotHistogram))>
-    Public Function geom_histogram(bins As Integer,
+    Public Function geom_histogram(Optional bins As Integer = 20,
+                                   Optional position As String = Nothing,
                                    Optional color As Object = Nothing,
                                    Optional alpha As Double = 1,
+                                   Optional binwidth As Double = 0.1,
                                    <RRawVectorArgument>
                                    Optional range As Object = Nothing,
                                    Optional env As Environment = Nothing) As ggplotLayer
@@ -595,7 +597,8 @@ Module ggplot2
         Return New ggplotHistogram With {
             .bins = bins,
             .colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color), alpha, env),
-            .range = minMax
+            .range = minMax,
+            .binwidth = binwidth
         }
     End Function
 
@@ -1467,6 +1470,11 @@ Module ggplot2
             .legend_tick = legend_tick,
             .legend_title = legend_title
         }
+    End Function
+
+    <ExportAPI("theme_minimal")>
+    Public Function theme_minimal() As ggplotOption
+        Return New ggplotTheme
     End Function
 
     ''' <summary>

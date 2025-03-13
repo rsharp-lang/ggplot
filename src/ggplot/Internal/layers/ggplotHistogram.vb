@@ -109,6 +109,7 @@ Namespace layers
     ''' </summary>
     Public Class ggplotHistogram : Inherits ggplotLayer
 
+        Public Property binwidth As Double
         Public Property bins As Integer
         Public Property range As DoubleRange
 

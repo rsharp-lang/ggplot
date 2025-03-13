@@ -60,7 +60,6 @@ Imports ggplot.layers.layer3d
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
-Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Imaging.Driver
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports SMRUCC.Rsharp.Runtime
@@ -112,8 +111,10 @@ Public Module ggplotFunction
         Return ggplotDriver
     End Function
 
-    Public Function aes(x As String, y As String,
+    Public Function aes(Optional x As String = Nothing,
+                        Optional y As String = Nothing,
                         Optional z As String = Nothing,
+                        Optional fill As Object = Nothing,
                         Optional color As Object = Nothing,
                         Optional label As String = Nothing) As ggplotReader
 
@@ -122,7 +123,8 @@ Public Module ggplotFunction
             .y = y,
             .z = z,
             .label = label,
-            .color = color
+            .color = color,
+            .[class] = fill
         }
     End Function
 

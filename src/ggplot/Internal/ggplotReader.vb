@@ -98,6 +98,7 @@ Public Class ggplotReader
     Public Property color As Object
     Public Property shape As Object
     Public Property [class] As Object
+
     ''' <summary>
     ''' the legend title label text
     ''' </summary>
