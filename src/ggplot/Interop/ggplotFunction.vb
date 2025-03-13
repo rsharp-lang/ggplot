@@ -169,7 +169,7 @@ Public Module ggplotFunction
                                    Optional alpha As Double = 1,
                                    Optional binwidth As Double = 0.1,
                                    Optional position As LayoutPosition = LayoutPosition.identity,
-                                   Optional range As Double() = Nothing) As ggplotLayer
+                                   Optional range As Double() = Nothing) As ggplotHistogram
 
         Dim minMax As DoubleRange = Nothing
 
