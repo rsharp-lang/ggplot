@@ -1,67 +1,67 @@
 ﻿#Region "Microsoft.VisualBasic::8412a2b7fa03e3621e529363c742a298, src\ggplot\Internal\ggplot.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (I@xieguigang.me)
-    ' 
-    ' Copyright (c) 2021 R# language
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (I@xieguigang.me)
+' 
+' Copyright (c) 2021 R# language
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
-
-
-    ' Code Statistics:
-
-    '   Total Lines: 397
-    '    Code Lines: 271 (68.26%)
-    ' Comment Lines: 77 (19.40%)
-    '    - Xml Docs: 94.81%
-    ' 
-    '   Blank Lines: 49 (12.34%)
-    '     File Size: 14.32 KB
+' Summaries:
 
 
-    ' Class ggplot
-    ' 
-    '     Properties: args, base, clearCanvas, data, driver
-    '                 environment, ggplotTheme, is3D, layers, panelBorder
-    '                 titleOffset
-    ' 
-    '     Constructor: (+1 Overloads) Sub New
-    ' 
-    '     Function: CreateReader, CreateRender, getText, getValue, Save
-    ' 
-    '     Sub: Draw2DElements, DrawLegends, DrawMultiple, DrawSingle, plot3D
-    '          PlotInternal, Register
-    ' 
-    '     Operators: +
-    ' 
-    ' /********************************************************************************/
+' Code Statistics:
+
+'   Total Lines: 397
+'    Code Lines: 271 (68.26%)
+' Comment Lines: 77 (19.40%)
+'    - Xml Docs: 94.81%
+' 
+'   Blank Lines: 49 (12.34%)
+'     File Size: 14.32 KB
+
+
+' Class ggplot
+' 
+'     Properties: args, base, clearCanvas, data, driver
+'                 environment, ggplotTheme, is3D, layers, panelBorder
+'                 titleOffset
+' 
+'     Constructor: (+1 Overloads) Sub New
+' 
+'     Function: CreateReader, CreateRender, getText, getValue, Save
+' 
+'     Sub: Draw2DElements, DrawLegends, DrawMultiple, DrawSingle, plot3D
+'          PlotInternal, Register
+' 
+'     Operators: +
+' 
+' /********************************************************************************/
 
 #End Region
 
@@ -92,6 +92,8 @@ Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports SMRUCC.Rsharp.Runtime.Vectorization
 Imports std = System.Math
 Imports stdDataframe = Microsoft.VisualBasic.Data.Framework.DataFrame
+Imports ggplot.options
+
 
 #If NET48 Then
 Imports Pen = System.Drawing.Pen
@@ -302,7 +304,7 @@ Public Class ggplot : Inherits Plot
         Dim baseData As ggplotData = base.getGgplotData(Me)
         Dim no_mapping As Boolean = baseData.x Is Nothing AndAlso baseData.y Is Nothing
         Dim custom_mapping As Boolean() = (From layer As ggplotLayer
-                                           In ggplotAdapter.GetLayers(Me)
+                                           In ggplotAdapter.getLayers(Me)
                                            Select layer.useCustomData).ToArray
         If clearCanvas Then
             Call g.Clear(theme.background.TranslateColor)
@@ -391,9 +393,9 @@ Public Class ggplot : Inherits Plot
 
     Private Sub DrawMultiple(all As IggplotLegendElement(), g As IGraphics, canvas As GraphicsRegion, pos As PointF)
         Dim css As CSSEnvirnment = g.LoadEnvironment
-        Dim padding As PaddingLayout = PaddingLayout.EvaluateFromCSS(CSS, canvas.Padding)
+        Dim padding As PaddingLayout = PaddingLayout.EvaluateFromCSS(css, canvas.Padding)
         Dim width As Double = padding.Right / (all.Length + 1)
-        Dim box As Rectangle = canvas.PlotRegion(CSS)
+        Dim box As Rectangle = canvas.PlotRegion(css)
         Dim x As Double
         Dim y As Double
 
@@ -473,5 +475,10 @@ Public Class ggplot : Inherits Plot
         layer.zindex = ggplot.layers.Count
 
         Return ggplot
+    End Operator
+
+    <MethodImpl(MethodImplOptions.AggressiveInlining)>
+    Public Shared Operator +(ggplot As ggplot, opts As ggplotOption) As ggplot
+        Return opts.Config(ggplot)
     End Operator
 End Class

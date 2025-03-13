@@ -1,62 +1,64 @@
 ﻿#Region "Microsoft.VisualBasic::5eba8ffe403a9a97e6c9327bd3e39b3a, src\ggplot\Interop\ggplotFunction.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (I@xieguigang.me)
-    ' 
-    ' Copyright (c) 2021 R# language
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (I@xieguigang.me)
+' 
+' Copyright (c) 2021 R# language
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
-
-
-    ' Code Statistics:
-
-    '   Total Lines: 104
-    '    Code Lines: 85 (81.73%)
-    ' Comment Lines: 5 (4.81%)
-    '    - Xml Docs: 60.00%
-    ' 
-    '   Blank Lines: 14 (13.46%)
-    '     File Size: 4.08 KB
+' Summaries:
 
 
-    ' Module ggplotFunction
-    ' 
-    '     Function: aes, geom_point, ggplot
-    ' 
-    ' /********************************************************************************/
+' Code Statistics:
+
+'   Total Lines: 104
+'    Code Lines: 85 (81.73%)
+' Comment Lines: 5 (4.81%)
+'    - Xml Docs: 60.00%
+' 
+'   Blank Lines: 14 (13.46%)
+'     File Size: 4.08 KB
+
+
+' Module ggplotFunction
+' 
+'     Function: aes, geom_point, ggplot
+' 
+' /********************************************************************************/
 
 #End Region
 
 Imports ggplot.colors
 Imports ggplot.layers
 Imports ggplot.layers.layer3d
+Imports ggplot.options
+Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
@@ -162,4 +164,83 @@ Public Module ggplotFunction
         End If
     End Function
 
+    Public Function geom_histogram(Optional bins As Integer = 20,
+                                   Optional color As Object = Nothing,
+                                   Optional alpha As Double = 1,
+                                   Optional binwidth As Double = 0.1,
+                                   Optional position As LayoutPosition = LayoutPosition.identity,
+                                   Optional range As Double() = Nothing) As ggplotLayer
+
+        Dim minMax As DoubleRange = Nothing
+
+        If Not range.IsNullOrEmpty Then
+            minMax = New DoubleRange(range)
+        End If
+
+        Return New ggplotHistogram With {
+            .bins = bins,
+            .colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color), alpha, Nothing),
+            .range = minMax,
+            .binwidth = binwidth,
+            .position = position
+        }
+    End Function
+
+    ''' <summary>
+    ''' ## Modify axis, legend, and plot labels
+    ''' 
+    ''' Good labels are critical for making your plots accessible to 
+    ''' a wider audience. Always ensure the axis and legend labels 
+    ''' display the full variable name. Use the plot title and subtitle 
+    ''' to explain the main findings. It's common to use the caption 
+    ''' to provide information about the data source. tag can be used 
+    ''' for adding identification tags to differentiate between multiple 
+    ''' plots.
+    ''' </summary>
+    ''' <param name="x"></param>
+    ''' <param name="y"></param>
+    ''' <param name="title">The text for the title.</param>
+    ''' <param name="subtitle">
+    ''' The text For the subtitle For the plot which will be displayed 
+    ''' below the title.
+    ''' </param>
+    ''' <param name="caption">
+    ''' The text for the caption which will be displayed in the 
+    ''' bottom-right of the plot by default.
+    ''' </param>
+    ''' <param name="tag">
+    ''' The text for the tag label which will be displayed at the top-left 
+    ''' of the plot by default.
+    ''' </param>
+    ''' <param name="alt">
+    ''' Text used for the generation of alt-text for the plot. See 
+    ''' get_alt_text for examples.
+    ''' </param>
+    ''' <param name="alt_insight"></param>
+    ''' <returns></returns>
+    ''' <remarks>
+    ''' You can also set axis and legend labels in the individual scales 
+    ''' (using the first argument, the name). If you're changing other 
+    ''' scale options, this is recommended.
+    ''' 
+    ''' If a plot already has a title, subtitle, caption, etc., And you want 
+    ''' To remove it, you can Do so by setting the respective argument To 
+    ''' NULL. For example, If plot p has a subtitle, Then p + labs(subtitle = NULL) 
+    ''' will remove the subtitle from the plot.
+    ''' </remarks>
+    Public Function labs(Optional x As String = Nothing,
+                         Optional y As String = Nothing,
+                         Optional title As String = Nothing,
+                         Optional subtitle As String = Nothing,
+                         Optional caption As String = Nothing,
+                         Optional tag As Object = Nothing,
+                         Optional alt As Object = Nothing,
+                         Optional alt_insight As Object = Nothing) As ggplotOption
+
+        Return New ggplotAxisLabel With {
+            .x = x,
+            .y = y,
+            .title = title
+        }
+    End Function
 End Module

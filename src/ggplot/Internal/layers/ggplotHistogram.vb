@@ -74,6 +74,13 @@ Imports SMRUCC.Rsharp.Runtime.Vectorization
 
 Namespace layers
 
+    Public Enum LayoutPosition
+        identity
+        stack
+        dodge
+        fill
+    End Enum
+
     ''' <summary>
     ''' A histogram is a type of bar plot that represents the distribution of numerical data. It is an estimate of the 
     ''' probability distribution of a continuous variable and was first introduced by Karl Pearson. Histograms are particularly 
@@ -112,6 +119,7 @@ Namespace layers
         Public Property binwidth As Double
         Public Property bins As Integer
         Public Property range As DoubleRange
+        Public Property position As LayoutPosition
 
         Dim binData As DataBinBox(Of Double)()
 
