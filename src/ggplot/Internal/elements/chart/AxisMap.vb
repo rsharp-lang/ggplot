@@ -141,9 +141,9 @@ Namespace elements
             If TypeOf x Is axisMap Then
                 Return x
             ElseIf x.GetType.IsArray Then
-                Return FromArray(x)
+                Return FromArray(x, x)
             Else
-                Return FromArray({x.ToString})
+                Return FromArray({x.ToString}, x)
             End If
         End Function
 
