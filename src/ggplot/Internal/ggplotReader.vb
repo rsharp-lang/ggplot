@@ -97,6 +97,10 @@ Public Class ggplotReader
     Public Property z As String
     Public Property color As Object
     Public Property shape As Object
+    ''' <summary>
+    ''' the fill class group
+    ''' </summary>
+    ''' <returns></returns>
     Public Property [class] As Object
 
     ''' <summary>
@@ -155,9 +159,10 @@ Public Class ggplotReader
 
     Public Overridable Function getMapData(data As Object, env As Environment) As ggplotData
         Return New ggplotData With {
-            .x = axisMap.FromArray(unifySource(data, x, env)),
-            .y = axisMap.FromArray(unifySource(data, y, env)),
-            .z = axisMap.FromArray(If(isPlain2D, Nothing, unifySource(data, z, env)))
+            .x = axisMap.FromArray(unifySource(data, x, env), x),
+            .y = axisMap.FromArray(unifySource(data, y, env), y),
+            .z = axisMap.FromArray(If(isPlain2D, Nothing, unifySource(data, z, env)), z),
+            .fill = axisMap.FromArray(unifySource(data, [class], env), [class])
         }
     End Function
 

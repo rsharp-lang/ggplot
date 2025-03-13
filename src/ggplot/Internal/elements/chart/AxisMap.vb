@@ -79,7 +79,16 @@ Namespace elements
         ''' <returns></returns>
         Public ReadOnly Property mapper As MapperTypes
         Public ReadOnly Property range As DoubleRange
+        ''' <summary>
+        ''' the mapping data vector based on the <see cref="source"/>
+        ''' </summary>
+        ''' <returns></returns>
         Public ReadOnly Property value As Array
+        ''' <summary>
+        ''' the data mapping source tag
+        ''' </summary>
+        ''' <returns></returns>
+        Public ReadOnly Property source As Object
 
         ''' <summary>
         ''' the length of the axis map data
@@ -143,7 +152,7 @@ Namespace elements
         ''' </summary>
         ''' <param name="value"></param>
         ''' <returns></returns>
-        Public Shared Function FromArray(value As Array) As axisMap
+        Public Shared Function FromArray(value As Array, source As Object) As axisMap
             If value Is Nothing Then
                 Return Nothing
             End If

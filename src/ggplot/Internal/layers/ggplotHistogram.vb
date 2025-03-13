@@ -124,6 +124,26 @@ Namespace layers
         Dim binData As DataBinBox(Of Double)()
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
+            ' check of the multiple serials group?
+            Dim fill = stream.ggplot.base?.reader?.class
+
+            If fill IsNot Nothing Then
+                Return multipleSerials(stream, fill)
+            Else
+                Return singleGroup(stream)
+            End If
+        End Function
+
+        Private Function multipleSerials(stream As ggplotPipeline, fill As Object) As IggplotLegendElement
+            Dim fillgroups As String() = CLRVector.asCharacter(fill)
+
+            If fillgroups.TryCount = 1 Then
+                ' read from base data
+                fillgroups = stream.ggplot.base.data(fillgroups(0))
+            End If
+        End Function
+
+        Private Function singleGroup(stream As ggplotPipeline) As IggplotLegendElement
             Dim color As String = getColorName(stream.ggplot)
             Dim legend As New LegendObject With {
                 .color = color,
@@ -176,7 +196,9 @@ Namespace layers
             Dim y As Double() = bins.Select(Function(d) CDbl(d.Count)).ToArray
 
             hist.binData = bins
-            ggplot.base.data.Add("y", y)
+
+            If Not data.y Is Nothing Then Call ggplot.base.data.Add("y", y)
+            If Not data.fill Is Nothing Then Call ggplot.base.data.Add("fill", data.fill.ToFactors)
 
             If ggplot.ylabel.StringEmpty Then
                 ggplot.ylabel = "Count"

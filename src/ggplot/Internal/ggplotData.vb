@@ -67,6 +67,13 @@ Public Class ggplotData : Inherits ggplotAdapter
     Public Property y As axisMap
     Public Property z As axisMap
 
+    ''' <summary>
+    ''' fill class groups 
+    ''' </summary>
+    ''' <returns></returns>
+    Public Property fill As axisMap
+
+
     Public ReadOnly Property nsize As Integer
         Get
             Return x.size
