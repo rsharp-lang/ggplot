@@ -409,7 +409,7 @@ Module ggplot2
             .args = args,
             .title = title,
             .shape = shape,
-            .[class] = [class]
+            .[class] = If([class], fill)
         }
     End Function
 

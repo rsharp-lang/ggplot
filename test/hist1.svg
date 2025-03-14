@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 800 600">
+  <rect fill="white" width="800" height="600" />
+  <rect fill="white" width="800" height="600" />
+  <rect fill="white" x="80" y="60" width="560" height="480" />
+  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M80 60L80 540" />
+  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M142.222 60L142.222 540" />
+  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M204.444 60L204.444 540" />
+  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M266.667 60L266.667 540" />
+  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M328.889 60L328.889 540" />
+  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M391.111 60L391.111 540" />
+  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M453.333 60L453.333 540" />
+  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M515.556 60L515.556 540" />
+  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M577.778 60L577.778 540" />
+  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M640 60L640 540" />
+  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M80 540L640 540" />
+  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M80 480L640 480" />
+  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M80 420L640 420" />
+  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M80 360L640 360" />
+  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M80 300L640 300" />
+  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M80 240L640 240" />
+  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M80 180L640 180" />
+  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M80 120L640 120" />
+  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M80 60L640 60" />
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M80 540L640 540" />
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M80 540L80 555" />
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="66, 70.506432, 76.615028, 79.122559, 85.231163, " y="566, ">
+			-8.00
+	</text>
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M142.222 540L142.222 555" />
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="128, 132.50642, 138.61504, 141.12256, 147.23116, " y="566, ">
+			-6.00
+	</text>
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M204.444 540L204.444 555" />
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="190, 194.50642, 200.61504, 203.12256, 209.23116, " y="566, ">
+			-4.00
+	</text>
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M266.667 540L266.667 555" />
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="252, 256.50644, 262.61502, 265.12256, 271.23117, " y="566, ">
+			-2.00
+	</text>
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M328.889 540L328.889 555" />
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="326, " y="566, ">
+			0
+	</text>
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M391.111 540L391.111 555" />
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="379, 385.10861, 387.61612, 393.72473, " y="566, ">
+			2.00
+	</text>
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M453.333 540L453.333 555" />
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="442, 448.10861, 450.61612, 456.72473, " y="566, ">
+			4.00
+	</text>
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M515.556 540L515.556 555" />
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="504, 510.10861, 512.61615, 518.72473, " y="566, ">
+			6.00
+	</text>
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M577.778 540L577.778 555" />
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="566, 572.10858, 574.61615, 580.72473, " y="566, ">
+			8.00
+	</text>
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M640 540L640 555" />
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="625, 631.10858, 637.21722, 639.72473, 645.83331, " y="566, ">
+			10.00
+	</text>
+  <text font-size="12.5" font-family="Microsoft YaHei, 微软雅黑" x="341.21722, 349.67059, 356.57977, 359.90619, 367.60883, " y="561.25, ">
+			Value
+	</text>
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M80 540L80 60" />
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M80 540L70 540" />
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="63.25, " y="543.5, ">
+			0
+	</text>
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M80 480L70 480" />
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="32.940323, 39.048923, 45.157528, 51.266129, 53.773659, 59.882259, " y="483.5, ">
+			200.00
+	</text>
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M80 420L70 420" />
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="32.940323, 39.048923, 45.157528, 51.266129, 53.773659, 59.882259, " y="423.5, ">
+			400.00
+	</text>
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M80 360L70 360" />
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="32.940323, 39.048923, 45.157528, 51.266129, 53.773659, 59.882259, " y="363.5, ">
+			600.00
+	</text>
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M80 300L70 300" />
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="32.940323, 39.048923, 45.157528, 51.266129, 53.773659, 59.882259, " y="303.5, ">
+			800.00
+	</text>
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M80 240L70 240" />
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="27.193146, 33.301746, 39.410351, 45.518951, 51.627556, 54.135082, 60.243683, " y="243.5, ">
+			1000.00
+	</text>
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M80 180L70 180" />
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="27.193146, 33.301746, 39.410351, 45.518951, 51.627556, 54.135082, 60.243683, " y="183.5, ">
+			1200.00
+	</text>
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M80 120L70 120" />
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="27.193146, 33.301746, 39.410351, 45.518951, 51.627556, 54.135082, 60.243683, " y="123.5, ">
+			1400.00
+	</text>
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M80 60L70 60" />
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="27.193146, 33.301746, 39.410351, 45.518951, 51.627556, 54.135082, 60.243683, " y="63.5, ">
+			1600.00
+	</text>
+  <text transform="matrix(0 -1 1 0 5 334.463)" font-size="12.5" font-family="Segoe UI" x="-29.402832, -23.299316, -18.953613, -12.416748, -5.0559082, 2.0180664, 8.5549316, 15.628906, 21.402832, " y="3, ">
+			Frequency
+	</text>
+  <rect x="90.560806" y="539.70001" width="24.721329" height="0.29998779" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="90.560806" y="539.70001" width="24.721329" height="0.29998779" />
+  <rect x="115.28214" y="539.40002" width="24.721329" height="0.59997559" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="115.28214" y="539.40002" width="24.721329" height="0.59997559" />
+  <rect x="140.00346" y="539.70001" width="24.721329" height="0.29998779" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="140.00346" y="539.70001" width="24.721329" height="0.29998779" />
+  <rect x="164.72478" y="538.79999" width="24.721329" height="1.2000122" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="164.72478" y="538.79999" width="24.721329" height="1.2000122" />
+  <rect x="189.44611" y="536.70001" width="24.721329" height="3.2999878" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="189.44611" y="536.70001" width="24.721329" height="3.2999878" />
+  <rect x="214.16743" y="532.5" width="24.721329" height="7.5" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="214.16743" y="532.5" width="24.721329" height="7.5" />
+  <rect x="238.88876" y="516.90002" width="24.721313" height="23.099976" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="238.88876" y="516.90002" width="24.721313" height="23.099976" />
+  <rect x="263.61008" y="488.39999" width="24.721313" height="51.600006" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="263.61008" y="488.39999" width="24.721313" height="51.600006" />
+  <rect x="288.33142" y="447" width="24.721313" height="93" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="288.33142" y="447" width="24.721313" height="93" />
+  <rect x="313.05273" y="122.1" width="24.721313" height="417.89999" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="313.05273" y="122.1" width="24.721313" height="417.89999" />
+  <rect x="337.77408" y="80.699997" width="24.721313" height="459.29999" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="337.77408" y="80.699997" width="24.721313" height="459.29999" />
+  <rect x="362.49539" y="449.70001" width="24.721313" height="90.299988" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="362.49539" y="449.70001" width="24.721313" height="90.299988" />
+  <rect x="387.21671" y="509.10001" width="24.721313" height="30.899994" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="387.21671" y="509.10001" width="24.721313" height="30.899994" />
+  <rect x="411.93805" y="526.5" width="24.721313" height="13.5" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="411.93805" y="526.5" width="24.721313" height="13.5" />
+  <rect x="436.65936" y="537.29999" width="24.721313" height="2.7000122" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="436.65936" y="537.29999" width="24.721313" height="2.7000122" />
+  <rect x="461.38071" y="537.90002" width="24.721313" height="2.0999756" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="461.38071" y="537.90002" width="24.721313" height="2.0999756" />
+  <rect x="486.10202" y="539.09998" width="24.721313" height="0.90002441" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="486.10202" y="539.09998" width="24.721313" height="0.90002441" />
+  <rect x="510.82333" y="539.09998" width="24.721344" height="0.90002441" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="510.82333" y="539.09998" width="24.721344" height="0.90002441" />
+  <rect x="535.54468" y="539.70001" width="24.721313" height="0.29998779" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="535.54468" y="539.70001" width="24.721313" height="0.29998779" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="560.26599" y="540" width="24.721313" height="0" />
+  <rect x="584.9873" y="539.70001" width="24.721313" height="0.29998779" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="584.9873" y="539.70001" width="24.721313" height="0.29998779" />
+  <text font-size="25" font-family="Segoe UI" x="193.54944, 215.99817, 230.14612, 236.20081, 244.67249, 250.72717, 265.42444, 271.47913, 284.55286, 291.401, 304.68225, 317.75598, 326.44739, 332.50208, 345.57581, 356.18372, 363.03186, 380.56116, 386.61584, 397.22375, 405.69543, 414.38684, 420.44153, 435.13879, 449.28674, 457.75842, 463.81311, 478.46155, " y="28.75, ">
+			Multiple Series Distribution
+	</text>
+  <rect x="704" y="298" width="54" height="37" />
+  <text font-size="13.541667" font-family="Microsoft YaHei, 微软雅黑" x="775, 782.10803, 789.59302, 793.19659, 801.54114, " y="321.125, ">
+			value
+	</text>
+</svg>
