@@ -69,6 +69,7 @@ Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Data.ChartPlots.BarPlot.Histogram
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
+Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.Math.Distributions.BinBox
 Imports Microsoft.VisualBasic.MIME.Html.CSS
@@ -140,9 +141,23 @@ Namespace layers
             Dim legends As IggplotLegendElement = Nothing
             Dim colors = getColorSet(stream.ggplot, LegendStyles.Square, fillgroups, legends)
             Dim css As CSSEnvirnment = stream.g.LoadEnvironment
+            Dim rect = stream.canvas.PlotRegion(css)
+            Dim histData As HistProfile
+            Dim colorData As NamedValue(Of Color)
+            Dim i As i32 = 0
+            Dim alpha As Double = Me.alpha * 255
 
             For Each bin As NamedCollection(Of DataBinBox(Of Double)) In binData
+                histData = binData(0).NewModel(Nothing)
+                colorData = New NamedValue(Of Color)(bin.name, colors(++i).TranslateColor)
 
+                Call HistogramPlot.DrawSample(
+                    g:=stream.g,
+                    region:=rect,
+                    hist:=histData,
+                    ann:=colorData,
+                    scaler:=stream.scale,
+                    alpha:=alpha)
             Next
 
             Return legends
@@ -162,8 +177,13 @@ Namespace layers
                 .Value = color.TranslateColor
             }
             Dim css As CSSEnvirnment = stream.g.LoadEnvironment
+            Dim alpha As Double = Me.alpha * 255
+            Dim rect = stream.canvas.PlotRegion(css)
 
-            Call HistogramPlot.DrawSample(stream.g, stream.canvas.PlotRegion(css), histData, colorData, stream.scale)
+            Call HistogramPlot.DrawSample(
+                stream.g, rect, histData, colorData,
+                scaler:=stream.scale,
+                alpha:=alpha)
 
             Return New ggplotLegendElement With {
                 .legend = legend

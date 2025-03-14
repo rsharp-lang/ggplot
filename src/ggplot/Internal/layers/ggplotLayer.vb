@@ -98,6 +98,10 @@ Namespace layers
         ''' </summary>
         ''' <returns></returns>
         Public Property zindex As Integer
+        ''' <summary>
+        ''' the fill color transparency, value in range [0,1]
+        ''' </summary>
+        ''' <returns></returns>
         Public Property alpha As Double = 1
 
         ''' <summary>
