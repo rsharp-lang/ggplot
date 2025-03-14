@@ -184,7 +184,8 @@ Public Module ggplotFunction
             .colorMap = ggplotColorMap.CreateColorMap(colorMap, alpha, Nothing),
             .range = minMax,
             .binwidth = binwidth,
-            .position = position
+            .position = position,
+            .alpha = alpha
         }
     End Function
 

@@ -580,7 +580,7 @@ Module ggplot2
     <ExportAPI("geom_histogram")>
     <RApiReturn(GetType(ggplotHistogram))>
     Public Function geom_histogram(Optional bins As Integer = 20,
-                                   Optional position As String = Nothing,
+                                   Optional position As LayoutPosition = LayoutPosition.identity,
                                    Optional color As Object = Nothing,
                                    Optional alpha As Double = 1,
                                    Optional binwidth As Double = 0.1,
@@ -598,7 +598,9 @@ Module ggplot2
             .bins = bins,
             .colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color), alpha, env),
             .range = minMax,
-            .binwidth = binwidth
+            .binwidth = binwidth,
+            .alpha = alpha,
+            .position = position
         }
     End Function
 
