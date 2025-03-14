@@ -251,7 +251,7 @@ Module ggplot2
     ''' <returns></returns>
     <ExportAPI("ggsave")>
     Public Function ggsave(filename As String,
-                           <RLazyExpression>
+                           <RDefaultExpression>
                            Optional plot As Object = "~last_plot()",
                            Optional device As Object = NULL,
                            Optional path As Object = NULL,
