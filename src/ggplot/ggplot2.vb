@@ -610,6 +610,7 @@ Module ggplot2
                                    Optional env As Environment = Nothing) As ggplotLayer
 
         Dim minMax As DoubleRange = Nothing
+        Dim colorMap = RColorPalette.getColor(color, [default]:="paper")
 
         If Not range Is Nothing Then
             minMax = CLRVector.asNumeric(range)
@@ -617,7 +618,7 @@ Module ggplot2
 
         Return New ggplotHistogram With {
             .bins = bins,
-            .colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color), alpha, env),
+            .colorMap = ggplotColorMap.CreateColorMap(colorMap, alpha, env),
             .range = minMax,
             .binwidth = binwidth,
             .alpha = alpha,
