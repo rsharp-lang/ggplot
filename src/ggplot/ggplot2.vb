@@ -1,64 +1,64 @@
 ﻿#Region "Microsoft.VisualBasic::23f44be7380534c22f8d2a2b8f43d8bb, src\ggplot\ggplot2.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (I@xieguigang.me)
-    ' 
-    ' Copyright (c) 2021 R# language
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (I@xieguigang.me)
+' 
+' Copyright (c) 2021 R# language
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
-
-
-    ' Code Statistics:
-
-    '   Total Lines: 1575
-    '    Code Lines: 676 (42.92%)
-    ' Comment Lines: 798 (50.67%)
-    '    - Xml Docs: 90.98%
-    ' 
-    '   Blank Lines: 101 (6.41%)
-    '     File Size: 70.77 KB
+' Summaries:
 
 
-    ' Module ggplot2
-    ' 
-    '     Function: add_layer, aes, annotation_raster, configPlot, coord_flip
-    '               element_blank, element_line, element_rect, element_text, geom_bar
-    '               geom_barplot, geom_boxplot, geom_col, geom_convexHull, geom_histogram
-    '               geom_hline, geom_jitter, geom_line, geom_path, geom_pie
-    '               geom_point, geom_raster, geom_scatterheatmap, geom_scatterpie, geom_signif
-    '               geom_text, geom_tile, geom_violin, geom_vline, ggplot
-    '               ggtitle, labs, scale_color_brewer, scale_colour_manual, scale_fill_distiller
-    '               scale_fill_manual, scale_x_continuous, scale_y_continuous, scale_y_reverse, stat_compare_means
-    '               stat_pvalue_manual, theme, waiver, xlab, ylab
-    ' 
-    ' /********************************************************************************/
+' Code Statistics:
+
+'   Total Lines: 1575
+'    Code Lines: 676 (42.92%)
+' Comment Lines: 798 (50.67%)
+'    - Xml Docs: 90.98%
+' 
+'   Blank Lines: 101 (6.41%)
+'     File Size: 70.77 KB
+
+
+' Module ggplot2
+' 
+'     Function: add_layer, aes, annotation_raster, configPlot, coord_flip
+'               element_blank, element_line, element_rect, element_text, geom_bar
+'               geom_barplot, geom_boxplot, geom_col, geom_convexHull, geom_histogram
+'               geom_hline, geom_jitter, geom_line, geom_path, geom_pie
+'               geom_point, geom_raster, geom_scatterheatmap, geom_scatterpie, geom_signif
+'               geom_text, geom_tile, geom_violin, geom_vline, ggplot
+'               ggtitle, labs, scale_color_brewer, scale_colour_manual, scale_fill_distiller
+'               scale_fill_manual, scale_x_continuous, scale_y_continuous, scale_y_reverse, stat_compare_means
+'               stat_pvalue_manual, theme, waiver, xlab, ylab
+' 
+' /********************************************************************************/
 
 #End Region
 
@@ -89,6 +89,8 @@ Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports SMRUCC.Rsharp.Runtime.Interop
 Imports SMRUCC.Rsharp.Runtime.Vectorization
 Imports RInternal = SMRUCC.Rsharp.Runtime.Internal
+Imports Microsoft.VisualBasic.Imaging.Drawing2D
+
 
 #If NET48 Then
 Imports Pen = System.Drawing.Pen
@@ -278,13 +280,25 @@ Module ggplot2
         End If
 
         Dim img As ImageData
+        Dim size As Size
+        Dim fill As String = If(
+            bg Is Nothing,
+            ggplot.ggplotTheme.background,
+            RColorPalette.getColor(bg, [default]:="white", env)
+        )
+
+        If width Is Nothing OrElse height Is Nothing Then
+            size = graphicsPipeline.getSize(ggplot.args.slots, env, New SizeF(800, 800)).ToSize
+        Else
+            size = New Size(width, height)
+        End If
 
         Select Case filename.ExtensionSuffix
-            Case "svg" : img = ggsave(ggplot, Drivers.SVG)
-            Case "pdf" : img = ggsave(ggplot, Drivers.PDF)
+            Case "svg" : img = ggsave(ggplot, size, fill, Drivers.SVG)
+            Case "pdf" : img = ggsave(ggplot, size, fill, Drivers.PDF)
             Case "png", "bmp", "jpg", "jpeg", "webp"
-                img = ggsave(ggplot, Drivers.GDI)
-            Case "ps" : img = ggsave(ggplot, Drivers.PS)
+                img = ggsave(ggplot, size, fill, Drivers.GDI)
+            Case "ps" : img = ggsave(ggplot, size, fill, Drivers.PostScript)
 
             Case Else
                 Throw New NotSupportedException
@@ -293,11 +307,19 @@ Module ggplot2
         Return img.Save(filename)
     End Function
 
-    Private Function ggsave(ggplot As ggplot, type As Drivers) As ImageData
-        If ggplot.driver = Drivers.PostScript Then
+    Private Function ggsave(ggplot As ggplot, size As Size, fill$, type As Drivers) As IGraphicsData
+        Dim padding As Padding = Padding.TryParse(ggplot.ggplotTheme.padding)
+        Dim layout As New GraphicsRegion(size, padding)
+        Dim css As New CSSEnvirnment(size)
+
+        If ggplot.driver = Drivers.PostScript OrElse ggplot.driver = type Then
             ' convert from postscript model
-        ElseIf ggplot.driver = type Then
+            ' or
             ' is identical
+            Using g As IGraphics = DriverLoad.CreateGraphicsDevice(size, fill, driver:=type)
+                Call ggplot.Plot(g, layout)
+                Return DriverLoad.GetData(g, PaddingLayout.EvaluateFromCSS(css, padding))
+            End Using
         Else
             Throw New InvalidProgramException
         End If
