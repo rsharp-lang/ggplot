@@ -148,7 +148,7 @@ Namespace layers
             Dim alpha As Double = Me.alpha * 255
 
             For Each bin As NamedCollection(Of DataBinBox(Of Double)) In binData
-                histData = binData(0).NewModel(Nothing)
+                histData = bin.NewModel(Nothing)
                 colorData = New NamedValue(Of Color)(bin.name, colors(++i).TranslateColor)
 
                 Call HistogramPlot.DrawSample(
