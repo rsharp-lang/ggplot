@@ -4,64 +4,67 @@
   <rect fill="white" width="800" height="600" />
   <rect fill="white" x="80" y="60" width="560" height="480" />
   <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M80 60L80 540" />
-  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M142.222 60L142.222 540" />
-  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M204.444 60L204.444 540" />
-  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M266.667 60L266.667 540" />
-  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M328.889 60L328.889 540" />
-  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M391.111 60L391.111 540" />
-  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M453.333 60L453.333 540" />
-  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M515.556 60L515.556 540" />
-  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M577.778 60L577.778 540" />
+  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M136 60L136 540" />
+  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M192 60L192 540" />
+  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M248 60L248 540" />
+  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M304 60L304 540" />
+  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M360 60L360 540" />
+  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M416 60L416 540" />
+  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M472 60L472 540" />
+  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M528 60L528 540" />
+  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M584 60L584 540" />
   <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M640 60L640 540" />
   <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M80 540L640 540" />
-  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M80 480L640 480" />
-  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M80 420L640 420" />
-  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M80 360L640 360" />
+  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M80 460L640 460" />
+  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M80 380L640 380" />
   <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M80 300L640 300" />
-  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M80 240L640 240" />
-  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M80 180L640 180" />
-  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M80 120L640 120" />
+  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M80 220L640 220" />
+  <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M80 140L640 140" />
   <path fill="none" stroke="#D3D3D3" stroke-width="1.0416666" stroke-miterlimit="4" d="M80 60L640 60" />
   <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M80 540L640 540" />
   <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M80 540L80 555" />
   <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="66, 70.506432, 76.615028, 79.122559, 85.231163, " y="566, ">
-			-8.00
-	</text>
-  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M142.222 540L142.222 555" />
-  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="128, 132.50642, 138.61504, 141.12256, 147.23116, " y="566, ">
 			-6.00
 	</text>
-  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M204.444 540L204.444 555" />
-  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="190, 194.50642, 200.61504, 203.12256, 209.23116, " y="566, ">
-			-4.00
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M136 540L136 555" />
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="122, 126.50643, 132.61504, 135.12256, 141.23116, " y="566, ">
+			-4.50
 	</text>
-  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M266.667 540L266.667 555" />
-  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="252, 256.50644, 262.61502, 265.12256, 271.23117, " y="566, ">
-			-2.00
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M192 540L192 555" />
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="178, 182.50642, 188.61504, 191.12256, 197.23116, " y="566, ">
+			-3.00
 	</text>
-  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M328.889 540L328.889 555" />
-  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="326, " y="566, ">
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M248 540L248 555" />
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="234, 238.50642, 244.61504, 247.12256, 253.23116, " y="566, ">
+			-1.50
+	</text>
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M304 540L304 555" />
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="301, " y="566, ">
 			0
 	</text>
-  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M391.111 540L391.111 555" />
-  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="379, 385.10861, 387.61612, 393.72473, " y="566, ">
-			2.00
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M360 540L360 555" />
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="349, 355.10861, 357.61612, 363.72473, " y="566, ">
+			1.50
 	</text>
-  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M453.333 540L453.333 555" />
-  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="442, 448.10861, 450.61612, 456.72473, " y="566, ">
-			4.00
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M416 540L416 555" />
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="404, 410.10861, 412.61612, 418.72473, " y="566, ">
+			3.00
 	</text>
-  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M515.556 540L515.556 555" />
-  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="504, 510.10861, 512.61615, 518.72473, " y="566, ">
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M472 540L472 555" />
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="460, 466.10861, 468.61612, 474.72473, " y="566, ">
+			4.50
+	</text>
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M528 540L528 555" />
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="516, 522.10858, 524.61615, 530.72473, " y="566, ">
 			6.00
 	</text>
-  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M577.778 540L577.778 555" />
-  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="566, 572.10858, 574.61615, 580.72473, " y="566, ">
-			8.00
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M584 540L584 555" />
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="572, 578.10858, 580.61615, 586.72473, " y="566, ">
+			7.50
 	</text>
   <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M640 540L640 555" />
-  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="625, 631.10858, 637.21722, 639.72473, 645.83331, " y="566, ">
-			10.00
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="628, 634.10858, 636.61615, 642.72473, " y="566, ">
+			9.00
 	</text>
   <text font-size="12.5" font-family="Microsoft YaHei, 微软雅黑" x="341.21722, 349.67059, 356.57977, 359.90619, 367.60883, " y="561.25, ">
 			Value
@@ -71,87 +74,212 @@
   <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="63.25, " y="543.5, ">
 			0
 	</text>
-  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M80 480L70 480" />
-  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="32.940323, 39.048923, 45.157528, 51.266129, 53.773659, 59.882259, " y="483.5, ">
-			200.00
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M80 460L70 460" />
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="39.8125, 45.921101, 52.029705, 54.537231, 60.645836, " y="463.5, ">
+			50.00
 	</text>
-  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M80 420L70 420" />
-  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="32.940323, 39.048923, 45.157528, 51.266129, 53.773659, 59.882259, " y="423.5, ">
-			400.00
-	</text>
-  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M80 360L70 360" />
-  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="32.940323, 39.048923, 45.157528, 51.266129, 53.773659, 59.882259, " y="363.5, ">
-			600.00
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M80 380L70 380" />
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="34.065323, 40.173923, 46.282528, 52.391129, 54.898659, 61.007259, " y="383.5, ">
+			100.00
 	</text>
   <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M80 300L70 300" />
-  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="32.940323, 39.048923, 45.157528, 51.266129, 53.773659, 59.882259, " y="303.5, ">
-			800.00
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="34.065323, 40.173923, 46.282528, 52.391129, 54.898659, 61.007259, " y="303.5, ">
+			150.00
 	</text>
-  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M80 240L70 240" />
-  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="27.193146, 33.301746, 39.410351, 45.518951, 51.627556, 54.135082, 60.243683, " y="243.5, ">
-			1000.00
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M80 220L70 220" />
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="32.940323, 39.048923, 45.157528, 51.266129, 53.773659, 59.882259, " y="223.5, ">
+			200.00
 	</text>
-  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M80 180L70 180" />
-  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="27.193146, 33.301746, 39.410351, 45.518951, 51.627556, 54.135082, 60.243683, " y="183.5, ">
-			1200.00
-	</text>
-  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M80 120L70 120" />
-  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="27.193146, 33.301746, 39.410351, 45.518951, 51.627556, 54.135082, 60.243683, " y="123.5, ">
-			1400.00
+  <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M80 140L70 140" />
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="32.940323, 39.048923, 45.157528, 51.266129, 53.773659, 59.882259, " y="143.5, ">
+			250.00
 	</text>
   <path fill="none" stroke="black" stroke-width="2.0833333" stroke-miterlimit="4" d="M80 60L70 60" />
-  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="27.193146, 33.301746, 39.410351, 45.518951, 51.627556, 54.135082, 60.243683, " y="63.5, ">
-			1600.00
+  <text font-size="10.416667" font-family="Microsoft YaHei, 微软雅黑" x="32.940323, 39.048923, 45.157528, 51.266129, 53.773659, 59.882259, " y="63.5, ">
+			300.00
 	</text>
-  <text transform="matrix(0 -1 1 0 5 334.463)" font-size="12.5" font-family="Segoe UI" x="-29.402832, -23.299316, -18.953613, -12.416748, -5.0559082, 2.0180664, 8.5549316, 15.628906, 21.402832, " y="3, ">
+  <text transform="matrix(0 -1 1 0 9.78548 334.463)" font-size="12.5" font-family="Segoe UI" x="-29.402832, -23.299316, -18.953613, -12.416748, -5.0559082, 2.0180664, 8.5549316, 15.628906, 21.402832, " y="3, ">
 			Frequency
 	</text>
-  <rect x="90.560806" y="539.70001" width="24.721329" height="0.29998779" />
-  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="90.560806" y="539.70001" width="24.721329" height="0.29998779" />
-  <rect x="115.28214" y="539.40002" width="24.721329" height="0.59997559" />
-  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="115.28214" y="539.40002" width="24.721329" height="0.59997559" />
-  <rect x="140.00346" y="539.70001" width="24.721329" height="0.29998779" />
-  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="140.00346" y="539.70001" width="24.721329" height="0.29998779" />
-  <rect x="164.72478" y="538.79999" width="24.721329" height="1.2000122" />
-  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="164.72478" y="538.79999" width="24.721329" height="1.2000122" />
-  <rect x="189.44611" y="536.70001" width="24.721329" height="3.2999878" />
-  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="189.44611" y="536.70001" width="24.721329" height="3.2999878" />
-  <rect x="214.16743" y="532.5" width="24.721329" height="7.5" />
-  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="214.16743" y="532.5" width="24.721329" height="7.5" />
-  <rect x="238.88876" y="516.90002" width="24.721313" height="23.099976" />
-  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="238.88876" y="516.90002" width="24.721313" height="23.099976" />
-  <rect x="263.61008" y="488.39999" width="24.721313" height="51.600006" />
-  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="263.61008" y="488.39999" width="24.721313" height="51.600006" />
-  <rect x="288.33142" y="447" width="24.721313" height="93" />
-  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="288.33142" y="447" width="24.721313" height="93" />
-  <rect x="313.05273" y="122.1" width="24.721313" height="417.89999" />
-  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="313.05273" y="122.1" width="24.721313" height="417.89999" />
-  <rect x="337.77408" y="80.699997" width="24.721313" height="459.29999" />
-  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="337.77408" y="80.699997" width="24.721313" height="459.29999" />
-  <rect x="362.49539" y="449.70001" width="24.721313" height="90.299988" />
-  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="362.49539" y="449.70001" width="24.721313" height="90.299988" />
-  <rect x="387.21671" y="509.10001" width="24.721313" height="30.899994" />
-  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="387.21671" y="509.10001" width="24.721313" height="30.899994" />
-  <rect x="411.93805" y="526.5" width="24.721313" height="13.5" />
-  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="411.93805" y="526.5" width="24.721313" height="13.5" />
-  <rect x="436.65936" y="537.29999" width="24.721313" height="2.7000122" />
-  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="436.65936" y="537.29999" width="24.721313" height="2.7000122" />
-  <rect x="461.38071" y="537.90002" width="24.721313" height="2.0999756" />
-  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="461.38071" y="537.90002" width="24.721313" height="2.0999756" />
-  <rect x="486.10202" y="539.09998" width="24.721313" height="0.90002441" />
-  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="486.10202" y="539.09998" width="24.721313" height="0.90002441" />
-  <rect x="510.82333" y="539.09998" width="24.721344" height="0.90002441" />
-  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="510.82333" y="539.09998" width="24.721344" height="0.90002441" />
-  <rect x="535.54468" y="539.70001" width="24.721313" height="0.29998779" />
-  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="535.54468" y="539.70001" width="24.721313" height="0.29998779" />
-  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="560.26599" y="540" width="24.721313" height="0" />
-  <rect x="584.9873" y="539.70001" width="24.721313" height="0.29998779" />
-  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="584.9873" y="539.70001" width="24.721313" height="0.29998779" />
+  <rect fill="#0491D0" fill-opacity="0.80000001" x="453.34003" y="456.79999" width="7.4560852" height="83.200012" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="453.34003" y="456.79999" width="7.4560852" height="83.200012" />
+  <rect fill="#0491D0" fill-opacity="0.80000001" x="460.79614" y="463.20001" width="7.4560852" height="76.799988" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="460.79614" y="463.20001" width="7.4560852" height="76.799988" />
+  <rect fill="#0491D0" fill-opacity="0.80000001" x="468.25223" y="456.79999" width="7.4560852" height="83.200012" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="468.25223" y="456.79999" width="7.4560852" height="83.200012" />
+  <rect fill="#0491D0" fill-opacity="0.80000001" x="475.70831" y="450.39999" width="7.4560852" height="89.600006" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="475.70831" y="450.39999" width="7.4560852" height="89.600006" />
+  <rect fill="#0491D0" fill-opacity="0.80000001" x="483.16443" y="468" width="7.4560852" height="72" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="483.16443" y="468" width="7.4560852" height="72" />
+  <rect fill="#0491D0" fill-opacity="0.80000001" x="490.62051" y="444" width="7.4560852" height="96" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="490.62051" y="444" width="7.4560852" height="96" />
+  <rect fill="#0491D0" fill-opacity="0.80000001" x="498.07663" y="463.20001" width="7.4560852" height="76.799988" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="498.07663" y="463.20001" width="7.4560852" height="76.799988" />
+  <rect fill="#0491D0" fill-opacity="0.80000001" x="505.53271" y="463.20001" width="7.4561157" height="76.799988" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="505.53271" y="463.20001" width="7.4561157" height="76.799988" />
+  <rect fill="#0491D0" fill-opacity="0.80000001" x="512.98883" y="458.39999" width="7.4561157" height="81.600006" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="512.98883" y="458.39999" width="7.4561157" height="81.600006" />
+  <rect fill="#0491D0" fill-opacity="0.80000001" x="520.44489" y="458.39999" width="7.4561157" height="81.600006" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="520.44489" y="458.39999" width="7.4561157" height="81.600006" />
+  <rect fill="#0491D0" fill-opacity="0.80000001" x="527.901" y="458.39999" width="7.4561157" height="81.600006" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="527.901" y="458.39999" width="7.4561157" height="81.600006" />
+  <rect fill="#0491D0" fill-opacity="0.80000001" x="535.35712" y="468" width="7.4561157" height="72" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="535.35712" y="468" width="7.4561157" height="72" />
+  <rect fill="#0491D0" fill-opacity="0.80000001" x="542.81317" y="464.79999" width="7.4561157" height="75.200012" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="542.81317" y="464.79999" width="7.4561157" height="75.200012" />
+  <rect fill="#0491D0" fill-opacity="0.80000001" x="550.26929" y="460" width="7.4561157" height="80" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="550.26929" y="460" width="7.4561157" height="80" />
+  <rect fill="#0491D0" fill-opacity="0.80000001" x="557.7254" y="463.20001" width="7.4561157" height="76.799988" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="557.7254" y="463.20001" width="7.4561157" height="76.799988" />
+  <rect fill="#0491D0" fill-opacity="0.80000001" x="565.18146" y="479.20001" width="7.4561157" height="60.799988" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="565.18146" y="479.20001" width="7.4561157" height="60.799988" />
+  <rect fill="#0491D0" fill-opacity="0.80000001" x="572.63757" y="471.20001" width="7.4561157" height="68.799988" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="572.63757" y="471.20001" width="7.4561157" height="68.799988" />
+  <rect fill="#0491D0" fill-opacity="0.80000001" x="580.09369" y="466.39999" width="7.4561157" height="73.600006" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="580.09369" y="466.39999" width="7.4561157" height="73.600006" />
+  <rect fill="#0491D0" fill-opacity="0.80000001" x="587.5498" y="434.39999" width="7.4561157" height="105.60001" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="587.5498" y="434.39999" width="7.4561157" height="105.60001" />
+  <rect fill="#0491D0" fill-opacity="0.80000001" x="595.00586" y="453.60001" width="7.4561157" height="86.399994" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="595.00586" y="453.60001" width="7.4561157" height="86.399994" />
+  <rect fill="#0491D0" fill-opacity="0.80000001" x="602.46198" y="538.40002" width="7.4561157" height="1.5999756" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="602.46198" y="538.40002" width="7.4561157" height="1.5999756" />
+  <rect fill="#88BB64" fill-opacity="0.80000001" x="304.04013" y="74.400002" width="12.360474" height="465.60001" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="304.04013" y="74.400002" width="12.360474" height="465.60001" />
+  <rect fill="#88BB64" fill-opacity="0.80000001" x="316.4006" y="247.2" width="12.360474" height="292.79999" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="316.4006" y="247.2" width="12.360474" height="292.79999" />
+  <rect fill="#88BB64" fill-opacity="0.80000001" x="328.76111" y="314.39999" width="12.360474" height="225.60001" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="328.76111" y="314.39999" width="12.360474" height="225.60001" />
+  <rect fill="#88BB64" fill-opacity="0.80000001" x="341.12158" y="368.79999" width="12.360474" height="171.20001" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="341.12158" y="368.79999" width="12.360474" height="171.20001" />
+  <rect fill="#88BB64" fill-opacity="0.80000001" x="353.48206" y="399.20001" width="12.360474" height="140.79999" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="353.48206" y="399.20001" width="12.360474" height="140.79999" />
+  <rect fill="#88BB64" fill-opacity="0.80000001" x="365.84253" y="463.20001" width="12.360474" height="76.799988" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="365.84253" y="463.20001" width="12.360474" height="76.799988" />
+  <rect fill="#88BB64" fill-opacity="0.80000001" x="378.203" y="480.79999" width="12.360474" height="59.200012" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="378.203" y="480.79999" width="12.360474" height="59.200012" />
+  <rect fill="#88BB64" fill-opacity="0.80000001" x="390.56348" y="492" width="12.360474" height="48" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="390.56348" y="492" width="12.360474" height="48" />
+  <rect fill="#88BB64" fill-opacity="0.80000001" x="402.92398" y="511.20001" width="12.360474" height="28.799988" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="402.92398" y="511.20001" width="12.360474" height="28.799988" />
+  <rect fill="#88BB64" fill-opacity="0.80000001" x="415.28445" y="522.40002" width="12.360474" height="17.599976" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="415.28445" y="522.40002" width="12.360474" height="17.599976" />
+  <rect fill="#88BB64" fill-opacity="0.80000001" x="427.64493" y="516" width="12.360474" height="24" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="427.64493" y="516" width="12.360474" height="24" />
+  <rect fill="#88BB64" fill-opacity="0.80000001" x="440.0054" y="520.79999" width="12.360474" height="19.200012" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="440.0054" y="520.79999" width="12.360474" height="19.200012" />
+  <rect fill="#88BB64" fill-opacity="0.80000001" x="452.36588" y="532" width="12.360474" height="8" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="452.36588" y="532" width="12.360474" height="8" />
+  <rect fill="#88BB64" fill-opacity="0.80000001" x="464.72635" y="530.40002" width="12.360474" height="9.5999756" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="464.72635" y="530.40002" width="12.360474" height="9.5999756" />
+  <rect fill="#88BB64" fill-opacity="0.80000001" x="477.08685" y="536.79999" width="12.360474" height="3.2000122" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="477.08685" y="536.79999" width="12.360474" height="3.2000122" />
+  <rect fill="#88BB64" fill-opacity="0.80000001" x="489.44733" y="536.79999" width="12.360474" height="3.2000122" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="489.44733" y="536.79999" width="12.360474" height="3.2000122" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="501.8078" y="540" width="12.360474" height="0" />
+  <rect fill="#88BB64" fill-opacity="0.80000001" x="514.16827" y="538.40002" width="12.360474" height="1.5999756" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="514.16827" y="538.40002" width="12.360474" height="1.5999756" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="526.52875" y="540" width="12.360474" height="0" />
+  <rect fill="#88BB64" fill-opacity="0.80000001" x="538.88922" y="536.79999" width="12.360474" height="3.2000122" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="538.88922" y="536.79999" width="12.360474" height="3.2000122" />
+  <rect fill="#88BB64" fill-opacity="0.80000001" x="551.24969" y="538.40002" width="12.360474" height="1.5999756" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="551.24969" y="538.40002" width="12.360474" height="1.5999756" />
+  <rect fill="#15DBFF" fill-opacity="0.80000001" x="304.00055" y="84" width="6.0848999" height="456" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="304.00055" y="84" width="6.0848999" height="456" />
+  <rect fill="#15DBFF" fill-opacity="0.80000001" x="310.08545" y="186.39999" width="6.0848999" height="353.60001" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="310.08545" y="186.39999" width="6.0848999" height="353.60001" />
+  <rect fill="#15DBFF" fill-opacity="0.80000001" x="316.17035" y="298.39999" width="6.0848999" height="241.60001" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="316.17035" y="298.39999" width="6.0848999" height="241.60001" />
+  <rect fill="#15DBFF" fill-opacity="0.80000001" x="322.25522" y="399.20001" width="6.0848999" height="140.79999" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="322.25522" y="399.20001" width="6.0848999" height="140.79999" />
+  <rect fill="#15DBFF" fill-opacity="0.80000001" x="328.34012" y="420" width="6.0848999" height="120" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="328.34012" y="420" width="6.0848999" height="120" />
+  <rect fill="#15DBFF" fill-opacity="0.80000001" x="334.42502" y="463.20001" width="6.0848999" height="76.799988" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="334.42502" y="463.20001" width="6.0848999" height="76.799988" />
+  <rect fill="#15DBFF" fill-opacity="0.80000001" x="340.50989" y="498.39999" width="6.0848999" height="41.600006" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="340.50989" y="498.39999" width="6.0848999" height="41.600006" />
+  <rect fill="#15DBFF" fill-opacity="0.80000001" x="346.59479" y="498.39999" width="6.0848999" height="41.600006" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="346.59479" y="498.39999" width="6.0848999" height="41.600006" />
+  <rect fill="#15DBFF" fill-opacity="0.80000001" x="352.67969" y="496.79999" width="6.0848999" height="43.200012" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="352.67969" y="496.79999" width="6.0848999" height="43.200012" />
+  <rect fill="#15DBFF" fill-opacity="0.80000001" x="358.76456" y="520.79999" width="6.0848999" height="19.200012" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="358.76456" y="520.79999" width="6.0848999" height="19.200012" />
+  <rect fill="#15DBFF" fill-opacity="0.80000001" x="364.84946" y="520.79999" width="6.0848999" height="19.200012" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="364.84946" y="520.79999" width="6.0848999" height="19.200012" />
+  <rect fill="#15DBFF" fill-opacity="0.80000001" x="370.93436" y="524" width="6.0848999" height="16" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="370.93436" y="524" width="6.0848999" height="16" />
+  <rect fill="#15DBFF" fill-opacity="0.80000001" x="377.01923" y="536.79999" width="6.0848999" height="3.2000122" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="377.01923" y="536.79999" width="6.0848999" height="3.2000122" />
+  <rect fill="#15DBFF" fill-opacity="0.80000001" x="383.10413" y="532" width="6.0848999" height="8" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="383.10413" y="532" width="6.0848999" height="8" />
+  <rect fill="#15DBFF" fill-opacity="0.80000001" x="389.18903" y="533.59998" width="6.0848999" height="6.4000244" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="389.18903" y="533.59998" width="6.0848999" height="6.4000244" />
+  <rect fill="#15DBFF" fill-opacity="0.80000001" x="395.2739" y="535.20001" width="6.0848999" height="4.7999878" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="395.2739" y="535.20001" width="6.0848999" height="4.7999878" />
+  <rect fill="#15DBFF" fill-opacity="0.80000001" x="401.3588" y="536.79999" width="6.0848999" height="3.2000122" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="401.3588" y="536.79999" width="6.0848999" height="3.2000122" />
+  <rect fill="#15DBFF" fill-opacity="0.80000001" x="407.4437" y="536.79999" width="6.0848999" height="3.2000122" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="407.4437" y="536.79999" width="6.0848999" height="3.2000122" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="413.52856" y="540" width="6.0848999" height="0" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="419.61346" y="540" width="6.0848999" height="0" />
+  <rect fill="#15DBFF" fill-opacity="0.80000001" x="425.69836" y="538.40002" width="6.0848999" height="1.5999756" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="425.69836" y="538.40002" width="6.0848999" height="1.5999756" />
+  <rect fill="#D02823" fill-opacity="0.80000001" x="82.048996" y="538.40002" width="11.097466" height="1.5999756" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="82.048996" y="538.40002" width="11.097466" height="1.5999756" />
+  <rect fill="#D02823" fill-opacity="0.80000001" x="93.146469" y="536.79999" width="11.097466" height="3.2000122" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="93.146469" y="536.79999" width="11.097466" height="3.2000122" />
+  <rect fill="#D02823" fill-opacity="0.80000001" x="104.24393" y="536.79999" width="11.097466" height="3.2000122" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="104.24393" y="536.79999" width="11.097466" height="3.2000122" />
+  <rect fill="#D02823" fill-opacity="0.80000001" x="115.3414" y="538.40002" width="11.097466" height="1.5999756" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="115.3414" y="538.40002" width="11.097466" height="1.5999756" />
+  <rect fill="#D02823" fill-opacity="0.80000001" x="126.43887" y="533.59998" width="11.097466" height="6.4000244" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="126.43887" y="533.59998" width="11.097466" height="6.4000244" />
+  <rect fill="#D02823" fill-opacity="0.80000001" x="137.53633" y="535.20001" width="11.097473" height="4.7999878" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="137.53633" y="535.20001" width="11.097473" height="4.7999878" />
+  <rect fill="#D02823" fill-opacity="0.80000001" x="148.6338" y="533.59998" width="11.097473" height="6.4000244" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="148.6338" y="533.59998" width="11.097473" height="6.4000244" />
+  <rect fill="#D02823" fill-opacity="0.80000001" x="159.73128" y="527.20001" width="11.097473" height="12.799988" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="159.73128" y="527.20001" width="11.097473" height="12.799988" />
+  <rect fill="#D02823" fill-opacity="0.80000001" x="170.82874" y="522.40002" width="11.097473" height="17.599976" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="170.82874" y="522.40002" width="11.097473" height="17.599976" />
+  <rect fill="#D02823" fill-opacity="0.80000001" x="181.92621" y="524" width="11.097473" height="16" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="181.92621" y="524" width="11.097473" height="16" />
+  <rect fill="#D02823" fill-opacity="0.80000001" x="193.02368" y="503.20001" width="11.097473" height="36.799988" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="193.02368" y="503.20001" width="11.097473" height="36.799988" />
+  <rect fill="#D02823" fill-opacity="0.80000001" x="204.12114" y="501.60001" width="11.097473" height="38.399994" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="204.12114" y="501.60001" width="11.097473" height="38.399994" />
+  <rect fill="#D02823" fill-opacity="0.80000001" x="215.21861" y="503.20001" width="11.097473" height="36.799988" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="215.21861" y="503.20001" width="11.097473" height="36.799988" />
+  <rect fill="#D02823" fill-opacity="0.80000001" x="226.31609" y="485.60001" width="11.097473" height="54.399994" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="226.31609" y="485.60001" width="11.097473" height="54.399994" />
+  <rect fill="#D02823" fill-opacity="0.80000001" x="237.41354" y="445.60001" width="11.097473" height="94.399994" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="237.41354" y="445.60001" width="11.097473" height="94.399994" />
+  <rect fill="#D02823" fill-opacity="0.80000001" x="248.51102" y="407.20001" width="11.097473" height="132.79999" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="248.51102" y="407.20001" width="11.097473" height="132.79999" />
+  <rect fill="#D02823" fill-opacity="0.80000001" x="259.60849" y="343.20001" width="11.097473" height="196.79999" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="259.60849" y="343.20001" width="11.097473" height="196.79999" />
+  <rect fill="#D02823" fill-opacity="0.80000001" x="270.70596" y="306.39999" width="11.097473" height="233.60001" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="270.70596" y="306.39999" width="11.097473" height="233.60001" />
+  <rect fill="#D02823" fill-opacity="0.80000001" x="281.80341" y="237.60001" width="11.097473" height="302.39999" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="281.80341" y="237.60001" width="11.097473" height="302.39999" />
+  <rect fill="#D02823" fill-opacity="0.80000001" x="292.90088" y="140" width="11.097473" height="400" />
+  <rect fill="none" stroke="black" stroke-width="1" stroke-miterlimit="4" x="292.90088" y="140" width="11.097473" height="400" />
   <text font-size="25" font-family="Segoe UI" x="193.54944, 215.99817, 230.14612, 236.20081, 244.67249, 250.72717, 265.42444, 271.47913, 284.55286, 291.401, 304.68225, 317.75598, 326.44739, 332.50208, 345.57581, 356.18372, 363.03186, 380.56116, 386.61584, 397.22375, 405.69543, 414.38684, 420.44153, 435.13879, 449.28674, 457.75842, 463.81311, 478.46155, " y="28.75, ">
 			Multiple Series Distribution
 	</text>
-  <rect x="704" y="298" width="54" height="37" />
-  <text font-size="13.541667" font-family="Microsoft YaHei, 微软雅黑" x="775, 782.10803, 789.59302, 793.19659, 801.54114, " y="321.125, ">
-			value
+  <rect fill="#0491D0" x="710" y="261" width="30" height="30" />
+  <text font-size="13.541667" font-family="Microsoft YaHei, 微软雅黑" x="745.4314, 758.12012, 761.72369, 770.38562, 779.04755, 782.65112, " y="280.4375, ">
+			middle
+	</text>
+  <rect fill="#88BB64" x="710" y="296" width="30" height="30" />
+  <text font-size="13.541667" font-family="Microsoft YaHei, 微软雅黑" x="745, 750.17072, 753.77429, 762.43622, 770.77411, " y="317.125, ">
+			right
+	</text>
+  <rect fill="#15DBFF" x="710" y="331" width="30" height="30" />
+  <text font-size="13.541667" font-family="Microsoft YaHei, 微软雅黑" x="745, 750.17072, 753.77429, 762.43622, 770.77411, 775.81921, 781.67755, " y="352.125, ">
+			right-2
+	</text>
+  <rect fill="#D02823" x="710" y="366" width="30" height="30" />
+  <text font-size="13.541667" font-family="Microsoft YaHei, 微软雅黑" x="745, 748.60364, 756.28693, 760.98157, " y="385.8125, ">
+			left
 	</text>
 </svg>

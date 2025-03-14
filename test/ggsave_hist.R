@@ -1,7 +1,7 @@
 require(ggplot);
 
 let data = data.frame(
-    value = runif(1000) |> append(rexp(1000,1)) |> append(rexp(1000,2)) |> append(-rexp(1000,1)),
+    value = runif(1000, 4, 8) |> append(rexp(1000,1)) |> append(rexp(1000,2)) |> append(-rexp(1000,1)),
     serials = rep(["middle","right","right-2","left"], each = 1000)
 );
 
