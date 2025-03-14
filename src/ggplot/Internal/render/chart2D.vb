@@ -98,6 +98,9 @@ Namespace render
             Dim css As CSSEnvirnment = g.LoadEnvironment
             Dim plotRegion As Rectangle = canvas.PlotRegion(css)
 
+            ggplot.base.data!x = x
+            ggplot.base.data!y = y
+
             If reverse_y AndAlso y.size > 0 Then
                 If y.mapper = MapperTypes.Continuous Then
                     Dim y_vec As Double() = y.ToNumeric
