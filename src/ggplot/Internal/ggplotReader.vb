@@ -157,6 +157,12 @@ Public Class ggplotReader
         End If
     End Function
 
+    ''' <summary>
+    ''' create new ggplot data source
+    ''' </summary>
+    ''' <param name="data"></param>
+    ''' <param name="env"></param>
+    ''' <returns></returns>
     Public Overridable Function getMapData(data As Object, env As Environment) As ggplotData
         Return New ggplotData With {
             .x = axisMap.FromArray(unifySource(data, x, env), x),

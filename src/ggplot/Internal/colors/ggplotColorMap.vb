@@ -64,7 +64,6 @@ Imports Microsoft.VisualBasic.Imaging
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports SMRUCC.Rsharp.Runtime.Vectorization
-Imports REnv = SMRUCC.Rsharp.Runtime
 
 Namespace colors
 

@@ -304,7 +304,7 @@ Public Class ggplot : Inherits Plot
         Dim baseData As ggplotData = base.getGgplotData(Me)
         Dim no_mapping As Boolean = baseData.x Is Nothing AndAlso baseData.y Is Nothing
         Dim custom_mapping As Boolean() = (From layer As ggplotLayer
-                                           In ggplotAdapter.getLayers(Me)
+                                           In ggplotAdapter.getLayers(Me, baseData)
                                            Select layer.useCustomData).ToArray
         If clearCanvas Then
             Call g.Clear(theme.background.TranslateColor)

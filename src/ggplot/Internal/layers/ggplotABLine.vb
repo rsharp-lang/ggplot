@@ -72,7 +72,7 @@ Namespace layers
 
         Public Property abline As Line
 
-        Protected Friend Overrides Function initDataSet(ggplot As ggplot) As ggplotData
+        Protected Friend Overrides Function initDataSet(ggplot As ggplot, baseData As ggplotData) As ggplotData
             data = New ggplotData With {
                 .x = axisMap.FromNumeric(New Double() {abline.A.X, abline.B.X}),
                 .y = axisMap.FromNumeric(New Double() {abline.A.Y, abline.B.Y})

@@ -88,6 +88,11 @@ Public Class ggplotBase
         Return TypeOf legend Is legendGroupElement AndAlso DirectCast(legend, legendGroupElement).legends.TryCount > 1
     End Function
 
+    ''' <summary>
+    ''' create new ggplot data source
+    ''' </summary>
+    ''' <param name="ggplot"></param>
+    ''' <returns></returns>
     Public Function getGgplotData(ggplot As ggplot) As ggplotData
         Dim dataXy = reader.getMapData(ggplot.data, ggplot.environment)
 

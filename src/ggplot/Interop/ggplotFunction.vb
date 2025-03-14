@@ -177,9 +177,11 @@ Public Module ggplotFunction
             minMax = New DoubleRange(range)
         End If
 
+        Dim colorMap = RColorPalette.getColor(color, [default]:="paper")
+
         Return New ggplotHistogram With {
             .bins = bins,
-            .colorMap = ggplotColorMap.CreateColorMap(RColorPalette.getColor(color), alpha, Nothing),
+            .colorMap = ggplotColorMap.CreateColorMap(colorMap, alpha, Nothing),
             .range = minMax,
             .binwidth = binwidth,
             .position = position

@@ -61,7 +61,9 @@
 
 Imports System.Drawing
 Imports ggplot.colors
+Imports ggplot.elements
 Imports ggplot.elements.legend
+Imports Microsoft.VisualBasic.ComponentModel.Collection
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Data.ChartPlots.BarPlot.Histogram
@@ -126,23 +128,15 @@ Namespace layers
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             ' check of the multiple serials group?
-            Dim fill = stream.ggplot.base?.reader?.class
-
-            If fill IsNot Nothing Then
-                Return multipleSerials(stream, fill)
+            If binData.Length > 1 Then
+                Return multipleSerials(stream)
             Else
                 Return singleGroup(stream)
             End If
         End Function
 
-        Private Function multipleSerials(stream As ggplotPipeline, fill As Object) As IggplotLegendElement
-            Dim fillgroups As String() = CLRVector.asCharacter(fill)
-
-            If fillgroups.TryCount = 1 Then
-                ' read from base data
-                fillgroups = stream.ggplot.base.data(fillgroups(0))
-            End If
-
+        Private Function multipleSerials(stream As ggplotPipeline) As IggplotLegendElement
+            Dim fillgroups As String() = binData.Keys
             Dim legends As IggplotLegendElement = Nothing
             Dim colors = getColorSet(stream.ggplot, LegendStyles.Square, fillgroups, legends)
             Dim css As CSSEnvirnment = stream.g.LoadEnvironment
@@ -186,12 +180,12 @@ Namespace layers
             End If
         End Function
 
-        Protected Friend Overrides Function initDataSet(ggplot As ggplot) As ggplotData
-            Call configHistogram(ggplot, Me)
-            Return MyBase.initDataSet(ggplot)
+        Protected Friend Overrides Function initDataSet(ggplot As ggplot, baseData As ggplotData) As ggplotData
+            Call configHistogram(ggplot, Me, baseData)
+            Return MyBase.initDataSet(ggplot, baseData)
         End Function
 
-        Friend Shared Sub configHistogram(ggplot As ggplot, hist As ggplotHistogram)
+        Friend Shared Sub configHistogram(ggplot As ggplot, hist As ggplotHistogram, baseData As ggplotData)
             Dim data As ggplotData
 
             If hist.useCustomData Then
@@ -240,6 +234,12 @@ Namespace layers
             End If
 
             ggplot.base.data!y = y
+
+            If baseData.y Is Nothing Then
+                baseData.y = axisMap.Create(y)
+            ElseIf baseData.y.size = 0 Then
+                baseData.y = axisMap.Create(y)
+            End If
 
             If Not data.fill Is Nothing Then
                 ggplot.base.data!fill = data.fill.ToFactors

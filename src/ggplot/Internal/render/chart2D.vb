@@ -88,7 +88,7 @@ Namespace render
         Public Sub plot2D(ggplot As ggplot, baseData As ggplotData, ByRef g As IGraphics, canvas As GraphicsRegion)
             ' 20250106
             ' layers needs to be initialzed at first!
-            Dim layers As New Queue(Of ggplotLayer)(collection:=ggplotAdapter.getLayers(ggplot))
+            Dim layers As New Queue(Of ggplotLayer)(collection:=ggplotAdapter.getLayers(ggplot, baseData))
             Dim x As axisMap = ggplotAdapter.getXAxis(layers, baseData)
             Dim y As axisMap = ggplotAdapter.getYAxis(layers, baseData)
             Dim reverse_y As Boolean = ggplot.args.getValue("scale_y_reverse", env:=ggplot.environment, [default]:=False)

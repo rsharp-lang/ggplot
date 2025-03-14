@@ -65,7 +65,7 @@ Public Class ggplotAdapter
 
     Public Property [error] As Message
 
-    Public Shared Iterator Function getLayers(ggplot As ggplot) As IEnumerable(Of ggplotLayer)
+    Public Shared Iterator Function getLayers(ggplot As ggplot, baseData As ggplotData) As IEnumerable(Of ggplotLayer)
         Dim source As IEnumerable(Of ggplotLayer) = If(
             ggplot.UnionGgplotLayers Is Nothing,
             ggplot.layers,
@@ -73,7 +73,7 @@ Public Class ggplotAdapter
         )
 
         For Each layer As ggplotLayer In source
-            Call layer.initDataSet(ggplot:=ggplot)
+            Call layer.initDataSet(ggplot:=ggplot, baseData)
             Yield layer
         Next
     End Function
