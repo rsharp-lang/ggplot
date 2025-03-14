@@ -278,7 +278,7 @@ Module ggplot2
             Return Message.InCompatibleType(GetType(ggplot), plot.GetType, env)
         End If
 
-        Dim img As ImageData
+        Dim img As IGraphicsData
         Dim size As Size
         Dim fill As String = If(
             bg Is Nothing,
