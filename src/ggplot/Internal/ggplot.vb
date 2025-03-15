@@ -200,6 +200,8 @@ Public Class ggplot : Inherits Plot
     ''' <returns></returns>
     Public Property panelBorder As rectElement
 
+    Public Property commentText As Boolean = False
+
     ''' <summary>
     ''' the <see cref="data"/> template
     ''' </summary>

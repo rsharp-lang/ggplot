@@ -157,7 +157,9 @@ Namespace layers
                     hist:=histData,
                     ann:=colorData,
                     scaler:=stream.scale,
-                    alpha:=alpha)
+                    alpha:=alpha,
+                    commentText:=stream.ggplot.commentText
+                )
             Next
 
             Return legends
@@ -183,7 +185,9 @@ Namespace layers
             Call HistogramPlot.DrawSample(
                 stream.g, rect, histData, colorData,
                 scaler:=stream.scale,
-                alpha:=alpha)
+                alpha:=alpha,
+                commentText:=stream.ggplot.commentText
+            )
 
             Return New ggplotLegendElement With {
                 .legend = legend
