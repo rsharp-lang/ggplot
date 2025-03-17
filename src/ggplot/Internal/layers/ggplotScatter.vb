@@ -135,7 +135,9 @@ Namespace layers
                     shape:=serial.shape,
                     pointSize:=serial.pointSize,
                     getPointBrush:=brush,
-                    strokeCss:=CSS.Stroke.TryParse(stroke, Nothing)
+                    strokeCss:=CSS.Stroke.TryParse(stroke, Nothing),
+                    serialName:=serial.title,
+                    commentText:=stream.ggplot.commentText
                 ) _
                 .ToArray
             Next
