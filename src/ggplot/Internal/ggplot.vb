@@ -359,8 +359,11 @@ Public Class ggplot : Inherits Plot
         Dim css As CSSEnvirnment = g.LoadEnvironment
 
         If Not main.StringEmpty Then
-            Call DrawMainTitle(g, canvas.PlotRegion(css), offsetFactor:=titleOffset)
+            Call DrawMainTitle(g, canvas.PlotRegion(css),
+                               offsetFactor:=titleOffset,
+                               commentText:=commentText)
         End If
+
         If theme.drawLegend Then
             Call DrawLegends(
                 legends:=legendGroups,
@@ -419,6 +422,13 @@ Public Class ggplot : Inherits Plot
         Next
     End Sub
 
+    ''' <summary>
+    ''' draw a single legend object
+    ''' </summary>
+    ''' <param name="legend"></param>
+    ''' <param name="g"></param>
+    ''' <param name="canvas"></param>
+    ''' <param name="pos"></param>
     Private Sub DrawSingle(legend As IggplotLegendElement, g As IGraphics, canvas As GraphicsRegion, pos As PointF)
         If legend.size > 0 Then
             Dim size As SizeF = legend.MeasureSize(g)
