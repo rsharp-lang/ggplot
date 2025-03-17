@@ -106,6 +106,12 @@ Namespace elements.legend
         Public Property legends As LegendObject()
         Public Property shapeSize As New Size(90, 30)
 
+        Default Public ReadOnly Property Item(i As Integer) As LegendObject
+            Get
+                Return _legends(i)
+            End Get
+        End Property
+
         Public ReadOnly Property size As Integer Implements IggplotLegendElement.size
             Get
                 If legends.IsNullOrEmpty Then

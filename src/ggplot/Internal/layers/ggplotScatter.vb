@@ -66,6 +66,7 @@ Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Data.ChartPlots.Plots
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Driver
+Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.MIME.Html
 Imports SMRUCC.Rsharp.Runtime.Vectorization
@@ -178,7 +179,7 @@ Namespace layers
                     stream.defaultTitle,
                     x, y, colors,
                     size,
-                    ggplotBase.checkMultipleLegendGroup(legends), shape, colorMap)
+                    TryCast(legends, legendGroupElement), shape, colorMap)
             Else
                 With Me.data
                     If useCustomColorMaps Then
@@ -201,7 +202,7 @@ Namespace layers
                         reader.ToString,
                         .x.ToFloat, .y.ToFloat, colors,
                         size,
-                        ggplotBase.checkMultipleLegendGroup(legends), shape, colorMap)
+                        TryCast(legends, legendGroupElement), shape, colorMap)
                 End With
             End If
         End Function
@@ -211,10 +212,10 @@ Namespace layers
                                                                    y As Single(),
                                                                    colors As String(),
                                                                    size!,
-                                                                   multiple_group As Boolean,
+                                                                   multiple_group As legendGroupElement,
                                                                    shape As LegendStyles?,
                                                                    colorMap As ggplotColorMap) As IEnumerable(Of SerialData)
-            If multiple_group Then
+            If multiple_group IsNot Nothing Then
                 Dim groups As New Dictionary(Of String, List(Of PointData))
                 Dim color_str As String
                 Dim color As Color
@@ -231,7 +232,9 @@ Namespace layers
                     })
                 Next
 
-                For Each group In groups.Values
+                Dim offset As i32 = 0
+
+                For Each group As List(Of PointData) In groups.Values
                     ' set the default line color
                     color = group _
                         .Select(Function(c) If(c.color, "black")) _
@@ -246,7 +249,7 @@ Namespace layers
                         .pointSize = size,
                         .width = size,
                         .shape = If(shape Is Nothing, LegendStyles.Circle, shape.Value),
-                        .title = legend,
+                        .title = multiple_group(++offset).title,
                         .pts = group.ToArray
                     }
                 Next

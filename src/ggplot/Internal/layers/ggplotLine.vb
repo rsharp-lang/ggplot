@@ -119,7 +119,7 @@ Namespace layers
                     ggplot.base.reader.ToString,
                     x, CLRVector.asFloat(y), colors,
                     line_width,
-                    multiple_groups, LegendStyles.SolidLine, colorMap).ToArray
+                    TryCast(legends, legendGroupElement), LegendStyles.SolidLine, colorMap).ToArray
             Else
                 With Me.data
                     If useCustomColorMaps Then
@@ -143,7 +143,7 @@ Namespace layers
                         reader.ToString,
                         .x.ToFloat, .y.ToFloat, colors,
                         line_width,
-                        multiple_groups, LegendStyles.SolidLine, colorMap).ToArray
+                        TryCast(legends, legendGroupElement), LegendStyles.SolidLine, colorMap).ToArray
                 End With
             End If
 
