@@ -72,6 +72,7 @@ Imports ggplot.elements
 Imports ggplot.elements.legend
 Imports ggplot.layers
 Imports ggplot.layers.layer3d
+Imports ggplot.options
 Imports ggplot.render
 Imports Microsoft.VisualBasic.ComponentModel.DataStructures
 Imports Microsoft.VisualBasic.Data
@@ -92,8 +93,6 @@ Imports SMRUCC.Rsharp.Runtime.Internal.Object
 Imports SMRUCC.Rsharp.Runtime.Vectorization
 Imports std = System.Math
 Imports stdDataframe = Microsoft.VisualBasic.Data.Framework.DataFrame
-Imports ggplot.options
-
 
 #If NET48 Then
 Imports Pen = System.Drawing.Pen
@@ -304,7 +303,9 @@ Public Class ggplot : Inherits Plot
 
     Protected Overrides Sub PlotInternal(ByRef g As IGraphics, canvas As GraphicsRegion)
         Dim baseData As ggplotData = base.getGgplotData(Me)
-        Dim no_mapping As Boolean = baseData.x Is Nothing AndAlso baseData.y Is Nothing
+        Dim no_mapping As Boolean =
+            baseData.x Is Nothing AndAlso
+            baseData.y Is Nothing
         Dim custom_mapping As Boolean() = (From layer As ggplotLayer
                                            In ggplotAdapter.getLayers(Me, baseData)
                                            Select layer.useCustomData).ToArray
