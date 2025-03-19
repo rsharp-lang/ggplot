@@ -189,6 +189,18 @@ Public Module ggplotFunction
         }
     End Function
 
+    Public Function geom_violin(Optional color As list = Nothing,
+                                Optional width As Double = 0.9,
+                                Optional alpha As Double = 0.95,
+                                Optional trim As Boolean = True) As ggplotLayer
+
+        Return New ggplotViolin With {
+            .groupWidth = width,
+            .colorMap = ggplotColorMap.CreateColorMap(color, 1),
+            .alpha = alpha
+        }
+    End Function
+
     ''' <summary>
     ''' ## Modify axis, legend, and plot labels
     ''' 
