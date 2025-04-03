@@ -1467,6 +1467,7 @@ Module ggplot2
                             Optional legend_text As textElement = Nothing,
                             Optional legend_tick As textElement = Nothing,
                             Optional legend_title As textElement = Nothing,
+                            Optional legend_position As String = Nothing,
                             Optional legend_split As Integer = 6,
                             Optional plot_background As String = Nothing,
                             Optional plot_title As textElement = Nothing,
@@ -1492,7 +1493,8 @@ Module ggplot2
             .axis_text_x = axis_text_x,
             .panel_border = panel_border,
             .legend_tick = legend_tick,
-            .legend_title = legend_title
+            .legend_title = legend_title,
+            .legend_position = legend_position
         }
     End Function
 
