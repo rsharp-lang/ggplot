@@ -142,7 +142,7 @@ Namespace layers
             Dim labelFont As Font = css.GetFont(CSSFont.TryParse(stream.theme.tagCSS))
             Dim allGroupData = getDataGroups(stream).ToArray
             Dim colors As Func(Of Object, String) = getColors(stream, allGroupData.Select(Function(i) i.name))
-            Dim gridPen As Pen = css.GetPen(Stroke.TryParse(stream.theme.gridStrokeX))
+            Dim gridPen As Pen = css.GetPen(Stroke.TryParse(stream.theme.shapeStroke))
             Dim plotRect As Rectangle = stream.canvas.PlotRegion(css)
             Dim bottom = plotRect.Bottom
             Dim top = plotRect.Top
