@@ -91,6 +91,8 @@ Namespace options
         Public Shared Function is_blank(element_blank As element_blank) As Boolean
             If element_blank Is Nothing Then
                 Return False
+            ElseIf TypeOf element_blank Is textElement Then
+                Return DirectCast(element_blank, textElement).is_blank
             End If
             Return element_blank Is options.element_blank.element_blank
         End Function
