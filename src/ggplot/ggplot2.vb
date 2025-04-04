@@ -1740,6 +1740,10 @@ Module ggplot2
     ''' + waiver() for the default labels computed by the transformation object
     ''' + A character vector giving labels (must be same length As breaks)
     ''' + A Function that() takes the breaks As input And returns labels As output. Also accepts rlang lambda Function notation.
+    ''' + .NET number format string, example as: F2, G3
+    ''' </param>
+    ''' <param name="n">
+    ''' set number of the ticks on the x axis
     ''' </param>
     ''' <returns></returns>
     <ExportAPI("scale_x_continuous")>
@@ -1775,6 +1779,10 @@ Module ggplot2
     ''' + waiver() for the default labels computed by the transformation object
     ''' + A character vector giving labels (must be same length As breaks)
     ''' + A Function that() takes the breaks As input And returns labels As output. Also accepts rlang lambda Function notation.
+    ''' + .NET number format string, example as: F2, G3
+    ''' </param>
+    ''' <param name="n">
+    ''' set number of the ticks on the y axis
     ''' </param>
     ''' <returns></returns>
     <ExportAPI("scale_y_continuous")>
