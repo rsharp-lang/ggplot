@@ -71,9 +71,16 @@ Imports SolidBrush = Microsoft.VisualBasic.Imaging.SolidBrush
 
 Namespace layers
 
+    Public Enum adjustColor
+        none
+        darker
+        lighter
+    End Enum
+
     Public Class ggplotJitter : Inherits ggplotGroup
 
         Public Property radius As Double = 10
+        Public Property adjust As adjustColor = adjustColor.none
 
         Protected Overrides Function PlotOrdinal(stream As ggplotPipeline, xscale As d3js.scale.OrdinalScale) As IggplotLegendElement
             Dim x As Double()
@@ -83,6 +90,7 @@ Namespace layers
             Dim color As Color
             Dim allGroupData = getDataGroups(stream).ToArray
             Dim colors As Func(Of Object, String) = getColors(stream, allGroupData.Select(Function(i) i.name))
+            Dim brush As Brush
 
             For Each group As NamedCollection(Of Double) In allGroupData
                 y = group.Select(AddressOf stream.scale.TranslateY).ToArray
@@ -92,8 +100,18 @@ Namespace layers
                 x = Scatter.Jitter(x, width_jit:=groupWidth * binWidth)
                 color = colors(group.name).TranslateColor.Alpha(alpha * 255)
 
+                If adjust <> adjustColor.none Then
+                    If adjust = adjustColor.darker Then
+                        color = color.Darken
+                    Else
+                        color = color.Lighten
+                    End If
+                End If
+
+                brush = New SolidBrush(color)
+
                 For i As Integer = 0 To x.Length - 1
-                    Call g.DrawCircle(New PointF(x(i), y(i)), CSng(radius), New SolidBrush(color))
+                    Call g.DrawCircle(New PointF(x(i), y(i)), CSng(radius), brush)
                 Next
             Next
 

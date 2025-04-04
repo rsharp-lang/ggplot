@@ -111,7 +111,7 @@ Namespace layers
             Dim plotRegion = stream.canvas.PlotRegion(css)
             Dim bottom As Double = plotRegion.Bottom
             Dim top As Double = plotRegion.Top
-            Dim line As Pen = css.GetPen(Stroke.TryParse(stream.theme.gridStrokeX))
+            Dim line As Pen = css.GetPen(Stroke.TryParse(stream.theme.lineStroke))
 
             For Each group As NamedCollection(Of Double) In allGroupData
                 Dim x As Double = xscale(group.name)

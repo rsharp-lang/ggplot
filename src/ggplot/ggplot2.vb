@@ -1105,6 +1105,7 @@ Module ggplot2
                                 Optional radius As Double = 10,
                                 Optional alpha As Double = 0.85,
                                 Optional color As list = Nothing,
+                                Optional adjust As adjustColor = adjustColor.none,
                                 Optional env As Environment = Nothing) As ggplotLayer
 
         Return New ggplotJitter With {
@@ -1112,7 +1113,8 @@ Module ggplot2
             .groupWidth = width,
             .alpha = alpha,
             .radius = radius,
-            .colorMap = ggplotColorMap.CreateColorMap(color, 1, env)
+            .colorMap = ggplotColorMap.CreateColorMap(color, 1, env),
+            .adjust = adjust
         }
     End Function
 
