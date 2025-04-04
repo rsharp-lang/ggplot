@@ -24,4 +24,7 @@ declare namespace ggplot {
      * @param legend.tick default value Is ``null``.
    */
    function theme_light(axis.text?: any, axis.title?: any, legend.tick?: any): object;
+   /**
+   */
+   function theme_void(): object;
 }
