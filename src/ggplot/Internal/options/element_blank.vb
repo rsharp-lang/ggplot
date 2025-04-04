@@ -77,6 +77,11 @@ Namespace options
         ''' <returns></returns>
         Public Property waiver As Boolean
 
+        Public Shared Function element_blank() As element_blank
+            Static blank As New element_blank
+            Return blank
+        End Function
+
         ''' <summary>
         ''' gets the default value
         ''' </summary>
@@ -92,7 +97,7 @@ Namespace options
         Public Shared Function GetCssStroke(stroke As Object) As String
             If stroke Is Nothing Then
                 Return Nothing
-            ElseIf TypeOf stroke Is element_blank Then
+            ElseIf stroke Is element_blank OrElse TypeOf stroke Is element_blank Then
                 Return NameOf(element_blank)
             Else
                 Return any.ToString(stroke)

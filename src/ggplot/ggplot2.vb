@@ -1513,7 +1513,7 @@ Module ggplot2
     ''' <returns></returns>
     <ExportAPI("element_blank")>
     Public Function element_blank() As element_blank
-        Return New element_blank()
+        Return options.element_blank.element_blank
     End Function
 
     ''' <summary>
