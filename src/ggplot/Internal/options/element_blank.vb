@@ -1,62 +1,63 @@
 ﻿#Region "Microsoft.VisualBasic::9a52fdf89151b516ea40030eca89cf14, src\ggplot\Internal\options\element_blank.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (I@xieguigang.me)
-    ' 
-    ' Copyright (c) 2021 R# language
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (I@xieguigang.me)
+' 
+' Copyright (c) 2021 R# language
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
-
-
-    ' Code Statistics:
-
-    '   Total Lines: 43
-    '    Code Lines: 15 (34.88%)
-    ' Comment Lines: 24 (55.81%)
-    '    - Xml Docs: 87.50%
-    ' 
-    '   Blank Lines: 4 (9.30%)
-    '     File Size: 1.59 KB
+' Summaries:
 
 
-    '     Class element_blank
-    ' 
-    '         Properties: waiver
-    ' 
-    '         Function: GetCssStroke
-    ' 
-    ' 
-    ' /********************************************************************************/
+' Code Statistics:
+
+'   Total Lines: 43
+'    Code Lines: 15 (34.88%)
+' Comment Lines: 24 (55.81%)
+'    - Xml Docs: 87.50%
+' 
+'   Blank Lines: 4 (9.30%)
+'     File Size: 1.59 KB
+
+
+'     Class element_blank
+' 
+'         Properties: waiver
+' 
+'         Function: GetCssStroke
+' 
+' 
+' /********************************************************************************/
 
 #End Region
 
+Imports ggplot.elements
 Imports any = Microsoft.VisualBasic.Scripting
 
 Namespace options
@@ -76,6 +77,23 @@ Namespace options
         ''' </summary>
         ''' <returns></returns>
         Public Property waiver As Boolean
+
+        Public Shared Function blankTextStyle() As textElement
+            Return New textElement With {
+                .waiver = True,
+                .angle = Nothing,
+                .color = Nothing,
+                .layout = Nothing,
+                .style = Nothing
+            }
+        End Function
+
+        Public Shared Function is_blank(element_blank As element_blank) As Boolean
+            If element_blank Is Nothing Then
+                Return False
+            End If
+            Return element_blank Is options.element_blank.element_blank
+        End Function
 
         Public Shared Function element_blank() As element_blank
             Static blank As New element_blank

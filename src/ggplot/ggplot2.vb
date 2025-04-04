@@ -1483,16 +1483,16 @@ Module ggplot2
         ' 大部分的参数值都应该设置为空值
         ' 否则会在配置theme对象的时候出现错误覆盖的问题
         Return New ggplotTheme With {
-            .axis_text = axis_text,
-            .text = text,
+            .axis_text = If(element_blank.is_blank(axis_text), textElement.blankTextStyle, axis_text),
+            .text = If(element_blank.is_blank(text), textElement.blankTextStyle, text),
             .legend_background = legend_background,
             .plot_background = plot_background,
             .panel_background = panel_background,
             .panel_grid = options.element_blank.GetCssStroke(If(panel_grid, panel_grid_major)),
             .axis_line = options.element_blank.GetCssStroke(axis_line),
-            .legend_text = legend_text,
-            .plot_title = plot_title,
-            .axis_title = axis_title,
+            .legend_text = If(element_blank.is_blank(legend_text), textElement.blankTextStyle, legend_text),
+            .plot_title = If(element_blank.is_blank(plot_title), textElement.blankTextStyle, plot_title),
+            .axis_title = If(element_blank.is_blank(axis_title), textElement.blankTextStyle, axis_title),
             .legend_split = legend_split,
             .axis_text_x = axis_text_x,
             .panel_border = panel_border,
@@ -1512,8 +1512,8 @@ Module ggplot2
     ''' </summary>
     ''' <returns></returns>
     <ExportAPI("element_blank")>
-    Public Function element_blank() As element_blank
-        Return options.element_blank.element_blank
+    Public Function element_blank_f() As element_blank
+        Return element_blank.element_blank
     End Function
 
     ''' <summary>
