@@ -103,6 +103,7 @@ Imports Image = System.Drawing.Image
 Imports Bitmap = System.Drawing.Bitmap
 Imports GraphicsPath = System.Drawing.Drawing2D.GraphicsPath
 Imports LineCap = System.Drawing.Drawing2D.LineCap
+Imports FontStyle = System.Drawing.FontStyle
 #Else
 Imports Pen = Microsoft.VisualBasic.Imaging.Pen
 Imports Pens = Microsoft.VisualBasic.Imaging.Pens
@@ -115,6 +116,7 @@ Imports Image = Microsoft.VisualBasic.Imaging.Image
 Imports Bitmap = Microsoft.VisualBasic.Imaging.Bitmap
 Imports GraphicsPath = Microsoft.VisualBasic.Imaging.GraphicsPath
 Imports LineCap = Microsoft.VisualBasic.Imaging.LineCap
+Imports FontStyle = Microsoft.VisualBasic.Imaging.FontStyle
 #End If
 
 ''' <summary>
@@ -1856,7 +1858,7 @@ Module ggplot2
     ''' <returns></returns>
     <ExportAPI("element_text")>
     Public Function element_text(Optional family$ = NULL,
-                                 Optional face$ = NULL,
+                                 Optional face As ggplotFontFace = ggplotFontFace.plain,
                                  Optional size! = NULL,
                                  Optional hjust! = NULL,
                                  Optional vjust! = NULL,
@@ -1873,6 +1875,13 @@ Module ggplot2
             .size = If(size = 0, 24, size),
             .weight = lineheight
         }
+
+        Select Case face
+            Case ggplotFontFace.bold : css.style = FontStyle.Bold
+            Case ggplotFontFace.bold_italic : css.style = FontStyle.Bold Or FontStyle.Italic
+            Case ggplotFontFace.italic : css.style = FontStyle.Italic
+            Case ggplotFontFace.plain : css.style = FontStyle.Regular
+        End Select
 
         Return New textElement With {
             .style = css,
