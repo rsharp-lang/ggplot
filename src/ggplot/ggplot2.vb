@@ -1512,7 +1512,10 @@ Module ggplot2
     ''' </summary>
     ''' <returns></returns>
     <ExportAPI("element_blank")>
-    Public Function element_blank_f() As element_blank
+    Public Function element_blank_f(Optional text_blank As Boolean = False) As element_blank
+        If text_blank Then
+            Return textElement.blankTextStyle
+        End If
         Return element_blank.element_blank
     End Function
 
