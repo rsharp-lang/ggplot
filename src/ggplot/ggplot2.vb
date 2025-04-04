@@ -1746,6 +1746,7 @@ Module ggplot2
     <RApiReturn(GetType(ggplotTicks))>
     Public Function scale_x_continuous(Optional labels As String = Nothing,
                                        Optional limits As Double() = Nothing,
+                                       Optional n As Integer = 9,
                                        Optional env As Environment = Nothing) As ggplotOption
 
         If limits Is Nothing Then
@@ -1759,7 +1760,8 @@ Module ggplot2
             .axis = "x",
             .format = ggplotTicks.ParseFormat(labels),
             .min = limits.FirstOrDefault,
-            .max = limits.LastOrDefault
+            .max = limits.LastOrDefault,
+            .n = n
         }
     End Function
 
@@ -1778,6 +1780,7 @@ Module ggplot2
     <ExportAPI("scale_y_continuous")>
     Public Function scale_y_continuous(Optional labels As String = Nothing,
                                        Optional limits As Double() = Nothing,
+                                       Optional n As Integer = 9,
                                        Optional env As Environment = Nothing) As ggplotOption
 
         If limits Is Nothing Then
@@ -1791,7 +1794,8 @@ Module ggplot2
             .axis = "y",
             .format = ggplotTicks.ParseFormat(labels),
             .min = limits.FirstOrDefault,
-            .max = limits.LastOrDefault
+            .max = limits.LastOrDefault,
+            .n = n
         }
     End Function
 

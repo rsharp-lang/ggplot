@@ -89,6 +89,12 @@ Namespace options
         Public Property min As Double
         Public Property max As Double
 
+        ''' <summary>
+        ''' set number of the ticks that prefers
+        ''' </summary>
+        ''' <returns></returns>
+        Public Property n As Integer
+
         Public Property reverse As Boolean = False
 
         Public Enum TickStyleNames
@@ -137,6 +143,7 @@ Namespace options
                     ggplot.ggplotTheme.XaxisTickFormat = format
                 End If
 
+                ggplot.ggplotTheme.nticksX = n
                 scale_reverse = "scale_x_reverse"
                 range_tag = "range_x"
             Else
@@ -144,6 +151,7 @@ Namespace options
                     ggplot.ggplotTheme.YaxisTickFormat = format
                 End If
 
+                ggplot.ggplotTheme.nticksY = n
                 scale_reverse = "scale_y_reverse"
                 range_tag = "range_y"
             End If

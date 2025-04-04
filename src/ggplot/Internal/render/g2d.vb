@@ -60,6 +60,7 @@ Imports System.Runtime.CompilerServices
 Imports ggplot.elements
 Imports ggplot.layers
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
+Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.Math
@@ -98,6 +99,7 @@ Namespace render
                          Return TypeOf layer Is ggplotViolin OrElse
                              TypeOf layer Is ggplotBoxplot
                      End Function)
+            Dim theme As Theme = ggplot.ggplotTheme
 
             If hasViolin OrElse ggplot.layers.Any(Function(layer) TypeOf layer Is ggplotBoxplot) Then
                 For Each group In ggplotGroup.getDataGroups([default].x, [default].y)
@@ -120,7 +122,7 @@ Namespace render
                 .JoinIterates({y.Max * 1.125}) _
                 .ToArray
 
-            Dim yTicks = y.Range.CreateAxisTicks
+            Dim yTicks = y.Range.CreateAxisTicks(theme.nticksY, theme.GetYAxisDecimals)
             Dim scaleX = d3js.scale.ordinal.domain(tags:=[default].x).range(integers:={rect.Left, rect.Right})
             Dim scaleY = d3js.scale.linear.domain(values:=yTicks).range(integers:={rect.Bottom, rect.Top})
             Dim scale As New DataScaler() With {
@@ -144,6 +146,7 @@ Namespace render
             Dim y As Double() = allDataset.Select(Function(d) CLRVector.asNumeric(d.y)).IteratesALL.ToArray
             Dim limitsX As Double() = CLRVector.asNumeric(ggplot.args.getByName("range_x"))
             Dim limitsY As Double() = CLRVector.asNumeric(ggplot.args.getByName("range_y"))
+            Dim theme As Theme = ggplot.ggplotTheme
 
             ' there are missing value from the 
             ' geom_vline and geom_hline
@@ -152,8 +155,8 @@ Namespace render
             y = y.JoinIterates([default].y).JoinIterates(limitsY).Where(Function(d) Not d.IsNaNImaginary).ToArray
             y = validateAxis(y, ggplot)
 
-            Dim xTicks As Double() = If(x.IsNullOrEmpty, {}, x.Range.CreateAxisTicks)
-            Dim yTicks As Double() = If(y.IsNullOrEmpty, {}, y.Range.CreateAxisTicks)
+            Dim xTicks As Double() = If(x.IsNullOrEmpty, {}, x.Range.CreateAxisTicks(theme.nticksX, theme.GetXAxisDecimals))
+            Dim yTicks As Double() = If(y.IsNullOrEmpty, {}, y.Range.CreateAxisTicks(theme.nticksY, theme.GetYAxisDecimals))
             Dim scaleX = d3js.scale.linear.domain(values:=xTicks).range(integers:={rect.Left, rect.Right})
             Dim scaleY = d3js.scale.linear.domain(values:=yTicks).range(integers:={rect.Bottom, rect.Top})
             Dim scale As New DataScaler() With {
