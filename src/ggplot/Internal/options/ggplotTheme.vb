@@ -97,20 +97,38 @@ Namespace options
             Dim theme As Theme = ggplot.ggplotTheme
 
             If Not text Is Nothing Then
-                theme.mainCSS = text.GetCSS
-                theme.mainTextColor = text.color
-                theme.axisTickCSS = CSSFont.TryParse(theme.axisTickCSS).SetFontColor(text.color).ToString
+                If text.is_blank Then
+                    theme.mainCSS = Nothing
+                    theme.mainTextColor = Nothing
+                    theme.axisTickCSS = Nothing
+                Else
+                    theme.mainCSS = text.GetCSS
+                    theme.mainTextColor = text.color
+                    theme.axisTickCSS = CSSFont.TryParse(theme.axisTickCSS).SetFontColor(text.color).ToString
+                End If
             End If
 
             If Not plot_title Is Nothing Then
-                theme.mainCSS = plot_title.ConfigCSS(CSSFont.TryParse(theme.mainCSS)).ToString
+                If plot_title.is_blank Then
+                    theme.mainCSS = Nothing
+                Else
+                    theme.mainCSS = plot_title.ConfigCSS(CSSFont.TryParse(theme.mainCSS)).ToString
+                End If
             End If
 
             If Not axis_title Is Nothing Then
-                theme.axisLabelCSS = axis_title.GetCSS
+                If axis_title.is_blank Then
+                    theme.axisLabelCSS = Nothing
+                Else
+                    theme.axisLabelCSS = axis_title.GetCSS
+                End If
             End If
             If Not axis_text Is Nothing Then
-                theme.axisTickCSS = axis_text.GetCSS
+                If axis_text.is_blank Then
+                    theme.axisTickCSS = Nothing
+                Else
+                    theme.axisTickCSS = axis_text.GetCSS
+                End If
             End If
 
             If Not legend_background.StringEmpty Then theme.legendBoxBackground = legend_background
@@ -118,10 +136,18 @@ Namespace options
             If Not panel_background.StringEmpty Then theme.gridFill = panel_background
 
             If Not legend_text Is Nothing Then
-                theme.legendLabelCSS = legend_text.GetCSS
+                If legend_text.is_blank Then
+                    theme.legendLabelCSS = Nothing
+                Else
+                    theme.legendLabelCSS = legend_text.GetCSS
+                End If
             End If
             If Not legend_tick Is Nothing Then
-                theme.legendTickCSS = legend_tick.GetCSS
+                If legend_tick.is_blank Then
+                    theme.legendTickCSS = Nothing
+                Else
+                    theme.legendTickCSS = legend_tick.GetCSS
+                End If
             End If
             If Not legend_title Is Nothing Then
                 theme.legendTitleCSS = legend_title.GetCSS

@@ -91,7 +91,14 @@ Namespace elements
         Public Property angle As Single
 
         Public Function GetCSS() As String
+            If is_blank() Then
+                Return Nothing
+            End If
             Return style.ToString
+        End Function
+
+        Public Overloads Function is_blank() As Boolean
+            Return style Is Nothing AndAlso color Is Nothing AndAlso layout Is Nothing AndAlso waiver
         End Function
 
         Public Function ConfigCSS(css As CSSFont) As CSSFont
