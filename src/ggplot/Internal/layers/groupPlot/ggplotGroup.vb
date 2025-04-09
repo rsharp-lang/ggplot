@@ -68,9 +68,17 @@ Imports Microsoft.VisualBasic.Math.Quantile
 
 Namespace layers
 
+    ''' <summary>
+    ''' the base type of the group plot in ggplot
+    ''' </summary>
     Public MustInherit Class ggplotGroup : Inherits ggplotLayer
 
         Public Property groupWidth As Double = 0.5
+
+        Public Const bar As String = "bar"
+        Public Const box As String = "box"
+        Public Const jitter As String = "jitter"
+        Public Const violin As String = "violin"
 
         ''' <summary>
         ''' get colorset mapping from <see cref="colorMap"/> or 
