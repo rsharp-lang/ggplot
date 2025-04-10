@@ -101,7 +101,9 @@ Namespace layers
     ''' It was introduced byHintze and Nelson in 1998. Here's how it works:
     ''' 
     ''' ### Key Components:
-    ''' 1. **Kernel Density Estimation (KDE)**: The violin plot uses KDE to provide a better understanding of the distribution of data. The width of the violin at a given y-value represents the density of data points at that value.
+    ''' 1. **Kernel Density Estimation (KDE)**: The violin plot uses KDE to provide a better understanding of the distribution of data. 
+    '''                                         The width of the violin at a given y-value represents the density of data points at that 
+    '''                                         value.
     ''' 2. **Box Plot Elements**: Inside the violin, there is often a smaller box plot which provides summary statistics:
     '''    - **Median**: A line inside the box that indicates the median value of the data.
     '''    - **Interquartile Range (IQR)**: The box's width represents the IQR, which is the range between the first quartile (25th percentile) and the third quartile (75th percentile).

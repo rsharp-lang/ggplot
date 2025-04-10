@@ -75,10 +75,10 @@ Namespace layers
 
         Public Property groupWidth As Double = 0.5
 
-        Public Const bar As String = "bar"
-        Public Const box As String = "box"
-        Public Const jitter As String = "jitter"
-        Public Const violin As String = "violin"
+        Public Const cstr_bar As String = "bar"
+        Public Const cstr_box As String = "box"
+        Public Const cstr_jitter As String = "jitter"
+        Public Const cstr_violin As String = "violin"
 
         ''' <summary>
         ''' get colorset mapping from <see cref="colorMap"/> or 
