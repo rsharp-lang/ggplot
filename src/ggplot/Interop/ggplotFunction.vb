@@ -201,6 +201,26 @@ Public Module ggplotFunction
         }
     End Function
 
+    Public Function geom_jitter(Optional mapping As ggplotReader = NULL,
+                                Optional data As Object = NULL,
+                                Optional stat As Object = "identity",
+                                Optional width As Double = 0.5,
+                                Optional radius As Double = 6,
+                                Optional alpha As Double = 0.85,
+                                Optional color As list = Nothing,
+                                Optional adjust As adjustColor = adjustColor.none,
+                                Optional env As Environment = Nothing) As ggplotLayer
+
+        Return New ggplotJitter With {
+            .reader = mapping,
+            .groupWidth = width,
+            .alpha = alpha,
+            .radius = radius,
+            .colorMap = ggplotColorMap.CreateColorMap(color, 1, env),
+            .adjust = adjust
+        }
+    End Function
+
     ''' <summary>
     ''' ## Modify axis, legend, and plot labels
     ''' 
