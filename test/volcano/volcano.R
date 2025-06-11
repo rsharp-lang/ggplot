@@ -22,6 +22,6 @@ let ggplot2 = function() {
   p;
 }
 
-png(filename = relative_work("volcano.png"),  width = 2000, height = 1200);
+png(filename = relative_work("volcano.png"),  width = 600, height = 400, bg = "white");
 plot(ggplot2());
 dev.off();
