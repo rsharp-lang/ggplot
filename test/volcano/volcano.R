@@ -26,7 +26,9 @@ for(let colorname in ["rev(ggthemes::excel_Vapor_Trail)"
    "jet" "hot" "cool" "grays" "autumn" "spring" "summer" "winter" 
    "FlexImaging" "Typhoon" "Icefire" "Seismic" "Rainbow" 
    "viridis" "viridis:inferno" "viridis:magma" "viridis:plasma" "viridis:cividis" "viridis:mako" "viridis:rocket" "viridis:turbo"
-   "colorBlindness::Green2Magenta16Steps"
+   "colorBlindness::Green2Magenta16Steps" "colorBlindness::Brown2Blue12Steps" "colorBlindness::Brown2Blue10Steps" "colorBlindness::Blue2OrangeRed14Steps" "colorBlindness::Blue2Gray8Steps"
+   "colorBlindness::Blue2DarkRed18Steps" "colorBlindness::Blue2Green14Steps" "colorBlindness::paletteMartin" "colorBlindness::ModifiedSpectralScheme11Steps" "colorBlindness::PairedColor12Steps"
+   "ggsci::legacy_tron" "ggsci::default_gsea"
    ]) {
 
    png(filename = relative_work(`volcano_${normalizeFileName(colorname,FALSE)}.png`), 
