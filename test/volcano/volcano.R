@@ -22,8 +22,13 @@ let ggplot2 = function(colors) {
   p;
 }
 
-for(let colorname in ["rev(ggthemes::excel_Vapor_Trail)"]) {
-   png(filename = relative_work(`volcano_${normalizeFileName(colorname,FALSE)}.png`),  width = 600, height = 400, bg = "white");
+for(let colorname in ["rev(ggthemes::excel_Vapor_Trail)" "rainbow" "jet" "hot" "cool" "grays" "autumn" "spring" "summer" "winter" "FlexImaging" "Typhoon" "Icefire" "Seismic"]) {
+
+   png(filename = relative_work(`volcano_${normalizeFileName(colorname,FALSE)}.png`), 
+      width = 600, 
+      height = 400, 
+      bg = "white");
+      
    plot(ggplot2(colorname ));
    dev.off();
 }
