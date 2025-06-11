@@ -22,13 +22,15 @@ let ggplot2 = function(colors) {
   p;
 }
 
-for(let colorname in ["rev(ggthemes::excel_Vapor_Trail)" 
-   "jet" "hot" "cool" "grays" "autumn" "spring" "summer" "winter" 
+for(let colorname in ["jet" "hot" "cool" "grays" "autumn" "spring" "summer" "winter" 
    "FlexImaging" "Typhoon" "Icefire" "Seismic" "Rainbow" 
    "viridis" "viridis:inferno" "viridis:magma" "viridis:plasma" "viridis:cividis" "viridis:mako" "viridis:rocket" "viridis:turbo"
    "colorBlindness::Green2Magenta16Steps" "colorBlindness::Brown2Blue12Steps" "colorBlindness::Brown2Blue10Steps" "colorBlindness::Blue2OrangeRed14Steps" "colorBlindness::Blue2Gray8Steps"
    "colorBlindness::Blue2DarkRed18Steps" "colorBlindness::Blue2Green14Steps" "colorBlindness::paletteMartin" "colorBlindness::ModifiedSpectralScheme11Steps" "colorBlindness::PairedColor12Steps"
-   "ggsci::legacy_tron" "ggsci::default_gsea"
+   "ggsci::legacy_tron" "ggsci::default_gsea" "ggsci::uniform_startrek" "ggsci::red_material" "ggsci::pink_material" "ggsci::purple_material"
+   "ggthemes::Jewel_Bright" "ggthemes::Summer" "ggthemes::Traffic" "ggthemes::Hue_Circle" "ggthemes::Classic_Cyclic" 
+   "ggthemes::excel_Atlas"  "ggthemes::excel_Vapor_Trail" "ggthemes::excel_Celestial" "ggthemes::excel_Depth" "ggthemes::excel_Facet" "ggthemes::excel_Ion" "ggthemes::excel_Ion_Boardroom" "ggthemes::excel_Parallax"
+   "ggthemes::excel_Slice" "ggthemes::excel_Savon" "ggthemes::excel_Aspect" "ggthemes::excel_Green_Yellow" "ggthemes::excel_Marquee" "ggthemes::excel_Slipstream"
    ]) {
 
    png(filename = relative_work(`volcano_${normalizeFileName(colorname,FALSE)}.png`), 
