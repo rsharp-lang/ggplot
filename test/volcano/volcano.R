@@ -22,7 +22,12 @@ let ggplot2 = function(colors) {
   p;
 }
 
-for(let colorname in ["rev(ggthemes::excel_Vapor_Trail)" "rainbow" "jet" "hot" "cool" "grays" "autumn" "spring" "summer" "winter" "FlexImaging" "Typhoon" "Icefire" "Seismic"]) {
+for(let colorname in ["rev(ggthemes::excel_Vapor_Trail)" 
+   "jet" "hot" "cool" "grays" "autumn" "spring" "summer" "winter" 
+   "FlexImaging" "Typhoon" "Icefire" "Seismic" "Rainbow" 
+   "viridis" "viridis:inferno" "viridis:magma" "viridis:plasma" "viridis:cividis" "viridis:mako" "viridis:rocket" "viridis:turbo"
+   "colorBlindness::Green2Magenta16Steps"
+   ]) {
 
    png(filename = relative_work(`volcano_${normalizeFileName(colorname,FALSE)}.png`), 
       width = 600, 
