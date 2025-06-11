@@ -97,6 +97,14 @@ Namespace render
             Dim theme As Theme = ggplot.ggplotTheme
             Dim css As CSSEnvirnment = g.LoadEnvironment
             Dim plotRegion As Rectangle = canvas.PlotRegion(css)
+            Dim fixedRange As Boolean = True
+
+            For Each layer As ggplotLayer In layers.AsEnumerable
+                If TypeOf layer Is ggplotScatter Then
+                    fixedRange = False
+                    Exit For
+                End If
+            Next
 
             ggplot.base.data!x = x
             ggplot.base.data!y = y
@@ -118,6 +126,7 @@ Namespace render
                 scale = ggplot.get2DScale(
                     rect:=plotRegion,
                     [default]:=(x.ToNumeric, y),
+                    fixedRange:=fixedRange,
                     layerData:=From layer As ggplotLayer
                                In layers
                                Let data As ggplotData = layer.data

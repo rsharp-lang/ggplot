@@ -59,6 +59,7 @@ Imports System.Drawing
 Imports System.Runtime.CompilerServices
 Imports ggplot.elements
 Imports ggplot.layers
+Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Imaging
@@ -139,6 +140,7 @@ Namespace render
         Public Function get2DScale(ggplot As ggplot,
                                    rect As Rectangle,
                                    [default] As (x As Double(), y As Double()),
+                                   fixedRange As Boolean,
                                    layerData As IEnumerable(Of ggplotData)) As DataScaler
 
             Dim allDataset As ggplotData() = layerData.ToArray
@@ -157,6 +159,21 @@ Namespace render
 
             Dim xTicks As Double() = If(x.IsNullOrEmpty, {}, x.Range.CreateAxisTicks(theme.nticksX, theme.GetXAxisDecimals))
             Dim yTicks As Double() = If(y.IsNullOrEmpty, {}, y.Range.CreateAxisTicks(theme.nticksY, theme.GetYAxisDecimals))
+
+            If fixedRange AndAlso Not x.IsNullOrEmpty Then
+                Dim raw_x As New DoubleRange(x)
+
+                xTicks = xTicks.Where(Function(xi) raw_x.IsInside(xi)).ToArray
+                xTicks = {x.Min}.JoinIterates(xTicks).JoinIterates({x.Max}).ToArray
+            End If
+
+            If fixedRange AndAlso Not y.IsNullOrEmpty Then
+                Dim raw_y As New DoubleRange(y)
+
+                yTicks = yTicks.Where(Function(yi) raw_y.IsInside(yi)).ToArray
+                yTicks = {y.Min}.JoinIterates(yTicks).JoinIterates({y.Max}).ToArray
+            End If
+
             Dim scaleX = d3js.scale.linear.domain(values:=xTicks).range(integers:={rect.Left, rect.Right})
             Dim scaleY = d3js.scale.linear.domain(values:=yTicks).range(integers:={rect.Bottom, rect.Top})
             Dim scale As New DataScaler() With {
