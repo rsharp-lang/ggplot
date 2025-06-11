@@ -4,6 +4,8 @@
 
 The ``R#`` language is another scientific computing language which is designed for .NET runtime, ``R#`` is evolved from the R language. There is a famous graphics library called ``ggplot2`` in R language, so keeps the same, there is a graphics library called ``ggplot`` was developed for ``R#`` language.
 
+[![](docs/color_palette_demo.JPG)](docs/volcano/volcano.R)
+
 ## usage
 
 ```r
