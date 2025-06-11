@@ -5,7 +5,7 @@ require(Matrix);
 data(volcano);
 
 volcano = as.matrix(volcano);
-volcano = melt(volcano, varnames = c("X", "Y"), value.name = "Height");
+volcano = melt(volcano, varnames = c("X", "Y"), value_name = "Height");
 
 print(volcano, max.print = 13);
 
