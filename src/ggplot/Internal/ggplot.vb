@@ -191,7 +191,7 @@ Public Class ggplot : Inherits Plot
     ''' </summary>
     ''' <returns></returns>
     Public Property driver As Drivers = Drivers.Default
-    Public Property titleOffset As Double = 2
+    Public Property titleOffset As Double = 3
     Public Property clearCanvas As Boolean = True
     ''' <summary>
     ''' works on 2D chart plot
