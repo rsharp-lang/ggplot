@@ -83,6 +83,9 @@ Imports REnv = SMRUCC.Rsharp.Runtime
 
 Namespace layers
 
+    ''' <summary>
+    ''' A graphics layer in ggplot
+    ''' </summary>
     Public MustInherit Class ggplotLayer
 
         ''' <summary>
