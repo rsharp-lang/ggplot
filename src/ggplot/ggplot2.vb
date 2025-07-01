@@ -1823,7 +1823,8 @@ Module ggplot2
         Return New ggplotTicks With {
             .axis = "y",
             .reverse = True,
-            .format = Nothing
+            .format = Nothing,
+            .n = -1
         }
     End Function
 

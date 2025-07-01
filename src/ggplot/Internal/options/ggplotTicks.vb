@@ -142,16 +142,20 @@ Namespace options
                 If Not format.StringEmpty Then
                     ggplot.ggplotTheme.XaxisTickFormat = format
                 End If
+                If n > 0 Then
+                    ggplot.ggplotTheme.nticksX = n
+                End If
 
-                ggplot.ggplotTheme.nticksX = n
                 scale_reverse = "scale_x_reverse"
                 range_tag = "range_x"
             Else
                 If Not format.StringEmpty Then
                     ggplot.ggplotTheme.YaxisTickFormat = format
                 End If
+                If n > 0 Then
+                    ggplot.ggplotTheme.nticksY = n
+                End If
 
-                ggplot.ggplotTheme.nticksY = n
                 scale_reverse = "scale_y_reverse"
                 range_tag = "range_y"
             End If
