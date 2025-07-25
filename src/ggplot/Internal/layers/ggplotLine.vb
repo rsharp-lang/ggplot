@@ -118,7 +118,7 @@ Namespace layers
                 serials = ggplotScatter.createSerialData(
                     ggplot.base.reader.ToString,
                     x, CLRVector.asFloat(y), colors,
-                    line_width,
+                    {line_width},
                     TryCast(legends, legendGroupElement), LegendStyles.SolidLine, colorMap).ToArray
             Else
                 With Me.data
@@ -142,7 +142,7 @@ Namespace layers
                     serials = ggplotScatter.createSerialData(
                         reader.ToString,
                         .x.ToFloat, .y.ToFloat, colors,
-                        line_width,
+                        {line_width},
                         TryCast(legends, legendGroupElement), LegendStyles.SolidLine, colorMap).ToArray
                 End With
             End If

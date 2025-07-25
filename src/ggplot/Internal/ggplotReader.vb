@@ -224,6 +224,10 @@ Public Class ggplotReader
         Return unifySource(ggplot.data, color, ggplot.environment)
     End Function
 
+    Public Function getSizeSource(ggplot As ggplot) As Array
+        Return unifySource(ggplot.data, size, ggplot.environment)
+    End Function
+
     Public Function getMapColor(data As Object,
                                 shape As LegendStyles,
                                 theme As Theme,

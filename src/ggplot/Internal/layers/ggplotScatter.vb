@@ -152,13 +152,29 @@ Namespace layers
             Return legends
         End Function
 
+        Protected Function getValues(ggplot As ggplot) As Double()
+            Dim reader = Me.reader
+
+            If reader Is Nothing Then
+                reader = ggplot.base.reader
+            End If
+
+            Return CLRVector.asNumeric(reader.getSizeSource(ggplot))
+        End Function
+
+        Protected Function getValues(stream As ggplotPipeline) As Double()
+            Return getValues(stream.ggplot)
+        End Function
+
         Public Function GetSerialData(stream As ggplotPipeline, <Out> Optional ByRef legends As IggplotLegendElement = Nothing) As IEnumerable(Of SerialData)
             Dim colors As String() = Nothing
             Dim ggplot As ggplot = stream.ggplot
-            Dim size As Single() = If(ggplot.driver = Drivers.SVG, , Me.size)
+            Dim size As Single() = Nothing
 
             If Me.size.range Is Nothing Then
                 size = Me.size.getSizeValues(stream.y).ToArray
+            Else
+                size = Me.size.getSizeValues(getValues(stream)).ToArray
             End If
 
             If ggplot.driver = Drivers.SVG Then
