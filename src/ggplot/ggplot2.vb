@@ -445,14 +445,21 @@ Module ggplot2
                                Optional color As Object = Nothing,
                                Optional shape As LegendStyles? = Nothing,
                                Optional stroke As Object = Nothing,
-                               Optional size As Single = 2,
+                               <RRawVectorArgument(TypeCodes.double)>
+                               Optional size As Object = 2,
                                Optional show_legend As Boolean = True,
                                Optional alpha As Double = 1,
-                               Optional env As Environment = Nothing) As ggplotLayer
+                               Optional env As Environment = Nothing) As Object
 
         Dim colorMap As ggplotColorMap = ggplotColorMap.CreateColorMap(color, alpha, env)
         Dim strokeCss As String = InteropArgumentHelper.getStrokePenCSS(stroke, [default]:=Nothing)
-        Dim sizeOpt As New ggplotSize(size)
+        Dim sizeCfg As Object = scale_size_continuous(range:=size, env:=env)
+
+        If TypeOf sizeCfg Is Message Then
+            Return sizeCfg
+        End If
+
+        Dim sizeOpt As ggplotSize = DirectCast(sizeCfg, ggplotSize)
 
         If mapping IsNot Nothing AndAlso Not mapping.isPlain2D Then
             ' 3D
