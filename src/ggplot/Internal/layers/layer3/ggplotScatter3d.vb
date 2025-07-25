@@ -94,6 +94,7 @@ Namespace layers.layer3d
 
             Dim colors As String() = Nothing
             Dim legends As IggplotLegendElement = Nothing
+            Dim size As Double() = getValues(ggplot)
 
             If useCustomColorMaps Then
                 colors = getColorSet(ggplot, g, x.Length, shape, Nothing, legends)
@@ -104,10 +105,10 @@ Namespace layers.layer3d
             Call legendList.Add(legends)
 
             If Not useCustomData Then
-                Return createSerialData($"{baseData.x} ~ {baseData.y} ~ {baseData.z}", x, y, z, colors)
+                Return createSerialData($"{baseData.x} ~ {baseData.y} ~ {baseData.z}", x, y, z, size, colors)
             Else
                 With reader.getMapData(ggplot.data, ggplot.environment)
-                    Return createSerialData(reader.ToString, .x, .y, .z, colors)
+                    Return createSerialData(reader.ToString, .x, .y, .z, size, colors)
                 End With
             End If
         End Function
