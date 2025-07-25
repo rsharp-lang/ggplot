@@ -56,6 +56,8 @@ declare namespace ggplot2 {
      * @param class mapping data of the element class group.
      * 
      * + default value Is ``null``.
+     * @param size 
+     * + default value Is ``null``.
      * @param args 
      * + default value Is ``null``.
      * @param env -
@@ -64,7 +66,7 @@ declare namespace ggplot2 {
      * @return A list with class uneval. Components of the list are either quosures 
      *  or constants.
    */
-   function aes(x?: any, y?: any, z?: any, label?: any, color?: any, colour?: any, alpha?: any, fill?: any, title?: string, shape?: any, class?: any, args?: object, env?: object): object;
+   function aes(x?: any, y?: any, z?: any, label?: any, color?: any, colour?: any, alpha?: any, fill?: any, title?: string, shape?: any, class?: any, size?: any, args?: object, env?: object): object;
    /**
     * annotation_raster: Annotation: high-performance rectangular tiling
     *  
@@ -540,7 +542,7 @@ declare namespace ggplot2 {
      * + default value Is ``null``.
      * @return a scatter plot layer
    */
-   function geom_point(mapping?: object, color?: any, shape?: object, stroke?: any, size?: number, show_legend?: boolean, alpha?: number, env?: object): object;
+   function geom_point(mapping?: object, color?: any, shape?: object, stroke?: any, size?: any, show_legend?: boolean, alpha?: number, env?: object): object;
    /**
      * @param layout default value Is ``null``.
      * @param env default value Is ``null``.
@@ -1089,8 +1091,9 @@ declare namespace ggplot2 {
      * @param transform default value Is ``'identity'``.
      * @param trans default value Is ``null``.
      * @param guide default value Is ``'legend'``.
+     * @param env default value Is ``null``.
    */
-   function scale_size_continuous(name?: any, breaks?: any, labels?: any, limits?: any, range?: any, transform?: any, trans?: any, guide?: any): object;
+   function scale_size_continuous(name?: any, breaks?: any, labels?: any, limits?: any, range?: any, transform?: any, trans?: any, guide?: any, env?: object): object;
    /**
     * Position scales for continuous data (x & y)
     * 
