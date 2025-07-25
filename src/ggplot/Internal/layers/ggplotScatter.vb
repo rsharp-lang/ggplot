@@ -61,6 +61,7 @@ Imports System.Drawing
 Imports System.Runtime.InteropServices
 Imports ggplot.colors
 Imports ggplot.elements.legend
+Imports ggplot.options
 Imports Microsoft.VisualBasic.Data.ChartPlots
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Data.ChartPlots.Plots
@@ -77,6 +78,10 @@ Imports Brush = Microsoft.VisualBasic.Imaging.Brush
 #End If
 
 Namespace layers
+
+    Public Interface IggplotSize
+        Property size As ggplotSize
+    End Interface
 
     ''' <summary>
     ''' A scatter plot is a type of data visualization that uses dots to represent the values of two different numerical variables. 
@@ -115,9 +120,10 @@ Namespace layers
     ''' scatter and bubble
     ''' </remarks>
     Public Class ggplotScatter : Inherits ggplotLayer
+        Implements IggplotSize
 
         Public Property shape As LegendStyles?
-        Public Property size As Single
+        Public Property size As ggplotSize Implements IggplotSize.size
         Public Property stroke As String
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement

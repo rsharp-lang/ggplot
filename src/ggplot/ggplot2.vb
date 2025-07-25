@@ -377,6 +377,7 @@ Module ggplot2
                         Optional title As String = Nothing,
                         Optional shape As Object = Nothing,
                         Optional [class] As Object = Nothing,
+                        Optional size As Object = Nothing,
                         <RListObjectArgument>
                         Optional args As list = Nothing,
                         Optional env As Environment = Nothing) As ggplotReader
@@ -411,7 +412,8 @@ Module ggplot2
             .args = args,
             .title = title,
             .shape = shape,
-            .[class] = If([class], fill)
+            .[class] = If([class], fill),
+            .size = size
         }
     End Function
 
@@ -450,6 +452,7 @@ Module ggplot2
 
         Dim colorMap As ggplotColorMap = ggplotColorMap.CreateColorMap(color, alpha, env)
         Dim strokeCss As String = InteropArgumentHelper.getStrokePenCSS(stroke, [default]:=Nothing)
+        Dim sizeOpt As New ggplotSize(size)
 
         If mapping IsNot Nothing AndAlso Not mapping.isPlain2D Then
             ' 3D
@@ -457,7 +460,7 @@ Module ggplot2
                 .colorMap = colorMap,
                 .reader = mapping,
                 .shape = shape,
-                .size = size,
+                .size = sizeOpt,
                 .showLegend = show_legend,
                 .stroke = stroke
             }
@@ -466,7 +469,7 @@ Module ggplot2
             Return New ggplotScatter With {
                 .colorMap = colorMap,
                 .shape = shape,
-                .size = size,
+                .size = sizeOpt,
                 .showLegend = show_legend,
                 .reader = mapping,
                 .stroke = stroke
@@ -1728,14 +1731,13 @@ Module ggplot2
 
         Dim rangeValues As Double() = CLRVector.asNumeric(range)
 
-        If rangeValues.Length <> 2 Then
+        If rangeValues.IsNullOrEmpty Then
             Return RInternal.debug.stop("the given range values should be a numeric vector with two values!", env)
+        ElseIf rangeValues.Length = 1 Then
+            Return New ggplotSize(rangeValues(0))
+        Else
+            Return New ggplotSize(min:=rangeValues.Min, max:=rangeValues.Max)
         End If
-
-        Return New ggplotSize With {
-            .min = rangeValues.Min,
-            .max = rangeValues.Max
-        }
     End Function
 
     <ExportAPI("scale_fill_manual")>
