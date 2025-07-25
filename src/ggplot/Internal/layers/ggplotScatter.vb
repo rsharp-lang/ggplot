@@ -155,7 +155,17 @@ Namespace layers
         Public Function GetSerialData(stream As ggplotPipeline, <Out> Optional ByRef legends As IggplotLegendElement = Nothing) As IEnumerable(Of SerialData)
             Dim colors As String() = Nothing
             Dim ggplot As ggplot = stream.ggplot
-            Dim size As Single = If(ggplot.driver = Drivers.SVG, Me.size * stream.g.Dpi / 96, Me.size)
+            Dim size As Single() = If(ggplot.driver = Drivers.SVG, , Me.size)
+
+            If Me.size.range Is Nothing Then
+                size = Me.size.getSizeValues(stream.y).ToArray
+            End If
+
+            If ggplot.driver = Drivers.SVG Then
+                size = size _
+                    .Select(Function(sz) sz * stream.g.Dpi / 96) _
+                    .ToArray
+            End If
 
             If Not useCustomData Then
                 Dim x = CLRVector.asFloat(stream.x)
@@ -217,7 +227,7 @@ Namespace layers
                                                                    x As Single(),
                                                                    y As Single(),
                                                                    colors As String(),
-                                                                   size!,
+                                                                   size As Single(),
                                                                    multiple_group As legendGroupElement,
                                                                    shape As LegendStyles?,
                                                                    colorMap As ggplotColorMap) As IEnumerable(Of SerialData)
@@ -252,8 +262,8 @@ Namespace layers
 
                     Yield New SerialData() With {
                         .color = color,
-                        .pointSize = size,
-                        .width = size,
+                        .pointSize = size(offset),
+                        .width = size(offset),
                         .shape = If(shape Is Nothing, LegendStyles.Circle, shape.Value),
                         .title = multiple_group(++offset).title,
                         .pts = group.ToArray
@@ -276,14 +286,13 @@ Namespace layers
 
                 Yield New SerialData() With {
                     .color = color,
-                    .pointSize = size,
-                    .width = size,
                     .shape = If(shape Is Nothing, LegendStyles.Circle, shape.Value),
                     .title = legend,
                     .pts = x _
                         .Select(Function(xi, i)
                                     Return New PointData(xi, y(i)) With {
-                                        .color = If(colors Is Nothing, Nothing, colors(i))
+                                        .color = If(colors Is Nothing, Nothing, colors(i)),
+                                        .value = size(i)
                                     }
                                 End Function) _
                         .ToArray

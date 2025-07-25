@@ -116,14 +116,12 @@ Namespace layers.layer3d
                                                              x As Double(),
                                                              y As Double(),
                                                              z As Double(),
+                                                             value As Double(),
                                                              colors As String()) As IEnumerable(Of Element3D)
-            Dim size As New Size With {
-                .Width = Me.size,
-                .Height = Me.size
-            }
             Dim nsize As Integer = x.Length
             Dim colorList As Func(Of Integer, String)
             Dim shape = If(Me.shape, LegendStyles.Circle)
+            Dim size As Single() = Me.size.getSizeValues(value).ToArray
 
             If colors.IsNullOrEmpty Then
                 ' default black
@@ -136,7 +134,7 @@ Namespace layers.layer3d
                 Yield New ShapePoint With {
                     .Fill = colorList(i).GetBrush,
                     .Location = New Point3D(x(i), y(i), z(i)),
-                    .Size = size,
+                    .Size = New Size(size(i), size(i)),
                     .Style = shape,
                     .Label = $"({x(i)},{y(i)},{z(i)})"
                 }
