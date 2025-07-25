@@ -308,7 +308,7 @@ Namespace layers
                         .Select(Function(xi, i)
                                     Return New PointData(xi, y(i)) With {
                                         .color = If(colors Is Nothing, Nothing, colors(i)),
-                                        .value = size(i)
+                                        .size = size(i)
                                     }
                                 End Function) _
                         .ToArray
