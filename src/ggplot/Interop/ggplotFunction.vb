@@ -147,7 +147,7 @@ Public Module ggplotFunction
                 .colorMap = colorMap,
                 .reader = mapping,
                 .shape = shape,
-                .size = size,
+                .size = New ggplotSize(size),
                 .showLegend = show_legend,
                 .stroke = stroke?.ToString
             }
@@ -156,7 +156,7 @@ Public Module ggplotFunction
             Return New ggplotScatter With {
                 .colorMap = colorMap,
                 .shape = shape,
-                .size = size,
+                .size = New ggplotSize(size),
                 .showLegend = show_legend,
                 .reader = mapping,
                 .stroke = stroke?.ToString
