@@ -1714,6 +1714,7 @@ Module ggplot2
     End Function
 
     <ExportAPI("scale_size_continuous")>
+    <RApiReturn(GetType(ggplotSize))>
     Public Function scale_size_continuous(Optional name As Object = Nothing,
                                           Optional breaks As Object = Nothing,
                                           Optional labels As Object = Nothing,
@@ -1722,8 +1723,19 @@ Module ggplot2
                                           Optional range As Object = "1,6",
                                           Optional transform As Object = "identity",
                                           Optional trans As Object = Nothing,
-                                          Optional guide As Object = "legend") As ggplotOption
+                                          Optional guide As Object = "legend",
+                                          Optional env As Environment = Nothing) As Object
 
+        Dim rangeValues As Double() = CLRVector.asNumeric(range)
+
+        If rangeValues.Length <> 2 Then
+            Return RInternal.debug.stop("the given range values should be a numeric vector with two values!", env)
+        End If
+
+        Return New ggplotSize With {
+            .min = rangeValues.Min,
+            .max = rangeValues.Max
+        }
     End Function
 
     <ExportAPI("scale_fill_manual")>
