@@ -1687,12 +1687,13 @@ Module ggplot2
     <ExportAPI("scale_color_brewer")>
     <RApiReturn(GetType(ggplotOption))>
     Public Function scale_color_brewer(<RRawVectorArgument(TypeCodes.string)>
-                                       Optional name As Object = "BrBG|PiYG|PRGn|PuOr|RdBu|RdGy|RdYlBu|RdYlGn|Spectral|Accent|Dark2|Paired|Pastel1|Pastel2|Set1|Set2|Set3|Blues|BuGn|BuPu|GnBu|Greens|Greys|Oranges|OrRd|PuBu|PuBuGn|PuRd|Purples|RdPu|Reds|YlGn|YlGnBu|YlOrBr|YlOrRd",
+                                       Optional palette As Object = "BrBG|PiYG|PRGn|PuOr|RdBu|RdGy|RdYlBu|RdYlGn|Spectral|Accent|Dark2|Paired|Pastel1|Pastel2|Set1|Set2|Set3|Blues|BuGn|BuPu|GnBu|Greens|Greys|Oranges|OrRd|PuBu|PuBuGn|PuRd|Purples|RdPu|Reds|YlGn|YlGnBu|YlOrBr|YlOrRd",
                                        Optional direction As Integer = 1,
                                        Optional alpha As Double = 1,
+                                       Optional name As String = Nothing,
                                        Optional env As Environment = Nothing) As Object
 
-        Dim pal_name As String = CLRVector.asCharacter(name).DefaultFirst
+        Dim pal_name As String = CLRVector.asCharacter(palette).DefaultFirst
 
         If pal_name.StringEmpty Then
             Return RInternal.debug.stop("the required color brewer color palette name should not be empty!", env)
