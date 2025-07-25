@@ -17,6 +17,27 @@ Namespace options
             Me.range = New DoubleRange(min, max)
         End Sub
 
+        Public Iterator Function getSizeValues(values As IEnumerable(Of Double)) As IEnumerable(Of Single)
+            Dim alldata As Double() = values.ToArray
+
+            If range Is Nothing Then
+                For i As Integer = 0 To alldata.Length - 1
+                    Yield unify
+                Next
+            Else
+                Dim valueRange As New DoubleRange(alldata)
+
+                For Each xi As Double In alldata
+                    Yield valueRange.ScaleMapping(xi, _range)
+                Next
+            End If
+        End Function
+
+        ''' <summary>
+        ''' config the size value for the ggplot layer
+        ''' </summary>
+        ''' <param name="ggplot"></param>
+        ''' <returns></returns>
         Public Overrides Function Config(ggplot As ggplot) As ggplot
             Dim last As ggplotLayer = ggplot.layers.LastOrDefault
 
