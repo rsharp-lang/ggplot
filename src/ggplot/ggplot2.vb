@@ -1712,6 +1712,19 @@ Module ggplot2
         }
     End Function
 
+    <ExportAPI("scale_size_continuous")>
+    Public Function scale_size_continuous(Optional name As Object = Nothing,
+                                          Optional breaks As Object = Nothing,
+                                          Optional labels As Object = Nothing,
+                                          Optional limits As Object = NULL,
+                                          <RRawVectorArgument(TypeCodes.double)>
+                                          Optional range As Object = "1,6",
+                                          Optional transform As Object = "identity",
+                                          Optional trans As Object = Nothing,
+                                          Optional guide As Object = "legend") As ggplotOption
+
+    End Function
+
     <ExportAPI("scale_fill_manual")>
     <RApiReturn(GetType(ggplotColorProfile))>
     Public Function scale_fill_manual(<RRawVectorArgument>
