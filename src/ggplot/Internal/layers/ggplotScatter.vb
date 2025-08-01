@@ -239,15 +239,26 @@ Namespace layers
             End If
         End Function
 
-        Protected Friend Shared Iterator Function createSerialData(legend As String,
-                                                                   x As Single(),
-                                                                   y As Single(),
-                                                                   colors As String(),
-                                                                   size As Single(),
-                                                                   multiple_group As legendGroupElement,
-                                                                   shape As LegendStyles?,
-                                                                   colorMap As ggplotColorMap) As IEnumerable(Of SerialData)
-            If multiple_group IsNot Nothing Then
+        Friend Class SerialDataGenerator
+
+            Public legend As String,
+                x As Single(),
+                y As Single(),
+                colors As String(),
+                size As Single(),
+                multiple_group As legendGroupElement,
+                shape As LegendStyles?,
+                colorMap As ggplotColorMap
+
+            Public Function CreateSerialData() As IEnumerable(Of SerialData)
+                If multiple_group IsNot Nothing Then
+                    Return CreateMultipleGroupSerials()
+                Else
+                    Return CreateSingleGroupSerials()
+                End If
+            End Function
+
+            Public Iterator Function CreateMultipleGroupSerials() As IEnumerable(Of SerialData)
                 Dim groups As New Dictionary(Of String, List(Of PointData))
                 Dim color_str As String
                 Dim color As Color
@@ -285,7 +296,9 @@ Namespace layers
                         .pts = group.ToArray
                     }
                 Next
-            Else
+            End Function
+
+            Public Iterator Function CreateSingleGroupSerials() As IEnumerable(Of SerialData)
                 Dim color As Color
 
                 If colors Is Nothing Then
@@ -313,7 +326,27 @@ Namespace layers
                                 End Function) _
                         .ToArray
                 }
-            End If
+            End Function
+        End Class
+
+        Protected Friend Shared Function createSerialData(legend As String,
+                                                          x As Single(),
+                                                          y As Single(),
+                                                          colors As String(),
+                                                          size As Single(),
+                                                          multiple_group As legendGroupElement,
+                                                          shape As LegendStyles?,
+                                                          colorMap As ggplotColorMap) As IEnumerable(Of SerialData)
+            Return New SerialDataGenerator With {
+                .colorMap = colorMap,
+                .colors = colors,
+                .legend = legend,
+                .multiple_group = multiple_group,
+                .shape = shape,
+                .size = size,
+                .x = x,
+                .y = y
+            }.CreateSerialData
         End Function
     End Class
 End Namespace
