@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::4e0c3377530b0c0f0a476d576f97cc6f, src\ggraph\Internal\layout\random.vb"
+﻿#Region "Microsoft.VisualBasic::e25c127e759f33df4f2dbd2eb055717c, src\ggraph\Internal\layout\random.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 13
-    '    Code Lines: 10 (76.92%)
+    '   Total Lines: 12
+    '    Code Lines: 9 (75.00%)
     ' Comment Lines: 0 (0.00%)
     '    - Xml Docs: 0.00%
     ' 
-    '   Blank Lines: 3 (23.08%)
-    '     File Size: 457 B
+    '   Blank Lines: 3 (25.00%)
+    '     File Size: 381 B
 
 
     '     Class random

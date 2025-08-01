@@ -1,64 +1,65 @@
-﻿#Region "Microsoft.VisualBasic::23f44be7380534c22f8d2a2b8f43d8bb, src\ggplot\ggplot2.vb"
+﻿#Region "Microsoft.VisualBasic::50dea67a358ce229f55016d48120d148, src\ggplot\ggplot2.vb"
 
-' Author:
-' 
-'       xieguigang (I@xieguigang.me)
-' 
-' Copyright (c) 2021 R# language
-' 
-' 
-' MIT License
-' 
-' 
-' Permission is hereby granted, free of charge, to any person obtaining a copy
-' of this software and associated documentation files (the "Software"), to deal
-' in the Software without restriction, including without limitation the rights
-' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-' copies of the Software, and to permit persons to whom the Software is
-' furnished to do so, subject to the following conditions:
-' 
-' The above copyright notice and this permission notice shall be included in all
-' copies or substantial portions of the Software.
-' 
-' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-' SOFTWARE.
-
-
-
-' /********************************************************************************/
-
-' Summaries:
+    ' Author:
+    ' 
+    '       xieguigang (I@xieguigang.me)
+    ' 
+    ' Copyright (c) 2021 R# language
+    ' 
+    ' 
+    ' MIT License
+    ' 
+    ' 
+    ' Permission is hereby granted, free of charge, to any person obtaining a copy
+    ' of this software and associated documentation files (the "Software"), to deal
+    ' in the Software without restriction, including without limitation the rights
+    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    ' copies of the Software, and to permit persons to whom the Software is
+    ' furnished to do so, subject to the following conditions:
+    ' 
+    ' The above copyright notice and this permission notice shall be included in all
+    ' copies or substantial portions of the Software.
+    ' 
+    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    ' SOFTWARE.
 
 
-' Code Statistics:
 
-'   Total Lines: 1575
-'    Code Lines: 676 (42.92%)
-' Comment Lines: 798 (50.67%)
-'    - Xml Docs: 90.98%
-' 
-'   Blank Lines: 101 (6.41%)
-'     File Size: 70.77 KB
+    ' /********************************************************************************/
+
+    ' Summaries:
 
 
-' Module ggplot2
-' 
-'     Function: add_layer, aes, annotation_raster, configPlot, coord_flip
-'               element_blank, element_line, element_rect, element_text, geom_bar
-'               geom_barplot, geom_boxplot, geom_col, geom_convexHull, geom_histogram
-'               geom_hline, geom_jitter, geom_line, geom_path, geom_pie
-'               geom_point, geom_raster, geom_scatterheatmap, geom_scatterpie, geom_signif
-'               geom_text, geom_tile, geom_violin, geom_vline, ggplot
-'               ggtitle, labs, scale_color_brewer, scale_colour_manual, scale_fill_distiller
-'               scale_fill_manual, scale_x_continuous, scale_y_continuous, scale_y_reverse, stat_compare_means
-'               stat_pvalue_manual, theme, waiver, xlab, ylab
-' 
-' /********************************************************************************/
+    ' Code Statistics:
+
+    '   Total Lines: 1916
+    '    Code Lines: 858 (44.78%)
+    ' Comment Lines: 930 (48.54%)
+    '    - Xml Docs: 89.78%
+    ' 
+    '   Blank Lines: 128 (6.68%)
+    '     File Size: 88.05 KB
+
+
+    ' Module ggplot2
+    ' 
+    '     Function: add_layer, aes, annotation_raster, configPlot, coord_flip
+    '               element_blank_f, element_line, element_rect, element_text, geom_bar
+    '               geom_barplot, geom_boxplot, geom_col, geom_convexHull, geom_histogram
+    '               geom_hline, geom_jitter, geom_line, geom_path, geom_pie
+    '               geom_point, geom_raster, geom_scatterheatmap, geom_scatterpie, geom_segment
+    '               geom_signif, geom_text, geom_tile, geom_violin, geom_vline
+    '               get_last_plot, ggplot, (+2 Overloads) ggsave, ggtitle, labs
+    '               scale_color_brewer, scale_colour_manual, scale_fill_distiller, scale_fill_manual, scale_size_continuous
+    '               scale_x_continuous, scale_y_continuous, scale_y_reverse, stat_compare_means, stat_pvalue_manual
+    '               theme_f, theme_minimal, waiver, xlab, ylab
+    ' 
+    ' /********************************************************************************/
 
 #End Region
 

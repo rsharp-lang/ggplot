@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::5181538f700a83151ebf48be72711086, src\ggraph\Internal\render\convexHullRender.vb"
+﻿#Region "Microsoft.VisualBasic::d2ca024ae1f5795e7bebef277ecfe242, src\ggraph\Internal\render\convexHullRender.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 87
-    '    Code Lines: 75 (86.21%)
+    '   Total Lines: 111
+    '    Code Lines: 93 (83.78%)
     ' Comment Lines: 0 (0.00%)
     '    - Xml Docs: 0.00%
     ' 
-    '   Blank Lines: 12 (13.79%)
-    '     File Size: 3.64 KB
+    '   Blank Lines: 18 (16.22%)
+    '     File Size: 4.54 KB
 
 
     '     Class convexHullRender

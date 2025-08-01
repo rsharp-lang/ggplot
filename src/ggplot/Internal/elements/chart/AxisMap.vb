@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::59dc0da347aecc93b0e1487224a96ccd, src\ggplot\Internal\elements\chart\AxisMap.vb"
+﻿#Region "Microsoft.VisualBasic::b1131d57f619831f1dd9df5a4550e903, src\ggplot\Internal\elements\chart\AxisMap.vb"
 
     ' Author:
     ' 
@@ -37,18 +37,18 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 128
-    '    Code Lines: 96 (75.00%)
-    ' Comment Lines: 12 (9.38%)
+    '   Total Lines: 142
+    '    Code Lines: 97 (68.31%)
+    ' Comment Lines: 24 (16.90%)
     '    - Xml Docs: 100.00%
     ' 
-    '   Blank Lines: 20 (15.62%)
-    '     File Size: 4.56 KB
+    '   Blank Lines: 21 (14.79%)
+    '     File Size: 5.03 KB
 
 
     '     Class axisMap
     ' 
-    '         Properties: mapper, range, size, value
+    '         Properties: mapper, range, size, source, value
     ' 
     '         Function: Create, FromArray, FromFactors, FromNumeric, ToFactors
     '                   ToFloat, ToInteger, ToLong, ToNumeric, ToString

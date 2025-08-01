@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::564338c0d2c0b702d0d2f878b63185ee, src\ggplot\Internal\options\ggplotTicks.vb"
+﻿#Region "Microsoft.VisualBasic::b0d6053ba6a88ca9cb919b5c3ef77d55, src\ggplot\Internal\options\ggplotTicks.vb"
 
     ' Author:
     ' 
@@ -37,18 +37,19 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 92
-    '    Code Lines: 51 (55.43%)
-    ' Comment Lines: 25 (27.17%)
-    '    - Xml Docs: 96.00%
+    '   Total Lines: 104
+    '    Code Lines: 58 (55.77%)
+    ' Comment Lines: 29 (27.88%)
+    '    - Xml Docs: 96.55%
     ' 
-    '   Blank Lines: 16 (17.39%)
-    '     File Size: 3.05 KB
+    '   Blank Lines: 17 (16.35%)
+    '     File Size: 3.43 KB
 
 
     '     Class ggplotTicks
     ' 
-    '         Properties: axis, format, max, min, reverse
+    '         Properties: axis, format, max, min, n
+    '                     reverse
     '         Enum TickStyleNames
     ' 
     ' 

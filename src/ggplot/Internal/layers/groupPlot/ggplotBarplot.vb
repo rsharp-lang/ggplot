@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::69312eeadc35fefa1d988d22c5aedef6, src\ggplot\Internal\layers\groupPlot\ggplotBarplot.vb"
+﻿#Region "Microsoft.VisualBasic::1000ac3f4bbb85dcc084a473a0b7ac83, src\ggplot\Internal\layers\groupPlot\ggplotBarplot.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 85
-    '    Code Lines: 76 (89.41%)
+    '   Total Lines: 86
+    '    Code Lines: 77 (89.53%)
     ' Comment Lines: 0 (0.00%)
     '    - Xml Docs: 0.00%
     ' 
-    '   Blank Lines: 9 (10.59%)
-    '     File Size: 4.15 KB
+    '   Blank Lines: 9 (10.47%)
+    '     File Size: 4.18 KB
 
 
     '     Class ggplotBarplot

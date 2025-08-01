@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::edff655295effaee475e33bbfbdd4795, src\ggplot\Internal\layers\layer3\ggplotScatter3d.vb"
+﻿#Region "Microsoft.VisualBasic::4b2b8eb1989c66fa81950b79b03bbb6a, src\ggplot\Internal\layers\layer3\ggplotScatter3d.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 88
-    '    Code Lines: 75 (85.23%)
-    ' Comment Lines: 1 (1.14%)
+    '   Total Lines: 87
+    '    Code Lines: 74 (85.06%)
+    ' Comment Lines: 1 (1.15%)
     '    - Xml Docs: 0.00%
     ' 
-    '   Blank Lines: 12 (13.64%)
-    '     File Size: 3.69 KB
+    '   Blank Lines: 12 (13.79%)
+    '     File Size: 3.81 KB
 
 
     '     Class ggplotScatter3d

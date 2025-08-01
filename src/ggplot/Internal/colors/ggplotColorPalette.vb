@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::7d3d1500aa2e0d48e88f4365eea891e2, src\ggplot\Internal\colors\ggplotColorPalette.vb"
+﻿#Region "Microsoft.VisualBasic::0bb1e0ac7de0f49d09743deb454870c2, src\ggplot\Internal\colors\ggplotColorPalette.vb"
 
     ' Author:
     ' 
@@ -37,18 +37,18 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 71
-    '    Code Lines: 56 (78.87%)
-    ' Comment Lines: 4 (5.63%)
-    '    - Xml Docs: 75.00%
+    '   Total Lines: 113
+    '    Code Lines: 69 (61.06%)
+    ' Comment Lines: 29 (25.66%)
+    '    - Xml Docs: 93.10%
     ' 
-    '   Blank Lines: 11 (15.49%)
-    '     File Size: 3.00 KB
+    '   Blank Lines: 15 (13.27%)
+    '     File Size: 4.51 KB
 
 
     '     Class ggplotColorPalette
     ' 
-    '         Function: ColorHandler, getColors, ToString, TryGetFactorLegends
+    '         Function: checkDataMap, ColorHandler, getColors, ToString, TryGetFactorLegends
     ' 
     ' 
     ' /********************************************************************************/

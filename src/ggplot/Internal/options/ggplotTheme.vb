@@ -1,61 +1,62 @@
-﻿#Region "Microsoft.VisualBasic::4249b66ce4b9ecc2bfd5080aa88f2c9f, src\ggplot\Internal\options\ggplotTheme.vb"
+﻿#Region "Microsoft.VisualBasic::2078d0e5ff2881b8999bb4e91a0e7a31, src\ggplot\Internal\options\ggplotTheme.vb"
 
-' Author:
-' 
-'       xieguigang (I@xieguigang.me)
-' 
-' Copyright (c) 2021 R# language
-' 
-' 
-' MIT License
-' 
-' 
-' Permission is hereby granted, free of charge, to any person obtaining a copy
-' of this software and associated documentation files (the "Software"), to deal
-' in the Software without restriction, including without limitation the rights
-' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-' copies of the Software, and to permit persons to whom the Software is
-' furnished to do so, subject to the following conditions:
-' 
-' The above copyright notice and this permission notice shall be included in all
-' copies or substantial portions of the Software.
-' 
-' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-' SOFTWARE.
-
-
-
-' /********************************************************************************/
-
-' Summaries:
+    ' Author:
+    ' 
+    '       xieguigang (I@xieguigang.me)
+    ' 
+    ' Copyright (c) 2021 R# language
+    ' 
+    ' 
+    ' MIT License
+    ' 
+    ' 
+    ' Permission is hereby granted, free of charge, to any person obtaining a copy
+    ' of this software and associated documentation files (the "Software"), to deal
+    ' in the Software without restriction, including without limitation the rights
+    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    ' copies of the Software, and to permit persons to whom the Software is
+    ' furnished to do so, subject to the following conditions:
+    ' 
+    ' The above copyright notice and this permission notice shall be included in all
+    ' copies or substantial portions of the Software.
+    ' 
+    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    ' SOFTWARE.
 
 
-' Code Statistics:
 
-'   Total Lines: 100
-'    Code Lines: 78 (78.00%)
-' Comment Lines: 8 (8.00%)
-'    - Xml Docs: 100.00%
-' 
-'   Blank Lines: 14 (14.00%)
-'     File Size: 3.88 KB
+    ' /********************************************************************************/
+
+    ' Summaries:
 
 
-'     Class ggplotTheme
-' 
-'         Properties: axis_line, axis_text, axis_text_x, axis_title, legend_background
-'                     legend_split, legend_text, legend_tick, legend_title, panel_background
-'                     panel_border, panel_grid, plot_background, plot_title, text
-' 
-'         Function: Config
-' 
-' 
-' /********************************************************************************/
+    ' Code Statistics:
+
+    '   Total Lines: 137
+    '    Code Lines: 113 (82.48%)
+    ' Comment Lines: 9 (6.57%)
+    '    - Xml Docs: 88.89%
+    ' 
+    '   Blank Lines: 15 (10.95%)
+    '     File Size: 5.46 KB
+
+
+    '     Class ggplotTheme
+    ' 
+    '         Properties: axis_line, axis_text, axis_text_x, axis_title, legend_background
+    '                     legend_position, legend_split, legend_text, legend_tick, legend_title
+    '                     panel_background, panel_border, panel_grid, plot_background, plot_title
+    '                     text
+    ' 
+    '         Function: Config
+    ' 
+    ' 
+    ' /********************************************************************************/
 
 #End Region
 

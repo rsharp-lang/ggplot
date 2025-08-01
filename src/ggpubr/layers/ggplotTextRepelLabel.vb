@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::a0c06c5492cf0bd703c8e3221dfa6b27, src\ggpubr\layers\ggplotTextRepelLabel.vb"
+﻿#Region "Microsoft.VisualBasic::fef0131258ae6c35b04dbba98bafd7cc, src\ggpubr\layers\ggplotTextRepelLabel.vb"
 
     ' Author:
     ' 

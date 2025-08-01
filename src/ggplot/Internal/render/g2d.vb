@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::c76149e506dcd8eb04bbf5b846645225, src\ggplot\Internal\render\g2d.vb"
+﻿#Region "Microsoft.VisualBasic::22415c36ac9b63bb0a6598b47258c6df, src\ggplot\Internal\render\g2d.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 141
-    '    Code Lines: 110 (78.01%)
-    ' Comment Lines: 7 (4.96%)
+    '   Total Lines: 161
+    '    Code Lines: 125 (77.64%)
+    ' Comment Lines: 7 (4.35%)
     '    - Xml Docs: 0.00%
     ' 
-    '   Blank Lines: 24 (17.02%)
-    '     File Size: 5.91 KB
+    '   Blank Lines: 29 (18.01%)
+    '     File Size: 6.98 KB
 
 
     '     Module g2d

@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::bd1f3755ce56802cf88ec4645110f85c, src\ggplot\Internal\layers\groupPlot\ggplotJitter.vb"
+﻿#Region "Microsoft.VisualBasic::2ed3643b8ff01ea0c7178126d335d49e, src\ggplot\Internal\layers\groupPlot\ggplotJitter.vb"
 
     ' Author:
     ' 
@@ -37,18 +37,26 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 44
-    '    Code Lines: 36 (81.82%)
+    '   Total Lines: 62
+    '    Code Lines: 51 (82.26%)
     ' Comment Lines: 0 (0.00%)
     '    - Xml Docs: 0.00%
     ' 
-    '   Blank Lines: 8 (18.18%)
-    '     File Size: 1.72 KB
+    '   Blank Lines: 11 (17.74%)
+    '     File Size: 2.22 KB
 
 
+    '     Enum adjustColor
+    ' 
+    '         darker, lighter, none
+    ' 
+    '  
+    ' 
+    ' 
+    ' 
     '     Class ggplotJitter
     ' 
-    '         Properties: radius
+    '         Properties: adjust, radius
     ' 
     '         Function: PlotOrdinal
     ' 

@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::6f5c609860c6f041066d21cb57107025, src\ggplot\Internal\layers\groupPlot\geom_bar.vb"
+﻿#Region "Microsoft.VisualBasic::cbebc5c99044771197ecceeafbfafdb9, src\ggplot\Internal\layers\groupPlot\geom_bar.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 130
-    '    Code Lines: 102 (78.46%)
-    ' Comment Lines: 7 (5.38%)
-    '    - Xml Docs: 85.71%
+    '   Total Lines: 182
+    '    Code Lines: 119 (65.38%)
+    ' Comment Lines: 41 (22.53%)
+    '    - Xml Docs: 82.93%
     ' 
-    '   Blank Lines: 21 (16.15%)
-    '     File Size: 5.54 KB
+    '   Blank Lines: 22 (12.09%)
+    '     File Size: 8.63 KB
 
 
     '     Class geom_bar
@@ -51,6 +51,8 @@
     '         Properties: position, stat
     ' 
     '         Function: aggregate_sum, getYAxis, PlotOrdinal
+    ' 
+    '         Sub: dataframe_bar
     ' 
     ' 
     ' /********************************************************************************/

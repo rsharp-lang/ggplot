@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::3bcbc3906407ec7131c6dc6b98a8b6e0, src\ggplot\Internal\layers\ggplotHistogram.vb"
+﻿#Region "Microsoft.VisualBasic::c26a54e14b69960695514b228b53f748, src\ggplot\Internal\layers\ggplotHistogram.vb"
 
     ' Author:
     ' 
@@ -37,20 +37,28 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 81
-    '    Code Lines: 68 (83.95%)
-    ' Comment Lines: 0 (0.00%)
-    '    - Xml Docs: 0.00%
+    '   Total Lines: 216
+    '    Code Lines: 156 (72.22%)
+    ' Comment Lines: 34 (15.74%)
+    '    - Xml Docs: 79.41%
     ' 
-    '   Blank Lines: 13 (16.05%)
-    '     File Size: 3.02 KB
+    '   Blank Lines: 26 (12.04%)
+    '     File Size: 10.19 KB
 
 
+    '     Enum LayoutPosition
+    ' 
+    '         dodge, fill, identity, stack
+    ' 
+    '  
+    ' 
+    ' 
+    ' 
     '     Class ggplotHistogram
     ' 
-    '         Properties: bins, range
+    '         Properties: bins, binwidth, position, range
     ' 
-    '         Function: getColorName, Plot
+    '         Function: getColorName, initDataSet, multipleSerials, Plot, singleGroup
     ' 
     '         Sub: configHistogram
     ' 

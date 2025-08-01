@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::c7e2aa622fe4dbad8f6a74e3e7f07418, src\ggplot\Internal\layers\groupPlot\ggplotGroup.vb"
+﻿#Region "Microsoft.VisualBasic::908851c0ed6076e4a76ee487f4c6ae6f, src\ggplot\Internal\layers\groupPlot\ggplotGroup.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 104
-    '    Code Lines: 75 (72.12%)
-    ' Comment Lines: 8 (7.69%)
-    '    - Xml Docs: 87.50%
+    '   Total Lines: 112
+    '    Code Lines: 79 (70.54%)
+    ' Comment Lines: 11 (9.82%)
+    '    - Xml Docs: 90.91%
     ' 
-    '   Blank Lines: 21 (20.19%)
-    '     File Size: 4.01 KB
+    '   Blank Lines: 22 (19.64%)
+    '     File Size: 4.31 KB
 
 
     '     Class ggplotGroup

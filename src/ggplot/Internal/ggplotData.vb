@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::19d7dbb466c19cfed489c47c962ebb72, src\ggplot\Internal\ggplotData.vb"
+﻿#Region "Microsoft.VisualBasic::4934fddfecbbd8cf30006d0a2c5073c3, src\ggplot\Internal\ggplotData.vb"
 
     ' Author:
     ' 
@@ -37,18 +37,21 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 36
-    '    Code Lines: 26 (72.22%)
-    ' Comment Lines: 3 (8.33%)
+    '   Total Lines: 52
+    '    Code Lines: 34 (65.38%)
+    ' Comment Lines: 7 (13.46%)
     '    - Xml Docs: 100.00%
     ' 
-    '   Blank Lines: 7 (19.44%)
-    '     File Size: 933 B
+    '   Blank Lines: 11 (21.15%)
+    '     File Size: 1.24 KB
 
 
     ' Class ggplotData
     ' 
-    '     Properties: nsize, x, xscale, y, z
+    '     Properties: fill, nsize, x, xscale, y
+    '                 z
+    ' 
+    '     Constructor: (+2 Overloads) Sub New
     ' 
     ' /********************************************************************************/
 

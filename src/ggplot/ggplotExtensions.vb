@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::52a5821d3c899c0cb77466a7eecaaf21, src\ggplot\ggplotExtensions.vb"
+﻿#Region "Microsoft.VisualBasic::fa5d92dc5217876535de2cf16b9a1fc9, src\ggplot\ggplotExtensions.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 18
-    '    Code Lines: 15 (83.33%)
+    '   Total Lines: 20
+    '    Code Lines: 16 (80.00%)
     ' Comment Lines: 0 (0.00%)
     '    - Xml Docs: 0.00%
     ' 
-    '   Blank Lines: 3 (16.67%)
-    '     File Size: 684 B
+    '   Blank Lines: 4 (20.00%)
+    '     File Size: 698 B
 
 
     ' Module ggplotExtensions

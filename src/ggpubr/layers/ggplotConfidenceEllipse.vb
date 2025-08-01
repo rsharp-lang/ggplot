@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::e5893c796db9b12db6fb890568e953b8, src\ggpubr\layers\ggplotConfidenceEllipse.vb"
+﻿#Region "Microsoft.VisualBasic::06093a96ceca0e18383c4c9866e9cc3b, src\ggpubr\layers\ggplotConfidenceEllipse.vb"
 
     ' Author:
     ' 
@@ -37,13 +37,13 @@
 
     ' Code Statistics:
 
-    '   Total Lines: 54
-    '    Code Lines: 40 (74.07%)
-    ' Comment Lines: 6 (11.11%)
+    '   Total Lines: 55
+    '    Code Lines: 41 (74.55%)
+    ' Comment Lines: 6 (10.91%)
     '    - Xml Docs: 100.00%
     ' 
-    '   Blank Lines: 8 (14.81%)
-    '     File Size: 2.22 KB
+    '   Blank Lines: 8 (14.55%)
+    '     File Size: 2.29 KB
 
 
     ' Class ggplotConfidenceEllipse
