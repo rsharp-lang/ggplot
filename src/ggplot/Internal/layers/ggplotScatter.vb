@@ -1,72 +1,73 @@
 ﻿#Region "Microsoft.VisualBasic::99f11e48274429bf4829926745549f7b, src\ggplot\Internal\layers\ggplotScatter.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (I@xieguigang.me)
-    ' 
-    ' Copyright (c) 2021 R# language
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (I@xieguigang.me)
+' 
+' Copyright (c) 2021 R# language
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
-
-
-    ' Code Statistics:
-
-    '   Total Lines: 293
-    '    Code Lines: 219 (74.74%)
-    ' Comment Lines: 37 (12.63%)
-    '    - Xml Docs: 81.08%
-    ' 
-    '   Blank Lines: 37 (12.63%)
-    '     File Size: 12.99 KB
+' Summaries:
 
 
-    '     Interface IggplotSize
-    ' 
-    '         Properties: size
-    ' 
-    '     Class ggplotScatter
-    ' 
-    '         Properties: shape, size, stroke
-    ' 
-    '         Function: createSerialData, GetSerialData, (+2 Overloads) getValues, Plot
-    '         Class SerialDataGenerator
-    ' 
-    '             Function: CreateMultipleGroupSerials, CreateSerialData, CreateSingleGroupSerials
-    ' 
-    ' 
-    ' 
-    ' 
-    ' /********************************************************************************/
+' Code Statistics:
+
+'   Total Lines: 293
+'    Code Lines: 219 (74.74%)
+' Comment Lines: 37 (12.63%)
+'    - Xml Docs: 81.08%
+' 
+'   Blank Lines: 37 (12.63%)
+'     File Size: 12.99 KB
+
+
+'     Interface IggplotSize
+' 
+'         Properties: size
+' 
+'     Class ggplotScatter
+' 
+'         Properties: shape, size, stroke
+' 
+'         Function: createSerialData, GetSerialData, (+2 Overloads) getValues, Plot
+'         Class SerialDataGenerator
+' 
+'             Function: CreateMultipleGroupSerials, CreateSerialData, CreateSingleGroupSerials
+' 
+' 
+' 
+' 
+' /********************************************************************************/
 
 #End Region
 
 Imports System.Drawing
+Imports System.IO.IsolatedStorage
 Imports System.Runtime.InteropServices
 Imports ggplot.colors
 Imports ggplot.elements.legend
@@ -260,6 +261,13 @@ Namespace layers
                 colorMap As ggplotColorMap
 
             Public Function CreateSerialData() As IEnumerable(Of SerialData)
+                If size.IsNullOrEmpty Then
+                    size = {1}
+                End If
+                If size.Length = 1 Then
+                    size = size(0).Repeats(x.Length)
+                End If
+
                 If multiple_group IsNot Nothing Then
                     Return CreateMultipleGroupSerials()
                 Else
