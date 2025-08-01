@@ -67,7 +67,6 @@
 #End Region
 
 Imports System.Drawing
-Imports System.IO.IsolatedStorage
 Imports System.Runtime.InteropServices
 Imports ggplot.colors
 Imports ggplot.elements.legend
