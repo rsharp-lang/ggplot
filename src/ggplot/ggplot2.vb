@@ -454,6 +454,11 @@ Module ggplot2
 
         Dim colorMap As ggplotColorMap = ggplotColorMap.CreateColorMap(color, alpha, env)
         Dim strokeCss As String = InteropArgumentHelper.getStrokePenCSS(stroke, [default]:=Nothing)
+
+        If size Is Nothing Then
+            size = 2
+        End If
+
         Dim sizeCfg As Object = scale_size_continuous(range:=size, env:=env)
 
         If TypeOf sizeCfg Is Message Then
