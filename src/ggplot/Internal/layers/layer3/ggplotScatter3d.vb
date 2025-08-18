@@ -122,12 +122,9 @@ Namespace layers.layer3d
             Dim nsize As Integer = x.Length
             Dim colorList As Func(Of Integer, String)
             Dim shape = If(Me.shape, LegendStyles.Circle)
-
-            If value.IsNullOrEmpty Then
-                value = 0.0.Replicate(x.Length).ToArray
-            End If
-
-            Dim size As Single() = Me.size.getSizeValues(value).ToArray
+            Dim size As Single() = Me.size _
+                .getSizeValues(If(value.IsNullOrEmpty, 1.0.Replicate(n:=x.Length).ToArray, value)) _
+                .ToArray
 
             If colors.IsNullOrEmpty Then
                 ' default black
