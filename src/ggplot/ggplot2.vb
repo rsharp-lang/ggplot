@@ -1492,9 +1492,9 @@ Module ggplot2
                             Optional plot_background As String = Nothing,
                             Optional plot_title As textElement = Nothing,
                             Optional panel_background As String = Nothing,
-                            Optional panel_grid As Object = Stroke.AxisGridStroke,
-                            Optional panel_grid_major As Object = Stroke.AxisGridStroke,
-                            Optional panel_grid_minor As Object = Stroke.AxisGridStroke,
+                            Optional panel_grid As Object = Stroke.AxisGridMinorStroke,
+                            Optional panel_grid_major As Object = Stroke.AxisGridMinorStroke,
+                            Optional panel_grid_minor As Object = Stroke.AxisGridMinorStroke,
                             Optional panel_border As rectElement = Nothing) As ggplotOption
         ' 20220829
         ' 大部分的参数值都应该设置为空值
