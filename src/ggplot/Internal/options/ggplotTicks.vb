@@ -162,7 +162,10 @@ Namespace options
             End If
 
             ggplot.args.slots(scale_reverse) = reverse
-            ggplot.args.slots(range_tag) = {min, max}
+
+            If (Not reverse) AndAlso n > 0 Then
+                ggplot.args.slots(range_tag) = {min, max}
+            End If
 
             Return ggplot
         End Function
