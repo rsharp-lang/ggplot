@@ -198,16 +198,24 @@ Namespace layers
                 Dim nsize As Integer = x.Length
 
                 If useCustomColorMaps Then
-                    Dim source As Double()
+                    Dim source As Array
                     Dim reader = stream.ggplot.base.reader
 
                     If reader.color IsNot Nothing Then
-                        source = CLRVector.asNumeric(reader.getColorSource(ggplot))
+                        source = reader.getColorSource(ggplot)
+
+                        If Not TypeOf source Is String() Then
+                            source = CLRVector.asNumeric(source)
+                        End If
                     Else
                         source = CLRVector.asNumeric(y)
                     End If
 
-                    colors = getColorSet(ggplot, stream.g, nsize, shape, source, legends)
+                    If TypeOf source Is String() Then
+                        colors = getColorSet(ggplot, shape, DirectCast(source, String()), legends)
+                    Else
+                        colors = getColorSet(ggplot, stream.g, nsize, shape, source, legends)
+                    End If
                 ElseIf Not ggplot.base.reader.color Is Nothing Then
                     colors = ggplot.base.getColors(
                         ggplot:=ggplot,

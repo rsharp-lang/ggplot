@@ -261,7 +261,7 @@ Namespace layers
         ''' 
         ''' </summary>
         ''' <param name="ggplot"></param>
-        ''' <param name="g"></param>
+        ''' <param name="g">used for draw color scaler legends</param>
         ''' <param name="nsize"></param>
         ''' <param name="shape"></param>
         ''' <param name="data"></param>
