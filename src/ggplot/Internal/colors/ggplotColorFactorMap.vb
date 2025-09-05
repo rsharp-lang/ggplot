@@ -69,6 +69,12 @@ Namespace colors
     ''' </summary>
     Public Class ggplotColorFactorMap : Inherits ggplotColorMap
 
+        Public ReadOnly Property nfactors As Integer
+            Get
+                Return DirectCast(colorMap, Dictionary(Of String, String)).TryCount
+            End Get
+        End Property
+
         Private Iterator Function GetLegends(shape As LegendStyles, cssfont As String) As IEnumerable(Of LegendObject)
             For Each [class] In DirectCast(colorMap, Dictionary(Of String, String))
                 Yield New LegendObject With {
@@ -82,6 +88,16 @@ Namespace colors
 
         Public Overrides Function ToString() As String
             Return DirectCast(colorMap, Dictionary(Of String, String)).GetJson
+        End Function
+
+        Public Function TranslateColors(factors As String()) As String()
+            Dim map As Func(Of Object, String) = ColorHandler(Nothing, Nothing)
+            Dim colors As String() = factors _
+                .SafeQuery _
+                .Select(Function(factor) map(factor)) _
+                .ToArray
+
+            Return colors
         End Function
 
         Public Overrides Function ColorHandler(ggplot As ggplot, factors As Array) As Func(Of Object, String)

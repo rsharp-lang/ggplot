@@ -241,6 +241,21 @@ Namespace layers
 
             Dim clr_type = colorMap.GetType
 
+            If clr_type Is GetType(ggplotColorFactorMap) Then
+                Dim factorMaps As ggplotColorFactorMap = DirectCast(colorMap, ggplotColorFactorMap)
+                Dim colors As String() = factorMaps.TranslateColors(data)
+
+                If factorMaps.nfactors > 0 Then
+                    legends = New legendGroupElement With {
+                        .legends = factorMaps.TryGetFactorLegends(data, shape, ggplot.ggplotTheme)
+                    }
+                Else
+                    legends = Nothing
+                End If
+
+                Return colors
+            End If
+
             If Not clr_type.IsInheritsFrom(GetType(ggplotColorCustomSet), strict:=False) Then
                 Throw New InvalidConstraintException("category data must be map color from a category mapper!")
             Else
