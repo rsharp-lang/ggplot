@@ -239,7 +239,9 @@ Namespace layers
                                        data As String(),
                                        ByRef legends As IggplotLegendElement) As String()
 
-            If Not colorMap.GetType.IsInheritsFrom(GetType(ggplotColorCustomSet), strict:=False) Then
+            Dim clr_type = colorMap.GetType
+
+            If Not clr_type.IsInheritsFrom(GetType(ggplotColorCustomSet), strict:=False) Then
                 Throw New InvalidConstraintException("category data must be map color from a category mapper!")
             Else
                 Dim palette As ggplotColorCustomSet = DirectCast(colorMap, ggplotColorCustomSet)
