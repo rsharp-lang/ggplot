@@ -1495,7 +1495,8 @@ Module ggplot2
                             Optional panel_grid As Object = Stroke.AxisGridMinorStroke,
                             Optional panel_grid_major As Object = Stroke.AxisGridMinorStroke,
                             Optional panel_grid_minor As Object = Stroke.AxisGridMinorStroke,
-                            Optional panel_border As rectElement = Nothing) As ggplotOption
+                            Optional panel_border As rectElement = Nothing,
+                            Optional line As Object = Stroke.HighlightStroke) As ggplotOption
         ' 20220829
         ' 大部分的参数值都应该设置为空值
         ' 否则会在配置theme对象的时候出现错误覆盖的问题
@@ -1515,7 +1516,8 @@ Module ggplot2
             .panel_border = panel_border,
             .legend_tick = legend_tick,
             .legend_title = legend_title,
-            .legend_position = legend_position
+            .legend_position = legend_position,
+            .lineStroke = options.element_blank.GetCssStroke(line)
         }
     End Function
 

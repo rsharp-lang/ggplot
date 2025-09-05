@@ -89,6 +89,7 @@ Namespace options
         Public Property panel_background As String
         Public Property panel_grid As String
         Public Property panel_border As rectElement
+        Public Property lineStroke As String
 
         ''' <summary>
         ''' set up the <see cref="ggplot.ggplotTheme"/> object
@@ -97,6 +98,10 @@ Namespace options
         ''' <returns></returns>
         Public Overrides Function Config(ggplot As ggplot) As ggplot
             Dim theme As Theme = ggplot.ggplotTheme
+
+            If Not lineStroke Is Nothing Then
+                theme.lineStroke = lineStroke
+            End If
 
             If Not text Is Nothing Then
                 If text.is_blank Then
