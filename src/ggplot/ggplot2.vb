@@ -1496,7 +1496,7 @@ Module ggplot2
                             Optional panel_grid_major As Object = Stroke.AxisGridMinorStroke,
                             Optional panel_grid_minor As Object = Stroke.AxisGridMinorStroke,
                             Optional panel_border As rectElement = Nothing,
-                            Optional line As Object = Stroke.HighlightStroke) As ggplotOption
+                            Optional line As Object = "stroke: lightgray; stroke-width: 1px; stroke-dash: dot;") As ggplotOption
         ' 20220829
         ' 大部分的参数值都应该设置为空值
         ' 否则会在配置theme对象的时候出现错误覆盖的问题
