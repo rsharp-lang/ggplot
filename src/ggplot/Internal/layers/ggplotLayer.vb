@@ -108,6 +108,12 @@ Namespace layers
         Public Property alpha As Double = 1
 
         ''' <summary>
+        ''' the custom data source for this ggplot layer plot
+        ''' </summary>
+        ''' <returns></returns>
+        Public Property dataset As Object
+
+        ''' <summary>
         ''' use the local custom data mapping source for the layer drawing
         ''' </summary>
         ''' <returns>check if the local <see cref="reader"/> aes mapping is not nothing and also not empty?</returns>
@@ -136,7 +142,7 @@ Namespace layers
 
         Protected Friend Overridable Function initDataSet(ggplot As ggplot, baseData As ggplotData) As ggplotData
             If useCustomData Then
-                data = reader.getMapData(ggplot.data, ggplot.environment)
+                data = reader.getMapData(If(ggplot.data, dataset), ggplot.environment)
             End If
 
             Return data

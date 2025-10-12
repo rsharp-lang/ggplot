@@ -1080,7 +1080,7 @@ Module ggplot2
 
         Return New ggplotSegments With {
             .reader = mapping,
-            .data = Nothing,
+            .dataset = data,
             .minCell = maxL,
             .showLegend = show_legend
         }
