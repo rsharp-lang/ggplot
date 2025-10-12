@@ -142,7 +142,7 @@ Namespace layers
 
         Protected Friend Overridable Function initDataSet(ggplot As ggplot, baseData As ggplotData) As ggplotData
             If useCustomData Then
-                data = reader.getMapData(If(ggplot.data, dataset), ggplot.environment)
+                data = reader.getMapData(If(dataset, ggplot.data), ggplot.environment)
             End If
 
             Return data
