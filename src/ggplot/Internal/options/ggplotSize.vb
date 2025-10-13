@@ -60,6 +60,7 @@
 
 Imports ggplot.layers
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
+Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
 Imports Microsoft.VisualBasic.Emit.Delegates
 
 Namespace options
@@ -77,10 +78,12 @@ Namespace options
             Me.range = New DoubleRange(min, max)
         End Sub
 
-        Public Iterator Function getSizeValues(values As IEnumerable(Of Double)) As IEnumerable(Of Single)
+        Public Iterator Function getSizeValues(values As IEnumerable(Of Double), theme As Theme) As IEnumerable(Of Single)
             Dim alldata As Double() = values.ToArray
 
             If range Is Nothing Then
+                Dim unify As Single = If(Me.unify <= 0.0, theme.pointSize, Me.unify)
+
                 For i As Integer = 0 To alldata.Length - 1
                     Yield unify
                 Next

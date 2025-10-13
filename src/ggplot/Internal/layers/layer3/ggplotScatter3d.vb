@@ -105,10 +105,10 @@ Namespace layers.layer3d
             Call legendList.Add(legends)
 
             If Not useCustomData Then
-                Return createSerialData($"{baseData.x} ~ {baseData.y} ~ {baseData.z}", x, y, z, size, colors)
+                Return createSerialData($"{baseData.x} ~ {baseData.y} ~ {baseData.z}", x, y, z, size, colors, theme)
             Else
                 With reader.getMapData(ggplot.data, ggplot.environment)
-                    Return createSerialData(reader.ToString, .x, .y, .z, size, colors)
+                    Return createSerialData(reader.ToString, .x, .y, .z, size, colors, theme)
                 End With
             End If
         End Function
@@ -118,12 +118,13 @@ Namespace layers.layer3d
                                                              y As Double(),
                                                              z As Double(),
                                                              value As Double(),
-                                                             colors As String()) As IEnumerable(Of Element3D)
+                                                             colors As String(),
+                                                             theme As Theme) As IEnumerable(Of Element3D)
             Dim nsize As Integer = x.Length
             Dim colorList As Func(Of Integer, String)
             Dim shape = If(Me.shape, LegendStyles.Circle)
             Dim size As Single() = Me.size _
-                .getSizeValues(If(value.IsNullOrEmpty, 1.0.Replicate(n:=x.Length).ToArray, value)) _
+                .getSizeValues(If(value.IsNullOrEmpty, 1.0.Replicate(n:=x.Length).ToArray, value), theme) _
                 .ToArray
 
             If colors.IsNullOrEmpty Then

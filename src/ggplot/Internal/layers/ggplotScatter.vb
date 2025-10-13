@@ -188,9 +188,14 @@ Namespace layers
                     .ToArray
             Else
                 If Me.size.range Is Nothing Then
-                    size = Me.size.getSizeValues(stream.y).ToArray
+                    ' range value is missing, use the unify size value
+                    size = Me.size _
+                        .getSizeValues(stream.y, ggplot.ggplotTheme) _
+                        .ToArray
                 Else
-                    size = Me.size.getSizeValues(getValues(stream)).ToArray
+                    size = Me.size _
+                        .getSizeValues(getValues(stream), ggplot.ggplotTheme) _
+                        .ToArray
                 End If
             End If
 
