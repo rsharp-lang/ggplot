@@ -180,10 +180,18 @@ Namespace layers
             Dim ggplot As ggplot = stream.ggplot
             Dim size As Single() = Nothing
 
-            If Me.size.range Is Nothing Then
-                size = Me.size.getSizeValues(stream.y).ToArray
+            If Me.size Is Nothing Then
+                ' missing size parameter from the ggplot layer function call
+                ' use the default size from theme
+                size = stream.y _
+                    .Select(Function(any) CSng(ggplot.ggplotTheme.pointSize)) _
+                    .ToArray
             Else
-                size = Me.size.getSizeValues(getValues(stream)).ToArray
+                If Me.size.range Is Nothing Then
+                    size = Me.size.getSizeValues(stream.y).ToArray
+                Else
+                    size = Me.size.getSizeValues(getValues(stream)).ToArray
+                End If
             End If
 
             If ggplot.driver = Drivers.SVG Then
