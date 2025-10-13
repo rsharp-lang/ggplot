@@ -78,7 +78,7 @@ Namespace layers
             End If
 
             For i As Integer = 0 To x.Length - 1
-                Call RenderShape.RenderBoid(stream.g, x(i), y(i), xend(i), yend(i), Color.Black, l:=minCell)
+                Call RenderShape.RenderBoid(stream.g, x(i), y(i), xend(i), yend(i), Color.Black, maxL:=minCell)
             Next
 
             If showLegend Then
