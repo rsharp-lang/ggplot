@@ -117,7 +117,7 @@ Namespace layers
         ''' use the local custom data mapping source for the layer drawing
         ''' </summary>
         ''' <returns>check if the local <see cref="reader"/> aes mapping is not nothing and also not empty?</returns>
-        Protected Friend ReadOnly Property useCustomData As Boolean
+        Protected Friend Overridable ReadOnly Property useCustomData As Boolean
             Get
                 If reader Is Nothing Then Return False
 

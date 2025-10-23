@@ -149,6 +149,14 @@ Public Class ggplotReader
         End If
     End Function
 
+    ''' <summary>
+    ''' get vector data from the given data source
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <param name="data">the data source of the plot data, usually be a dataframe object</param>
+    ''' <param name="map">the data source mapping of the plot data, usually be the field name of the dataframe object</param>
+    ''' <param name="env"></param>
+    ''' <returns></returns>
     <MethodImpl(MethodImplOptions.AggressiveInlining)>
     Public Overridable Function getMapData(Of T)(data As Object, map As Object, env As Environment) As T()
         Dim sourceMaps As Array = REnv.asVector(Of Object)(map)
