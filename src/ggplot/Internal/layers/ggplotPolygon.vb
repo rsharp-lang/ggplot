@@ -1,23 +1,28 @@
-﻿Imports ggplot.elements.legend
+﻿Imports System.Drawing
+Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Math2D
 Imports Microsoft.VisualBasic.Linq
+Imports Microsoft.VisualBasic.MIME.Html.CSS
+Imports Microsoft.VisualBasic.MIME.Html.Render
 Imports SMRUCC.Rsharp.Runtime.Vectorization
 
 #If NET8_0_OR_GREATER Then
 Imports Brush = Microsoft.VisualBasic.Imaging.Brush
 Imports Brushes = Microsoft.VisualBasic.Imaging.Brushes
+Imports Pen = Microsoft.VisualBasic.Imaging.Pen
 #Else
 Imports Brush = System.Drawing.Brush
 Imports Brushes = System.Drawing.Brushes
+Imports Pen = System.Drawing.Pen
 #End If
 
 Namespace layers
 
     Public Class ggplotPolygon : Inherits ggplotLayer
 
-        Public Property stroke As String
+        Public Property stroke As Stroke
 
         Protected Friend Overrides ReadOnly Property useCustomData As Boolean
             Get
@@ -39,6 +44,7 @@ Namespace layers
                 reader = stream.ggplot.base.reader
             End If
 
+            Dim css As CSSEnvirnment = stream.g.LoadEnvironment
             Dim group As String() = reader.getMapData(Of String)(If(dataset, ggplot.data), reader.group, ggplot.environment)
             Dim x As Double() = CLRVector.asNumeric(stream.x)
             Dim y As Double() = CLRVector.asNumeric(stream.y)
@@ -53,10 +59,17 @@ Namespace layers
                             Return New NamedValue(Of Polygon2D)(poly.Key, shape)
                         End Function) _
                 .ToArray
-            Dim color As Brush = Brushes.Red
+            Dim color As Brush = New SolidBrush(System.Drawing.Color.Red.Alpha(alpha * 255))
+            Dim line As Pen = css.GetPen(stroke, allowNull:=True)
 
             For Each shape As NamedValue(Of Polygon2D) In polygons
-                Call stream.g.FillPolygon(color, shape.Value.AsEnumerable.ToArray)
+                Dim points As PointF() = shape.Value.AsEnumerable.ToArray
+
+                Call stream.g.FillPolygon(color, points)
+
+                If line IsNot Nothing Then
+                    Call stream.g.DrawPolygon(line, points)
+                End If
             Next
 
             Return Nothing

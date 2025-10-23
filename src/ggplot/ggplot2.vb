@@ -780,7 +780,7 @@ Module ggplot2
         Return New ggplotPolygon With {
             .alpha = alpha,
             .reader = mapping,
-            .stroke = stroke.CSSValue
+            .stroke = stroke
         }
     End Function
 
