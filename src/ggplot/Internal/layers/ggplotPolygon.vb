@@ -63,7 +63,12 @@ Namespace layers
             Dim line As Pen = css.GetPen(stroke, allowNull:=True)
 
             For Each shape As NamedValue(Of Polygon2D) In polygons
-                Dim points As PointF() = shape.Value.AsEnumerable.ToArray
+                Dim points As PointF() = shape.Value _
+                    .AsEnumerable _
+                    .Select(Function(i)
+                                Return stream.scale.Translate(i)
+                            End Function) _
+                    .ToArray
 
                 Call stream.g.FillPolygon(color, points)
 
