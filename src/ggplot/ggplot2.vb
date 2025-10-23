@@ -379,6 +379,7 @@ Module ggplot2
                         Optional shape As Object = Nothing,
                         Optional [class] As Object = Nothing,
                         Optional size As Object = Nothing,
+                        Optional group As Object = Nothing,
                         <RListObjectArgument>
                         Optional args As list = Nothing,
                         Optional env As Environment = Nothing) As ggplotReader
@@ -414,7 +415,8 @@ Module ggplot2
             .title = title,
             .shape = shape,
             .[class] = If([class], fill),
-            .size = size
+            .size = size,
+            .group = group
         }
     End Function
 

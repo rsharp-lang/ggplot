@@ -104,6 +104,7 @@ Public Class ggplotReader
     ''' </summary>
     ''' <returns></returns>
     Public Property [class] As Object
+    Public Property group As Object
     Public Property size As Object
     ''' <summary>
     ''' the legend title label text
