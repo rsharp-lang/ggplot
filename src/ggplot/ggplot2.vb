@@ -763,6 +763,27 @@ Module ggplot2
         Throw New NotImplementedException
     End Function
 
+    <ExportAPI("geom_polygon")>
+    Public Function geom_polygon(Optional mapping As ggplotReader = NULL,
+                                 <RRawVectorArgument>
+                                 Optional color As Object = "black",
+                                 Optional alpha As Double = 1,
+                                 Optional size As Double = 1) As ggplotLayer
+
+        Dim color_str As String = RColorPalette.getColor(color)
+        Dim stroke As New Stroke() With {
+            .dash = DashStyle.Solid,
+            .fill = color_str,
+            .width = size
+        }
+
+        Return New ggplotPolygon With {
+            .alpha = alpha,
+            .reader = mapping,
+            .stroke = stroke.CSSValue
+        }
+    End Function
+
     <ExportAPI("geom_convexHull")>
     Public Function geom_convexHull(Optional mapping As ggplotReader = NULL,
                                     Optional alpha As Double = 1) As ggplotLayer
