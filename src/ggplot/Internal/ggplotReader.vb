@@ -97,6 +97,10 @@ Public Class ggplotReader
     ''' </summary>
     ''' <returns></returns>
     Public Property z As String
+
+    Public Property xend As String
+    Public Property yend As String
+
     Public Property color As Object
     Public Property shape As Object
     ''' <summary>
@@ -179,7 +183,9 @@ Public Class ggplotReader
             .x = axisMap.FromArray(unifySource(data, x, env), x),
             .y = axisMap.FromArray(unifySource(data, y, env), y),
             .z = axisMap.FromArray(If(isPlain2D, Nothing, unifySource(data, z, env)), z),
-            .fill = axisMap.FromArray(unifySource(data, [class], env), [class])
+            .fill = axisMap.FromArray(unifySource(data, [class], env), [class]),
+            .xend = axisMap.FromArray(unifySource(data, xend, env), xend),
+            .yend = axisMap.FromArray(unifySource(data, yend, env), yend)
         }
     End Function
 

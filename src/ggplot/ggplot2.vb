@@ -1094,8 +1094,8 @@ Module ggplot2
             Dim xend As Object = mapping.args!xend
             Dim yend As Object = mapping.args!yend
 
-            mapping.x = CLRVector.asScalarCharacter(xend)
-            mapping.y = CLRVector.asScalarCharacter(yend)
+            mapping.xend = CLRVector.asScalarCharacter(xend)
+            mapping.yend = CLRVector.asScalarCharacter(yend)
         End If
         If Not arrow Is Nothing Then
             maxL = arrow.Size.Height

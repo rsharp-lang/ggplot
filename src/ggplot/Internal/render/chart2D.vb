@@ -119,7 +119,11 @@ Namespace render
                 End If
             End If
 
-            baseData = New ggplotData(x, y)
+            baseData = New ggplotData(x, y) With {
+                .xend = baseData.xend,
+                .yend = baseData.yend,
+                .fill = baseData.fill
+            }
 
             If baseData.xscale = d3js.scale.scalers.linear Then
                 xAxis = x.ToNumeric
@@ -181,7 +185,8 @@ Namespace render
                 .g = g,
                 .scale = scale,
                 .x = xAxis,
-                .y = y
+                .y = y,
+                .baseData = baseData
             }
 
             Do While layers.Count > 0

@@ -64,17 +64,25 @@ Namespace layers
 
     Public Class ggplotSegments : Inherits ggplotScatterLayer
 
+        Protected Friend Overrides ReadOnly Property useCustomData As Boolean
+            Get
+                If reader Is Nothing Then Return False
+                Return True
+            End Get
+        End Property
+
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim xend As Single(), yend As Single()
             Dim x As Single() = CLRVector.asFloat(stream.x)
             Dim y As Single() = CLRVector.asFloat(stream.y)
+            Dim ggplotData As ggplotData = stream.baseData
 
             If useCustomData Then
-                xend = data.x.ToFloat
-                yend = data.y.ToFloat
+                xend = data.xend.ToFloat
+                yend = data.yend.ToFloat
             Else
-                xend = CLRVector.asFloat(stream.x)
-                yend = CLRVector.asFloat(stream.y)
+                xend = CLRVector.asFloat(ggplotData.xend)
+                yend = CLRVector.asFloat(ggplotData.yend)
             End If
 
             For i As Integer = 0 To x.Length - 1

@@ -82,6 +82,7 @@ Public Class ggplotPipeline
     Friend scale As DataScaler
     Friend ggplot As ggplot
     Friend layout As Dictionary(Of String, PointF)
+    Friend baseData As ggplotData
 
     Public ReadOnly Property theme As Theme
         <MethodImpl(MethodImplOptions.AggressiveInlining)>
