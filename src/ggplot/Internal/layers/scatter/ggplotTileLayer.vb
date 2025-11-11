@@ -136,7 +136,7 @@ Namespace layers
             Dim fill As Brush
             Dim fillData As Double() = getFillData(stream)
             Dim ggplot = stream.ggplot
-            Dim colors As String() = getColorSet(ggplot, stream.g, mapLevels, LegendStyles.SolidLine, fillData, Nothing)
+            Dim colors As String() = getColorSet(stream, mapLevels, LegendStyles.SolidLine, fillData, Nothing)
             Dim textures As Brush() = colors.Select(Function(c) c.GetBrush).ToArray
             Dim rxi, ryi As Double
             Dim css As CSSEnvirnment = stream.g.LoadEnvironment

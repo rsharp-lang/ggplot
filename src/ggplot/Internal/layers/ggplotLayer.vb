@@ -152,6 +152,14 @@ Namespace layers
             Return Nothing
         End Function
 
+        ''' <summary>
+        ''' generate heatmap scale colors
+        ''' </summary>
+        ''' <param name="ggplot"></param>
+        ''' <param name="data"></param>
+        ''' <param name="g"></param>
+        ''' <param name="legends"></param>
+        ''' <returns></returns>
         Private Function mapFromPalette(ggplot As ggplot, data As Double(), g As IGraphics, ByRef legends As IggplotLegendElement) As String()
             Dim maplevels As Integer = 30
             Dim palette As ggplotColorCustomSet = DirectCast(colorMap, ggplotColorCustomSet)
@@ -283,8 +291,7 @@ Namespace layers
         ''' <summary>
         ''' 
         ''' </summary>
-        ''' <param name="ggplot"></param>
-        ''' <param name="g">used for draw color scaler legends</param>
+        ''' <param name="stream"></param>
         ''' <param name="nsize"></param>
         ''' <param name="shape"></param>
         ''' <param name="data"></param>
@@ -292,21 +299,27 @@ Namespace layers
         ''' <returns>the generated colors vector its element size equals to the size of the given <paramref name="data"/> 
         ''' vector, which means the colors array has already been mapping from the data, not the raw color 
         ''' palette value.</returns>
-        Protected Function getColorSet(ggplot As ggplot,
-                                       g As IGraphics,
+        Protected Function getColorSet(stream As ggplotPipeline,
                                        nsize As Integer,
                                        shape As LegendStyles?,
                                        data As Double(),
                                        ByRef legends As IggplotLegendElement) As String()
+
+            Dim map As Type = colorMap.GetType
+
             legends = Nothing
 
-            If reader Is Nothing AndAlso TypeOf colorMap Is ggplotColorLiteral Then
-                Return mapFromLiteral(ggplot, shape, nsize, legends)
-            ElseIf reader Is Nothing AndAlso colorMap.GetType.IsInheritsFrom(GetType(ggplotColorCustomSet), strict:=False) Then
-                Return mapFromPalette(ggplot, data, g, legends)
-            Else
-                Return mapFromBase(ggplot, shape, legends)
+            ' local data reader is nothing
+            ' use color from base
+            If reader Is Nothing Then
+                If map Is GetType(ggplotColorLiteral) Then
+                    Return mapFromLiteral(stream.ggplot, shape, nsize, legends)
+                ElseIf map.IsInheritsFrom(GetType(ggplotColorCustomSet), strict:=False) Then
+                    Return mapFromPalette(stream.ggplot, data, stream.g, legends)
+                End If
             End If
+
+            Return mapFromBase(stream.ggplot, shape, legends)
         End Function
 
         Public MustOverride Function Plot(stream As ggplotPipeline) As IggplotLegendElement

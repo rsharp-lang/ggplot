@@ -83,21 +83,20 @@ Namespace layers.layer3d
         Sub New()
         End Sub
 
-        Public Function populateModels(g As IGraphics,
-                                       baseData As ggplotData,
+        Public Function populateModels(stream As ggplotPipeline,
                                        x() As Double,
                                        y() As Double,
                                        z() As Double,
-                                       ggplot As ggplot,
-                                       theme As Theme,
                                        legendList As List(Of IggplotLegendElement)) As IEnumerable(Of Element3D) Implements Ilayer3d.populateModels
 
             Dim colors As String() = Nothing
             Dim legends As IggplotLegendElement = Nothing
-            Dim size As Double() = getValues(ggplot)
+            Dim size As Double() = getValues(stream.ggplot)
+            Dim ggplot As ggplot = stream.ggplot
+            Dim baseData = stream.baseData
 
             If useCustomColorMaps Then
-                colors = getColorSet(ggplot, g, x.Length, shape, Nothing, legends)
+                colors = getColorSet(stream, x.Length, shape, Nothing, legends)
             ElseIf Not ggplot.base.reader.color Is Nothing Then
                 colors = ggplot.base.getColors(ggplot, legends, If(shape, LegendStyles.Circle))
             End If
@@ -105,10 +104,10 @@ Namespace layers.layer3d
             Call legendList.Add(legends)
 
             If Not useCustomData Then
-                Return createSerialData($"{baseData.x} ~ {baseData.y} ~ {baseData.z}", x, y, z, size, colors, theme)
+                Return createSerialData($"{baseData.x} ~ {baseData.y} ~ {baseData.z}", x, y, z, size, colors, stream.theme)
             Else
                 With reader.getMapData(ggplot.data, ggplot.environment)
-                    Return createSerialData(reader.ToString, .x, .y, .z, size, colors, theme)
+                    Return createSerialData(reader.ToString, .x, .y, .z, size, colors, stream.theme)
                 End With
             End If
         End Function

@@ -93,7 +93,7 @@ Namespace layers
             End If
 
             If useCustomColorMaps Then
-                colors = getColorSet(ggplot, stream.g, x.Length, LegendStyles.Circle, y, legends)
+                colors = getColorSet(stream, x.Length, LegendStyles.Circle, y, legends)
             ElseIf Not ggplot.base.reader.color Is Nothing Then
                 colors = ggplot.base.getColors(ggplot, legends, LegendStyles.Circle)
 

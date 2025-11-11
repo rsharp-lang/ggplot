@@ -115,7 +115,7 @@ Namespace layers
 
             With Me.data
                 If useCustomColorMaps Then
-                    colors = getColorSet(ggplot, g, .nsize, LegendStyles.SolidLine, .y, legends)
+                    colors = getColorSet(stream, .nsize, LegendStyles.SolidLine, .y, legends)
                 ElseIf Not ggplot.base.reader.color Is Nothing Then
                     colors = ggplot.base.getColors(ggplot, legends, LegendStyles.SolidLine)
                 Else
@@ -150,7 +150,7 @@ Namespace layers
             Dim nsize As Integer = x.Length
 
             If useCustomColorMaps Then
-                colors = getColorSet(ggplot, g, nsize, LegendStyles.SolidLine, y, legends)
+                colors = getColorSet(stream, nsize, LegendStyles.SolidLine, y, legends)
             ElseIf Not ggplot.base.reader.color Is Nothing Then
                 colors = ggplot.base.getColors(ggplot, legends, LegendStyles.SolidLine)
             End If

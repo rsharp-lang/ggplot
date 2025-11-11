@@ -227,7 +227,7 @@ Namespace layers
                     If TypeOf source Is String() Then
                         colors = getColorSet(ggplot, shape, DirectCast(source, String()), legends)
                     Else
-                        colors = getColorSet(ggplot, stream.g, nsize, shape, source, legends)
+                        colors = getColorSet(stream, nsize, shape, source, legends)
                     End If
                 ElseIf Not ggplot.base.reader.color Is Nothing Then
                     colors = ggplot.base.getColors(
@@ -245,7 +245,7 @@ Namespace layers
             Else
                 With Me.data
                     If useCustomColorMaps Then
-                        colors = getColorSet(ggplot, stream.g, .nsize, shape, .y, legends)
+                        colors = getColorSet(stream, .nsize, shape, .y, legends)
                     ElseIf Not ggplot.base.reader.color Is Nothing Then
                         colors = ggplot.base.getColors(ggplot, legends, shape)
                     Else

@@ -113,8 +113,9 @@ Namespace colors
             If factors.GetType.GetRTypeCode.IsNumeric Then
                 ' level mapping
                 Dim colors As String() = getColors(factorSize:=100, colorMap)
+                Dim x = CLRVector.asNumeric(factors)
 
-                Return ggplotColorCustomSet.NumericFactorMapping(CLRVector.asNumeric(factors), colors)
+                Return ggplotColorCustomSet.NumericFactorMapping(x, colors)
             Else
                 Dim factorList As String() = CLRVector.asCharacter(factors)
                 Dim factorSize As Integer = factorList.Distinct.Count
