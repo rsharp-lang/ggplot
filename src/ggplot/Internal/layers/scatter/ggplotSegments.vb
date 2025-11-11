@@ -96,6 +96,12 @@ Namespace layers
                 colors = getColorSet(ggplot, stream.g, x.Length, LegendStyles.Circle, y, legends)
             ElseIf Not ggplot.base.reader.color Is Nothing Then
                 colors = ggplot.base.getColors(ggplot, legends, LegendStyles.Circle)
+
+                If Not colors.IsNullOrEmpty Then
+                    If colors.All(Function(c) c.IsInteger) Then
+                        Call "all of the fill color is integer, your data class id in integer format maybe mis-interpreted as color value!".warning
+                    End If
+                End If
             Else
                 colors = (++ggplot.colors).Replicate(x.Length).ToArray
                 legends = New ggplotLegendElement With {
