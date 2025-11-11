@@ -681,7 +681,37 @@ Module ggplot2
             .colorMap = colorMap,
             .line_width = width,
             .reader = mapping,
-            .bspline = bspline
+            .bspline = bspline,
+            .alpha = alpha
+        }
+    End Function
+
+    <ExportAPI("geom_princurve")>
+    Public Function geom_princurve(Optional mapping As ggplotReader = NULL,
+                                   <RRawVectorArgument>
+                                   Optional color As Object = Nothing,
+                                   Optional width As Single = 5,
+                                   Optional show_legend As Boolean = True,
+                                   Optional alpha As Double = 1,
+                                   Optional bspline As Boolean = False,
+                                   Optional bandwidth As Double = 1.0,
+                                   Optional maxIterations As Integer = 100,
+                                   Optional tolerance As Double = 0.001,
+                                   Optional env As Environment = Nothing) As ggplotPrincipalCurve
+
+        Dim rawColor As String = RColorPalette.getColor(color, Nothing)
+        Dim colorMap As ggplotColorMap = ggplotColorMap.CreateColorMap(rawColor, alpha, env)
+
+        Return New ggplotPrincipalCurve With {
+            .showLegend = show_legend,
+            .colorMap = colorMap,
+            .line_width = width,
+            .reader = mapping,
+            .bspline = bspline,
+            .bandwidth = bandwidth,
+            .alpha = alpha,
+            .maxIterations = maxIterations,
+            .tolerance = tolerance
         }
     End Function
 
