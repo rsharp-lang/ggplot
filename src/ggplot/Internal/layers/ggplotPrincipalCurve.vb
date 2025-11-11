@@ -38,7 +38,11 @@ Namespace layers
                 )
             Next
 
-            Return legends
+            If showLegend Then
+                Return legends
+            Else
+                Return Nothing
+            End If
         End Function
 
     End Class
