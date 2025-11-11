@@ -162,7 +162,7 @@ Public Class ggplotTextRepelLabel : Inherits ggplotTextLabel
                     source = CLRVector.asNumeric(y)
                 End If
 
-                colors = getColorSet(ggplot, stream.g, nsize, Nothing, source, Nothing)
+                colors = getColorSet(stream, nsize, Nothing, source, Nothing)
             ElseIf Not ggplot.base.reader.color Is Nothing Then
                 colors = ggplot.base.getColors(
                     ggplot:=ggplot,
@@ -175,7 +175,7 @@ Public Class ggplotTextRepelLabel : Inherits ggplotTextLabel
         Else
             With Me.data
                 If useCustomColorMaps Then
-                    colors = getColorSet(ggplot, stream.g, .nsize, Nothing, .y, Nothing)
+                    colors = getColorSet(stream, .nsize, Nothing, .y, Nothing)
                 ElseIf Not ggplot.base.reader.color Is Nothing Then
                     colors = ggplot.base.getColors(ggplot, Nothing, Nothing)
                 Else

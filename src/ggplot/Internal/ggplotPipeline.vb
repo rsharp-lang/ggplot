@@ -84,6 +84,10 @@ Public Class ggplotPipeline
     Friend layout As Dictionary(Of String, PointF)
     Friend baseData As ggplotData
 
+    ''' <summary>
+    ''' get <see cref="Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas.Theme"/> object from <see cref="ggplot.ggplotTheme"/>
+    ''' </summary>
+    ''' <returns></returns>
     Public ReadOnly Property theme As Theme
         <MethodImpl(MethodImplOptions.AggressiveInlining)>
         Get

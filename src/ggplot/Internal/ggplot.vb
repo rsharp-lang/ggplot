@@ -336,12 +336,18 @@ Public Class ggplot : Inherits Plot
         Dim css As CSSEnvirnment = g.LoadEnvironment
         Dim camera As Camera = Me.Camera(canvas.PlotRegion(css).Size)
         Dim legends As New List(Of IggplotLegendElement)
+        Dim wrap As New ggplotPipeline With {
+            .baseData = baseData,
+            .ggplot = Me,
+            .g = g,
+            .canvas = canvas
+        }
 
         base.data!x = baseData.x
         base.data!y = baseData.y
         base.data!z = baseData.z
 
-        Call g3d.populateModels(Me, g, baseData, x, y, z, legends) _
+        Call g3d.populateModels(wrap, x, y, z, legends) _
             .IteratesALL _
             .RenderAs3DChart(
                 canvas:=g,
