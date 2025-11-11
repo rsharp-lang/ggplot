@@ -239,7 +239,7 @@ Namespace layers
 
                 Return createSerialData(
                     stream.defaultTitle,
-                    x, y, colors,
+                    x, y, adjustAlpha(colors),
                     size,
                     TryCast(legends, legendGroupElement), shape, colorMap)
             Else
@@ -262,7 +262,7 @@ Namespace layers
 
                     Return createSerialData(
                         reader.ToString,
-                        .x.ToFloat, .y.ToFloat, colors,
+                        .x.ToFloat, .y.ToFloat, adjustAlpha(colors),
                         size,
                         TryCast(legends, legendGroupElement), shape, colorMap)
                 End With
@@ -270,12 +270,14 @@ Namespace layers
         End Function
 
         Private Function adjustAlpha(colors As String()) As String()
-            If alpha = 1.0 Then
+            If alpha = 1.0 OrElse colors.IsNullOrEmpty Then
                 Return colors
             Else
                 Dim alphaVal As Integer = 255 * alpha
 
-                Return colors.Select(Function(a) a.TranslateColor.Alpha(alphaVal).ToHtmlColor).ToArray
+                Return colors _
+                    .Select(Function(a) a.TranslateColor.Alpha(alphaVal).Rgba) _
+                    .ToArray
             End If
         End Function
 
