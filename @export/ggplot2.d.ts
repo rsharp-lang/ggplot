@@ -556,7 +556,7 @@ declare namespace ggplot2 {
      * @param mapping default value Is ``null``.
      * @param color default value Is ``null``.
      * @param width default value Is ``5``.
-     * @param show_legend default value Is ``true``.
+     * @param show_legend default value Is ``false``.
      * @param alpha default value Is ``1``.
      * @param bspline default value Is ``false``.
      * @param bandwidth default value Is ``1``.

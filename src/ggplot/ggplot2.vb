@@ -691,7 +691,7 @@ Module ggplot2
                                    <RRawVectorArgument>
                                    Optional color As Object = Nothing,
                                    Optional width As Single = 5,
-                                   Optional show_legend As Boolean = True,
+                                   Optional show_legend As Boolean = False,
                                    Optional alpha As Double = 1,
                                    Optional bspline As Boolean = False,
                                    Optional bandwidth As Double = 1.0,
