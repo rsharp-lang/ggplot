@@ -269,6 +269,16 @@ Namespace layers
             End If
         End Function
 
+        Private Function adjustAlpha(colors As String()) As String()
+            If alpha = 1.0 Then
+                Return colors
+            Else
+                Dim alphaVal As Integer = 255 * alpha
+
+                Return colors.Select(Function(a) a.TranslateColor.Alpha(alphaVal).ToHtmlColor).ToArray
+            End If
+        End Function
+
         Protected Class SerialDataGenerator
 
             Public legend As String,
