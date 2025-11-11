@@ -14,7 +14,7 @@ let data <- data.frame(x = x, y = y);
 
 bitmap(file = relative_work("pc_test.png")) {
     ggplot(data, aes(x = "x", y = "y")) +
-        geom_point(alpha = 0.6, color = "steelblue") +
+        geom_point(alpha = 0.6, color = "steelblue", size = 12) +
         geom_princurve(color = "red", size = 1.2) +
         labs(title = "Scatter Plot with Principal Curve",
             x = "X", y = "Y")
