@@ -312,6 +312,11 @@ Namespace layers
             ' local data reader is nothing
             ' use color from base
             If reader Is Nothing Then
+                If stream.baseData.fill IsNot Nothing AndAlso map Is GetType(ggplotColorPalette) Then
+                    ' category color maps
+                    Return getColorSet(stream.ggplot, shape, stream.baseData.fill.ToFactors, legends)
+                End If
+
                 If map Is GetType(ggplotColorLiteral) Then
                     Return mapFromLiteral(stream.ggplot, shape, nsize, legends)
                 ElseIf map.IsInheritsFrom(GetType(ggplotColorCustomSet), strict:=False) Then
