@@ -316,13 +316,13 @@ Namespace layers
 
                 For Each group As List(Of PointData) In groups.Values
                     ' set the default line color
-                    color = group _
+                    Dim defaultTop As IGrouping(Of String, String) = group _
                         .Select(Function(c) If(c.color, "black")) _
                         .GroupBy(Function(c_str) c_str) _
                         .OrderByDescending(Function(a) a.Count) _
-                        .First _
-                        .Key _
-                        .TranslateColor
+                        .First
+
+                    color = defaultTop.Key.TranslateColor
 
                     Yield New SerialData() With {
                         .color = color,
