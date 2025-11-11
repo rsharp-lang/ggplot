@@ -1,59 +1,59 @@
 ﻿#Region "Microsoft.VisualBasic::c76c1d379a503c411363cb7d12cfb712, src\ggplot\Internal\layers\ggplotLine.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (I@xieguigang.me)
-    ' 
-    ' Copyright (c) 2021 R# language
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (I@xieguigang.me)
+' 
+' Copyright (c) 2021 R# language
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
-
-
-    ' Code Statistics:
-
-    '   Total Lines: 102
-    '    Code Lines: 69 (67.65%)
-    ' Comment Lines: 23 (22.55%)
-    '    - Xml Docs: 78.26%
-    ' 
-    '   Blank Lines: 10 (9.80%)
-    '     File Size: 5.81 KB
+' Summaries:
 
 
-    '     Class ggplotLine
-    ' 
-    '         Properties: bspline, line_width
-    ' 
-    '         Function: Plot
-    ' 
-    ' 
-    ' /********************************************************************************/
+' Code Statistics:
+
+'   Total Lines: 102
+'    Code Lines: 69 (67.65%)
+' Comment Lines: 23 (22.55%)
+'    - Xml Docs: 78.26%
+' 
+'   Blank Lines: 10 (9.80%)
+'     File Size: 5.81 KB
+
+
+'     Class ggplotLine
+' 
+'         Properties: bspline, line_width
+' 
+'         Function: Plot
+' 
+' 
+' /********************************************************************************/
 
 #End Region
 
@@ -95,57 +95,78 @@ Namespace layers
         Public Property line_width As Single = 5
         Public Property bspline As Boolean = False
 
-        Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
+        Protected Function GetData(stream As ggplotPipeline, ByRef legends As IggplotLegendElement) As SerialData()
             Dim serials As SerialData()
+
+            If Not useCustomData Then
+                serials = processMainLineData(stream, legends)
+            Else
+                serials = processCustomLineData(stream, legends)
+            End If
+
+            Return serials
+        End Function
+
+        Private Function processCustomLineData(stream As ggplotPipeline, ByRef legends As IggplotLegendElement) As SerialData()
             Dim colors As String() = Nothing
-            Dim legends As IggplotLegendElement = Nothing
             Dim ggplot As ggplot = stream.ggplot
             Dim g As IGraphics = stream.g
             Dim multiple_groups As Boolean
 
-            If Not useCustomData Then
-                Dim x = CLRVector.asFloat(stream.x)
-                Dim y = stream.y
-                Dim nsize As Integer = x.Length
-
+            With Me.data
                 If useCustomColorMaps Then
-                    colors = getColorSet(ggplot, g, nsize, LegendStyles.SolidLine, y, legends)
+                    colors = getColorSet(ggplot, g, .nsize, LegendStyles.SolidLine, .y, legends)
                 ElseIf Not ggplot.base.reader.color Is Nothing Then
                     colors = ggplot.base.getColors(ggplot, legends, LegendStyles.SolidLine)
+                Else
+                    colors = (++ggplot.colors).Replicate(.nsize).ToArray
+                    legends = New ggplotLegendElement With {
+                        .legend = New LegendObject With {
+                            .color = colors(Scan0),
+                            .fontstyle = stream.theme.legendLabelCSS,
+                            .style = LegendStyles.SolidLine,
+                            .title = reader.getLegendLabel
+                        }
+                    }
                 End If
 
                 multiple_groups = ggplotBase.checkMultipleLegendGroup(legends)
-                serials = ggplotScatter.createSerialData(
-                    ggplot.base.reader.ToString,
-                    x, CLRVector.asFloat(y), colors,
+
+                Return ggplotScatter.createSerialData(
+                    reader.ToString,
+                    .x.ToFloat, .y.ToFloat, colors,
                     {line_width},
                     TryCast(legends, legendGroupElement), LegendStyles.SolidLine, colorMap).ToArray
-            Else
-                With Me.data
-                    If useCustomColorMaps Then
-                        colors = getColorSet(ggplot, g, .nsize, LegendStyles.SolidLine, .y, legends)
-                    ElseIf Not ggplot.base.reader.color Is Nothing Then
-                        colors = ggplot.base.getColors(ggplot, legends, LegendStyles.SolidLine)
-                    Else
-                        colors = (++ggplot.colors).Replicate(.nsize).ToArray
-                        legends = New ggplotLegendElement With {
-                            .legend = New LegendObject With {
-                                .color = colors(Scan0),
-                                .fontstyle = stream.theme.legendLabelCSS,
-                                .style = LegendStyles.SolidLine,
-                                .title = reader.getLegendLabel
-                            }
-                        }
-                    End If
+            End With
+        End Function
 
-                    multiple_groups = ggplotBase.checkMultipleLegendGroup(legends)
-                    serials = ggplotScatter.createSerialData(
-                        reader.ToString,
-                        .x.ToFloat, .y.ToFloat, colors,
-                        {line_width},
-                        TryCast(legends, legendGroupElement), LegendStyles.SolidLine, colorMap).ToArray
-                End With
+        Private Function processMainLineData(stream As ggplotPipeline, ByRef legends As IggplotLegendElement) As SerialData()
+            Dim colors As String() = Nothing
+            Dim ggplot As ggplot = stream.ggplot
+            Dim g As IGraphics = stream.g
+            Dim multiple_groups As Boolean
+            Dim x = CLRVector.asFloat(stream.x)
+            Dim y = stream.y
+            Dim nsize As Integer = x.Length
+
+            If useCustomColorMaps Then
+                colors = getColorSet(ggplot, g, nsize, LegendStyles.SolidLine, y, legends)
+            ElseIf Not ggplot.base.reader.color Is Nothing Then
+                colors = ggplot.base.getColors(ggplot, legends, LegendStyles.SolidLine)
             End If
+
+            multiple_groups = ggplotBase.checkMultipleLegendGroup(legends)
+
+            Return ggplotScatter.createSerialData(
+                ggplot.base.reader.ToString,
+                x, CLRVector.asFloat(y), colors,
+                {line_width},
+                TryCast(legends, legendGroupElement), LegendStyles.SolidLine, colorMap).ToArray
+        End Function
+
+        Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
+            Dim legends As IggplotLegendElement = Nothing
+            Dim serials As SerialData() = GetData(stream, legends)
 
             For Each serial As SerialData In serials
                 Call LinePlot2D.DrawLine(
