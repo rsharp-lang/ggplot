@@ -1115,7 +1115,7 @@ Module ggplot2
                                  Optional na_rm As Boolean = False,
                                  Optional show_legend As Boolean = False,
                                  Optional inherit_aes As Boolean = True,
-                                 Optional maxL As Double = 5,
+                                 Optional maxL As Double = 3,
                                  Optional thickness As Double = 2,
                                  <RListObjectArgument>
                                  Optional args As list = Nothing,

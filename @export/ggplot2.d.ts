@@ -665,7 +665,7 @@ declare namespace ggplot2 {
      * 
      * + default value Is ``true``.
      * @param maxL 
-     * + default value Is ``5``.
+     * + default value Is ``3``.
      * @param thickness 
      * + default value Is ``2``.
      * @param args Other arguments passed on to layer()'s params argument. These arguments broadly 
