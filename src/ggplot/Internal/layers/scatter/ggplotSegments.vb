@@ -68,6 +68,8 @@ Namespace layers
 
     Public Class ggplotSegments : Inherits ggplotScatterLayer
 
+        Public Property thickness As Double = 3
+
         Protected Friend Overrides ReadOnly Property useCustomData As Boolean
             Get
                 If reader Is Nothing Then Return False
@@ -122,7 +124,12 @@ Namespace layers
                 Dim ay As Double = yend(i)
                 Dim color As Color = colors(i).TranslateColor
 
-                Call RenderShape.RenderBoid(stream.g, xi, yi, ax, ay, color, maxL:=minCell)
+                Call RenderShape.RenderForceVector(stream.g,
+                                                   New PointF(xi, yi),
+                                                   New PointF(ax, ay),
+                                                   color,
+                                                   scale:=minCell,
+                                                   w:=thickness)
             Next
 
             If showLegend Then
