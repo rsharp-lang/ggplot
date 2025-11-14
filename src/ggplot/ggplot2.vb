@@ -1115,10 +1115,11 @@ Module ggplot2
                                  Optional na_rm As Boolean = False,
                                  Optional show_legend As Boolean = False,
                                  Optional inherit_aes As Boolean = True,
+                                 Optional maxL As Double = 5,
+                                 Optional thickness As Double = 2,
                                  <RListObjectArgument>
                                  Optional args As list = Nothing,
                                  Optional env As Environment = Nothing) As ggplotSegments
-        Dim maxL As Double = 10
 
         If mapping IsNot Nothing Then
             Dim xend As Object = mapping.args!xend
@@ -1135,7 +1136,8 @@ Module ggplot2
             .reader = mapping,
             .dataset = data,
             .minCell = maxL,
-            .showLegend = show_legend
+            .showLegend = show_legend,
+            .thickness = thickness
         }
     End Function
 

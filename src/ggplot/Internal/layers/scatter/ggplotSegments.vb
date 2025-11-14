@@ -60,8 +60,6 @@ Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
-Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
-Imports Microsoft.VisualBasic.Imaging.Drawing2D.Shapes
 Imports SMRUCC.Rsharp.Runtime.Vectorization
 
 Namespace layers
