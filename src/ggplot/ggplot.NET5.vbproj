@@ -24,6 +24,8 @@
     <AutoGenerateBindingRedirects>True</AutoGenerateBindingRedirects>
     <IncludeSymbols>True</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageIcon>icons8-art-prices-96.png</PackageIcon>
+    <PackageOutputPath>..\..\.nuget</PackageOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -372,6 +374,10 @@
   </ItemGroup>
 
     <ItemGroup>
+    <None Include="..\..\.pkg\icons8-art-prices-96.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
     <None Include="..\..\LICENSE">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
