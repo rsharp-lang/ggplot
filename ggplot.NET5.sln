@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31710.8
+# Visual Studio Version 18
+VisualStudioVersion = 18.6.11822.322 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "framework", "framework", "{ADC0BF32-B9DC-419A-8321-B7B3A6DD1F06}"
 EndProject
@@ -1725,8 +1725,8 @@ Global
 		{4DBD2EEE-8ACC-461B-9FC4-2280431D1AEC}.Rsharp_app_release|Any CPU.Build.0 = Release|Any CPU
 		{4DBD2EEE-8ACC-461B-9FC4-2280431D1AEC}.Rsharp_app_release|ARM32.ActiveCfg = Release|Any CPU
 		{4DBD2EEE-8ACC-461B-9FC4-2280431D1AEC}.Rsharp_app_release|ARM32.Build.0 = Release|Any CPU
-		{4DBD2EEE-8ACC-461B-9FC4-2280431D1AEC}.Rsharp_app_release|x64.ActiveCfg = Release|x64
-		{4DBD2EEE-8ACC-461B-9FC4-2280431D1AEC}.Rsharp_app_release|x64.Build.0 = Release|x64
+		{4DBD2EEE-8ACC-461B-9FC4-2280431D1AEC}.Rsharp_app_release|x64.ActiveCfg = Rsharp_app_release|x64
+		{4DBD2EEE-8ACC-461B-9FC4-2280431D1AEC}.Rsharp_app_release|x64.Build.0 = Rsharp_app_release|x64
 		{002F8EE5-771A-47FE-8DF8-A5225FDD0555}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{002F8EE5-771A-47FE-8DF8-A5225FDD0555}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{002F8EE5-771A-47FE-8DF8-A5225FDD0555}.Debug|ARM32.ActiveCfg = Debug|Any CPU
@@ -1785,8 +1785,8 @@ Global
 		{002F8EE5-771A-47FE-8DF8-A5225FDD0555}.Rsharp_app_release|Any CPU.Build.0 = Release|Any CPU
 		{002F8EE5-771A-47FE-8DF8-A5225FDD0555}.Rsharp_app_release|ARM32.ActiveCfg = Release|Any CPU
 		{002F8EE5-771A-47FE-8DF8-A5225FDD0555}.Rsharp_app_release|ARM32.Build.0 = Release|Any CPU
-		{002F8EE5-771A-47FE-8DF8-A5225FDD0555}.Rsharp_app_release|x64.ActiveCfg = Release|x64
-		{002F8EE5-771A-47FE-8DF8-A5225FDD0555}.Rsharp_app_release|x64.Build.0 = Release|x64
+		{002F8EE5-771A-47FE-8DF8-A5225FDD0555}.Rsharp_app_release|x64.ActiveCfg = Rsharp_app_release|x64
+		{002F8EE5-771A-47FE-8DF8-A5225FDD0555}.Rsharp_app_release|x64.Build.0 = Rsharp_app_release|x64
 		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.Debug|ARM32.ActiveCfg = Debug|Any CPU
@@ -1845,8 +1845,8 @@ Global
 		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.Rsharp_app_release|Any CPU.Build.0 = Release|Any CPU
 		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.Rsharp_app_release|ARM32.ActiveCfg = Release|Any CPU
 		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.Rsharp_app_release|ARM32.Build.0 = Release|Any CPU
-		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.Rsharp_app_release|x64.ActiveCfg = Release|x64
-		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.Rsharp_app_release|x64.Build.0 = Release|x64
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.Rsharp_app_release|x64.ActiveCfg = Rsharp_app_release|x64
+		{0E014727-16AE-45E0-A4AB-28EDF88AE59F}.Rsharp_app_release|x64.Build.0 = Rsharp_app_release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
