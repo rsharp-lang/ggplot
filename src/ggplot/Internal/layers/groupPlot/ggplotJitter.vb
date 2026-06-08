@@ -70,12 +70,8 @@ Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.Data.ChartPlots
 Imports Microsoft.VisualBasic.Imaging
-
-#If NET48 Then
-Imports SoliBrush = System.Drawing.SolidBrush
-#Else
+Imports Brush = Microsoft.VisualBasic.Imaging.Brush
 Imports SolidBrush = Microsoft.VisualBasic.Imaging.SolidBrush
-#End If
 
 Namespace layers
 
