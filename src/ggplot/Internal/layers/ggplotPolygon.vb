@@ -7,16 +7,9 @@ Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports Microsoft.VisualBasic.MIME.Html.Render
 Imports SMRUCC.Rsharp.Runtime.Vectorization
-
-#If NET8_0_OR_GREATER Then
 Imports Brush = Microsoft.VisualBasic.Imaging.Brush
-Imports Brushes = Microsoft.VisualBasic.Imaging.Brushes
 Imports Pen = Microsoft.VisualBasic.Imaging.Pen
-#Else
-Imports Brush = System.Drawing.Brush
-Imports Brushes = System.Drawing.Brushes
-Imports Pen = System.Drawing.Pen
-#End If
+Imports SolidBrush = Microsoft.VisualBasic.Imaging.SolidBrush
 
 Namespace layers
 
