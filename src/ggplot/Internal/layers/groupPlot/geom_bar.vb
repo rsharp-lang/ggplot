@@ -134,7 +134,7 @@ Namespace layers
 
             If TypeOf ggplot.data Is dataframe Then
                 Dim groupFactors As String() = CLRVector.asCharacter(DirectCast(ggplot.data, dataframe)(groupName))
-                Dim zip = y.Zip(join:=groupFactors).GroupBy(Function(z) z.Second).ToArray
+                Dim zip = y.Zip(groupFactors).GroupBy(Function(z) z.Second).ToArray
                 Dim max As Double = zip.Max(Function(a) a.Sum(Function(i) i.First))
                 Dim min As Double = zip.Min(Function(a) a.Sum(Function(i) i.First))
 
@@ -179,8 +179,8 @@ Namespace layers
             End If
 
             Dim zip = groupFactors _
-                .Zip(join:=y) _
-                .Zip(join:=CLRVector.asCharacter(stream.x)) _
+                .Zip(y) _
+                .Zip(CLRVector.asCharacter(stream.x)) _
                 .GroupBy(Function(a) a.Second) _
                 .ToArray
             Dim fill = legends.legends _

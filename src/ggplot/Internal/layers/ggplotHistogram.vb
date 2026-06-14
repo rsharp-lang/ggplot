@@ -231,7 +231,7 @@ Namespace layers
 
             If Not data.fill Is Nothing Then
                 Dim serials = dataX _
-                    .Zip(join:=data.fill.ToFactors) _
+                    .Zip(data.fill.ToFactors) _
                     .GroupBy(Function(i) i.Second) _
                     .Select(Function(si)
                                 Dim bins = CutBins.FixedWidthBins(
