@@ -83,16 +83,16 @@ Namespace render
 
             If cameraVal Is Nothing Then
                 Return New Camera With {
-                    .screen = plotSize,
-                    .fov = 100000,
-                    .viewDistance = -75,
-                    .angleX = 31.5,
-                    .angleY = 65,
-                    .angleZ = 125
+                    .Screen = plotSize,
+                    .FieldOfView = 100000,
+                    .ViewDistance = -75,
+                    .AngleX = 31.5,
+                    .AngleY = 65,
+                    .AngleZ = 125
                 }
             Else
                 With DirectCast(cameraVal, Camera)
-                    .screen = plotSize
+                    .Screen = plotSize
                     Return cameraVal
                 End With
             End If

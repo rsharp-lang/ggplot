@@ -91,11 +91,11 @@ Module ggplot3
         End If
 
         Dim camera As New Camera With {
-            .angleX = angles(0),
-            .angleY = angles(1),
-            .angleZ = angles(2),
-            .fov = fov,
-            .viewDistance = view_distance
+            .AngleX = angles(0),
+            .AngleY = angles(1),
+            .AngleZ = angles(2),
+            .FieldOfView = fov,
+            .ViewDistance = view_distance
         }
 
         Return New ggplotCamera With {
