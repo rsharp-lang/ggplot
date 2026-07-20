@@ -89,9 +89,9 @@ Namespace ggraph.render
             Return 8
         End Function
 
-        Friend Function getRadius(graph As NetworkGraph) As Func(Of Node, Single())
+        Friend Function getRadius(graph As NetworkGraph) As Func(Of Node, Single)
             If radius Is Nothing Then
-                Return Function(any) {45.0!}
+                Return Function(any) 45.0!
             Else
                 Dim map As Dictionary(Of String, Single) = radius _
                     .GetSize(graph.vertex) _
@@ -104,9 +104,9 @@ Namespace ggraph.render
                            Dim r As Single = map.TryGetValue(n.label, [default]:=45.0!)
 
                            If r <= 0 OrElse r.IsNaNImaginary Then
-                               Return {45}
+                               Return 45
                            Else
-                               Return {r}
+                               Return r
                            End If
                        End Function
             End If
@@ -157,22 +157,20 @@ Namespace ggraph.render
             Dim css As CSSEnvirnment = stream.g.LoadEnvironment
             Dim baseFont As Font = css.GetFont(stream.theme.tagCSS)
             Dim drawer As New Drawer With {.graph = graph, .shapeAs = shapeAs}
-            Dim renderNode As New NodeRendering(
-                graph,
-                radiusValue:=getRadius(graph),
-                fontSizeValue:=AddressOf getFontSize,
-                defaultColor:=defaultColor,
-                stroke:=stroke,
-                baseFontCss:=baseFont,
-                scalePos:=stream.layout,
-                throwEx:=False,
-                getDisplayLabel:=Function(n) n.data.label,
-                drawNodeShape:=AddressOf drawer.DrawNodeShape,
-                getLabelPosition:=Nothing,
-                labelWordWrapWidth:=-1,
-                nodeWidget:=Nothing,
-                drawShape:=Nothing
-            )
+            Dim config As New NetworkRenderConfig With {
+                .NodeRadius = getRadius(graph),
+                .FontSize = New Func(Of Node, Single)(AddressOf getFontSize),
+                .DefaultColor = defaultColor.ToHtmlColor,
+                .NodeStroke = New Stroke(stroke).CSSValue,
+                .LabelFontBase = New CSSFont(baseFont).CSSValue,
+                .ThrowEx = False,
+                .GetNodeLabel = Function(n) n.data.label,
+                .DrawNodeShape = AddressOf drawer.DrawNodeShape,
+                .GetLabelPosition = Nothing,
+                .LabelWordWrapWidth = -1,
+                .NodeWidget = Nothing
+            }
+            Dim renderNode As New NodeRendering(graph, config, scalePos:=stream.layout)
 
             Dim vertex As Node() = graph.vertex _
                 .OrderBy(Function(a)

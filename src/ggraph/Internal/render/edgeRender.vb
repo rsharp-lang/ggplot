@@ -58,7 +58,6 @@
 #End Region
 
 Imports System.Drawing
-Imports System.Drawing.Drawing2D
 Imports ggplot.elements.legend
 Imports ggplot.layers
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
@@ -95,17 +94,17 @@ Namespace ggraph.render
             Dim linkWidth As Func(Of Edge, Single) = getWeightScale(graph)
             Dim edgeDashType As New Dictionary(Of String, DashStyle)
             Dim edgeColor As Color = Me.color.TranslateColor
-            Dim engine As New EdgeRendering(
-                linkWidth:=linkWidth,
-                edgeDashTypes:=edgeDashType,
-                scalePos:=stream.layout,
-                throwEx:=False,
-                edgeShadowDistance:=0,
-                defaultEdgeColor:=edgeColor,
-                drawEdgeBends:=False,
-                drawEdgeDirection:=False
-            )
-            Dim labels = engine.drawEdges(stream.g, graph).ToArray
+            Dim config As New NetworkRenderConfig With {
+                .LinkWidth = linkWidth,
+                .EdgeDashTypes = edgeDashType,
+                .ThrowEx = False,
+                .EdgeShadowDistance = 0,
+                .DefaultEdgeColor = edgeColor.ToHtmlColor,
+                .DrawEdgeBends = False,
+                .DrawEdgeDirection = False
+            }
+            Dim engine As New EdgeRendering(config, scalePos:=stream.layout, graph)
+            Dim labels = engine.drawEdges(stream.g).ToArray
 
             DirectCast(stream, graphPipeline).labels.AddRange(labels)
 

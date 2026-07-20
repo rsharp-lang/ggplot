@@ -172,7 +172,6 @@ Namespace ggraph
                 Dim radius = nodeStyle.getRadius(graph)
                 Dim radiusRange As DoubleRange = graph.vertex _
                     .Select(Function(v) radius(v)) _
-                    .IteratesALL _
                     .Select(Function(s) CDbl(s)) _
                     .Range
                 Dim degree = graph.vertex.Select(Function(v) CDbl(v.degree.In + v.degree.Out)).Range
