@@ -39,16 +39,19 @@
             
 <dt>labels</dt>
 <dd><p>One of:
- 
- + <code>NULL</code> for no labels
- + waiver() for the default labels computed by the transformation object
- + A character vector giving labels (must be same length As breaks)
- + A Function that() takes the breaks As input And returns labels As output. Also accepts rlang lambda Function notation.
- + .NET number format string, example as: F2, G3. [as string]</p></dd>
+
+
+<ul>
+<li><p><code>NULL</code> for no labels</li>
+<li><p>waiver() for the default labels computed by the transformation object</li>
+<li><p>A character vector giving labels (must be same length As breaks)</li>
+<li><p>A Function that() takes the breaks As input And returns labels As output. Also accepts rlang lambda Function notation.</li>
+<li><p>.NET number format string, example as: F2, G3</li>
+. [as string]</p></dd>
 
 
 <dt>n</dt>
-<dd><p>set number of the ticks on the x axis. [as integer]</p></dd>
+<dd><p>[as integer]</p></dd>
 
         </table>
 

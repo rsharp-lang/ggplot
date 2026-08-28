@@ -24,7 +24,7 @@
 
         <p>Represents the possible units of the CSS lengths
 
-<a href='http://www.w3.org/TR/CSS21/syndata.html#length-units' title='http://www.w3.org/TR/CSS21/syndata.html#length-units'>http://www.w3.org/TR/CSS21/syndata.html#length-units</a></p>
+<p><a href="http://www.w3.org/TR/CSS21/syndata.html#length-units" title="http://www.w3.org/TR/CSS21/syndata.html#length-units">http://www.w3.org/TR/CSS21/syndata.html#length-units</a>
 
         <h3>Declare</h3>        
 
@@ -68,24 +68,15 @@ export class CssUnit extends <a href="/vignettes/clr/System/Enum.html">Enum</a> 
    [@desc "pc"]
    Picas: <a href="/vignettes/clr/Microsoft/VisualBasic/MIME/Html/CSS/CssUnit.html">CssUnit</a> = 8;
 
-   # The format of a percentage value (denoted by <percentage> in this specification) is a <number> immediately followed by '%'.
-   #  
-   #  Percentage values are always relative to another value, for example a length. Each property 
-   #  that allows percentages also defines the value to which the percentage refers. The value may 
-   #  be that of another property for the same element, a property for an ancestor element, or a 
-   #  value of the formatting context (e.g., the width of a containing block). When a percentage 
-   #  value is set for a property of the root element and the percentage is defined as referring 
-   #  to the inherited value of some property, the resultant value is the percentage times the 
-   #  initial value of that property.
-   #  
-   #  Since child elements (generally) inherit the computed values of their parent, in the following 
-   #  example, the children of the P element will inherit a value of 12px for 'line-height', not 
-   #  the percentage value (120%):
+   # The format of a percentage value (denoted by &lt;percentage&gt; in this specification) is a &lt;number&gt; immediately followed by '%'.
+   # 
+   # Percentage values are always relative to another value, for example a length. Each property that allows percentages also defines the value to which the percentage refers. The value may be that of another property for the same element, a property for an ancestor element, or a value of the formatting context (e.g., the width of a containing block). When a percentage value is set for a property of the root element and the percentage is defined as referring to the inherited value of some property, the resultant value is the percentage times the initial value of that property.
+   # 
+   # Since child elements (generally) inherit the computed values of their parent, in the following example, the children of the P element will inherit a value of 12px for 'line-height', not the percentage value (120%):
    # 
    # 
-   # <pre><code class="css"> p { font-size: 10px }
-   #  p { line-height: 120% }  /* 120% of 'font-size' */
-   # </code></pre>
+   # <pre><code class="language-css"> p { font-size: 10px }
+   #  p { line-height: 120% }  /* 120% of 'font-size' */</code></pre>
    [@desc "%"]
    Percent: <a href="/vignettes/clr/Microsoft/VisualBasic/MIME/Html/CSS/CssUnit.html">CssUnit</a> = 9;
 

@@ -2,9 +2,9 @@ imports ["dataset", "umap"] from "MLkit";
 
 options(strict = FALSE);
 
-const filename as string = "F:\GCModeller\src\R-sharp\test\demo\machineLearning\umap\MNIST-LabelledVectorArray-60000x100.msgpack";
+const filename as string = "\GCModeller\src\R-sharp\test\demo\machineLearning\umap\MNIST-LabelledVectorArray-60000x100.msgpack";
 const MNIST_LabelledVectorArray = filename
-|> read.mnist.labelledvector(takes = 50000)
+|> read.MNIST(dataset = "dataframe")
 ;
 const tags as string = rownames(MNIST_LabelledVectorArray);
 
