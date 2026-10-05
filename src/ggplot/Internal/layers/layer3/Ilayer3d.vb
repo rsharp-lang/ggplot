@@ -56,7 +56,6 @@
 #End Region
 
 Imports ggplot.elements.legend
-Imports Microsoft.VisualBasic.Data.Plots
 Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Device
 
 Namespace layers.layer3d

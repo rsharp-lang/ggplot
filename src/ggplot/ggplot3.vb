@@ -60,7 +60,6 @@ Imports Microsoft.VisualBasic.Imaging.Drawing3D
 Imports Microsoft.VisualBasic.Scripting.MetaData
 Imports SMRUCC.Rsharp.Runtime.Interop
 Imports SMRUCC.Rsharp.Runtime.Vectorization
-Imports REnv = SMRUCC.Rsharp.Runtime
 
 ''' <summary>
 ''' ggplot for 3D

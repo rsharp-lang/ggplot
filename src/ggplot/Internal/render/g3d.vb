@@ -66,7 +66,6 @@ Imports Microsoft.VisualBasic.Data.Plots.Canvas
 Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Device
 Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Model
 Imports Microsoft.VisualBasic.Emit.Delegates
-Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing3D
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.Math

@@ -72,7 +72,6 @@ Imports Microsoft.VisualBasic.Data.Plots
 Imports Microsoft.VisualBasic.Data.Plots.Canvas
 Imports Microsoft.VisualBasic.Imaging
 Imports Brush = Microsoft.VisualBasic.Imaging.Brush
-Imports SolidBrush = Microsoft.VisualBasic.Imaging.SolidBrush
 
 Namespace layers
 

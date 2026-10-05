@@ -58,11 +58,9 @@
 #End Region
 
 Imports ggplot.elements.legend
-Imports Microsoft.VisualBasic.Data.Plots
 Imports Microsoft.VisualBasic.Data.Plots.Canvas
 Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Legend
 Imports Microsoft.VisualBasic.Imaging
-Imports Microsoft.VisualBasic.Math.Interpolation
 Imports SMRUCC.Rsharp.Runtime.Vectorization
 
 Namespace layers

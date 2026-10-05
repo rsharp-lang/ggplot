@@ -64,7 +64,6 @@ Imports ggplot.ggraph.layout
 Imports ggplot.ggraph.render
 Imports ggplot.layers
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
-Imports Microsoft.VisualBasic.Data.Plots
 Imports Microsoft.VisualBasic.Data.Plots.Canvas
 Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Legend
 Imports Microsoft.VisualBasic.Data.visualize.Network

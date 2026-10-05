@@ -70,9 +70,6 @@ Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.d3js.scale
 Imports Microsoft.VisualBasic.Linq
-Imports Microsoft.VisualBasic.MIME.Html.CSS
-Imports Microsoft.VisualBasic.MIME.Html.Render
-Imports Microsoft.VisualBasic.Serialization.JSON
 Imports SMRUCC.Rsharp.Runtime.Internal.[Object]
 Imports SMRUCC.Rsharp.Runtime.Vectorization
 Imports std = System.Math

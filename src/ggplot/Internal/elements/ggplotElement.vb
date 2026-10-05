@@ -56,7 +56,6 @@
 #End Region
 
 Imports ggplot.options
-Imports Microsoft.VisualBasic.Data.Plots
 Imports Microsoft.VisualBasic.Data.Plots.Canvas
 
 Namespace elements

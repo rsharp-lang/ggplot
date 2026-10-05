@@ -60,7 +60,6 @@ Imports ggplot.elements
 Imports ggplot.elements.legend
 Imports ggplot.layers
 Imports ggplot.render
-Imports Microsoft.VisualBasic.Data.Plots
 Imports Microsoft.VisualBasic.Data.Plots.Canvas
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.d3js.scale

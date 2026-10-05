@@ -55,12 +55,9 @@
 #End Region
 
 Imports System.Drawing
-Imports System.Drawing.Drawing2D
-Imports System.IO
 Imports ggplot
 Imports ggplot.elements.legend
 Imports ggplot.layers
-Imports Microsoft.VisualBasic.Data.Plots
 Imports Microsoft.VisualBasic.Data.Plots.Canvas
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Math2D

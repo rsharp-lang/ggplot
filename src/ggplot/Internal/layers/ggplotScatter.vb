@@ -71,20 +71,13 @@ Imports System.Runtime.InteropServices
 Imports ggplot.colors
 Imports ggplot.elements.legend
 Imports ggplot.options
-Imports Microsoft.VisualBasic.Data.Plots
 Imports Microsoft.VisualBasic.Data.Plots.Canvas
 Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Driver
 Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.Linq
-Imports Microsoft.VisualBasic.MIME.Html
 Imports SMRUCC.Rsharp.Runtime.Vectorization
-
-#If NET48 Then
-#Else
-Imports Brush = Microsoft.VisualBasic.Imaging.Brush
-#End If
 
 Namespace layers
 
