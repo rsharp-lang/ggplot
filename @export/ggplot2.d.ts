@@ -1269,7 +1269,7 @@ declare namespace ggplot2 {
      * + default value Is ``null``.
      * @param line 
      * + default value Is ``'stroke: lightgray; stroke-width: 1px; stroke-dash: dot;'``.
-     * @return A style mapper for create the internal @``T:Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas.Theme`` object
+     * @return A style mapper for create the internal [Theme](cref:T:Microsoft.VisualBasic.Data.Plots.Canvas.Theme) object
    */
    function theme(text?: object, axis_text?: object, axis_title?: object, axis_line?: any, axis_text_x?: object, legend_background?: string, legend_text?: object, legend_tick?: object, legend_title?: object, legend_position?: string, legend_split?: object, plot_background?: string, plot_title?: object, panel_background?: string, panel_grid?: any, panel_grid_major?: any, panel_grid_minor?: any, panel_border?: object, line?: any): object;
    /**

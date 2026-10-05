@@ -22,7 +22,7 @@
 
         <h3>Description</h3>
 
-        <p>&lt;br /&gt; geom_segment() draws a straight line between points (x, y) and (xend, yend). Both geoms &lt;br /&gt; draw a single segment/curve per case. See geom_path() if you need to connect points &lt;br /&gt; across multiple cases.
+        <p>&lt;br /&gt; geom_segment() draws a straight line between points (x, y) and (xend, yend). Both geoms &lt;br /&gt; draw a single segment/curve per case. See geom_path() if you need to connect points &lt;br /&gt; across multiple cases.</p>
 
         <h3>Usage</h3>
 
@@ -49,77 +49,77 @@
         <table>
             
 <dt>mapping</dt>
-<dd><p>Set of aesthetic mappings created by aes(). If specified and <code>inherit.aes = TRUE. [as <a href="/vignettes/clr/ggplot/ggplotReader.html">ggplotReader</a>]</p></dd>
+<dd><p>Set of aesthetic mappings created by aes(). If specified and <code>inherit.aes = TRUE</code> (the default), it is combined with the default mapping at the top level of the plot. You must supply mapping if there is no plot mapping. [as <a href="/vignettes/clr/ggplot/ggplotReader.html">ggplotReader</a>]</p></dd>
 
 
 <dt>data</dt>
-<dd><p>The data to be displayed in this layer. There are three options:
+<dd><p>The data to be displayed in this layer. There are three options:</p>
 
-<p>If NULL, the default, the data is inherited from the plot data as specified in the call to ggplot().
+<p>If NULL, the default, the data is inherited from the plot data as specified in the call to ggplot().</p>
 
-<p>A data.frame, or other object, will override the plot data. All objects will be fortified to produce a data frame. See fortify() for which variables will be created.
+<p>A data.frame, or other object, will override the plot data. All objects will be fortified to produce a data frame. See fortify() for which variables will be created.</p>
 
-</p></dd>
+<p>A function will be called with a single argument, the plot data. The return value must be a data.frame, and will be used as the layer data. A function can be created from a formula (e.g. ~ head(.x, 10)).</p></dd>
 
 
 <dt>stat</dt>
-<dd><p>The statistical transformation to use on the data for this layer. When using a geom_*() function to construct a layer, the stat argument can be used the override the default coupling between geoms and stats. The stat argument accepts the following:
+<dd><p>The statistical transformation to use on the data for this layer. When using a geom_*() function to construct a layer, the stat argument can be used the override the default coupling between geoms and stats. The stat argument accepts the following:</p>
 
-<p>A Stat ggproto subclass, for example StatCount.
+<p>A Stat ggproto subclass, for example StatCount.</p>
 
-<p>A string naming the stat. To give the stat as a string, strip the function name of the stat_ prefix. For example, to use stat_count(), give the stat as "count".
+<p>A string naming the stat. To give the stat as a string, strip the function name of the stat_ prefix. For example, to use stat_count(), give the stat as "count".</p>
 
-. [as string]</p></dd>
+<p>For more information and other ways to specify the stat, see the layer stat documentation. [as string]</p></dd>
 
 
 <dt>position</dt>
-<dd><p>A position adjustment to use on the data for this layer. This can be used in various ways, including to prevent overplotting and improving the display. The position argument accepts the following:
+<dd><p>A position adjustment to use on the data for this layer. This can be used in various ways, including to prevent overplotting and improving the display. The position argument accepts the following:</p>
 
-<p>The result of calling a position function, such as position_jitter(). This method allows for passing extra arguments to the position.
+<p>The result of calling a position function, such as position_jitter(). This method allows for passing extra arguments to the position.</p>
 
-<p>A string naming the position adjustment. To give the position as a string, strip the function name of the position_ prefix. For example, to use position_jitter(), give the position as "jitter".
+<p>A string naming the position adjustment. To give the position as a string, strip the function name of the position_ prefix. For example, to use position_jitter(), give the position as "jitter".</p>
 
-. [as string]</p></dd>
+<p>For more information and other ways to specify the position, see the layer position documentation. [as string]</p></dd>
 
 
 <dt>arrow</dt>
-<dd><p>[as <a href="/vignettes/clr/Microsoft/VisualBasic/Imaging/Drawing2D/Shapes/Triangle.html">Triangle</a>]</p></dd>
+<dd><p>specification for arrow heads, as created by grid::arrow(). [as <a href="/vignettes/clr/Microsoft/VisualBasic/Imaging/Drawing2D/Shapes/Triangle.html">Triangle</a>]</p></dd>
 
 
 <dt>arrow.fill</dt>
-<dd><p></p></dd>
+<dd><p>fill colour to use for the arrow head (if closed). NULL means use colour aesthetic.</p></dd>
 
 
 <dt>lineend</dt>
-<dd><p>[as string]</p></dd>
+<dd><p>Line end style (round, butt, square). [as string]</p></dd>
 
 
 <dt>linejoin</dt>
-<dd><p>[as string]</p></dd>
+<dd><p>Line join style (round, mitre, bevel). [as string]</p></dd>
 
 
 <dt>na.rm</dt>
-<dd><p>[as boolean]</p></dd>
+<dd><p>If FALSE, the default, missing values are removed with a warning. If TRUE, missing values are silently removed. [as boolean]</p></dd>
 
 
 <dt>show.legend</dt>
-<dd><p>[as boolean]</p></dd>
+<dd><p>logical. Should this layer be included in the legends? NA, the default, includes if any aesthetics are mapped. FALSE never includes, and TRUE always includes. It can also be a named logical vector to finely select the aesthetics to display. [as boolean]</p></dd>
 
 
 <dt>inherit.aes</dt>
-<dd><p>[as boolean]</p></dd>
+<dd><p>If FALSE, overrides the default aesthetics, rather than combining with them. This is most useful for helper functions that define both data and aesthetics and shouldn't inherit behaviour from the default plot specification, e.g. borders(). [as boolean]</p></dd>
 
 
 <dt>args</dt>
-<dd><p>Other arguments passed on to layer()'s params argument. These arguments broadly fall into one of 4 categories below. Notably, further arguments to the position argument, or aesthetics that are required can not be passed through .... Unknown arguments that are not part of the 4 categories below are ignored.
+<dd><p>Other arguments passed on to layer()'s params argument. These arguments broadly fall into one of 4 categories below. Notably, further arguments to the position argument, or aesthetics that are required can not be passed through .... Unknown arguments that are not part of the 4 categories below are ignored.</p>
 
-<p>Static aesthetics that are not mapped to a scale, but are at a fixed value and apply to the layer as a whole. For example, colour = "red" or linewidth = 3. The geom's documentation has an Aesthetics section that lists the available options. The 'required' aesthetics cannot be passed on to the params. Please note that while passing unmapped aesthetics as vectors is technically possible, the order and required length is not guaranteed to be parallel to the input data.
+<p>Static aesthetics that are not mapped to a scale, but are at a fixed value and apply to the layer as a whole. For example, colour = "red" or linewidth = 3. The geom's documentation has an Aesthetics section that lists the available options. The 'required' aesthetics cannot be passed on to the params. Please note that while passing unmapped aesthetics as vectors is technically possible, the order and required length is not guaranteed to be parallel to the input data.</p>
 
-<p>When constructing a layer using a stat_*() function, the ... argument can be used to pass on parameters to the geom part of the layer. An example of this is stat_density(geom = "area", outline.type = "both"). The geom's documentation lists which parameters it can accept.
+<p>When constructing a layer using a stat_*() function, the ... argument can be used to pass on parameters to the geom part of the layer. An example of this is stat_density(geom = "area", outline.type = "both"). The geom's documentation lists which parameters it can accept.</p>
 
-<p>Inversely, when constructing a layer using a geom_*() function, the ... argument can be used to pass on parameters to the stat part of the layer. An example of this is geom_area(stat = "density", adjust = 0.5). The stat's documentation lists which parameters it can accept.
+<p>Inversely, when constructing a layer using a geom_*() function, the ... argument can be used to pass on parameters to the stat part of the layer. An example of this is geom_area(stat = "density", adjust = 0.5). The stat's documentation lists which parameters it can accept.</p>
 
-. [as list]</p></dd>
+<p>The key_glyph argument of layer() may also be passed on through .... This can be one of the functions described as key glyphs, to change the display of the layer in the legend. [as list]</p></dd>
 
 
 <dt>env</dt>
@@ -130,22 +130,22 @@
 
         <h3 style="display: block;">Details</h3>
 
-        <p>geom_segment() understands the following aesthetics (required aesthetics are in bold):
+        <p>geom_segment() understands the following aesthetics (required aesthetics are in bold):</p>
 
 
 <ul>
-<li><p><strong>x</strong></li>
-<li><p><strong>y</strong></li>
-<li><p><strong>xend or yend</strong></li>
-<li><p>alpha</li>
-<li><p>colour</li>
-<li><p>group</li>
-<li><p>linetype</li>
-<li><p>linewidth</li>
+<li><strong>x</strong></li>
+<li><strong>y</strong></li>
+<li><strong>xend or yend</strong></li>
+<li>alpha</li>
+<li>colour</li>
+<li>group</li>
+<li>linetype</li>
+<li>linewidth</li>
 </ul>
 
 
-<p>Learn more about setting these aesthetics in vignette("ggplot2-specs").
+<p>Learn more about setting these aesthetics in vignette("ggplot2-specs").</p>
 
         <h3 style="display: block">Authors</h3>
 
