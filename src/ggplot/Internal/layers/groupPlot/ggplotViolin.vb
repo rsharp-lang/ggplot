@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::ffa1e5c21e60bcab6c68cc9cd3bf6d7e, src\ggplot\Internal\layers\groupPlot\ggplotViolin.vb"
+#Region "Microsoft.VisualBasic::ffa1e5c21e60bcab6c68cc9cd3bf6d7e, src\ggplot\Internal\layers\groupPlot\ggplotViolin.vb"
 
     ' Author:
     ' 
@@ -60,8 +60,8 @@
 Imports System.Drawing
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
-Imports Microsoft.VisualBasic.Data.ChartPlots
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports Microsoft.VisualBasic.MIME.Html.Render
@@ -149,31 +149,18 @@ Namespace layers
             Dim bottom = plotRect.Bottom
             Dim top = plotRect.Top
 
+            Dim groups As New List(Of BoxGroup)
+
             For Each group As NamedCollection(Of Double) In allGroupData
-                Dim x As Double = xscale(group.name)
-                Dim color As Color = colors(group.name).TranslateColor.Alpha(alpha * 255)
-
-                If Not gridPen Is Nothing Then
-                    Call g.DrawLine(gridPen, New PointF(x, top), New PointF(x, bottom))
-                End If
-
-                Call Violin.PlotViolin(
-                    group:=group,
-                    x:=x,
-                    yscale:=yscale,
-                    semiWidth:=semiWidth,
-                    splineDegree:=splineDegree,
-                    polygonStroke:=lineStroke,
-                    showStats:=showStats,
-                    labelFont:=labelFont,
-                    color:=color,
-                    g:=g,
-                    canvas:=stream.canvas,
-                    theme:=stream.theme,
-                    zeroBreak:=zero_break,
-                    nbins:=nbins
-                )
+                Call groups.Add(New BoxGroup With {
+                    .Name = group.name,
+                    .Data = DirectCast(group, IEnumerable(Of Double)).ToArray,
+                    .Color = colors(group.name).TranslateColor.Alpha(alpha * 255)
+                })
             Next
+
+            ' 委派给新引擎的 ViolinPlot：共享画布 + 跨图层联合坐标
+            Call LayerRender.DrawViolins(g, stream.scale, stream.theme, groups)
 
             Return Nothing
         End Function

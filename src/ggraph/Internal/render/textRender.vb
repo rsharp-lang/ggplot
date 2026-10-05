@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::0c799090a18981d3f9fb43d4e040c268, src\ggraph\Internal\render\textRender.vb"
+#Region "Microsoft.VisualBasic::0c799090a18981d3f9fb43d4e040c268, src\ggraph\Internal\render\textRender.vb"
 
 ' Author:
 ' 

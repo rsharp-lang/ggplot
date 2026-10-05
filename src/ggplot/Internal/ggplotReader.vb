@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::704ac6d7a79319101ea2695bb4c9a624, src\ggplot\Internal\ggplotReader.vb"
+#Region "Microsoft.VisualBasic::704ac6d7a79319101ea2695bb4c9a624, src\ggplot\Internal\ggplotReader.vb"
 
     ' Author:
     ' 
@@ -65,8 +65,9 @@ Imports ggplot.elements
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ApplicationServices.Debugging.Diagnostics
 Imports Microsoft.VisualBasic.ComponentModel.Collection
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
+Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports SMRUCC.Rsharp.Interpreter.ExecuteEngine

@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::b1131d57f619831f1dd9df5a4550e903, src\ggplot\Internal\elements\chart\AxisMap.vb"
+#Region "Microsoft.VisualBasic::b1131d57f619831f1dd9df5a4550e903, src\ggplot\Internal\elements\chart\AxisMap.vb"
 
     ' Author:
     ' 

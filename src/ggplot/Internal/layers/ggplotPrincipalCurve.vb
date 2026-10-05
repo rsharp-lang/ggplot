@@ -1,7 +1,7 @@
-﻿Imports System.Drawing
+Imports System.Drawing
 Imports ggplot.elements.legend
-Imports Microsoft.VisualBasic.Data.ChartPlots
-Imports Microsoft.VisualBasic.Data.ChartPlots.Plots
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
 Imports Microsoft.VisualBasic.Imaging.Math2D
 Imports Microsoft.VisualBasic.Math.Interpolation
 
@@ -16,6 +16,7 @@ Namespace layers
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim legends As IggplotLegendElement = Nothing
             Dim serials As SerialData() = GetData(stream, legends)
+            Dim curves As New List(Of SerialData)
 
             For Each serial As SerialData In serials
                 Dim principalCurveData As Vector2D() = PrincipalCurve _
@@ -31,12 +32,17 @@ Namespace layers
                             End Function) _
                     .ToArray
 
-                LinePlot2D.DrawLine(
-                    stream.g, stream.canvas, stream.scale,
-                    serial,
-                    interplot:=If(bspline, Splines.B_Spline, Splines.None)
-                )
+                Call curves.Add(curve)
             Next
+
+            ' 委派给新引擎的 LinePlot：共享画布 + 跨图层联合坐标
+            Call LayerRender.DrawLines(
+                g:=stream.g,
+                scaler:=stream.scale,
+                theme:=stream.theme,
+                serials:=curves,
+                smooth:=bspline
+            )
 
             If showLegend Then
                 Return legends

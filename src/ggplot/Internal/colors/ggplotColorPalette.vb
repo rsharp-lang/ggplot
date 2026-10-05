@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::0bb1e0ac7de0f49d09743deb454870c2, src\ggplot\Internal\colors\ggplotColorPalette.vb"
+#Region "Microsoft.VisualBasic::0bb1e0ac7de0f49d09743deb454870c2, src\ggplot\Internal\colors\ggplotColorPalette.vb"
 
     ' Author:
     ' 
@@ -57,8 +57,9 @@
 
 Imports System.Runtime.CompilerServices
 Imports Microsoft.VisualBasic.ComponentModel.Collection
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
+Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports Microsoft.VisualBasic.Linq

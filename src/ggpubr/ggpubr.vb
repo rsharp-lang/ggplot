@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::1240305cb49576420838dfd7dd80ff79, src\ggpubr\ggpubr.vb"
+#Region "Microsoft.VisualBasic::1240305cb49576420838dfd7dd80ff79, src\ggpubr\ggpubr.vb"
 
     ' Author:
     ' 

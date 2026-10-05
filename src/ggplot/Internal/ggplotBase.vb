@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::7e389e79f25a29fb72fdb3ded1ce2bc2, src\ggplot\Internal\ggplotBase.vb"
+#Region "Microsoft.VisualBasic::7e389e79f25a29fb72fdb3ded1ce2bc2, src\ggplot\Internal\ggplotBase.vb"
 
     ' Author:
     ' 
@@ -59,7 +59,8 @@
 Imports System.Runtime.CompilerServices
 Imports ggplot.elements
 Imports ggplot.elements.legend
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Legend
 Imports RInternal = SMRUCC.Rsharp.Runtime.Internal
 
 ''' <summary>

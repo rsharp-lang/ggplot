@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::cbebc5c99044771197ecceeafbfafdb9, src\ggplot\Internal\layers\groupPlot\geom_bar.vb"
+#Region "Microsoft.VisualBasic::cbebc5c99044771197ecceeafbfafdb9, src\ggplot\Internal\layers\groupPlot\geom_bar.vb"
 
     ' Author:
     ' 
@@ -64,9 +64,9 @@ Imports System.Runtime.CompilerServices
 Imports ggplot.elements
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
-Imports Microsoft.VisualBasic.Data.ChartPlots.BarPlot
-Imports Microsoft.VisualBasic.Data.ChartPlots.BarPlot.Data
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
+Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.d3js.scale
 Imports Microsoft.VisualBasic.Linq
@@ -209,28 +209,36 @@ Namespace layers
                 .Samples = groupData.ToArray,
                 .Serials = fill
             }
-            Dim css As CSSEnvirnment = stream.g.LoadEnvironment
-            Dim plotRegion As Rectangle = stream.canvas.PlotRegion(css)
-
-            Call stackbars.Samples _
+            Dim categories As String() = stackbars.Samples _
                 .Select(Function(a) a.tag) _
-                .ToArray _
-                .GetJson _
-                .DoCall(AddressOf VBDebugger.EchoLine)
+                .ToArray
+            Dim seriesNames As String() = fill _
+                .Select(Function(f) f.Name) _
+                .ToArray
+            Dim seriesColors As Color() = fill _
+                .Select(Function(f) f.Value) _
+                .ToArray
+            Dim values As Double(,) = New Double(seriesNames.Length - 1, categories.Length - 1) {}
 
-            If ggplot.ggplotTheme.flipAxis Then
-                Dim width = plotRegion.Height / stackbars.Samples.Length
-                width = width - width * groupWidth
-                Dim dw As Double = width / 2
+            For i As Integer = 0 To seriesNames.Length - 1
+                For j As Integer = 0 To categories.Length - 1
+                    values(i, j) = stackbars.Samples(j).data(i)
+                Next
+            Next
 
-                Call StackedPercentageBarPlot.DrawStackBarsFlip(stackbars, stream.g, stream.canvas, dw)
-            Else
-                Dim width = plotRegion.Width / stackbars.Samples.Length
-                width = width - width * groupWidth
-                Dim dw As Double = width / 2
-
-                Call StackedPercentageBarPlot.DrawStackBars(stackbars, stream.g, stream.canvas, dw)
-            End If
+            ' 委派给新引擎的 BarPlot（百分比堆叠）：共享画布 + 跨图层联合坐标
+            Call LayerRender.DrawBars(
+                g:=stream.g,
+                scaler:=stream.scale,
+                theme:=stream.theme,
+                categories:=categories,
+                values:=Nothing,
+                colors:=seriesColors,
+                stack:=BarPlot.StackMode.Percent,
+                horizontal:=ggplot.ggplotTheme.flipAxis,
+                multiValues:=values,
+                seriesNames:=seriesNames
+            )
         End Sub
 
         <MethodImpl(MethodImplOptions.AggressiveInlining)>

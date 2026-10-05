@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::a0d84ec15ec60af688ab358d6ce848d2, src\ggplot\Internal\layers\scatter\ggplotScatterpie.vb"
+#Region "Microsoft.VisualBasic::a0d84ec15ec60af688ab358d6ce848d2, src\ggplot\Internal\layers\scatter\ggplotScatterpie.vb"
 
     ' Author:
     ' 
@@ -59,8 +59,9 @@
 
 Imports System.Drawing
 Imports ggplot.elements.legend
-Imports Microsoft.VisualBasic.Data.ChartPlots.Fractions
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports SMRUCC.Rsharp.Runtime.Internal.Object

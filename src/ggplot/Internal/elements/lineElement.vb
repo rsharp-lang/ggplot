@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::58ed31a27910eaa3e58617b6f402f027, src\ggplot\Internal\elements\lineElement.vb"
+#Region "Microsoft.VisualBasic::58ed31a27910eaa3e58617b6f402f027, src\ggplot\Internal\elements\lineElement.vb"
 
     ' Author:
     ' 

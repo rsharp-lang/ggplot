@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::edc8e4d4da9e8588fd9aa6355c4fcda3, src\ggplot\Internal\options\element_blank.vb"
+#Region "Microsoft.VisualBasic::edc8e4d4da9e8588fd9aa6355c4fcda3, src\ggplot\Internal\options\element_blank.vb"
 
     ' Author:
     ' 

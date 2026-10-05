@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::aabd3da52444f9f574d0125f8ecaeb14, src\ggplot\Internal\layers\scatter\ggplotScatterheatmap.vb"
+#Region "Microsoft.VisualBasic::aabd3da52444f9f574d0125f8ecaeb14, src\ggplot\Internal\layers\scatter\ggplotScatterheatmap.vb"
 
     ' Author:
     ' 
@@ -60,7 +60,8 @@
 Imports System.Drawing
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports Microsoft.VisualBasic.MIME.Html.CSS
 Imports Microsoft.VisualBasic.MIME.Html.Render

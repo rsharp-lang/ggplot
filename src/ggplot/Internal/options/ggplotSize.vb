@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::f22e7fa8f3ef1ba13dd7e70ae4543022, src\ggplot\Internal\options\ggplotSize.vb"
+#Region "Microsoft.VisualBasic::f22e7fa8f3ef1ba13dd7e70ae4543022, src\ggplot\Internal\options\ggplotSize.vb"
 
     ' Author:
     ' 
@@ -60,7 +60,8 @@
 
 Imports ggplot.layers
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
 Imports Microsoft.VisualBasic.Emit.Delegates
 
 Namespace options

@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::5c939ee480c9a7f141f9be013022b103, src\ggplot\Internal\layers\layer3\Ilayer3d.vb"
+#Region "Microsoft.VisualBasic::5c939ee480c9a7f141f9be013022b103, src\ggplot\Internal\layers\layer3\Ilayer3d.vb"
 
     ' Author:
     ' 
@@ -56,7 +56,8 @@
 #End Region
 
 Imports ggplot.elements.legend
-Imports Microsoft.VisualBasic.Data.ChartPlots.Plot3D.Device
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Device
 
 Namespace layers.layer3d
 

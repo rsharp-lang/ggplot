@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::c26a54e14b69960695514b228b53f748, src\ggplot\Internal\layers\ggplotHistogram.vb"
+#Region "Microsoft.VisualBasic::c26a54e14b69960695514b228b53f748, src\ggplot\Internal\layers\ggplotHistogram.vb"
 
     ' Author:
     ' 
@@ -74,8 +74,9 @@ Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.Collection
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
-Imports Microsoft.VisualBasic.Data.ChartPlots.BarPlot.Histogram
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
+Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.Linq
@@ -150,25 +151,26 @@ Namespace layers
             Dim colors = getColorSet(stream.ggplot, LegendStyles.Square, fillgroups, legends)
             Dim css As CSSEnvirnment = stream.g.LoadEnvironment
             Dim rect = stream.canvas.PlotRegion(css)
-            Dim histData As HistProfile
-            Dim colorData As NamedValue(Of Color)
             Dim i As i32 = 0
             Dim alpha As Double = Me.alpha * 255
 
-            For Each bin As NamedCollection(Of DataBinBox(Of Double)) In binData
-                histData = bin.NewModel(Nothing)
-                colorData = New NamedValue(Of Color)(bin.name, colors(++i).TranslateColor)
+            Dim groups As New List(Of CategoryGroup)
 
-                Call HistogramPlot.DrawSample(
-                    g:=stream.g,
-                    region:=rect,
-                    hist:=histData,
-                    ann:=colorData,
-                    scaler:=stream.scale,
-                    alpha:=alpha,
-                    commentText:=stream.ggplot.commentText
-                )
+            For Each bin As NamedCollection(Of DataBinBox(Of Double)) In binData
+                Dim raw As Double() = bin _
+                    .Select(Function(b) b.Raw) _
+                    .IteratesALL _
+                    .ToArray
+
+                Call groups.Add(New CategoryGroup With {
+                    .Name = bin.name,
+                    .Data = raw,
+                    .Color = colors(++i).TranslateColor
+                })
             Next
+
+            ' 委派给新引擎的 HistogramPlot：共享画布 + 跨图层联合坐标
+            Call LayerRender.DrawHistograms(stream.g, stream.scale, stream.theme, groups, bins:=bins)
 
             Return legends
         End Function
@@ -181,20 +183,21 @@ Namespace layers
                 .style = LegendStyles.Rectangle,
                 .title = stream.defaultTitle
             }
-            Dim histData As HistProfile = binData(0).NewModel(legend)
-            Dim colorData As New NamedValue(Of Color) With {
-                .Name = legend.title,
-                .Value = color.TranslateColor
-            }
             Dim css As CSSEnvirnment = stream.g.LoadEnvironment
-            Dim alpha As Double = Me.alpha * 255
             Dim rect = stream.canvas.PlotRegion(css)
+            Dim raw As Double() = binData(0) _
+                .Select(Function(b) b.Raw) _
+                .IteratesALL _
+                .ToArray
 
-            Call HistogramPlot.DrawSample(
-                stream.g, rect, histData, colorData,
+            ' 委派给新引擎的 HistogramPlot：共享画布 + 跨图层联合坐标
+            Call LayerRender.DrawHistogram(
+                g:=stream.g,
                 scaler:=stream.scale,
-                alpha:=alpha,
-                commentText:=stream.ggplot.commentText
+                theme:=stream.theme,
+                data:=raw,
+                bins:=bins,
+                color:=color.TranslateColor
             )
 
             Return New ggplotLegendElement With {

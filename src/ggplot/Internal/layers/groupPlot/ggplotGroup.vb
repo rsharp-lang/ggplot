@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::908851c0ed6076e4a76ee487f4c6ae6f, src\ggplot\Internal\layers\groupPlot\ggplotGroup.vb"
+#Region "Microsoft.VisualBasic::908851c0ed6076e4a76ee487f4c6ae6f, src\ggplot\Internal\layers\groupPlot\ggplotGroup.vb"
 
     ' Author:
     ' 
@@ -61,7 +61,8 @@ Imports System.Drawing
 Imports ggplot.colors
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Math.LinearAlgebra
 Imports Microsoft.VisualBasic.Math.Quantile

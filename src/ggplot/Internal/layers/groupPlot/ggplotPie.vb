@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::f818c0e6c9038a106fa0472aa8ae27d0, src\ggplot\Internal\layers\groupPlot\ggplotPie.vb"
+#Region "Microsoft.VisualBasic::f818c0e6c9038a106fa0472aa8ae27d0, src\ggplot\Internal\layers\groupPlot\ggplotPie.vb"
 
     ' Author:
     ' 
@@ -59,8 +59,9 @@
 
 Imports System.Drawing
 Imports ggplot.elements.legend
-Imports Microsoft.VisualBasic.Data.ChartPlots.Fractions
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.d3js.scale
 Imports Microsoft.VisualBasic.MIME.Html.CSS

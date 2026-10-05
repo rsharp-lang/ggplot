@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::fef0131258ae6c35b04dbba98bafd7cc, src\ggpubr\layers\ggplotTextRepelLabel.vb"
+#Region "Microsoft.VisualBasic::fef0131258ae6c35b04dbba98bafd7cc, src\ggpubr\layers\ggplotTextRepelLabel.vb"
 
     ' Author:
     ' 
@@ -60,7 +60,8 @@ Imports System.IO
 Imports ggplot
 Imports ggplot.elements.legend
 Imports ggplot.layers
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Math2D
 Imports Microsoft.VisualBasic.Imaging.Physics.layout

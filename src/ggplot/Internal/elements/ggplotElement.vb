@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::13247d50d3bf6beb65f72fafc0713db5, src\ggplot\Internal\elements\ggplotElement.vb"
+#Region "Microsoft.VisualBasic::13247d50d3bf6beb65f72fafc0713db5, src\ggplot\Internal\elements\ggplotElement.vb"
 
     ' Author:
     ' 
@@ -56,7 +56,8 @@
 #End Region
 
 Imports ggplot.options
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
 
 Namespace elements
 

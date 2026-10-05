@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::efa650390c06f2b20bae41da5438bd66, src\ggplot\Internal\colors\ggplotColorMap.vb"
+#Region "Microsoft.VisualBasic::efa650390c06f2b20bae41da5438bd66, src\ggplot\Internal\colors\ggplotColorMap.vb"
 
     ' Author:
     ' 
@@ -58,8 +58,9 @@
 #End Region
 
 Imports System.Runtime.CompilerServices
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
+Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Internal.Object

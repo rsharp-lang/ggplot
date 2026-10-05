@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::1000ac3f4bbb85dcc084a473a0b7ac83, src\ggplot\Internal\layers\groupPlot\ggplotBarplot.vb"
+#Region "Microsoft.VisualBasic::1000ac3f4bbb85dcc084a473a0b7ac83, src\ggplot\Internal\layers\groupPlot\ggplotBarplot.vb"
 
     ' Author:
     ' 
@@ -59,7 +59,8 @@ Imports System.Drawing
 Imports System.Math
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Math
 Imports Microsoft.VisualBasic.MIME.Html.CSS

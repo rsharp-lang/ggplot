@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::e0c8aef299dd90f7aa7babcdf6ce0fe6, src\ggplot\Internal\options\ggplotColorProfile.vb"
+#Region "Microsoft.VisualBasic::e0c8aef299dd90f7aa7babcdf6ce0fe6, src\ggplot\Internal\options\ggplotColorProfile.vb"
 
     ' Author:
     ' 

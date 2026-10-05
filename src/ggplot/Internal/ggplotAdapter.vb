@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::2402b4d61f22be7b50d1732828e9b8dd, src\ggplot\Internal\ggplotAdapter.vb"
+#Region "Microsoft.VisualBasic::2402b4d61f22be7b50d1732828e9b8dd, src\ggplot\Internal\ggplotAdapter.vb"
 
     ' Author:
     ' 

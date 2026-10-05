@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::50dea67a358ce229f55016d48120d148, src\ggplot\ggplot2.vb"
+#Region "Microsoft.VisualBasic::50dea67a358ce229f55016d48120d148, src\ggplot\ggplot2.vb"
 
     ' Author:
     ' 
@@ -72,8 +72,9 @@ Imports ggplot.options
 Imports Microsoft.VisualBasic.ApplicationServices.Debugging.Logging
 Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
+Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Shapes

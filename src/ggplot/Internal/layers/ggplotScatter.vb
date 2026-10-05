@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::99f11e48274429bf4829926745549f7b, src\ggplot\Internal\layers\ggplotScatter.vb"
+#Region "Microsoft.VisualBasic::99f11e48274429bf4829926745549f7b, src\ggplot\Internal\layers\ggplotScatter.vb"
 
 ' Author:
 ' 
@@ -71,9 +71,9 @@ Imports System.Runtime.InteropServices
 Imports ggplot.colors
 Imports ggplot.elements.legend
 Imports ggplot.options
-Imports Microsoft.VisualBasic.Data.ChartPlots
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
-Imports Microsoft.VisualBasic.Data.ChartPlots.Plots
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
+Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Driver
 Imports Microsoft.VisualBasic.Language
@@ -138,25 +138,14 @@ Namespace layers
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim legends As IggplotLegendElement = Nothing
             Dim serials As SerialData() = GetSerialData(stream, legends).ToArray
-            Dim brush As Func(Of PointData, Brush)
 
-            For Each serial As SerialData In serials
-                brush = serial.BrushHandler
-
-                Call Scatter2D.DrawScatter(
-                    g:=stream.g,
-                    scatter:=serial.pts,
-                    scaler:=stream.scale,
-                    fillPie:=True,
-                    shape:=serial.shape,
-                    pointSize:=serial.pointSize,
-                    getPointBrush:=brush,
-                    strokeCss:=CSS.Stroke.TryParse(stroke, Nothing),
-                    serialName:=serial.title,
-                    commentText:=stream.ggplot.commentText
-                ) _
-                .ToArray
-            Next
+            ' 委派给新引擎的 ScatterPlot：共享画布 + 跨图层联合坐标
+            Call LayerRender.DrawPoints(
+                g:=stream.g,
+                scaler:=stream.scale,
+                theme:=stream.theme,
+                serials:=serials
+            )
 
             Return legends
         End Function

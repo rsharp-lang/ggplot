@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::22415c36ac9b63bb0a6598b47258c6df, src\ggplot\Internal\render\g2d.vb"
+#Region "Microsoft.VisualBasic::22415c36ac9b63bb0a6598b47258c6df, src\ggplot\Internal\render\g2d.vb"
 
     ' Author:
     ' 
@@ -60,8 +60,8 @@ Imports System.Runtime.CompilerServices
 Imports ggplot.elements
 Imports ggplot.layers
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.Math

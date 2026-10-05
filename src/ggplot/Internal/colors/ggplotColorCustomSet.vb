@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::a034c8f7767dd61575f337abe586cd6c, src\ggplot\Internal\colors\ggplotColorCustomSet.vb"
+#Region "Microsoft.VisualBasic::a034c8f7767dd61575f337abe586cd6c, src\ggplot\Internal\colors\ggplotColorCustomSet.vb"
 
     ' Author:
     ' 
@@ -58,8 +58,9 @@
 Imports System.Runtime.CompilerServices
 Imports Microsoft.VisualBasic.ComponentModel.Collection
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
+Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Legend
 Imports Microsoft.VisualBasic.Linq
 Imports SMRUCC.Rsharp.Runtime
 Imports SMRUCC.Rsharp.Runtime.Vectorization

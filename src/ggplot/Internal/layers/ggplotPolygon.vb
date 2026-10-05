@@ -1,4 +1,4 @@
-﻿Imports System.Drawing
+Imports System.Drawing
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.Imaging

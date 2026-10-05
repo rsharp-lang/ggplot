@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::81030f5c5fc18c0ab4f183ca17938187, src\ggraph\Internal\graphRender.vb"
+#Region "Microsoft.VisualBasic::81030f5c5fc18c0ab4f183ca17938187, src\ggraph\Internal\graphRender.vb"
 
     ' Author:
     ' 
@@ -64,9 +64,9 @@ Imports ggplot.ggraph.layout
 Imports ggplot.ggraph.render
 Imports ggplot.layers
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
+Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Legend
 Imports Microsoft.VisualBasic.Data.visualize.Network
 Imports Microsoft.VisualBasic.Data.visualize.Network.Graph
 Imports Microsoft.VisualBasic.Data.visualize.Network.Styling
@@ -235,7 +235,7 @@ Namespace ggraph
                     End If
 
                     Try
-                        Legend.DrawLegend(g, pos, New SizeF(r, r), shape)
+                        Call g.DrawLegend(pos, New SizeF(r, r), shape)
                     Catch ex As Exception
                         Call Console.WriteLine(New RectangleF(pos, New SizeF(r, r)))
                     End Try

@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::1869baf714d16f930628d986e24e8e13, src\ggraph\Internal\render\nodeRender.vb"
+#Region "Microsoft.VisualBasic::1869baf714d16f930628d986e24e8e13, src\ggraph\Internal\render\nodeRender.vb"
 
     ' Author:
     ' 
@@ -65,7 +65,8 @@
 Imports System.Drawing
 Imports ggplot.elements.legend
 Imports ggplot.layers
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Legend
 Imports Microsoft.VisualBasic.Data.visualize.Network
 Imports Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic
 Imports Microsoft.VisualBasic.Data.visualize.Network.Graph
@@ -112,6 +113,21 @@ Namespace ggraph.render
             End If
         End Function
 
+        ''' <summary>
+        ''' 网络可视化库使用新引擎的 <see cref="MarkerShape"/> 描述节点形状，
+        ''' 这里转换回 ggplot 图例体系所使用的 <see cref="LegendStyles"/>
+        ''' </summary>
+        Private Shared Function toLegendStyle(shape As MarkerShape) As LegendStyles
+            Select Case shape
+                Case MarkerShape.Square : Return LegendStyles.Rectangle
+                Case MarkerShape.Diamond : Return LegendStyles.Diamond
+                Case MarkerShape.Triangle : Return LegendStyles.Triangle
+                Case MarkerShape.Hexagon : Return LegendStyles.Hexagon
+                Case MarkerShape.Star : Return LegendStyles.Pentacle
+                Case Else : Return LegendStyles.Circle
+            End Select
+        End Function
+
         Friend Function getShapes(graph As NetworkGraph) As Func(Of Node, LegendStyles)
             If shape Is Nothing Then
                 Return Function(any) LegendStyles.Circle
@@ -120,7 +136,7 @@ Namespace ggraph.render
                     .GetShapes(graph.vertex) _
                     .ToDictionary(Function(n) n.Key.label,
                                   Function(n)
-                                      Return n.Maps
+                                      Return toLegendStyle(n.Maps)
                                   End Function)
 
                 Return Function(n) map.TryGetValue(n.label, [default]:=LegendStyles.Circle)

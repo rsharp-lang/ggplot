@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::6cdf55ff007650e6f65e268d6d183b9e, src\ggplot\Internal\elements\legend\legendColorMapElement.vb"
+#Region "Microsoft.VisualBasic::6cdf55ff007650e6f65e268d6d183b9e, src\ggplot\Internal\elements\legend\legendColorMapElement.vb"
 
     ' Author:
     ' 
@@ -60,7 +60,8 @@
 #End Region
 
 Imports System.Drawing
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors

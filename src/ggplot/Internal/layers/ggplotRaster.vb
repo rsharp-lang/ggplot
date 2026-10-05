@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::4c46b7f121809c819b90731974fd15c8, src\ggplot\Internal\layers\ggplotRaster.vb"
+#Region "Microsoft.VisualBasic::4c46b7f121809c819b90731974fd15c8, src\ggplot\Internal\layers\ggplotRaster.vb"
 
     ' Author:
     ' 

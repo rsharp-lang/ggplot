@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::203007048bb4e08fd566ad477b2f275d, src\ggplot\Internal\ggplotPipeline.vb"
+#Region "Microsoft.VisualBasic::203007048bb4e08fd566ad477b2f275d, src\ggplot\Internal\ggplotPipeline.vb"
 
     ' Author:
     ' 
@@ -58,8 +58,8 @@
 
 Imports System.Drawing
 Imports System.Runtime.CompilerServices
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 
@@ -85,7 +85,7 @@ Public Class ggplotPipeline
     Friend baseData As ggplotData
 
     ''' <summary>
-    ''' get <see cref="Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas.Theme"/> object from <see cref="ggplot.ggplotTheme"/>
+    ''' get <see cref="Microsoft.VisualBasic.Data.Plots.Canvas.Theme"/> object from <see cref="ggplot.ggplotTheme"/>
     ''' </summary>
     ''' <returns></returns>
     Public ReadOnly Property theme As Theme

@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::3d18fb2d4a63a2ff8c0774a850947042, src\ggplot\Internal\colors\ggplotColorLiteral.vb"
+#Region "Microsoft.VisualBasic::3d18fb2d4a63a2ff8c0774a850947042, src\ggplot\Internal\colors\ggplotColorLiteral.vb"
 
     ' Author:
     ' 
@@ -56,8 +56,9 @@
 #End Region
 
 Imports System.Drawing
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
+Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports SMRUCC.Rsharp.Runtime.Vectorization
 Imports REnv = SMRUCC.Rsharp.Runtime

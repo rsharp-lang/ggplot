@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::456cf3a8a8032676ea3fcfc81e92405f, src\ggplot\Internal\options\ggplotOption.vb"
+#Region "Microsoft.VisualBasic::456cf3a8a8032676ea3fcfc81e92405f, src\ggplot\Internal\options\ggplotOption.vb"
 
     ' Author:
     ' 

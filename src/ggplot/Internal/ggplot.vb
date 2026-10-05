@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::e0a7b9f517447550e3d30921e4b92c43, src\ggplot\Internal\ggplot.vb"
+#Region "Microsoft.VisualBasic::e0a7b9f517447550e3d30921e4b92c43, src\ggplot\Internal\ggplot.vb"
 
     ' Author:
     ' 
@@ -76,9 +76,9 @@ Imports ggplot.options
 Imports ggplot.render
 Imports Microsoft.VisualBasic.ComponentModel.DataStructures
 Imports Microsoft.VisualBasic.Data
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
-Imports Microsoft.VisualBasic.Data.ChartPlots.Plot3D.Device
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
+Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Device
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.BitmapImage
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
@@ -126,7 +126,7 @@ Imports TextureBrush = Microsoft.VisualBasic.Imaging.TextureBrush
 ''' graphics drawing engine of the ggplot library
 ''' </summary>
 ''' <remarks>
-''' ggplot is a chart <see cref="ChartPlots.Graphic.Plot"/>
+''' ggplot is a chart <see cref="Microsoft.VisualBasic.Data.Plots.Canvas.Plot"/>
 ''' </remarks>
 Public Class ggplot : Inherits Plot
     Implements SaveGdiBitmap
@@ -353,7 +353,7 @@ Public Class ggplot : Inherits Plot
                 canvas:=g,
                 camera:=camera,
                 region:=canvas,
-                theme:=theme
+                theme:=ThemeBridge.ToPlot3DTheme(theme)
             )
 
         Call Draw2DElements(g, canvas, legends)

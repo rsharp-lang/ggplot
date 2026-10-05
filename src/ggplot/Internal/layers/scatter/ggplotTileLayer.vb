@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::822bd4703a01c615fba778e712aa43a2, src\ggplot\Internal\layers\scatter\ggplotTileLayer.vb"
+#Region "Microsoft.VisualBasic::822bd4703a01c615fba778e712aa43a2, src\ggplot\Internal\layers\scatter\ggplotTileLayer.vb"
 
     ' Author:
     ' 
@@ -59,8 +59,9 @@
 
 Imports System.Drawing
 Imports ggplot.elements.legend
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
+Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports Microsoft.VisualBasic.Math

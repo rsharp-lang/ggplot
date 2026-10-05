@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::ffa593e7eb9f07d6a4ee031f5740d3c9, src\ggplot\Internal\elements\legend\legendGroupElement.vb"
+#Region "Microsoft.VisualBasic::ffa593e7eb9f07d6a4ee031f5740d3c9, src\ggplot\Internal\elements\legend\legendGroupElement.vb"
 
     ' Author:
     ' 
@@ -60,8 +60,9 @@
 #End Region
 
 Imports System.Drawing
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
+Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.MIME.Html.Render

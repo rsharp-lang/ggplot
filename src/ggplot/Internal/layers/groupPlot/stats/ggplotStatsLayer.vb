@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::fe184578907c05da71d7175453a339fc, src\ggplot\Internal\layers\groupPlot\stats\ggplotStatsLayer.vb"
+#Region "Microsoft.VisualBasic::fe184578907c05da71d7175453a339fc, src\ggplot\Internal\layers\groupPlot\stats\ggplotStatsLayer.vb"
 
     ' Author:
     ' 

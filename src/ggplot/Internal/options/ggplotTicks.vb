@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::b0d6053ba6a88ca9cb919b5c3ef77d55, src\ggplot\Internal\options\ggplotTicks.vb"
+#Region "Microsoft.VisualBasic::b0d6053ba6a88ca9cb919b5c3ef77d55, src\ggplot\Internal\options\ggplotTicks.vb"
 
     ' Author:
     ' 

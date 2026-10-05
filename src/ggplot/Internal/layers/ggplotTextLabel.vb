@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::e718d0e025000446a449af0e24ede8ad, src\ggplot\Internal\layers\ggplotTextLabel.vb"
+#Region "Microsoft.VisualBasic::e718d0e025000446a449af0e24ede8ad, src\ggplot\Internal\layers\ggplotTextLabel.vb"
 
     ' Author:
     ' 
@@ -59,7 +59,8 @@
 
 Imports System.Drawing
 Imports ggplot.elements.legend
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.d3js.Layout
 Imports Microsoft.VisualBasic.Imaging.Drawing2D

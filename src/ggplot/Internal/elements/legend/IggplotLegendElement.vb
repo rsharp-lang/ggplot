@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::3bd8e823eb866d02921ec4cd52b430bb, src\ggplot\Internal\elements\legend\IggplotLegendElement.vb"
+#Region "Microsoft.VisualBasic::3bd8e823eb866d02921ec4cd52b430bb, src\ggplot\Internal\elements\legend\IggplotLegendElement.vb"
 
     ' Author:
     ' 
@@ -60,7 +60,8 @@
 #End Region
 
 Imports System.Drawing
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 

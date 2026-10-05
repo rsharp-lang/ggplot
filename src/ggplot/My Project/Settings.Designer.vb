@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::48876c82236266970a4fd532632f2d6e, src\ggplot\My Project\Settings.Designer.vb"
+#Region "Microsoft.VisualBasic::48876c82236266970a4fd532632f2d6e, src\ggplot\My Project\Settings.Designer.vb"
 
     ' Author:
     ' 

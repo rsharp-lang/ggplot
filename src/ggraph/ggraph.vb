@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::3b6ee9b1e6994fcec5cd99f805e92632, src\ggraph\ggraph.vb"
+#Region "Microsoft.VisualBasic::3b6ee9b1e6994fcec5cd99f805e92632, src\ggraph\ggraph.vb"
 
     ' Author:
     ' 

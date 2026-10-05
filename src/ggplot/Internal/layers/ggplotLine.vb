@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::c76c1d379a503c411363cb7d12cfb712, src\ggplot\Internal\layers\ggplotLine.vb"
+#Region "Microsoft.VisualBasic::c76c1d379a503c411363cb7d12cfb712, src\ggplot\Internal\layers\ggplotLine.vb"
 
 ' Author:
 ' 
@@ -58,9 +58,9 @@
 #End Region
 
 Imports ggplot.elements.legend
-Imports Microsoft.VisualBasic.Data.ChartPlots
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
-Imports Microsoft.VisualBasic.Data.ChartPlots.Plots
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
+Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Math.Interpolation
 Imports SMRUCC.Rsharp.Runtime.Vectorization
@@ -168,13 +168,14 @@ Namespace layers
             Dim legends As IggplotLegendElement = Nothing
             Dim serials As SerialData() = GetData(stream, legends)
 
-            For Each serial As SerialData In serials
-                Call LinePlot2D.DrawLine(
-                    stream.g, stream.canvas, stream.scale,
-                    serial,
-                    interplot:=If(bspline, Splines.B_Spline, Splines.None)
-                )
-            Next
+            ' 委派给新引擎的 LinePlot：共享画布 + 跨图层联合坐标
+            Call LayerRender.DrawLines(
+                g:=stream.g,
+                scaler:=stream.scale,
+                theme:=stream.theme,
+                serials:=serials,
+                smooth:=bspline
+            )
 
             Return legends
         End Function

@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::4b2b8eb1989c66fa81950b79b03bbb6a, src\ggplot\Internal\layers\layer3\ggplotScatter3d.vb"
+#Region "Microsoft.VisualBasic::4b2b8eb1989c66fa81950b79b03bbb6a, src\ggplot\Internal\layers\layer3\ggplotScatter3d.vb"
 
     ' Author:
     ' 
@@ -58,9 +58,10 @@
 
 Imports System.Drawing
 Imports ggplot.elements.legend
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
-Imports Microsoft.VisualBasic.Data.ChartPlots.Plot3D.Device
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
+Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Legend
+Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Device
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing3D
 Imports SMRUCC.Rsharp.Runtime.Vectorization

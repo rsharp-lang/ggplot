@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::26437d02bd67083568f5b753c6a20d79, src\ggplot\Internal\layers\scatter\ggplotSegments.vb"
+#Region "Microsoft.VisualBasic::26437d02bd67083568f5b753c6a20d79, src\ggplot\Internal\layers\scatter\ggplotSegments.vb"
 
 ' Author:
 ' 
@@ -57,7 +57,8 @@
 
 Imports System.Drawing
 Imports ggplot.elements.legend
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports SMRUCC.Rsharp.Runtime.Vectorization

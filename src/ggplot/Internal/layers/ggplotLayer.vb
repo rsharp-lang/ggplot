@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::388fc73022136448cf72703b9b321cd8, src\ggplot\Internal\layers\ggplotLayer.vb"
+#Region "Microsoft.VisualBasic::388fc73022136448cf72703b9b321cd8, src\ggplot\Internal\layers\ggplotLayer.vb"
 
     ' Author:
     ' 
@@ -65,9 +65,9 @@ Imports ggplot.elements
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel.TypeCast
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
+Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors

@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::2ed3643b8ff01ea0c7178126d335d49e, src\ggplot\Internal\layers\groupPlot\ggplotJitter.vb"
+#Region "Microsoft.VisualBasic::2ed3643b8ff01ea0c7178126d335d49e, src\ggplot\Internal\layers\groupPlot\ggplotJitter.vb"
 
     ' Author:
     ' 
@@ -68,7 +68,8 @@
 Imports System.Drawing
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
-Imports Microsoft.VisualBasic.Data.ChartPlots
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
 Imports Microsoft.VisualBasic.Imaging
 Imports Brush = Microsoft.VisualBasic.Imaging.Brush
 Imports SolidBrush = Microsoft.VisualBasic.Imaging.SolidBrush
@@ -96,28 +97,28 @@ Namespace layers
             Dim colors As Func(Of Object, String) = getColors(stream, allGroupData.Select(Function(i) i.name))
             Dim brush As Brush
 
+            Dim groups As New List(Of BoxGroup)
+
             For Each group As NamedCollection(Of Double) In allGroupData
-                y = group.Select(AddressOf stream.scale.TranslateY).ToArray
-                x = xscale(group.name) _
-                    .Replicate(y.Length) _
-                    .ToArray
-                x = Scatter.Jitter(x, width_jit:=groupWidth * binWidth)
-                color = colors(group.name).TranslateColor.Alpha(alpha * 255)
+                Dim groupColor As Color = colors(group.name).TranslateColor.Alpha(alpha * 255)
 
                 If adjust <> adjustColor.none Then
                     If adjust = adjustColor.darker Then
-                        color = color.Darken
+                        groupColor = groupColor.Darken
                     Else
-                        color = color.Lighten
+                        groupColor = groupColor.Lighten
                     End If
                 End If
 
-                brush = New SolidBrush(color)
-
-                For i As Integer = 0 To x.Length - 1
-                    Call g.DrawCircle(New PointF(x(i), y(i)), CSng(radius), brush)
-                Next
+                Call groups.Add(New BoxGroup With {
+                    .Name = group.name,
+                    .Data = DirectCast(group, IEnumerable(Of Double)).ToArray,
+                    .Color = groupColor
+                })
             Next
+
+            ' 委派给新引擎的 JitterPlot：共享画布 + 跨图层联合坐标
+            Call LayerRender.DrawJitters(g, stream.scale, stream.theme, groups, jitterWidth:=CSng(groupWidth))
 
             Return Nothing
         End Function

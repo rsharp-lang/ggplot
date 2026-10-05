@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::eda7210996fbb0eb2b172b281537f75a, src\ggplot\Internal\render\g3d.vb"
+#Region "Microsoft.VisualBasic::eda7210996fbb0eb2b172b281537f75a, src\ggplot\Internal\render\g3d.vb"
 
 ' Author:
 ' 
@@ -61,10 +61,10 @@ Imports ggplot.elements.legend
 Imports ggplot.layers
 Imports ggplot.layers.layer3d
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
-Imports Microsoft.VisualBasic.Data.ChartPlots.Plot3D.Device
-Imports Microsoft.VisualBasic.Data.ChartPlots.Plot3D.Model
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
+Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Device
+Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Model
 Imports Microsoft.VisualBasic.Emit.Delegates
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing3D

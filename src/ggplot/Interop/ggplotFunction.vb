@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::d3f1dced676b5f8f0500847f95690f9e, src\ggplot\Interop\ggplotFunction.vb"
+#Region "Microsoft.VisualBasic::d3f1dced676b5f8f0500847f95690f9e, src\ggplot\Interop\ggplotFunction.vb"
 
     ' Author:
     ' 
@@ -60,8 +60,9 @@ Imports ggplot.layers
 Imports ggplot.layers.layer3d
 Imports ggplot.options
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
+Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Driver
 Imports Microsoft.VisualBasic.MIME.Html.CSS

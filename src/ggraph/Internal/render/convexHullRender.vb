@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::d2ca024ae1f5795e7bebef277ecfe242, src\ggraph\Internal\render\convexHullRender.vb"
+#Region "Microsoft.VisualBasic::d2ca024ae1f5795e7bebef277ecfe242, src\ggraph\Internal\render\convexHullRender.vb"
 
     ' Author:
     ' 

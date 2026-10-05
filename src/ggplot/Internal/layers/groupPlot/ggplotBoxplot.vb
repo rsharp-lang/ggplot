@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::a131c3266116719438c1c71437958d3c, src\ggplot\Internal\layers\groupPlot\ggplotBoxplot.vb"
+#Region "Microsoft.VisualBasic::a131c3266116719438c1c71437958d3c, src\ggplot\Internal\layers\groupPlot\ggplotBoxplot.vb"
 
     ' Author:
     ' 
@@ -58,8 +58,8 @@
 Imports System.Drawing
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
-Imports Microsoft.VisualBasic.Data.ChartPlots.BoxPlot
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Math.LinearAlgebra
 Imports Microsoft.VisualBasic.MIME.Html.CSS
@@ -107,34 +107,18 @@ Namespace layers
             Dim labelFont As Font = css.GetFont(CSSFont.TryParse(stream.theme.tagCSS))
             Dim allGroupData = getDataGroups(stream).ToArray
             Dim colors As Func(Of Object, String) = getColors(stream, allGroupData.Select(Function(i) i.name))
-            Dim y As DataScaler = stream.scale
-            Dim plotRegion = stream.canvas.PlotRegion(css)
-            Dim bottom = plotRegion.Bottom
-            Dim top = plotRegion.Top
+            Dim groups As New List(Of BoxGroup)
 
             For Each group As NamedCollection(Of Double) In allGroupData
-                Dim x As Double = xscale(group.name)
-                Dim data As New NamedValue(Of Vector) With {
+                Call groups.Add(New BoxGroup With {
                     .Name = group.name,
-                    .Value = group.AsVector
-                }
-                Dim color As Color = colors(group.name).TranslateColor.Alpha(alpha * 255)
-
-                Call g.DrawLine(lineStroke, New PointF(x, top), New PointF(x, bottom))
-                Call Box.PlotBox(
-                    group:=data,
-                    x0:=x - boxWidth / 2,
-                    brush:=New SolidBrush(color),
-                    boxWidth:=boxWidth,
-                    fillBox:=True,
-                    lineWidth:=5,
-                    y:=y,
-                    dotSize:=10,
-                    showDataPoints:=False,
-                    showOutliers:=False,
-                    g:=g
-                )
+                    .Data = DirectCast(group, IEnumerable(Of Double)).ToArray,
+                    .Color = colors(group.name).TranslateColor.Alpha(alpha * 255)
+                })
             Next
+
+            ' 委派给新引擎的 BoxPlot：共享画布 + 跨图层联合坐标
+            Call LayerRender.DrawBoxes(g, stream.scale, stream.theme, groups)
 
             Return Nothing
         End Function

@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::ed650df4ce5abe1b01a9a210c8f69ce4, src\ggplot\Internal\colors\ggplotColorFactorMap.vb"
+#Region "Microsoft.VisualBasic::ed650df4ce5abe1b01a9a210c8f69ce4, src\ggplot\Internal\colors\ggplotColorFactorMap.vb"
 
     ' Author:
     ' 
@@ -55,8 +55,9 @@
 
 #End Region
 
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Canvas
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Legend
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
+Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Legend
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.Serialization.JSON

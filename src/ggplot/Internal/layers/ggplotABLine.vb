@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::2b83a763181f652bb57e1496935d005d, src\ggplot\Internal\layers\ggplotABLine.vb"
+#Region "Microsoft.VisualBasic::2b83a763181f652bb57e1496935d005d, src\ggplot\Internal\layers\ggplotABLine.vb"
 
     ' Author:
     ' 
@@ -60,7 +60,8 @@
 Imports System.Drawing
 Imports ggplot.elements
 Imports ggplot.elements.legend
-Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
 Imports Microsoft.VisualBasic.Imaging.d3js.scale
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Shapes
 Imports Microsoft.VisualBasic.MIME.Html.CSS

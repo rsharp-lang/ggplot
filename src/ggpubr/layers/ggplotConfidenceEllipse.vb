@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::06093a96ceca0e18383c4c9866e9cc3b, src\ggpubr\layers\ggplotConfidenceEllipse.vb"
+#Region "Microsoft.VisualBasic::06093a96ceca0e18383c4c9866e9cc3b, src\ggpubr\layers\ggplotConfidenceEllipse.vb"
 
     ' Author:
     ' 
@@ -61,8 +61,7 @@ Imports ggplot
 Imports ggplot.elements.legend
 Imports ggplot.layers
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
-Imports Microsoft.VisualBasic.Data.ChartPlots
-Imports Microsoft.VisualBasic.Data.ChartPlots.Statistics.PCA
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.d3js.scale
 Imports Microsoft.VisualBasic.Imaging.Math2D
@@ -87,7 +86,7 @@ Public Class ggplotConfidenceEllipse : Inherits ggplotGroup
                 .Select(Function(p) stream.scale.Translate(p)) _
                 .ToArray
             Dim group As New Polygon2D(translate)
-            Dim shape As Ellipse = Ellipse.ConfidenceEllipse(group, level)
+            Dim shape As Ellipse = Ellipse.ConfidenceEllipse(group, ChiSquareTest.ChiSquareValue(level))
             Dim path As GraphicsPath = shape.BuildPath
             Dim fill As Brush = group_data.name.GetBrush
 

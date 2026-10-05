@@ -1,4 +1,4 @@
-﻿#Region "Microsoft.VisualBasic::e25c127e759f33df4f2dbd2eb055717c, src\ggraph\Internal\layout\random.vb"
+#Region "Microsoft.VisualBasic::e25c127e759f33df4f2dbd2eb055717c, src\ggraph\Internal\layout\random.vb"
 
     ' Author:
     ' 
