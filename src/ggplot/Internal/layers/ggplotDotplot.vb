@@ -45,6 +45,7 @@ Namespace layers
             Dim groups As String() = resolveGroups(reader, source, x.Length, ggplot.environment)
             Dim colors As Func(Of Object, String) = colorMap.ColorHandler(ggplot, groups.Distinct.ToArray)
             Dim radius As Single = CSng(dotsize / 2)
+            Dim center As Double() = stream.TranslateX()
 
             For Each bucket As NamedCollection(Of Integer) In groupIndexes(groups)
                 For Each bin As NamedCollection(Of Integer) In binIndexes(x, bucket.value)
@@ -76,7 +77,7 @@ Namespace layers
                                 If j Mod 2 = 0 Then offset += dotsize
                         End Select
 
-                        Dim point As New PointF(stream.scale.TranslateX(xi), stream.scale.TranslateY(yi))
+                        Dim point As New PointF(CSng(center(index)), stream.scale.TranslateY(yi))
                         Dim fill As Brush = colors(groups(index)).GetBrush
                         Dim diameter As Single = CSng(dotsize)
 
