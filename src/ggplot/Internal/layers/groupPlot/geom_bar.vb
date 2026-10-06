@@ -370,11 +370,21 @@ Namespace layers
                 Return positionAdjust
             End If
 
-            If position.StringEmpty Then
+            If position Is Nothing Then
                 If stat = "percentage" Then
                     Return New ggplotPositionFill
                 Else
                     Return New ggplotPositionIdentity
+                End If
+            End If
+
+            If TypeOf position Is String Then
+                If DirectCast(position, String).StringEmpty Then
+                    If stat = "percentage" Then
+                        Return New ggplotPositionFill
+                    Else
+                        Return New ggplotPositionIdentity
+                    End If
                 End If
             End If
 
