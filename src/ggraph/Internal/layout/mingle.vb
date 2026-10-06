@@ -87,12 +87,12 @@ Namespace ggraph.layout
         Private Shared Sub addPath(paths As Dictionary(Of String, PointF()), u As Node, v As Node)
             Dim key As String = $"{u.label}->{v.label}"
 
-            If paths.ContainsKey(key) Then Exit For
+            If paths.ContainsKey(key) Then Return
 
             Dim uu As AbstractVector = u.data.initialPostion
             Dim vv As AbstractVector = v.data.initialPostion
 
-            If uu Is Nothing OrElse vv Is Nothing Then Exit For
+            If uu Is Nothing OrElse vv Is Nothing Then Return
 
             Call paths.Add(key, New PointF() {
                 New PointF(CSng(uu.x), CSng(uu.y)),

@@ -135,6 +135,57 @@ Module ggraphPkg
         Return render
     End Function
 
+    ''' <summary>
+    ''' geom_edge_bundle(): draws the MINGLE bundled edges as smooth curves
+    ''' </summary>
+    ''' <param name="color"></param>
+    ''' <param name="alpha"></param>
+    ''' <param name="lineWidth"></param>
+    ''' <param name="maxSamples">the maximum number of the sample points of a curve</param>
+    ''' <returns></returns>
+    <ExportAPI("geom_edge_bundle")>
+    <RApiReturn(GetType(edgeBundleRender))>
+    Public Function geom_edge_bundle(Optional color As String = "black",
+                                     Optional alpha As Double = 0.5,
+                                     Optional lineWidth As Single = 1,
+                                     Optional maxSamples As Integer = 24) As edgeBundleRender
+
+        Return New edgeBundleRender With {
+            .color = RColorPalette.getColor(color),
+            .alpha = alpha,
+            .lineWidth = lineWidth,
+            .maxSamples = maxSamples
+        }
+    End Function
+
+    ''' <summary>
+    ''' geom_edge_orth(): draws the orthogonally routed edges, whose bends
+    ''' are produced by the layout_orthogonal layout
+    ''' </summary>
+    ''' <param name="color"></param>
+    ''' <param name="width"></param>
+    ''' <returns></returns>
+    <ExportAPI("geom_edge_orth")>
+    <RApiReturn(GetType(edgeRender))>
+    Public Function geom_edge_orth(Optional color As Object = "black",
+                                   <RRawVectorArgument>
+                                   Optional width As Object = "1,2",
+                                   Optional env As Environment = Nothing) As Object
+
+        Dim colorStr As String = RColorPalette.getColor(color)
+        Dim linkWidth = SMRUCC.Rsharp.GetDoubleRange(width, env, [default]:="1,2")
+
+        If linkWidth Like GetType(Message) Then
+            Return linkWidth.TryCast(Of Message)
+        End If
+
+        Return New edgeRender With {
+            .color = colorStr,
+            .width = linkWidth.TryCast(Of DoubleRange),
+            .drawEdgeBends = True
+        }
+    End Function
+
     <ExportAPI("geom_node_point")>
     Public Function geom_node_point(<RDefaultExpression()>
                                     Optional mapping As Object = "~aes()",

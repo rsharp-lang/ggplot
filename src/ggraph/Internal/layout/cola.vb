@@ -42,8 +42,8 @@ Namespace ggraph.layout
                 Dim position As PointF = readPosition(node)
                 Dim extent As Double = 1.0
 
-                If Not node.data Is Nothing Then
-                    extent = node.data.size * 2
+                If Not node.data Is Nothing AndAlso Not node.data.size Is Nothing AndAlso node.data.size.Length > 0 Then
+                    extent = node.data.size(Scan0) * 2
                 End If
 
                 Dim colaNode As New colaNS.Node()
@@ -148,10 +148,10 @@ Namespace ggraph.layout
             Dim links As New List(Of colaNS.Link(Of Integer))
 
             For Each edge In g.graphEdges
-                Dim link As New colaNS.Link(Of Integer)(all(edge.source).label, all(edge.target).label)
+                Dim link As New colaNS.Link(Of Integer)()
 
-                link.sourceIndex = index(all(edge.source).label)
-                link.targetIndex = index(all(edge.target).label)
+                link.source = index(edge.U.label)
+                link.target = index(edge.V.label)
 
                 Call links.Add(link)
             Next
@@ -162,7 +162,10 @@ Namespace ggraph.layout
 
             Dim coordinates As Double()() = engine.descent.x
 
-            If coordinates Is Nothing Then Exit For
+            If coordinates Is Nothing Then
+                Call log(env, " ~no result")
+                Return
+            End If
 
             For i As Integer = 0 To all.Length - 1
                 If all(i).data Is Nothing Then

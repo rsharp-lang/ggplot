@@ -71,6 +71,11 @@ Namespace ggraph.render
 
         Public Property color As String
         Public Property width As New DoubleRange({2, 5})
+        ''' <summary>
+        ''' draw the routed bends of the edges, which is required by the
+        ''' orthogonal edge routing
+        ''' </summary>
+        Public Property drawEdgeBends As Boolean = False
 
         Friend Function getWeightScale(graph As NetworkGraph) As Func(Of Edge, Single)
             Dim scale As DoubleRange = graph.graphEdges.Select(Function(e) e.weight).Range
@@ -100,7 +105,7 @@ Namespace ggraph.render
                 .ThrowEx = False,
                 .EdgeShadowDistance = 0,
                 .DefaultEdgeColor = edgeColor.ToHtmlColor,
-                .DrawEdgeBends = False,
+                .DrawEdgeBends = drawEdgeBends,
                 .DrawEdgeDirection = False
             }
             Dim engine As New EdgeRendering(config, scalePos:=stream.layout, graph)

@@ -1,4 +1,4 @@
-#Region "Microsoft.VisualBasic::50dea67a358ce229f55016d48120d148, src\ggplot\ggplot2.vb"
+﻿#Region "Microsoft.VisualBasic::50dea67a358ce229f55016d48120d148, src\ggplot\ggplot2.vb"
 
     ' Author:
     ' 
@@ -1214,7 +1214,7 @@ Module ggplot2
                               Optional outline As Boolean = False,
                               Optional size As Double = 0.5,
                               Optional alpha As Double = 0.7,
-                              Optional color As list = Nothing,
+                              Optional color As Object = Nothing,
                               Optional env As Environment = Nothing) As ggplotLayer
 
         Return New ggplotArea With {
@@ -1244,7 +1244,7 @@ Module ggplot2
                                 Optional outline As Boolean = False,
                                 Optional size As Double = 0.5,
                                 Optional alpha As Double = 0.5,
-                                Optional color As list = Nothing,
+                                Optional color As Object = Nothing,
                                 Optional env As Environment = Nothing) As ggplotLayer
 
         Return New ggplotArea With {
@@ -1283,7 +1283,7 @@ Module ggplot2
                                  Optional trim As Boolean = False,
                                  Optional outline As Boolean = True,
                                  Optional alpha As Double = 0.6,
-                                 Optional color As list = Nothing,
+                                 Optional color As Object = Nothing,
                                  Optional env As Environment = Nothing) As ggplotLayer
 
         Return New ggplotDensity With {
@@ -1318,7 +1318,7 @@ Module ggplot2
                                   Optional height As Double = 0.1,
                                   Optional lineend As String = "butt",
                                   Optional size As Double = 0.5,
-                                  Optional color As list = Nothing,
+                                  Optional color As Object = Nothing,
                                   Optional env As Environment = Nothing) As ggplotLayer
 
         Return New ggplotErrorbar With {
@@ -1424,7 +1424,7 @@ Module ggplot2
                                   Optional binRange As Double() = Nothing,
                                   Optional size As Double = 1,
                                   Optional alpha As Double = 1,
-                                  Optional color As list = Nothing,
+                                  Optional color As Object = Nothing,
                                   Optional env As Environment = Nothing) As ggplotLayer
 
         Return New ggplotFreqpoly With {
@@ -1461,7 +1461,7 @@ Module ggplot2
                                  Optional direction As String = "y",
                                  Optional dotsize As Double = 3,
                                  Optional alpha As Double = 1,
-                                 Optional color As list = Nothing,
+                                 Optional color As Object = Nothing,
                                  Optional env As Environment = Nothing) As ggplotLayer
 
         Return New ggplotDotplot With {
@@ -2685,7 +2685,7 @@ Module ggplot2
                                  Optional se_points As Integer = 128,
                                  Optional lineend As String = "butt",
                                  Optional size As Double = 1,
-                                 Optional color As list = Nothing,
+                                 Optional color As Object = Nothing,
                                  Optional env As Environment = Nothing) As ggplotLayer
 
         Return New ggplotSmooth With {

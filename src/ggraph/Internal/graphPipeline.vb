@@ -1,4 +1,4 @@
-#Region "Microsoft.VisualBasic::07b98d8442add5fb10fed87313da42c0, src\ggraph\Internal\graphPipeline.vb"
+﻿#Region "Microsoft.VisualBasic::07b98d8442add5fb10fed87313da42c0, src\ggraph\Internal\graphPipeline.vb"
 
 ' Author:
 ' 
@@ -55,6 +55,7 @@
 
 #End Region
 
+Imports System.Drawing
 Imports Microsoft.VisualBasic.Data.visualize.Network
 
 Namespace ggraph
@@ -62,6 +63,16 @@ Namespace ggraph
     Public Class graphPipeline : Inherits ggplotPipeline
 
         Friend ReadOnly labels As New List(Of LayoutLabel)
+
+        ''' <summary>
+        ''' the intermediate control points of the bundled edges, keyed by
+        ''' "source-&gt;target", which is produced by the MINGLE edge bundling
+        ''' </summary>
+        Friend Property bundlePaths As Dictionary(Of String, PointF())
+        ''' <summary>
+        ''' the routed bends of the orthogonal edges
+        ''' </summary>
+        Friend Property orthPaths As Dictionary(Of String, PointF())
 
     End Class
 End Namespace

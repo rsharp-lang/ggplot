@@ -1,6 +1,7 @@
 ﻿Imports System.Drawing
 Imports Microsoft.VisualBasic.Data.visualize.Network.Graph
 Imports Microsoft.VisualBasic.Data.visualize.Network.Layouts
+Imports Microsoft.VisualBasic.Data.visualize.Network.Layouts.Orthogonal
 Imports SMRUCC.Rsharp.Runtime
 Imports holaNS = Microsoft.VisualBasic.Data.visualize.Network.Layouts.Hola
 Imports orthoNS = Microsoft.VisualBasic.Data.visualize.Network.Layouts.Orthogonal

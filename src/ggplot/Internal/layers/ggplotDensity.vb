@@ -1,4 +1,4 @@
-Imports System.Drawing
+﻿Imports System.Drawing
 Imports ggplot.colors
 Imports ggplot.elements
 Imports ggplot.elements.legend
@@ -52,7 +52,7 @@ Namespace layers
             Dim css As CSSEnvirnment = g.LoadEnvironment
             Dim reader As ggplotReader = If(useCustomData, Me.reader, ggplot.base.reader)
             Dim source As Object = If(useCustomData, dataset, ggplot.data)
-            Dim y As Double() = stream.y.Where(Function(v) Not Double.IsNaN(v)).ToArray
+            Dim y As Double() = CLRVector.asNumeric(stream.x).Where(Function(v) Not Double.IsNaN(v)).ToArray
 
             If y.Length < 2 Then Return Nothing
 

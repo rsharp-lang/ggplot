@@ -95,7 +95,7 @@ Namespace ggraph
         End Sub
 
         Private Sub plotGraph(ByRef g As IGraphics, canvas As GraphicsRegion)
-            Dim force As ggforce = args.getValue(Of ggforce)(NameOf(ggforce), environment, Nothing)
+            Dim layout As ggLayout = args.getValue(Of ggLayout)(NameOf(ggLayout), environment, Nothing)
             Dim graph As NetworkGraph = DirectCast(data, NetworkGraph)
             Dim layers As New Queue(Of ggplotLayer)(
                 collection:=If(UnionGgplotLayers Is Nothing, Me.layers, UnionGgplotLayers(Me.layers))
@@ -104,8 +104,11 @@ Namespace ggraph
                 .Where(Function(l) TypeOf l Is nodeRender) _
                 .FirstOrDefault
 
-            If Not force Is Nothing Then
-                Call force.createLayout(graph, environment)
+            If Not layout Is Nothing Then
+                Dim frame As Rectangle = canvas.PlotRegion(g.LoadEnvironment)
+
+                layout.canvasSize = frame.Size
+                Call layout.Layout(graph, frame.Size, environment)
             End If
 
             If nodeLayer IsNot Nothing AndAlso Not nodeLayer.fill Is Nothing Then
@@ -125,6 +128,13 @@ Namespace ggraph
                 .y = Nothing,
                 .layout = scalePos
             }
+
+            ' 边捆绑布局会额外产出每条边的中间控制点，交给捆绑渲染图层消费
+            Dim bundler As mingle = TryCast(layout, mingle)
+
+            If Not bundler Is Nothing Then
+                stream.bundlePaths = bundler.GetPaths()
+            End If
 
             Do While layers.Count > 0
                 Call layers _
