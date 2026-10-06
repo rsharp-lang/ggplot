@@ -33,8 +33,10 @@ Imports Microsoft.VisualBasic.MIME.Html.Render
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim x As Double() = stream.TranslateX()
             Dim y As Double() = stream.y
+
+            If x.Length = 0 OrElse x.Length <> y.Length Then Return Nothing
             Dim css As CSSEnvirnment = stream.g.LoadEnvironment
-            Dim pen As Pen = css.GetPen(Stroke.TryParse($"black; stroke-width: {lineWidth}; stroke-opacity: {lineAlpha}"), allowNull:=False)
+            Dim pen As Pen = css.GetPen(Stroke.TryParse(stream.theme.lineStroke), allowNull:=True)
 
             For Each pair In pairs(x, y)
                 For i As Integer = 0 To pair.Length - 2
