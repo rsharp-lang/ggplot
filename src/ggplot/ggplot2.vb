@@ -1193,6 +1193,493 @@ Module ggplot2
         }
     End Function
 
+    ''' <summary>
+    ''' geom_area(): a one dimensional stacked area plot, the area between
+    ''' the y values and a baseline.
+    ''' </summary>
+    ''' <param name="mapping"></param>
+    ''' <param name="baseline">
+    ''' the baseline of the area: "zero", "min" or a numeric value
+    ''' </param>
+    ''' <param name="outline">draw the outline of the area</param>
+    ''' <param name="size">the width of the outline</param>
+    ''' <param name="alpha"></param>
+    ''' <param name="color"></param>
+    ''' <param name="env"></param>
+    ''' <returns></returns>
+    <ExportAPI("geom_area")>
+    <RApiReturn(GetType(ggplotArea))>
+    Public Function geom_area(Optional mapping As ggplotReader = Nothing,
+                              Optional baseline As Object = "zero",
+                              Optional outline As Boolean = False,
+                              Optional size As Double = 0.5,
+                              Optional alpha As Double = 0.7,
+                              Optional color As list = Nothing,
+                              Optional env As Environment = Nothing) As ggplotLayer
+
+        Return New ggplotArea With {
+            .reader = mapping,
+            .baseline = baseline,
+            .outline = outline,
+            .line_width = size,
+            .alpha = alpha,
+            .colorMap = ggplotColorMap.CreateColorMap(color, alpha, env)
+        }
+    End Function
+
+    ''' <summary>
+    ''' geom_ribbon(): fills the area between the ymin and the ymax aes
+    ''' mappings, which is mostly used to draw the confidence band of a model.
+    ''' </summary>
+    ''' <param name="mapping">requires the ymin and the ymax mappings</param>
+    ''' <param name="outline">draw the outline of the band</param>
+    ''' <param name="size">the width of the outline</param>
+    ''' <param name="alpha"></param>
+    ''' <param name="color"></param>
+    ''' <param name="env"></param>
+    ''' <returns></returns>
+    <ExportAPI("geom_ribbon")>
+    <RApiReturn(GetType(ggplotArea))>
+    Public Function geom_ribbon(Optional mapping As ggplotReader = Nothing,
+                                Optional outline As Boolean = False,
+                                Optional size As Double = 0.5,
+                                Optional alpha As Double = 0.5,
+                                Optional color As list = Nothing,
+                                Optional env As Environment = Nothing) As ggplotLayer
+
+        Return New ggplotArea With {
+            .reader = mapping,
+            .outline = outline,
+            .line_width = size,
+            .alpha = alpha,
+            .colorMap = ggplotColorMap.CreateColorMap(color, alpha, env)
+        }
+    End Function
+
+    ''' <summary>
+    ''' geom_density(): a smooth density estimate of the plot data.
+    ''' </summary>
+    ''' <param name="mapping"></param>
+    ''' <param name="bw">
+    ''' the bandwidth of the gaussian kernel, could be "scott", "silverman"
+    ''' or a numeric value
+    ''' </param>
+    ''' <param name="adjust">the adjustment factor of the bandwidth</param>
+    ''' <param name="bins">the number of the density evaluation grid points</param>
+    ''' <param name="cut">extend the density curve beyond the data range by cut*bw</param>
+    ''' <param name="trim">only evaluate the density inside the data range</param>
+    ''' <param name="outline">draw the outline of the density curve</param>
+    ''' <param name="alpha"></param>
+    ''' <param name="color"></param>
+    ''' <param name="env"></param>
+    ''' <returns></returns>
+    <ExportAPI("geom_density")>
+    <RApiReturn(GetType(ggplotDensity))>
+    Public Function geom_density(Optional mapping As ggplotReader = Nothing,
+                                 Optional bw As Object = "scott",
+                                 Optional adjust As Double = 1,
+                                 Optional bins As Integer = 512,
+                                 Optional cut As Double = 3,
+                                 Optional trim As Boolean = False,
+                                 Optional outline As Boolean = True,
+                                 Optional alpha As Double = 0.6,
+                                 Optional color As list = Nothing,
+                                 Optional env As Environment = Nothing) As ggplotLayer
+
+        Return New ggplotDensity With {
+            .reader = mapping,
+            .bw = bw,
+            .adjust = adjust,
+            .bins = bins,
+            .cut = cut,
+            .trim = trim,
+            .outline = outline,
+            .alpha = alpha,
+            .colorMap = ggplotColorMap.CreateColorMap(color, alpha, env)
+        }
+    End Function
+
+    ''' <summary>
+    ''' geom_errorbar(): vertical error bars described by the ymin/ymax
+    ''' aes mappings.
+    ''' </summary>
+    ''' <param name="mapping"></param>
+    ''' <param name="width">the width of the error bar caps</param>
+    ''' <param name="height">the symmetric error size when the bounds are not mapped</param>
+    ''' <param name="lineend"></param>
+    ''' <param name="size"></param>
+    ''' <param name="color"></param>
+    ''' <param name="env"></param>
+    ''' <returns></returns>
+    <ExportAPI("geom_errorbar")>
+    <RApiReturn(GetType(ggplotErrorbar))>
+    Public Function geom_errorbar(Optional mapping As ggplotReader = NULL,
+                                  Optional width As Double = 0.2,
+                                  Optional height As Double = 0.1,
+                                  Optional lineend As String = "butt",
+                                  Optional size As Double = 0.5,
+                                  Optional color As list = Nothing,
+                                  Optional env As Environment = Nothing) As ggplotLayer
+
+        Return New ggplotErrorbar With {
+            .reader = mapping,
+            .width = width,
+            .height = height,
+            .orientation = "vertical",
+            .lineend = lineend,
+            .line_width = size,
+            .colorMap = ggplotColorMap.CreateColorMap(color, 1, env)
+        }
+    End Function
+
+    ''' <summary>
+    ''' geom_errorbarh(): horizontal error bars described by the xmin/xmax
+    ''' aes mappings.
+    ''' </summary>
+    ''' <param name="mapping"></param>
+    ''' <param name="height">the height of the error bar caps</param>
+    ''' <param name="width">the symmetric error size when the bounds are not mapped</param>
+    ''' <param name="lineend"></param>
+    ''' <param name="size"></param>
+    ''' <param name="color"></param>
+    ''' <param name="env"></param>
+    ''' <returns></returns>
+    <ExportAPI("geom_errorbarh")>
+    <RApiReturn(GetType(ggplotErrorbar))>
+    Public Function geom_errorbarh(Optional mapping As ggplotReader = NULL,
+                                   Optional height As Double = 0.2,
+                                   Optional width As Double = 0.1,
+                                   Optional lineend As String = "butt",
+                                   Optional size As Double = 0.5,
+                                   Optional color As list = Nothing,
+                                   Optional env As Environment = Nothing) As ggplotLayer
+
+        Return New ggplotErrorbar With {
+            .reader = mapping,
+            .width = height,
+            .height = width,
+            .orientation = "horizontal",
+            .lineend = lineend,
+            .line_width = size,
+            .colorMap = ggplotColorMap.CreateColorMap(color, 1, env)
+        }
+    End Function
+
+    ''' <summary>
+    ''' geom_label(): draws a rectangle behind the text, making the labels
+    ''' readable when they overlap with the data.
+    ''' </summary>
+    ''' <param name="mapping"></param>
+    ''' <param name="fill">the background box fill color</param>
+    ''' <param name="color">the background box stroke color</param>
+    ''' <param name="size">the width of the background box stroke</param>
+    ''' <param name="padding">the padding between the text and the box</param>
+    ''' <param name="fontSize"></param>
+    ''' <param name="label"></param>
+    ''' <param name="alpha"></param>
+    ''' <param name="env"></param>
+    ''' <returns></returns>
+    <ExportAPI("geom_label")>
+    <RApiReturn(GetType(ggplotTextLabel))>
+    Public Function geom_label(Optional mapping As ggplotReader = NULL,
+                               Optional fill As String = "white",
+                               Optional color As String = "black",
+                               Optional size As Double = 0.5,
+                               Optional padding As Double = 2,
+                               Optional fontSize As Single? = Nothing,
+                               Optional label As ggplotReader = Nothing,
+                               Optional alpha As Double = 1,
+                               Optional env As Environment = Nothing) As ggplotLayer
+
+        Return New ggplotTextLabel With {
+            .reader = mapping,
+            .isLabeler = True,
+            .labelFill = fill,
+            .labelStroke = color,
+            .labelLineWidth = size,
+            .labelPadding = padding,
+            .fontSize = fontSize,
+            .alpha = alpha
+        }
+    End Function
+
+    ''' <summary>
+    ''' geom_freqpoly(): the binned frequency of the plot data drawn as a
+    ''' line chart.
+    ''' </summary>
+    ''' <param name="mapping"></param>
+    ''' <param name="bins">the number of the equal width bins</param>
+    ''' <param name="binwidth">the width of each bin, takes precedence over bins</param>
+    ''' <param name="binRange">the range of the binning</param>
+    ''' <param name="size"></param>
+    ''' <param name="alpha"></param>
+    ''' <param name="color"></param>
+    ''' <param name="env"></param>
+    ''' <returns></returns>
+    <ExportAPI("geom_freqpoly")>
+    <RApiReturn(GetType(ggplotFreqpoly))>
+    Public Function geom_freqpoly(Optional mapping As ggplotReader = Nothing,
+                                  Optional bins As Integer = 30,
+                                  Optional binwidth As Double = 0,
+                                  Optional binRange As Double() = Nothing,
+                                  Optional size As Double = 1,
+                                  Optional alpha As Double = 1,
+                                  Optional color As list = Nothing,
+                                  Optional env As Environment = Nothing) As ggplotLayer
+
+        Return New ggplotFreqpoly With {
+            .reader = mapping,
+            .bins = bins,
+            .binwidth = binwidth,
+            .binRange = binRange,
+            .line_width = size,
+            .alpha = alpha,
+            .colorMap = ggplotColorMap.CreateColorMap(color, alpha, env)
+        }
+    End Function
+
+    ''' <summary>
+    ''' geom_dotplot(): a dot plot which stacks the dots within the same
+    ''' bin along the value axis.
+    ''' </summary>
+    ''' <param name="mapping"></param>
+    ''' <param name="binwidth"></param>
+    ''' <param name="binaxis">x or y</param>
+    ''' <param name="stackdir">center, up, down or none</param>
+    ''' <param name="direction"></param>
+    ''' <param name="dotsize"></param>
+    ''' <param name="alpha"></param>
+    ''' <param name="color"></param>
+    ''' <param name="env"></param>
+    ''' <returns></returns>
+    <ExportAPI("geom_dotplot")>
+    <RApiReturn(GetType(ggplotDotplot))>
+    Public Function geom_dotplot(Optional mapping As ggplotReader = Nothing,
+                                 Optional binwidth As Double = 1,
+                                 Optional binaxis As String = "x",
+                                 Optional stackdir As String = "center",
+                                 Optional direction As String = "y",
+                                 Optional dotsize As Double = 3,
+                                 Optional alpha As Double = 1,
+                                 Optional color As list = Nothing,
+                                 Optional env As Environment = Nothing) As ggplotLayer
+
+        Return New ggplotDotplot With {
+            .reader = mapping,
+            .binwidth = binwidth,
+            .binaxis = binaxis,
+            .stackdir = stackdir,
+            .direction = direction,
+            .dotsize = dotsize,
+            .alpha = alpha,
+            .colorMap = ggplotColorMap.CreateColorMap(color, alpha, env)
+        }
+    End Function
+
+    ''' <summary>
+    ''' position_identity(): the default position adjustment, every bar is
+    ''' drawn from the baseline.
+    ''' </summary>
+    ''' <returns></returns>
+    <ExportAPI("position_identity")>
+    <RApiReturn(GetType(ggplotPositionIdentity))>
+    Public Function position_identity(Optional width As Double = 0.9) As ggplotPosition
+        Return New ggplotPositionIdentity
+    End Function
+
+    ''' <summary>
+    ''' position_stack(): stack the bars of the same category on top of each
+    ''' other, the value axis is accumulated.
+    ''' </summary>
+    ''' <param name="reverse">reverse the stacking order</param>
+    ''' <returns></returns>
+    <ExportAPI("position_stack")>
+    <RApiReturn(GetType(ggplotPositionStack))>
+    Public Function position_stack(Optional reverse As Boolean = False) As ggplotPosition
+        Return New ggplotPositionStack With {.reverse = reverse}
+    End Function
+
+    ''' <summary>
+    ''' position_fill(): stack the bars proportionally so that every category
+    ''' fills the same height.
+    ''' </summary>
+    ''' <param name="reverse">reverse the stacking order</param>
+    ''' <returns></returns>
+    <ExportAPI("position_fill")>
+    <RApiReturn(GetType(ggplotPositionFill))>
+    Public Function position_fill(Optional reverse As Boolean = False) As ggplotPosition
+        Return New ggplotPositionFill With {.reverse = reverse}
+    End Function
+
+    ''' <summary>
+    ''' position_dodge(): place the bars of the same category side by side.
+    ''' </summary>
+    ''' <param name="width">the total width which is occupied by the bars of one category</param>
+    ''' <returns></returns>
+    <ExportAPI("position_dodge")>
+    <RApiReturn(GetType(ggplotPositionDodge))>
+    Public Function position_dodge(Optional width As Double = 0.9) As ggplotPosition
+        Return New ggplotPositionDodge With {.width = width}
+    End Function
+
+    ''' <summary>
+    ''' position_jitter(): adds a small amount of random noise to the point
+    ''' position so that the overlapping observations become visible.
+    ''' </summary>
+    ''' <param name="width">the amount of the horizontal jitter</param>
+    ''' <param name="height">the amount of the vertical jitter</param>
+    ''' <param name="seed">the random seed, so that the jitter is reproducible</param>
+    ''' <returns></returns>
+    <ExportAPI("position_jitter")>
+    <RApiReturn(GetType(ggplotPositionJitter))>
+    Public Function position_jitter(Optional width As Double = 0.4,
+                                    Optional height As Double = 0,
+                                    Optional seed As Integer = 0) As ggplotPosition
+        Return New ggplotPositionJitter With {
+            .jitterWidth = width,
+            .jitterHeight = height,
+            .seed = seed
+        }
+    End Function
+
+    ''' <summary>
+    ''' coord_cartesian(): the default cartesian coordinate system, expands the
+    ''' plot limits without dropping the out of range observations.
+    ''' </summary>
+    ''' <param name="xlim">the limits of the x axis</param>
+    ''' <param name="ylim">the limits of the y axis</param>
+    ''' <param name="expand">the multipler of the data expansion</param>
+    ''' <returns></returns>
+    <ExportAPI("coord_cartesian")>
+    <RApiReturn(GetType(ggplotCoordCartesian))>
+    Public Function coord_cartesian(Optional xlim As Double() = Nothing,
+                                    Optional ylim As Double() = Nothing,
+                                    Optional expand As Double = 0.05) As ggplotCoord
+        Return New ggplotCoordCartesian With {
+            .xlim = xlim,
+            .ylim = ylim,
+            .expand = expand
+        }
+    End Function
+
+    ''' <summary>
+    ''' coord_fixed(): keeps a fixed aspect ratio between the x and the y axis.
+    ''' </summary>
+    ''' <param name="ratio">the ratio of the y unit length to the x unit length</param>
+    ''' <param name="xlim"></param>
+    ''' <param name="ylim"></param>
+    ''' <returns></returns>
+    <ExportAPI("coord_fixed")>
+    <RApiReturn(GetType(ggplotCoordFixed))>
+    Public Function coord_fixed(Optional ratio As Double = 1,
+                                Optional xlim As Double() = Nothing,
+                                Optional ylim As Double() = Nothing) As ggplotCoord
+        Return New ggplotCoordFixed With {
+            .ratio = ratio,
+            .xlim = xlim,
+            .ylim = ylim
+        }
+    End Function
+
+    ''' <summary>
+    ''' coord_polar(): uses polar coordinates, the x axis is mapped to the
+    ''' theta(angle) and the y axis is mapped to the radius.
+    ''' </summary>
+    ''' <param name="theta">which axis is mapped to the angle</param>
+    ''' <param name="start">the offset of the angle range, in radians</param>
+    ''' <param name="end">the end of the angle range, in radians</param>
+    ''' <param name="direction">1 for the counterclockwise, -1 for the clockwise</param>
+    ''' <param name="trans">use the square root transform of the radius when true</param>
+    ''' <returns></returns>
+    <ExportAPI("coord_polar")>
+    <RApiReturn(GetType(ggplotCoordPolar))>
+    Public Function coord_polar(Optional theta As String = "x",
+                                Optional start As Double = 0,
+                                Optional [end] As Double = Math.PI * 2,
+                                Optional direction As Double = 1,
+                                Optional trans As Boolean = False) As ggplotCoord
+        Return New ggplotCoordPolar With {
+            .theta = theta,
+            .start = start,
+            .[end] = [end],
+            .direction = direction,
+            .trans = trans
+        }
+    End Function
+
+    ''' <summary>
+    ''' guide_legend(): merge the legends of all the plot layers into a single
+    ''' legend, which is the default behavior.
+    ''' </summary>
+    ''' <param name="merge">merge the legends of all the layers</param>
+    ''' <param name="direction">horizontal or vertical</param>
+    ''' <param name="nrow">the maximum number of the legend rows</param>
+    ''' <param name="ncol">the maximum number of the legend columns</param>
+    ''' <param name="title">override the title of the merged legend</param>
+    ''' <param name="reverse">reverse the order of the legend items</param>
+    ''' <returns></returns>
+    <ExportAPI("guide_legend")>
+    <RApiReturn(GetType(ggGuideLegend))>
+    Public Function guide_legend(Optional merge As Boolean = True,
+                                 Optional direction As String = "vertical",
+                                 Optional nrow As Integer = 0,
+                                 Optional ncol As Integer = 0,
+                                 Optional title As String = Nothing,
+                                 Optional reverse As Boolean = False) As ggplotGuide
+        Return New ggGuideLegend With {
+            .merge = merge,
+            .direction = direction,
+            .nrow = nrow,
+            .ncol = ncol,
+            .title = title,
+            .reverse = reverse
+        }
+    End Function
+
+    ''' <summary>
+    ''' guide_none(): drops the legend of the plot.
+    ''' </summary>
+    ''' <returns></returns>
+    <ExportAPI("guide_none")>
+    <RApiReturn(GetType(ggGuideNone))>
+    Public Function guide_none() As ggplotGuide
+        Return New ggGuideNone
+    End Function
+
+    ''' <summary>
+    ''' guides(): control how the legends of the plot layers are organized.
+    ''' </summary>
+    ''' <param name="guide">a guide object, or one of the "legend" and "none" names</param>
+    ''' <param name="env"></param>
+    ''' <returns></returns>
+    <ExportAPI("guides")>
+    <RApiReturn(GetType(ggplotGuide))>
+    Public Function guides(Optional guide As Object = Nothing,
+                          Optional env As Environment = Nothing) As ggplotGuide
+        Dim obj As ggplotGuide = TryCast(guide, ggplotGuide)
+
+        If Not obj Is Nothing Then
+            Return obj
+        End If
+
+        Dim name As String
+
+        Try
+            Dim vec As String() = SMRUCC.Rsharp.Runtime.Vectorization.CLRVector.asCharacter(guide)
+
+            If Not vec.IsNullOrEmpty Then
+                name = vec(Scan0).Trim.ToLower
+            End If
+        Catch
+            name = "legend"
+        End Try
+
+        Select Case name
+            Case "none" : Return New ggGuideNone
+            Case Else : Return New ggGuideLegend
+        End Select
+    End Function
+
     <ExportAPI("geom_scatterpie")>
     <RApiReturn(GetType(ggplotScatterpie))>
     Public Function geom_scatterpie(data As String()) As ggplotLayer
@@ -2012,6 +2499,207 @@ Module ggplot2
             .reverse = True,
             .format = Nothing,
             .n = -1
+        }
+    End Function
+
+    ''' <summary>
+    ''' scale_x_log10(): a log10 transformed x axis, the non positive values
+    ''' are dropped.
+    ''' </summary>
+    ''' <param name="base">the base of the logarithm</param>
+    ''' <returns></returns>
+    <ExportAPI("scale_x_log10")>
+    <RApiReturn(GetType(ggplotTransformLog))>
+    Public Function scale_x_log10(Optional [base] As Double = 10) As ggplotTransform
+        Return New ggplotTransformLog With {.axis = "x", .[base] = [base]}
+    End Function
+
+    ''' <summary>
+    ''' scale_y_log10(): a log10 transformed y axis
+    ''' </summary>
+    ''' <param name="base"></param>
+    ''' <returns></returns>
+    <ExportAPI("scale_y_log10")>
+    <RApiReturn(GetType(ggplotTransformLog))>
+    Public Function scale_y_log10(Optional [base] As Double = 10) As ggplotTransform
+        Return New ggplotTransformLog With {.axis = "y", .[base] = [base]}
+    End Function
+
+    ''' <summary>
+    ''' scale_x_log2(): a log2 transformed x axis
+    ''' </summary>
+    ''' <returns></returns>
+    <ExportAPI("scale_x_log2")>
+    <RApiReturn(GetType(ggplotTransformLog))>
+    Public Function scale_x_log2() As ggplotTransform
+        Return New ggplotTransformLog With {.axis = "x", .[base] = 2}
+    End Function
+
+    ''' <summary>
+    ''' scale_y_log2(): a log2 transformed y axis
+    ''' </summary>
+    ''' <returns></returns>
+    <ExportAPI("scale_y_log2")>
+    <RApiReturn(GetType(ggplotTransformLog))>
+    Public Function scale_y_log2() As ggplotTransform
+        Return New ggplotTransformLog With {.axis = "y", .[base] = 2}
+    End Function
+
+    ''' <summary>
+    ''' scale_x_sqrt(): a square root transformed x axis
+    ''' </summary>
+    ''' <returns></returns>
+    <ExportAPI("scale_x_sqrt")>
+    <RApiReturn(GetType(ggplotTransformSqrt))>
+    Public Function scale_x_sqrt() As ggplotTransform
+        Return New ggplotTransformSqrt With {.axis = "x"}
+    End Function
+
+    ''' <summary>
+    ''' scale_y_sqrt(): a square root transformed y axis
+    ''' </summary>
+    ''' <returns></returns>
+    <ExportAPI("scale_y_sqrt")>
+    <RApiReturn(GetType(ggplotTransformSqrt))>
+    Public Function scale_y_sqrt() As ggplotTransform
+        Return New ggplotTransformSqrt With {.axis = "y"}
+    End Function
+
+    ''' <summary>
+    ''' scale_x_date(): a date formatted x axis
+    ''' </summary>
+    ''' <param name="date_labels">the date format of the axis labels</param>
+    ''' <param name="date_breaks">the interval between the axis ticks</param>
+    ''' <returns></returns>
+    <ExportAPI("scale_x_date")>
+    <RApiReturn(GetType(ggplotTransformDate))>
+    Public Function scale_x_date(Optional date_labels As String = "%Y-%m-%d",
+                                Optional date_breaks As String = "") As ggplotTransform
+        Return New ggplotTransformDate With {
+            .axis = "x",
+            .date_labels = date_labels,
+            .date_breaks = date_breaks
+        }
+    End Function
+
+    ''' <summary>
+    ''' scale_y_date(): a date formatted y axis
+    ''' </summary>
+    ''' <param name="date_labels"></param>
+    ''' <param name="date_breaks"></param>
+    ''' <returns></returns>
+    <ExportAPI("scale_y_date")>
+    <RApiReturn(GetType(ggplotTransformDate))>
+    Public Function scale_y_date(Optional date_labels As String = "%Y-%m-%d",
+                                Optional date_breaks As String = "") As ggplotTransform
+        Return New ggplotTransformDate With {
+            .axis = "y",
+            .date_labels = date_labels,
+            .date_breaks = date_breaks
+        }
+    End Function
+
+    ''' <summary>
+    ''' scale_shape(): a set of the built-in marker shapes
+    ''' </summary>
+    ''' <returns></returns>
+    <ExportAPI("scale_shape")>
+    <RApiReturn(GetType(ggplotShapeBuiltIn))>
+    Public Function scale_shape() As ggplotShapeScale
+        Return New ggplotShapeBuiltIn
+    End Function
+
+    ''' <summary>
+    ''' scale_shape_manual(): maps the shape aesthetic onto the given marker
+    ''' shape names
+    ''' </summary>
+    ''' <param name="values">the marker shape names</param>
+    ''' <returns></returns>
+    <ExportAPI("scale_shape_manual")>
+    <RApiReturn(GetType(ggplotShapeManual))>
+    Public Function scale_shape_manual(<RRawVectorArgument> Optional values As String() = Nothing) As ggplotShapeScale
+        Return New ggplotShapeManual With {.values = values}
+    End Function
+
+    ''' <summary>
+    ''' scale_alpha(range): maps the alpha aesthetic linearly into the range
+    ''' </summary>
+    ''' <param name="range">the alpha range, in [0,1]</param>
+    ''' <returns></returns>
+    <ExportAPI("scale_alpha")>
+    <RApiReturn(GetType(ggplotAlphaRange))>
+    Public Function scale_alpha(Optional range As Double() = Nothing) As ggplotAlphaScale
+        Dim limits As Double() = If(range Is Nothing OrElse range.Length < 2, New Double() {0.1, 1}, range)
+
+        Return New ggplotAlphaRange With {
+            .lower = limits(Scan0),
+            .upper = limits(1)
+        }
+    End Function
+
+    ''' <summary>
+    ''' scale_alpha_manual(): maps the alpha aesthetic onto the given values
+    ''' </summary>
+    ''' <param name="values">the alpha values</param>
+    ''' <returns></returns>
+    <ExportAPI("scale_alpha_manual")>
+    <RApiReturn(GetType(ggplotAlphaManual))>
+    Public Function scale_alpha_manual(<RRawVectorArgument> Optional values As Double() = Nothing) As ggplotAlphaScale
+        Return New ggplotAlphaManual With {.values = values}
+    End Function
+
+    ''' <summary>
+    ''' geom_smooth(): fits a smooth curve through the plot data and,
+    ''' optionally, draws the confidence band of the fit.
+    ''' </summary>
+    ''' <param name="mapping"></param>
+    ''' <param name="method">lm, poly, glm or loess</param>
+    ''' <param name="formula">the formula of the model</param>
+    ''' <param name="se">draw the confidence band of the fit</param>
+    ''' <param name="level">the confidence level of the band</param>
+    ''' <param name="span">the bandwidth of the loess smoothing</param>
+    ''' <param name="degree">the degree of the polynomial</param>
+    ''' <param name="se_points">the number of the evaluation points of the fit curve</param>
+    ''' <param name="lineend"></param>
+    ''' <param name="size"></param>
+    ''' <param name="color"></param>
+    ''' <param name="env"></param>
+    ''' <returns></returns>
+    ''' <remarks>
+    ''' The supported methods are:
+    '''
+    ''' + lm: the ordinary least squares linear regression
+    ''' + poly: the polynomial regression, the degree is given by the degree parameter
+    ''' + glm: the binomial logistic regression
+    ''' + loess: the locally estimated regression with a tricube kernel
+    ''' </remarks>
+    <ExportAPI("geom_smooth")>
+    <RApiReturn(GetType(ggplotSmooth))>
+    Public Function geom_smooth(Optional mapping As ggplotReader = Nothing,
+                                 Optional method As String = "lm",
+                                 Optional formula As String = Nothing,
+                                 Optional se As Boolean = True,
+                                 Optional level As Double = 0.95,
+                                 Optional span As Double = 0.75,
+                                 Optional degree As Integer = 1,
+                                 Optional se_points As Integer = 128,
+                                 Optional lineend As String = "butt",
+                                 Optional size As Double = 1,
+                                 Optional color As list = Nothing,
+                                 Optional env As Environment = Nothing) As ggplotLayer
+
+        Return New ggplotSmooth With {
+            .reader = mapping,
+            .method = method,
+            .formula = formula,
+            .se = se,
+            .level = level,
+            .span = span,
+            .degree = degree,
+            .npoints = se_points,
+            .lineend = lineend,
+            .line_width = size,
+            .colorMap = ggplotColorMap.CreateColorMap(color, 1, env)
         }
     End Function
 

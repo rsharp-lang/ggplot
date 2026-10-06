@@ -59,6 +59,7 @@ Imports System.Drawing
 Imports ggplot.elements
 Imports ggplot.elements.legend
 Imports ggplot.layers
+Imports ggplot.options
 Imports ggplot.render
 Imports Microsoft.VisualBasic.Data.Plots.Canvas
 Imports Microsoft.VisualBasic.Imaging
@@ -97,6 +98,14 @@ Namespace render
             Dim plotRegion As Rectangle = canvas.PlotRegion(css)
             Dim fixedRange As Boolean = True
 
+            ' 坐标系调整(coord_fixed/coord_polar等)在计算数据标度之前生效，
+            ' 从而保证坐标轴与绘图区一致
+            Dim coord As ggplotCoord = ggplot.coord
+
+            If Not coord Is Nothing Then
+                plotRegion = coord.Finalize(plotRegion)
+            End If
+
             For Each layer As ggplotLayer In layers.AsEnumerable
                 If TypeOf layer Is ggplotScatter Then
                     fixedRange = False
@@ -106,6 +115,26 @@ Namespace render
 
             ggplot.base.data!x = x
             ggplot.base.data!y = y
+
+            ' 标度变换(scale_x_log10/scale_y_sqrt等)在计算数据标度之前生效，
+            ' 保证图层数据与坐标轴标度处于同一变换空间
+            Dim transX As ggplotTransform = TryCast(ggplot.args.getByName("scale_trans_x"), ggplotTransform)
+            Dim transY As ggplotTransform = TryCast(ggplot.args.getByName("scale_trans_y"), ggplotTransform)
+
+            If Not transX Is Nothing OrElse Not transY Is Nothing Then
+                x = g2d.transformAxis(transX, x)
+                y = g2d.transformAxis(transY, y)
+
+                ggplot.base.data!x = x
+                ggplot.base.data!y = y
+
+                For Each layer As ggplotLayer In layers
+                    If layer.data Is Nothing Then Continue For
+
+                    layer.data.x = g2d.transformAxis(transX, layer.data.x)
+                    layer.data.y = g2d.transformAxis(transY, layer.data.y)
+                Next
+            End If
 
             If reverse_y AndAlso y.size > 0 Then
                 If y.mapper = MapperTypes.Continuous Then

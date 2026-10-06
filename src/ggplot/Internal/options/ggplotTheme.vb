@@ -91,6 +91,15 @@ Namespace options
         Public Property lineStroke As String
 
         ''' <summary>
+        ''' the coordinate system of the plot, see also <see cref="ggplotCoord"/>
+        ''' </summary>
+        Public Property coord As ggplotCoord
+        ''' <summary>
+        ''' the legend guide control, see also <see cref="ggplotGuide"/>
+        ''' </summary>
+        Public Property guide As ggplotGuide
+
+        ''' <summary>
         ''' set up the <see cref="ggplot.ggplotTheme"/> object
         ''' </summary>
         ''' <param name="ggplot"></param>
@@ -189,6 +198,14 @@ Namespace options
 
             If Not panel_border Is Nothing Then
                 ggplot.panelBorder = panel_border
+            End If
+
+            If Not coord Is Nothing Then
+                Call coord.Config(ggplot)
+            End If
+
+            If Not guide Is Nothing Then
+                Call guide.Config(ggplot)
             End If
 
             ' config theme_void for axis x,y

@@ -149,6 +149,16 @@ Public Class ggplot : Inherits Plot
     ''' </summary>
     ''' <returns></returns>
     Public Property args As list
+        ''' <summary>
+        ''' the coordinate system of this plot, see also
+        ''' <see cref="options.ggplotCoord"/>
+        ''' </summary>
+        Public Property coord As ggplotCoord
+        ''' <summary>
+        ''' the legend guide of this plot, see also
+        ''' <see cref="options.ggplotGuide"/>
+        ''' </summary>
+        Public Property guide As ggplotGuide
     ''' <summary>
     ''' the runtime environment for current ggplot object, 
     ''' which is comes from the first 
@@ -343,8 +353,15 @@ Public Class ggplot : Inherits Plot
         End If
 
         If theme.drawLegend Then
+            Dim guide As ggplotGuide = Me.guide
+            Dim elements As IEnumerable(Of IggplotLegendElement) = legendGroups
+
+            If Not guide Is Nothing Then
+                elements = guide.Arrange(legendGroups)
+            End If
+
             Call DrawLegends(
-                legends:=legendGroups,
+                legends:=elements,
                 g:=g,
                 canvas:=canvas,
                 pos:=Nothing

@@ -64,6 +64,7 @@ Imports System.IO
 Imports System.Runtime.CompilerServices
 Imports ggplot.elements
 Imports ggplot.elements.legend
+Imports ggplot.options
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.Data.Plots
 Imports Microsoft.VisualBasic.Data.Plots.Canvas
@@ -122,6 +123,11 @@ Namespace layers
         ''' <returns></returns>
         Public Property stat As String
         Public Property position As String
+        ''' <summary>
+        ''' the position adjustment object, takes precedence over the
+        ''' <see cref="position"/> name when it is not nothing
+        ''' </summary>
+        Public Property positionAdjust As ggplotPosition
 
         Public Overrides Function getYAxis(y() As Double, ggplot As ggplot) As axisMap
             Dim groupName As String = ggplot.base.reader.color
@@ -263,19 +269,93 @@ Namespace layers
                 Next
             Next
 
-            ' 委派给新引擎的 BarPlot（百分比堆叠）：共享画布 + 跨图层联合坐标
-            Call LayerRender.DrawBars(
-                g:=stream.g,
-                scaler:=stream.scale,
-                theme:=stream.theme,
-                categories:=categories,
-                values:=Nothing,
-                colors:=seriesColors,
-                stack:=BarPlot.StackMode.Percent,
-                horizontal:=ggplot.ggplotTheme.flipAxis,
-                multiValues:=values,
-                seriesNames:=seriesNames
-            )
+            Call drawBars(stream, categories, seriesNames, seriesColors, values)
+        End Sub
+
+        ''' <summary>
+        ''' resolve the position adjustment of this bar layer
+        ''' </summary>
+        Private Function resolvePosition() As ggplotPosition
+            If Not positionAdjust Is Nothing Then
+                Return positionAdjust
+            End If
+
+            If position.StringEmpty Then
+                If stat = "percentage" Then
+                    Return New ggplotPositionFill
+                Else
+                    Return New ggplotPositionIdentity
+                End If
+            End If
+
+            Return ggplotPosition.Resolve(position)
+        End Function
+
+        ''' <summary>
+        ''' draw the bars in the data coordinate space, so that the position
+        ''' adjustments(dodge/stack/fill) take effect on the real values
+        ''' </summary>
+        Private Sub drawBars(stream As ggplotPipeline,
+                             categories As String(),
+                             seriesNames As String(),
+                             seriesColors As Color(),
+                             values As Double(,))
+            Dim scale As DataScaler = stream.scale
+            Dim nCat As Integer = categories.Length
+            Dim nSer As Integer = seriesNames.Length
+
+            If nCat = 0 OrElse nSer = 0 Then Return
+
+            If scale.xscale <> scalers.ordinal Then
+                ' 非分类轴时退化为旧引擎的比例堆叠绘制
+                Call LayerRender.DrawBars(
+                    g:=stream.g,
+                    scaler:=scale,
+                    theme:=stream.theme,
+                    categories:=categories,
+                    values:=Nothing,
+                    colors:=seriesColors,
+                    stack:=BarPlot.StackMode.Percent,
+                    horizontal:=stream.theme.flipAxis,
+                    multiValues:=values,
+                    seriesNames:=seriesNames
+                )
+
+                Return
+            End If
+
+            Dim layout As BarLayout = resolvePosition().Arrange(nCat, nSer, values)
+            Dim binWidth As Double = DirectCast(scale.X, OrdinalScale).binWidth
+
+            For j As Integer = 0 To nCat - 1
+                Dim center As Double = scale.TranslateX(categories(j))
+
+                For i As Integer = 0 To nSer - 1
+                    Dim height As Double = layout.size(i, j)
+
+                    If height = 0 Then Continue For
+
+                    Dim start As Double = layout.slot(j, i * 2)
+                    Dim slotWidth As Double = layout.slot(j, i * 2 + 1)
+                    Dim band As Double = binWidth * layout.band
+                    Dim left As Double = center - band / 2 + band * start
+                    Dim right As Double = left + band * slotWidth
+                    Dim y0 As Double = scale.TranslateY(layout.base(i, j))
+                    Dim y1 As Double = scale.TranslateY(layout.base(i, j) + height)
+                    Dim bar As New RectangleF(
+                        CSng(Math.Min(left, right)),
+                        CSng(Math.Min(y0, y1)),
+                        CSng(Math.Abs(right - left)),
+                        CSng(Math.Abs(y1 - y0))
+                    )
+
+                    If bar.Width <= 0 OrElse bar.Height <= 0 Then Continue For
+
+                    Using brush As New SolidBrush(seriesColors(i Mod seriesColors.Length))
+                        Call stream.g.FillRectangle(brush, bar)
+                    End Using
+                Next
+            Next
         End Sub
 
         <MethodImpl(MethodImplOptions.AggressiveInlining)>

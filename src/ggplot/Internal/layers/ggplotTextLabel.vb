@@ -79,6 +79,21 @@ Namespace layers
         Public Property isLabeler As Boolean
         Public Property check_overlap As Boolean = False
         Public Property fontSize As Single? = Nothing
+        ''' <summary>
+        ''' the background box fill color of the label, only works when
+        ''' <see cref="isLabeler"/> is true
+        ''' </summary>
+        Public Property labelFill As String = "white"
+        ''' <summary>
+        ''' the background box stroke color of the label, only works when
+        ''' <see cref="isLabeler"/> is true
+        ''' </summary>
+        Public Property labelStroke As String = "black"
+        Public Property labelLineWidth As Single = 1
+        ''' <summary>
+        ''' the padding between the label text and its background box
+        ''' </summary>
+        Public Property labelPadding As Single = 2
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim legend As legendGroupElement = Nothing
@@ -106,11 +121,34 @@ Namespace layers
             End If
 
             Dim anchors As Anchor() = Nothing
+            Dim boxBrush As Brush = Nothing
+            Dim boxPen As Pen = Nothing
+
+            If isLabeler Then
+                boxBrush = labelFill.GetBrush
+                boxPen = css.GetPen(Stroke.TryParse($"{labelStroke}; stroke-width: {labelLineWidth}"), allowNull:=False)
+            End If
 
             x = stream.TranslateX
             y = y.Select(Function(yi) scale.TranslateY(yi)).ToArray
 
             For Each label As Label In layoutLabels(labels, x, y, g, labelStyle, stream.canvas, anchors, ggplot)
+                If isLabeler AndAlso boxBrush IsNot Nothing Then
+                    Dim pad As Single = labelPadding
+                    Dim box As New RectangleF(
+                        CSng(label.X - pad),
+                        CSng(label.Y - pad),
+                        CSng(label.width + pad * 2),
+                        CSng(label.height + pad * 2)
+                    )
+
+                    Call g.FillRectangle(boxBrush, box)
+
+                    If boxPen IsNot Nothing Then
+                        Call g.DrawRectangle(boxPen, box.X, box.Y, box.Width, box.Height)
+                    End If
+                End If
+
                 Call g.DrawString(label.text, labelStyle, Brushes.Black, label.location)
             Next
 

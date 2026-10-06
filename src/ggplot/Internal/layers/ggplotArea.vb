@@ -2,6 +2,7 @@ Imports System.Drawing
 Imports ggplot.colors
 Imports ggplot.elements
 Imports ggplot.elements.legend
+Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.Data.Plots.Canvas
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D

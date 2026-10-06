@@ -59,10 +59,12 @@ Imports System.Drawing
 Imports System.Runtime.CompilerServices
 Imports ggplot.elements
 Imports ggplot.layers
+Imports ggplot.options
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Data.Plots
 Imports Microsoft.VisualBasic.Data.Plots.Canvas
 Imports Microsoft.VisualBasic.Imaging
+Imports Microsoft.VisualBasic.Imaging.d3js.scale
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.Math
 Imports Microsoft.VisualBasic.Math.LinearAlgebra
@@ -184,6 +186,25 @@ Namespace render
             }
 
             Return scale
+        End Function
+
+        ''' <summary>
+        ''' apply an axis transformation to a continuous axis mapping
+        ''' </summary>
+        ''' <param name="transform">the transformation, nothing means no transform</param>
+        ''' <param name="axis">the axis mapping to transform</param>
+        ''' <returns></returns>
+        Public Function transformAxis(transform As ggplotTransform, axis As axisMap) As axisMap
+            If transform Is Nothing OrElse axis Is Nothing Then Return axis
+            If axis.mapper <> MapperTypes.Continuous Then Return axis
+
+            Dim vec As Double() = transform.Apply(axis.ToNumeric) _
+                .Where(Function(v) Not Double.IsNaN(v)) _
+                .ToArray
+
+            If vec.IsNullOrEmpty Then Return axis
+
+            Return axisMap.Create(vec)
         End Function
 
         Private Function validateAxis(y As Double(), ggplot As ggplot) As Double()

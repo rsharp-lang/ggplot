@@ -221,7 +221,8 @@ Namespace layers
 
                 Return createSerialData(
                     stream.defaultTitle,
-                    x, y, adjustAlpha(colors),
+                    x, y,
+                    applyAlpha(colors, resolveAlpha(ggplot, stream.y)),
                     size,
                     TryCast(legends, legendGroupElement), shape, colorMap)
             Else
@@ -244,7 +245,8 @@ Namespace layers
 
                     Return createSerialData(
                         reader.ToString,
-                        .x.ToFloat, .y.ToFloat, adjustAlpha(colors),
+                        .x.ToFloat, .y.ToFloat,
+                        applyAlpha(colors, resolveAlpha(ggplot, .y.ToNumeric)),
                         size,
                         TryCast(legends, legendGroupElement), shape, colorMap)
                 End With
@@ -261,6 +263,67 @@ Namespace layers
                     .Select(Function(a) a.TranslateColor.Alpha(alphaVal).Rgba) _
                     .ToArray
             End If
+        End Function
+
+        ''' <summary>
+        ''' resolve the per-observation alpha values declared by the
+        ''' ``scale_alpha`` plot argument
+        ''' </summary>
+        Private Function resolveAlpha(ggplot As ggplot, values As Double()) As Double()
+            Dim scale As ggplotAlphaScale = TryCast(ggplot.args.getByName("scale_alpha"), ggplotAlphaScale)
+
+            If scale Is Nothing Then
+                Return Nothing
+            End If
+
+            Dim resolved As Double() = scale.Resolve(values)
+
+            If resolved.IsNullOrEmpty Then
+                Return Nothing
+            End If
+
+            Return resolved
+        End Function
+
+        ''' <summary>
+        ''' apply the per-observation alpha on top of the color alpha channel
+        ''' </summary>
+        Private Function applyAlpha(colors As String(), alphas As Double()) As String()
+            If alphas Is Nothing OrElse colors.IsNullOrEmpty Then
+                Return colors
+            End If
+
+            Dim layerAlpha As Double = alpha
+
+            Return colors _
+                .Select(Function(c, i)
+                            Dim a As Double = layerAlpha
+
+                            If i < alphas.Length Then
+                                a = a * alphas(i)
+                            End If
+
+                            Return c.TranslateColor.Alpha(CSng(255 * a)).Rgba
+                        End Function) _
+                .ToArray
+        End Function
+
+        ''' <summary>
+        ''' resolve the per-observation marker shapes declared by the
+        ''' ``scale_shape`` plot argument
+        ''' </summary>
+        Private Function resolveShape(ggplot As ggplot) As LegendStyles()
+            Dim scale As ggplotShapeScale = TryCast(ggplot.args.getByName("scale_shape"), ggplotShapeScale)
+
+            If scale Is Nothing Then Return Nothing
+
+            Dim reader As ggplotReader = ggplot.base.reader
+            Dim values As String() = reader.getMapData(Of String)(ggplot.data, DirectCast(reader.shape, String), ggplot.environment)
+            Dim resolved As LegendStyles() = scale.Resolve(values)
+
+            If resolved.IsNullOrEmpty Then Return Nothing
+
+            Return resolved
         End Function
 
         Protected Class SerialDataGenerator
