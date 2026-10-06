@@ -107,9 +107,54 @@ Namespace ggraph.layout
                     size:=size,
                     groupAttraction:=10
                 )
+            ElseIf algorithm = "degree_weighted" Then
+                Return New ForceDirected.DegreeWeightedPlanner(
+                    g:=g,
+                    ejectFactor:=ejectFactor,
+                    condenseFactor:=condenseFactor,
+                    maxtx:=maxtx,
+                    maxty:=maxty,
+                    dist_threshold:=dist_threshold,
+                    size:=size
+                )
+            ElseIf algorithm = "edge_weighted" Then
+                Return New ForceDirected.EdgeWeightedPlanner(
+                    g:=g,
+                    maxW:=maxEdgeWeight(g),
+                    ejectFactor:=ejectFactor,
+                    condenseFactor:=condenseFactor,
+                    maxtx:=maxtx,
+                    maxty:=maxty,
+                    dist_threshold:=dist_threshold,
+                    size:=size
+                )
             Else
-                Throw New NotImplementedException
+                Return New ForceDirected.Planner(
+                    g:=g,
+                    ejectFactor:=ejectFactor,
+                    condenseFactor:=condenseFactor,
+                    maxtx:=maxtx,
+                    maxty:=maxty,
+                    dist_threshold:=dist_threshold,
+                    size:=size
+                )
             End If
+        End Function
+
+        ''' <summary>
+        ''' the maximum edge weight of the network, which is required by the
+        ''' <see cref="ForceDirected.EdgeWeightedPlanner"/>
+        ''' </summary>
+        Private Shared Function maxEdgeWeight(g As NetworkGraph) As Double
+            Dim max As Double = 1
+
+            For Each edge In g.graphEdges
+                If edge.weight > max Then
+                    max = edge.weight
+                End If
+            Next
+
+            Return max
         End Function
     End Class
 End Namespace

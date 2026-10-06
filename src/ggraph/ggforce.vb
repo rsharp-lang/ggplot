@@ -86,10 +86,15 @@ Module ggforcePkg
         }
     End Function
 
+    ''' <summary>
+    ''' layout_random(): a reproducible random node layout
+    ''' </summary>
+    ''' <param name="seed">the random seed, zero means a random seed</param>
+    ''' <returns></returns>
     <ExportAPI("layout_random")>
     <RApiReturn(GetType(random))>
-    Public Function layout_random() As ggforce
-        Return New layout.random
+    Public Function layout_random(Optional seed As Integer = 0) As layout.random
+        Return New layout.random With {.seed = seed}
     End Function
 
     <ExportAPI("layout_springforce")>

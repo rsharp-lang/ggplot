@@ -1,69 +1,49 @@
-#Region "Microsoft.VisualBasic::e25c127e759f33df4f2dbd2eb055717c, src\ggraph\Internal\layout\random.vb"
-
-    ' Author:
-    ' 
-    '       xieguigang (I@xieguigang.me)
-    ' 
-    ' Copyright (c) 2021 R# language
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
-
-
-
-    ' /********************************************************************************/
-
-    ' Summaries:
-
-
-    ' Code Statistics:
-
-    '   Total Lines: 12
-    '    Code Lines: 9 (75.00%)
-    ' Comment Lines: 0 (0.00%)
-    '    - Xml Docs: 0.00%
-    ' 
-    '   Blank Lines: 3 (25.00%)
-    '     File Size: 381 B
-
-
-    '     Class random
-    ' 
-    '         Function: createAlgorithm
-    ' 
-    ' 
-    ' /********************************************************************************/
-
-#End Region
-
+﻿Imports System.Drawing
 Imports Microsoft.VisualBasic.Data.visualize.Network.Graph
 Imports Microsoft.VisualBasic.Data.visualize.Network.Layouts
+Imports SMRUCC.Rsharp.Runtime
+Imports randf = Microsoft.VisualBasic.Math.RandomExtensions
 
 Namespace ggraph.layout
 
-    Public Class random : Inherits ggforce
+    ''' <summary>
+    ''' layout_random(): assigns a random position to every node, which is
+    ''' mostly used as the initial state of the other iterative layouts and as
+    ''' a baseline for the layout comparison.
+    '''
+    ''' The seed makes the random layout reproducible.
+    ''' </summary>
+    Public Class random : Inherits ggLayout
 
-        Protected Overrides Function createAlgorithm(g As NetworkGraph) As IPlanner
-            Throw New NotImplementedException()
-        End Function
+        Public Property [seed] As Integer = 0
+
+        Public Sub New()
+            canvasSize = New SizeF(1000, 1000)
+        End Sub
+
+        Public Overrides Sub Layout(g As NetworkGraph, canvas As SizeF, env As Environment)
+            If [seed] <> 0 Then
+                Call randf.SetSeed([seed])
+            End If
+
+            Call log(env, "generating the random layout...")
+
+            Dim i As Integer = 0
+
+            For Each node As Node In g.connectedNodes
+                If node.data Is Nothing Then
+                    node.data = New NodeData With {.label = node.label}
+                End If
+
+                node.data.initialPostion = New FDGVector2(
+                    randf.seeds.NextDouble * canvas.Width,
+                    randf.seeds.NextDouble * canvas.Height
+                )
+
+                i += 1
+            Next
+
+            Call log(env, $" ~done! {i} nodes")
+        End Sub
     End Class
 End Namespace

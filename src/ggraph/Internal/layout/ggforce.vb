@@ -59,6 +59,7 @@
 
 #End Region
 
+Imports System.Drawing
 Imports ggplot.options
 Imports Microsoft.VisualBasic.Data.visualize.Network.Graph
 Imports Microsoft.VisualBasic.Data.visualize.Network.Layouts
@@ -67,12 +68,16 @@ Imports SMRUCC.Rsharp.Runtime
 
 Namespace ggraph.layout
 
-    Public MustInherit Class ggforce : Inherits ggplotOption
+    Public MustInherit Class ggforce : Inherits ggLayout
 
         Public Property iterations As Integer = 10000 * 2
         Public Property [step] As Double = 0.001
 
         Protected MustOverride Function createAlgorithm(g As NetworkGraph) As IPlanner
+
+        Public Overrides Sub Layout(g As NetworkGraph, canvas As SizeF, env As Environment)
+            Call createLayout(g, env)
+        End Sub
 
         Public Sub createLayout(ByRef g As NetworkGraph, env As Environment)
             Dim algorithm As IPlanner = createAlgorithm(g.doRandomLayout)
@@ -95,11 +100,6 @@ Namespace ggraph.layout
 
             Call println(" ~done!")
         End Sub
-
-        Public Overrides Function Config(ggplot As ggplot) As ggplot
-            ggplot.args.slots(NameOf(ggforce)) = Me
-            Return ggplot
-        End Function
 
     End Class
 End Namespace
