@@ -28,8 +28,8 @@ bitmap(file = "./verify_geom_density.png", size = [1600, 1200]) {
 
 # 3. geom_freqpoly + position_fill
 bitmap(file = "./verify_geom_freqpoly.png", size = [1600, 1200]) {
-    ggplot(df, aes(x = "g", y = "y", color = "g", fill = "g"), padding = "padding:120px 120px 120px 160px;")
-      + geom_bar(position = position_fill())
+    ggplot(df, aes(x = "g", y = "y"), padding = "padding:120px 120px 120px 160px;")
+      + geom_bar(position = position_fill(), color = "steelblue")
       + labs(x = "group", y = "value")
       + ggtitle("geom_bar + position_fill")
     ;

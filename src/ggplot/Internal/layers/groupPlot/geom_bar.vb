@@ -1,4 +1,4 @@
-#Region "Microsoft.VisualBasic::cbebc5c99044771197ecceeafbfafdb9, src\ggplot\Internal\layers\groupPlot\geom_bar.vb"
+﻿#Region "Microsoft.VisualBasic::cbebc5c99044771197ecceeafbfafdb9, src\ggplot\Internal\layers\groupPlot\geom_bar.vb"
 
     ' Author:
     ' 
@@ -62,7 +62,9 @@
 Imports System.Drawing
 Imports System.IO
 Imports System.Runtime.CompilerServices
+Imports ggplot.colors
 Imports ggplot.elements
+Imports ggplot.colors
 Imports ggplot.elements.legend
 Imports ggplot.options
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
@@ -122,7 +124,12 @@ Namespace layers
         ''' </summary>
         ''' <returns></returns>
         Public Property stat As String
-        Public Property position As String
+        ''' <summary>
+        ''' the position adjustment, could be a
+        ''' <see cref="ggplotPosition"/> object or one of the
+        ''' "identity", "stack", "fill" and "dodge" names
+        ''' </summary>
+        Public Property position As Object
         ''' <summary>
         ''' the position adjustment object, takes precedence over the
         ''' <see cref="position"/> name when it is not nothing
@@ -137,14 +144,29 @@ Namespace layers
             End If
 
             If TypeOf ggplot.data Is dataframe Then
-                Dim groupFactors As String() = CLRVector.asCharacter(DirectCast(ggplot.data, dataframe)(groupName))
-                Dim zip = y.Zip(groupFactors).GroupBy(Function(z) z.Second).ToArray
-                Dim max As Double = zip.Max(Function(a) a.Sum(Function(i) i.First))
-                Dim min As Double = zip.Min(Function(a) a.Sum(Function(i) i.First))
+                Dim table As dataframe = DirectCast(ggplot.data, dataframe)
 
-                min = std.Min(0, min)
+                If Not groupName.StringEmpty AndAlso table.hasName(groupName) AndAlso y.Length > 0 Then
+                    Dim groupFactors As String() = CLRVector.asCharacter(table(groupName))
+                    Dim zip = y.Zip(groupFactors).GroupBy(Function(z) z.Second).ToArray
 
-                Return axisMap.FromNumeric({min, max})
+                    If zip.Length > 0 Then
+                        Dim max As Double = zip.Max(Function(a) a.Sum(Function(i) i.First))
+                        Dim min As Double = zip.Min(Function(a) a.Sum(Function(i) i.First))
+
+                        min = std.Min(0, min)
+
+                        Return axisMap.FromNumeric({min, max})
+                    End If
+                End If
+
+                ' 没有分组信息时按数值自身的极值确定y轴范围
+                Dim lower As Double = Aggregate yi As Double In y Into Min(yi)
+                Dim upper As Double = Aggregate yi As Double In y Into Max(yi)
+
+                lower = std.Min(0, lower)
+
+                Return axisMap.FromNumeric({lower, upper})
             Else
                 ' 无分组信息(数据源不是dataframe)时，直接按数值自身的极值确定y轴范围
                 Dim lower As Double = Aggregate yi As Double In y Into Min(yi)
@@ -207,15 +229,80 @@ Namespace layers
             )
         End Sub
 
+        ''' <summary>
+        ''' resolve the fill color of every series of the bar plot, and build the
+        ''' legend entries when they are not provided by the color mapper
+        ''' </summary>
+        Private Function resolveFill(ggplot As ggplot,
+                                     legends As legendGroupElement,
+                                     groupFactors As String(),
+                                     colors As String()) As NamedValue(Of Color)()
+            If Not legends Is Nothing AndAlso Not legends.legends.IsNullOrEmpty Then
+                Return legends.legends _
+                    .Select(Function(l) New NamedValue(Of Color)(l.title, l.color.TranslateColor)) _
+                    .ToArray()
+            End If
+
+            Dim terms As String() = groupFactors.Distinct.ToArray
+
+            If Not colors Is Nothing AndAlso colors.Length > 0 Then
+                Dim buffer As NamedValue(Of Color)() = New NamedValue(Of Color)(terms.Length - 1) {}
+
+                For i As Integer = 0 To terms.Length - 1
+                    buffer(i) = New NamedValue(Of Color)(terms(i), colors(i Mod colors.Length).TranslateColor)
+                Next
+
+                legends = New legendGroupElement With {
+                    .legends = buffer.Select(Function(v) New LegendObject With {
+                        .title = v.Name,
+                        .color = v.Value.ToHtmlColor,
+                        .style = LegendStyles.Rectangle,
+                        .fontstyle = ggplot.ggplotTheme.legendLabelCSS
+                    }).ToArray
+                }
+
+                Return buffer
+            End If
+
+            Dim plain As NamedValue(Of Color)() = New NamedValue(Of Color)(terms.Length - 1) {}
+            Dim fallback As Color = System.Drawing.Color.SteelBlue
+
+            For i As Integer = 0 To terms.Length - 1
+                plain(i) = New NamedValue(Of Color)(terms(i), fallback)
+            Next
+
+            legends = New legendGroupElement With {
+                .legends = New LegendObject() {New LegendObject With {
+                    .title = ggplot.base.reader.color.ToString,
+                    .color = fallback.ToHtmlColor,
+                    .style = LegendStyles.Rectangle,
+                    .fontstyle = ggplot.ggplotTheme.legendLabelCSS
+                }}
+            }
+
+            Return plain
+        End Function
+
         Private Sub dataframe_bar(stream As ggplotPipeline, x As OrdinalScale, ByRef legends As legendGroupElement)
-            Dim groupName As String = stream.ggplot.base.reader.color
             Dim ggplot As ggplot = stream.ggplot
-            Dim groupFactors As String() = CLRVector.asCharacter(DirectCast(stream.ggplot.data, dataframe)(groupName))
+            Dim table As dataframe = DirectCast(stream.ggplot.data, dataframe)
+            Dim groupName As String = ggplot.base.reader.color
+            Dim groupFactors As String()
             Dim colors As String() = Nothing
-            Dim nsize As Integer = stream.x.Length
             Dim y As Double() = stream.y
 
-            If useCustomColorMaps Then
+            ' 只有在颜色映射是一个分类调色板时才能按分组取色，
+            ' 否则退化为基准图的配色或者单一颜色
+            Dim isCategorical As Boolean = useCustomColorMaps AndAlso
+                                          colorMap.GetType.IsInheritsFrom(GetType(ggplotColorCustomSet), strict:=False)
+
+            If groupName.StringEmpty OrElse Not table.hasName(groupName) Then
+                groupFactors = Enumerable.Repeat(".", stream.x.Length).ToArray
+            Else
+                groupFactors = CLRVector.asCharacter(table(groupName))
+            End If
+
+            If isCategorical Then
                 colors = getColorSet(ggplot, LegendStyles.Rectangle, groupFactors, legends)
             ElseIf Not ggplot.base.reader.color Is Nothing Then
                 colors = ggplot.base.getColors(ggplot, legends, LegendStyles.Rectangle)
@@ -226,9 +313,9 @@ Namespace layers
                 .Zip(CLRVector.asCharacter(stream.x)) _
                 .GroupBy(Function(a) a.Second) _
                 .ToArray
-            Dim fill = legends.legends _
-                .Select(Function(l) New NamedValue(Of Color)(l.title, l.color.TranslateColor)) _
-                .ToArray
+
+            Dim fill = resolveFill(ggplot, legends, groupFactors, colors)
+
             Dim groupData As New List(Of BarDataSample)
 
             For Each group In zip

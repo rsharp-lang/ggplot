@@ -1,4 +1,4 @@
-Imports System.Drawing
+﻿Imports System.Drawing
 Imports ggplot.colors
 Imports ggplot.elements
 Imports ggplot.elements.legend
@@ -108,9 +108,15 @@ Namespace layers
                                               source As Object,
                                               nsize As Integer,
                                               env As SMRUCC.Rsharp.Runtime.Environment) As String()
-            Dim mapping As String = If(reader.color,
-                                       DirectCast(reader.[class], String),
-                                       DirectCast(reader.group, String))
+            Dim mapping As String = DirectCast(reader.color, String)
+
+            If String.IsNullOrEmpty(mapping) Then
+                mapping = DirectCast(reader.[class], String)
+            End If
+
+            If String.IsNullOrEmpty(mapping) Then
+                mapping = DirectCast(reader.group, String)
+            End If
 
             If mapping Is Nothing Then
                 Return Enumerable.Repeat(".", nsize).ToArray

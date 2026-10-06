@@ -46,6 +46,64 @@ Namespace layers
         Public Property outline As Boolean = True
         Public Property line_width As Single = 1
 
+        Private _maxDensity As Double
+
+        ''' <summary>
+        ''' a density plot computes its own y values, therefore it declares the
+        ''' y axis range by itself instead of relying on the aes mapping
+        ''' </summary>
+        Public Overrides Function getYAxis(y As Double(), plt As ggplot) As axisMap
+            Dim max As Double = If(_maxDensity > 0, _maxDensity, measureDensity(plt))
+
+            If max <= 0 Then Return Nothing
+
+            _maxDensity = max
+
+            Return axisMap.FromNumeric({0, max * 1.1})
+        End Function
+
+        ''' <summary>
+        ''' measure the maximum density directly from the plot data
+        ''' </summary>
+        Private Function measureDensity(plt As ggplot) As Double
+            If Me.data IsNot Nothing AndAlso Me.data.x IsNot Nothing Then
+                Return maxDensityOf(CLRVector.asNumeric(Me.data.x))
+            End If
+
+            Dim reader As ggplotReader = If(useCustomData, Me.reader, plt.base.reader)
+
+            If reader Is Nothing Then Return 0
+
+            Dim values As Double()
+
+            Try
+                Dim source As Object = If(useCustomData, dataset, plt.data)
+                values = CLRVector.asNumeric(reader.getMapData(Of Object)(source, reader.x, plt.environment))
+            Catch
+                Return 0
+            End Try
+
+            If values Is Nothing OrElse values.Length < 2 Then Return 0
+
+            Return maxDensityOf(values)
+        End Function
+
+        Private Function maxDensityOf(values As Double()) As Double
+            Dim data As Double() = values.Where(Function(v) Not Double.IsNaN(v)).ToArray
+
+            If data.Length < 2 Then Return 0
+
+            Dim h As Double = resolveBandwidth(data)
+            Dim grid As Double() = createGrid(data, h)
+            Dim max As Double = 0
+
+            For Each v As Double In kernelDensity(data, grid, h)
+                If v > max Then max = v
+            Next
+
+            Return max
+        End Function
+
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             Dim ggplot As ggplot = stream.ggplot
             Dim g As IGraphics = stream.g
@@ -73,12 +131,7 @@ Namespace layers
                 Dim bandwidth As Double = resolveBandwidth(values)
                 Dim grid As Double() = createGrid(values, bandwidth)
                 Dim density As Double() = kernelDensity(values, grid, bandwidth)
-
-                Dim polygon As PointF() = grid _
-                    .Select(Function(xi, i) New PointF(xi, density(i))) _
-                    .Concat({New PointF(grid.Last, 0), New PointF(grid(Scan0), 0)}) _
-                    .Select(Function(pt) stream.scale.Translate(pt)) _
-                    .ToArray
+                Dim polygon As PointF() = project(stream, grid, density)
 
                 If polygon.Length < 3 Then Continue For
 
@@ -91,9 +144,7 @@ Namespace layers
                 Call g.FillPolygon(fill, polygon)
 
                 If outline AndAlso pen IsNot Nothing Then
-                    Dim line As PointF() = grid _
-                        .Select(Function(xi, i) stream.scale.Translate(New PointF(xi, density(i)))) _
-                        .ToArray
+                    Dim line As PointF() = project(stream, grid, density)
 
                     For i As Integer = 1 To line.Length - 1
                         Call g.DrawLine(pen, line(i - 1), line(i))
@@ -102,6 +153,39 @@ Namespace layers
             Next
 
             Return Nothing
+        End Function
+
+        ''' <summary>
+        ''' project the density curve into the plot region, the x axis is
+        ''' normalized by the evaluation range and the y axis by the maximum
+        ''' density, so that a density plot does not depend on the ggplot data
+        ''' scale
+        ''' </summary>
+        Private Function project(stream As ggplotPipeline, grid As Double(), density As Double()) As PointF()
+            Dim css As CSSEnvirnment = stream.g.LoadEnvironment
+            Dim region As Rectangle = stream.canvas.PlotRegion(css)
+            Dim x0 As Double = grid(Scan0)
+            Dim span As Double = grid(grid.Length - 1) - x0
+            Dim max As Double = 0
+
+            For Each v As Double In density
+                If v > max Then max = v
+            Next
+
+            If max <= 0 Then max = 1
+
+            Dim buffer As PointF() = New PointF(grid.Length + 1) {}
+
+            For i As Integer = 0 To grid.Length - 1
+                Dim ratio As Double = If(span <= 0, 0.5, (grid(i) - x0) / span)
+                Dim px As Single = CSng(region.Left + region.Width * ratio)
+                Dim py As Single = CSng(region.Bottom - region.Height * density(i) / max)
+
+                buffer(i) = New PointF(px, py)
+            Next
+
+            buffer(grid.Length) = New PointF(buffer(grid.Length - 1).X, region.Bottom)
+            Return buffer
         End Function
 
         ''' <summary>
@@ -193,9 +277,15 @@ Namespace layers
                                               source As Object,
                                               nsize As Integer,
                                               env As SMRUCC.Rsharp.Runtime.Environment) As String()
-            Dim mapping As String = If(reader.color,
-                                       DirectCast(reader.[class], String),
-                                       DirectCast(reader.group, String))
+            Dim mapping As String = DirectCast(reader.color, String)
+
+            If String.IsNullOrEmpty(mapping) Then
+                mapping = DirectCast(reader.[class], String)
+            End If
+
+            If String.IsNullOrEmpty(mapping) Then
+                mapping = DirectCast(reader.group, String)
+            End If
 
             If mapping Is Nothing Then
                 Return Enumerable.Repeat(".", nsize).ToArray

@@ -1011,7 +1011,7 @@ Module ggplot2
             .position = position,
             .stat = stat,
             .groupWidth = width,
-            .colorMap = ggplotColorMap.CreateColorMap(color, 1, env)，
+            .colorMap = ggplotColorMap.CreateColorMap(color, 1, env),
             .showLegend = show_legend
         }
     End Function
