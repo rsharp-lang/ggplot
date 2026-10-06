@@ -1,4 +1,4 @@
-#Region "Microsoft.VisualBasic::22415c36ac9b63bb0a6598b47258c6df, src\ggplot\Internal\render\g2d.vb"
+﻿#Region "Microsoft.VisualBasic::22415c36ac9b63bb0a6598b47258c6df, src\ggplot\Internal\render\g2d.vb"
 
     ' Author:
     ' 
@@ -219,7 +219,7 @@ Namespace render
         ''' </summary>
         ''' <param name="ggplot"></param>
         ''' <returns></returns>
-        Private Shared Function layerAxis(ggplot As ggplot) As Double()
+        Private Function layerAxis(ggplot As ggplot) As Double()
             Dim maps As axisMap() = ggplot.layers _
                 .Select(Function(layer) layer.getYAxis({}, ggplot)) _
                 .Where(Function(m) Not m Is Nothing) _
