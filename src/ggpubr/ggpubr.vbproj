@@ -1,16 +1,43 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <RootNamespace>ggpubr</RootNamespace>
+    <RootNamespace>ggplot.ggpubr</RootNamespace>
     <TargetFrameworks>net10.0</TargetFrameworks>
 	  <Platforms>AnyCPU;ARM32;x64</Platforms>
-	  <Configurations>Debug;Release;Rsharp_app_release;PlantMAT</Configurations>
+	  <Configurations>Debug;Release;Rsharp_app_release;PlantMAT;nuget_release</Configurations>
 	  <OutputPath>../../assembly/</OutputPath>
 	  <UseApplicationFramework>True</UseApplicationFramework>
 	  <GenerateDocumentationFile>True</GenerateDocumentationFile>
 	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  <PackageId>ggpubr</PackageId>
+	  <Title>Publication Ready Statistical Figures for R#</Title>
+	  <Product>R# language ggpubr port</Product>
+	  <Description>Publication ready statistical figures for R# language programming: a port of the R ggpubr package that turns data frames into journal quality plots. The package provides ready made combinations of layers for the figures that appear most often in biomedical and statistical publications, including ggboxplot (box plot with automatic significance stars), ggviolin, ggstrip and ggbeeswarm (jittered and beeswarm point distributions), ggerrorbar (mean with standard error, standard deviation, confidence interval, root mean square or square root of n error bars), ggpaired (paired before / after plots with the connecting lines and the paired t-test), ggdotplot (Cochran arm dot plots) and ggsignif. Correlation is covered by ggcorr (annotated correlation matrix heat map) and ggpairs (pairwise scatter matrix with marginal histograms). Meta analysis and diagnostics are covered by ggforest (forest plot with point estimate, confidence interval and numeric columns), funnel (funnel plot with optional confidence limits) and ggroc (ROC curves with trapezoidal AUC and a diagonal reference line). In addition stat_ellipse draws a multivariate confidence ellipse and geom_text_repel places non overlapping text labels. All figures are composed on top of the ggplot grammar of graphics and inherit its themes, scales and multi format export.</Description>
+	  <PackageTags>ggpubr;ggplot;ggplot2;publication;publication-ready;statistical;statistics;stats;boxplot;violin;beeswarm;swarm;jitter;errorbar;significance;p-value;correlation;heatmap;pairwise;forest-plot;funnel-plot;ROC;AUC;data-visualization;visualization;plotting;chart;figure;scientific-computing;biomedicine;Rsharp;R#;VB.NET;dotnet</PackageTags>
+	  <PackageReleaseNotes>ggpubr 2.0 - the package is no longer a thin wrapper, it now ships the full set of journal figure types.
+
+Added combination figures: ggboxplot, ggviolin, ggstrip, ggbeeswarm, ggerrorbar, ggpaired, ggdotplot and ggsignif, each returning a ready composed layer list that can be added to any ggplot figure.
+
+Added correlation figures: ggcorr renders an annotated Pearson or Spearman correlation matrix as a diverging heat map centred on zero, and ggpairs renders the pairwise scatter matrix with marginal histograms.
+
+Added meta analysis and diagnostic figures: ggforest (point estimate, confidence interval and numeric text columns, with support for a log ratio scale), funnel (funnel plot with optional 95% confidence limits) and ggroc (ROC curve with trapezoidal AUC, optional stratified AUC and a diagonal reference line).
+
+Added layers: ggplotBeeswarm for the one dimensional beeswarm and swarm point arrangements, ggplotErrorBarLayer for the mean_se / mean_sd / mean_ci / sqrt_n / custom error bars, ggplotPaired for the paired before / after lines and the paired t-test, ggplotCorrMatrix, ggplotForest, ggplotFunnel, ggplotROC and ggplotSignifStars for the significance star annotations.
+
+Fixed: the confidence ellipse layer no longer throws NotImplementedException from its ordinal plotting branch.</PackageReleaseNotes>
+	  <PackageLicenseFile>LICENSE</PackageLicenseFile>
+	  <Copyright>Copyright xieguigang&lt;xie.guigang@gcmodeller.org&gt; 2021, all rights reserved.</Copyright>
+	  <Company>SMRUCC genomics institute</Company>
+	  <Authors>xieguigang</Authors>
+	  <PackageProjectUrl>https://github.com/rsharp-lang/ggplot</PackageProjectUrl>
+	  <RepositoryUrl>https://github.com/rsharp-lang/ggplot.git</RepositoryUrl>
+	  <RepositoryType>git</RepositoryType>
+	  <RepositoryBranch>master</RepositoryBranch>
+	  <PackageReadmeFile>README.md</PackageReadmeFile>
 	  <PackageIcon>icons8-art-prices-96.png</PackageIcon>
 	  <PackageOutputPath>..\..\.nuget</PackageOutputPath>
+    <Version>1.0.9775.23854</Version>
+    <AssemblyVersion>1.0.9775.23854</AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-windows|AnyCPU'">
@@ -145,8 +172,21 @@
     <DefineTrace>True</DefineTrace>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='nuget_release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>../../.nuget/</OutputPath>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Include="..\..\.pkg\icons8-art-prices-96.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>

@@ -4,14 +4,36 @@
     <RootNamespace>ggplot</RootNamespace>
     <TargetFrameworks>net10.0</TargetFrameworks>
     <Platforms>AnyCPU;x64</Platforms>
-    <Configurations>Debug;Release;Rsharp_app_release</Configurations>
+    <Configurations>Debug;Release;Rsharp_app_release;nuget_release</Configurations>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>ggraph</PackageId>
+    <Title>A Grammar of Graphics for Relational Data</Title>
+    <Product>R# language ggraph port</Product>
+    <Description>A grammar of graphics for relational data, for R# language programming: a port of the R ggraph and ggforce packages that extends the ggplot grammar from tabular data to network and graph data. Nodes and edges are declared as ordinary ggplot layers - geom_node_point, geom_node_text, geom_node_convexHull, geom_edge_link, geom_edge_bundle and geom_edge_orth - and the map() helper maps node attributes such as degree, group, size, fill and shape onto visual channels. Twelve layout algorithms are exposed through the layout_* functions: random, springembedder, springforce, forcedirected (with group, degree and edge weighted variants), circular (with edge crossing minimisation), radial, cola constraint layout, cola3d, hola incremental layout, orthogonal, force3d and the MINGLE edge bundling layout. The layouts share a common ggLayout contract, so one dimensional and three dimensional results as well as straight, bundled and orthogonal edge geometries all render through the same ggplot pipeline. Figures are exported to PNG, SVG, PDF and PostScript by the sciBASIC# imaging stack.</Description>
+    <PackageTags>ggraph;ggforce;ggplot;ggplot2;network;graph;networks;node;edge;vertex;layout;force-directed;force-directed-layout;circular-layout;radial-layout;constraint-layout;hierarchical-layout;orthogonal-layout;edge-bundling;bundle;spring-embedder;data-visualization;visualization;plotting;chart;figure;scientific-computing;Rsharp;R#;VB.NET;dotnet</PackageTags>
+    <PackageReleaseNotes>ggraph 2.0 - the layout algorithms of the sciBASIC# network layout library are now exposed to R#.
+
+Added layouts: layout_circular (with optional edge crossing minimisation and degree sorting), layout_radial, layout_cola (constraint layout with overlap avoidance, disconnected graph handling, flow layout and power graph grouping), layout_cola3d, layout_hola (incremental layout), layout_orthogonal (orthographic embedding with orthogonal edge routing), layout_force3d and layout_mingle (MINGLE edge bundling).
+
+Added layers: geom_edge_bundle renders the smoothed control point paths produced by the edge bundling layout, and geom_edge_orth renders the orthogonal polylines produced by the orthogonal router.
+
+Added the ggLayout base class so that the one shot layout algorithms and the iterative ones share a single contract; the existing ggforce base class now derives from it, which keeps every previously released layout_ call unchanged.
+
+Fixed: layout_random no longer throws NotImplementedException and accepts a seed for reproducible figures; the degree_weighted and edge_weighted variants of layout_forcedirected now use the dedicated degree and edge weighted planners instead of throwing NotImplementedException; the network_layout project is now referenced explicitly instead of being resolved transitively through the visualiser package.</PackageReleaseNotes>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <Title>A grammar of graphics for relational data</Title>
-    <Description>A grammar of graphics for relational data</Description>
+    <Copyright>Copyright xieguigang&lt;xie.guigang@gcmodeller.org&gt; 2021, all rights reserved.</Copyright>
+    <Company>SMRUCC genomics institute</Company>
+    <Authors>xieguigang</Authors>
+    <PackageProjectUrl>https://github.com/rsharp-lang/ggplot</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/rsharp-lang/ggplot.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryBranch>master</RepositoryBranch>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>icons8-art-prices-96.png</PackageIcon>
     <PackageOutputPath>..\..\.nuget</PackageOutputPath>
+    <Version>1.0.9775.23854</Version>
+    <AssemblyVersion>1.0.9775.23854</AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -96,6 +118,11 @@
     <DebugType>full</DebugType>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='nuget_release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>../../.nuget/</OutputPath>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\R-sharp\R#\Rsharp-netcore5.vbproj" />
     <ProjectReference Include="..\..\..\sciBASIC#\Data\DataFrame\dataframework-netcore5.vbproj" />
@@ -121,6 +148,10 @@
     <None Include="..\..\LICENSE">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
 

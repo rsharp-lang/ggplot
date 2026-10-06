@@ -5,19 +5,35 @@
     <TargetFrameworks>net10.0</TargetFrameworks>
     <AssemblyName>ggplot</AssemblyName>
     <Platforms>AnyCPU;ARM32;x64</Platforms>
-    <Configurations>Debug;Release;Rsharp_app_release;PlantMAT;CellaLAB-Desktop</Configurations>
+    <Configurations>Debug;Release;Rsharp_app_release;PlantMAT;CellaLAB-Desktop;nuget_release</Configurations>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Description>A R language ggplot2 package liked grammar of graphics library for R# language programming: Create Elegant Data Visualisations Using the Grammar of Graphics</Description>
+    <PackageId>ggplot</PackageId>
+    <Title>Create Elegant Data Visualisations Using the Grammar of Graphics</Title>
+    <Product>R# language ggplot2 port</Product>
+    <Description>A grammar of graphics library for R# language programming: a port of the R ggplot2 package that renders publication quality statistical figures on the .NET runtime. The classic aes() aesthetic mapping grammar is combined with a broad set of geom_* layers (point, line, path, polygon, bar, col, histogram, boxplot, violin, density, area, ribbon, errorbar, label, freqpoly, dotplot, smooth, raster, tile, segment, pie, scatterpie, convex hull, principal curve and 3D scatter), position adjustments (identity, stack, fill, dodge and jitter), coordinate systems (cartesian, fixed, polar and flip), continuous / logarithmic / square root / reverse / date / discrete scales, colour, fill, shape, alpha and line size mappings, a complete theme system and programmable guides. Figures are rendered through the sciBASIC# imaging stack to PNG, SVG, PDF and PostScript, and ggsave() exports them at arbitrary size, resolution and device. Statistical annotation helpers such as stat_compare_means, geom_signif and stat_pvalue_manual produce publication ready significance markings directly on the plot.</Description>
+    <PackageTags>ggplot;ggplot2;grammar-of-graphics;data-visualization;visualization;plotting;plot;chart;charts;graph;graphics;statistics;statistical;figure;publication;scientific-computing;Rsharp;R#;VB.NET;dotnet</PackageTags>
+    <PackageReleaseNotes>ggplot 2.0 - completion of the ggplot2 plotting vocabulary.
+
+Added layers: geom_path, geom_area, geom_ribbon, geom_density, geom_errorbar, geom_errorbarh, geom_label, geom_freqpoly, geom_dotplot, geom_smooth (lm / polynomial / glm / loess with an optional confidence band) and a working annotation_raster; geom_raster now renders through a real implementation instead of returning nothing.
+
+Added position adjustments: position_identity, position_stack, position_fill, position_dodge and position_jitter, applied to bar, violin, boxplot and scatter layers through a single strategy object.
+
+Added coordinate systems: coord_cartesian (xlim / ylim / expand), coord_fixed (ratio) and coord_polar (theta / start / end / direction / clockwise) alongside the existing coord_flip.
+
+Added scales: scale_x/y_log10, scale_x/y_log2, scale_x/y_sqrt, scale_x/y_reverse, scale_x/y_date, scale_x/y_discrete, scale_shape, scale_shape_manual, scale_alpha, scale_alpha_continuous, scale_alpha_manual and scale_line_size.
+
+Added guides(): guide_legend supports title, direction, override, merge, nrow / ncol and reverse; guide_none suppresses the legend.
+
+Fixed: geom_path and annotation_raster no longer throw NotImplementedException; stat_compare_means gained wilcox.test, anova.test and paired t.test along with the significance star table; grouped bar plots are now drawn in data coordinates so proportional stacking is correct; the non-dataframe and unrecognised-type branches of ggplotGroup, geom_bar, ggplotReader and ggplotColorMap no longer throw; aes() accepts xmin, xmax, ymin and ymax so geom_ribbon and geom_errorbar work with the standard aesthetic mapping.</PackageReleaseNotes>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Copyright>Copyright xieguigang&lt;xie.guigang@gcmodeller.org&gt; 2021, all rights reserved.</Copyright>
-    <Title>Create Elegant Data Visualisations Using the Grammar of Graphics</Title>
     <Company>SMRUCC genomics institute</Company>
     <Authors>xieguigang</Authors>
     <PackageProjectUrl>https://github.com/rsharp-lang/ggplot</PackageProjectUrl>
     <RepositoryUrl>https://github.com/rsharp-lang/ggplot.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>ggplot</PackageTags>
+    <RepositoryBranch>master</RepositoryBranch>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <UseApplicationFramework>True</UseApplicationFramework>
     <DefineConstants>UNIX=1,MATH_DATASET=1</DefineConstants>
@@ -26,6 +42,8 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <PackageIcon>icons8-art-prices-96.png</PackageIcon>
     <PackageOutputPath>..\..\.nuget</PackageOutputPath>
+    <Version>1.0.9775.23854</Version>
+    <AssemblyVersion>1.0.9775.23854</AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -415,6 +433,11 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0|AnyCPU'">
     <Optimize>False</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='nuget_release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>../../.nuget/</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>

@@ -55,7 +55,6 @@
 #End Region
 
 Imports System.Drawing
-Imports ggplot
 Imports ggplot.elements.legend
 Imports ggplot.layers
 Imports Microsoft.VisualBasic.Data.Plots.Canvas
@@ -71,7 +70,7 @@ Public Class ggplotTextRepelLabel : Inherits ggplotTextLabel
     Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
         Dim legend As legendGroupElement = Nothing
         Dim label_strs As String()
-        Dim ggplot As ggplot.ggplot = stream.ggplot
+        Dim ggplot As ggplot = stream.ggplot
         Dim g As IGraphics = stream.g
         Dim css As CSSEnvirnment = g.LoadEnvironment
         Dim labelStyle As Font = css.GetFont(CSSFont.TryParse(stream.theme.tagCSS))
@@ -144,7 +143,7 @@ Public Class ggplotTextRepelLabel : Inherits ggplotTextLabel
 
     Private Function GetColors(stream As ggplotPipeline) As String()
         Dim colors As String() = Nothing
-        Dim ggplot As ggplot.ggplot = stream.ggplot
+        Dim ggplot As ggplot = stream.ggplot
 
         If Not useCustomData Then
             Dim y = CLRVector.asFloat(stream.y)
