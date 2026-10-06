@@ -157,6 +157,13 @@ Namespace render
             ' function
             x = x.JoinIterates([default].x).JoinIterates(limitsX).Where(Function(d) Not d.IsNaNImaginary).ToArray
             y = y.JoinIterates([default].y).JoinIterates(limitsY).Where(Function(d) Not d.IsNaNImaginary).ToArray
+
+            ' 当图层没有映射y(例如 geom_density 只映射x)时，由图层自己声明y轴范围，
+            ' 否则标度域为空会导致坐标轴无法绘制
+            If y.Length = 0 Then
+                y = layerAxis(ggplot)
+            End If
+
             y = validateAxis(y, ggplot)
 
             Dim xTicks As Double() = If(x.IsNullOrEmpty, {}, x.Range.CreateAxisTicks(theme.nticksX, theme.GetXAxisDecimals))
@@ -205,6 +212,24 @@ Namespace render
             If vec.IsNullOrEmpty Then Return axis
 
             Return axisMap.Create(vec)
+        End Function
+
+        ''' <summary>
+        ''' collect the y axis ranges which are declared by the plot layers
+        ''' </summary>
+        ''' <param name="ggplot"></param>
+        ''' <returns></returns>
+        Private Shared Function layerAxis(ggplot As ggplot) As Double()
+            Dim maps As axisMap() = ggplot.layers _
+                .Select(Function(layer) layer.getYAxis({}, ggplot)) _
+                .Where(Function(m) Not m Is Nothing) _
+                .ToArray
+
+            If maps.Length = 0 Then Return {}
+
+            Return maps _
+                .SelectMany(Function(m) m.ToNumeric) _
+                .ToArray()
         End Function
 
         Private Function validateAxis(y As Double(), ggplot As ggplot) As Double()
