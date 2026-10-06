@@ -35,7 +35,7 @@ Namespace ggraph.render
             If paths Is Nothing OrElse paths.Count = 0 Then Return Nothing
 
             Dim css As CSSEnvirnment = stream.g.LoadEnvironment
-            Dim pen As Pen = css.GetPen(Stroke.TryParse($"{color}; stroke-width: {lineWidth}; stroke-opacity: {alpha}"), allowNull:=False)
+            Dim pen As Pen = css.GetPen(Stroke.TryParse(stream.theme.lineStroke), allowNull:=True)
 
             For Each path In paths
                 If path.Value.Length < 2 Then Continue For

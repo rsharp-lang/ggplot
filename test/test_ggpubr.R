@@ -2,6 +2,7 @@ require(ggpubr);
 options(strict = FALSE);
 setwd(@dir);
 
+let dummy <- data.frame(x = c(0, 1), y = c(0, 1));
 set.seed(4321);
 let df <- data.frame(
     g = rep(c("control", "treatA", "treatB"), each = 40),
@@ -56,7 +57,7 @@ bitmap(file = "./verify_ggpaired.png", size = [1600, 1200]) {
 
 # 6. ggcorr
 bitmap(file = "./verify_ggcorr.png", size = [1200, 1200]) {
-    ggplot(NULL, aes(), padding = "padding:60px;")
+    ggplot(dummy, aes(x = "x", y = "y"), padding = "padding:60px;")
       + ggcorr(df)
       + ggtitle("ggcorr")
     ;
@@ -64,7 +65,7 @@ bitmap(file = "./verify_ggcorr.png", size = [1200, 1200]) {
 
 # 7. ggforest
 bitmap(file = "./verify_ggforest.png", size = [1600, 1200]) {
-    ggplot(NULL, aes(), padding = "padding:120px 400px 120px 160px;")
+    ggplot(dummy, aes(x = "x", y = "y"), padding = "padding:120px 400px 120px 160px;")
       + ggforest(
             effect = c(0.35, 0.62, 0.28, 0.81),
             lower = c(0.10, 0.40, 0.05, 0.60),
@@ -77,7 +78,7 @@ bitmap(file = "./verify_ggforest.png", size = [1600, 1200]) {
 
 # 8. funnel
 bitmap(file = "./verify_funnel.png", size = [1400, 1200]) {
-    ggplot(NULL, aes(), padding = "padding:120px 200px 120px 200px;")
+    ggplot(dummy, aes(x = "x", y = "y"), padding = "padding:120px 200px 120px 200px;")
       + funnel(
             proportion = c(1000, 620, 380, 210, 96),
             label = c("screened", "eligible", "included", "analysed", "final")
@@ -91,7 +92,7 @@ bitmap(file = "./verify_ggroc.png", size = [1400, 1200]) {
     set.seed(99);
     let score = c(rnorm(60, 0.2, 1), rnorm(60, 2.4, 1));
     let truth = c(rep(FALSE, 60), rep(TRUE, 60));
-    ggplot(NULL, aes(), padding = "padding:120px 200px 120px 160px;")
+    ggplot(dummy, aes(x = "x", y = "y"), padding = "padding:120px 200px 120px 160px;")
       + ggroc(score, truth)
       + ggtitle("ggroc")
     ;

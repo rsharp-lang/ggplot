@@ -54,7 +54,7 @@ Public Class ggplotROC : Inherits ggplotLayer
         For Each g In groups.Distinct
             Dim index As Integer() = Enumerable.Range(0, score.Length).Where(Function(i) groups(i) = g).ToArray
             Dim points As PointF() = curve(score, label, index)
-            Dim pen As Pen = css.GetPen(Stroke.TryParse($"{color}; stroke-width: {lineWidth}"), allowNull:=False)
+            Dim pen As Pen = css.GetPen(Stroke.TryParse(stream.theme.lineStroke), allowNull:=True)
 
             For i As Integer = 1 To points.Length - 1
                 Call stream.g.DrawLine(pen, points(i - 1), points(i))
