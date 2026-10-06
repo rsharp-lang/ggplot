@@ -64,7 +64,6 @@ Imports System.IO
 Imports System.Runtime.CompilerServices
 Imports ggplot.colors
 Imports ggplot.elements
-Imports ggplot.colors
 Imports ggplot.elements.legend
 Imports ggplot.options
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
@@ -271,9 +270,13 @@ Namespace layers
                 plain(i) = New NamedValue(Of Color)(terms(i), fallback)
             Next
 
+            Dim legendTitle As String = If(ggplot.base.reader.color Is Nothing,
+                                      NameOf(ggplot.base.reader),
+                                      DirectCast(ggplot.base.reader.color, String))
+
             legends = New legendGroupElement With {
                 .legends = New LegendObject() {New LegendObject With {
-                    .title = ggplot.base.reader.color.ToString,
+                    .title = legendTitle,
                     .color = fallback.ToHtmlColor,
                     .style = LegendStyles.Rectangle,
                     .fontstyle = ggplot.ggplotTheme.legendLabelCSS
