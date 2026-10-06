@@ -151,6 +151,7 @@ Namespace ggraph.layout
                 Dim link As New colaNS.Link(Of Integer)()
 
                 link.source = index(edge.U.label)
+                link.length = idealLinkLength
                 link.target = index(edge.V.label)
 
                 Call links.Add(link)
@@ -158,12 +159,17 @@ Namespace ggraph.layout
 
             Dim engine As New colaNS.Layout3D(nodes, links.ToArray(), idealLinkLength)
 
-            Call engine.start(iterations)
+            Dim coordinates As Double()()
 
-            Dim coordinates As Double()() = engine.descent.x
+            Try
+                Call engine.start(iterations)
+                coordinates = engine.descent.x
+            Catch ex As Exception
+                Call log(env, $" ~failed: {ex.Message}")
+            End Try
 
-            If coordinates Is Nothing Then
-                Call log(env, " ~no result")
+            If coordinates Is Nothing OrElse coordinates.Length < 3 Then
+                Call log(env, " ~no 3D result, fall back to the 2D constraint layout")
                 Return
             End If
 

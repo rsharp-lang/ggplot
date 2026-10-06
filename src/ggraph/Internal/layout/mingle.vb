@@ -36,11 +36,30 @@ Namespace ggraph.layout
 
             Dim bundler As New Bundler()
 
+            ' MINGLE要求每个节点的数据本身就是MingleNodeData，
+            ' 因此先把节点坐标写入捆绑专用的数据对象
+            For Each node As Node In g.connectedNodes
+                Dim pos As PointF = readPosition(node)
+                Dim vector As AbstractVector = node.data.initialPostion
+
+                node.data = New MingleNodeData With {
+                    .label = node.label,
+                    .initialPostion = vector,
+                    .coords = New Double() {pos.X, pos.Y, pos.X, pos.Y}
+                }
+            Next
+
             Call bundler.setNodes(g.connectedNodes)
             Call bundler.buildNearestNeighborGraph(k)
 
             For i As Integer = 1 To Math.Max(rounds, 1)
-                Call bundler.MINGLE()
+                Try
+                    Call bundler.MINGLE()
+                Catch ex As Exception
+                    Call log(env, $"round {i}/{rounds} failed: {ex.Message}")
+                    Exit For
+                End Try
+
                 Call log(env, $"round {i}/{rounds}")
             Next
 
@@ -71,7 +90,13 @@ Namespace ggraph.layout
             If _bundler Is Nothing Then Return paths
 
             For Each node As Node In _bundler.EnumerateNodes()
-                Dim data As MingleNodeData = TryCast(node.data, MingleNodeData)
+                Dim data As MingleNodeData = Nothing
+
+                Try
+                    data = DirectCast(node.data, MingleNodeData)
+                Catch
+                    data = Nothing
+                End Try
 
                 If data Is Nothing Then Continue For
                 If data.nodes Is Nothing OrElse data.nodes.Length < 2 Then Continue For
@@ -84,6 +109,15 @@ Namespace ggraph.layout
             Return paths
         End Function
 
+        Private Shared Function readPosition(node As Node) As PointF
+            If node.data Is Nothing OrElse node.data.initialPostion Is Nothing Then
+                Return New PointF(0, 0)
+            End If
+
+            Dim vector As AbstractVector = node.data.initialPostion
+
+            Return New PointF(CSng(vector.x), CSng(vector.y))
+        End Function
         Private Shared Sub addPath(paths As Dictionary(Of String, PointF()), u As Node, v As Node)
             Dim key As String = $"{u.label}->{v.label}"
 
@@ -94,11 +128,13 @@ Namespace ggraph.layout
 
             If uu Is Nothing OrElse vv Is Nothing Then Return
 
-            Call paths.Add(key, New PointF() {
+            Dim buffer As PointF() = New PointF() {
                 New PointF(CSng(uu.x), CSng(uu.y)),
                 New PointF(CSng((uu.x + vv.x) / 2), CSng((uu.y + vv.y) / 2)),
                 New PointF(CSng(vv.x), CSng(vv.y))
-            })
+            }
+
+            paths(key) = buffer
         End Sub
     End Class
 End Namespace
