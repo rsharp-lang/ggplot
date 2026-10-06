@@ -64,6 +64,7 @@
 #End Region
 
 Imports System.Drawing
+Imports System.IO
 Imports ggplot.colors
 Imports ggplot.elements
 Imports ggplot.layers
@@ -341,6 +342,10 @@ Module ggplot2
     Public Function aes(Optional x As Object = Nothing,
                         Optional y As Object = Nothing,
                         Optional z As Object = Nothing,
+                        Optional xmin As Object = Nothing,
+                        Optional xmax As Object = Nothing,
+                        Optional ymin As Object = Nothing,
+                        Optional ymax As Object = Nothing,
                         <RRawVectorArgument>
                         Optional label As Object = Nothing,
                         Optional color As Object = Nothing,
@@ -382,6 +387,10 @@ Module ggplot2
             .x = x,
             .y = y,
             .z = z,
+            .xmin = xmin,
+            .xmax = xmax,
+            .ymin = ymin,
+            .ymax = ymax,
             .color = If(color, fill),
             .label = label,
             .args = args,
@@ -762,8 +771,28 @@ Module ggplot2
     ''' </summary>
     ''' <returns></returns>
     <ExportAPI("geom_path")>
-    Public Function geom_path() As ggplotLayer
-        Throw New NotImplementedException
+    <RApiReturn(GetType(ggplotPath))>
+    Public Function geom_path(Optional mapping As ggplotReader = Nothing,
+                              Optional lineend As String = "butt",
+                              Optional linejoin As String = "round",
+                              Optional arrow As Object = Nothing,
+                              Optional arrow_fill As Object = Nothing,
+                              <RRawVectorArgument>
+                              Optional color As Object = "black",
+                              Optional size As Double = 1,
+                              Optional alpha As Double = 1,
+                              Optional linetype As String = "solid",
+                              Optional env As Environment = Nothing) As ggplotLayer
+
+        Dim color_str As String = RColorPalette.getColor(color)
+
+        Return New ggplotPath With {
+            .reader = mapping,
+            .alpha = alpha,
+            .colorMap = ggplotColorMap.CreateColorMap(color_str, alpha, env),
+            .lineend = lineend,
+            .linejoin = linejoin
+        }
     End Function
 
     <ExportAPI("geom_polygon")>
@@ -1191,10 +1220,72 @@ Module ggplot2
     End Function
 
     <ExportAPI("geom_raster")>
-    Public Function geom_raster(bitmap As Object,
+    <RApiReturn(GetType(ggplotRaster))>
+    Public Function geom_raster(<RRawVectorArgument> bitmap As Object,
                                 Optional layout As Object = Nothing,
                                 Optional env As Environment = Nothing) As Object
 
+        Dim img As Image = TryCast(bitmap, Image)
+
+        If img Is Nothing Then
+            Dim filePath As String = tryReadImagePath(bitmap)
+
+            If String.IsNullOrEmpty(filePath) OrElse Not File.Exists(filePath) Then
+                Return RInternal.debug.stop("the given raster data can not be converted to a bitmap image!", env)
+            End If
+
+            img = Image.FromFile(filePath)
+        End If
+
+        Return New ggplotRaster With {
+            .image = img,
+            .layout = tryParseLayout(layout)
+        }
+    End Function
+
+    ''' <summary>
+    ''' read the image file path from the R side raster data source
+    ''' </summary>
+    ''' <param name="bitmap"></param>
+    ''' <returns></returns>
+    Private Function tryReadImagePath(bitmap As Object) As String
+        If TypeOf bitmap Is String Then
+            Return DirectCast(bitmap, String)
+        ElseIf TypeOf bitmap Is vector Then
+            Dim chars As String() = CLRVector.asCharacter(DirectCast(bitmap, vector).data)
+
+            If chars.Length > 0 Then
+                Return chars(Scan0)
+            End If
+        End If
+
+        Return Nothing
+    End Function
+
+    ''' <summary>
+    ''' parse the layout of the raster image from a numeric vector of
+    ''' ``c(left, top, width, height)``
+    ''' </summary>
+    ''' <param name="layout"></param>
+    ''' <returns></returns>
+    Private Function tryParseLayout(layout As Object) As RectangleF
+        If layout Is Nothing Then
+            Return RectangleF.Empty
+        End If
+
+        Dim vec As Double()
+
+        Try
+            vec = CLRVector.asNumeric(layout)
+        Catch
+            Return RectangleF.Empty
+        End Try
+
+        If vec.Length <> 4 Then
+            Return RectangleF.Empty
+        End If
+
+        Return New RectangleF(vec(0), vec(1), vec(2), vec(3))
     End Function
 
     <ExportAPI("geom_tile")>
@@ -1218,8 +1309,33 @@ Module ggplot2
     ''' <returns></returns>
     ''' 
     <ExportAPI("annotation_raster")>
-    Public Function annotation_raster(<RRawVectorArgument> raster As Object) As Object
-        Throw New NotImplementedException
+    <RApiReturn(GetType(ggplotAnnotationRaster))>
+    Public Function annotation_raster(<RRawVectorArgument> raster As Object,
+                                      Optional xmin As Double = 0,
+                                      Optional xmax As Double = 1,
+                                      Optional ymin As Double = 0,
+                                      Optional ymax As Double = 1,
+                                      Optional env As Environment = Nothing) As Object
+
+        Dim img As Image = TryCast(raster, Image)
+
+        If img Is Nothing Then
+            Dim filePath As String = tryReadImagePath(raster)
+
+            If String.IsNullOrEmpty(filePath) OrElse Not File.Exists(filePath) Then
+                Return RInternal.debug.stop("the given annotation raster data can not be converted to a bitmap image!", env)
+            End If
+
+            img = Image.FromFile(filePath)
+        End If
+
+        Return New ggplotAnnotationRaster With {
+            .image = img,
+            .xmin = xmin,
+            .xmax = xmax,
+            .ymin = ymin,
+            .ymax = ymax
+        }
     End Function
 
     ''' <summary>

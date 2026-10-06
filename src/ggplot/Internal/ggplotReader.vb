@@ -64,6 +64,7 @@ Imports System.Runtime.CompilerServices
 Imports ggplot.elements
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ApplicationServices.Debugging.Diagnostics
+Imports Microsoft.VisualBasic.ApplicationServices.Debugging.Logging
 Imports Microsoft.VisualBasic.ComponentModel.Collection
 Imports Microsoft.VisualBasic.Data.Plots.Canvas
 Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Legend
@@ -100,6 +101,11 @@ Public Class ggplotReader
 
     Public Property xend As String
     Public Property yend As String
+
+    Public Property xmin As String
+    Public Property xmax As String
+    Public Property ymin As String
+    Public Property ymax As String
 
     Public Property color As Object
     Public Property shape As Object
@@ -185,7 +191,11 @@ Public Class ggplotReader
             .z = axisMap.FromArray(If(isPlain2D, Nothing, unifySource(data, z, env)), z),
             .fill = axisMap.FromArray(unifySource(data, If([class], color), env), [class]),
             .xend = axisMap.FromArray(unifySource(data, xend, env), xend),
-            .yend = axisMap.FromArray(unifySource(data, yend, env), yend)
+            .yend = axisMap.FromArray(unifySource(data, yend, env), yend),
+            .xmin = axisMap.FromArray(unifySource(data, xmin, env), xmin),
+            .xmax = axisMap.FromArray(unifySource(data, xmax, env), xmax),
+            .ymin = axisMap.FromArray(unifySource(data, ymin, env), ymin),
+            .ymax = axisMap.FromArray(unifySource(data, ymax, env), ymax)
         }
     End Function
 
@@ -195,10 +205,33 @@ Public Class ggplotReader
         ElseIf TypeOf data Is dataframe Then
             Return dataframeSource(DirectCast(data, dataframe), source, env)
         ElseIf TypeOf data Is list Then
-            Throw New NotImplementedException
+            Return listSource(DirectCast(data, list), source, env)
         Else
-            Throw New NotImplementedException(data.GetType.FullName)
+            Call env.AddMessage($"the ggplot data source of type({data.GetType.FullName}) is neither a dataframe nor a list, the aes mapping will be resolved against the data source itself!", MSG_TYPES.WRN)
+            Return REnv.TryCastGenericArray(data, env)
         End If
+    End Function
+
+    ''' <summary>
+    ''' read the mapped column from a list-like ggplot data source
+    ''' </summary>
+    ''' <param name="table">the list data source</param>
+    ''' <param name="source">the name of the mapped list element</param>
+    ''' <param name="env"></param>
+    ''' <returns></returns>
+    Private Shared Function listSource(table As list, source As String, env As Environment) As Array
+        If Not table.hasName(source) Then
+            Throw New InvalidDataException($"the required column(colname: {source}) source data mapping in list is missing!")
+        End If
+
+        Dim vec As Object = table.getByName(source)
+
+        ' a nested dataframe is also allowed as the plot data source
+        If TypeOf vec Is dataframe Then
+            Return dataframeSource(DirectCast(vec, dataframe), source, env)
+        End If
+
+        Return REnv.TryCastGenericArray(vec, env)
     End Function
 
     Private Shared Function dataframeSource(table As dataframe, source As String, env As Environment) As Array

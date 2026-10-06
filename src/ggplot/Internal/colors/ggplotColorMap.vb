@@ -57,6 +57,7 @@
 
 #End Region
 
+Imports System.IO
 Imports System.Runtime.CompilerServices
 Imports Microsoft.VisualBasic.Data.Plots.Canvas
 Imports Microsoft.VisualBasic.Data.Plots.Plot3D.Legend
@@ -136,7 +137,47 @@ Namespace colors
                     .alpha = alpha
                 }
             Else
-                Throw New NotImplementedException(map.GetType.FullName)
+                Return numericMap(map, alpha)
+            End If
+        End Function
+
+        ''' <summary>
+        ''' create a color map from the unrecognized color mapping source
+        ''' </summary>
+        ''' <param name="map">
+        ''' the unrecognized color mapping source, the most common case is a
+        ''' numeric RGB channel vector such as ``c(255, 0, 0)`` in R
+        ''' </param>
+        ''' <param name="alpha"></param>
+        ''' <returns>
+        ''' returns nothing if the given <paramref name="map"/> can not be
+        ''' interpreted as a color value, which means the ggplot object will
+        ''' fallback to the default color mapping of the plot theme
+        ''' </returns>
+        Private Shared Function numericMap(map As Object, alpha As Double) As ggplotColorMap
+            Dim values As Double()
+
+            Try
+                values = CLRVector.asNumeric(map)
+            Catch ex As Exception
+                Throw New InvalidDataException($"the color mapping data of type({map.GetType.FullName}) is not supported!", ex)
+            End Try
+
+            If values.Length = 0 OrElse values.Length Mod 3 <> 0 Then
+                Throw New InvalidDataException($"the numeric color mapping data should have the length multiples of 3 (RGB channels), but got {values.Length}!")
+            End If
+
+            Dim n As Integer = values.Length \ 3
+            Dim colors As String() = New String(n - 1) {}
+
+            For i As Integer = 0 To n - 1
+                colors(i) = $"rgb({values(i * 3)},{values(i * 3 + 1)},{values(i * 3 + 2)})"
+            Next
+
+            If n = 1 Then
+                Return New ggplotColorLiteral With {.colorMap = colors(Scan0), .alpha = alpha}
+            Else
+                Return New ggplotColorCustomSet With {.colorMap = colors, .alpha = alpha}
             End If
         End Function
 

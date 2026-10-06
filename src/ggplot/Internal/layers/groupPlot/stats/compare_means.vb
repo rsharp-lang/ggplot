@@ -75,6 +75,31 @@ Namespace layers
 
         Public Const ns As String = "n.sig"
 
+        ''' <summary>
+        ''' the significance level stars of the pvalue
+        ''' </summary>
+        ''' <returns>
+        ''' ``***`` for p&lt;0.001, ``**`` for p&lt;0.01, ``*`` for p&lt;0.05,
+        ''' ``.`` for p&lt;0.1 and ``n.sig`` for the others
+        ''' </returns>
+        Public ReadOnly Property stars As String
+            Get
+                If Double.IsNaN(pvalue) OrElse pvalue < 0 Then
+                    Return ns
+                ElseIf pvalue <= 0.001 Then
+                    Return "***"
+                ElseIf pvalue <= 0.01 Then
+                    Return "**"
+                ElseIf pvalue <= 0.05 Then
+                    Return "*"
+                ElseIf pvalue <= 0.1 Then
+                    Return "."
+                Else
+                    Return ns
+                End If
+            End Get
+        End Property
+
         Public ReadOnly Property psignif As String
             Get
                 If pvalue.ToString = "0" Then

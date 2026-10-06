@@ -63,8 +63,11 @@ Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.Data.Plots.Canvas
 Imports Microsoft.VisualBasic.Imaging
+Imports Microsoft.VisualBasic.Imaging.d3js.scale
+Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.Math.LinearAlgebra
 Imports Microsoft.VisualBasic.Math.Quantile
+Imports SMRUCC.Rsharp.Runtime.Vectorization
 
 Namespace layers
 
@@ -159,10 +162,47 @@ Namespace layers
 
         Public Overrides Function Plot(stream As ggplotPipeline) As IggplotLegendElement
             If stream.scale.xscale = d3js.scale.scalers.linear Then
-                Throw New NotImplementedException
+                Return plotLinearX(stream)
             Else
                 Return PlotOrdinal(stream, stream.scale.X)
             End If
+        End Function
+
+        ''' <summary>
+        ''' 当x轴为连续型标度时，把每个唯一的x取值当作一个分类来分组绘制
+        ''' </summary>
+        ''' <param name="stream"></param>
+        ''' <returns></returns>
+        ''' <remarks>
+        ''' 分组图层(箱线图/小提琴图/条形图/抖动图)本质上都是按分类分组的，
+        ''' 当x轴是连续数值时，按数值取值分组即可得到等价的空间分布，
+        ''' 从而避免因为标度类型不匹配而中断绘制。
+        ''' </remarks>
+        Protected Overridable Function plotLinearX(stream As ggplotPipeline) As IggplotLegendElement
+            Dim rect As Rectangle = stream.scale.region
+            Dim tags As String() = CLRVector.asNumeric(stream.x) _
+                .Select(Function(v) v.ToString) _
+                .ToArray
+            Dim scaleX = d3js.scale.ordinal _
+                .domain(tags:=tags) _
+                .range(integers:={rect.Left, rect.Right})
+            Dim branch As New ggplotPipeline With {
+                .g = stream.g,
+                .canvas = stream.canvas,
+                .x = tags,
+                .y = stream.y,
+                .scale = New DataScaler With {
+                    .AxisTicks = stream.scale.AxisTicks,
+                    .region = rect,
+                    .X = scaleX,
+                    .Y = stream.scale.Y
+                },
+                .ggplot = stream.ggplot,
+                .layout = stream.layout,
+                .baseData = stream.baseData
+            }
+
+            Return PlotOrdinal(branch, scaleX)
         End Function
 
         Protected MustOverride Function PlotOrdinal(stream As ggplotPipeline, x As d3js.scale.OrdinalScale) As IggplotLegendElement

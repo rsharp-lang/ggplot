@@ -60,6 +60,7 @@
 #End Region
 
 Imports System.Drawing
+Imports Microsoft.VisualBasic.ApplicationServices.Debugging.Logging
 Imports ggplot.elements.legend
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.Imaging
@@ -82,9 +83,10 @@ Namespace layers
         Protected Overrides Function PlotOrdinal(stream As ggplotPipeline, x As OrdinalScale) As IggplotLegendElement
             Select Case method.ToLower
                 Case "anova" : Call plotAnova(stream, x)
-                Case "t.test" : Call plotTtest(stream, x)
+                Case "t.test", "wilcox.test" : Call plotTtest(stream, x)
                 Case Else
-                    Throw New NotImplementedException(method)
+                    Call stream.ggplot.environment.AddMessage($"the group comparision method '{method}' is not supported, the t.test will be used instead!", MSG_TYPES.WRN)
+                    Call plotTtest(stream, x)
             End Select
 
             Return Nothing

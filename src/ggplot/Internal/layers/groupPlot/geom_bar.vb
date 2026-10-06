@@ -60,6 +60,7 @@
 #End Region
 
 Imports System.Drawing
+Imports System.IO
 Imports System.Runtime.CompilerServices
 Imports ggplot.elements
 Imports ggplot.elements.legend
@@ -139,7 +140,13 @@ Namespace layers
 
                 Return axisMap.FromNumeric({min, max})
             Else
-                Throw New NotImplementedException
+                ' 无分组信息(数据源不是dataframe)时，直接按数值自身的极值确定y轴范围
+                Dim lower As Double = Aggregate yi As Double In y Into Min(yi)
+                Dim upper As Double = Aggregate yi As Double In y Into Max(yi)
+
+                lower = std.Min(0, lower)
+
+                Return axisMap.FromNumeric({lower, upper})
             End If
         End Function
 
@@ -151,7 +158,7 @@ Namespace layers
             If TypeOf stream.ggplot.data Is dataframe Then
                 Call dataframe_bar(stream, x, legends)
             Else
-                Throw New NotImplementedException
+                Call vector_bar(stream)
             End If
 
             If showLegend Then
@@ -160,6 +167,39 @@ Namespace layers
                 Return Nothing
             End If
         End Function
+
+        ''' <summary>
+        ''' 当数据源不是dataframe(无分组信息)时，按单一系列绘制普通条形图
+        ''' </summary>
+        Private Sub vector_bar(stream As ggplotPipeline)
+            Dim ggplot As ggplot = stream.ggplot
+            Dim y As Double() = stream.y
+            Dim categories As String() = CLRVector.asCharacter(stream.x)
+
+            If categories.Length <> y.Length Then
+                Throw New InvalidDataException($"the length of the x axis({categories.Length}) and the y axis({y.Length}) data are not equal!")
+            End If
+
+            Dim values As Double() = y
+
+            If stat = "percentage" Then
+                Dim total As Double = Aggregate sum As Double In y Into Sum(sum)
+
+                If total <> 0 Then
+                    values = y.Select(Function(v) v / total).ToArray
+                End If
+            End If
+
+            Call LayerRender.DrawBars(
+                g:=stream.g,
+                scaler:=stream.scale,
+                theme:=stream.theme,
+                categories:=categories,
+                values:=values,
+                stack:=BarPlot.StackMode.None,
+                horizontal:=ggplot.ggplotTheme.flipAxis
+            )
+        End Sub
 
         Private Sub dataframe_bar(stream As ggplotPipeline, x As OrdinalScale, ByRef legends As legendGroupElement)
             Dim groupName As String = stream.ggplot.base.reader.color

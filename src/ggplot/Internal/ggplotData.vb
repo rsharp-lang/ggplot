@@ -79,6 +79,15 @@ Public Class ggplotData : Inherits ggplotAdapter
     Public Property xend As axisMap
     Public Property yend As axisMap
 
+    ''' <summary>
+    ''' the lower/upper bound of the plot data, which is required by
+    ''' the geom_ribbon / geom_errorbar / geom_boxplot layers
+    ''' </summary>
+    Public Property xmin As axisMap
+    Public Property xmax As axisMap
+    Public Property ymin As axisMap
+    Public Property ymax As axisMap
+
     Public ReadOnly Property nsize As Integer
         Get
             Return x.size

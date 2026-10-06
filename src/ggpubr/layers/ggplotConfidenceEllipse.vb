@@ -101,12 +101,13 @@ Public Class ggplotConfidenceEllipse : Inherits ggplotGroup
     End Function
 
     ''' <summary>
-    ''' no used
+    ''' the confidence ellipse is drawn in the data coordinate space, so it
+    ''' does not require an ordinal x axis scale
     ''' </summary>
     ''' <param name="stream"></param>
     ''' <param name="x"></param>
     ''' <returns></returns>
     Protected Overrides Function PlotOrdinal(stream As ggplotPipeline, x As OrdinalScale) As IggplotLegendElement
-        Throw New NotImplementedException()
+        Return Plot(stream)
     End Function
 End Class
